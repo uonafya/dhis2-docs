@@ -3,8 +3,15 @@
 <chapter>
   <title>Data dimensions in DHIS2</title>
   <section>
-    <title>The core building blocks describing the data</title>
-    <para>A data value in DHIS2  is  described by three dimensions: 1) data element, 2) organisation unit, and 3) period. These dimensions  form the core building blocks of the data model. As an example, if you want to know how many children that were immunised for measles in Gerehun CHC in December 2014, the three dimensions which describe that value are the Data Element &quot;Measles doses given&quot;, the Organisation Unit &quot;Gerehun CHC&quot;, and the Period &quot;Dececmber 2014&quot;. All data values have at least these three dimensions describing What, Where and When.</para>
+    <title>Data dimensions: Core building blocks in DHIS 2</title>
+    <para>A data value in DHIS2  is  described by at least three dimensions: 1) data element, 2) organisation unit, and 3) period. These dimensions  form the core building blocks of the data model. </para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="resources/images/data_dimensions/datavalue_with_dimensions.png" format="PNG" width="800px" align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>As an example, if you want to know how many children that were immunised for measles in Gerehun CHC in December 2014, the three dimensions which describe that value are the Data Element &quot;Measles doses given&quot;, the Organisation Unit &quot;Gerehun CHC&quot;, and the Period &quot;Dececmber 2014&quot;. All data values have at least these three dimensions describing What, Where and When.</para>
+    <para>In addition to the organisation unit, period and data element dimensions, data values may also be associated with a custom dimension consisting of attributes. A common use of this dimension is to describe data values which are reported by multiple partners in the same location for the same data element and time period. In principle, it can be used as a &quot;free-form&quot; dimension, to describe multiple observations of the same phenomena at the same place and time. </para>
     <para><table frame="all">
         <title/>
         <tgroup cols="4">
@@ -38,10 +45,10 @@
       </table></para>
   </section>
   <section>
-    <title>The data element dimension</title>
+    <title>Data elements: The What dimension</title>
     <section>
       <title>Data element categories</title>
-      <para>The data element above called &quot;Measles doses given&quot;, although capturing the core essence of what the data is can be further elaborated and disaggregated into what is called data element categories. The system administrators of DHIS 2 are free to define any data element category dimensions to data elements using the user interface for this in the data element maintenance section, but here are some examples of possible categories to use.</para>
+      <para>The data element mentioned above ,&quot;Measles doses given&quot;,  can be further  disaggregated into by combinations of data element categories. Each system administrator of DHIS 2 is free to define any data element category dimensions for data elements. There are however, certain best practices which should generally be followed.</para>
       <para>Given the example of Measles vaccination, if you want to know whether these vaccines were given at the facility (fixed) or out in the community as part of the outreach services then you could add a dimension called e.g. &quot;Place of service&quot; with the two possible options &quot;Fixed&quot; and &quot;Outreach&quot;. Then all data collected on measles immunisation would have to be disaggregated along these to options. In addition to this you might be interested in knowing how many of these children who were under 1 year or  above 1 year of age. If so you can add an Age dimension to the data element with the two possible options &quot;&lt;1 y&quot; and &quot;&gt;1 y&quot;. This implies further detail on the data collection process. You can also apply both categories &quot;Place of service&quot; and &quot;Age&quot; and combine these into a data element category combination e.g. called &quot;EPI disaggregation&quot;. You would then be able to look at four different more detailed values in stead of only one as in the example above for the data element &quot;Measles doses given&quot;: 1) &quot;Fixed and &lt;1 y, 2) Fixed and &gt;1 y, 3) Outreach and &lt;1 y, and 4) Outreach and &gt;1 y. This adds complexity to how data is collected by the health facilities, but at the same time opens up for new possibilities of detailed data analysis of Measles immunisation.</para>
       <para><table frame="all">
           <title> Example of detailed storage of data values when using data element categories &quot;Place of Service&quot; and &quot;Age&quot; (simplified for readability compared to the actual database table)</title>
@@ -295,7 +302,7 @@
           <para>Weekly: These are defined as <ulink url="http://en.wikipedia.org/wiki/ISO_week_date">ISO weeks</ulink>, beginning on Monday  and and ending on Sunday. Note that other week definitions are not currently supported.</para>
         </listitem>
         <listitem>
-          <para>Monthly</para>
+          <para>Monthly: Refers to standard calendar months.</para>
         </listitem>
         <listitem>
           <para>BiMonthly: Two-month periods beginning in January.</para>
@@ -307,7 +314,7 @@
           <para>SixMonthly: Six-month periods beginning in January</para>
         </listitem>
         <listitem>
-          <para>Yearly</para>
+          <para>Yearly: This refers to a calendar year. </para>
         </listitem>
         <listitem>
           <para>Financial April: Financial year period beginning on April 1st and ending on March 31st of the calendar next year</para>
