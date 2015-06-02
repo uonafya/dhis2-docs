@@ -7,20 +7,20 @@
     <para>Tracker capture is an advanced version of the event capture app. While the event capture
       deals with single event without registration, tracker capture deals with multiple events
       (including single event) with registration. The implication of this is that, any event
-      capturing has to be for a registered tracked entity. This makes registration/searching of a
-      tracked entity a key component of tracker capture. </para>
+      capturing has to be for a registered tracked entity instance (TEI). This makes
+      registration/searching of TEI a key component of the tracker capture app. </para>
   </section>
   <section>
-    <title>Registering/searching tracked entity</title>
-    <para>To proceed with the tracker capture one needs to have a tracked entity. As shown in the
-      screenshot below, the first page of the app provides two features for this - searching an
-      existing one or registering a new one.</para>
+    <title>TEI Searching/Registration</title>
+    <para>To proceed with the tracker capture one needs to have a TEI. As shown in the screenshot
+      below, the first page of the app provides two features for this - searching an existing one or
+      registering a new one.</para>
     <para/>
     <screenshot>
-      <screeninfo>Example searching/registration</screeninfo>
+      <screeninfo>Example: searching/registration</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="resources/images/tracker_capture/search_register.png" format="JPG"
+          <imagedata fileref="resources/images/tracker_capture/search_register.png" format="PNG"
             width="90%"/>
         </imageobject>
       </mediaobject>
@@ -28,20 +28,44 @@
     <para>All searching and registration operations are accessible from the screen shown above.<orderedlist>
         <listitem>
           <para>Searching: there are two modes of searching - simple and advanced. The simple one
-            works when by typing a free text on the provided area. The advanced one works when
-            various search criteria are provided in the drop down window. Both search modes return
-            matching list of tracked entity displayed in a table. Clicking on any row takes to the
-            selected tracked entity dashboard.</para>
+            works by typing a free text on the provided area. What is typed in the input box is
+            applied across all attributes for partial match. The advanced one, which is accessible
+            when the small drop-down button is clicked - works when various search criteria are
+            provided in the drop down window. Here, the match is exact match. Both search modes
+            return matching list of TEI displayed in a table. </para>
+          <para>If a program is selected, the app provides further filtering on the table based on
+            enrollment status which are All, Active, Completed, Cancelled.  as shown below.</para>
+          <screenshot>
+            <screeninfo>Enrollment status filtering icons</screeninfo>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="resources/images/tracker_capture/enrollment_status.png" format="PNG"
+                  width="20%"/>
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+          <para>The advanced search also provides one more additional feature. Under normal
+            circumstances, advanced search is conducted for the selected orgunit (from left-hand
+            side tree) and scope (which could be Selected, Immediate children or All children).  The
+            left-hand side tree is generated based on the logged in user's assigned orgunits.
+            However, there could be cases to search for a TEI from another orgunit (which is not
+            neccessarily part of the assigned orgunits. To support such use case, advanced search
+            provides another orgunit tree. The tree displayed here depends on the role that the
+            logged in user has. If the user has role "Search Tracked Entity Instance in All Org
+            Units" or "ALL", a tree with all available orgunits is provided other wise the tree
+            displayed in advanced search is the same as the one on the left-hand side. Whichever
+            tree (or hierarchy of orgunits) is provided, if an orgunit is selected in advanced
+            search, the searching is conducted against this selected orgunit and scope.</para>
+          
+          <para>While in the TEI table, clicking on any row takes to the selected TEI's
+            dashboard.</para>
         </listitem>
         <listitem>
-          <para>Registration: this is accessible through the "Register" button. The label for this
-            button changes according to a program selected in the first drop down select box. Since
-            "TB program" is selected and this program is assigned a tracked entity of type "Person",
-            the label has changed to "Register Person". During registration, it is possible to stay
-            on the same page and keep doing more registration or go straight to the dashboard of the
-            registered entity. Selecting a program and doing registration also performs enrollment
-            at the background. If a tracked entity is registered without a program, then enrollment
-            is possible from the tracked entity's dashboard.</para>
+          <para>Registration: this is accessible through the "Register" button. During registration,
+            it is possible to stay on the same page and keep doing more registration or go straight
+            to the dashboard of the registered TEI. Selecting a program and doing registration also
+            performs enrollment at the background. If a TEI is registered without a program, then
+            enrollment is possible from the TEI dashboard.</para>
         </listitem>
       </orderedlist></para>
     <para/>
@@ -51,37 +75,41 @@
       search criteria is assigned for an attribute, then the attribute has no effect on searching.
       However to control the appearance or not of an attribute as a column list, one has to go
       through a menu available under the small gear icon. </para>
-    <para>Once a tracked entity is obtained - either through searching or registration - the app
-      presents the selected tracked entity's dashboard.</para>
+    <para>Once a TEI is obtained - either through searching or registration - the app presents the
+      selected TEI's dashboard.</para>
   </section>
   <section>
-    <title>Tracked entity dashboard</title>
+    <title>TEI dashboard</title>
     <para>All operations on a tracked entity are available from this dashboard. Anticipating
-      multiple usecases or operations on registered tracked entity, we have structured the dashboard
-      as a collection of widgets - more widgets can be added. This helps to scale and handle
-      complexity while staying simple and clean. </para>
+      multiple usecases or operations on registered TEI, we have structured the dashboard as a
+      collection of widgets - more widgets can be added. This helps to scale and handle complexity
+      while staying simple and clean. </para>
     <screenshot>
-      <screeninfo>Example tracked entity dashboard</screeninfo>
+      <screeninfo>Example: TEI dashboard</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="resources/images/tracker_capture/tei_dashboard.png" format="JPG"
-            width="90%"/>
+          <imagedata fileref="resources/images/tracker_capture/tei_dashboard.png" format="PNG" width="90%"/>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>As shown in the figure above, the dashboard starts with three menus at the top: <itemizedlist>
+    <para>As shown in the figure above, the dashboard starts with four sets of menus at the top: <itemizedlist>
         <listitem>
           <para>back button - this helps to go back to the search and registration page</para>
         </listitem>
         <listitem>
+          <para>previous and next buttons - these are buttons to acces the previous/next TEI
+            details</para>
+        </listitem>
+        <listitem>
           <para>program selection menu - this is to dictate what kind of data to record and track
-            for the selected entity. This also affects the contents of the widgets.</para>
+            for the selected TEI. This also affects the contents of the widgets.</para>
         </listitem>
         <listitem>
           <para>a small gear icon at the right corner - currently this helps to control which
             widgets to display. From the figure above, there are six widgets on display. The widgets
             are collapsible, responsive and draggable - this helps to acquire optimal view area as
-            per user needs.</para>
+            per user needs. Widget (re)arrangments are saved automatically per user per
+            program.</para>
         </listitem>
       </itemizedlist></para>
     <para> The widgets:- <orderedlist>
@@ -89,18 +117,19 @@
           <para><emphasis role="bold">Enrollment widget</emphasis> - this helps to enroll the
             tracked entity for the selected program. If an active enrollment already exists, the
             widget automatically displays it with some details about it. The widget also helps to do
-            some operations on active enrollment - for example terminate/complete.</para>
+            some operations on active enrollment - for example terminate/complete. A link to history
+            is also provided if the TEI has historical enrollment.</para>
         </listitem>
          <listitem>
           <para><emphasis role="bold">Dataentry widget</emphasis> - this is for doing data entry
-            using either default or custom forms (the small black icon helps for switching).
-            Depending on program definition, in particular program stages, events will be displayed
-            in a timely fashion. Clicking on any of them displays the corresponding data entry. It
-            is also possible to create new events. To proceed with data entry, it is mandatory to
-            have event date. Once an event date is specified it is not possible to change due date.
-            The assumption is that by specifying event date, the event has already taken place. If
-            the event hasn't yet occurred, it is possible to change due date - this is effectively
-            doing nothing but rescheduling. The buttons at the bottom help to change the status of a
+            using either default or custom forms. Depending on program definition, in particular
+            program stages, events will be displayed in a timely fashion. Clicking on any of them
+            displays the corresponding data entry. If a stage needs new event, a plus icon is
+            displayed for new event creation. To proceed with data entry, it is mandatory to have
+            event date. Once an event date is specified it is not possible to change due date. The
+            assumption is that by specifying event date, the event has already taken place. If the
+            event hasn't occurred yet, it is possible to change due date - this is effectively doing
+            nothing but rescheduling. The buttons at the bottom help to change the status of a
             selected event. Another key feature from this widget is addition of multiple notes for
             an event. Normally data recording is through datalements, however there are cases where
             it is necessary to record additional information or comments. This is where the notes
@@ -108,28 +137,55 @@
             delete a note. The idea is notes are more like log books. </para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Profile widget</emphasis> - this is to edit tracked entity's
-            profile.</para>
+          <para><emphasis role="bold">Profile widget</emphasis> - this is to edit TEI's profile or
+            attributes.</para>
         </listitem>
         <listitem>
           <para><emphasis role="bold">Relationship widget</emphasis> - this helps to relate the
-            selected tracked entity (the one whose dashboard is shown) to another tracked entity.
-            Adding a relative is possible by either searching from existing or registering a new
-            one.</para>
+            selected TEI (the one whose dashboard is shown) to another TEI. Adding a relative is
+            possible by either searching from existing or registering a new one.</para>
         </listitem>
         <listitem>
           <para><emphasis role="bold">Notes widget</emphasis> - this is the same as event notes. The
             difference between the two is that, here notes are attached not to events but to
             enrollments. This helps to record some notes based on enrollment - for example why is an
-            enrollment terminated or what is the overall observation of the tracked entity
-            throughout the enrollment.</para>
+            enrollment terminated or what is the overall observation of the TEI throughout the
+            enrollment.</para>
         </listitem>
       <listitem>
         <para><emphasis role="bold">Report widget</emphasis> - this is to provide a "journal" of the
-            tracked entity per program. A report row is provided for each program the tracked entity
-            is/was associated.</para>
+            tracked entity per program. A report row is provided for each program the TEI is/was
+            associated.</para>
       </listitem>
       </orderedlist>
     </para>
+  </section>
+  <section>
+    <title>Basic reports</title>
+    <para>Tracker capture app also provides some basic reports. These reports are accessible by
+      clicking on the "Reports" link on the left-hand side. Below is a description for some of the
+      reports.</para>
+    <screenshot>
+      <screeninfo>List of tracker reports</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/tracker_capture/tracker_reports.png" format="PNG" width="90%"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>Running any of these repots is very easy, one just has to select a program, orgnisation
+      unit scope and whenever possible start and end dates. Below is a sample program summary
+      report. It displays a list of TEI's and their records for "MNCH/PNC (Adult Woman)" program.
+      The records are organized in the form of tabs where each tab is a program stage. The columns
+      in the table are data elements which are configured to be displayed in reports under program
+      stage definition.</para>
+    <screenshot>
+      <screeninfo>Example: program summary report</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/tracker_capture/program_summary_report.png" format="PNG" width="90%"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
   </section>
 </chapter>

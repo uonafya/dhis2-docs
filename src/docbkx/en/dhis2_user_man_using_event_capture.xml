@@ -7,9 +7,9 @@
     <para>The event capture app allows users to register events that occurred at a particular time
       and place. An event can happen at any given point in time. This stands in contrast to routine
       data, which can be captured for predefined, regular intervals. Events in DHIS 2 are linked to
-      program. Hence, the event capture app lets you select the organisation unit, program and point
-      in time when an event (also known as case or record) happened, before entering information for
-      that event.</para>
+      a program. Hence, the event capture app lets you select the organisation unit and program and
+      specifiy a date when a event (also known as case or record) happened, before entering
+      information for the event.</para>
     </section>
   <section>
     <title>Capturing events</title>
@@ -24,7 +24,7 @@
       <screeninfo>Example event list</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="resources/images/event_capture/event_list.png" format="JPG"
+          <imagedata fileref="resources/images/event_capture/event_list.png" format="PNG"
             width="70%"/>
         </imageobject>
       </mediaobject>
@@ -32,45 +32,59 @@
     <para>All event related operations are accessible from the screen shown above. The operations
       currently available are: <orderedlist>
         <listitem>
-          <para>Capturing data: this available by clicking the "Register New Event" button.</para>
+          <para><emphasis role="bold">Capturing data:</emphasis> this available by clicking the
+            "Register event" button.</para>
         </listitem>
         <listitem>
-          <para>Showing/hiding colums: this is to allow users decide which columns to show/hide in
-            the table of events. This feature is especially important when we have a long list of
-            data elements assigned to a program stage.</para>
+          <para><emphasis role="bold">Showing/hiding colums: </emphasis>this is to allow users
+            decide which columns to show/hide in the table of events. This feature is especially
+            important when we have a long list of data elements assigned to a program stage.</para>
         </listitem>
         <listitem>
-          <para>Editing - the rows in the table are clickable. Clicking them shows three menus -
-              <emphasis role="bold">Edit</emphasis>, <emphasis role="bold">Edit in grid</emphasis>
-            and <emphasis role="bold">Remove.</emphasis> The edit function takes you to a new page
-            where information for the selected event can be updated. The edit in grid function
-            allows you to edit the selected event within the table but only those columns (data
-            elements) visible in the grid. If more columns are required it is possible to add using
-            the "Show/Hide columns" button to speficy which columns should be displayed in the
-            list.</para>
+          <para><emphasis role="bold">Editing:</emphasis> the rows in the table are clickable,
+            clicking them shows three menus - <emphasis role="bold">Edit</emphasis>, <emphasis
+              role="bold">Edit in grid</emphasis> and <emphasis role="bold">Remove.</emphasis> The
+            edit function takes you to a new page where information for the selected event can be
+            updated. The edit in grid function allows you to edit the selected event within the
+            table but only those columns (data elements) visible in the grid. If more columns are
+            required it is possible to add using the "Show/Hide columns" button to speficy which
+            columns should be displayed in the list.</para>
         </listitem>
         <listitem>
-          <para>Sorting: this can be done by clicking the text of each column header.</para>
+          <para><emphasis role="bold">Sorting:</emphasis> this can be done by clicking the sorting
+            icon of each column header. A red sorting icon implies the current sorting column. </para>
         </listitem>
         <listitem>
-          <para>Filtering: this is done by clicking the small search icon shown to the right of each
-            column header. Clicking them provides an input field to type a filtering criteria. The
-            system starts applying the filter the moment a user starts to type. During filtering it
-            is possible to define start and end dates for date type data elements and lower and
-            upper limits for number types.</para>
+          <para><emphasis role="bold">Filtering:</emphasis> this is done by clicking the small
+            search icon shown to the right of each column header. Clicking them provides an input
+            field to type a filtering criteria. The system starts applying the filter the moment a
+            user starts to type. During filtering it is possible to define start and end dates for
+            date type data elements and lower and upper limits for number types.</para>
         </listitem>
         <listitem>
-          <para>Paging: The list of events can be paged by using the paging section at the bootom of
-            the list. Paging allows you to quickly move between pages of events and to change the
-            page size, i.e. the number of events per page.</para>
+          <para><emphasis role="bold">Paging:</emphasis> The list of events can be paged by using
+            the paging section at the bootom of the list. Paging allows you to quickly move between
+            pages of events and to change the page size, i.e. the number of events per page.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Printing:</emphasis> The "Print list" button allows to print
+            the list of events. This button also changes its label accordingly - for example "Print
+            details" and "Print form" - and does the printing functionality.</para>
         </listitem>
       </orderedlist></para>
-    <para>The event capture module works offline, in the sense that if Internet connectivity drops
+    <para>The event capture app works offline, in the sense that if Internet connectivity drops
       during your working session, you can continue to capture events which will be stored locally
-      in your web browser (client). When connectivity has returned the system will ask you to upload
-      your locally stored data, which sends the data to the Web server where it is stored. Note that
-      if you close your Web browser while being disconnected from the Internet, you cannot return to
-      your working session; however your data will still be saved locally and can be uploaded to the
-      Web server the next time your are online and log into the system.</para>
+      in your web browser (client). When connectivity has returned the system will ask to upload
+      locally stored data, and sends it to the server where it is stored. Note that if the Web
+      browser is closed while in offline-mode, it is not possiblew to reopen a new browser window
+      and continue the working session; however the data will still be saved locally and can be
+      uploaded to the server the next time the machine is online and the user has logged into the
+      server.</para>
+    
+    <para>If the selected program's program stage is configured to capture GPS coordinate, the app
+      provides two ways of capturing coordinates. The first is two simple text boxes so that a user
+      can fillin proper latitude and longitude values.  The second option is using google map, where
+      it is possible to point and click for coordinates. The google map option also displays
+      polygons and points that are defined for organisation units.</para>
   </section>
 </chapter>

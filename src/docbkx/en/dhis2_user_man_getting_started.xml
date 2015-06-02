@@ -2,35 +2,23 @@
 <!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Getting started with DHIS 2</title>
+  <section>
+    <title>Using the DHIS 2 demo server</title>
+    <para>The DHIS 2 team maintains a demonstration server at <ulink url="https://apps.dhis2.org/demo">https://apps.dhis2.org/demo</ulink>. This is by far the easiest way to try out DHIS2. Simply open the link in your web browser and login with username = admin and password = district. </para>
+    <note>
+      <para>All changes on this server are deleted each night, so do not save any important work on this server. It is strictly for demonstation purposes on only!</para>
+    </note>
+  </section>
   <section id="mod2_1">
-    <title>Getting started with DHIS 2</title>
-    <para>After reading this chapter you will be able to understand:</para>
-    <itemizedlist>
-      <listitem>
-        <para>Start DHIS 2 from the desktop</para>
-      </listitem>
-      <listitem>
-        <para>How to log-in from the desktop</para>
-      </listitem>
-    </itemizedlist>
-    <itemizedlist>
-      <listitem>
-        <para>Create new users and user roles</para>
-      </listitem>
-    </itemizedlist>
-    <itemizedlist>
-      <listitem>
-        <para>What steps are needed to design a DHIS 2 database for your organisation</para>
-      </listitem>
-    </itemizedlist>
-    <section>
-      <title>Prerequisites</title>
-      <para>You must be sure that you have a current version of the Java Runtime installed on your machine. Depending on your operating system, there are different ways of installing Java. The reader is referred to this <ulink url="http://java.sun.com/javase/downloads/index.jsp">website</ulink> for detailed information on getting Java installed.</para>
-    </section>
+    <title>Using the DHIS 2 live pacakge</title>
     <section>
       <title>Starting the DHIS 2 Live package</title>
-      <para>The DHIS 2 Live package is the easiest way to get started with DHIS2. DHIS2 Live is appropriate for a stand-alone  installation and demos.  Simply download the application from <ulink url="http://www.dhis2.org/downloads">here</ulink>. 
+      <para>The DHIS 2 Live package is the easiest way to get started with DHIS2 on your local computer. DHIS2 Live is appropriate for a stand-alone  installation and demos.  Simply download the application from <ulink url="http://www.dhis2.org/downloads">here</ulink>. 
         Once the file is downloaded,  you can simply double-click the downloaded file, and get started using DHIS 2. </para>
+      <section>
+        <title>Prerequisites for DHIS 2 Live</title>
+        <para>You must be sure that you have a current version of the Java Runtime installed on your machine. Depending on your operating system, there are different ways of installing Java. The reader is referred to this <ulink url="http://java.sun.com/javase/downloads/index.jsp">website</ulink> for detailed information on getting Java installed.</para>
+      </section>
       <section>
         <title>Starting up with a blank database</title>
         <para>The live package comes with a demo database just like what you see on the <ulink url="http://apps.dhis2.org/demo/">online demo</ulink> (which is based on the national Sierra Leone HMIS), and if you want to start with a blank system/database and build up your own system then you need to do the following:
@@ -52,38 +40,6 @@ locate the string &apos;jdbc:h2:./database/dhis2&apos; and replace the &apos;dhi
       </section>
     </section>
     <section>
-      <title>Working directly with the H2 database</title>
-      <para> DHIS 2 Live uses an embedded <ulink url="www.h2database.com/">H2</ulink> database. This
-        has several advantages - there is no need to install a separate database engine such as
-        PostgreSQL or MySQL, and backup can be made by just copying the file. The whole database
-        exists in memory, which means high performance. The disadvantage is need for RAM. It is also
-        not suitable for multi-user server installations. </para>
-      <para>
-      In general, it is recommended to work with the database through the DHIS2 user interface, but in some situations one may need to 
-      manipulate the data directly. If one downloads H2 separately, it comes with a web interface. It can also be manipulated using 
-        <ulink url="http://openoffice.org">OpenOffice.org</ulink>, using the following procedure. This assumes that dhis2-live is located in
-        the user&apos;s Linux home directory (represented by ~). Substitute the absolute path to your dhis2-live installation.
-        <itemizedlist>
-          <listitem>
-            <para>Start OpenOffice Word Processor and select Tools - Options, then Java - Class Path ... and click on Add Archive...</para>
-          </listitem>
-          <listitem>
-            <para>Select the following file (version may differ): ~/dhis2-live/webapps/dhis/WEB-INF/lib/h2-1.1.119.jar</para>
-          </listitem>
-          <listitem>
-            <para>Close OpenOffice completely and then open OpenOffice.org Database. Select connect to an existing database - JDBC</para>
-          </listitem>
-          <listitem>
-            <para>Datasource URL is h2:~/dhis2-live/database/dhis2;AUTO_SERVER=TRUE, and JDBC driver class is org.h2.Driver</para>
-          </listitem>
-          <listitem>
-            <para>User name is sa, password not needed. Finally, select a name and folder for the .odb file.</para>
-          </listitem>
-        </itemizedlist>
-        <ulink url="http://www.oooforum.org/forum/viewtopic.phtml?t=97522">More tips</ulink>        
-      </para>
-    </section>
-    <section>
       <title>Downloading and installing the server version</title>
       <para>The latest stable server version can be downloaded from this <ulink url="http://stable.dhis2.org/">website</ulink>. For detailed information on how to install it please refer to the installation chapter in the implementation manual.</para>
     </section>
@@ -95,10 +51,10 @@ locate the string &apos;jdbc:h2:./database/dhis2&apos; and replace the &apos;dhi
     application. DHIS2 should be compatible with most modern web-browsers,
     although you will need to ensure that Java Script is enabled.</para>
     <para>To log on to the application just enter <ulink url="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</ulink> if you
-    are using the DHIS2 live package, or replace localhost with the name or IP
+    are using the DHIS2 live package, or replace <varname>localhost</varname> with the name or IP
     address of the server where the server version is installed.</para>
     <para>Once you have started DHIS2, either on-line or off-line, the displayed
-    screen will prompt you to enter your registered username and
+    screen will prompt you to enter your registered user-name and
 password. After entering the required information click on log-in button
     to log into the application. The default user name and password are &apos;admin&apos; and &apos;district&apos;. They should be changed immediately upon logging on the first time.</para>
     <mediaobject>
@@ -113,11 +69,11 @@ password. After entering the required information click on log-in button
   </section>
   <section id="mod2_4">
     <title>Logging out of DHIS 2</title>
-    <para>Just click on the Profile-&gt;Log in the top-right corner of the DHIS2 menu. </para>
+    <para>Just click on the Profile and the click &quot;Log out&quot; the top-right corner of the DHIS2 menu. </para>
   </section>
   <section id="database_design">
     <title>Quick intro to designing a DHIS 2 database</title>
-    <para>The DHIS 2 application comes with a set of tools for data collection, validation, reporting and analysis, but the contents of the database, e.g. what to collect, who should collect it and on what format will depend on the context of use. This metadata need to be populated into the application before it can be used, and this can be done through the user interface and requires no programming or in-depth technical skills of the software. We call this initial process database design or customisation.</para>
+    <para>DHIS 2 provides a powerful  set of tools for data collection, validation, reporting and analysis, but the contents of the database, e.g. what to collect, who should collect it and on what format will depend on the context of use. However, in order to do anything with DHIS 2, you must first create metad-data. Meta-data, or data about the data, describes what should be collected (data elements and categories), where it should be collected (organisation units) and how frequently it should be collected (periods).  This meta-data needs to be created in the DHIS 2 database before it can be used. This  can be done through the user interface and requires no programming or in-depth technical skills of the software, but does require a good understanding of the processes which you are trying to collect data form. </para>
     <para>This section will provide a very quick and brief introduction to DHIS 2 database design and mainly explain the various steps needed to prepare a new DHIS 2 system for use. How to do each step is explained in other chapters, and best practices on design choices will be explained in an implementers manual (expected during first half of 2011). Here are the steps to follow:</para>
     <para>1. Set up an organisational hierarchy</para>
     <para>2. Define data elements</para>
@@ -170,7 +126,7 @@ password. After entering the required information click on log-in button
         </section>
         <section>
           <title>Custom Forms</title>
-          <para>When the form you want to design is too complicated for the default or section forms then your last option is to use a custom form. This takes more time, but gives you full flexibility in term of the design. In DHIS 2 there is a  built in HTML editor (FcK Editor) for the form designer and you can either design the form in the UI or paste in your html directly (using the Source window in the editor. In the custom form you can insert static text or data fields (linked to data elements + category) in any position on the form and you have complete freedom to design the layout of the form.   Once a custom form has been added to a dataset it will be available in data entry and used automatically. You can switch back to default and section (if exists) forms in the top right corner of the data entry screen. </para>
+          <para>When the form you want to design is too complicated for the default or section forms then your last option is to use a custom form. This takes more time, but gives you full flexibility in term of the design. In DHIS 2 there is a  built in HTML editor (FcK Editor) for the form designer and you can either design the form in the UI or paste in your HTML directly using the Source window in the editor. In the custom form you can insert static text or data fields (linked to data elements + category) in any position on the form and you have complete freedom to design the layout of the form.   Once a custom form has been added to a dataset it will be available in data entry and used automatically. You can switch back to default and section (if exists) forms in the top right corner of the data entry screen. </para>
         </section>
       </section>
     </section>
@@ -200,7 +156,7 @@ password. After entering the required information click on log-in button
     </section>
     <section>
       <title>Report tables and reports</title>
-      <para>Standard reports in DHIS 2 is a very flexible way of presenting the data that has been collected. Data can be aggregated by any organisational unit or orgunit level, by data element, by indicators, as well as over time (e.g. monthly, quarterly, yearly). The report tables are custom data sources for the standard reports and can be flexibly defined in the user interface  and later accessed in external report designers such as iReport or BIRT. These report designs can then be set up as easily accessible one-click reports with parameters so that the users can run the same reports e.g. every month when new data is entered, and also be relevant to users at all levels as the organisational unit can be selected at the time of running the report.</para>
+      <para>Standard reports in DHIS 2 are a very flexible way of presenting the data that has been collected. Data can be aggregated by any organisational unit or orgunit level, by data element, by indicators, as well as over time (e.g. monthly, quarterly, yearly). The report tables are custom data sources for the standard reports and can be flexibly defined in the user interface  and later accessed in external report designers such as iReport or through custom HTML reports. These report designs can then be set up as easily accessible one-click reports with parameters so that the users can run the same reports e.g. every month when new data is entered, and also be relevant to users at all levels as the organisational unit can be selected at the time of running the report.</para>
     </section>
     <section>
       <title>GIS</title>

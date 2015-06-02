@@ -53,6 +53,11 @@
     <para>You can configure the organisation unit levels at which you want to approve data in these data sets. This is done in the <emphasis role="italic">Settings</emphasis> section, under <emphasis role="italic">System Approval Settings</emphasis>. Click the Add new button on this page and select the organisation unit level at which you want approvals. It will be added to the list of approval settings. You may configure the system for approving data at every organisation unit level, or only at selected organisation unit levels.</para>
     <para>Note that when you add a new approval level, you may optionally choose a Category option group set. This feature is discussed later in this chapter.</para>
     <para>On the <emphasis role="italic">System Approval Settings</emphasis> page, you may select the option <emphasis role="italic">Hide unapproved data in analytics</emphasis> to hide unapproved data in reports, pivot table, data visualizer and GIS. If this option is checked, unapproved data will be hidden from users assigned to higher-level organisation units than where approval is needed. Users who are assigned to organisation units where data is ready for approval can still view the data, as can users assigned to higher-level organisation units if they have the <emphasis role="italic">Approve data at lower levels</emphasis> authority. If this option is not checked, then all data is shown whether approved or not.</para>
+    <para>When determining whether a data record should be hidden for a specific user, the system
+      associates a user with a specific approval level and compares it to the level to which the
+      data record has been approved  up to. A user is associated with the approval level which
+      matches the level of the organisation unit(s) she is linked to, or if non-existing the next
+      approval level linked to an organisation unit level above herself.</para>
   </section>
   <section>
     <title>Approving data</title>

@@ -653,4 +653,23 @@ XXX.XX.XXX.XXX foo.mydomain.org</screen></para>
       compressed version. You can the invoke:</para>
     <screen>psql -d dhis2 -U dhis -f dhis2.sql</screen>
   </section>
+  <section>
+    <title>Application logging</title>
+    <para>The DHIS 2 application log output is directed to multiple files and locations. First, log
+      output is sent to standard output. The Tomcat servlet container usually outputs standard
+      output to a file under "logs":<screen>&lt;tomcat-dir>/logs/catalina.out</screen></para>
+    <para>Second, log output is written to a "logs" directory under the DHIS 2 home directory as
+      defined by the the DHIS2_HOME environment variables. There is a main log file for all output,
+      and separate log files for various background processes. The main file includes the background
+      process logs as well. The log files are capped at 50 Mb and log content is continuously
+      appended.<screen>&lt;DHIS2_HOME>/logs/dhis.log
+
+&lt;DHIS2_HOME>/logs/dhis-analytics-table.log
+
+&lt;DHIS2_HOME>/logs/dhis-data-exchange.log
+
+&lt;DHIS2_HOME>/logs/dhis-data-sync.log</screen></para>
+    <para>DHIS 2 will eventually phase out logging to standard out / catalina.out and as a result it
+      is recommended to rely on the logs under DHIS2_HOME.</para>
+  </section>
 </chapter>

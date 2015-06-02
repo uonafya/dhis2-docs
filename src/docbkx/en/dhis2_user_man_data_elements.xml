@@ -7,7 +7,7 @@
   <screenshot>
     <mediaobject>
       <imageobject>
-        <imagedata width="80%" fileref="resources/images/maintainence/data_element_main.png" format="PNG"/>
+        <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_main_1.png" format="PNG"/>
       </imageobject>
     </mediaobject>
   </screenshot>
@@ -46,7 +46,7 @@
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" fileref="resources/images/maintainence/data_element_main2.png" format="PNG"/>
+          <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_main2.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -57,7 +57,14 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="resources/images/maintainence/data_element_edit.png" format="PNG"/>
+            <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_edit.png" format="PNG"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_edit2.png" format="PNG"/>
           </imageobject>
         </mediaobject>
       </screenshot>
@@ -75,7 +82,7 @@
           <para><emphasis role="bold">Description:</emphasis> Allows a full textual description of the data element to be entered. The user should be as precise as possible, and include full information on how the data element is measured and what its meaning is. </para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Active:</emphasis> Defines whether a given data element is active or not. Data elements marked as inactive, will not be displayed in the data entry screens. </para>
+          <para><emphasis role="bold">Form Name:</emphasis> This allows you to provide an alternative name that can be used in either section or automatic data entry forms. The form name will be applied automatically  </para>
         </listitem>
         <listitem>
           <para><emphasis role="bold">Domain type:</emphasis> Defines whether a data element is an aggregate or patient type of data element. </para>
@@ -192,9 +199,6 @@
           <para><emphasis role="bold">Category Combination:</emphasis> Defines which category combination the data element should have, also known as the &quot;disaggregation&quot;. </para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Aggregation levels:</emphasis>  The Aggregation Levels option allows the data element to be aggregated at one or more levels. When the user clicks on the Aggregation levels option, a drop down menu appears which displays available aggregation levels. The desired aggregation level is then selected by clicking the ‘Add Selected’ button. By default, the aggregation will start at the lowest assigned organisation unit. If e.g. Chiefdom is selected below it means that Chiefdom, District, and National aggregates will use Chiefdom (the  highest aggregation level available) as the data source, and PHU data will not be included. PHU data will still be available for the PHU level, but not included in aggregations to the levels above. If District and Chiefdom are both selected then the District and National level aggregates will use District data as their source, Chiefdom will use Chiefdom, and PHU will use PHU. Read more about aggregation levels in the Reporting chapter i the section on data sources for reporting.</para>
-        </listitem>
-        <listitem>
           <para><emphasis role="bold">Option set for data values: </emphasis> Option sets are
               predefined lists of options which can be used in data entry.</para>
         </listitem>
@@ -209,10 +213,39 @@
               documentation for more information on legend sets. </para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Attributes</emphasis>: Data element attributes (if they have been defined) can be defined. In this example, &quot;Rationale&quot; and &quot;Unit of measure&quot; are both data element attributes. </para>
+          <para><emphasis role="bold">Aggregation levels:</emphasis>  The Aggregation Levels option allows the data element to be aggregated at one or more levels. When the user clicks on the Aggregation levels option, a drop down menu appears which displays available aggregation levels. The desired aggregation level is then selected by clicking the ‘Add Selected’ button. By default, the aggregation will start at the lowest assigned organisation unit. If e.g. Chiefdom is selected below it means that Chiefdom, District, and National aggregates will use Chiefdom (the  highest aggregation level available) as the data source, and PHU data will not be included. PHU data will still be available for the PHU level, but not included in aggregations to the levels above. If District and Chiefdom are both selected then the District and National level aggregates will use District data as their source, Chiefdom will use Chiefdom, and PHU will use PHU. Read more about aggregation levels in the Reporting chapter i the section on data sources for reporting.</para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Data element group sets: </emphasis>If data element group sets have been defined, each will appear in the &quot;Data element groups&quot; section. Select each data element group from the list of group sets provided. </para>
+          <para><emphasis role="bold">Attributes</emphasis>: Data element attributes (if they have been defined) can be defined. &quot;Classification,&quot; &quot;Collection Method,&quot; &quot;Rationale&quot; and &quot;Unit of measure&quot; are all  data element attributes. </para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Classification</emphasis><emphasis role="bold">:</emphasis> Here, the classification type of the data element can be defined according to what it is measuring in the health system. </para>
+          <itemizedlist>
+            <listitem>
+              <para>Input:  Input data elements can measure resources, both human and financial, devoted to a particular program or intervention (i.e., number of health workers). Input indicators can also include measures of characteristics of target populations (i.e., number of patients enrolled in a health program).</para>
+            </listitem>
+            <listitem>
+              <para>Activity: Activity data elements describe the implementation of activities themselves. This can be, for instance, the number of outreach visits conducted or health talks provided.</para>
+            </listitem>
+            <listitem>
+              <para>Output: Output data elements describe the key products that have been delivered by the health system. For example, this could include the number of vaccinations administered, or number of deliveries by a skilled birth attendant. </para>
+            </listitem>
+            <listitem>
+              <para>Impact: Impact data elements describe the high level achievements of health service delivery. This  typically includes the number of deaths for instance.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Collection Method:</emphasis> How the data element is collected can be defined here. </para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Rationale: </emphasis>The reasoning behind including this data element in your data collection can be identified and described here.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Unit of Measure: </emphasis>The unit of measure, such as kg, cm, etc. can be defined here and stored as an attribute of the particular data element being defined. </para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Data element group sets: </emphasis>If data element group sets have been defined, each will appear in the &quot;Data element groups&quot; section. Select each data element group from the list of group sets provided. Groups can be selected based on if the data element is of aggregate or tracker type. </para>
         </listitem>
       </itemizedlist>
       <para>After making all the required changes, click ‘Save’. The ‘Cancel’ button aborts all changes made.</para>
@@ -234,7 +267,7 @@
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" fileref="resources/images/maintainence/data_element_group_add.png" format="PNG"/>
+          <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_group_add.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -251,7 +284,7 @@
     <para>Existing data element group  set members can be edited by clicking the name  and selecting &quot;Edit&quot; from the context menu of the desired data element group set as seen below.</para>
     <mediaobject>
       <imageobject>
-        <imagedata width="80%" fileref="resources/images/maintainence/data_element_group_set.png" format="PNG"/>
+        <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_group_set.png" format="PNG"/>
       </imageobject>
     </mediaobject>
     <para>Available data element groups are displayed in the left panel. They can be moved into the selected data element group set by pressing the &quot;Move right&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center"/> button. Data element groups that are currently members of the data element group set are displayed in the right hand panel. They can be removed from the data element group set by clicking the desired data element group and pressing the &quot;Move left&quot;<inlinegraphic fileref="resources/images/dhis2_images/move_left.png" align="center"/> button.  The ordering of the data element groups can be set with the &quot;Move Up&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_up.png" align="center"/> and &quot;Move Down&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_down.png" align="center"/>arrows. This ordering will be used in the datamart and reports to order the data element groups.  Press the <guibutton>&quot;Update&quot;</guibutton> button to save any changes and the <guibutton>&quot;Cancel&quot;</guibutton> button to discard all changes. </para>
@@ -325,7 +358,7 @@
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" fileref="resources/images/maintainence/data_element_category_combo_add_new.png" format="PNG"/>
+          <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_category_combo_add_new.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -379,7 +412,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata width="80%" fileref="resources/images/maintainence/data_element_translate.png" format="PNG"/>
+            <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_translate.png" format="PNG"/>
           </imageobject>
         </mediaobject>
       </screenshot>

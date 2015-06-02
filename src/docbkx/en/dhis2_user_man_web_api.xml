@@ -128,10 +128,12 @@
       periods in addition to fixed periods (defined above). The relative periods are relative to the
       current date, and allows e.g. for creating dynamic reports. The available relative period
       values are:</para>
-    <screen>LAST_MONTH, LAST_BIMONTH, LAST_QUARTER, LAST_SIX_MONTH, MONTHS_THIS_YEAR, QUARTERS_THIS_YEAR,
+    <screen>THIS_WEEK, LAST_WEEK, LAST_4_WEEKS, LAST_12_WEEKS, LAST_52_WEEKS, 
+THIS_MONTH, LAST_MONTH, THIS_BIMONTH, LAST_BIMONTH, THIS_QUARTER, LAST_QUARTER, 
+THIS_SIX_MONTH, LAST_SIX_MONTH, MONTHS_THIS_YEAR, QUARTERS_THIS_YEAR,
 THIS_YEAR, MONTHS_LAST_YEAR, QUARTERS_LAST_YEAR, LAST_YEAR, LAST_5_YEARS, LAST_12_MONTHS,
 LAST_3_MONTHS, LAST_6_BIMONTHS, LAST_4_QUARTERS, LAST_2_SIXMONTHS, THIS_FINANCIAL_YEAR,
-LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS, LAST_WEEK, LAST_4_WEEKS, LAST_12_WEEKS, LAST_52_WEEKS</screen>
+LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
   </section>
   <section>
     <title>Browsing the Web API</title>
@@ -544,13 +546,17 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS, LAST_WEEK, LAST_4_WEEKS, LAST_12_WE
       </table></para>
     <para>Different operators will be applied as logical <emphasis role="bold">and</emphasis> query,
       and equal operators will be applied as logical <emphasis role="bold">or</emphasis> query. The
-      filtering mechanism allows for recursion. See below for an example:</para>
-    <para><emphasis role="bold">Example</emphasis>: Get data elements with id property ID1 or
+      filtering mechanism allows for recursion. See below for some examples.</para>
+    <para>Get data elements with id property ID1 or
       ID2:<screen>/api/dataElements?filter=id:eq:ID1&amp;filter=id:eq:ID2</screen></para>
-    <para><emphasis role="bold">Example</emphasis>: Get all data elements which has the dataSet with
-      id ID1:<screen>/api/dataElements?filter=dataSets.id:eq:ID1</screen></para>
-    <para>Example 3: Get all data elements with aggregation operator &quot;sum&quot; and value type
+    <para>Get all data elements which has the dataSet with id
+      ID1:<screen>/api/dataElements?filter=dataSets.id:eq:ID1</screen></para>
+    <para>Get all data elements with aggregation operator &quot;sum&quot; and value type
       &quot;int&quot;:<screen>/api/dataElements.json?filter=aggregationOperator:eq:sum&amp;filter=type:eq:int</screen></para>
+    <para>You can do filtering within collections, e.g. to get data elements which are members of
+      the "ANC" data element group you can use the following query using the id property of the
+      associated data element
+      groups:<screen>/api/dataElements.json?filter=dataElementGroups.id:eq:qfxEYY9xAl6</screen></para>
   </section>
   <section>
     <title>Meta-data field filter</title>
@@ -790,15 +796,17 @@ http://server/api/constants/ID</screen></para>
         request:<screen>DELETE /api/dataElementGroups/IDA/dataElements/IDB</screen></para>
       <para>To add a category option with identifier IDB to a category with identifier IDA you can
         do a POST request:<screen>POST /api/categories/IDA/categoryOptions/IDB</screen></para>
-      <para>Please be aware that the collection object must be the owner of that relationship. This
-        can be checked at the <emphasis role="italic">/api/schemas</emphasis> or <emphasis role="italic">/api/schemas/type</emphasis> endpoint.</para>
     </section>
     <section>
       <title>Validating payloads</title>
-      <para>System wide validation of metadata payloads are not yet enabled (it will be in 2.19),
-        but you can validate your payload manually by sending it to the proper schema endpoint. If
-        you wanted to validate the constant from the create section before, you would send it like
-        this:<screen>POST /api/schemas/constant
+      <para>System wide validation of metadata payloads are enabled from 2.19 release, this means
+        that create/update operations on the web-api endpoints will be checked for valid payload
+        before allowed changes to be made, to find out what validations are in place for a endpoint,
+        please have a look at the /api/schemas endpoint, i.e. to figure out which constraints a data
+        element have, you would go to /api/schemas/dataElement.</para>
+      <para>You can also validate your payload manually by sending it to the proper schema endpoint.
+        If you wanted to validate the constant from the create section before, you would send it
+        like this:<screen>POST /api/schemas/constant
 { payload }</screen></para>
       <para>A simple (non-validating) example would
         be:<screen>curl -X POST -d "{\"name\": \"some name\"}" -H "Content-Type: application/json" -u admin:district https://apps.dhis2.org/dev/api/schemas/dataElement</screen></para>
@@ -826,8 +834,7 @@ http://server/api/constants/ID</screen></para>
       <title>Partial updates</title>
       <para>For cases where you don't want or need to update all properties on a object (which means
         downloading a potentially huge payload, change one property, then upload again) we now
-        support partial update of a single property, we are planing to support fuller partial
-        updates later (updating more than one field).</para>
+        support partial update, both for single properties and for multiple properties.</para>
       <para>The format for updating a single property is the same as when you are updating a
         complete object, just with only 1 property in the JSON/XML file,
         i.e.:<screen>curl -X PATCH -d "{\"name\": \"New Name\"}" -H "Content-Type: application/json" -u admin:district https://apps.dhis2.org/dev/api/dataElements/fbfJHSPpUQD/name</screen></para>
@@ -836,6 +843,12 @@ http://server/api/constants/ID</screen></para>
           >/api/type/id/property-name</emphasis>, and the <emphasis role="italic"
           >Content-Type</emphasis> must also be included as usual (since we support multiple
         formats).</para>
+      <para>The format for updating multiple properties are similar, just that we don't include the
+        property names in the url,
+        i.e.:<screen>{ // file.json
+  "name": "Updated Name",
+  "zeroIsSignificant": true
+}</screen><screen>curl -X PATCH -d @file.json -H "Content-Type: application/json" -u admin:district https://apps.dhis2.org/dev/api/dataElements/fbfJHSPpUQD</screen></para>
     </section>
   </section>
   <section>
@@ -1236,29 +1249,43 @@ http://server/api/constants/ID</screen></para>
           </thead>
           <tbody>
             <row>
-              <entry>Name</entry>
+              <entry>OptionSetName</entry>
               <entry>Yes</entry>
               <entry/>
-              <entry>Name. Max 230 characters. Unique. The option set values should be repeated for each option.</entry>
+              <entry>Name. Max 230 characters. Unique. Should be repeated for each option.</entry>
             </row>
             <row>
-              <entry>UID</entry>
+              <entry>OptionSetUID</entry>
               <entry>No</entry>
               <entry>UID</entry>
-              <entry>Stable identifier. Max 11 char. Will be generated by system if not specified.</entry>
+              <entry>Stable identifier. Max 11 char. Will be generated by system if not specified.
+              Should be repeated for each option.</entry>
             </row>
             <row>
-              <entry>Code</entry>
+              <entry>OptionSetCode</entry>
               <entry>No</entry>
               <entry/>
-              <entry>Stable code. Max 50 char.</entry>
+              <entry>Stable code. Max 50 char. Should be repeated for each option.</entry>
             </row>
             <row>
-              <entry>Option</entry>
+              <entry>OptionName</entry>
               <entry>Yes</entry>
               <entry/>
-              <entry>Option. Free text. The option set values should be repeated for each option.</entry>
+              <entry>Option name. Max 230 characters. </entry>
             </row>
+          <row>
+            <entry>OptionUID</entry>
+            <entry>No</entry>
+            <entry>UID</entry>
+            <entry>Stable identifier. Max 11 char. Will be generated by system if not
+              specified.</entry>
+          </row>
+          <row>
+            <entry>OptionCode</entry>
+            <entry>Yes</entry>
+            <entry/>
+            <entry>Stable code. Max 50 char.</entry>
+          </row>
           </tbody>
         </tgroup>
       </table>
@@ -1300,8 +1327,8 @@ http://server/api/constants/ID</screen></para>
         </tgroup>
       </table>
       <para>An example of a CSV file for data elements can be seen below. The first row will always
-        be ignored. Notice how you can skip columns and rely on default values or simply leave
-        columns blank:</para>
+      be ignored. Note how you can skip columns and rely on default values to be used by the system.
+      You can also skip columns which you do not use which appear to the right of the ones</para>
       <screen>name,uid,code,shortname,description,formname,domaintype,type,numbertype,texttype,aggregationoperator,categorycombo,url,zero
 &quot;Women participated in skill development training&quot;,,&quot;D0001&quot;,&quot;Women participated development training&quot;
 &quot;Women participated in community organizations&quot;,,&quot;D0002&quot;,&quot;Women participated community organizations&quot;</screen>
@@ -1310,13 +1337,22 @@ http://server/api/constants/ID</screen></para>
       <screen>name,uid,code,parent
 &quot;West province&quot;,,&quot;WESTP&quot;,&quot;ImspTQPwCqd&quot;
 &quot;East province&quot;,,&quot;EASTP&quot;,&quot;ImspTQPwCqd&quot;</screen>
-      <para>The format for option sets is special. One record represents an option, and the three
-        first values representing the option set should be repeated for each option (record):</para>
-      <screen>name,uid,code,option
-&quot;Color&quot;,,,&quot;Blue&quot;
-&quot;Color&quot;,,,&quot;Green&quot;
-&quot;Gender&quot;,,,&quot;Female&quot;
-&quot;Gender&quot;,,,&quot;Male&quot;</screen>
+      <para>The format for option sets is special. The three first values represent an option set.
+      The three last values represent an option. The first three values representing the option set
+      should be repeated for each option.</para>
+      <screen>optionsetname,optionsetuid,optionsetcode,optionname,optionuid,optioncode
+"Color",,"COLOR","Blue",,"BLUE"
+"Color",,"COLOR","Green",,"GREEN"
+"Color",,"COLOR","Yellow",,"YELLOW"
+"Sex",,,"Male",,"MALE"
+"Sex",,,"Female",,"FEMALE"
+"Sex",,,"Uknown",,"UNKNOWN"
+"Result",,,"High",,"HIGH"
+"Result",,,"Medium",,"MEDIUM"
+"Result",,,"Low",,"LOW"
+"Impact","cJ82jd8sd32","IMPACT","Great",,"GREAT"
+"Impact","cJ82jd8sd32","IMPACT","Medium",,"MEDIUM"
+"Impact","cJ82jd8sd32","IMPACT","Poor",,"POOR"</screen>
     </section>
   <section>
     <title>Data values</title>
@@ -2185,10 +2221,13 @@ orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; -H &quot;Acc
     </section>
     <section>
       <title>Querying and reading events</title>
-      <para>This section explains how to read out the events that have been stored in the DHIS2 instance. For more advanced uses of the event
-      data, please see the section on event analytics. The output format from the <emphasis role="italic">/api/events</emphasis> endpoint
-      will match the format that is used to send events to it (which the analytics event api does not support). Both XML and JSON are
-      supported, either through adding .json/.xml or by setting the appropriate <emphasis role="italic">Accept</emphasis> header.</para>
+      <para>This section explains how to read out the events that have been stored in the DHIS2
+        instance. For more advanced uses of the event data, please see the section on event
+        analytics. The output format from the <emphasis role="italic">/api/events</emphasis>
+        endpoint will match the format that is used to send events to it (which the analytics event
+        api does not support). Both XML and JSON are supported, either through adding .json/.xml or
+        by setting the appropriate <emphasis role="italic">Accept</emphasis> header. The query is
+        paged by default and the default page size is 50 events.</para>
       <para>
       <table>
           <title>Events resource query parameters</title>
@@ -2206,7 +2245,7 @@ orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; -H &quot;Acc
                 <entry>program</entry>
                 <entry>identifier</entry>
                 <entry>true (if not programStage is provided)</entry>
-                <entry>Identifier of program.</entry>
+                <entry>Identifier of program</entry>
               </row>
               <row>
                 <entry>programStage</entry>
@@ -2263,10 +2302,82 @@ orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; -H &quot;Acc
                 <entry>Status of event, can be ACTIVE | COMPLETED | VISITED | FUTURE_VISIT | LATE_VISIT | SKIPPED</entry>
               </row>
               <row>
+                <entry>lastUpdated</entry>
+                <entry>date</entry>
+                <entry>false</entry>
+                <entry>Filter for events which were updated after this date.</entry>
+              </row>
+              <row>
                 <entry>skipMeta</entry>
                 <entry>boolean</entry>
                 <entry>false</entry>
                 <entry>Exclude the meta data part of response (improves performance)</entry>
+              </row>
+              <row>
+                <entry>page</entry>
+                <entry>integer</entry>
+                <entry>false</entry>
+                <entry>Page number</entry>
+              </row>
+              <row>
+                <entry>pageSize</entry>
+                <entry>integer</entry>
+                <entry>falase</entry>
+                <entry>Number of items in each page</entry>
+              </row>
+              <row>
+                <entry>totalPages</entry>
+                <entry>boolean</entry>
+                <entry>false</entry>
+                <entry>Indicates whether to include the total number of pages in the paging
+                  response.</entry>
+              </row>
+              <row>
+                <entry>skipPaging</entry>
+                <entry>boolean</entry>
+                <entry>false</entry>
+                <entry>Indicates whether to skip paging in the query and return all events.</entry>
+              </row>
+              <row>
+                <entry>dataElementIdScheme</entry>
+                <entry>string</entry>
+                <entry>false</entry>
+                <entry>Data element ID scheme to use for export, valid options are UID and
+                  CODE</entry>
+              </row>
+              <row>
+                <entry>categoryOptionComboIdScheme</entry>
+                <entry>string</entry>
+                <entry>false</entry>
+                <entry>Category Option Combo ID scheme to use for export, valid options are UID and
+                  CODE</entry>
+              </row>
+              <row>
+                <entry>orgUnitIdScheme</entry>
+                <entry>string</entry>
+                <entry>false</entry>
+                <entry>Organisation Unit ID scheme to use for export, valid options are UID and
+                  CODE</entry>
+              </row>
+              <row>
+                <entry>programIdScheme</entry>
+                <entry>string</entry>
+                <entry>false</entry>
+                <entry>Program ID scheme to use for export, valid options are UID and CODE</entry>
+              </row>
+              <row>
+                <entry>programStageIdScheme</entry>
+                <entry>string</entry>
+                <entry>false</entry>
+                <entry>Program Stage ID scheme to use for export, valid options are UID and
+                  CODE</entry>
+              </row>
+              <row>
+                <entry>idScheme</entry>
+                <entry>string</entry>
+                <entry>false</entry>
+                <entry>Allows to set id scheme for data element, category option combo, orgUnit,
+                  program and program stage at once.</entry>
               </row>
             </tbody>
           </tgroup>
@@ -2444,13 +2555,85 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
     </para>
   </section>
   <section>
+    <title>Data integrity</title>
+    <para>The data integrity capabilities of the data administration module are available through
+      the web API. This section describes how to run the data integrity process as well as
+      retrieving the result. The details of the analysis performed are described in the user
+      manual.</para>
+    <section>
+      <title>Running data integrity</title>
+      <para>The operation of measuring data integrity is a fairly resource (and time) demanding
+        task. It is therefore run as an asynchronous process and only when explicitly requested.
+        Starting the task is done by forming an empty POST request to the <emphasis role="italic"
+          >dataIntegrity</emphasis> endpoint like so (demonstrated in curl
+        syntax):<screen>curl -X POST https://dhis.domain/api/dataIntegrity</screen></para>
+      <para>If successful the request will return HTTP 202 immediately. The location header of the
+        response points to the resource used to check the status of the request. Forming a GET
+        request to the given location yields an empty JSON response if the task has not yet
+        completed and a JSON taskSummary object when the task is done. Polling (conservatively) to
+        this resource can hence be used to wait for the task to finish.</para>
+    </section>
+    <section>
+      <title>Fetching the result</title>
+      <para>Once data integrity is finished running the result can be fetched from the <emphasis
+          role="italic">system/taskSummaries</emphasis> resource like
+        so:<screen>curl -X GET https://dhis.domain/api/system/taskSummaries/DATAINTEGRITY</screen></para>
+      <para>The returned object contains a summary for each point of analysis, listing the names of
+        the relevant integrity violations. As stated in the leading paragraph for this section the
+        details of the analysis (and the resulting data) can be found in the user manual chapter on
+        Data Administration.</para>
+    </section>
+  </section>
+  <section>
     <title>Indicators</title>
+    <para>This section describes indicators and indicator expressions.</para>
+    <section>
+    <title>Aggregate indicators</title>
     <para>To retrieve indicators you can make a GET request to the indicators resource like
       this:<screen>api/indicators</screen></para>
-    <para>The indicators represent expressions which can be calculated and presented as a result.
-      The indicator expressions are split into a numerator and denominator. The numerators and
-      denominators are mathematical expressions which can contain variables for data elements,
-      constants and organisation unit grups. The syntax looks like
+    <para>Indicators represent expressions which can be calculated and presented as a result. The
+        indicator expressions are split into a numerator and denominator. The numerators and
+        denominators are mathematical expressions which can contain references to data elements,
+        constants and organisation unit grups. The variables will be substituted with data values
+        when used e.g. in reports. Variables which are allowed in expressions are described in the
+        following table.</para>
+    <para>
+      <table frame="all">
+        <title>Indicator variables</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="2.32*"/>
+          <thead>
+            <row>
+              <entry>Variable</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>${&lt;dataelement-id>.&lt;catoptcombo-id>}</entry>
+              <entry>Refers to a combination of a data element and a category option
+                combination.</entry>
+            </row>
+            <row>
+              <entry>${&lt;dataelement-id>}</entry>
+              <entry>Refers to the total value of a data element across all category option
+                combinations.</entry>
+            </row>
+            <row>
+              <entry>C{&lt;constant-id>}</entry>
+              <entry>Refers to a constant.</entry>
+            </row>
+            <row>
+              <entry>OUG{&lt;orgunitgroup-id>}</entry>
+              <entry>Refers to the count of organisation units in an organisation unit
+                group.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </para>
+    <para>The syntax looks like
       this:<screen>${&lt;dataelement-id>.&lt;catoptcombo-id>} + C{&lt;constant-id>} + OUG{&lt;orgunitgroup-id>}</screen></para>
     <para>A corresponding example looks like
       this:<screen>#{P3jJH5Tu5VC.S34ULMcHMca} + C{Gfd3ppDfq8E} + OUG{CXw2yu5fodb}</screen></para>
@@ -2459,6 +2642,54 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
       option combos. Example:<screen>#{P3jJH5Tu5VC} + 2</screen></para>
     <para>Expressions can be any kind of valid mathematical expression, as an
       example:<screen>( 2 * #{P3jJH5Tu5VC.S34ULMcHMca} ) / ( #{FQ2o8UBlcrS.S34ULMcHMca} - 200 ) * 25</screen></para>
+  </section>
+  <section>
+    <title>Program indicators</title>
+    <para>To retrieve program indicators you can make a GET request to the program indicators
+      resource like this:<screen>api/programIndicators</screen></para>
+    <para>Program indicators can contain information collected in a program. Indicators have an
+      expression which can contain references to data elements, attributes, constants and program
+      variables. Variables which are allowed in expressions are described in the following
+      table.</para>
+    <para>
+      <table frame="all">
+        <title>Program indicator variables</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="2.22*"/>
+          <thead>
+            <row>
+              <entry>Variable</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>#{&lt;programstage-id>.&lt;dataelement-id>}</entry>
+              <entry>Refers to a combination of program stage and data element id.</entry>
+            </row>
+            <row>
+              <entry>#{&lt;attribute-id>}</entry>
+              <entry>Refers to a tracked entity attribute.</entry>
+            </row>
+            <row>
+              <entry>V{&lt;varible-id>}</entry>
+              <entry>Refers to a program variable, can be "incident_date", "enrollment_date",
+                "current_date".</entry>
+            </row>
+            <row>
+              <entry>C{&lt;constant-id>}</entry>
+              <entry>Refers to a constant.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </para>
+    <para>The syntax looks like
+      this:<screen>#{&lt;programstage-id>.&lt;dataelement-id>} + #{&lt;attribute-id>} + V{&lt;varible-id>} + C{&lt;constant-id>}</screen></para>
+    <para>A corresponding example looks like this:
+      <screen>#{A03MvHHogjR.a3kGcGDCuk6} + A{OvY4VVhSDeJ} + V{incident_date} + C{bCqvfPR02Im}</screen></para>
+  </section>
   </section>
   <section>
     <title>Complete data set registrations</title>
@@ -4572,6 +4803,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
                 <entry>UID | CODE | NAME</entry>
               </row>
               <row>
+                <entry>approvalLevel</entry>
+                <entry>No</entry>
+                <entry>Include data which has been approved at least up to the given approval level,
+                  refers to identfier of approval level.</entry>
+                <entry>Identifier of approval level</entry>
+              </row>
+              <row>
                 <entry>columns</entry>
                 <entry>No</entry>
                 <entry>Dimensions to use as columns for table layout.</entry>
@@ -4792,6 +5030,16 @@ ORDER BY oul.level, par.name, ou.name</screen>
         with status code 409 and content-type &quot;text/plain&quot; together with a textual description of
         the problem.</para>
     </section>
+    <section>
+      <title>Debugging</title>
+      <para>When debugging analytics requests it can be useful to examine the data value source of
+        the aggregated analytics response. The <emphasis role="italic"
+          >analytics/debug/sql</emphasis> resource will provide an SQL statement that returns the
+        relevant content of the datavalue table. You can produce this SQL by doing a GET request
+        with content type "text/html" or "text/plain" like below. The dimension and filter syntax is
+        identical to regular analytics queries:</para>
+      <screen>api/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2014Q1;2014Q2&amp;filter=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
+    </section>
   </section>
   <section>
     <title>Event analytics</title>
@@ -4999,6 +5247,12 @@ ORDER BY oul.level, par.name, ou.name</screen>
               <entry>AVERAGE | SUM | COUNT | STDDEV | VARIANCE | MIN | MAX</entry>
             </row>
             <row>
+              <entry>showHierarchy</entry>
+              <entry>No</entry>
+              <entry>Display full org unit hierarchy path together with org unit name.</entry>
+              <entry>false | true</entry>
+            </row>
+            <row>
               <entry>displayProperty</entry>
               <entry>No</entry>
               <entry>Property to display for meta-data.</entry>
@@ -5142,18 +5396,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
             </tbody>
           </tgroup>
         </table>
-      </section>
-      <section>
-        <title>Ranges / legend sets</title>
-        <para>For aggregate queries you can specify a range / legend set for numeric data element
-          and attribute dimensions. The purpose is to group the numeric values into ranges. As an
-          example, instead of generating data for an "Age" data element for distinct years, you can
-          group the information into age groups. To achieve this, the data element or attribute must
-          be associated with the legend set. The format is described below:</para>
-        <screen>?dimension=&lt;item-id>-&lt;legend-set-id></screen>
-        <para>An example looks like this:</para>
-        <screen>api/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=qrur9Dvnyt5-Yf6UHoPkdS6
-&amp;dimension=ou:ImspTQPwCqd&amp;dimension=pe:LAST_12_MONTHS</screen>
       </section>
       <section>
         <title>Response formats</title>
@@ -5329,6 +5571,18 @@ ORDER BY oul.level, par.name, ou.name</screen>
         to counts of events.</para>
       <screen>api/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=ou:ImspTQPwCqd
 &amp;dimension=pe:LAST_12_MONTHS&amp;dimension=fWIAEtYVEGk&amp;value=qrur9Dvnyt5&amp;aggregationType=AVERAGE</screen>
+      <section>
+        <title>Ranges / legend sets</title>
+        <para>For aggregate queries you can specify a range / legend set for numeric data element
+          and attribute dimensions. The purpose is to group the numeric values into ranges. As an
+          example, instead of generating data for an "Age" data element for distinct years, you can
+          group the information into age groups. To achieve this, the data element or attribute must
+          be associated with the legend set. The format is described below:</para>
+        <screen>?dimension=&lt;item-id>-&lt;legend-set-id></screen>
+        <para>An example looks like this:</para>
+        <screen>api/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=qrur9Dvnyt5-Yf6UHoPkdS6
+&amp;dimension=ou:ImspTQPwCqd&amp;dimension=pe:LAST_12_MONTHS</screen>
+      </section>
       <section>
         <title>Response formats</title>
         <para>The default response representation format is JSON. The requests must be using the HTTP
@@ -5991,7 +6245,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       following URL:</para>
     <screen>/api/userSettings/my-key?value=my-val</screen>
     <para>You can specify the user for which to save the setting explicitly with this syntax:</para>
-    <screen>/api/userSettings/my-key?user=user-id&amp;value=my-val</screen>
+    <screen>/api/userSettings/my-key?user=username&amp;value=my-val</screen>
     <para>Alternatively, you can submit the setting value as the request body, where content type is
       set to &quot;text/plain&quot;. As an example, you can use curl like this:</para>
     <screen>curl &quot;apps.dhis2.org/demo/api/userSettings/my-key&quot; -d &quot;My long value&quot; -H &quot;Content-Type: text/plain&quot; -u admin:district -v</screen>
@@ -6141,9 +6395,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
     <section>
       <title>Enrolling a tracked entity instance into a program</title>
-      <para>For enrolling persons into a program, you will need to first get the identifier of the person from the <emphasis role="italic">trackedEntityInstances</emphasis> resource. Then, you will need to get the program identifier from the <emphasis role="italic">programs</emphasis> resource. A template payload can be seen
+      <para>For enrolling persons into a program, you will need to first get the identifier of the
+        person from the <emphasis role="italic">trackedEntityInstances</emphasis> resource. Then,
+        you will need to get the program identifier from the <emphasis role="italic"
+          >programs</emphasis> resource. A template payload can be seen
         below:<screen>{
     &quot;trackedEntityInstance&quot;: &quot;ZRyCnJ1qUXS&quot;,
+    &quot;orgUnit&quot;: &quot;ImspTQPwCqd&quot;,
     &quot;program&quot;: &quot;S8uo8AlvYMz&quot;,
     &quot;dateOfEnrollment&quot;: &quot;2013-09-17&quot;,
     &quot;dateOfIncident&quot;: &quot;2013-09-17&quot;
@@ -6275,6 +6533,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
             <row>
               <entry>pageSize</entry>
               <entry>The page size. Default size is 50 rows per page.</entry>
+            </row>
+            <row>
+              <entry>totalPages</entry>
+              <entry>Indicates whether to include the total number of pages in the paging response
+                (implies higher response time).</entry>
             </row>
             <row>
               <entry>skipPaging</entry>

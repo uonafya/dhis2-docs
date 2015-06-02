@@ -88,7 +88,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="resources/images/datasets/datasets_0.png" width="80%"/>
+            <imagedata width="80%" align="center" fileref="resources/images/datasets/datasets_0.png"/>
           </imageobject>
         </mediaobject>
       </screenshot>
@@ -180,7 +180,7 @@ Show details: Display some informative information about the data set, including
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="resources/images/datasets/dataset-categories.png" width="80%"/>
+            <imagedata width="80%" align="center" fileref="resources/images/datasets/dataset-implementing partner-project-categories.png"/>
           </imageobject>
         </mediaobject>
       </screenshot>
@@ -241,7 +241,7 @@ Show details: Display some informative information about the data set, including
           <screenshot>
             <mediaobject>
               <imageobject>
-                <imagedata align="center" fileref="resources/images/datasets/grey_field_management.png" width="80%"/>
+                <imagedata width="80%" align="center" fileref="resources/images/datasets/grey_field_management.png"/>
               </imageobject>
             </mediaobject>
           </screenshot>
@@ -256,7 +256,7 @@ Show details: Display some informative information about the data set, including
         <screeninfo>Section form example</screeninfo>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="resources/images/dhis2UserManual/section_form.png" format="PNG" align="center" width="80%"/>
+            <imagedata width="80%" align="center" fileref="resources/images/dhis2UserManual/section_form.png" format="PNG"/>
           </imageobject>
         </mediaobject>
       </screenshot>
@@ -282,7 +282,7 @@ Show details: Display some informative information about the data set, including
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="resources/images/datasets/custom_forms_data_elements.png" width="50%"/>
+            <imagedata width="50%" align="center" fileref="resources/images/datasets/custom_forms_data_elements.png"/>
           </imageobject>
         </mediaobject>
       </screenshot>
@@ -300,9 +300,9 @@ Show details: Display some informative information about the data set, including
       <table frame="all">
         <title>Data entry events</title>
         <tgroup cols="3">
-          <colspec colname="c1" colnum="1" colwidth="1*"/>
-          <colspec colname="c2" colnum="2" colwidth="1.66*"/>
-          <colspec colname="newCol3" colnum="3" colwidth="1.81*"/>
+          <colspec colnum="1" colname="c1" colwidth="1*"/>
+          <colspec colnum="2" colname="c2" colwidth="1.66*"/>
+          <colspec colnum="3" colname="newCol3" colwidth="1.81*"/>
           <thead>
             <row>
               <entry>Key</entry>
@@ -313,8 +313,7 @@ Show details: Display some informative information about the data set, including
           <tbody>
             <row>
               <entry>dhis2.de.event.formLoaded</entry>
-              <entry>Triggered after the data entry form is rendered, but before data values are set
-                in entry fields.</entry>
+              <entry>Triggered after the data entry form is rendered, but before data values are set in entry fields.</entry>
               <entry>Event | Data set ID</entry>
             </row>
             <row>
@@ -324,8 +323,7 @@ Show details: Display some informative information about the data set, including
             </row>
             <row>
               <entry>dhis2.de.event.formReady</entry>
-              <entry>Triggered when the data entry form is completely rendered and loaded with all
-                elements.</entry>
+              <entry>Triggered when the data entry form is completely rendered and loaded with all elements.</entry>
               <entry>Event | Data set ID</entry>
             </row>
             <row>
@@ -350,14 +348,12 @@ Show details: Display some informative information about the data set, including
             </row>
             <row>
               <entry>dhis2.de.event.validationError</entry>
-              <entry>Triggered when validation is done and there were one or more
-                violations.</entry>
+              <entry>Triggered when validation is done and there were one or more violations.</entry>
               <entry>Event | Data set ID</entry>
             </row>
             <row>
               <entry>dhis2.ou.event.orgUnitSelected</entry>
-              <entry>Triggered when one or more organisation units are selected in the org unit web
-                tree.</entry>
+              <entry>Triggered when one or more organisation units are selected in the org unit web tree.</entry>
               <entry>Event | Org unit IDs | Org unit names | Sub org unit IDs</entry>
             </row>
           </tbody>
@@ -366,35 +362,35 @@ Show details: Display some informative information about the data set, including
       <para>To register for such an event:</para>
       <screen>&lt;script type=&quot;text/javascript&quot;&gt;
 
-dhis2.util.on( 'dhis2.de.event.formReady', function( event, ds ) {
-  console.log( 'The form with id: ' + ds + ' is loaded!' );
+dhis2.util.on( &apos;dhis2.de.event.formReady&apos;, function( event, ds ) {
+  console.log( &apos;The form with id: &apos; + ds + &apos; is loaded!&apos; );
 } );
 
-dhis2.util.on( 'dhis2.de.event.dataValueSaved', function( event, ds, dv ) {
-  console.log( 'Data value: ' + dv.value + ' was saved with data element: ' + dv.de );
+dhis2.util.on( &apos;dhis2.de.event.dataValueSaved&apos;, function( event, ds, dv ) {
+  console.log( &apos;Data value: &apos; + dv.value + &apos; was saved with data element: &apos; + dv.de );
 } );
 
-dhis2.util.on( 'dhis2.de.event.completed', function( event, ds, cr ) {
-  console.log( 'Form was completed for org unit: ' + cr.ou );
+dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
+  console.log( &apos;Form was completed for org unit: &apos; + cr.ou );
 } );
 
 &lt;/script&gt;</screen>
-      <para>Be careful to only use "namespaced" events like the ones in the example above and not
-        general ones like "click" as the dhis2.util.on method will unregister the event
+      <para>Be careful to only use &quot;namespaced&quot; events like the ones in the example above and not
+        general ones like &quot;click&quot; as the dhis2.util.on method will unregister the event
         first.</para>
       <para>If your function only applies to certain data sets you can use the supplied data set
         identifier and shortcut your function for unwanted data sets like this:</para>
-      <screen>dhis2.de.on( 'dhis2.de.event.validationSuccess', function( event, ds ) {
-  if ( $.inArray( ds, ['utXOiGbEj14', 'Re7qzHEThSC'] ) == -1 ) {
+      <screen>dhis2.de.on( &apos;dhis2.de.event.validationSuccess&apos;, function( event, ds ) {
+  if ( $.inArray( ds, [&apos;utXOiGbEj14&apos;, &apos;Re7qzHEThSC&apos;] ) == -1 ) {
     return false;
   }
-  console.log( 'Form with id: ' + ds + ' validated successfully!' );
+  console.log( &apos;Form with id: &apos; + ds + &apos; validated successfully!&apos; );
 } );</screen>
       <para>The identifiers of the input fields in the data entry form is on the format described
         below. This format can be used to select the input fields in your script and perform actions
         on them:<screen>&lt;dataelementid&gt;-&lt;optioncomboid&gt;-val</screen></para>
       <para>Since the data set identifier is provided for all events a feasible alternative is to
-        utilize the "files" Web API resource and keep your callback functions in a single file,
+        utilize the &quot;files&quot; Web API resource and keep your callback functions in a single file,
         where you let the javascript code take action based on which data set is currently
         loaded.</para>
     </section>
