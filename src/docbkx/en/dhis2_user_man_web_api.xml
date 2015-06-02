@@ -446,7 +446,7 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS, LAST_WEEK, LAST_4_WEEKS, LAST_12_WE
     </section>
   </section>
   <section>
-    <title>Meta-data filtering</title>
+    <title>Meta-data object filter</title>
     <para>To filter the meta-data there are several filter operations that can be applied to the
       returned list of meta-data. The format of the filter itself is straight-forward and follows
       the pattern <emphasis role="italic">property:operator:value</emphasis>, where <emphasis role="italic">property</emphasis> is the property on the meta-data you want to filter on,
@@ -554,9 +554,10 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS, LAST_WEEK, LAST_4_WEEKS, LAST_12_WE
   </section>
   <section>
     <title>Meta-data field filter</title>
-    <para>In certain situations the default views of the meta-data can be too verbose. E.g. the
-      client might want only need a few fields from each object and want to remove unnecessary ones.
-      To discover which fields are available for each object please see the <emphasis role="italic">schema</emphasis> section.</para>
+    <para>In certain situations the default views of the meta-data can be too verbose. A client
+      might only need a few fields from each object and want to remove unnecessary fields from the
+      response. To discover which fields are available for each object please see the <emphasis
+        role="italic">schema</emphasis> section.</para>
     <para>The format for include/exclude is very simple and allows for infinite recursion. To filter
       at the &quot;root&quot; level you can just use the name of the field, i.e. <emphasis
         role="italic">?fields=id,name</emphasis> which would only display the <emphasis
