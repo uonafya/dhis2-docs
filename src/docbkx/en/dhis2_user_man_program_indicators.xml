@@ -2,7 +2,8 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Program Indicators</title>
-  <para>This chapter covers how to configure and use program indicators.</para>
+  <para>This chapter covers how to configure and use program indicators. Program indicators in
+    essence are expressions based on data elements and attributes of tracked entities.</para>
   <section>
     <title>Overview</title>
     <para>The purpose of program indicators is to provide a way to produce calculated values based
@@ -75,10 +76,35 @@
       then the event is included later in the expression evaluation, if not it is ignored. The
       filter can, in a similar way as expressions, contain references to data elements, attributes
       and constants.</para>
-    <para>The indicator filter can in addition use logical operators including "and", "or", "&lt;",
-      "&lt;=", ">", ">=". These can be used to form logical expressions which ultimately evaluates
-      to true or false. E.g. one can express that multiple data elements must be a specifc value, or
-      that specific attributes must have numerical values less or greater than a constant.</para>
+    <para>The indicator filter can in addition use logical operators including the following:<itemizedlist>
+        <listitem>
+          <para>"and": Logical AND</para>
+        </listitem>
+        <listitem>
+          <para>"or": Logical OR</para>
+        </listitem>
+        <listitem>
+          <para>"==": Equal to</para>
+        </listitem>
+        <listitem>
+          <para>"!=": Not equal to</para>
+        </listitem>
+        <listitem>
+          <para>"&lt;": Less than</para>
+        </listitem>
+        <listitem>
+          <para>"&lt;=": Less than or equal to</para>
+        </listitem>
+        <listitem>
+          <para>">": Greater than</para>
+        </listitem>
+        <listitem>
+          <para>">=": Greater than or equal to</para>
+        </listitem>
+      </itemizedlist>These operators can be used to form logical expressions which ultimately
+      evaluates to true or false. E.g. one can express that multiple data elements must be a specifc
+      value, or that specific attributes must have numerical values less or greater than a
+      constant.</para>
     <screenshot>
       <screeninfo>Program indicator list with context menu</screeninfo>
       <mediaobject>
@@ -91,7 +117,9 @@
       tabs. You can include such items into expressions and filters by double-clicking in the list.
       The buttons below the expression area can be used to insert operators.</para>
     <para><emphasis role="italic">A tip to expert users:</emphasis> DHIS 2 is using the JEXL library
-      which supports additional syntax for expressions which you can use at will. See the reference
-      at the <ulink url="http://commons.apache.org/proper/commons-jexl/reference/syntax.html">project home page</ulink>.</para>
+      for evaluating expressions which supports additional syntax beyond what is covered in this
+      documentation. See the reference at the <ulink
+        url="http://commons.apache.org/proper/commons-jexl/reference/syntax.html">project home
+        page</ulink> to learn how you can create more sophisticated expressions.</para>
   </section>
 </chapter>
