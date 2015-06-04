@@ -47,17 +47,66 @@
     </itemizedlist>
   </section>
   <section>
-    <title>Configure approving data</title>
+    <title>Configuring data approval</title>
     <para>When you add or edit a data set, you specify whether or not data entered for that data set
       will be available for approval. This is done with the <emphasis role="italic">Approve data</emphasis> option when adding or editing a data set.</para>
     <para>You can configure the organisation unit levels at which you want to approve data in these data sets. This is done in the <emphasis role="italic">Settings</emphasis> section, under <emphasis role="italic">System Approval Settings</emphasis>. Click the Add new button on this page and select the organisation unit level at which you want approvals. It will be added to the list of approval settings. You may configure the system for approving data at every organisation unit level, or only at selected organisation unit levels.</para>
     <para>Note that when you add a new approval level, you may optionally choose a Category option group set. This feature is discussed later in this chapter.</para>
-    <para>On the <emphasis role="italic">System Approval Settings</emphasis> page, you may select the option <emphasis role="italic">Hide unapproved data in analytics</emphasis> to hide unapproved data in reports, pivot table, data visualizer and GIS. If this option is checked, unapproved data will be hidden from users assigned to higher-level organisation units than where approval is needed. Users who are assigned to organisation units where data is ready for approval can still view the data, as can users assigned to higher-level organisation units if they have the <emphasis role="italic">Approve data at lower levels</emphasis> authority. If this option is not checked, then all data is shown whether approved or not.</para>
-    <para>When determining whether a data record should be hidden for a specific user, the system
-      associates a user with a specific approval level and compares it to the level to which the
-      data record has been approved  up to. A user is associated with the approval level which
-      matches the level of the organisation unit(s) she is linked to, or if non-existing the next
-      approval level linked to an organisation unit level above herself.</para>
+    <para>On the <emphasis role="italic">System Approval Settings</emphasis> page, you may select
+      the option <emphasis role="italic">Hide unapproved data in analytics</emphasis> to hide
+      unapproved data in reports, pivot table, data visualizer and GIS. If this option is checked,
+      unapproved data will be hidden from users assigned to higher-level organisation units compared
+      to where approval is required. Users who are assigned to organisation units where data is
+      ready for approval can still view the data, as can users assigned to higher-level organisation
+      units if they have the <emphasis role="italic">Approve data at lower levels</emphasis>
+      authority. If this option is not checked, then all data is shown whether approved or
+      not.</para>
+  </section>
+  <section>
+    <title>Data visibility</title>
+  <para>If the option <emphasis role="italic">Hide unapproved data in analytics</emphasis> is
+      enabled, data will be hidden from viewing by users associated with higher levels. When
+      determining whether a data record should be hidden for a specific user, the system associates
+      a user with a specific approval level and compares it to the level to which the data record
+      has been approved up to. A user is associated with the approval level which matches the level
+      of the organisation unit(s) she is linked to, or if no approvel level exists at that level,
+      the next approval level linked to an organisation unit level below herself. A user will be
+      allowed to see data which has been approved up to the level immediately below her associated
+      approval level. The rationale behind this is that a user must be ablet to view the data that
+      has been approved below so that she can eventually view and approve it herself.</para>
+    <para><emphasis role="italic">Lets consider the following example:</emphasis> There are four
+      organisation unit levels, with approval levels associated with level 2 and 4. <emphasis
+        role="italic">User A</emphasis> at country level (1) gets associated with approval level 1
+      since the approval level exists at the same level as the organisation unit level. <emphasis
+        role="italic">User B</emphasis> gets associated with approval level 2 since there is no
+      approval level directly linked to her organisation unit level and approval level 2 is the
+      immediate level below. <emphasis role="italic">User C</emphasis> gets associated with approval
+      level 2. <emphasis role="italic">User D</emphasis> is below all approval levels which implies
+      that she can see all data entered at or below her organisation unit level.</para>
+    <figure>
+      <title>Hiding of unapproved data</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata align="center" fileref="resources/images/data_approval/approval_data_hiding.png"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>Using this example, lets consider some scenarios:<itemizedlist>
+        <listitem>
+          <para>Data is entered at facility level: Only <emphasis role="italic">User D</emphasis>
+            can see the data, as the data has not yet been approved at all.</para>
+        </listitem>
+        <listitem>
+          <para>Data is approved by <emphasis role="italic">User D</emphasis> at facility level:
+            Data becomes visible to User C and User B, as the data is now approved at their
+            level.</para>
+        </listitem>
+        <listitem>
+          <para>Data is approved by <emphasis role="italic">User C</emphasis> at district level:
+            Data becomes visible to User A, as data is now approved at the level immediately below
+            herself.</para>
+        </listitem>
+      </itemizedlist></para>
   </section>
   <section>
     <title>Approving data</title>
