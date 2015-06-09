@@ -669,6 +669,13 @@ XXX.XX.XXX.XXX foo.mydomain.org</screen></para>
 &lt;DHIS2_HOME>/logs/dhis-data-exchange.log
 
 &lt;DHIS2_HOME>/logs/dhis-data-sync.log</screen></para>
+    <para>In order to override the default logging you can specify a Java system property with the
+      name <emphasis role="italic">log4j.configuration</emphasis> and a value pointing to the Log4j
+      configuration file on the classpath. If you want to point to a file on the file system (i.e.
+      outside Tomcat) you can use the <emphasis role="italic">file</emphasis> prefix e.g. like
+      this:<screen>-Dlog4j.configuration=file:/home/dhis/config/log4j.properties</screen></para>
+    <para>Java system properties can be set e.g. through the <emphasis role="italic"
+        >JAVA_OPTS</emphasis> environment variable.</para>
     <para>DHIS 2 will eventually phase out logging to standard out / catalina.out and as a result it
       is recommended to rely on the logs under DHIS2_HOME.</para>
   </section>
