@@ -1792,7 +1792,7 @@ http://server/api/constants/ID</screen></para>
         <title>Data value set query parameters</title>
         <tgroup cols="2">
           <colspec colnum="1" colname="c1" colwidth="1*"/>
-          <colspec colnum="2" colname="c2" colwidth="2.65*"/>
+          <colspec colnum="2" colname="c2" colwidth="2.69*"/>
           <thead>
             <row>
               <entry> Parameter </entry>
@@ -1865,16 +1865,17 @@ http://server/api/constants/ID</screen></para>
           <para>csv (application/csv)</para>
         </listitem>
       </itemizedlist>
-      <para>It is assumed that we have posted data values to DHIS according to the previous section
-        called &quot;Sending data values&quot;. We can now put together our request for a single
-        data value set and request it using cURL:</para>
-      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValueSets?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&quot; -H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
-      <para>We can also use the start and end dates query parameters to request a larger bulk of data
-        values. I.e. you can also request data values for multiple data sets and org units and a
-        time span in order to export larger chunks of data. Note that the period query parameter
+      <para>Assuming that we have posted data values to DHIS according to the previous section
+        called &quot;Sending data values&quot; we can now put together our request for a single data
+        value set and request it using cURL:</para>
+      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValueSets?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&quot; 
+-H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
+      <para>We can also use the start and end dates query parameters to request a larger bulk of
+        data values. I.e. you can also request data values for multiple data sets and org units and
+        a time span in order to export larger chunks of data. Note that the period query parameter
         takes presedence over the start and end date parameters. An exampe looks like this:</para>
-      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValueSets?dataSet=pBOMPrpg1QX&amp;dataSet=BfMAe6Itzgt&amp;startDate=2013-01-01&amp;endDate=2013-01-31&amp;
-orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; -H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
+      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValueSets?dataSet=pBOMPrpg1QX&amp;dataSet=BfMAe6Itzgt&amp;startDate=2013-01-01
+&amp;endDate=2013-01-31&amp;orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; -H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
       <para>The response will look like this:</para>
       <screen>&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
 &lt;dataValueSet xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot; dataSet=&quot;pBOMPrpg1QX&quot;
@@ -1887,7 +1888,7 @@ orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; -H &quot;Acc
   categoryOptionCombo=&quot;bRowv6yZOF2&quot; value=&quot;10001&quot;/&gt;
 &lt;/dataValueSet&gt;</screen>
       <para>You can request the data in JSON format like
-        this:<screen>curl &quot;https://apps.dhis2.org/demo/api/dataValueSets.json?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&quot; -u admin:district -v</screen></para>
+        this:<screen>https://apps.dhis2.org/demo/api/dataValueSets.json?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8</screen></para>
       <para>The response will look something like
         this:<screen>{
   &quot;dataSet&quot;: &quot;pBOMPrpg1QX&quot;,
@@ -1904,7 +1905,7 @@ orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; -H &quot;Acc
   ]
 }</screen></para>
       <para>You can also request data in CSV format like
-        this:<screen>curl &quot;https://apps.dhis2.org/demo/api/dataValueSets.csv?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&quot; -u admin:district -v</screen></para>
+        this:<screen>https://apps.dhis2.org/demo/api/dataValueSets.csv?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8</screen></para>
       <para>The response will look like
         this:<screen>dataelement,period,orgunit,categoryoptioncombo,attributeoptioncombo,value,storedby,lastupdated,comment,followup
 f7n9E0hX8qk,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2015-04-05T19:58:12.000,comment1,false
