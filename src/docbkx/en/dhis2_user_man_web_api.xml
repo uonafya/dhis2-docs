@@ -4325,10 +4325,11 @@ INNER JOIN organisationunit par ON ou.parentid = par.organisationunitid
 INNER JOIN orgunitlevel oul ON ous.level = oul.level
 WHERE ou.coordinates is not null
 ORDER BY oul.level, par.name, ou.name</screen>
-    <para>We will use <command>curl</command> to first execute the view on the DHIS 2 server. This
-      is essentially a materialization process, and ensures that we have the most recent data
-      available through the SQL view when it is retrieved from the server. You can first look up the
-      SQL view from the api/sqlViews resource, then POST using the following command:</para>
+    <para>We will use <emphasis role="italic">curl</emphasis> to first execute the view on the DHIS
+      2 server. This is essentially a materialization process, and ensures that we have the most
+      recent data available through the SQL view when it is retrieved from the server. You can first
+      look up the SQL view from the api/sqlViews resource, then POST using the following
+      command:</para>
     <screen>curl &quot;https://apps.dhis2.org/demo/api/sqlViews/dI68mLkP1wN/execute&quot; -X POST -u admin:district -v</screen>
     <para>The next step in the process is the retrieval of the data.The basic structure of the URL is as follows</para>
     <screen>http://{server}/api/sqlViews/{id}/data(.csv)</screen>
@@ -4339,6 +4340,20 @@ ORDER BY oul.level, par.name, ou.name</screen>
       json, xml, csv, xls, html and html+css. As an example, the following command would retrieve
       XML data for the SQL view defined
       above.<screen>curl &quot;https://apps.dhis2.org/demo/api/sqlViews/dI68mLkP1wN/data.csv&quot; -u admin:district -v</screen></para>
+    <para>There are three types of SQL views:<itemizedlist>
+        <listitem>
+          <para><emphasis role="italic">SQL view:</emphasis> Standard SQL views.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="italic">Materialized SQL view:</emphasis> SQL views which are
+            materialized, meaning written to disk. Needs to be updated to reflect changes in
+            underlying tables. Supports criteria to filter result set.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="italic">SQL queries:</emphasis> Plain SQL queries. Support inline
+            variables for customized queries.</para>
+        </listitem>
+      </itemizedlist></para>
     <section>
     <title>Criteria</title>
     <para>You can do simple filtering on the columns in the result set by appending <emphasis role="italic">criteria</emphasis> query parameters to the URL, using the column names and
