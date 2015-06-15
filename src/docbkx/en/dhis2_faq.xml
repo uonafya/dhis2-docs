@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. -->
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "docbookV4.4/docbookx.dtd" []>
+<chapter>
+  <title>DHIS 2 Frequency Asked Questions</title>
+  <qandaset>
+    <qandaentry>
+      <question>
+        <para>I have entered data into a data entry form, but I cannot see the data in any reports (pivot tables, charts, maps). Why does data which is entered not show up immediately in my graphs in DHIS2?</para>
+      </question>
+      <answer>
+        <para>Data which is entered into DHIS2 must first be processed with the &quot;analytics&quot;. This means that data is not immediately available in the analytics resources (such as reports, pivot tables, data visualizer, GIS, etc) after it has been entered. If scheduling is active, the analytics process will run automatically at midnight each day. After that, new data which was entered since the last time the analytics process ran, will become visible. </para>
+        <para>Other factors which can affect the visibility of data are 1) Data approval 2) Sharing of metadata objects and 3) Caching of analytics resources. If you are still having problems &quot;seeing your data&quot;, be sure that caching is turned off, that your user actually has access to the data element/category option combination which you wish to view data for, and that your data has been approved to the level which is appropriate</para>
+      </answer>
+    </qandaentry>
+  </qandaset>
+</chapter>
