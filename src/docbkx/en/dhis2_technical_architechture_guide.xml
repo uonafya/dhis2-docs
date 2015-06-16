@@ -110,45 +110,6 @@
       <para>The <emphasis role="italic">StatementHolder</emphasis> interface holds and provides JDBC connections and statements. A StatementHolder object can be obtained from the <emphasis role="italic">StatementManager</emphasis> component. The StatementManager can be initialized using the<emphasis role="italic"> initalise()</emphasis> method closed using the <emphasis role="italic">destroy()</emphasis> method. When initialized, the StatementManager will open a database connection and hold it in a ThreadLocal variable, implying that all subsequent requests for a StatementHolder will return the same instance. This can be used to improve performance since a database connection or statement can be reused for multiple operations. The StatementManager is typically used in the persistence layer for classes working directly with JDBC, like the DataMartStore.</para>
     </section>
     <section>
-      <title>The Import-Export Project</title>
-      <para>The import-export project contains classes responsible for producing and consuming interchange format files. The import process has three variants which are import, preview and analysis. Import will import data directly to the database, preview will import to a temporary location, let the user do filtering and eventually import, while the analysis will reveal abnormalities in the import data. Currently supported formats are:</para>
-      <itemizedlist>
-        <listitem>
-          <para>DXF (DHIS eXchange Format)</para>
-        </listitem>
-        <listitem>
-          <para>IXF (Indicator eXchange Format)</para>
-        </listitem>
-        <listitem>
-          <para>DHIS 1.4 XML format</para>
-        </listitem>
-        <listitem>
-          <para>DHIS 1.4 Datafile format</para>
-        </listitem>
-        <listitem>
-          <para>CSV (Comma Separated Values)</para>
-        </listitem>
-        <listitem>
-          <para>PDF (Portable Document Format)</para>
-        </listitem>
-      </itemizedlist>
-      <screenshot>
-        <graphic fileref="resources/images/dhis2_technical_architecture/import_export_service_diagram.jpg" align="center"/>
-      </screenshot>
-      <para>Fig. Import-export service diagram</para>
-      <para>The low-level components doing the actual reading and writing of interchange format files are the converter classes. The most widely used is the <emphasis role="italic">XmlConverter</emphasis> interface, which provides a <emphasis role="italic">write( XmlWriter, ExportParams )</emphasis> and a <emphasis role="italic">read( XmlReader, ImportParams )</emphasis> method. Most objects in the API have corresponding XmlConverter implementations for the DXF format. Writing and reading for each object is delegated to its corresponding XmlConverter implementation.</para>
-      <para>The <emphasis role="italic">ExportParams</emphasis> object is a specification which holds the identifiers of the objects to be exported. The converter retrieves the corresponding objects and writes content to the <emphasis role="italic">XmlWriter</emphasis>. XmlConverter implementations for the DXF format exist for most objects in the API. For instance, the write method of class <emphasis role="italic">DataElementConverter</emphasis> will write data that represents DataElements in DXF XML syntax to the XmlWriter.</para>
-      <para>The <emphasis role="italic">ExportService</emphasis> interface exposes a method <emphasis role="italic">InputStream exportData( ExportParams )</emphasis>. The ExportService is responsible for instantiating the appropriate converters and invoke their export methods. To avoid long requests prone to timeout-errors in the presentation layer, the actual export work happens in a separate thread. The ExportService registers its converters on the ExportThread class using its<emphasis role="italic"> registerXmlConverter( XmlConverter )</emphasis> method, and then starts the thread.</para>
-      <para>The <emphasis role="italic">ImportParams</emphasis> obect contains directives for the import process, like type and strategy. For instance, the read method of class DataElementConverter will read data from the XmlReader, construct objects from the data and potentially insert it into the database, according to the directives in the ImportParams object.</para>
-      <para>The <emphasis role="italic">ImportService</emphasis> interface exposes a method <emphasis role="italic">importData( ImportParams, InputStream )</emphasis>. The ImportService is responsible for instantiating the appropriate converters and invoke their import methods. The import process is using the BatchHandler interface heavily.</para>
-      <para>The <emphasis role="italic">ImportExportServiceManager</emphasis> interface provides methods for retrieving all ImportServices and ExportServices, as well as retrieving a specific ImportService or ExportService based on a format key. This makes it simple to retrieve the correct service from using classes since the name of the format can be used as parameter in order to get an instance of the corresponding service. This is implemented with a Map as the backing structure where the key is the format and the value is the Import- or ExportService reference. This map is defined in the Spring configuration, and delegates to Spring to instantiate and populate the map. This allows for extensibility as developing a new import service is simply a matter of providing an implementing the ImportService interface and add it to the map definition in the Spring configuration, without touching  the ImportExportServiceManager code.</para>
-      <screenshot>
-        <graphic fileref="resources/images/dhis2_technical_architecture/import_export_converter_diagram.jpg" align="center"/>
-      </screenshot>
-      <para>Fig. Import-export converter diagram</para>
-      <para>Functionality that is general for converters of all formats is centralized in abstract converter classes. The AbstractConverter class provides four abstract methods which must be implemented by using converters, which are <emphasis role="italic">importUnique( Object )</emphasis>, <emphasis role="italic">importMatching( Object, Object)</emphasis>,  <emphasis role="italic">Object getMatching() </emphasis>and <emphasis role="italic">boolean isIdentical( Object, Object )</emphasis>. It also provides a <emphasis role="italic">read( Object, GroupMemberType, ImportParams ) </emphasis>method that should be invoked by all converters at the end of the read process for every object. This method utilizes the mentioned abstract methods and dispatches the object to the analysis, preview or import routines depending on the state of the object and the current import directives. This allows for extensibility as converters for new formats can extend their corresponding abstract converter class and reuse this functionality.</para>
-    </section>
-    <section>
       <title>The Data Mart Project</title>
       <para>The data mart component is responsible for producing aggregated data from the raw data in the time and space dimension. The aggregated data is represented by the <emphasis role="italic">AggregatedDataValue</emphasis> and <emphasis role="italic">AggregatedIndicatorValue</emphasis> objects. The <emphasis role="italic">DataSetCompletenessResult</emphasis> object is also included in the data mart and is discussed in the section covering the reporting project. These objects and their corresponding database tables are referred to as the<emphasis role="italic"> data mart.</emphasis></para>
       <para>The following section will list the rules for aggregation in DHIS 2.</para>
