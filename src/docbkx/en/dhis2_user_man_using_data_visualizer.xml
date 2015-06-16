@@ -4,7 +4,7 @@
   <title>Using Data Visualizer</title>
   <section id="dvIntro">
     <title>Data Visualizer overview</title>
-    <para>The data visualizer module enables users to easily create dynamic data analysis and visualizations through charts and data tables.  You can freely select content (like indicators, periods and organisation units) for your analysis. This module can be accessed by going to &quot;Services - Data Visualizer&quot; in the main menu. The image below shows the viewport of the module. For a quick start:</para>
+    <para>The data visualizer module enables users to easily create dynamic data analysis and visualizations through charts and data tables.  You can freely select content (like indicators, periods and organisation units) for your analysis. This module can be accessed by selecting Data Visualizer from the app menu. The image below shows the viewport of the module. For a quick start:</para>
     <orderedlist>
       <listitem>
         <para> Look under the &quot;Indicator&quot; heading and select an indicator group from the list of groups. </para>
@@ -21,14 +21,14 @@
       <screeninfo>Data visualizer module displaying a column chart.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="100%" fileref="resources/images/visualizer/column_chart.png" format="PNG"/>
+          <imagedata width="100%" fileref="resources/images/visualizer/column_chart1.png" format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
   </section>
   <section id="dvChartTypes">
     <title>Selecting chart type</title>
-    <para>The visualizer module provides seven different chart types, each with different characteristics. You can select the type of your chart by clicking on one of the icons  in  top left bar titled &quot;Chart type&quot;.</para>
+    <para>The visualizer module provides nine different chart types, each with different characteristics. You can select the type of your chart by clicking on one of the icons  in  top left bar titled &quot;Chart type&quot;.</para>
     <orderedlist>
       <listitem>
         <para>Column chart: Chart which displays information as vertical rectangular columns with
@@ -62,11 +62,23 @@
       <listitem>
         <para>Radar chart: Displaying multivariate data on axes starting from the same point. Also known as spider chart.</para>
       </listitem>
+      <listitem>
+        <para>Speedometer Chart: Semi-circle chart which displays values out of 100%. Sometimes referred to as a gauge chart.   </para>
+      </listitem>
     </orderedlist>
   </section>
   <section id="dvSeriesCategoryFilter">
     <title>Selecting series, category and filter</title>
-    <para>This section lets you define which dimension of the data you want to appear as series, category and filter. This asks for a closer explanation. Dimension in this regard refers to the elements which describe the data values in the system. We have three main dimensions in the system:</para>
+    <para>The series, category and filter can be defined by selecting the &quot;Layout&quot; option in the data visualizer app. </para>
+    <para><screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resources/images/visualizer/chart_layout.png" align="center" width="80%"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot></para>
+    <para>This section lets you define which dimension of the data you want to appear as series, category and filter by dragging and dropping these options to the appropriate space. Only one dimension can be in each section. </para>
+    <para>This asks for a closer explanation. Dimension in this regard refers to the elements which describe the data values in the system. We have three main dimensions in the system:</para>
     <orderedlist>
       <listitem>
         <para>Data: Includes data elements, indicators and datasets (reporting rates), describing the phenomena or event of the data.</para>
@@ -83,7 +95,7 @@
       <screeninfo>Example chart illustrating the concepts of series, categories and filter.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="70%" fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
+          <imagedata width="80%" fileref="resources/images/visualizer/series_category_filter.png" format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -119,15 +131,26 @@
   <section>
     <title>Selecting organisation units</title>
     <para>You can select which organisation units to include in the chart by clicking the
-      &quot;Organisation units&quot; header. This section features three ways of selecting organisation units. The default mode is called &quot;Organisation units&quot; and lets you select the organisation units you want to appear in the chart from the tree. This mode also features three checkboxes. Checking &quot;User org unit&quot; will disable the organisation unit tree and give you the organisation unit that is related to the current/logged in user instead. This is also useful for administrators as they can create a meaningful &quot;system&quot; favorite with this option checked and all users will find their respective organisation unit when they open it. The the same concept goes for &quot;Org unit children&quot; and &quot;Org unit grand children&quot;. The second mode is called &quot;Select levels&quot;. Here you can select all organisation units at one or more levels. However, at the same time you also have the option to select parent organisation units in the tree, which makes it easy to select e.g. all facilities inside one or more districts. The same thing goes for the third mode called &quot;Select groups&quot;. Here you can select all organisation units inside one or more groups and parent organisation units at the same time.</para>
+      &quot;Organisation units&quot; header. This section features three ways of selecting organisation units, which can be selected by clicking on the gear icon directly below the organisation units header. The default mode is called &quot;Organisation units&quot; and lets you select the organisation units you want to appear in the chart from the tree. This mode also features three checkboxes. Checking &quot;User org unit&quot; will disable the organisation unit tree and give you the organisation unit that is related to the current/logged in user instead. This is also useful for administrators as they can create a meaningful &quot;system&quot; favorite with this option checked and all users will find their respective organisation unit when they open it. The the same concept goes for &quot;User sub-units&quot; and &quot;User sub-x2-units&quot;. The second mode is called &quot;Select levels&quot;. Here you can select all organisation units at one or more levels. However, at the same time you also have the option to select parent organisation units in the tree, which makes it easy to select e.g. all facilities inside one or more districts. The same thing goes for the third mode called &quot;Select groups&quot;. Here you can select all organisation units inside one or more groups and parent organisation units at the same time.</para>
   </section>
   <section>
-	<title>Selecting organisation unit group sets and data element group sets</title>
-	<para>All dimension tabs listed below &quot;Organisation units&quot; are organisation unit group sets and data element group sets. You are free to add groups from any of these group sets to your chart. Remember to add the group set in either the series, category or filters combobox.</para>
+    <title>Selecting organisation unit group sets and data element group sets</title>
+    <para>Dimension tabs listed below &quot;Organisation units&quot; are organisation unit group sets and data element group sets. You are free to add groups from any of these group sets to your chart. Remember to add the group set in either the series, category or filters combobox.</para>
+  </section>
+  <section>
+    <title>Selecting additional data dimensions</title>
+    <para>Following the organisation unit group sets and data element group sets additional data dimensions which have been configured to be used in analysis are found. Here you can add dimensions such as age, sex, etc. without having to add them in as detailed data element selections. This is useful when you want to separate these categories in your analysis.  </para>
   </section>
   <section>
     <title>Selecting chart options</title>
     <para>You can set various chart options by clicking on the &quot;Options&quot; button the chart toolbar.</para>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/visualizer/chart_options2.png" align="center" width="80%" scale="100"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
     <itemizedlist>
       <listitem>
         <para>Show values: Shows the values above the series in the chart.</para>
@@ -145,6 +168,12 @@
       </listitem>
       <listitem>
         <para>Base line value/title: Displays a horizontal line at the given domain value. Useful e.g. when you want to visualize how your performance has evolved since the beginning of a process.</para>
+      </listitem>
+      <listitem>
+        <para>Sort order: Allows you to sort the values on your chart from either low to high or high to low. </para>
+      </listitem>
+      <listitem>
+        <para>Aggregation Type: Defines how the data elements or indicators will be aggregated within the chart.</para>
       </listitem>
       <listitem>
         <para>Range axis max/min: Defines the maximum and minium value which will be visible on the
@@ -198,7 +227,7 @@
       <screeninfo>Data visualizer module displaying a column chart.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="100%" fileref="resources/images/visualizer/favorites.png" format="PNG"/>
+          <imagedata width="100%" fileref="resources/images/visualizer/chart_favorites.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -222,16 +251,16 @@
   <section>
     <title>Analysis integration</title>
     <para>The analysis apps in DHIS 2 are completely integrated, so you can easily switch
-	  between pivot table, chart and map visualization of your data. When you have made a chart
-	  you can click e.g. "Map" in the top right corner and then select "Open this table as map".</para>
+   between pivot table, chart and map visualization of your data. When you have made a chart
+   you can click e.g. &quot;Map&quot; in the top right corner and then select &quot;Open this table as map&quot;.</para>
     <screenshot>
       <screeninfo>Analysis integration</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="25%" fileref="resources/images/visualizer/chart_integration.png" format="PNG"/>
+          <imagedata width="25%" fileref="resources/images/visualizer/chart_integration.png" format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
-    </screenshot>  
+    </screenshot>
   </section>
   <section>
     <title>Exiting the data visualizer module</title>
