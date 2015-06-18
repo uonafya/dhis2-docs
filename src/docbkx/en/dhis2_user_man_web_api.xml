@@ -2698,8 +2698,7 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
             </row>
             <row>
               <entry>V{&lt;varible-id>}</entry>
-              <entry>Refers to a program variable, can be "incident_date", "enrollment_date",
-                "current_date".</entry>
+              <entry>Refers to a program variable.</entry>
             </row>
             <row>
               <entry>C{&lt;constant-id>}</entry>
@@ -2709,6 +2708,51 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
         </tgroup>
       </table>
     </para>
+      <para>The valid program variables are described in the following table.</para>
+      <para>
+        <table frame="all">
+          <title>Program variables</title>
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.04*"/>
+            <colspec colname="newCol3" colnum="3" colwidth="2.4*"/>
+            <thead>
+              <row>
+                <entry>Variable</entry>
+                <entry>Name</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>incident_date</entry>
+                <entry>Incident date</entry>
+                <entry>Date of incident of the event.</entry>
+              </row>
+              <row>
+                <entry>enrollment_date</entry>
+                <entry>Enrollment date</entry>
+                <entry>Date of enrollment of the tracked entity instance.</entry>
+              </row>
+              <row>
+                <entry>current_date</entry>
+                <entry>Current date</entry>
+                <entry>Date of today.</entry>
+              </row>
+              <row>
+                <entry>value_count</entry>
+                <entry>Value count</entry>
+                <entry>Number of data values found for expression evaluation.</entry>
+              </row>
+              <row>
+                <entry>zero_pos_value_count</entry>
+                <entry>Zero or positive value count</entry>
+                <entry>Number of zero or positive values found for expression evaluation.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </para>
     <para>The syntax looks like
       this:<screen>#{&lt;programstage-id>.&lt;dataelement-id>} + #{&lt;attribute-id>} + V{&lt;varible-id>} + C{&lt;constant-id>}</screen></para>
     <para>A corresponding example looks like this:
