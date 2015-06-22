@@ -2,9 +2,9 @@
 
 # Reads all dhis2_user_man_* files found from the current path and writes to file
 
-CONTENT_FILE="help_content_pt_.xml"
+CONTENT_FILE="help_content_pt.xml"
 
-INCLUDE_FILES=`find . -name "dhis2_user_man_*xml" -type f -printf "%f\n"`
+INCLUDE_FILES=`find . -name "dhis2_user_man_*xml" -exec echo {} \;`
 
 echo "Including the following files:"
 echo ${INCLUDE_FILES[@]}
