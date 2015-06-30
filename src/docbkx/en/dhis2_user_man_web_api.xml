@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"[]>
 <chapter>
   <title>Web API</title>
   <para>The Web API is a component which makes it possible for external systems  to access and manipulate  data stored in an instance of DHIS 2. More precisely, it provides a   programmatic interface to a wide range of exposed data and service methods for applications such as third-party software clients, web portals and  internal DHIS 2 modules.</para>
@@ -33,7 +33,70 @@
       is to avoid a time-consuming redirect to the home page of the user.</para>
     <para>You can verify and get information about the currently authenticated user by making a GET
       request to the following URL:</para>
-    <screen>/api/currentUser</screen>
+    <screen>/api/me</screen>
+    <section>
+      <title>OAuth2 Protocol</title>
+      <para>As an alternative to just using the <emphasis role="italic">Authorization</emphasis>
+        header, in DHIS 2.20 we added support for the OAuth2 protocol, this allows you to get a
+        bearer token which be can reused multiple times.</para>
+      <para>To add a new OAuth2 client, go to <emphasis role="italic">settings => OAuth2
+          Clients</emphasis>, click add new and at least the name of client, and the grant types you
+        want supported.</para>
+      
+      <section>
+        <title>Adding a client using the web-api</title>
+        <para>As shown before, we can add a client using the UI, but there is also another
+          alternative way, which is by using the web-api.</para>
+        <para>As an example, we will send a simple example
+          payload:<screen>{
+   "name" : "OAuth2 Demo Client",
+   "cid" : "demo",
+   "secret" : "1e6db50c-0fee-11e5-98d0-3c15c2c6caf6",
+   "grantTypes" : [
+      "password",
+      "refresh_token",
+      "authorization_code"
+   ],
+   "redirectUris" : [
+   ]
+}</screen></para>
+        <screen>SERVER="https://apps.dhis2.org/dev"
+curl -X POST -H "Content-Type: application/json" -d @client.json -u admin:district $SERVER/api/oAuth2Clients</screen>
+        <para>We will use this client as the basis for our next grant type examples.</para>
+      </section>
+      <section>
+        <title>Grant Type - password</title>
+        <para>The simplest of all grant types is the <emphasis role="bold">password</emphasis> grant
+          type, this grant type is similar to basic authenticaion in that it requires the client to
+          collect the users username and password, which might be a deal breaker in many
+          cases.</para>
+        <para>As an example we will use our demo
+          server:<screen>SERVER="https://apps.dhis2.org/dev"
+SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
+curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token -d grant_type=password -d username=admin -d password=district</screen></para>
+        <para>Which will give you a similar response to
+          this:<screen>{
+   "expires_in" : 43175,
+   "scope" : "ALL",
+   "access_token" : "07fc551c-806c-41a4-9a8c-10658bd15435",
+   "refresh_token" : "a4e4de45-4743-481d-9345-2cfe34732fcc",
+   "token_type" : "bearer"
+}</screen></para>
+        <para>For now, we will concentrate on the <emphasis role="bold">access_token</emphasis>,
+          which is what we will use as our authentication (bearer) token. As an example we will get
+          all data elements using our
+          token:<screen>SERVER="https://apps.dhis2.org/dev"
+curl -H "Authorization: Bearer 07fc551c-806c-41a4-9a8c-10658bd15435" $SERVER/api/dataElements.json</screen></para>
+      </section>
+      <section>
+        <title>Grant Type - authorized_code</title>
+        <para/>
+      </section>
+      <section>
+        <title>Grant Type - refresh_token</title>
+        <para/>
+      </section>
+    </section>
   </section>
   <section>
     <title>Date and period format</title>
@@ -562,17 +625,13 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
     <title>Meta-data field filter</title>
     <para>In certain situations the default views of the meta-data can be too verbose. A client
       might only need a few fields from each object and want to remove unnecessary fields from the
-      response. To discover which fields are available for each object please see the <emphasis
-        role="italic">schema</emphasis> section.</para>
+      response. To discover which fields are available for each object please see the <emphasis role="italic">schema</emphasis> section.</para>
     <para>The format for include/exclude is very simple and allows for infinite recursion. To filter
-      at the &quot;root&quot; level you can just use the name of the field, i.e. <emphasis
-        role="italic">?fields=id,name</emphasis> which would only display the <emphasis
-        role="italic">id</emphasis> and <emphasis role="italic">name</emphasis> for every object.
+      at the &quot;root&quot; level you can just use the name of the field, i.e. <emphasis role="italic">?fields=id,name</emphasis> which would only display the <emphasis role="italic">id</emphasis> and <emphasis role="italic">name</emphasis> for every object.
       For objects that are either collections or complex objects with properties on their own you
       can use the format <emphasis role="italic">?fields=id,name,dataSets[id,name]</emphasis> which
       would return <emphasis role="italic">id</emphasis>, <emphasis role="italic">name</emphasis> of
-      the root, and the <emphasis role="italic">id</emphasis> and <emphasis role="italic"
-        >name</emphasis> of every data set on that object. Negation can be done with the exclamation
+      the root, and the <emphasis role="italic">id</emphasis> and <emphasis role="italic">name</emphasis> of every data set on that object. Negation can be done with the exclamation
       operator, and we have a set of presets of field select (see below). Both XML and JSON are
       supported.</para>
     <para><emphasis role="bold">Example</emphasis>: Get <emphasis role="italic">id</emphasis> and
@@ -839,9 +898,7 @@ http://server/api/constants/ID</screen></para>
         complete object, just with only 1 property in the JSON/XML file,
         i.e.:<screen>curl -X PATCH -d "{\"name\": \"New Name\"}" -H "Content-Type: application/json" -u admin:district https://apps.dhis2.org/dev/api/dataElements/fbfJHSPpUQD/name</screen></para>
       <para>Please note that we are including the property name two times, one time in the payload,
-        and one time in the endpoint, the generic endpoint for this is <emphasis role="italic"
-          >/api/type/id/property-name</emphasis>, and the <emphasis role="italic"
-          >Content-Type</emphasis> must also be included as usual (since we support multiple
+        and one time in the endpoint, the generic endpoint for this is <emphasis role="italic">/api/type/id/property-name</emphasis>, and the <emphasis role="italic">Content-Type</emphasis> must also be included as usual (since we support multiple
         formats).</para>
       <para>The format for updating multiple properties are similar, just that we don't include the
         property names in the url,
@@ -1550,8 +1607,7 @@ http://server/api/constants/ID</screen></para>
         <para>Regarding the id schemes, by default the identifiers used in the XML messages uses the
           DHIS 2 stable object identifiers referred to as <emphasis role="italic">uid</emphasis>. In
           certain interoperability situations we might experience that external system decides the
-          identifiers of the objects. In that case we can use the <emphasis role="italic"
-            >code</emphasis> property of the organisation units and other objects to set fixed
+          identifiers of the objects. In that case we can use the <emphasis role="italic">code</emphasis> property of the organisation units and other objects to set fixed
           identifiers. When importing data values we hence need to reference the code property
           instead of the identfier property of these meta-data objects. Identifier schemes can be
           specified in the XML message as well as in the request as query parameters. To specify it
@@ -2588,8 +2644,7 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
       <title>Running data integrity</title>
       <para>The operation of measuring data integrity is a fairly resource (and time) demanding
         task. It is therefore run as an asynchronous process and only when explicitly requested.
-        Starting the task is done by forming an empty POST request to the <emphasis role="italic"
-          >dataIntegrity</emphasis> endpoint like so (demonstrated in curl
+        Starting the task is done by forming an empty POST request to the <emphasis role="italic">dataIntegrity</emphasis> endpoint like so (demonstrated in curl
         syntax):<screen>curl -X POST https://dhis.domain/api/dataIntegrity</screen></para>
       <para>If successful the request will return HTTP 202 immediately. The location header of the
         response points to the resource used to check the status of the request. Forming a GET
@@ -2599,8 +2654,7 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
     </section>
     <section>
       <title>Fetching the result</title>
-      <para>Once data integrity is finished running the result can be fetched from the <emphasis
-          role="italic">system/taskSummaries</emphasis> resource like
+      <para>Once data integrity is finished running the result can be fetched from the <emphasis role="italic">system/taskSummaries</emphasis> resource like
         so:<screen>curl -X GET https://dhis.domain/api/system/taskSummaries/DATAINTEGRITY</screen></para>
       <para>The returned object contains a summary for each point of analysis, listing the names of
         the relevant integrity violations. As stated in the leading paragraph for this section the
@@ -5116,8 +5170,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <section>
       <title>Debugging</title>
       <para>When debugging analytics requests it can be useful to examine the data value source of
-        the aggregated analytics response. The <emphasis role="italic"
-          >analytics/debug/sql</emphasis> resource will provide an SQL statement that returns the
+        the aggregated analytics response. The <emphasis role="italic">analytics/debug/sql</emphasis> resource will provide an SQL statement that returns the
         relevant content of the datavalue table. You can produce this SQL by doing a GET request
         with content type "text/html" or "text/plain" like below. The dimension and filter syntax is
         identical to regular analytics queries:</para>
@@ -5126,8 +5179,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
   </section>
   <section>
     <title>Event analytics</title>
-    <para>The event analytics API lets you access aggregated event data and query <emphasis
-        role="italic">events</emphasis> captured in DHIS 2. This resource lets you retrieve events
+    <para>The event analytics API lets you access aggregated event data and query <emphasis role="italic">events</emphasis> captured in DHIS 2. This resource lets you retrieve events
       based on a program and optionally a program stage, and lets you retrieve and filter events on
       any event dimensions. </para>
     <section>
@@ -6142,8 +6194,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
     <section>
       <title>User account invitations</title>
-      <para>The Web API supports inviting people to create user accounts through the <emphasis
-          role="italic">invite</emphasis> resource. To create an invitation you should POST a user
+      <para>The Web API supports inviting people to create user accounts through the <emphasis role="italic">invite</emphasis> resource. To create an invitation you should POST a user
         in XML or JSON format to the invite resource. A specific username can be forced by defining
         the username in the posted entity. By omitting the username, the person will be able to
         specify it herself. The system will send out an invitation through email. This requires that
@@ -6487,8 +6538,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Enrolling a tracked entity instance into a program</title>
       <para>For enrolling persons into a program, you will need to first get the identifier of the
         person from the <emphasis role="italic">trackedEntityInstances</emphasis> resource. Then,
-        you will need to get the program identifier from the <emphasis role="italic"
-          >programs</emphasis> resource. A template payload can be seen
+        you will need to get the program identifier from the <emphasis role="italic">programs</emphasis> resource. A template payload can be seen
         below:<screen>{
     &quot;trackedEntityInstance&quot;: &quot;ZRyCnJ1qUXS&quot;,
     &quot;orgUnit&quot;: &quot;ImspTQPwCqd&quot;,
