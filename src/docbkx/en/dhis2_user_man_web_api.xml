@@ -58,6 +58,7 @@
       "authorization_code"
    ],
    "redirectUris" : [
+      "http://www.example.org"
    ]
 }</screen></para>
         <screen>SERVER="https://apps.dhis2.org/dev"
@@ -73,6 +74,7 @@ curl -X POST -H "Content-Type: application/json" -d @client.json -u admin:distri
         <para>As an example we will use our demo
           server:<screen>SERVER="https://apps.dhis2.org/dev"
 SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
+
 curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token -d grant_type=password -d username=admin -d password=district</screen></para>
         <para>Which will give you a similar response to
           this:<screen>{
@@ -98,12 +100,31 @@ curl -H "Authorization: Bearer 07fc551c-806c-41a4-9a8c-10658bd15435" $SERVER/api
           again.<screen>SERVER="https://apps.dhis2.org/dev"
 SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
 REFRESH_TOKEN="a4e4de45-4743-481d-9345-2cfe34732fcc"
+
 curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token -d grant_type=refresh_token -d refresh_token=$REFRESH_TOKEN</screen></para>
         <para>The response will be exactly the same as when you get an token to start with.</para>
       </section>
       <section>
         <title>Grant Type - authorized_code</title>
-        <para/>
+        <para>Authorized code grant type is the recommended approach if you don't want to collect
+          the user credentials, it allows DHIS 2 to collect the username/password directly from the
+          user instead of the client collecting them and then authenticating based on behalf of the
+          user, please be aware that this uses the <emphasis role="bold">redirect_uris</emphasis>
+          part of the client payload.</para>
+        <para>Step 1 - Using a browser visit this URL (if you have more than one redirect URIs, you
+          might want to add &amp;redirect_uri=http://www.example.org)
+          :<screen>SERVER="https://apps.dhis2.org/dev"
+
+$SERVER/uaa/oauth/authorize?client_id=demo&amp;response_type=code</screen></para>
+        <para>Step 2 - After the user have successfully logged in and accepted your client access,
+          it will redirect back to your redirect uri like
+          this:<screen>http://www.example.org/?code=XYZ</screen></para>
+        <para>Step 3 - This step is similar to what we did in the password grant type, using the
+          given code, we will now ask for a access
+          token:<screen>SERVER="https://apps.dhis2.org/dev"
+SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
+
+curl -X POST -u demo:$SECRET -H "Accept: application/json" $SERVER/token -d grant_type=authorized_code -d code=XYZ</screen></para>
       </section>
     </section>
   </section>
