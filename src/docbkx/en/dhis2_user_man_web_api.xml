@@ -89,11 +89,20 @@ curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/tok
 curl -H "Authorization: Bearer 07fc551c-806c-41a4-9a8c-10658bd15435" $SERVER/api/dataElements.json</screen></para>
       </section>
       <section>
-        <title>Grant Type - authorized_code</title>
-        <para/>
+        <title>Grant Type - refresh_token</title>
+        <para>In general the access tokens have limited validity (you can have a look at the
+            <emphasis role="bold">expires_in</emphasis> property of the response in the previous
+          example),  and to get a fresh <emphasis role="bold">access_token</emphasis> you can take
+          another roundtrip to the server and use the <emphasis role="bold">refresh_token</emphasis>
+          which allows you to get an updated token without needing to ask for the user credentials
+          again.<screen>SERVER="https://apps.dhis2.org/dev"
+SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
+REFRESH_TOKEN="a4e4de45-4743-481d-9345-2cfe34732fcc"
+curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token -d grant_type=refresh_token -d refresh_token=$REFRESH_TOKEN</screen></para>
+        <para>The response will be exactly the same as when you get an token to start with.</para>
       </section>
       <section>
-        <title>Grant Type - refresh_token</title>
+        <title>Grant Type - authorized_code</title>
         <para/>
       </section>
     </section>
