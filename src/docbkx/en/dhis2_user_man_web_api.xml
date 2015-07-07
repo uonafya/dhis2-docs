@@ -75,18 +75,19 @@ curl -X POST -H "Content-Type: application/json" -d @client.json -u admin:distri
         <para>We will use this client as the basis for our next grant type examples.</para>
       </section>
       <section>
-        <title>Grant Type - password</title>
+        <title>Grant type password</title>
         <para>The simplest of all grant types is the <emphasis role="bold">password</emphasis> grant
-          type, this grant type is similar to basic authenticaion in that it requires the client to
-          collect the users username and password, which might be a deal breaker in many cases. As
-          an example we will use our demo server:</para>
+          type. This grant type is similar to basic authenticaion in the sense that it requires the
+          client to collect the users username and password. This might be a deal breaker in many
+          cases. As an example we can use our demo server:</para>
         <para>
           <screen>SERVER="https://apps.dhis2.org/dev"
 SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
 
-curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token -d grant_type=password -d username=admin -d password=district</screen>
+curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token 
+-d grant_type=password -d username=admin -d password=district</screen>
         </para>
-        <para>Which will give you a similar response to
+        <para>This will give you a response similar to
           this:<screen>{
    "expires_in" : 43175,
    "scope" : "ALL",
@@ -101,26 +102,28 @@ curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/tok
 curl -H "Authorization: Bearer 07fc551c-806c-41a4-9a8c-10658bd15435" $SERVER/api/dataElements.json</screen></para>
       </section>
       <section>
-        <title>Grant Type - refresh_token</title>
-        <para>In general the access tokens have limited validity (you can have a look at the
+        <title>Grant type refresh_token</title>
+        <para>In general the access tokens have limited validity. You can have a look at the
             <emphasis role="bold">expires_in</emphasis> property of the response in the previous
-          example),  and to get a fresh <emphasis role="bold">access_token</emphasis> you can take
-          another roundtrip to the server and use the <emphasis role="bold">refresh_token</emphasis>
-          which allows you to get an updated token without needing to ask for the user credentials
-          again.<screen>SERVER="https://apps.dhis2.org/dev"
+          example to understand when a token expires. To get a fresh <emphasis role="bold"
+            >access_token</emphasis> you can make another roundtrip to the server and use <emphasis
+            role="bold">refresh_token</emphasis> which allows you to get an updated token without
+          needing to ask for the user credentials one more
+          time.<screen>SERVER="https://apps.dhis2.org/dev"
 SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
 REFRESH_TOKEN="a4e4de45-4743-481d-9345-2cfe34732fcc"
 
-curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token -d grant_type=refresh_token -d refresh_token=$REFRESH_TOKEN</screen></para>
+curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token 
+-d grant_type=refresh_token -d refresh_token=$REFRESH_TOKEN</screen></para>
         <para>The response will be exactly the same as when you get an token to start with.</para>
       </section>
       <section>
-        <title>Grant Type - authorized_code</title>
-        <para>Authorized code grant type is the recommended approach if you don't want to collect
-          the user credentials, it allows DHIS 2 to collect the username/password directly from the
-          user instead of the client collecting them and then authenticating based on behalf of the
-          user, please be aware that this uses the <emphasis role="bold">redirect_uris</emphasis>
-          part of the client payload.</para>
+        <title>Grant type authorized_code</title>
+        <para>Authorized code grant type is the recommended approach if you don't want to store the
+          user credentials externally. It allows DHIS 2 to collect the username/password directly
+          from the user instead of the client collecting them and then authenticating on behalf of
+          the user. Please be aware that this approach uses the <emphasis role="bold"
+            >redirect_uris</emphasis> part of the client payload.</para>
         <para>Step 1 - Using a browser visit this URL (if you have more than one redirect URIs, you
           might want to add &amp;redirect_uri=http://www.example.org)
           :<screen>SERVER="https://apps.dhis2.org/dev"
