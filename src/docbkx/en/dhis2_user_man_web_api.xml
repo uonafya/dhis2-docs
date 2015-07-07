@@ -24,31 +24,40 @@
   </section>
   <section>
     <title>Authentication</title>
-    <para>In order to interoperate with the Web API you will have to authenticate using <emphasis role="italic">Basic authentication</emphasis>. Basic authentication is a technique for clients to send login credentials over HTTP to a web server. Technically speaking, the username is appended with a colon and the password, Base64-encoded, prefixed Basic  and   supplied as the value of the <emphasis role="italic">Authorization</emphasis> HTTP header. More formally that is<code> Authorization: Basic base64encode(username:password)</code> An important note is that this authentication scheme provides no security since the username and password is sent in plain text and can be easily decoded. Using it is  recommended only if the server is using SSL/TLS (HTTPS) to encrypt communication between itself and the client. Most DHIS 2 deployments typically use SSL today - consider it a hard requirement to provide secure interactions with the Web API.</para>
-    <para>If you are building a form-based web application and want to authenticate using a web form
-      you can have the form send a POST request to the login endpoint in DHIS which is <emphasis role="italic">/dhis-web-commons-security/login.action?authOnly=true</emphasis> . Two request
-      parameters, <emphasis role="italic">j_username</emphasis> and <emphasis role="italic">j_password</emphasis>, containing the username and password in clear-text respectively, are
-      expected. The browser will then receive a cookie which will be used for authentication for
-      subsequent requests. The purpose of the <emphasis role="italic">authOnly</emphasis> parameter
-      is to avoid a time-consuming redirect to the home page of the user.</para>
-    <para>You can verify and get information about the currently authenticated user by making a GET
-      request to the following URL:</para>
+    <para>The DHIS 2 Web API supports two protocols for authentication, Basic Authentication and
+      OAuth 2. You can verify and get information about the currently authenticated user by making a
+      GET request to the following URL:</para>
     <screen>/api/me</screen>
     <section>
-      <title>OAuth2 Protocol</title>
-      <para>As an alternative to just using the <emphasis role="italic">Authorization</emphasis>
-        header, in DHIS 2.20 we added support for the OAuth2 protocol, this allows you to get a
-        bearer token which be can reused multiple times.</para>
-      <para>To add a new OAuth2 client, go to <emphasis role="italic">settings => OAuth2
+      <title>Basic Authentication</title>
+    
+    <para>The DHIS 2 Web API supports <emphasis role="italic">Basic authentication</emphasis>. Basic
+        authentication is a technique for clients to send login credentials over HTTP to a web
+        server. Technically speaking, the username is appended with a colon and the password,
+        Base64-encoded, prefixed Basic and supplied as the value of the <emphasis role="italic"
+          >Authorization</emphasis> HTTP header. More formally that is<code> Authorization: Basic
+          base64encode(username:password)</code> Most network-aware development frameworks provides
+        support for authentication using Basic, such as Apache HttpClient, Spring RestTemplate and
+        C# WebClient. An important note is that this authentication scheme provides no security
+        since the username and password is sent in plain text and can be easily decoded. Using it is
+        recommended only if the server is using SSL/TLS (HTTPS) to encrypt communication between
+        itself and the client. Consider it a hard requirement to provide secure interactions with
+        the Web API.</para>
+    </section>
+    <section>
+      <title>OAuth2</title>
+      <para>DHIS 2 support the OAuth2 protocol (since 2.20) for authenication. This allows you to
+        request a bearer token which be can reused multiple times.</para>
+      <para>Each client for which you want to allow OAuth 2 authentication must be registered in
+        DHIS 2. To add a new OAuth2 client, go to <emphasis role="italic">settings => OAuth2
           Clients</emphasis>, click add new and at least the name of client, and the grant types you
         want supported.</para>
       
       <section>
         <title>Adding a client using the web-api</title>
-        <para>As shown before, we can add a client using the UI, but there is also another
-          alternative way, which is by using the web-api.</para>
-        <para>As an example, we will send a simple example
-          payload:<screen>{
+        <para>An OAuth2 client can also be added through the Web API. As an example we can send a
+          payload like
+          this:<screen>{
    "name" : "OAuth2 Demo Client",
    "cid" : "demo",
    "secret" : "1e6db50c-0fee-11e5-98d0-3c15c2c6caf6",
@@ -69,13 +78,14 @@ curl -X POST -H "Content-Type: application/json" -d @client.json -u admin:distri
         <title>Grant Type - password</title>
         <para>The simplest of all grant types is the <emphasis role="bold">password</emphasis> grant
           type, this grant type is similar to basic authenticaion in that it requires the client to
-          collect the users username and password, which might be a deal breaker in many
-          cases.</para>
-        <para>As an example we will use our demo
-          server:<screen>SERVER="https://apps.dhis2.org/dev"
+          collect the users username and password, which might be a deal breaker in many cases. As
+          an example we will use our demo server:</para>
+        <para>
+          <screen>SERVER="https://apps.dhis2.org/dev"
 SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
 
-curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token -d grant_type=password -d username=admin -d password=district</screen></para>
+curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token -d grant_type=password -d username=admin -d password=district</screen>
+        </para>
         <para>Which will give you a similar response to
           this:<screen>{
    "expires_in" : 43175,
