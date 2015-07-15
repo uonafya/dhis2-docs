@@ -6606,9 +6606,402 @@ ORDER BY oul.level, par.name, ou.name</screen>
   </section>
   <section>
     <title>Tracked entity instance query</title>
-    <para>To query for tracked entity instances you can interact with the <emphasis role="italic">/api/trackedEntityInstances</emphasis> resource. There are two types of queries: One where
-      a <emphasis role="italic">query</emphasis> query parameter and optionally <emphasis role="italic">attribute</emphasis> parameters are defined, and one where <emphasis role="italic">attribute</emphasis> and <emphasis role="italic">filter</emphasis> parameters
-      are defined.</para>
+    <para>To query for tracked entity instances you can interact with the <emphasis role="italic"
+        >/api/trackedEntityInstances</emphasis> resource. </para>
+    <section>
+      <title>Request syntax</title>
+      <table frame="all">
+        <title>Tracked entity instances query parameters</title>
+        <tgroup cols="2">
+          <colspec colnum="1" colname="c1" colwidth="1.38*"/>
+          <colspec colnum="2" colname="c3" colwidth="7.25*"/>
+          <thead>
+            <row>
+              <entry>Query parameter</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>filter</entry>
+              <entry>Attributes to use as a filter for the query. Param can be repeated any number of times. Filters can be applied to a dimension on the format &lt;attribute-id&gt;:&lt;operator&gt;:&lt;filter&gt;[:&lt;operator&gt;:&lt;filter&gt;]. Filter values are case-insensitive and can be repeated together with operator any number of times. Operators can be EQ | GT | GE | LT | LE | NE | LIKE | IN.</entry>
+            </row>
+            <row>
+              <entry>ou</entry>
+              <entry>Organisation unit idenfiers, separated by &quot;;&quot;.</entry>
+            </row>
+            <row>
+              <entry>ouMode</entry>
+              <entry>The mode of selecting organisation units, can be SELECTED | CHILDREN | DESCENDANTS | ACCESSIBLE | ALL. Default is SELECTED, which refers to the selected organisation units only. See table below for explanations.</entry>
+            </row>
+            <row>
+              <entry>program</entry>
+              <entry>Program identifier. Restricts instances to being enrolled in the given program.</entry>
+            </row>
+            <row>
+              <entry>programStatus</entry>
+              <entry>Status of the instance for the given program. Can be ACTIVE | COMPLETED | CANCELLED.</entry>
+            </row>
+            <row>
+              <entry>followUp</entry>
+              <entry>Follow up status of the instance for the given program. Can be true | false or omitted.</entry>
+            </row>
+            <row>
+              <entry>programStartDate</entry>
+              <entry>Start date of enrollment in the given program for the tracked entity instance.</entry>
+            </row>
+            <row>
+              <entry>programEndDate</entry>
+              <entry>End date of enrollment in the given program for the tracked entity instance.</entry>
+            </row>
+            <row>
+              <entry>trackedEntity</entry>
+              <entry>Tracked entity identifer. Restricts instances to the given tracked instance type.</entry>
+            </row>
+            <row>
+              <entry>page</entry>
+              <entry>The page number. Default page is 1.</entry>
+            </row>
+            <row>
+              <entry>pageSize</entry>
+              <entry>The page size. Default size is 50 rows per page.</entry>
+            </row>
+            <row>
+              <entry>totalPages</entry>
+              <entry>Indicates whether to include the total number of pages in the paging response
+                (implies higher response time).</entry>
+            </row>
+            <row>
+              <entry>skipPaging</entry>
+              <entry>Indicates whether paging should be ignored and all rows should be returned.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>The available organisation unit selection modes are explained in the following
+        table.</para>
+      <table frame="all">
+        <title>Organisation unit selection modes</title>
+        <tgroup cols="2">
+          <colspec colnum="1" colname="c1" colwidth="1*"/>
+          <colspec colnum="2" colname="c2" colwidth="3.88*"/>
+          <thead>
+            <row>
+              <entry>Mode</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>SELECTED</entry>
+              <entry>Organisation units defined in the request.</entry>
+            </row>
+            <row>
+              <entry>CHILDREN</entry>
+              <entry>Immediate children, i.e. only the first level below, of the organisation units defined in the request.</entry>
+            </row>
+            <row>
+              <entry>DESCENDANTS</entry>
+              <entry>All children, i.e. at only levels below, e.g. including children of children, of the organisation units defined in the request.</entry>
+            </row>
+            <row>
+              <entry>ACCESSIBLE</entry>
+              <entry>All descendants of the data view organisation units associated with the current user. Will fall back to data capture organisation units associated with the current user if the former is not defined.</entry>
+            </row>
+            <row>
+              <entry>ALL</entry>
+              <entry>All organisation units in the system. Requires authority.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>Note that you can specify attributes with filters for constraining the instances to
+      return, or attributes without filters in order to include the attribute in the response
+      without any constraints. Attributes will be included in the response, while filters will only
+      be used as criteria. </para>
+      <para>You can specify queries with words separated by space - in that situation the system will
+        query for each word independently and return records where each word is contained in any
+        attribute. A query item can be specified once as an attribute and once as a filter if
+        needed. The query is case insensitive. The following rules apply to the query
+        parameters.</para>
+      <itemizedlist>
+        <listitem>
+          <para>At least one organisation unit must be specified using the <emphasis role="italic"
+              >ou</emphasis> parameter (one or many), or <emphasis role="italic"
+              >ouMode=ALL</emphasis> must be enabled.</para>
+        </listitem>
+        <listitem>
+          <para>Only one of the <emphasis role="italic">program</emphasis> and <emphasis role="italic">trackedEntity</emphasis> parameters can be specified (zero or
+            one).</para>
+        </listitem>
+        <listitem>
+          <para>If <emphasis role="italic">programStatus</emphasis> is specified then <emphasis role="italic">program</emphasis> must also be specified.</para>
+        </listitem>
+        <listitem>
+          <para>If <emphasis role="italic">followUp</emphasis> is specified then <emphasis role="italic">program</emphasis> must also be specified.</para>
+        </listitem>
+        <listitem>
+          <para>If <emphasis role="italic">programStartDate</emphasis> or <emphasis role="italic">programEndDate</emphasis> is specified then <emphasis role="italic">program</emphasis> must also be specified.</para>
+        </listitem>
+        <listitem>
+          <para>Attribute items can only be specified once.</para>
+        </listitem>
+        <listitem>
+          <para>Filter items can only be specified once.</para>
+        </listitem>
+      </itemizedlist>
+      <para>A query for all instances associated with a specific organisation unit can look like
+      this:</para>
+      <screen>api/trackedEntityInstances.json?ou=DiszpKrYNg8</screen>
+      <para>To query for instances using one attribute with a filter and one attribute without a
+        filter, with one organisation unit using the descendants organisation unit query
+        mode:</para>
+      <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;filter=AMpUYgxuCaE&amp;ou=DiszpKrYNg8;yMCshbaVExv</screen>
+      <para>A query for instances where one attribute is included in the response and one attribute us
+        used as a filter:</para>
+      <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;filter=AMpUYgxuCaE:LIKE:Road&amp;ou=DiszpKrYNg8</screen>
+      <para>A query where multiple operand and filters are specified for a filter item:</para>
+      <screen>api/trackedEntityInstances.json?ou=DiszpKrYNg8&amp;program=ur1Edk5Oe2n&amp;filter=lw1SqmMlnfh:GT:150:LT:190</screen>
+      <para>To query on an attribute using multiple values in an IN filter:</para>
+      <screen>api/trackedEntityInstances.json?ou=DiszpKrYNg8&amp;filter=dv3nChNSIxy:IN:Scott;Jimmy;Santiago</screen>
+      <para>To constrain the response to instances which are part of a specific program you can
+        include a program query parameter:</para>
+      <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;program=ur1Edk5Oe2n</screen>
+      <para>To specify program enrollment dates as part of the query:</para>
+      <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A
+&amp;ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n
+&amp;programStartDate=2013-01-01&amp;programEndDate=2013-09-01</screen>
+      <para>To constrain the response to instances of a specific tracked entity you can include a
+        tracked entity query parameter:</para>
+      <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;trackedEntity=cyl5vuJ5ETQ</screen>
+      <para>By default the instances are returned in pages of size 50, to change this you can use the
+        page and pageSize query parameters:</para>
+      <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;page=2&amp;pageSize=3</screen>
+      <para>To query for instances which have events of a given status within a given time
+        span:</para>
+      <screen>api/trackedEntityInstances.json?ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n&amp;eventStatus=LATE_VISIT
+&amp;eventStartDate=2014-01-01&amp;eventEndDate=2014-09-01</screen>
+      <para>You can use a range of operators for the filtering:</para>
+      <table frame="all">
+        <title>Filter operators</title>
+        <tgroup cols="2">
+          <colspec colnum="1" colname="c1" colwidth="87.75pt"/>
+          <colspec colnum="2" colname="c2" colwidth="368.25pt"/>
+          <thead>
+            <row>
+              <entry>Operator</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>EQ</entry>
+              <entry>Equal to</entry>
+            </row>
+            <row>
+              <entry>GT</entry>
+              <entry>Greater than</entry>
+            </row>
+            <row>
+              <entry>GE</entry>
+              <entry>Greater than or equal to</entry>
+            </row>
+            <row>
+              <entry>LT</entry>
+              <entry>Less than</entry>
+            </row>
+            <row>
+              <entry>LE</entry>
+              <entry>Less than or equal to</entry>
+            </row>
+            <row>
+              <entry>NE</entry>
+              <entry>Not equal to</entry>
+            </row>
+            <row>
+              <entry>LIKE</entry>
+              <entry>Like (free text match)</entry>
+            </row>
+            <row>
+              <entry>IN</entry>
+              <entry>Equal to one of multiple values separated by &quot;;&quot;</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <section>
+      <title>Response format</title>
+      <para>This resource supports JSON, JSONP, XLS and CSV resource representations.</para>
+      <itemizedlist>
+        <listitem>
+          <para>json (application/json)</para>
+        </listitem>
+        <listitem>
+          <para>jsonp (application/javascript)</para>
+        </listitem>
+        <listitem>
+          <para>xml (application/xml)</para>
+        </listitem>
+      </itemizedlist>
+      <para>The response in JSON/XML is in object format and can look like the following:</para>
+      <screen>{
+    "trackedEntityInstances": [
+        {
+            "lastUpdated": "2014-03-28 12:27:52.399",
+            "trackedEntity": "cyl5vuJ5ETQ",
+            "created": "2014-03-26 15:40:19.997",
+            "orgUnit": "ueuQlqb8ccl",
+            "trackedEntityInstance": "tphfdyIiVL6",
+            "relationships": [],
+            "attributes": [
+                {
+                    "displayName": "Address",
+                    "attribute": "AMpUYgxuCaE",
+                    "type": "string",
+                    "value": "2033 Akasia St"
+                },
+                {
+                    "displayName": "TB number",
+                    "attribute": "ruQQnf6rswq",
+                    "type": "string",
+                    "value": "1Z 989 408 56 9356 521 9"
+                },
+                {
+                    "displayName": "Weight in kg",
+                    "attribute": "OvY4VVhSDeJ",
+                    "type": "number",
+                    "value": "68.1"
+                },
+                {
+                    "displayName": "Email",
+                    "attribute": "NDXw0cluzSw",
+                    "type": "string",
+                    "value": "LiyaEfrem@armyspy.com"
+                },
+                {
+                    "displayName": "Gender",
+                    "attribute": "cejWyOfXge6",
+                    "type": "optionSet",
+                    "value": "Female"
+                },
+                {
+                    "displayName": "Phone number",
+                    "attribute": "P2cwLGskgxn",
+                    "type": "phoneNumber",
+                    "value": "085 813 9447"
+                },
+                {
+                    "displayName": "First name",
+                    "attribute": "dv3nChNSIxy",
+                    "type": "string",
+                    "value": "Liya"
+                },
+                {
+                    "displayName": "Last name",
+                    "attribute": "hwlRTFIFSUq",
+                    "type": "string",
+                    "value": "Efrem"
+                },
+                {
+                    "code": "Height in cm",
+                    "displayName": "Height in cm",
+                    "attribute": "lw1SqmMlnfh",
+                    "type": "number",
+                    "value": "164"
+                },
+                {
+                    "code": "City",
+                    "displayName": "City",
+                    "attribute": "VUvgVao8Y5z",
+                    "type": "string",
+                    "value": "Kranskop"
+                },
+                {
+                    "code": "State",
+                    "displayName": "State",
+                    "attribute": "GUOBQt5K2WI",
+                    "type": "number",
+                    "value": "KwaZulu-Natal"
+                },
+                {
+                    "code": "Zip code",
+                    "displayName": "Zip code",
+                    "attribute": "n9nUvfpTsxQ",
+                    "type": "number",
+                    "value": "3282"
+                },
+                {
+                    "code": "Mother maiden name",
+                    "displayName": "Mother maiden name",
+                    "attribute": "o9odfev2Ty5",
+                    "type": "string",
+                    "value": "Gabriel"
+                },
+                {
+                    "code": "National identifier",
+                    "displayName": "National identifier",
+                    "attribute": "AuPLng5hLbE",
+                    "type": "string",
+                    "value": "465700042"
+                },
+                {
+                    "code": "Occupation",
+                    "displayName": "Occupation",
+                    "attribute": "A4xFHyieXys",
+                    "type": "string",
+                    "value": "Biophysicist"
+                },
+                {
+                    "code": "Company",
+                    "displayName": "Company",
+                    "attribute": "kyIzQsj96BD",
+                    "type": "string",
+                    "value": "Sav-A-Center"
+                },
+                {
+                    "code": "Vehicle",
+                    "displayName": "Vehicle",
+                    "attribute": "VHfUeXpawmE",
+                    "type": "string",
+                    "value": "2008 Citroen Picasso"
+                },
+                {
+                    "code": "Blood type",
+                    "displayName": "Blood type",
+                    "attribute": "H9IlTX2X6SL",
+                    "type": "string",
+                    "value": "B-"
+                },
+                {
+                    "code": "Latitude",
+                    "displayName": "Latitude",
+                    "attribute": "Qo571yj6Zcn",
+                    "type": "string",
+                    "value": "-30.659626"
+                },
+                {
+                    "code": "Longitude",
+                    "displayName": "Longitude",
+                    "attribute": "RG7uGl4w5Jq",
+                    "type": "string",
+                    "value": "26.916172"
+                }
+            ]
+        }
+    ]
+}</screen>
+    </section>
+  </section>
+  <section>
+    <title>Tracked entity instance grid query</title>
+    <para>To query for tracked entity instances you can interact with the <emphasis role="italic"
+        >/api/trackedEntityInstances/grid</emphasis> resource. There are two types of queries: One
+      where a <emphasis role="italic">query</emphasis> query parameter and optionally <emphasis
+        role="italic">attribute</emphasis> parameters are defined, and one where <emphasis
+        role="italic">attribute</emphasis> and <emphasis role="italic">filter</emphasis> parameters
+      are defined. This endpoint uses a more compact "grid" format, and is an alternative to the
+      query in the previous section.</para>
     <section>
       <title>Request syntax</title>
       <table frame="all">
@@ -6763,7 +7156,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
         parameters.</para>
       <itemizedlist>
         <listitem>
-          <para>At least one organisation unit must be specified using the <emphasis role="italic">ou</emphasis> parameter (one or many).</para>
+          <para>At least one organisation unit must be specified using the <emphasis role="italic"
+              >ou</emphasis> parameter (one or many), or <emphasis role="italic"
+              >ouMode=ALL</emphasis> must be enabled.</para>
         </listitem>
         <listitem>
           <para>Only one of the <emphasis role="italic">program</emphasis> and <emphasis role="italic">trackedEntity</emphasis> parameters can be specified (zero or
@@ -6793,46 +7188,45 @@ ORDER BY oul.level, par.name, ou.name</screen>
       </itemizedlist>
       <para>A query for all instances associated with a specific organisation unit can look like
       this:</para>
-      <screen>api/trackedEntityInstances.json?ou=DiszpKrYNg8</screen>
+      <screen>api/trackedEntityInstances/grid.json?ou=DiszpKrYNg8</screen>
       <para>A query on all attributes for a specific value and organisation unit, using an exact word
         match:</para>
-      <screen>api/trackedEntityInstances.json?query=scott&amp;ou=DiszpKrYNg8</screen>
+      <screen>api/trackedEntityInstances/grid.json?query=scott&amp;ou=DiszpKrYNg8</screen>
       <para>A query on all attributes for a specific value, using a partial word match:</para>
-      <screen>api/trackedEntityInstances.json?query=LIKE:scott&amp;ou=DiszpKrYNg8</screen>
+      <screen>api/trackedEntityInstances/grid.json?query=LIKE:scott&amp;ou=DiszpKrYNg8</screen>
       <para>You can query on multiple words separated by the the URL character for space which is
         %20, will use a logical AND query for each word:</para>
-      <screen>api/trackedEntityInstances.json?query=isabel%20may&amp;ou=DiszpKrYNg8</screen>
+      <screen>api/trackedEntityInstances/grid.json?query=isabel%20may&amp;ou=DiszpKrYNg8</screen>
       <para>A query where the attributes to include in the response are specified:</para>
-      <screen>api/trackedEntityInstances.json?query=isabel&amp;attribute=dv3nChNSIxy&amp;attribute=AMpUYgxuCaE&amp;ou=DiszpKrYNg8</screen>
+      <screen>api/trackedEntityInstances/grid.json?query=isabel&amp;attribute=dv3nChNSIxy&amp;attribute=AMpUYgxuCaE&amp;ou=DiszpKrYNg8</screen>
       <para>To query for instances using one attribute with a filter and one attribute without a
         filter, with one organisation unit using the descendants organisation unit query
         mode:</para>
-      <screen>api/trackedEntityInstances.json?attribute=zHXD5Ve1Efw:EQ:A&amp;attribute=AMpUYgxuCaE&amp;ou=DiszpKrYNg8;yMCshbaVExv</screen>
+      <screen>api/trackedEntityInstances/grid.json?attribute=zHXD5Ve1Efw:EQ:A&amp;attribute=AMpUYgxuCaE&amp;ou=DiszpKrYNg8;yMCshbaVExv</screen>
       <para>A query for instances where one attribute is included in the response and one attribute us
         used as a filter:</para>
-      <screen>api/trackedEntityInstances.json?attribute=zHXD5Ve1Efw:EQ:A&amp;filter=AMpUYgxuCaE:LIKE:Road&amp;ou=DiszpKrYNg8</screen>
+      <screen>api/trackedEntityInstances/grid.json?attribute=zHXD5Ve1Efw:EQ:A&amp;filter=AMpUYgxuCaE:LIKE:Road&amp;ou=DiszpKrYNg8</screen>
       <para>A query where multiple operand and filters are specified for a filter item:</para>
-      <screen>api/trackedEntityInstances.json?ou=DiszpKrYNg8&amp;program=ur1Edk5Oe2n&amp;filter=lw1SqmMlnfh:GT:150:LT:190</screen>
+      <screen>api/trackedEntityInstances/grid.json?ou=DiszpKrYNg8&amp;program=ur1Edk5Oe2n&amp;filter=lw1SqmMlnfh:GT:150:LT:190</screen>
       <para>To query on an attribute using multiple values in an IN filter:</para>
-      <screen>api/trackedEntityInstances.json?ou=DiszpKrYNg8&amp;attribute=dv3nChNSIxy:IN:Scott;Jimmy;Santiago</screen>
+      <screen>api/trackedEntityInstances/grid.json?ou=DiszpKrYNg8&amp;attribute=dv3nChNSIxy:IN:Scott;Jimmy;Santiago</screen>
       <para>To constrain the response to instances which are part of a specific program you can
         include a program query parameter:</para>
-      <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;program=ur1Edk5Oe2n</screen>
+      <screen>api/trackedEntityInstances/grid.json?filter=zHXD5Ve1Efw:EQ:A&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;program=ur1Edk5Oe2n</screen>
       <para>To specify program enrollment dates as part of the query:</para>
-      <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A
+      <screen>api/trackedEntityInstances/grid.json?filter=zHXD5Ve1Efw:EQ:A
 &amp;ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n
 &amp;programStartDate=2013-01-01&amp;programEndDate=2013-09-01</screen>
       <para>To constrain the response to instances of a specific tracked entity you can include a
         tracked entity query parameter:</para>
-      <screen>api/trackedEntityInstances.json?attribute=zHXD5Ve1Efw:EQ:A
+      <screen>api/trackedEntityInstances/grid.json?attribute=zHXD5Ve1Efw:EQ:A
 &amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;trackedEntity=cyl5vuJ5ETQ</screen>
       <para>By default the instances are returned in pages of size 50, to change this you can use the
         page and pageSize query parameters:</para>
-      <screen>api/trackedEntityInstances.json?attribute=zHXD5Ve1Efw:EQ:A
-&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;page=2&amp;pageSize=3</screen>
+      <screen>api/trackedEntityInstances/grid.json?attribute=zHXD5Ve1Efw:EQ:A&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;page=2&amp;pageSize=3</screen>
       <para>To query for instances which have events of a given status within a given time
         span:</para>
-      <screen>api/trackedEntityInstances.json?ou=O6uvpzGd5pu
+      <screen>api/trackedEntityInstances/grid.json?ou=O6uvpzGd5pu
 &amp;program=ur1Edk5Oe2n&amp;eventStatus=LATE_VISIT
 &amp;eventStartDate=2014-01-01&amp;eventEndDate=2014-09-01</screen>
       <para>You can use a range of operators for the filtering:</para>
