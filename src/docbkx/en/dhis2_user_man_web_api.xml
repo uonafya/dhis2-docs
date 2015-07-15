@@ -2919,39 +2919,6 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
       </table>
     </section>
     <section>
-      <title>Sending bulks of complete data set registrations</title>
-      <para>This section explains how to send complete data set registrations. To send registrations
-        you can issue a POST request to the <emphasis role="italic">completeDataSetRegistrations</emphasis> resource. Completing a data set is per data set,
-        period and organisation unit. You can optionally specify attribute option combo. You must
-        specify the date of when the data set was completed. The format is as
-        follows:<screen>&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
-&lt;completeDataSetRegistrations xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot;&gt;
-    &lt;completeDataSetRegistration&gt;
-        &lt;dataSet id=&quot;pBOMPrpg1QX&quot; /&gt;
-        &lt;period id=&quot;201401&quot; /&gt;
-        &lt;attributeOptionCombo id=&quot;bRowv6yZOF2&quot; /&gt;
-        &lt;date&gt;2014-01-01&lt;/date&gt;
-        &lt;organisationUnit id=&quot;DiszpKrYNg8&quot; /&gt;
-    &lt;/completeDataSetRegistration&gt;
-    &lt;completeDataSetRegistration&gt;
-        &lt;dataSet id=&quot;pBOMPrpg1QX&quot; /&gt;
-        &lt;period id=&quot;201401&quot; /&gt;
-        &lt;attributeOptionCombo id=&quot;bRowv6yZOF2&quot; /&gt;
-        &lt;date&gt;2014-01-01&lt;/date&gt;
-        &lt;organisationUnit id=&quot;g8upMTyEZGZ&quot; /&gt;
-    &lt;/completeDataSetRegistration&gt;
-    &lt;completeDataSetRegistration&gt;
-        &lt;dataSet id=&quot;pBOMPrpg1QX&quot; /&gt;
-        &lt;period id=&quot;201401&quot; /&gt;
-        &lt;attributeOptionCombo id=&quot;bRowv6yZOF2&quot; /&gt;
-        &lt;date&gt;2010-01-01&lt;/date&gt;
-        &lt;organisationUnit id=&quot;jNb63DIHuwU&quot; /&gt;
-    &lt;/completeDataSetRegistration&gt;
-&lt;/completeDataSetRegistrations&gt;</screen></para>
-      <para>To test the resource you can issue a request using
-        curl:<screen>curl -d @completereg.xml &quot;https://apps.dhis2.org/demo/api/completeDataSetRegistrations&quot; -H &quot;Content-Type:application/xml&quot; -u admin:district -v</screen></para>
-    </section>
-    <section>
       <title>Reading complete data set registrations</title>
       <para>This section explains how to retrieve data set completeness registrations. We will be
         using the <emphasis role="italic">completeDataSetRegistrations</emphasis> resource. The
