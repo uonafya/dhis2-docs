@@ -6605,6 +6605,216 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
+    <title>Enrollment instance query</title>
+    <para>To query for tracked entity instances you can interact with the <emphasis role="italic"
+        >/api/enrollments</emphasis> resource. </para>
+    <section>
+      <title>Request syntax</title>
+      <table frame="all">
+        <title>Tracked entity instances query parameters</title>
+        <tgroup cols="2">
+          <colspec colnum="1" colname="c1" colwidth="1.38*"/>
+          <colspec colnum="2" colname="c3" colwidth="7.25*"/>
+          <thead>
+            <row>
+              <entry>Query parameter</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>ou</entry>
+              <entry>Organisation unit idenfiers, separated by &quot;;&quot;.</entry>
+            </row>
+            <row>
+              <entry>ouMode</entry>
+              <entry>The mode of selecting organisation units, can be SELECTED | CHILDREN |
+                DESCENDANTS | ACCESSIBLE | ALL. Default is SELECTED, which refers to the selected
+                organisation units only. See table below for explanations.</entry>
+            </row>
+            <row>
+              <entry>program</entry>
+              <entry>Program identifier. Restricts instances to being enrolled in the given
+                program.</entry>
+            </row>
+            <row>
+              <entry>programStatus</entry>
+              <entry>Status of the instance for the given program. Can be ACTIVE | COMPLETED |
+                CANCELLED.</entry>
+            </row>
+            <row>
+              <entry>followUp</entry>
+              <entry>Follow up status of the instance for the given program. Can be true | false or
+                omitted.</entry>
+            </row>
+            <row>
+              <entry>programStartDate</entry>
+              <entry>Start date of enrollment in the given program for the tracked entity
+                instance.</entry>
+            </row>
+            <row>
+              <entry>programEndDate</entry>
+              <entry>End date of enrollment in the given program for the tracked entity
+                instance.</entry>
+            </row>
+            <row>
+              <entry>trackedEntity</entry>
+              <entry>Tracked entity identifer. Restricts instances to the given tracked instance
+                type.</entry>
+            </row>
+            <row>
+              <entry>trackedEntityInstsane</entry>
+              <entry>Tracked entity instance identifier. Should not be used together with
+                trackedEntity.</entry>
+            </row>
+            <row>
+              <entry>page</entry>
+              <entry>The page number. Default page is 1.</entry>
+            </row>
+            <row>
+              <entry>pageSize</entry>
+              <entry>The page size. Default size is 50 rows per page.</entry>
+            </row>
+            <row>
+              <entry>totalPages</entry>
+              <entry>Indicates whether to include the total number of pages in the paging response
+                (implies higher response time).</entry>
+            </row>
+            <row>
+              <entry>skipPaging</entry>
+              <entry>Indicates whether paging should be ignored and all rows should be
+                returned.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>The available organisation unit selection modes are explained in the following
+        table.</para>
+      <table frame="all">
+        <title>Organisation unit selection modes</title>
+        <tgroup cols="2">
+          <colspec colnum="1" colname="c1" colwidth="1*"/>
+          <colspec colnum="2" colname="c2" colwidth="3.88*"/>
+          <thead>
+            <row>
+              <entry>Mode</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>SELECTED</entry>
+              <entry>Organisation units defined in the request (default).</entry>
+            </row>
+            <row>
+              <entry>CHILDREN</entry>
+              <entry>Immediate children, i.e. only the first level below, of the organisation units
+                defined in the request.</entry>
+            </row>
+            <row>
+              <entry>DESCENDANTS</entry>
+              <entry>All children, i.e. at only levels below, e.g. including children of children,
+                of the organisation units defined in the request.</entry>
+            </row>
+            <row>
+              <entry>ACCESSIBLE</entry>
+              <entry>All descendants of the data view organisation units associated with the current
+                user. Will fall back to data capture organisation units associated with the current
+                user if the former is not defined.</entry>
+            </row>
+            <row>
+              <entry>ALL</entry>
+              <entry>All organisation units in the system. Requires authority.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>You can specify queries with words separated by space - in that situation the system
+        will query for each word independently and return records where each word is contained in
+        any attribute. A query item can be specified once as an attribute and once as a filter if
+        needed. The query is case insensitive. The following rules apply to the query
+        parameters.</para>
+      <itemizedlist>
+        <listitem>
+          <para>At least one organisation unit must be specified using the <emphasis role="italic"
+              >ou</emphasis> parameter (one or many), or <emphasis role="italic"
+              >ouMode=ALL</emphasis> must be enabled.</para>
+        </listitem>
+        <listitem>
+          <para>Only one of the <emphasis role="italic">program</emphasis> and <emphasis
+              role="italic">trackedEntity</emphasis> parameters can be specified (zero or
+            one).</para>
+        </listitem>
+        <listitem>
+          <para>If <emphasis role="italic">programStatus</emphasis> is specified then <emphasis
+              role="italic">program</emphasis> must also be specified.</para>
+        </listitem>
+        <listitem>
+          <para>If <emphasis role="italic">followUp</emphasis> is specified then <emphasis
+              role="italic">program</emphasis> must also be specified.</para>
+        </listitem>
+        <listitem>
+          <para>If <emphasis role="italic">programStartDate</emphasis> or <emphasis role="italic"
+              >programEndDate</emphasis> is specified then <emphasis role="italic"
+              >program</emphasis> must also be specified.</para>
+        </listitem>
+      </itemizedlist>
+      <para>A query for all instances associated with a specific organisation unit can look like
+        this:</para>
+      <screen>api/enrollments.json?ou=DiszpKrYNg8</screen>
+      <para>To constrain the response to instances which are part of a specific program you can
+        include a program query parameter:</para>
+      <screen>api/enrollments.json?ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;program=ur1Edk5Oe2n</screen>
+      <para>To specify program enrollment dates as part of the query:</para>
+      <screen>api/enrollments.json?&amp;ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n&amp;programStartDate=2013-01-01&amp;programEndDate=2013-09-01</screen>
+      <para>To constrain the response to instances of a specific tracked entity you can include a
+        tracked entity query parameter:</para>
+      <screen>api/enrollments.json?ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;trackedEntity=cyl5vuJ5ETQ</screen>
+      <para>To constrain the response to instances of a specific tracked entity instance you can
+        include a tracked entity instance query parameter, in this case we are restricted it to
+        available enrollments viewable for current
+        user:<screen>api/enrollments.json?ouMode=ACCESSIBLE&amp;trackedEntityInstance=tphfdyIiVL6</screen></para>
+      <para>By default the instances are returned in pages of size 50, to change this you can use
+        the page and pageSize query parameters:</para>
+      <screen>api/enrollments.json?ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;page=2&amp;pageSize=3</screen>
+    </section>
+    <section>
+      <title>Response format</title>
+      <para>This resource supports JSON, JSONP, XLS and CSV resource representations.</para>
+      <itemizedlist>
+        <listitem>
+          <para>json (application/json)</para>
+        </listitem>
+        <listitem>
+          <para>jsonp (application/javascript)</para>
+        </listitem>
+        <listitem>
+          <para>xml (application/xml)</para>
+        </listitem>
+      </itemizedlist>
+      <para>The response in JSON/XML is in object format and can look like the following (please
+        note that field filtering is supported, so if you want a full view, you might want to add
+        fields=*):</para>
+      <screen>{
+    "enrollments": [
+        {
+            "lastUpdated": "2014-03-28T05:27:48.512+0000",
+            "trackedEntity": "cyl5vuJ5ETQ",
+            "created": "2014-03-28T05:27:48.500+0000",
+            "orgUnit": "DiszpKrYNg8",
+            "program": "ur1Edk5Oe2n",
+            "enrollment": "HLFOK0XThjr",
+            "trackedEntityInstance": "qv0j4JBXQX0",
+            "followup": false,
+            "dateOfEnrollment": "2013-05-23T05:27:48.490+0000",
+            "dateOfIncident": "2013-05-10T05:27:48.490+0000",
+            "status": "ACTIVE"
+        }
+    ]
+}</screen>
+    </section>
+  </section>
+  <section>
     <title>Tracked entity instance query</title>
     <para>To query for tracked entity instances you can interact with the <emphasis role="italic"
         >/api/trackedEntityInstances</emphasis> resource. </para>
@@ -6624,7 +6834,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
           <tbody>
             <row>
               <entry>filter</entry>
-              <entry>Attributes to use as a filter for the query. Param can be repeated any number of times. Filters can be applied to a dimension on the format &lt;attribute-id&gt;:&lt;operator&gt;:&lt;filter&gt;[:&lt;operator&gt;:&lt;filter&gt;]. Filter values are case-insensitive and can be repeated together with operator any number of times. Operators can be EQ | GT | GE | LT | LE | NE | LIKE | IN.</entry>
+              <entry>Attributes to use as a filter for the query. Param can be repeated any number
+                of times. Filters can be applied to a dimension on the format
+                &lt;attribute-id&gt;:&lt;operator&gt;:&lt;filter&gt;[:&lt;operator&gt;:&lt;filter&gt;].
+                Filter values are case-insensitive and can be repeated together with operator any
+                number of times. Operators can be EQ | GT | GE | LT | LE | NE | LIKE | IN.</entry>
             </row>
             <row>
               <entry>ou</entry>
@@ -6632,31 +6846,39 @@ ORDER BY oul.level, par.name, ou.name</screen>
             </row>
             <row>
               <entry>ouMode</entry>
-              <entry>The mode of selecting organisation units, can be SELECTED | CHILDREN | DESCENDANTS | ACCESSIBLE | ALL. Default is SELECTED, which refers to the selected organisation units only. See table below for explanations.</entry>
+              <entry>The mode of selecting organisation units, can be SELECTED | CHILDREN |
+                DESCENDANTS | ACCESSIBLE | ALL. Default is SELECTED, which refers to the selected
+                organisation units only. See table below for explanations.</entry>
             </row>
             <row>
               <entry>program</entry>
-              <entry>Program identifier. Restricts instances to being enrolled in the given program.</entry>
+              <entry>Program identifier. Restricts instances to being enrolled in the given
+                program.</entry>
             </row>
             <row>
               <entry>programStatus</entry>
-              <entry>Status of the instance for the given program. Can be ACTIVE | COMPLETED | CANCELLED.</entry>
+              <entry>Status of the instance for the given program. Can be ACTIVE | COMPLETED |
+                CANCELLED.</entry>
             </row>
             <row>
               <entry>followUp</entry>
-              <entry>Follow up status of the instance for the given program. Can be true | false or omitted.</entry>
+              <entry>Follow up status of the instance for the given program. Can be true | false or
+                omitted.</entry>
             </row>
             <row>
               <entry>programStartDate</entry>
-              <entry>Start date of enrollment in the given program for the tracked entity instance.</entry>
+              <entry>Start date of enrollment in the given program for the tracked entity
+                instance.</entry>
             </row>
             <row>
               <entry>programEndDate</entry>
-              <entry>End date of enrollment in the given program for the tracked entity instance.</entry>
+              <entry>End date of enrollment in the given program for the tracked entity
+                instance.</entry>
             </row>
             <row>
               <entry>trackedEntity</entry>
-              <entry>Tracked entity identifer. Restricts instances to the given tracked instance type.</entry>
+              <entry>Tracked entity identifer. Restricts instances to the given tracked instance
+                type.</entry>
             </row>
             <row>
               <entry>page</entry>
@@ -6673,7 +6895,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
             </row>
             <row>
               <entry>skipPaging</entry>
-              <entry>Indicates whether paging should be ignored and all rows should be returned.</entry>
+              <entry>Indicates whether paging should be ignored and all rows should be
+                returned.</entry>
             </row>
           </tbody>
         </tgroup>
@@ -6698,15 +6921,19 @@ ORDER BY oul.level, par.name, ou.name</screen>
             </row>
             <row>
               <entry>CHILDREN</entry>
-              <entry>Immediate children, i.e. only the first level below, of the organisation units defined in the request.</entry>
+              <entry>Immediate children, i.e. only the first level below, of the organisation units
+                defined in the request.</entry>
             </row>
             <row>
               <entry>DESCENDANTS</entry>
-              <entry>All children, i.e. at only levels below, e.g. including children of children, of the organisation units defined in the request.</entry>
+              <entry>All children, i.e. at only levels below, e.g. including children of children,
+                of the organisation units defined in the request.</entry>
             </row>
             <row>
               <entry>ACCESSIBLE</entry>
-              <entry>All descendants of the data view organisation units associated with the current user. Will fall back to data capture organisation units associated with the current user if the former is not defined.</entry>
+              <entry>All descendants of the data view organisation units associated with the current
+                user. Will fall back to data capture organisation units associated with the current
+                user if the former is not defined.</entry>
             </row>
             <row>
               <entry>ALL</entry>
@@ -6715,13 +6942,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
           </tbody>
         </tgroup>
       </table>
-      <para>Note that you can specify attributes with filters for constraining the instances to
-      return, or attributes without filters in order to include the attribute in the response
-      without any constraints. Attributes will be included in the response, while filters will only
-      be used as criteria. </para>
-      <para>You can specify queries with words separated by space - in that situation the system will
-        query for each word independently and return records where each word is contained in any
-        attribute. A query item can be specified once as an attribute and once as a filter if
+      <para>You can specify queries with words separated by space - in that situation the system
+        will query for each word independently and return records where each word is contained in
+        any attribute. A query item can be specified once as an attribute and once as a filter if
         needed. The query is case insensitive. The following rules apply to the query
         parameters.</para>
       <itemizedlist>
@@ -6731,17 +6954,22 @@ ORDER BY oul.level, par.name, ou.name</screen>
               >ouMode=ALL</emphasis> must be enabled.</para>
         </listitem>
         <listitem>
-          <para>Only one of the <emphasis role="italic">program</emphasis> and <emphasis role="italic">trackedEntity</emphasis> parameters can be specified (zero or
+          <para>Only one of the <emphasis role="italic">program</emphasis> and <emphasis
+              role="italic">trackedEntity</emphasis> parameters can be specified (zero or
             one).</para>
         </listitem>
         <listitem>
-          <para>If <emphasis role="italic">programStatus</emphasis> is specified then <emphasis role="italic">program</emphasis> must also be specified.</para>
+          <para>If <emphasis role="italic">programStatus</emphasis> is specified then <emphasis
+              role="italic">program</emphasis> must also be specified.</para>
         </listitem>
         <listitem>
-          <para>If <emphasis role="italic">followUp</emphasis> is specified then <emphasis role="italic">program</emphasis> must also be specified.</para>
+          <para>If <emphasis role="italic">followUp</emphasis> is specified then <emphasis
+              role="italic">program</emphasis> must also be specified.</para>
         </listitem>
         <listitem>
-          <para>If <emphasis role="italic">programStartDate</emphasis> or <emphasis role="italic">programEndDate</emphasis> is specified then <emphasis role="italic">program</emphasis> must also be specified.</para>
+          <para>If <emphasis role="italic">programStartDate</emphasis> or <emphasis role="italic"
+              >programEndDate</emphasis> is specified then <emphasis role="italic"
+              >program</emphasis> must also be specified.</para>
         </listitem>
         <listitem>
           <para>Attribute items can only be specified once.</para>
@@ -6751,14 +6979,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </listitem>
       </itemizedlist>
       <para>A query for all instances associated with a specific organisation unit can look like
-      this:</para>
+        this:</para>
       <screen>api/trackedEntityInstances.json?ou=DiszpKrYNg8</screen>
       <para>To query for instances using one attribute with a filter and one attribute without a
         filter, with one organisation unit using the descendants organisation unit query
         mode:</para>
       <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;filter=AMpUYgxuCaE&amp;ou=DiszpKrYNg8;yMCshbaVExv</screen>
-      <para>A query for instances where one attribute is included in the response and one attribute us
-        used as a filter:</para>
+      <para>A query for instances where one attribute is included in the response and one attribute
+        us used as a filter:</para>
       <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;filter=AMpUYgxuCaE:LIKE:Road&amp;ou=DiszpKrYNg8</screen>
       <para>A query where multiple operand and filters are specified for a filter item:</para>
       <screen>api/trackedEntityInstances.json?ou=DiszpKrYNg8&amp;program=ur1Edk5Oe2n&amp;filter=lw1SqmMlnfh:GT:150:LT:190</screen>
@@ -6768,19 +6996,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
         include a program query parameter:</para>
       <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;program=ur1Edk5Oe2n</screen>
       <para>To specify program enrollment dates as part of the query:</para>
-      <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A
-&amp;ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n
+      <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n
 &amp;programStartDate=2013-01-01&amp;programEndDate=2013-09-01</screen>
       <para>To constrain the response to instances of a specific tracked entity you can include a
         tracked entity query parameter:</para>
       <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;trackedEntity=cyl5vuJ5ETQ</screen>
-      <para>By default the instances are returned in pages of size 50, to change this you can use the
-        page and pageSize query parameters:</para>
+      <para>By default the instances are returned in pages of size 50, to change this you can use
+        the page and pageSize query parameters:</para>
       <screen>api/trackedEntityInstances.json?filter=zHXD5Ve1Efw:EQ:A&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;page=2&amp;pageSize=3</screen>
-      <para>To query for instances which have events of a given status within a given time
-        span:</para>
-      <screen>api/trackedEntityInstances.json?ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n&amp;eventStatus=LATE_VISIT
-&amp;eventStartDate=2014-01-01&amp;eventEndDate=2014-09-01</screen>
       <para>You can use a range of operators for the filtering:</para>
       <table frame="all">
         <title>Filter operators</title>
@@ -6844,7 +7067,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
           <para>xml (application/xml)</para>
         </listitem>
       </itemizedlist>
-      <para>The response in JSON/XML is in object format and can look like the following:</para>
+      <para>The response in JSON/XML is in object format and can look like the following (please
+        note that field filtering is supported, so if you want a full view, you might want to add
+        fields=*):</para>
       <screen>{
     "trackedEntityInstances": [
         {
