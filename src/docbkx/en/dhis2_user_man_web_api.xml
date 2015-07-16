@@ -142,6 +142,71 @@ curl -X POST -u demo:$SECRET -H "Accept: application/json" $SERVER/token -d gran
     </section>
   </section>
   <section>
+    <title>Web-API Error/Info messages</title>
+    <para>In DHIS 2.20 we introduced a new common format for all error/warning and informational
+      message in DHIS 2 web-api, the format should be simple and self explanatory, an example
+      follows:<screen>{
+   "httpStatus" : "Forbidden",
+   "message" : "You don't have the proper permissions to read objects of this type.",
+   "httpStatusCode" : 403,
+   "status" : "ERROR"
+}</screen></para>
+    <para>Here we can see from the message that the user tried to access something I did not have
+      access to. It uses the http status code 403, and the standard http status message <emphasis
+        role="bold">Forbidden</emphasis> which is useful for a program reading the message. We also
+      provide a simple message that could be sent to the user (we are working on making more
+      descriptive messages, and adding internationalization).<table frame="all">
+        <title>WebMessage properties</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c3" colnum="2" colwidth="6.31*"/>
+          <thead>
+            <row>
+              <entry>Name</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>httpStatus</entry>
+              <entry>HTTP Status message for this response, see RFC 2616 (Section 10) for more
+                information.</entry>
+            </row>
+            <row>
+              <entry>httpStatusCode</entry>
+              <entry>HTTP Status code for this response, see RFC 2616 (Section 10) for more
+                information.</entry>
+            </row>
+            <row>
+              <entry>status</entry>
+              <entry>DHIS 2 status, possible values are <emphasis role="italic">OK</emphasis>
+                  | <emphasis role="italic">WARNING</emphasis> | <emphasis role="italic"
+                  >ERROR</emphasis>, where <emphasis role="bold">OK</emphasis> is means everything
+                was successful, <emphasis role="bold">ERROR</emphasis> means that operation did not
+                complete and <emphasis role="bold">WARNING</emphasis> means operation was partially
+                successful, if there message contains a <emphasis role="bold">response</emphasis>
+                property, please look there for more information.</entry>
+            </row>
+            <row>
+              <entry>message</entry>
+              <entry>A user friendly message telling whether the operation was a success or
+                not.</entry>
+            </row>
+            <row>
+              <entry>devMessage</entry>
+              <entry>A more techincal developer friendly message (not currently in use).</entry>
+            </row>
+            <row>
+              <entry>response</entry>
+              <entry>Extension point for future extension to the WebMessage format. This will be
+                documented when it starts being used.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </para>
+  </section>
+  <section>
     <title>Date and period format</title>
     <para>Throughout the Web API we refer to dates and periods. The date format  is:</para>
     <screen>yyyy-MM-dd</screen>
