@@ -10,7 +10,257 @@
     <para>The purpose of program rules is to provide a way to produce complex dynamic behaviors in 
       tracker and event capture. The program rules enables the programs to respond to data values
       entered in a program. The behaviors that can be configured as of now is skip logic and validation
-      rules. Program rules is consisting of one expression, and one to many actions that is performed 
-      in the user interface when the expression is true.</para>
+      rules. Program rules is consisting of one <emphasis role="bold">expression</emphasis>, and one 
+      or more <emphasis role="bold">actions</emphasis> that is triggered in the user interface when 
+      the <emphasis role="bold">expression</emphasis> is true.
+    </para>
+  </section>
+  <section>
+    <title>Setup</title>
+    <para>
+      Program rules can be managed from the "Programs and Attributes" app. Once in the app,
+      navigate to Programs. A program rule belongs to exactly one program, so click on the
+      program for which you want to manage rules and from the context menu navigate to "View
+      program rules". This will open the list of existing rules, if any, for this
+      program.
+    </para>
+    <para>
+      To <emphasis role="bold">add</emphasis> a rule, click the "Add new" button in the
+      top right corner. This will open the new rule screen. Provide a name, short name, code,
+      description, value type, expression and list of actions for the rule.
+    </para>
+    <para>
+      To <emphasis role="bold">edit</emphasis> a rule, click on the relevant rule in the list 
+      to open the context menu and click "Edit". This will open the edit rule screen, where you 
+      can modify the relevant values.
+    </para>
+    <para>
+      To <emphasis role="bold">remove</emphasis> a rule, click on the relevant rule in the list 
+      to open the context menu and click "Remove". Click "OK" in the confirmation dialog
+      to remove the rule.
+    </para>
+    <screenshot>
+      <screeninfo>Program rule list with context menu</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/program_rules/program-rule-list.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+  </section>
+  <section>
+    <title>Add/edit program rule</title>
+    <para>
+      A program rule consists of an <emphasis role="bold">expression</emphasis>, and one or
+      more <emphasis role="bold">actions</emphasis> that will be performed if the <emphasis
+      role="bold">expression</emphasis> is true. The <emphasis role="bold">expression</emphasis>
+      is built from operators, hardcoded values and <emphasis role="bold">source fields</emphasis>.
+      The <emphasis role="bold">source fields</emphasis> is representing attribute and data element
+      values in the <emphasis role="bold">expression</emphasis>.
+    </para>
+    <screenshot>
+      <screeninfo>Edit program rule user interface</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/program_rules/program-rule-edit.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+  </section>
+  <section>
+    <title>
+      Adding source fields
+    </title>
+    <para>
+      <emphasis role="bold">Source fields</emphasis> represent a uniform way to include data values 
+      and attribute values in <emphasis role="bold">expressions</emphasis>. The <emphasis role="bold">
+      source fields</emphasis> is defined as needed when creating <emphasis role="bold">expressions
+      </emphasis>. Creating your first <emphasis role="bold">expression</emphasis> you will
+      typically have to define one or more <emphasis role="bold">source fields</emphasis> first,
+      as expressions usually contain at least one data element or attribute value to be meaningful.
+      The <emphasis role="bold">source fields</emphasis> is shared between all rules in your program,
+      and creating several rules these will share the same library of <emphasis role="bold">source 
+      fields</emphasis>.
+    </para>
+    <para>
+      To add a <emphasis role="bold">source field</emphasis>, click the "+ Add source field" button 
+      under the <emphasis role="bold">source fields</emphasis> list. This will open the follwing dialog:
+    </para>
+    <screenshot>
+      <screeninfo>Add source field dialog</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/program_rules/program-rule-source-field.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Source type: The source types is determining what how the source field is populated with a value:
+            <itemizedlist>
+              <listitem>
+                <para>
+                  Data element newest event program: Populates a source field with the newest data value collected
+                  for one data element within the enrollment. The newest data value is determined with event date.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Data element newest event program stage: Populates a source field with the newest data value collected
+                  for one data element within a specified program stage. In case of several events within the program
+                  stage, the newest data value will be selected by event date.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Tracked entity attribute: Populates the source field with a specified tracked entity attribute 
+                  for the current enrollment. Note: When selecting this option, fields for selecting program stage and data
+                  element is hidden, and a field for selecting tracked entity attribute is displayed instead.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  (other options coming; current event, previous event)
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Source program stage: In case of retreiving data value from a specific program stage, this field is used to
+            define what program stage to retreive from.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Source data element: Used to select which data element to retreive data value for.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Variable name: Specifying the name that is used for the source field when writing expressions. It is encouraged
+            to use a name that makes the expressions readable.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </section>
+  <section>
+    <title>
+      Defining expressions
+    </title>
+    <para>
+      Each program rule has one <emphasis role="bold">expression</emphasis> that determines wether rule
+      should be in effect or not. If the <emphasis role="bold">expression</emphasis> is true the program rule
+      is in effect and the <emphasis role="bold">actions</emphasis>(see next chapter) will be executed. If the 
+      <emphasis role="bold">expression</emphasis> is false, the program rule is no longer in effect and the 
+      <emphasis role="bold">actions</emphasis> will no longer be applied.
+    </para>
+    <para>
+      An <emphasis role="bold">expression</emphasis> is defined using hard coded values, <emphasis role="bold">
+      source fields</emphasis>(see previous chapter) and/or operators. <emphasis role="bold">Expressions</emphasis>
+      can be typed into the edit expression text box, but buttons is available for inserting operators and
+      <emphasis role="bold">source fields</emphasis> at the cursors position. To insert <emphasis role="bold">
+      source fields</emphasis>, click the <emphasis role="bold">source field</emphasis> name within the list at the
+      left.
+    </para>
+    <screenshot>
+      <screeninfo>Expression text box</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/program_rules/program-rule-expression.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>
+      Supported operators:
+      <itemizedlist>
+        <listitem>
+          <para>
+            <emphasis role="bold">+</emphasis> Add numbers together
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">-</emphasis> Subtract numbers from each other
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">*</emphasis> Multiply two numbers
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">/</emphasis> Divide two numbers
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">%</emphasis> Modulus divide two numbers
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">&amp;&amp;</emphasis> Logical AND. True only when the expression on the
+            left and right side is true. The left and right side can be yes/no, yes only or a subexpression 
+            in parenthesis.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">||</emphasis> Logical OR. True when either the expression on the left or
+            the expression on the right side is true. The left and right side can be yes/no, yes only or a 
+            subexpression in parenthesis.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">&gt;</emphasis> Left number greater than right number
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">&gt;=</emphasis> Left number greater than or equal to right number
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">&lt;</emphasis> Left number less than right number
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">&lt;=</emphasis> Left number less than or equal to right number
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">==</emphasis> Left side equal to right side. Supports numbers, text, yes/no
+            and yes only.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">!=</emphasis> Left side not equal to right side. Supports numbers, text, 
+            yes/no and yes only.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">!</emphasis> Negates the following value. Can be used for yes/no, yes only
+            or a subexpression in parenthesis.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">()</emphasis> Parenthesis is used to group subexpressions. 
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
   </section>
 </chapter>
