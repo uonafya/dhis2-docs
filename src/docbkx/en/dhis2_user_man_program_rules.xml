@@ -49,14 +49,23 @@
     </screenshot>
   </section>
   <section>
-    <title>Add/edit program rule</title>
+    <title>Program rule anatomy</title>
     <para>
-      A program rule consists of an <emphasis role="bold">expression</emphasis>, and one or
-      more <emphasis role="bold">actions</emphasis> that will be performed if the <emphasis
-      role="bold">expression</emphasis> is true. The <emphasis role="bold">expression</emphasis>
-      is built from operators, hardcoded values and <emphasis role="bold">source fields</emphasis>.
-      The <emphasis role="bold">source fields</emphasis> is representing attribute and data element
-      values in the <emphasis role="bold">expression</emphasis>.
+      During data entry, the program rules <emphasis role="bold">expressions</emphasis> is evaluated
+      each time the user interface is displayed, and each time a data element is changed. Most types
+      of <emphasis role="bold">actions</emphasis> will take effect immediately as the user enters
+      values in tracker or event capture.
+    </para>
+    <para>
+      Each program rule is given a name and description(see section "Program rule details"). These 
+      fields is not shown to the end user, and is only meant for the program administrator. The 
+      active part of a program rule consists of an <emphasis role="bold">expression</emphasis>(see 
+      section "2 - Expression..."), and one or more <emphasis role="bold">actions</emphasis>(see 
+      section "3. Actions...") that will be performed if the <emphasis role="bold">expression</emphasis>
+      is true. The <emphasis role="bold">expression</emphasis> is built from operators, hardcoded values 
+      and <emphasis role="bold">source fields</emphasis>. The <emphasis role="bold">source fields</emphasis>
+      (see section "1. Source fields") is representing attribute and data element values in the 
+      <emphasis role="bold">expression</emphasis>.
     </para>
     <screenshot>
       <screeninfo>Edit program rule user interface</screeninfo>
@@ -262,5 +271,60 @@
         </listitem>
       </itemizedlist>
     </para>
+  </section>
+  <section>
+    <title>
+      Defining actions
+    </title>
+    <para>
+      Each program rule has one or more <emphasis role="bold">actions</emphasis> attached. These are the behaviors
+      that is triggered in the user interface when the <emphasis role="bold">expression</emphasis>(see previous chapter)
+      is true. <emphasis role="bold">Actions</emphasis> will be applied at once if the <emphasis role="bold">expression
+      </emphasis> is true, and will be reverted if the <emphasis role="bold">expression</emphasis> is no longer true.
+    </para>
+    <para>
+      To add a new <emphasis role="bold">action</emphasis>, click the "+ add action" button at the bottom of the program
+      rule page. Once <emphasis role="bold">actions</emphasis>has been added, they can be removed again by clicking the 
+      - button at the right side of the <emphasis role="bold">actions</emphasis> row.
+    </para>
+    <screenshot>
+      <screeninfo>Expression text box</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/program_rules/program-rule-add-action.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>
+      There are several types of <emphasis role="bold">actions</emphasis>, and the type is selected individually for each
+      action row. 
+    </para>
+    <section>
+      <title>
+        Hide field action
+      </title>
+      <para>
+        A <emphasis role="bold">hide field action</emphasis> is defined by selecting "Hide field" in the first column of the
+        <emphasis role="bold">action</emphasis> row. 
+      </para>
+      <screenshot>
+        <screeninfo>Expression text box</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resources/images/program_rules/program-rule-hide-field-action.png" format="PNG"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <para>
+        The second column is optional, and it allows defining a custom message to the end user in case the rule hides and 
+        blanks out the field after the end user typed in or selected a value. Note: If a <emphasis role="bold">hide field 
+        action</emphasis> hides a field that contains a value, the field will always be blanked. If no message is defined,
+        a standard message will be displayed to alert the user.
+      </para>
+      <para>
+        The third column specifies which data element that the <emphasis role="bold">hide field action</emphasis> should
+        hide.
+      </para>
+    </section>
   </section>
 </chapter>
