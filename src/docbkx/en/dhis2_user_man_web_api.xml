@@ -142,20 +142,17 @@ curl -X POST -u demo:$SECRET -H "Accept: application/json" $SERVER/token -d gran
     </section>
   </section>
   <section>
-    <title>Web-API Error/Info messages</title>
-    <para>In DHIS 2.20 we introduced a new common format for all error/warning and informational
-      message in DHIS 2 web-api, the format should be simple and self explanatory, an example
-      follows:<screen>{
+    <title>Error and info messages</title>
+    <para>The Web API uses a consistent format for all error/warning and informational
+      messages:<screen>{
    "httpStatus" : "Forbidden",
    "message" : "You don't have the proper permissions to read objects of this type.",
    "httpStatusCode" : 403,
    "status" : "ERROR"
 }</screen></para>
-    <para>Here we can see from the message that the user tried to access something I did not have
-      access to. It uses the http status code 403, and the standard http status message <emphasis
-        role="bold">Forbidden</emphasis> which is useful for a program reading the message. We also
-      provide a simple message that could be sent to the user (we are working on making more
-      descriptive messages, and adding internationalization).<table frame="all">
+    <para>Here we can see from the message that the user tried to access a resource I did not have
+      access to. It uses the http status code 403, the http status message <emphasis role="bold"
+        >forbidden</emphasis> and a descriptive message.<table frame="all">
         <title>WebMessage properties</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
