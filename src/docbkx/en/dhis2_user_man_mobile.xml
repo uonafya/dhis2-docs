@@ -1,49 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
-  <title>Mobile</title>
-  <section>
-    <title>Introduction</title>
-    <para>DHIS2 provides a range of options to allow data entry from mobile devices, including a dedicated GPRS/3G J2ME client, a SMS based client, and a version of DHIS2 which has been optimized specifically for mobile browsers. Each of these solutions will be described in detail in the following sections.</para>
-    <para>Collection of data in the field can be technically challenging and expensive. Mobile phone solutions has the potential to significantly reduce the complexity of deploying a distributed data collection system. Using a simple Java client installed on a mobile phone or a web browser which works on the mobile phone, field workers can report directly to the DHIS2 database through their mobile device.</para>
-    <para>While mobile phone solutions have a great potential it is also an area that can be
-      difficult to &quot;get right&quot;. Phones lack processing power and have a small display,
-      need to be charged and often makes the most sense in areas where mobile network coverage is
-      weak and patchy.</para>
-    <para>There are currently three main mobile solutions for DHIS2, and we continue to evolve these as well as look at other possible solutions:</para>
-    <itemizedlist>
-      <listitem>
-        <para>A mobile browser optimized data entry module</para>
-        <para>This module allows for data entry directly with the browser of the mobile device. A wide range of devices and mobile browsers are supported including: Opera mini 3 &amp; 4 (basic and advanced) - Opera mini 4, Nokia S40 mobiles ,Windows Phone 7, Window Mobile 6, Palm Pre, Blackberry (v5 and v6), Firefox mobile, iOS devices (iPhone) and Android devices. This client does not have offline-support, and an active GPRS/3G connection is required. It does not require a new application installation on the phone to support new features, but does require a stable data connection for use. This solution is described in <xref linkend="mobile_web_based"/></para>
-      </listitem>
-      <listitem>
-        <para>J2ME GPRS/3G client (one client for facility reporting and one for program tracking)</para>
-        <para>DHIS-mobile includes two separate J2ME clients supporting GPRS as a transport. One clients supports facility aggregate reporting and the second client supports name-based program tracking. These clients are split into separate applications to make deployment easier. Some health workers may have both applications installed on their phone. Both of these clients support offline-storage of data. <xref linkend="mobile_j2me_gprs_3g"/></para>
-        <para>An active GPRS/3G connection is required in order to send data to the DHIS2 database, but data can be entered offline and transmitted when a connection is present. This client is intended primarily for low-end devices which support J2ME applications, although the offline-supports adds some memory requirements which limits the handset selection. While the solution is primarily tested on Nokia phones, it also works on several other J2ME capable handsets.</para>
-        <para>The facility reporting J2ME client is described in <xref linkend="mobile_j2me_gprs_3g_facility_reporting"/></para>
-        <para>The name-based program tracking J2ME client is described in  <xref linkend="mobile_j2me_gprs_3g_activity_reporting"/></para>
-      </listitem>
-      <listitem>
-        <para>Legacy J2ME client with SMS transport</para>
-        <para>DHIS2 can also be used with an earlier J2ME-client that uses SMS as a transport. This client requires some manual configuration on the server side, and is not supported by the standard build of DHIS2. The client is a custom built J2ME mobile application. The SMS-support is separate from the SMS support used in other parts of DHIS2. The solution has mainly been deployed using GSM modems, which are not good for high-volume applications, but can also be used as a basis for a more reliable SMSC-connection. Using SMS as a transport would be an appropriate solution where GPRS/3G is not available, but GSM coverage is available. Updating of forms to the client is not supported at this point in time, and new data sets require a new application install. This solution is described in <xref linkend="mobile_j2me_sms_transport"/></para>
-        <para>The DHIS-mobile team is working on a hybrid GPRS and SMS solution that is based on the newer J2ME-client and the new SMS-support within the platform.</para>
-      </listitem>
-      <listitem>
-        <para>SMS connection</para>
-        <para>When deploying SMS solutions, the quality and stability of the SMS link is critical for the overall service quality. For small demos and tests, one can use phone modems to send and receive SMS, but our experience is that for any larger installation, one should connect to the mobile operator SMS infrastructure (SMSC) via more robust interfaces. We can either connect directly to the mobile operator SMSC (typically through a protocol called SMPP but sometimes using HTTP or other protocols) or via a service provider called an SMS gateway provider. 
-</para>
-        <para>When connecting directly to the operator, for receiving SMS, one has to connect to all the operators whose subscribers should be able to send us messages. The typical scenario is that the operator assigns a short number (4 or 5 digits) to our service, and forward the messages sent to this number to our/your server. The best is to have all operators assign the same number, but this isn&apos;t necessarily automatic.</para>
-        <para>If connecting via an SMS gateway company, they connect to all operators for us and typically put some additional charge on the message price. Since there is a cost per number and per operator, this may sometimes still be price efficient. SMS gateway providers typically connect via HTTP or SMPP.</para>
-        <para>The simplest and cheapest would be if you already have some SMS connection agreement
-          that we could leverage. I would be useful to get this interface up and running as soon as
-          possible, as this really might be the most complex integration point (though in principle
-          it really is quite simple to do when everything runs smoothly). If you do not yet have
-          such an agreement, we can help you in the process.</para>
-        <para>Note that some operators offer long numbers as a service in addition to short numbers. Then you get what looks like a real mobile number, and it can be accessed by all other operators&apos; customers also. This is often a very simple way of offering SMS as you do not need to connect to all operators. But not many operators offer this.</para>
-        <para>It is quite relevant for the deployment if the users have subscriptions from a single operator or if many operators are used. One operator is simpler. </para>
-      </listitem>
-    </itemizedlist>
-  </section>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dhis2_user_man_mobile_intro.xml" xpointer="mobile_intro" encoding="UTF-8"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dhis2_user_man_mobile_web_based.xml" xpointer="mobile_web_based" encoding="UTF-8"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dhis2_user_man_mobile_J2ME_GPRS_3G.xml" xpointer="mobile_j2me_gprs_3g" encoding="UTF-8"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dhis2_user_man_mobile_sms_command.xml" xpointer="mobile_sms_command" encoding="UTF-8"/>
