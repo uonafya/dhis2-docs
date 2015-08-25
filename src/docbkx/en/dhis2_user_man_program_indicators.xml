@@ -7,8 +7,8 @@
   <section>
     <title>Overview</title>
     <para>The purpose of program indicators is to provide a way to produce calculated values based
-      on data elements and attributes. Program indicators contain an expression and a filter, which
-      in combination determines how the indicator should be evaluated.</para>
+      on data elements and attributes. Program indicators have an aggregation type, an expression
+      and a filter, which in combination determines how the indicator will be evaluated.</para>
   </section>
   <section>
     <title>Setup</title>
@@ -37,13 +37,62 @@
   </section>
   <section>
     <title>Indicator evaluation</title>
-    <para>Program indicators are evaluated based on its expression and filter. The <emphasis
-        role="bold">expression</emphasis> defines how the indicator is being calculated. The
-      expression can contain references to various entities which will be substituted with a related
-      values when the indicator is calculated:<itemizedlist>
+    <para>Program indicators are evaluated based on its aggregation type, expression and filter. The
+      order of evaluation is as follows:</para>
+    <itemizedlist>
+      <listitem>
+        <para>The <emphasis role="italic">filter</emphasis> will filter the events which become part
+          of the evaluation / aggregation routine.</para>
+      </listitem>
+      <listitem>
+        <para>The <emphasis role="italic">expression</emphasis> will be evaluated per event.</para>
+      </listitem>
+      <listitem>
+        <para>All evaluated expression values will be <emphasis role="italic">aggregated</emphasis>
+          according to the aggregation type of the program indicator.</para>
+      </listitem>
+    </itemizedlist>
+    <section>
+      <title>Aggregation type</title>
+    <para>The <emphasis role="bold">aggregation type</emphasis> determines how the program indicator
+        will be aggregated. The following aggregation types are available:<itemizedlist>
+          <listitem>
+            <para>average</para>
+          </listitem>
+          <listitem>
+            <para>sum</para>
+          </listitem>
+          <listitem>
+            <para>count</para>
+          </listitem>
+          <listitem>
+            <para>std dev</para>
+          </listitem>
+          <listitem>
+            <para>variance</para>
+          </listitem>
+          <listitem>
+            <para>min</para>
+          </listitem>
+          <listitem>
+            <para>max</para>
+          </listitem>
+          <listitem>
+            <para>custom (allows expression inline aggregation types)</para>
+          </listitem>
+        </itemizedlist>The custom aggregation type is special as it allows you to specify the
+        aggregation type inline in the expression. All other aggregation types are applied to the
+        entire expression.</para>
+    </section>
+    <section>
+      <title>Expression</title>
+    <para>The <emphasis role="bold">expression</emphasis> defines how the indicator is being
+      calculated. The expression can contain references to various entities which will be
+      substituted with a related values when the indicator is calculated:<itemizedlist>
         <listitem>
           <para>Data elements: Will be substituted with the value of the data element for the time
-            period and organisation unit for which the calculation is done.</para>
+            period and organisation unit for which the calculation is done. Refers to both program
+            stage and data element.</para>
         </listitem>
         <listitem>
           <para>Attributes: Will be substituted with the value of the attribute for the person /
@@ -60,7 +109,8 @@
         </listitem>
       </itemizedlist></para>
     <para>The expression is a mathematical expression that can contain operators which include
-      multiply, divide, plus and minus.</para>    
+      multiply, divide, plus and minus. The expression will be evaluated <emphasis role="italic">per
+        event</emphasis>, then aggregated according to its aggregation type.</para>    
     <screenshot>
       <screeninfo>Program indicator list with context menu</screeninfo>
       <mediaobject>
@@ -69,6 +119,14 @@
         </imageobject>
       </mediaobject>
     </screenshot>
+    <para>An example expression that includes both attributes, data elements and constants looks like
+      this:<screen>(A{GPkGfbmArby} + #{mCXR7u4kNBW.NFkjsNiQ9PH}) * C{bCqvfPR02Im}</screen></para>
+    <para>An example expression which uses the custom aggregation type and hence can use inline
+      aggregation types looks like
+      this:<screen>(sum(#{mCXR7u4kNBW.K0A4BauXJDl} * #{mCXR7u4kNBW.NFkjsNiQ9PH}) / sum(#{mCXR7u4kNBW.NFkjsNiQ9PH})) * 100</screen></para>
+    </section>
+    <section>
+      <title>Filter</title>
     <para>The <emphasis role="bold">filter</emphasis> is applied to events and filters the data
       source used for the calculation of the indicator. I.e. the filter is applied to the set of
       events before the indicator expression is being evaluated. The filter must evaluate to either
@@ -116,10 +174,50 @@
     <para>You can switch between data elements, attributes, variables and constants by using the
       tabs. You can include such items into expressions and filters by double-clicking in the list.
       The buttons below the expression area can be used to insert operators.</para>
+    <para>An example filter that uses both attributes and data elements looks like
+      this:<screen>A{cejWyOfXge6} == 'Female' and #{A03MvHHogjR.a3kGcGDCuk6} &lt;= 2</screen></para>    
     <para><emphasis role="italic">A tip to expert users:</emphasis> DHIS 2 is using the JEXL library
       for evaluating expressions which supports additional syntax beyond what is covered in this
       documentation. See the reference at the <ulink
         url="http://commons.apache.org/proper/commons-jexl/reference/syntax.html">project home
         page</ulink> to learn how you can create more sophisticated expressions.</para>
+    </section>
+    <section>
+      <title>Functions</title>
+      <para>The indicator expression and filter support a range of functions. The functions can be
+        applied to data elements and attributes:<itemizedlist>
+          <listitem>
+            <para>d2:zing: Evaluates the data element/attribute to zero if the value is negative,
+              otherwise to the value itself.</para>
+          </listitem>
+          <listitem>
+            <para>d2:oizp: Evaluates the data element/attribute to one if the value is zero or
+              positive, otherwise to zero. </para>
+          </listitem>
+        </itemizedlist></para>
+      <para>An example expression that uses functions looks like
+        this:<screen>d2:zing(A{GPkGfbmArby}) + d2:oizp(#{mCXR7u4kNBW.NFkjsNiQ9PH}))</screen></para>
+    </section>
+    <section>
+      <title>Variables</title>
+      <para>The indicator expression and filter support a range of variables:<itemizedlist>
+          <listitem>
+            <para>execution_date: The date of when the event took place.</para>
+          </listitem>
+          <listitem>
+            <para>current_date: The current date.</para>
+          </listitem>
+          <listitem>
+            <para>value_count: The number of non-null values in the expression part of the
+              event.</para>
+          </listitem>
+          <listitem>
+            <para>zero_pos_value_count: The number of numeric positive values in the expression part
+              of the event.</para>
+          </listitem>
+        </itemizedlist></para>
+      <para>An example expression that uses variables looks like
+        this:<screen>(#{A03MvHHogjR.a3kGcGDCuk6} + #{A03MvHHogjR.wQLfBvPrXqq}) / V{value_count}</screen></para>
+    </section>
   </section>
 </chapter>
