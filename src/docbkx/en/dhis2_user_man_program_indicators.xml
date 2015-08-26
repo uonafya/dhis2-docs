@@ -56,8 +56,8 @@
       <title>Aggregation type</title>
     <para>The <emphasis role="bold">aggregation type</emphasis> determines how the program indicator
         will be aggregated. The following aggregation types are available:</para>
-      <para>average, sum, count, std dev, variance, min, max, custom (allows expression inline
-        aggregation types)</para>
+      <para>average, sum, count, std dev, variance, min, max, custom (allows inline aggregation
+        types in expression)</para>
       <para>The custom aggregation type is special as it allows you to specify the aggregation type
         inline in the expression. All other aggregation types are applied to the entire
         expression.</para>
@@ -112,35 +112,58 @@
       then the event is included later in the expression evaluation, if not it is ignored. The
       filter can, in a similar way as expressions, contain references to data elements, attributes
       and constants.</para>
-    <para>The indicator filter can in addition use logical operators including the following:<itemizedlist>
-        <listitem>
-          <para>"and": Logical AND</para>
-        </listitem>
-        <listitem>
-          <para>"or": Logical OR</para>
-        </listitem>
-        <listitem>
-          <para>"==": Equal to</para>
-        </listitem>
-        <listitem>
-          <para>"!=": Not equal to</para>
-        </listitem>
-        <listitem>
-          <para>"&lt;": Less than</para>
-        </listitem>
-        <listitem>
-          <para>"&lt;=": Less than or equal to</para>
-        </listitem>
-        <listitem>
-          <para>">": Greater than</para>
-        </listitem>
-        <listitem>
-          <para>">=": Greater than or equal to</para>
-        </listitem>
-      </itemizedlist>These operators can be used to form logical expressions which ultimately
-      evaluates to true or false. E.g. one can express that multiple data elements must be a specifc
-      value, or that specific attributes must have numerical values less or greater than a
-      constant.</para>
+      <para>The indicator filter can in addition use logical operators including the
+        following:</para>
+      <table frame="all">
+        <title>Operators</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="7*"/>
+          <thead>
+            <row>
+              <entry>Operator</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>and</entry>
+              <entry>Logical AND</entry>
+            </row>
+            <row>
+              <entry>or</entry>
+              <entry>Logical OR</entry>
+            </row>
+            <row>
+              <entry>==</entry>
+              <entry>Equal to</entry>
+            </row>
+            <row>
+              <entry>!=</entry>
+              <entry>Not equal to</entry>
+            </row>
+            <row>
+              <entry>&lt;</entry>
+              <entry>Less than</entry>
+            </row>
+            <row>
+              <entry>&lt;=</entry>
+              <entry>Less than or equal to</entry>
+            </row>
+            <row>
+              <entry>></entry>
+              <entry>Greater than</entry>
+            </row>
+            <row>
+              <entry>>=</entry>
+              <entry>Greater than or equal to</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>These operators can be used to form logical expressions which ultimately evaluates to
+        true or false. E.g. one can express that multiple data elements must be a specific value, or
+        that specific attributes must have numerical values less or greater than a constant.</para>
     <screenshot>
       <screeninfo>Program indicator list with context menu</screeninfo>
       <mediaobject>
