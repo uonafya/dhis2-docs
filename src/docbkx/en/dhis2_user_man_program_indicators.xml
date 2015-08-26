@@ -186,37 +186,70 @@
     <section>
       <title>Functions</title>
       <para>The indicator expression and filter support a range of functions. The functions can be
-        applied to data elements and attributes:<itemizedlist>
-          <listitem>
-            <para>d2:zing: Evaluates the data element/attribute to zero if the value is negative,
-              otherwise to the value itself.</para>
-          </listitem>
-          <listitem>
-            <para>d2:oizp: Evaluates the data element/attribute to one if the value is zero or
-              positive, otherwise to zero. </para>
-          </listitem>
-        </itemizedlist></para>
+        applied to data elements and attributes:</para>
+      <table frame="all">
+        <title>Functions</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="4.13*"/>
+          <thead>
+            <row>
+              <entry>Function</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>d2:zing</entry>
+              <entry>Evaluates the data element/attribute to zero if the value is negative,
+                otherwise to the value itself.</entry>
+            </row>
+            <row>
+              <entry>d2:oizp</entry>
+              <entry>Evaluates the data element/attribute to one if the value is zero or positive,
+                otherwise to zero. </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
       <para>An example expression that uses functions looks like
         this:<screen>d2:zing(A{GPkGfbmArby}) + d2:oizp(#{mCXR7u4kNBW.NFkjsNiQ9PH}))</screen></para>
     </section>
     <section>
       <title>Variables</title>
-      <para>The indicator expression and filter support a range of variables:<itemizedlist>
-          <listitem>
-            <para>execution_date: The date of when the event took place.</para>
-          </listitem>
-          <listitem>
-            <para>current_date: The current date.</para>
-          </listitem>
-          <listitem>
-            <para>value_count: The number of non-null values in the expression part of the
-              event.</para>
-          </listitem>
-          <listitem>
-            <para>zero_pos_value_count: The number of numeric positive values in the expression part
-              of the event.</para>
-          </listitem>
-        </itemizedlist></para>
+      <para>The indicator expression and filter support a range of variables:</para>
+      <table frame="all">
+        <title>Variables</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="3.55*"/>
+          <thead>
+            <row>
+              <entry>Variable</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>execution_date</entry>
+              <entry>The date of when the event took place.</entry>
+            </row>
+            <row>
+              <entry>current_date</entry>
+              <entry>The current date.</entry>
+            </row>
+            <row>
+              <entry>value_count</entry>
+              <entry>The number of non-null values in the expression part of the event.</entry>
+            </row>
+            <row>
+              <entry>zero_pos_value_count</entry>
+              <entry>The number of numeric positive values in the expression part of the
+                event.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
       <para>An example expression that uses variables looks like
         this:<screen>(#{A03MvHHogjR.a3kGcGDCuk6} + #{A03MvHHogjR.wQLfBvPrXqq}) / V{value_count}</screen></para>
     </section>
