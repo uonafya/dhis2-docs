@@ -190,9 +190,9 @@
       <table frame="all">
         <title>Functions</title>
         <tgroup cols="3">
-          <colspec colname="c1" colnum="1" colwidth="1.23*"/>
-          <colspec colname="newCol2" colnum="2" colwidth="1*"/>
-          <colspec colname="c2" colnum="3" colwidth="5.33*"/>
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="newCol2" colnum="2" colwidth="2*"/>
+          <colspec colname="c2" colnum="3" colwidth="3.61*"/>
           <thead>
             <row>
               <entry>Function</entry>
@@ -204,8 +204,14 @@
             <row>
               <entry>d2:daysBetween</entry>
               <entry>(date, date)</entry>
-              <entry>Produces the number of days between two data elements/attributes of type
-                date.</entry>
+              <entry>Produces the number of days between two data elements/attributes of type date.
+                The static date format is 'yyyy-MM-dd'.</entry>
+            </row>
+            <row>
+              <entry>d2:condition</entry>
+              <entry>(boolean expr, true-val, false-val)</entry>
+              <entry>Evaluates the conditional expression and if true returns the true value, if
+                false returns the false value. The conditional expression must be quoted.</entry>
             </row>
             <row>
               <entry>d2:zing</entry>
@@ -222,8 +228,12 @@
           </tbody>
         </tgroup>
       </table>
-      <para>An example expression that uses functions looks like
+      <para>An example expression that uses the "zing" and "oizp" functions looks like
         this:<screen>d2:zing(A{GPkGfbmArby}) + d2:oizp(#{mCXR7u4kNBW.NFkjsNiQ9PH}))</screen></para>
+      <para>An example expression that uses the "daysBetween" function looks like
+        this:<screen>d2:zing(#{mCXR7u4kNBW.k8ja2Aif1Ae},'2015-06-01')</screen></para>
+      <para>An example expression that uses the "condition" function looks like
+        this:<screen>d2:condition('#{mCXR7u4kNBW.NFkjsNiQ9PH} > 100',150,50)</screen></para>
     </section>
     <section>
       <title>Variables</title>
