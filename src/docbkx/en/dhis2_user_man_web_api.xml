@@ -6148,7 +6148,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
-    <title>Generating resource, analytics and data mart tables</title>
+    <title>Generating resource and analytics tables</title>
     <para>DHIS 2 features a set of generated database tables which are used as basis for various
       system functionality. These tables can be executed immediately or scheduled to be executed at
       regular intervals through the user interface. They can also be generated through the Web API
@@ -6199,10 +6199,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </tbody>
       </tgroup>
     </table>
-    <para>The data mart is tables containing pre-calculated aggregated data which are used by DHIS 2
-      analysis modules and can be used directly by SQL reports. The data mart tables can be
-      generated with a POST or PUT request to:</para>
-    <screen>api/resourceTables/dataMart</screen>
     <para>These requests will return immediately and initiate a server-side process.</para>
   </section>
   <section>
@@ -7870,7 +7866,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
       below.<screen>{
     "resourceTableStrategy": "allDaily",
     "analyticsStrategy": "allDaily",
-    "dataMartStrategy": "allDaily",
     "monitoringStrategy": "allDaily",
     "dataSynchStrategy": "enabled"
 }</screen></para>
@@ -7895,10 +7890,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
             <row>
               <entry>Analytics task</entry>
               <entry>allDaily | last3YearsDaily</entry>
-            </row>
-            <row>
-              <entry>Data mart task</entry>
-              <entry>allDaily</entry>
             </row>
             <row>
               <entry>Monitoring</entry>

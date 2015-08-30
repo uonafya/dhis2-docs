@@ -107,45 +107,25 @@ Along the time dimension there are several possibilities, the two most common wa
       </section>
     </section>
     <section>
-      <title>Data mart</title>
-      <para>The purpose of the data mart is to provide pre-processed data to external data analysis and reporting tools. The data mart consists of two tables, aggregateddatavalues and aggregatedindicatorvalues in the DHIS 2 database. The values in the data mart are aggregated versions of the raw data found in the datavalue table as well as calculated indicator values. Aggregation can take place over time (e.g. from monthly data to aggregated quarterly values), or along the organisation unit hierarchy levels (e.g. from PHU data to aggregated district totals). The data mart can store all kinds of such aggregated values. The data mart is as such just a processed &apos;copy&apos; of the data values and it can be emptied and regenerated at any time, and the tables are read only tables. The metadata in the two data mart tables are referenced by internal identifiers, such as dataelementid, organisationunitid which refer to the tables like dataelement and organisationunit, see &apos;How to make use of the data mart in external tools&apos; for more on this. </para>
-      <section>
-        <title>The data mart export process</title>
-        <para>The DHIS2 Data Mart handles the aggregation of data across multiple dimensions (organisation unit hierarchy, orgunit group hierarchy, time, etc) and can be controlled through this interface. Select the organisation unit levels which should be aggregated, the start date and end date, and press &quot;Start export&quot;. The data mart process will be executed in the background, and a full report of the export process will be updated regularly so that you can determine the state of the process. See the section on &quot;Scheduling&quot; in the data administration module for information on how this process can be triggered to run automatically.</para>
-        <screenshot>
-          <mediaobject>
-            <imageobject>
-              <imagedata width="60%" align="center" fileref="resources/images/dhis2_creating_reporting/datamart.png"/>
-            </imageobject>
-          </mediaobject>
-        </screenshot>
-        <section>
-          <title>Data element categories in the data mart</title>
-          <para>Each data value for a data element has a reference to a category option combo, which is a combination of the disaggregations for the data value, e.g. (male,&lt;5y) or (In PHU, &lt;1y). These disaggregations are exported as they are to the data mart, and no aggregation is done on this dimension. See the data elements section for more on data element categories and the resource tables section for more information on how to do aggregation on these categories.</para>
-        </section>
-        <section>
-          <title>Adding new data to an existing data mart</title>
-          <para>When you add new data to an existing data mart the new values will be appended to the existing so that the data mart grows for each new process if new selections (such as new periods) have been made. If any of the selected values are already in the data mart, then the old will be replaced by the newly generated values. </para>
-        </section>
-      </section>
-    </section>
-    <section>
       <title>Resource tables</title>
-      <para>Resource tables provide additional information about the dimensions of the data in a format that is well suited for external tools to combine with the data mart tables. By joining the data mart with these resource tables one can easily aggregate along the data element category dimension or data element/indicator/organisation unit groups dimensions. E.g. by tagging all the data values with the category option male or female and provide this in a separate column &apos;gender&apos; one can get subtotals of male and female based on data values that are collected for category option combinations like (male, &lt;5) and (male,&gt;5). See the Pivot Tables section for more examples of how these can be used.
-
-orgunitstructure is another important table in the database that helps to provide the hierarchy of orgunits together with the data. By joining the orgunitstructure table with the data mart tables you can get rows of data values with the full hierarchy, e.g. on the form:
-OU1, OU2, OU3, OU4, DataElement, Period, Value
-(Sierra Leone, Bo, Badija, Ngelehun CHC, BCG &lt;1, Jan-10, 32)
-
-This format makes it much easier for e.g. pivot tables or other OLAP tools to aggregate data up the hierarchy.
-</para>
+      <para>Resource tables provide additional information about the dimensions of the data in a
+        format that is well suited for external tools to combine with the data value table. By
+        joining the data value table with these resource tables one can easily aggregate along the
+        data element category dimension or data element/indicator/organisation unit groups
+        dimensions. E.g. by tagging all the data values with the category option male or female and
+        provide this in a separate column &apos;gender&apos; one can get subtotals of male and
+        female based on data values that are collected for category option combinations like (male,
+        &lt;5) and (male,&gt;5). See the Pivot Tables section for more examples of how these can be
+        used. orgunitstructure is another important table in the database that helps to provide the
+        hierarchy of orgunits together with the data. By joining the orgunitstructure table with the
+        data values table you can get rows of data values with the full hierarchy, e.g. on the form:
+        OU1, OU2, OU3, OU4, DataElement, Period, Value (Sierra Leone, Bo, Badija, Ngelehun CHC, BCG
+        &lt;1, Jan-10, 32) This format makes it much easier for e.g. pivot tables or other OLAP
+        tools to aggregate data up the hierarchy. </para>
     </section>
     <section id="reportTable">
       <title>Report tables</title>
       <para>Report tables are defined, cross-tabulated reports which can be used as the basis of further reports, such as Excel Pivot Tables or simply downloaded as an Excel sheet. Report tables are intended to provide a specific view of data which is required, such as &quot;Monthly National ANC Indicators&quot;. This report table might provide all ANC indicators for a country, aggregated by month for the entire country.  This data could of course be retrieved from the main datamart, but report tables generally perform faster and present well defined views of data to users. </para>
-      <important>
-        <para> It is therefore important to keep in mind that when the aggregation strategy of the system is set to &quot;Batch&quot;, the data for each report table must also be present in the data mart. </para>
-      </important>
     </section>
   </section>
   <section>
@@ -383,11 +363,10 @@ Above the table there are six buttons; five download buttons and one Back button
         specified layout. Standard reports can be based either on report tables or SQL queries. Both
         approaches are described in the following sections. The main advantage of using report
         tables is that of simplicity - no special development skills are required. In cases where
-        you have special requirements or need to utilize additional parts of the DHIS database,
-        beyond the data mart, you might want to use a SQL based standard report. In any case you
-        will be able to utilize report parameters in order to create dynamic reports. The following
-        guide will use the report table approach, while the SQL approach is covered towards the
-        end.</para>
+        you have special requirements or need to utilize additional parts of the DHIS database you
+        might want to use a SQL based standard report. In any case you will be able to utilize
+        report parameters in order to create dynamic reports. The following guide will use the
+        report table approach, while the SQL approach is covered towards the end.</para>
     </section>
     <section>
       <title>Designing Standard reports in iReport</title>
