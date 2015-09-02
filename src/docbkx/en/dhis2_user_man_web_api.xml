@@ -6335,6 +6335,76 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </tgroup>
       </table>
     </section>
+    <section>
+      <title>View asynchronous task status</title>
+      <para>Several tasks which typically take a significant time to complete can be performed
+        asynchronously. After initiating an async task you can poll the status through the <emphasis
+          role="italic">system/tasks</emphasis> resource by suppling the task category of interest. </para>
+      <para>When polling for the task status you need to authenticate as the same user which
+        initiated the task. The following task categories are supported.</para>
+      <para>
+        <table frame="all">
+          <title>Task categories</title>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="3.65*"/>
+            <thead>
+              <row>
+                <entry>Identifier</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>ANALYTICSTABLE_UPDATE</entry>
+                <entry>Generation of the analytics tables.</entry>
+              </row>
+              <row>
+                <entry>RESOURCETABLE_UPDATE</entry>
+                <entry>Generation of the resource tables.</entry>
+              </row>
+              <row>
+                <entry>MONITORING</entry>
+                <entry>Processing of data surveillance/monitoring validation rules.</entry>
+              </row>
+              <row>
+                <entry>DATAVALUE_IMPORT</entry>
+                <entry>Import of data values.</entry>
+              </row>
+              <row>
+                <entry>EVENT_IMPORT</entry>
+                <entry>Import of events.</entry>
+              </row>
+              <row>
+                <entry>METADATA_IMPORT</entry>
+                <entry>Import of meta-data.</entry>
+              </row>
+              <row>
+                <entry>DATAINTEGRITY</entry>
+                <entry>Processing of data integrity checks.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </para>
+      <para>You can poll tasks through a GET request to the system tasks
+        resource:<screen>api/system/tasks/{task-category-id}</screen></para>
+      <para>A request to poll for the status of a data value import task looks like
+        this:<screen>api/system/tasks/DATAVALUE_IMPORT</screen></para>
+      <para>The response will provide information about the status, such as the notification level,
+        category, time and status. The completed property indicates whether the process is
+        considered to be
+        complete.<screen>[
+    {
+        "uid": "hpiaeMy7wFX",
+        "level": "INFO",
+        "category": "DATAVALUE_IMPORT",
+        "time": "2015-09-02T07:43:14.595+0000",
+        "message": "Import done",
+        "completed": true
+    }
+]</screen></para>
+    </section>
   </section>
   <section>
     <title>Users</title>
