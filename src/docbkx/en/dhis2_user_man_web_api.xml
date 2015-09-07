@@ -709,6 +709,12 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
               <entry>false</entry>
               <entry>Collection is empty</entry>
             </row>
+            <row>
+              <entry>in</entry>
+              <entry> string | boolean | integer | float | date </entry>
+              <entry>true</entry>
+              <entry>Find objects matching 1 or more values</entry>
+            </row>
           </tbody>
         </tgroup>
       </table></para>
@@ -726,6 +732,10 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
       the "ANC" data element group you can use the following query using the id property of the
       associated data element
       groups:<screen>/api/dataElements.json?filter=dataElementGroups.id:eq:qfxEYY9xAl6</screen></para>
+    <para>Since all operators are <emphasis role="bold">and</emphasis> by default, you can't find a
+      data element matching more than one id, for that purpose you can use the <emphasis
+        role="italic">in</emphasis>
+      operator.<screen>/api/dataElements.json?filter=id:in:[fbfJHSPpUQD,cYeuwXTCPkU]</screen></para>
   </section>
   <section>
     <title>Meta-data field filter</title>
