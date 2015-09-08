@@ -3053,6 +3053,14 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
     <para>A corresponding example looks like this:
       <screen>#{A03MvHHogjR.a3kGcGDCuk6} + A{OvY4VVhSDeJ} + V{incident_date} + C{bCqvfPR02Im}</screen></para>
   </section>
+    <section>
+      <title>Expressions</title>
+      <para>Expressions are mathematical formulas which can contain references to data elements,
+        constants and organisation unit groups. To validate and get the textual description of an
+        expression you can make a GET request to the expressions
+        resource:<screen>api/expressions/description?expression=&lt;expression-string></screen></para>
+      <para>The response follows the standard JSON web message format.</para>
+    </section>
   </section>
   <section>
     <title>Complete data set registrations</title>
@@ -5538,7 +5546,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
             <row>
               <entry>dimension</entry>
               <entry>Yes</entry>
-              <entry>Dimension identifier including data elements, attributes, periods, organisation units and organisation unit group sets. Parameter can be repeated any number of times. Item filters can be applied to a dimension on the format &lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;. Filter values are case-insensitive.</entry>
+              <entry>Dimension identifier including data elements, attributes, program indicators,
+                periods, organisation units and organisation unit group sets. Parameter can be
+                repeated any number of times. Item filters can be applied to a dimension on the
+                format &lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;. Filter values are
+                case-insensitive.</entry>
               <entry>Operators can be EQ | GT | GE | LT | LE | NE | LIKE | IN</entry>
             </row>
             <row>
@@ -5572,13 +5584,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
             </row>
           </thead>
           <tbody>
-            <row>
-              <entry>indicator</entry>
-              <entry>No</entry>
-              <entry>Program indicator identifier. Parameter can be repeated any number of
-                times.</entry>
-              <entry/>
-            </row>
             <row>
               <entry>ouMode</entry>
               <entry>No</entry>
