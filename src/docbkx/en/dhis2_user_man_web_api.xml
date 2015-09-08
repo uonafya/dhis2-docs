@@ -3059,7 +3059,18 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
         constants and organisation unit groups. To validate and get the textual description of an
         expression you can make a GET request to the expressions
         resource:<screen>api/expressions/description?expression=&lt;expression-string></screen></para>
-      <para>The response follows the standard JSON web message format.</para>
+      <para>The response follows the standard JSON web message format. The "status" property
+        indicates the outcome of the validation and will be "OK" if successful and "ERROR" if
+        failed. The "message" property will be "Valid" if successful and provide a textual
+        description of the reason why the validation failed if not. The "description" provides a
+        textual description of the
+        expression.<screen>{
+    "httpStatus": "OK",
+    "httpStatusCode": 200,
+    "status": "OK",
+    "message": "Valid",
+    "description": "Acute Flaccid Paralysis"
+}</screen></para>
     </section>
   </section>
   <section>
