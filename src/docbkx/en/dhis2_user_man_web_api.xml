@@ -8062,6 +8062,22 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <screen>localhost/api/files/style</screen>
   </section>
   <section>
+    <title>Synchronization</title>
+    <para>This section covers pull and push of data and meta-data.</para>
+    <section>
+      <title>Data push</title>
+      <para>To initiate a data push to a remote server one must first configure the URL and
+        credentials for the relevant server from System settings > Synchronization, then make a POST
+        request to the following resource:<screen>api/synchronization/dataPush</screen></para>
+    </section>
+    <section>
+      <title>Metadata pull</title>
+      <para>To initiate a metadata pull from a remote JSON document you can make a POST request with
+        a <emphasis role="italic">url</emphasis> query parameter to the following
+        resource:<screen>api/synchronization/metadataPull?url=&lt;url-to-json-document></screen></para>
+    </section>
+  </section>
+  <section>
     <title>FRED API</title>
     <para>DHIS 2 from version 2.11 implements support for the current draft
       of the FRED API version 1.0. The project defines itself as <quote>open standard for sharing and updating health facility data</quote>. The full specification, including representation format and basic usage, can be found at <ulink url="http://facilityregistry.org/">http://facilityregistry.org/</ulink>.</para>
