@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!-- This document was created with Syntext Serna Free. -->
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Using Pivot Table</title>
   <section>
     <title>Pivot Table overview</title>
     <para>The pivot table app enables users to create pivot tables, using all available data
-        <emphasis role="italic">dimensions</emphasis> in DHIS 2. A pivot table is a dynamic tool for
+        dimensions in DHIS 2. A pivot table is a dynamic tool for
       data analysis which lets you quickly summarize and arrange data according to its dimensions.
-      Examples of data dimensions in DHIS 2 are data elements (explaining what the data means),
-      periods (representing the time aspect) and the organisational hierarchy (representing the
+      Examples of data dimensions in DHIS 2 are data dimension itself (e.g data elements, indicators and events ),
+      periods (representing the time period for whic the data represents) and the organisational hierarchy (representing the
       geographical location of the data). From these dimensions you can freely select dimension
         <emphasis role="italic">items</emphasis> to include in the pivot table. Additional dimensions can be created in DHIS2, using the group set functionality, to allow for different aggregation pathways, such as aggregation by &quot;Partner&quot; or facility type. </para>
     <para>A pivot table can arrange data dimensions on <emphasis role="italic">columns</emphasis>,
@@ -20,7 +19,7 @@
       dimension on rows, the pivot table will display one row per dimension item in a similar
       fashion. The dimensions you select as filters will not be included in the pivot table, but
       will aggregate and filter the table data based on the selected filter items.</para>
-    <para>The workflow for creating a simple pivot table is:</para>
+    <para>The work-flow for creating a simple pivot table is:</para>
     <orderedlist>
       <listitem>
         <para>Select dimension items in the left menu, for instance a few data elements or indicators.</para>
@@ -53,14 +52,32 @@
       on the item. Before you can use a data dimension in your pivot table you must at least select
       one dimension item. If you arrange a dimension as columns or rows but do not select any
       dimension items, the dimension will be ignored.</para>
-    <para>For the indicator and data element dimensions you must first select one or all groups from
-      the group list. You can then select data elements from the available items list.</para>
+    <para>At least one member of the data dimension is required for all pivot tables. Available types of the include the following:</para>
+    <para><itemizedlist>
+        <listitem>
+          <para>Indicators</para>
+        </listitem>
+        <listitem>
+          <para>Data elements</para>
+        </listitem>
+        <listitem>
+          <para>Reporting rates</para>
+        </listitem>
+        <listitem>
+          <para>Event data items</para>
+        </listitem>
+        <listitem>
+          <para>Program indicators</para>
+        </listitem>
+      </itemizedlist></para>
+    <para>These dimensions can me combined together, so that you can display for instance aggregate data with reporting rates, or event data items together with program indicators, all in the same pivot tables. For the &quot;data element&quot; data dimension, you are also able to select &quot;Totals&quot; and &quot;Details&quot;, which will allow you to view different category combination options together on the same pivot table. </para>
     <para>For the period dimension you can choose between using fixed periods or relative periods.
       An example of a fixed period is &quot;January 2012&quot;. To select fixed periods start by selecting a
       period type from the period type list. You can then select periods from the list of available
-      periods. Relative periods are periods relative to the current date. Examples of relative
+      periods. </para>
+    <para>Relative periods are periods relative to the current date. Examples of relative
       periods are &quot;Last month&quot;, &quot;Last 12 months&quot;, &quot;Last 5 years&quot;. Relative periods can be selected
-      by ticking the checkboxes next to each period. The main advantage of using relative periods is
+      by ticking the check-boxes next to each period. The main advantage of using relative periods is
       that when you save a pivot table favorite, it will stay updated with the latest data as time
       goes by without the need for constantly updating it.</para>
     <para>For the organisation unit dimension you can select any number of organisation units from
@@ -75,10 +92,14 @@
       <screeninfo>Selection of fixed and relative periods.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="40%" fileref="resources/images/pivot_table/period_dimension.png" format="PNG"/>
+          <imagedata width="40%" fileref="resources/images/pivot_table/period_dimension.png" format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
+    <para>Dynamic dimensions can consist of organisation unit group sets, data element group sets, or category option group sets which have been configured with the type of of &quot;Disaggregation&quot;. Once the group sets have been configured, they will be come available in the pivot tables, and can be used as additional analysis dimensions, for instance to analyze aggregate data by Type of organisational unit or Implementing partner. Dynamic dimensions work the same as fixed dimensions. </para>
+    <tip>
+      <para>Some dynamic dimensions may contain many members. This can cause issues with certain browsers due to the length of the URL when many dimension members are selected. A special &quot;All&quot; checkbox is available for dynamic dimensions, which allows you to include all available dimensions implicitly in your pivot table, without specifying each and every dimension member.</para>
+    </tip>
   </section>
   <section>
     <title>Arranging the table layout</title>
@@ -120,19 +141,25 @@
       screen by clicking on &quot;Options&quot; in the top menu. The following options are available:</para>
     <itemizedlist>
       <listitem>
-        <para><emphasis role="bold">Show totals:</emphasis> Display total values in the table for each row and column, as well as a 
+        <para><emphasis role="bold">Show column/row totals:</emphasis> Display total values in the table for each row and column, as well as a 
        grand total for all values in the table.</para>
       </listitem>
       <listitem>
-        <para><emphasis role="bold">Show sub-totals: </emphasis>Display subtotals in the table for each dimension. In the screenshot
+        <para><emphasis role="bold">Show column/row sub-totals: </emphasis>Display subtotals in the table for each dimension. In the screenshot
           above, notice how subtotals are generated for each of the periods in the period dimension.
           Note that subtotals will be hidden for columns or rows if there is only one selected
           dimension, as the values in that case are equal to the subtotals.</para>
       </listitem>
       <listitem>
+        <para><emphasis role="bold">Show dimension items</emphasis>: Show the dimension names as part of the pivot tables.</para>
+      </listitem>
+      <listitem>
         <para><emphasis role="bold">Hide empty rows:</emphasis> Hides empty rows from the table, which is useful when looking at
           large tables where a big part of the dimension items do not have data in order to keep the
           table more readable.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Aggregation type: </emphasis>The default aggregation operator can be over-ridden here, by selecting a different aggregation operator, e.g. &quot;Count&quot;, &quot;Min&quot; or &quot;Max&quot;. </para>
       </listitem>
       <listitem>
         <para><emphasis role="bold">Show hierarchy:</emphasis> Shows the name of all ancestors for organisation units, e.g.
@@ -156,25 +183,64 @@
         <para><emphasis role="bold">Legend set:</emphasis> Shows a color indicator next to the values. Currently the GIS legend sets are being used.</para>
       </listitem>
     </itemizedlist>
+    <para>Once you have set all options as are required, just press &quot;Update&quot; to generate the new pivot table.</para>
   </section>
   <section>
-    <title>Creating a favorite</title>
-    <para>When you have set up a pivot table it is convenient to save it as a favorite. To do so, click
+    <title>Favorites and sharing</title>
+    <section>
+      <title>Managing favorites</title>
+      <para>When you have set up a pivot table it is convenient to save it as a favorite. To do so, click
       &quot;Favorites&quot; on the top menu, click &quot;Add new&quot;, give the favorite a descriptive name and click &quot;Create&quot;.
       You can search for favorites through the search input field at the top. To load an existing favorite,
       simply click the name of the favorite in the list.</para>
-    <para>To rename a favorite, click the grey &quot;Rename&quot; icon next to the favorite in the list, change the name
+      <para>To rename a favorite, click the grey &quot;Rename&quot; icon next to the favorite in the list, change the name
       and click &quot;Update&quot;. To overwrite an existing favorite with the current pivot table, click the green
       &quot;Overwrite&quot; icon. To share a favorite with everyone or a user group, click the blue &quot;Share&quot; icon. To
       delete a favorite, click the red &quot;Delete&quot; icon.</para>
-    <screenshot>
-      <screeninfo>The favorite screen.</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="45%" fileref="resources/images/pivot_table/pivot_favorites.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
+      <screenshot>
+        <screeninfo>The favorite screen.</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="45%" fileref="resources/images/pivot_table/pivot_favorites.png" format="PNG"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </section>
+    <section>
+      <title>Sharing pivot tables</title>
+      <para>After you have created a pivot table and saved it as a favorite, it is possible to share the pivot in different ways. Click &quot;Share&quot; to reach the menu presented in the screen shot below.</para>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata align="center" fileref="resources/images/pivot_table/pivot_sharing.png" width="142px"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <itemizedlist>
+        <listitem>
+          <para role=""><emphasis role="bold">Write interpretation:</emphasis> Allows you to create an interpretation of the pivot table and share it with all users of the system.</para>
+          <para role="">For certain analysis-related resources in DHIS, like pivot tables, charts and maps, one can
+      share a data interpretation. An interpretation is simply a link to the relevant resource
+      together with a text expressing some insight about the data. If you want to share a pivot table
+      interpretation you need to first save the table you want to share as a favorite. Then, without
+      making any changes to the table, click the &quot;Share&quot; button the toolbar. A window will
+      open up and this is where you write your interpretation. When you are done, click share button
+      in the bottom right corner of the window. The window will close automatically and if the
+      interpretation was shared successfully you will find a notification on the bottom
+      toolbar.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Embed in web page:</emphasis> This option will generate a HTML fragment which can be used to display the pivot table in an external web page. </para>
+          <para>Certain analysis-related resources in DHIS, like pivot tables, charts and maps, can be embedded in any web page by using a plugin. If you have created a table in the Pivot Table app you will get the plug-in configuration for this table by clicking the &quot;Share&quot; button the tool bar and then &quot;Embed as webpage&quot;. You will find more information about the plugins in the web api chapter.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Favorite link:</emphasis> Provides a URL for the favorite. This can then be easily shared with other users or colleagues via email or chat.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">API Link:</emphasis>Provides a URL of the API resource. By default this is a HTML resource, but by modifying the suffix of &quot;.html&quot; to &quot;.json&quot; or &quot;.csv&quot;, other data types are available. This option is most useful when you need an API link to the pivot table resource. Consult the DHIS2 developers guide for details about the different types which are available. </para>
+        </listitem>
+      </itemizedlist>
+    </section>
   </section>
   <section>
     <title>Analysis integration</title>
@@ -204,35 +270,19 @@
   <section>
     <title>Downloading data</title>
     <para>You can download the data in the current pivot table by clicking on &quot;Download&quot; in the top
-      menu. The data can be downloaded in MS Excel and CSV format. The data table will have one
+      menu. The data can be downloaded in various formats including Microsoft Excel, CSV, HTML.  The data table will have one
       column per dimension and contain names of the dimension items. You can easily create a pivot
       table in Microsoft Excel from the downloaded Excel file by clicking on &quot;pivot table&quot; in the
       top panel, then clicking on &quot;create pivot table&quot;, then marking the data range in the
-      spreadsheet before clicking &quot;OK&quot;.</para>
-    <para>Data can also be downloaded in JSON and XML format. The data format is specified in the
-      Web API chapter under the &quot;Analytics&quot; section. The data document will use identifiers of the
+      spreadsheet before clicking &quot;OK&quot;.u can </para>
+    <para>Data can also be downloaded in JSON, XML, Excel and CSV as plain data formats with different identification schemes (ID, Code, and Name).   The data document will use identifiers of the
       dimension items and will be opened in a new browser window in order to reveal the URL of the
       request to the Web API in the address bar. This will be useful for developers of apps and 
-      other client modules based on the DHIS 2 Web API.</para>
+      other client modules based on the DHIS 2 Web API or for those who require a plan data source, for instance for import into statistical packages.</para>
+    <para>For advanced users, two additional options are available under &quot;Advanced&quot;. JXRML will produce a template of a Jasper Report which can be further customized based on your exact needs and used as the basis for a standard report in DHIS2. The &quot;Raw data SQL&quot; will provide the actual SQL statement used to generate the pivot table. This could then be used as a data source in a Jasper report, or as the basis for an SQL view. </para>
   </section>
   <section>
-    <title>Sharing interpretations</title>
-    <para>For certain analysis-related resources in DHIS, like pivot tables, charts and maps, one can
-      share a data interpretation. An interpretation is simply a link to the relevant resource
-      together with a text expressing some insight about the data. If you want to share a pivot table
-      interpretation you need to first save the table you want to share as a favorite. Then, without
-      making any changes to the table, click the &quot;Share&quot; button the toolbar. A window will
-      open up and this is where you write your interpretation. When you are done, click share button
-      in the bottom right corner of the window. The window will close automatically and if the
-      interpretation was shared successfully you will find a notification on the bottom
-      toolbar.</para>
-  </section>
-  <section>
-    <title>Embed tables in any web page</title>
-    <para>Certain analysis-related resources in DHIS, like pivot tables, charts and maps, can be embeded in any web page by using a plugin. If you have created a table in the Pivot Table app you will get the plugin configuration for this table by clicking the &quot;Share&quot; button the toolbar and then &quot;Embed as plugin&quot;. You will find more information about the plugins in the web api chapter.</para>
-  </section>
-  <section>
-    <title>Constraints</title>
+    <title>Constraints and tips</title>
     <para>When selecting and arranging dimensions there are a few constraints that apply. All of
       these constraints are validated and the pivot table module will provide feedback if any
       constraint is violated.</para>
@@ -251,5 +301,8 @@
         <para>A table cannot contain more than the maximum number of analytics records which have been specified through the system settings. The maximum number of records could also be constrained by the maximum RAM which is available to your browser. Considering making more smaller tables, instead of one table which displays all of your data elements and indicators together.  </para>
       </listitem>
     </itemizedlist>
+    <tip>
+      <para>Pivot tables in DHIS2 are limited to a system set paramater, which controls the number of data values which can be returned. The reason for this is two fold. First, it would be easy to overwhelm the server with a very complicated request for a large pivot table. Second, the amount of data which is able to be rendered in a browser is fairly limited. If you are having problems with very large or complex tables, consider to try and reduce the number of items. It is usually more useful to have smaller, concise tables which are easier to understand and which address a particular analysis. </para>
+    </tip>
   </section>
 </chapter>
