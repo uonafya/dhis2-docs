@@ -255,6 +255,14 @@
               <entry>The date of when the event took place.</entry>
             </row>
             <row>
+              <entry>due_date</entry>
+              <entry>The date of when an event is due.</entry>
+            </row>
+            <row>
+              <entry>incident_date</entry>
+              <entry>The date of the incidence of the event.</entry>
+            </row>
+            <row>
               <entry>enrollment_date</entry>
               <entry>The date of when the tracked entity instance was enrolled in the
                 program.</entry>
@@ -272,10 +280,23 @@
               <entry>The number of numeric positive values in the expression part of the
                 event.</entry>
             </row>
+            <row>
+              <entry>event_count</entry>
+              <entry>The count of events (useful in combination with filters).</entry>
+            </row>
+            <row>
+              <entry>enrollment_count</entry>
+              <entry>The count of enrollments (useful in combination with filters).</entry>
+            </row>
+            <row>
+              <entry>tei_count</entry>
+              <entry>The count of tracked entity instances (useful in combination with
+                filters).</entry>
+            </row>
           </tbody>
         </tgroup>
       </table>
-      <para>An example expression that uses variables looks like
+      <para>An example expression that uses the "value count" variable looks like
         this:<screen>(#{A03MvHHogjR.a3kGcGDCuk6} + #{A03MvHHogjR.wQLfBvPrXqq}) / V{value_count}</screen></para>
     </section>
   </section>
