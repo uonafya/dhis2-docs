@@ -6756,15 +6756,23 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <para>To access configuration you can interact with the <emphasis role="italic">configuration</emphasis> resource. You can get XML and JSON responses through the <emphasis role="italic">Accept</emphasis> header or by using the .json or .xml extensions. You can
         <emphasis role="italic">GET</emphasis> the configuration from:</para>
     <screen>/api/configuration</screen>
-    <para>You can send <emphasis role="italic">GET</emphasis> requests to the following
-      sub-resources:</para>
-    <screen>/api/configuration/systemId</screen>
-    <screen>/api/configuration/feedbackRecipients</screen>
-    <screen>/api/configuration/offlineOrganisationUnitLevel</screen>
-    <screen>/api/configuration/infrastructuralDataElements</screen>
-    <screen>/api/configuration/infrastructuralPeriodType</screen>
-    <screen>/api/configuration/selfRegistrationRole</screen>
-    <screen>/api/configuration/selfRegistrationOrgUnit</screen>
+    <para>You can send <emphasis role="italic">GET</emphasis> and <emphasis role="italic"
+        >POST</emphasis> requests to the following specific resources:</para>
+    <screen>GET  /api/configuration/systemId</screen>
+    <screen>GET  /api/configuration/feedbackRecipients
+POST /api/configuration/feedbackRecipients/&lt;user-group-id></screen>
+    <screen>GET  /api/configuration/offlineOrganisationUnitLevel
+POST /api/configuration/offlineOrganisationUnitLevel/&lt;org-unit-level-id></screen>
+    <screen>GET  /api/configuration/infrastructuralDataElements
+POST /api/configuration/infrastructuralDataElements/&lt;data-element-group-id></screen>
+    <screen>GET  /api/configuration/infrastructuralIndicators
+POST /api/configuration/infrastructuralIndicators/&lt;indicator-group-id></screen>
+    <screen>GET  /api/configuration/infrastructuralPeriodType
+POST /api/configuration/infrastructuralPeriodType/&lt;period-type-name></screen>
+    <screen>GET  /api/configuration/selfRegistrationRole
+POST /api/configuration/selfRegistrationRole/&lt;user-role-id></screen>
+    <screen>GET  /api/configuration/selfRegistrationOrgUnit
+POST /api/configuration/selfRegistrationOrgUnit/&lt;org-unit-id></screen>
   </section>
   <section>
     <title>Translations</title>
