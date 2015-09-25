@@ -225,6 +225,12 @@
               <entry>Evaluates the data element/attribute of type number to one if the value is zero
                 or positive, otherwise to zero. </entry>
             </row>
+            <row>
+              <entry>d2:zpvc</entry>
+              <entry>(number[, number, ...])</entry>
+              <entry>Produces the count of zero or positive values, can have any number of
+                arguments.</entry>
+            </row>
           </tbody>
         </tgroup>
       </table>
@@ -234,6 +240,8 @@
         this:<screen>d2:daysBetween(#{mCXR7u4kNBW.k8ja2Aif1Ae},'2015-06-01')</screen></para>
       <para>An example expression that uses the "condition" function looks like
         this:<screen>d2:condition('#{mCXR7u4kNBW.NFkjsNiQ9PH} > 100',150,50)</screen></para>
+      <para>An example expression that uses the "zpvc" function looks like
+        this:<screen>d2:zpvc(#{mCXR7u4kNBW.k8ja2Aif1Ae},#{mCXR7u4kNBW.NFkjsNiQ9PH},3)</screen></para>
     </section>
     <section>
       <title>Variables</title>
