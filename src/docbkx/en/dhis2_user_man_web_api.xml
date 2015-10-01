@@ -6746,6 +6746,22 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </table>
   </section>
   <section>
+    <title>Static Content</title>
+    <para>The <emphasis>staticContent</emphasis> resource allowes you to upload and retrieve custom
+      logos used in DHIS2. The resource lets the user upload a file with an associated key, which
+      can later be retrieved using the key. Only PNG files are supported and can only be uploaded to
+      the "logo_banner" and "logo_front" keys.</para>
+    <para> To upload a file, send the file with a <emphasis>POST</emphasis> request
+      to:<screen>POST /api/staticContent/&lt;key></screen></para>
+    <para>Uploading multiple files with the same key will overwrite the existing file. This way,
+      retrieving a file for any given key will only return the latest file uploaded.</para>
+    <para>To retrieve a logo, you can <emphasis>GET</emphasis> the
+      following:<screen>GET /api/staticContent/&lt;key></screen></para>
+    <para>To use custom logos, you need to enable the corresponding system settings by setting it to
+        <emphasis>true</emphasis>. If the corresponding setting is false, the default logo will be
+      served.</para>
+  </section>
+  <section>
     <title>Configuration</title>
     <para>To access configuration you can interact with the <emphasis role="italic">configuration</emphasis> resource. You can get XML and JSON responses through the <emphasis role="italic">Accept</emphasis> header or by using the .json or .xml extensions. You can
         <emphasis role="italic">GET</emphasis> the configuration from:</para>
