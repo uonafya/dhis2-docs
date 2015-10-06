@@ -6763,8 +6763,10 @@ ORDER BY oul.level, par.name, ou.name</screen>
   </section>
   <section>
     <title>Configuration</title>
-    <para>To access configuration you can interact with the <emphasis role="italic">configuration</emphasis> resource. You can get XML and JSON responses through the <emphasis role="italic">Accept</emphasis> header or by using the .json or .xml extensions. You can
-        <emphasis role="italic">GET</emphasis> the configuration from:</para>
+    <para>To access configuration you can interact with the <emphasis role="italic"
+        >configuration</emphasis> resource. You can get XML and JSON responses through the <emphasis
+        role="italic">Accept</emphasis> header or by using the .json or .xml extensions. You can
+        <emphasis role="italic">GET</emphasis> all properties of the configuration from:</para>
     <screen>/api/configuration</screen>
     <para>You can send <emphasis role="italic">GET</emphasis> and <emphasis role="italic"
         >POST</emphasis> requests to the following specific resources:</para>
@@ -6783,9 +6785,11 @@ POST /api/configuration/infrastructuralPeriodType/&lt;period-type-name></screen>
 POST /api/configuration/selfRegistrationRole/&lt;user-role-id></screen>
     <screen>GET  /api/configuration/selfRegistrationOrgUnit
 POST /api/configuration/selfRegistrationOrgUnit/&lt;org-unit-id></screen>
+    <screen>GET  /api/configuration/remoteServerUrl
+POST /api/configuration/remoteServerUrl/&lt;url></screen>
+    <screen>GET  /api/configuration/remoteServerUsername
+POST /api/configuration/remoteServerUsername/&lt;username></screen>
     <screen>POST /api/configuration/smtpPassword/&lt;password>
-POST /api/configuration/remoteServerUrl/&lt;url>
-POST /api/configuration/remoteServerUsername/&lt;username>
 POST /api/configuration/remoteServerPassword/&lt;password></screen>
   </section>
   <section>
