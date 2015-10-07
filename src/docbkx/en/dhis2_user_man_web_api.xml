@@ -6753,10 +6753,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
       the "logo_banner" and "logo_front" keys.</para>
     <para> To upload a file, send the file with a <emphasis>POST</emphasis> request
       to:<screen>POST /api/staticContent/&lt;key></screen></para>
+    <para>Example request to upload logo.png to the logo_front
+      key:<screen>curl -F "file=@logo.png;type=image/png" "aps.dhis2.org/demo/api/staticContent/logo_front" -X POST -H "Content-Type: multipart/form-data" -u admin:district -v</screen></para>
     <para>Uploading multiple files with the same key will overwrite the existing file. This way,
       retrieving a file for any given key will only return the latest file uploaded.</para>
     <para>To retrieve a logo, you can <emphasis>GET</emphasis> the
       following:<screen>GET /api/staticContent/&lt;key></screen></para>
+    <para>Example request to retrieve the file stored for
+      logo_front:<screen>curl "aps.dhis2.org/demo/api/staticContent/logo_front" -L -X GET -u admin:district -v</screen></para>
     <para>To use custom logos, you need to enable the corresponding system settings by setting it to
         <emphasis>true</emphasis>. If the corresponding setting is false, the default logo will be
       served.</para>
