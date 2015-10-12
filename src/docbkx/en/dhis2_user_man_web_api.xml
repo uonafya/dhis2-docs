@@ -405,7 +405,7 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
     </section>
   </section>
   <section>
-    <title>Working with the meta-data API</title>
+    <title>Working with the metadata API</title>
     <para>The meta-data resource can be accessed at <emphasis role="italic"
       >/api/metadata</emphasis>. This resource lets you read and write the full set of meta-data.
       This section will give a basic introduction to working with this API. For specific
@@ -512,14 +512,17 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
               <entry>date</entry>
               <entry>false</entry>
               <entry>Several formats are available: yyyy, yyyy-MM, yyyy-MM-dd, yyyyMM, yyyyMMdd</entry>
-              <entry>Filters the meta-data based on the lastUpdated field.</entry>
+              <entry>Filters the metadata based on the lastUpdated field.</entry>
             </row>
             <row>
               <entry>preheatCache</entry>
               <entry>boolean</entry>
               <entry>false</entry>
               <entry>true | false</entry>
-              <entry>Turn cache-map preheating on/off. This is on by default, turning this off will make initial load time for importer much shorter (but will make the import itself slower). This is mostly used for cases where you have a small XML file you want to import, and don&apos;t want to wait for cache-map preheating.</entry>
+              <entry>Turn cache-map preheating on/off. This is on by default, turning this off will
+                  make initial load time for importer much shorter (but will make the import itself
+                  slower). This is mostly used for cases where you have a small XML/JSON file you
+                  want to import, and don&apos;t want to wait for cache-map preheating.</entry>
             </row>
             <row>
               <entry>strategy</entry>
@@ -602,7 +605,8 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
     <section>
       <title>Examples</title>
       <para>
-        <emphasis role="bold">Example: Get a filtered set of meta-data that was updated since August 1, 2014</emphasis>
+        <emphasis role="bold">Example: Get a filtered set of metadata that was updated since August
+          1, 2014</emphasis>
       </para>
       <para>As described in the last section, there is a number of options you can apply to
           <emphasis role="italic">/api/metaData</emphasis> to give you a filtered view. The use-case
@@ -629,7 +633,7 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
     </section>
   </section>
   <section>
-    <title>Meta-data object filter</title>
+    <title>Metadata object filter</title>
     <para>To filter the meta-data there are several filter operations that can be applied to the
       returned list of meta-data. The format of the filter itself is straight-forward and follows
       the pattern <emphasis role="italic">property:operator:value</emphasis>, where <emphasis role="italic">property</emphasis> is the property on the meta-data you want to filter on,
@@ -902,12 +906,10 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
             </tbody>
           </tgroup>
         </table></para>
-      <para><emphasis role="italic">Please note that the format should be considered beta in 2.17, and the format might be changed in 2.18.</emphasis>
-      </para>
     </section>
   </section>
   <section>
-    <title>Meta-data create, read, update, delete, validate</title>
+    <title>Metadata create, read, update, delete, validate</title>
     <para>While some of the web-api endpoints already contains support for CRUD (create, read, update, delete), from version 2.15 this is
       now supported on all endpoints. It should work as you expect, and the subsections will give more detailed information about create,
       update, and delete (read is already covered elsewhere, and have been supported for a long time).</para>
@@ -916,12 +918,13 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
       <para>For creating new objects you will need to know the endpoint, the type format, and make
         sure that you have the required authorities. As an example , we will create and update an
           <emphasis role="italic">constant</emphasis>. To figure out the format, we can use the new
-          <emphasis role="italic">schema</emphasis> endpoint for getting format description (this
-        will be further improved in 2.17). So we will start with getting that
-        info:<screen>http://&lt;&lt;server&gt;&gt;/api/schemas/constant.json</screen> From the output, you can see
-        that the required authorities for create are F_CONSTANT_ADD, and the important properties
-        are: <emphasis role="italic">name</emphasis> and <emphasis role="italic">value</emphasis>.
-        From this we can create a JSON payload and save it as a file called
+          <emphasis role="italic">schema</emphasis> endpoint for getting format description. So we
+        will start with getting that
+        info:<screen>http://&lt;&lt;server&gt;&gt;/api/schemas/constant.json</screen> From the
+        output, you can see that the required authorities for create are F_CONSTANT_ADD, and the
+        important properties are: <emphasis role="italic">name</emphasis> and <emphasis
+          role="italic">value</emphasis>. From this we can create a JSON payload and save it as a
+        file called
         constant.json:<screen>{
   &quot;name&quot;: &quot;PI&quot;,
   &quot;value&quot;: &quot;3.14159265359&quot;
