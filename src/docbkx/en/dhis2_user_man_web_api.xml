@@ -8227,8 +8227,8 @@ curl -u username:password -X POST -d @updated_facility.json
       the corresponding app. For example a user with access to the "sampleApp" application, will
       also be able to use the sampleApp namespace in the datastore.</para>
     <para>For a list of all existing namespaces:<screen>GET /api/dataStore</screen></para>
-    <para>Example curl
-      request:<screen>curl "apps.dhis2.org/demo/api/dataStore" -X GET -u admin:district -v</screen></para>
+    <para>Example curl request for
+      listing:<screen>curl "apps.dhis2.org/demo/api/dataStore" -X GET -u admin:district -v</screen></para>
     <para>Example response:</para>
     <para>
       <screen>[
@@ -8238,8 +8238,8 @@ curl -u username:password -X POST -d @updated_facility.json
     </para>
     <para>For a list of all keys in a
       namespace:<screen>GET /api/dataStore/&lt;namespace></screen></para>
-    <para>Example curl
-      request:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo" -X GET -u admin:district -v</screen></para>
+    <para>Example curl request for
+      listing:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo" -X GET -u admin:district -v</screen></para>
     <para>Example response:</para>
     <screen>[
   "key_1",
@@ -8247,8 +8247,8 @@ curl -u username:password -X POST -d @updated_facility.json
 ]</screen>
     <para>To delete all keys in a
       namespace:<screen>DELETE /api/dataStore/&lt;namespace></screen></para>
-    <para>Example curl
-      request:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo" -X DELETE -u admin:district -v</screen></para>
+    <para>Example curl request for
+      delete:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo" -X DELETE -u admin:district -v</screen></para>
     <para>Example
       response:<screen>{
   "httpStatus": "OK",
@@ -8256,49 +8256,46 @@ curl -u username:password -X POST -d @updated_facility.json
   "status": "OK",
   "message": "Namespace 'foo' deleted."
 }</screen></para>
-    <para>To add a new key and value to a
+    <para>To create a new key and value for a
       namespace:<screen>POST /api/dataStore/&lt;namespace>/&lt;key></screen></para>
-    <para>Example curl request, assuming a valid json
+    <para>Example curl request for create, assuming a valid json
       payload:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo/key_1" -X POST -d "{\"foo\":\"bar\"}" -u admin:district -v</screen></para>
     <para>Example
       response:<screen>{  
-  "created":"...",
-  ... Trivial data ...
-  "user":{...},
-  "namespace":"foo",
-  "key":"key_1",
-  "value":"{\"foo\":\"bar\"}"
+  "created": "...",
+  "user": {...},
+  "namespace": "foo",
+  "key": "key_1",
+  "value": "{\"foo\":\"bar\"}"
 }</screen></para>
     <para>To retrieve an existing key from a
       namespace:<screen>GET /api/dataStore/&lt;namespace>/&lt;key></screen></para>
-    <para>Example curl
-      request:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo/key_1" -X GET -u admin:district -v</screen></para>
+    <para>Example curl request for
+      retrieval:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo/key_1" -X GET -u admin:district -v</screen></para>
     <para>Example
       response:<screen>{  
-  "created":"...",
-  ... Trivial data ...
-  "user":{...},
-  "namespace":"foo",
-  "key":"key_1",
-  "value":"{\"foo\":\"bar\"}"
+  "created": "...",
+  "user": {...},
+  "namespace": "foo",
+  "key": "key_1",
+  "value": "{\"foo\":\"bar\"}"
 }</screen></para>
     <para>To update a key that exists in a
       namespace:<screen>PUT /api/dataStore/&lt;namespace>/&lt;key></screen></para>
-    <para>Example curl request, assuming valid json
+    <para>Example curl request for update, assuming valid JSON
       payload:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo/key_1" -X PUT -d "[1, 2, 3]" -H "Content-Type: application/json" -u admin:district -v</screen></para>
     <para>Example
       response:<screen>{  
-  "created":"...",
-  ... Trivial data ...
-  "user":{...},
-  "namespace":"foo",
-  "key":"key_1",
-  "value":"[1, 2, 3]"
+  "created": "...",
+  "user": {...},
+  "namespace": "foo",
+  "key": "key_1",
+  "value": "[1, 2, 3]"
 }</screen></para>
     <para>To delete an existing key from a
       namespace:<screen>DELETE /api/dataStore/&lt;namespace>/&lt;key></screen></para>
-    <para>Example curl
-      request:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo/key_1" -X DELETE -u admin:district -v</screen></para>
+    <para>Example curl request for
+      delete:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo/key_1" -X DELETE -u admin:district -v</screen></para>
     <para>Example
       response:<screen>{
   "httpStatus": "OK",
