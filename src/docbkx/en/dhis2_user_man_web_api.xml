@@ -755,7 +755,7 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
       operator.<screen>/api/dataElements.json?filter=id:in:[fbfJHSPpUQD,cYeuwXTCPkU]</screen></para>
   </section>
   <section>
-    <title>Meta-data field filter</title>
+    <title>Metadata field filter</title>
     <para>In certain situations the default views of the meta-data can be too verbose. A client
       might only need a few fields from each object and want to remove unnecessary fields from the
       response. To discover which fields are available for each object please see the <emphasis role="italic">schema</emphasis> section.</para>
@@ -6529,8 +6529,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
   "userGroups": [ {
     "id": "vAvEltyXGbD"
   } ]
-}
-</screen>
+}</screen>
       <para>The user invite entity can be posted like this:</para>
       <screen>curl -d @invite.json &quot;localhost/api/users/invite&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
       <para>To send out invites for multiple users at the same time you must use a slightly
@@ -6563,8 +6562,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       } ]
     }
   ]
-}
-</screen></para>
+}</screen></para>
       <para>To create multiple invites you can post the payload to the api/users/invites resource
         like this:</para>
       <screen>curl -d @invites.json &quot;localhost/api/users/invites&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
