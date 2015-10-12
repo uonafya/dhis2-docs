@@ -406,15 +406,16 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
   </section>
   <section>
     <title>Working with the meta-data API</title>
-    <para>The meta-data resource can be accessed at <emphasis role="italic">/api/metaData</emphasis>. This resource lets you read and write the full set of meta-data.
+    <para>The meta-data resource can be accessed at <emphasis role="italic"
+      >/api/metadata</emphasis>. This resource lets you read and write the full set of meta-data.
       This section will give a basic introduction to working with this API. For specific
       synchronization issues, please see the integration chapter.</para>
-    <para>By default, interacting with<emphasis role="italic"> /api/metaData</emphasis> using the
-      GET HTTP method will give you all meta-data rendered as XML. You can also be more specific
-      about the meta-data elements you are interested in.</para>
+    <para>By default, interacting with<emphasis role="italic"> /api/metadata</emphasis> using the
+      GET HTTP method will give you all metadata rendered as XML. You can also be more specific
+      about the metadata elements you are interested in.</para>
     <section>
       <title>Content types</title>
-      <para>The Web API offers several content types for meta-data.</para>
+      <para>The Web API offers several content types for metadata.</para>
     <para>
       <table>
         <title>Available Content-Types</title>
@@ -489,7 +490,8 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
               <entry>enum</entry>
               <entry>false</entry>
               <entry>export | basic | detailed</entry>
-              <entry>Alternative views of the meta-data. Please note that only meta-data exported with viewClass=export can be used for import.</entry>
+              <entry>Alternative views of the metadata. Please note that only metadata exported with
+                  viewClass=export or detailed can be used for import.</entry>
             </row>
             <row>
               <entry>dryRun</entry>
