@@ -6831,7 +6831,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </table>
   </section>
   <section>
-    <title>Static Content</title>
+    <title>Static content</title>
     <para>The <emphasis>staticContent</emphasis> resource allowes you to upload and retrieve custom
       logos used in DHIS2. The resource lets the user upload a file with an associated key, which
       can later be retrieved using the key. Only PNG files are supported and can only be uploaded to
@@ -6839,7 +6839,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <para> To upload a file, send the file with a <emphasis>POST</emphasis> request
       to:<screen>POST /api/staticContent/&lt;key></screen></para>
     <para>Example request to upload logo.png to the logo_front
-      key:<screen>curl -F "file=@logo.png;type=image/png" "aps.dhis2.org/demo/api/staticContent/logo_front" -X POST -H "Content-Type: multipart/form-data" -u admin:district -v</screen></para>
+      key:<screen>curl -F "file=@logo.png;type=image/png" "aps.dhis2.org/demo/api/staticContent/logo_front" 
+-X POST -H "Content-Type: multipart/form-data" -u admin:district -v</screen></para>
     <para>Uploading multiple files with the same key will overwrite the existing file. This way,
       retrieving a file for any given key will only return the latest file uploaded.</para>
     <para>To retrieve a logo, you can <emphasis>GET</emphasis> the
@@ -8221,7 +8222,7 @@ curl -u username:password -X POST -d @updated_facility.json
   -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;uuid&gt;.json</screen>
   </section>
   <section>
-    <title>Data Store</title>
+    <title>Data store</title>
     <para>Using the <emphasis>dataStore</emphasis> resource, developers can store arbitrary data for
       their apps in a key-value structure. Access to a datastore is limited to the user's access to
       the corresponding app. For example a user with access to the "sampleApp" application, will
