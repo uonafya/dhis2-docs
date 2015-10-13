@@ -406,10 +406,10 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
   </section>
   <section>
     <title>Working with the metadata API</title>
-    <para>The meta-data resource can be accessed at <emphasis role="italic"
-      >/api/metadata</emphasis>. This resource lets you read and write the full set of meta-data.
-      This section will give a basic introduction to working with this API. For specific
-      synchronization issues, please see the integration chapter.</para>
+    <para>The metadata resource can be accessed at <emphasis role="italic">/api/metadata</emphasis>.
+      This resource lets you read and write the full set of metadata. This section will give a basic
+      introduction to working with this API. For specific synchronization issues, please see the
+      integration chapter.</para>
     <para>By default, interacting with<emphasis role="italic"> /api/metadata</emphasis> using the
       GET HTTP method will give you all metadata rendered as XML. You can also be more specific
       about the metadata elements you are interested in.</para>
@@ -434,27 +434,27 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
             <row>
               <entry>application/xml</entry>
               <entry>.xml</entry>
-              <entry>Returns the meta-data in XML representation</entry>
+              <entry>Returns the metadata in XML representation</entry>
             </row>
             <row>
               <entry>application/json</entry>
               <entry>.json</entry>
-              <entry>Returns the meta-data in JSON representation</entry>
+              <entry>Returns the metadata in JSON representation</entry>
             </row>
             <row>
               <entry>application/pdf</entry>
               <entry>.pdf</entry>
-              <entry>Returns the meta-data as a PDF document</entry>
+              <entry>Returns the metadata as a PDF document</entry>
             </row>
             <row>
               <entry>application/csv</entry>
               <entry>.csv</entry>
-              <entry>Returns the meta-data as a CSV file</entry>
+              <entry>Returns the metadata as a CSV file</entry>
             </row>
             <row>
               <entry>application/vnd.ms-excel</entry>
               <entry>.xls | .xlsx</entry>
-              <entry>Returns the meta-data as an Excel workbook</entry>
+              <entry>Returns the metadata as an Excel workbook</entry>
             </row>
           </tbody>
         </tgroup>
@@ -614,18 +614,19 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
         units. We will be using <emphasis role="italic">cURL</emphasis> as the HTTP
         client.<screen>curl -H &quot;Accept: application/xml&quot; -u admin:district
   &quot;https://apps.dhis2.org/demo/api/metaData?assumeTrue=false&amp;organisationUnits=true&amp;lastUpdated=2014-08-01&quot;</screen></para>
-      <para><emphasis role="bold">Example: Get meta-data that was updated since February 2014</emphasis></para>
+      <para><emphasis role="bold">Example: Get metadata that was updated since February
+          2014</emphasis></para>
       <para>This example will just the default <emphasis role="italic">assumeTrue</emphasis>
         setting, along with getting the last updates from February 2014. This means that every
         single type that has been updated will be
         retrieved.<screen>curl -H &quot;Accept: application/xml&quot; -u admin:district &quot;https://apps.dhis2.org/demo/api/metaData?lastUpdated=2014-02&quot;</screen></para>
-      <para><emphasis role="bold">Example: Create meta-data</emphasis></para>
-      <para>The meta-data resource can also be used to create or update meta-data by using the POST
-      HTTP method. The meta-data content can be both XML and JSON, using &quot;application/xml&quot; and
-      &quot;application/json&quot; content type respectively. The request payload content will be accepted in
-      several formats, including plain text, zipped and gzipped. POSTing a meta-data payload can be
-      done for example like this, where metaData.xml is a file in the same directory with the
-      meta-data content:</para>
+      <para><emphasis role="bold">Example: Create metadata</emphasis></para>
+      <para>The metadata resource can also be used to create or update metadata by using the POST
+        HTTP method. The metadata content can be both XML and JSON, using
+        &quot;application/xml&quot; and &quot;application/json&quot; content type respectively. The
+        request payload content will be accepted in several formats, including plain text, zipped
+        and gzipped. POSTing a metadata payload can be done for example like this, where
+        metaData.xml is a file in the same directory with the metadata content:</para>
       <screen>curl -H &quot;Content-Type: application/xml&quot; -u admin:district -d @metaData.xml &quot;https://apps.dhis2.org/demo/api/metaData&quot; -X POST -v</screen>
       <para>The import will happen in a asyncronous process which implies that the response will
       return as soon as the process is started. The response status code to be expected is 204 No
@@ -634,9 +635,10 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
   </section>
   <section>
     <title>Metadata object filter</title>
-    <para>To filter the meta-data there are several filter operations that can be applied to the
-      returned list of meta-data. The format of the filter itself is straight-forward and follows
-      the pattern <emphasis role="italic">property:operator:value</emphasis>, where <emphasis role="italic">property</emphasis> is the property on the meta-data you want to filter on,
+    <para>To filter the metadata there are several filter operations that can be applied to the
+      returned list of metadata. The format of the filter itself is straight-forward and follows the
+      pattern <emphasis role="italic">property:operator:value</emphasis>, where <emphasis
+        role="italic">property</emphasis> is the property on the metadata you want to filter on,
         <emphasis role="italic">operator</emphasis> is the comparison operator you want to perform
       and <emphasis role="italic">value</emphasis> is the value to check against (not all operators
       require value). Please see the <emphasis role="italic">schema</emphasis> section to discover
@@ -756,9 +758,10 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
   </section>
   <section>
     <title>Metadata field filter</title>
-    <para>In certain situations the default views of the meta-data can be too verbose. A client
-      might only need a few fields from each object and want to remove unnecessary fields from the
-      response. To discover which fields are available for each object please see the <emphasis role="italic">schema</emphasis> section.</para>
+    <para>In certain situations the default views of the metadata can be too verbose. A client might
+      only need a few fields from each object and want to remove unnecessary fields from the
+      response. To discover which fields are available for each object please see the <emphasis
+        role="italic">schema</emphasis> section.</para>
     <para>The format for include/exclude is very simple and allows for infinite recursion. To filter
       at the &quot;root&quot; level you can just use the name of the field, i.e. <emphasis role="italic">?fields=id,name</emphasis> which would only display the <emphasis role="italic">id</emphasis> and <emphasis role="italic">name</emphasis> for every object.
       For objects that are either collections or complex objects with properties on their own you
@@ -1779,9 +1782,10 @@ http://server/api/constants/ID</screen></para>
         <para>Regarding the id schemes, by default the identifiers used in the XML messages uses the
           DHIS 2 stable object identifiers referred to as <emphasis role="italic">uid</emphasis>. In
           certain interoperability situations we might experience that external system decides the
-          identifiers of the objects. In that case we can use the <emphasis role="italic">code</emphasis> property of the organisation units and other objects to set fixed
+          identifiers of the objects. In that case we can use the <emphasis role="italic"
+            >code</emphasis> property of the organisation units and other objects to set fixed
           identifiers. When importing data values we hence need to reference the code property
-          instead of the identfier property of these meta-data objects. Identifier schemes can be
+          instead of the identfier property of these metadata objects. Identifier schemes can be
           specified in the XML message as well as in the request as query parameters. To specify it
           in the XML payload you can do this:</para>
         <screen>&lt;dataValueSet xmlns="http://dhis2.org/schema/dxf/2.0" dataElementIdScheme="CODE" orgUnitIdScheme="UID" idScheme="CODE">
@@ -2814,7 +2818,7 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
           <row>
             <entry>metaData</entry>
             <entry>false | true</entry>
-            <entry>Whether to include meta-data about each data element of form sections.</entry>
+            <entry>Whether to include metadata about each data element of form sections.</entry>
           </row>
         </tbody>
       </tgroup>
@@ -2823,7 +2827,7 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
     <screen>api/dataSets/&lt;dataset-id&gt;/form.json</screen>
     <para>To retrieve the form for the data set with identifier &quot;BfMAe6Itzgt&quot; in XML:</para>
     <screen>api/dataSets/BfMAe6Itzgt/form</screen>
-    <para>To retrieve the form including meta-data in JSON:</para>
+    <para>To retrieve the form including metadata in JSON:</para>
     <screen>api/dataSets/BfMAe6Itzgt/form.json?metaData=true</screen>
     <para>To retrieve the form filled with data values for a specific period and organisation unit
       in XML:</para>
@@ -3636,14 +3640,15 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
     &quot;href&quot;: &quot;https://apps.dhis2.org/demo/api/interpretations/d3BukolfFZI&quot;,
     &quot;id&quot;: &quot;d3BukolfFZI&quot;
 }</screen>
-      <para>The map interpretation contains identifier and type information in the &quot;id&quot; and &quot;type&quot;
-        properties. The interpretation text is available in the &quot;text&quot; property and references to
-        any comments in the &quot;comments&quot; list. It also contains information about the interpreted
-        object, in this case the &quot;map&quot; property. Note that you can follow the link to the actual map
-        through the &quot;href&quot; property. For all analytical objects you can append <emphasis role="italic">/data</emphasis> to the URL to retrieve the data associated with the
-        resource, as apposed to the meta-data. As an example, by following the map link and
-        appending /data one can retrieve a PNG (image) representation of the thematic map through
-        the following URL:</para>
+      <para>The map interpretation contains identifier and type information in the &quot;id&quot;
+        and &quot;type&quot; properties. The interpretation text is available in the
+        &quot;text&quot; property and references to any comments in the &quot;comments&quot; list.
+        It also contains information about the interpreted object, in this case the &quot;map&quot;
+        property. Note that you can follow the link to the actual map through the &quot;href&quot;
+        property. For all analytical objects you can append <emphasis role="italic">/data</emphasis>
+        to the URL to retrieve the data associated with the resource, as apposed to the metadata. As
+        an example, by following the map link and appending /data one can retrieve a PNG (image)
+        representation of the thematic map through the following URL:</para>
       <screen>https://apps.dhis2.org/demo/api/maps/bhmHJ4ZCdCd/data</screen>
     </section>
     <section>
@@ -5167,7 +5172,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
                 <entry>hierarchyMeta</entry>
                 <entry>No</entry>
                 <entry>Include names of organisation unit ancestors and hierarchy paths of
-                  organisation units in the meta-data.</entry>
+                  organisation units in the metadata.</entry>
                 <entry>false | true</entry>
               </row>
               <row>
@@ -5197,13 +5202,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
               <row>
                 <entry>displayProperty</entry>
                 <entry>No</entry>
-                <entry>Property to display for meta-data.</entry>
+                <entry>Property to display for metadata.</entry>
                 <entry>NAME | SHORTNAME</entry>
               </row>
               <row>
                 <entry>outputIdScheme</entry>
                 <entry>No</entry>
-                <entry>Property to use for meta-data items the query response, can be identifier,
+                <entry>Property to use for metadata items the query response, can be identifier,
                   code or name.</entry>
                 <entry>UID | CODE | NAME</entry>
               </row>
@@ -5577,7 +5582,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
             <row>
               <entry>hierarchyMeta</entry>
               <entry>No</entry>
-              <entry>Include names of organisation unit ancestors and hierarchy paths of organisation units in the meta-data</entry>
+              <entry>Include names of organisation unit ancestors and hierarchy paths of
+                organisation units in the metadata</entry>
               <entry>false | true</entry>
             </row>
           </tbody>
@@ -5676,7 +5682,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
             <row>
               <entry>displayProperty</entry>
               <entry>No</entry>
-              <entry>Property to display for meta-data.</entry>
+              <entry>Property to display for metadata.</entry>
               <entry>NAME | SHORTNAME</entry>
             </row>
             <row>
@@ -6428,7 +6434,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
               </row>
               <row>
                 <entry>METADATA_IMPORT</entry>
-                <entry>Import of meta-data.</entry>
+                <entry>Import of metadata.</entry>
               </row>
               <row>
                 <entry>DATAINTEGRITY</entry>
@@ -8185,7 +8191,7 @@ POST /api/configuration/remoteServerPassword/&lt;password></screen>
   </section>
   <section>
     <title>Synchronization</title>
-    <para>This section covers pull and push of data and meta-data.</para>
+    <para>This section covers pull and push of data and metadata.</para>
     <section>
       <title>Data push</title>
       <para>To initiate a data push to a remote server one must first configure the URL and
