@@ -568,7 +568,7 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
     </section>
     <section>
       <title>Available strategies for import</title>
-      <para>When importing data using the metaData resource you can define various strategies for
+      <para>When importing data using the metadata resource you can define various strategies for
         import.</para>
       <para>
     <table>
@@ -609,25 +609,25 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
           1, 2014</emphasis>
       </para>
       <para>As described in the last section, there is a number of options you can apply to
-          <emphasis role="italic">/api/metaData</emphasis> to give you a filtered view. The use-case
+          <emphasis role="italic">/api/metadata</emphasis> to give you a filtered view. The use-case
         we will be looking into here is where you want a nightly job that synchronizes organisation
         units. We will be using <emphasis role="italic">cURL</emphasis> as the HTTP
         client.<screen>curl -H &quot;Accept: application/xml&quot; -u admin:district
-  &quot;https://apps.dhis2.org/demo/api/metaData?assumeTrue=false&amp;organisationUnits=true&amp;lastUpdated=2014-08-01&quot;</screen></para>
+  &quot;https://apps.dhis2.org/demo/api/metadata?assumeTrue=false&amp;organisationUnits=true&amp;lastUpdated=2014-08-01&quot;</screen></para>
       <para><emphasis role="bold">Example: Get metadata that was updated since February
           2014</emphasis></para>
       <para>This example will just the default <emphasis role="italic">assumeTrue</emphasis>
         setting, along with getting the last updates from February 2014. This means that every
         single type that has been updated will be
-        retrieved.<screen>curl -H &quot;Accept: application/xml&quot; -u admin:district &quot;https://apps.dhis2.org/demo/api/metaData?lastUpdated=2014-02&quot;</screen></para>
+        retrieved.<screen>curl -H &quot;Accept: application/xml&quot; -u admin:district &quot;https://apps.dhis2.org/demo/api/metadata?lastUpdated=2014-02&quot;</screen></para>
       <para><emphasis role="bold">Example: Create metadata</emphasis></para>
       <para>The metadata resource can also be used to create or update metadata by using the POST
         HTTP method. The metadata content can be both XML and JSON, using
         &quot;application/xml&quot; and &quot;application/json&quot; content type respectively. The
         request payload content will be accepted in several formats, including plain text, zipped
         and gzipped. POSTing a metadata payload can be done for example like this, where
-        metaData.xml is a file in the same directory with the metadata content:</para>
-      <screen>curl -H &quot;Content-Type: application/xml&quot; -u admin:district -d @metaData.xml &quot;https://apps.dhis2.org/demo/api/metaData&quot; -X POST -v</screen>
+        metadata.xml is a file in the same directory with the metadata content:</para>
+      <screen>curl -H &quot;Content-Type: application/xml&quot; -u admin:district -d @metadata.xml &quot;https://apps.dhis2.org/demo/api/metadata&quot; -X POST -v</screen>
       <para>The import will happen in a asyncronous process which implies that the response will
       return as soon as the process is started. The response status code to be expected is 204 No
       Content.</para>
