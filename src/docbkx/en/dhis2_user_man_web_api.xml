@@ -1089,9 +1089,9 @@ http://server/api/constants/ID</screen></para>
     </section>
   </section>
   <section>
-      <title>CSV meta-data import</title>
-      <para>DHIS 2 supports import of meta-data in the CSV format. Columns which are not required
-      can be omitted in the CSV file, but the order will be affected. If you would like to specify
+      <title>CSV metadata import</title>
+      <para>DHIS 2 supports import of metadata in the CSV format. Columns which are not required can
+      be omitted in the CSV file, but the order will be affected. If you would like to specify
       columns which appear late in the order but not specify columns which appear early in the order
       you can include empty columns (&quot;&quot;) for them. The following object types are
       supported:</para>
@@ -1756,7 +1756,7 @@ http://server/api/constants/ID</screen></para>
             </row>
             <row>
               <entry>importStrategy</entry>
-              <entry>NEW_AND_UPDATES | NEW | UPDATES | DELETES</entry>
+              <entry>CREATE | UPDATE | CREATE_AND_UPDATE | DELETE</entry>
               <entry>Save objects of all, new or update import status on the server.</entry>
             </row>
             <row>
@@ -2404,6 +2404,11 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
       <table>
           <title>Events resource format</title>
           <tgroup cols="5">
+            <colspec colnum="1" colname="c1" colwidth="140pt"/>
+            <colspec colnum="2" colname="c2" colwidth="88pt"/>
+            <colspec colnum="3" colname="c3" colwidth="84pt"/>
+            <colspec colnum="4" colname="c4" colwidth="315pt"/>
+            <colspec colnum="5" colname="c5" colwidth="394pt"/>
             <thead>
               <row>
                 <entry> Parameter </entry>
@@ -2439,8 +2444,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
                 <entry>status</entry>
                 <entry>enum</entry>
                 <entry>false</entry>
-                <entry>ACTIVE, COMPLETED, VISITED,<para>FUTURE_VISIT,
-                  LATE_VISIT,</para><para>SKIPPED</para></entry>
+                <entry>ACTIVE | COMPLETED | VISITED | SCHEDULE | OVERDUE | SKIPPED</entry>
                 <entry>Whether the event is complete or not</entry>
               </row>
               <row>
@@ -2455,7 +2459,8 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
                 <entry>double</entry>
                 <entry>false</entry>
                 <entry/>
-                <entry>Refers to wher the event took place geographically (latitude and longitude)</entry>
+                <entry>Refers to wher the event took place geographically (latitude and
+                  longitude)</entry>
               </row>
               <row>
                 <entry>dataElementId</entry>
@@ -2767,11 +2772,9 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
         <para>Query for all events with a certain program and organisation unit older or equal to
           2014-02-03:
           <screen>api/events.json?orgUnit=DiszpKrYNg8&amp;program=eBAyeGv0exc&amp;endDate=2014-02-03</screen></para>
-        <para>Query for all events with a certain program stage, organisation unit and tracked entity
-          instance in the year 2014:
-          <screen>api/events.json?orgUnit=DiszpKrYNg8
-&amp;program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m
-&amp;startDate=2014-01-01&amp;endDate=2014-12-31</screen></para>
+        <para>Query for all events with a certain program stage, organisation unit and tracked
+          entity instance in the year 2014:
+          <screen>api/events.json?orgUnit=DiszpKrYNg8&amp;program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m&amp;startDate=2014-01-01&amp;endDate=2014-12-31</screen></para>
       </section>
     </section>
   </section>
@@ -3655,18 +3658,12 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
     </section>
     <section>
       <title>Creating, updating and removing interpretation comments</title>
-      <para>
-        Creating comments to existing interpretations:
-        <screen>POST &quot;plain-text comment&quot; to /api/interpretations/ID/comments</screen>
-      </para>
-      <para>
-        Updating comments in existing interpretations:
-        <screen>PUT &quot;plain-text comment&quot; to /api/interpretations/ID/comments/ID</screen>
-      </para>
-      <para>
-        Removing comments in existing interpretations:
-        <screen>DELETE /api/interpretations/ID/comments/ID</screen>
-      </para>
+      <para> Creating comments to existing interpretations:
+        <screen>POST &quot;plain-text comment&quot; to /api/interpretations/ID/comments</screen></para>
+      <para> Updating comments in existing interpretations:
+        <screen>PUT &quot;plain-text comment&quot; to /api/interpretations/ID/comments/ID</screen></para>
+      <para> Removing comments in existing interpretations:
+        <screen>DELETE /api/interpretations/ID/comments/ID</screen></para>
     </section>
   </section>
   <section>
