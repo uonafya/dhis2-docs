@@ -2513,7 +2513,8 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
                 <entry>2</entry>
                 <entry>status</entry>
                 <entry>enum</entry>
-                <entry>Status of event, can be ACTIVE | COMPLETED | VISITED | FUTURE_VISIT | LATE_VISIT | SKIPPED</entry>
+                <entry>Status of event, can be ACTIVE | COMPLETED | VISITED | SCHEDULED | OVERDUE
+                  | SKIPPED</entry>
               </row>
               <row>
                 <entry>3</entry>
@@ -2672,7 +2673,8 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
                 <entry>status</entry>
                 <entry>enum</entry>
                 <entry>false</entry>
-                <entry>Status of event, can be ACTIVE | COMPLETED | VISITED | FUTURE_VISIT | LATE_VISIT | SKIPPED</entry>
+                <entry>Status of event, can be ACTIVE | COMPLETED | VISITED | SCHEDULED | OVERDUE
+                  | SKIPPED</entry>
               </row>
               <row>
                 <entry>lastUpdated</entry>
@@ -7736,7 +7738,9 @@ POST /api/configuration/remoteServerPassword/&lt;password></screen>
             </row>
             <row>
               <entry>eventStatus</entry>
-              <entry>Status of any event associated with the given program and the tracked entity instance. Can be COMPLETED | VISITED | FUTURE_VISIT | LATE_VISIT | SKIPPED.</entry>
+              <entry>Status of any event associated with the given program and the tracked entity
+                instance. Can be ACTIVE | COMPLETED | VISITED | SCHEDULED | OVERDUE
+                | SKIPPED.</entry>
             </row>
             <row>
               <entry>eventStartDate</entry>
@@ -8215,8 +8219,8 @@ curl -u username:password -X GET http://&lt;server-url&gt;/api-fred/v1/facilitie
   -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities.json</screen>
     <para>Update a facility:</para>
     <screen>curl -u username:password -X POST -d @updated_facility.json
-  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;id&gt;.json</screen>
-    <screen>
+  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;id&gt;.json
+
 curl -u username:password -X POST -d @updated_facility.json
   -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;uuid&gt;.json</screen>
   </section>
