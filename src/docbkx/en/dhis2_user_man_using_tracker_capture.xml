@@ -20,8 +20,7 @@
       <screeninfo>Example: searching/registration</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="resources/images/tracker_capture/search_register.png" format="PNG"
-            width="90%"/>
+          <imagedata fileref="resources/images/tracker_capture/search_register.png" format="PNG" width="90%"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -39,8 +38,7 @@
             <screeninfo>Enrollment status filtering icons</screeninfo>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="resources/images/tracker_capture/enrollment_status.png" format="PNG"
-                  width="20%"/>
+                <imagedata fileref="resources/images/tracker_capture/enrollment_status.png" format="PNG" width="20%"/>
               </imageobject>
             </mediaobject>
           </screenshot>
@@ -65,7 +63,8 @@
             it is possible to stay on the same page and keep doing more registration or go straight
             to the dashboard of the registered TEI. Selecting a program and doing registration also
             performs enrollment at the background. If a TEI is registered without a program, then
-            enrollment is possible from the TEI dashboard.</para>
+            enrollment is possible from the TEI dashboard. Both skip-logic and validation
+            error/warning messages are supported during registration.</para>
         </listitem>
       </orderedlist></para>
     <para/>
@@ -85,7 +84,7 @@
       collection of widgets - more widgets can be added. This helps to scale and handle complexity
       while staying simple and clean. </para>
     <screenshot>
-      <screeninfo>Example: TEI dashboard</screeninfo>
+      <screeninfo>Functionalities under settings</screeninfo>
       <mediaobject>
         <imageobject>
           <imagedata fileref="resources/images/tracker_capture/tei_dashboard.png" format="PNG" width="90%"/>
@@ -104,59 +103,115 @@
           <para>program selection menu - this is to dictate what kind of data to record and track
             for the selected TEI. This also affects the contents of the widgets.</para>
         </listitem>
+      <listitem>
+        <para>a small pin icon at the right corner - this allows to pin (or stick) the right side of
+            the widgets. This is useful especially during data entry. If for example there are a
+            many data elements or big form to fill, sticking the right side helps to remain visible
+            while scrolling data entry part.</para>
+      </listitem>
         <listitem>
-          <para>a small gear icon at the right corner - currently this helps to control which
-            widgets to display. From the figure above, there are six widgets on display. The widgets
-            are collapsible, responsive and draggable - this helps to acquire optimal view area as
-            per user needs. Widget (re)arrangments are saved automatically per user per
-            program.</para>
+          <para>a small gear icon at the right corner - currently three functionalities are
+            available from this icon. 
+            <screenshot>
+              <screeninfo>Example: TEI dashboard</screeninfo>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="resources/images/tracker_capture/settings_icon.png" format="PNG" width="20%"/>
+                </imageobject>
+              </mediaobject>
+            </screenshot>            
+            <orderedlist>
+              <listitem>
+                <para> Show/hide widgets - this helps to control which widgets to display. From the
+                  figure above, there are eight widgets on display. The widgets are collapsible,
+                  responsive and draggable - this helps to acquire optimal view area as per user
+                  needs. Widget (re)arrangments are saved automatically per user per program.
+                </para>
+              </listitem>
+              <listitem>
+                <para>Save dashboard layout as default - widgets arrangement is saved automatically
+                  everytime a widget's position or state (expand/collapse) is changed. However, for
+                  the entrie layout to be considered a default layout for the selected program it is
+                  required to explicitly save as "Default layout". </para>
+              </listitem>
+              <listitem>
+                <para>Set tei to active/inactive - this has nothing to do with widgets or the
+                  dashboard but it helps to set the status of dashborad owner (the TEI) to either
+                  active or inactive. If a TEI is set to inactive, only read operations are allowed
+                  - no data entry, no profile editing, no enrollment.</para>
+              </listitem>
+            </orderedlist></para>
         </listitem>
       </itemizedlist></para>
     <para> The widgets:- <orderedlist>
         <listitem>
-          <para><emphasis role="bold">Enrollment widget</emphasis> - this helps to enroll the
-            tracked entity for the selected program. If an active enrollment already exists, the
-            widget automatically displays it with some details about it. The widget also helps to do
-            some operations on active enrollment - for example terminate/complete. A link to history
-            is also provided if the TEI has historical enrollment.</para>
+          <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
+            selected program. If an active enrollment already exists, the widget automatically
+            displays it with some details about it. The widget also helps to do some operations on
+            the selected enrollment - for example terminate/complete or a possibility to mark the
+            enrollment for followup. The later one helps for example to deal with high-risk cases
+            during pregnancy followup. A link to history is also provided if the TEI has historical
+            enrollment.</para>
         </listitem>
+      <listitem>
+        <para><emphasis role="bold">Indicators</emphasis> - any indicator defined for the selected
+            program will have its value cacluated and displayed under this widget. </para>
+      </listitem>
          <listitem>
-          <para><emphasis role="bold">Dataentry widget</emphasis> - this is for doing data entry
-            using either default or custom forms. Depending on program definition, in particular
-            program stages, events will be displayed in a timely fashion. Clicking on any of them
-            displays the corresponding data entry. If a stage needs new event, a plus icon is
-            displayed for new event creation. To proceed with data entry, it is mandatory to have
-            event date. Once an event date is specified it is not possible to change due date. The
-            assumption is that by specifying event date, the event has already taken place. If the
-            event hasn't occurred yet, it is possible to change due date - this is effectively doing
-            nothing but rescheduling. The buttons at the bottom help to change the status of a
-            selected event. Another key feature from this widget is addition of multiple notes for
-            an event. Normally data recording is through datalements, however there are cases where
-            it is necessary to record additional information or comments. This is where the notes
-            section comes handy. However, a interesting feature here is - it is not possible to
-            delete a note. The idea is notes are more like log books. </para>
+          <para><emphasis role="bold">Dataentry</emphasis> - this is for doing data entry using
+            either default or custom forms. Depending on program definition, in particular program
+            stages, events will be displayed in a timely fashion. Clicking on any of them displays
+            the corresponding data entry. If a stage needs new event, a plus icon is displayed for
+            new event creation. To proceed with data entry, it is mandatory to have event date. Once
+            an event date is specified it is not possible to change due date. The assumption is that
+            by specifying event date, the event has already taken place. If the event hasn't
+            occurred yet, it is possible to change due date - this is effectively doing nothing but
+            rescheduling. The buttons at the bottom help to change the status of a selected event.
+            Another key feature from this widget is addition of multiple notes for an event.
+            Normally data recording is through datalements, however there are cases where it is
+            necessary to record additional information or comments. This is where the notes section
+            comes handy. However, a interesting feature here is - it is not possible to delete a
+            note. The idea is notes are more like log books. Both skip-logic and validation
+            error/warning messages are supported during data entry.</para>
         </listitem>
-        <listitem>
-          <para><emphasis role="bold">Profile widget</emphasis> - this is to edit TEI's profile or
-            attributes.</para>
-        </listitem>
-        <listitem>
-          <para><emphasis role="bold">Relationship widget</emphasis> - this helps to relate the
-            selected TEI (the one whose dashboard is shown) to another TEI. Adding a relative is
-            possible by either searching from existing or registering a new one.</para>
-        </listitem>
-        <listitem>
-          <para><emphasis role="bold">Notes widget</emphasis> - this is the same as event notes. The
+      <listitem>
+        <para><emphasis role="bold">Notes</emphasis> - this is the same as event notes. The
             difference between the two is that, here notes are attached not to events but to
             enrollments. This helps to record some notes based on enrollment - for example why is an
             enrollment terminated or what is the overall observation of the TEI throughout the
             enrollment.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Report</emphasis> - this is to provide a "journal" of the TEI
+            per program. A report row is provided for each program the TEI is/was associated.</para>
+      </listitem>
+        <listitem>
+          <para><emphasis role="bold">Profile </emphasis> - this is to edit TEI's profile or
+            attributes. Here, if the TEI has an attribute of value type "Tracker Associate", a small
+            icon next to the input filed is displayed. Clcking the icon opens a popup where users
+            are allowed to either search or register new associate.</para>
         </listitem>
       <listitem>
-        <para><emphasis role="bold">Report widget</emphasis> - this is to provide a "journal" of the
-            tracked entity per program. A report row is provided for each program the TEI is/was
-            associated.</para>
+        <para><emphasis role="bold">Active programs</emphasis> - this is an extension of the
+            enrollment widget. While the enrollment widget displays both active and historical
+            enrollment for the selected program, active programs widget displayes all other programs
+            that the selected TEI has active enrollments.</para>
       </listitem>
+        <listitem>
+          <para><emphasis role="bold">Relationship </emphasis> - this helps to relate the selected
+            TEI (the one whose dashboard is shown) to another TEI. Adding a relative is possible by
+            either searching from existing or registering a new one. If a program is selected while
+            registering a new one, the new one will be automatically enrolled to the selected
+            program. Another interesting feature in the relationship widget is attribute
+            inheritance. For example take Mother-Child relationship and assume there are two
+            programs Antenatal care for the mother and Immunization for the child. If among others
+            first name, last name and address attributes are required for both programs, it is
+            possible to configure last name and address attributes as inheritable. Then during child
+            registration, there is no need to refill these inheritable attributes - they can be
+            automatically populated based on the mother's value. If for some reason a different
+            value is required for the child, it is possible to override.</para>
+        </listitem>        
+      
       </orderedlist>
     </para>
   </section>
