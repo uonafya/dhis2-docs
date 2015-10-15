@@ -89,37 +89,8 @@
         </listitem>
         <listitem>
           <para><emphasis role="bold">Value type: </emphasis>Defines the type of data this data
-              element will be used to record. Currently there are five options:</para>
+              element will be used to record. </para>
           <itemizedlist>
-            <listitem>
-              <para>Number: Numeric values.</para>
-            </listitem>
-            <listitem>
-              <para>Text: Textual values. The maximum number of characters which are allowed by the system is 60,000. </para>
-            </listitem>
-            <listitem>
-              <para>Yes/No: Boolean values, will render as drop-down lists in data entry.</para>
-            </listitem>
-            <listitem>
-              <para>Yes only: True values, will render as check-boxes in data entry.</para>
-            </listitem>
-            <listitem>
-              <para>Date: Dates, will render as calendar widget in data entry.</para>
-            </listitem>
-            <listitem>
-              <para>User name: This will be populated with the username of the user which performs data entry automatically during the data entry process. </para>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-        <listitem>
-          <para><emphasis role="bold">Number type:</emphasis> DHIS 2 supports several different
-              number types. During data entry, users will be restricted to enter the defined number
-              types only. Each of the available options are described below. </para>
-          <itemizedlist>
-            <listitem>
-              <para>Number: This number type supports any real value with a single decimal point,
-                  an optional negative sign, and no thousands separators. </para>
-            </listitem>
             <listitem>
               <para>Integer: Any whole number (positive and negative), including zero.</para>
             </listitem>
@@ -130,26 +101,37 @@
               <para>Negative integer: Any whole number less than (but not including) zero.</para>
             </listitem>
             <listitem>
-              <para>Positive or zero integer: Any whole number greater than or equal to
-                  zero.</para>
+              <para>Positive of zero integer: Any positive whole number, including zero.</para>
             </listitem>
             <listitem>
-              <para>Unit interval: Continuous number between 0 and 1.</para>
+              <para>Number: Any real numeric value with a single decimal point. Thousands separators and scientific notation is not supported.</para>
             </listitem>
             <listitem>
-              <para>Percentage: Whole number inclusive between 0 and 100.</para>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-        <listitem>
-          <para><emphasis role="bold">Text type:</emphasis> The detailed type relevant to text
-              value type.</para>
-          <itemizedlist>
-            <listitem>
-              <para>Text: Free text, rendered as standard input field.</para>
+              <para>Unit interval: Any real  number greater than or equal to 0 and less than or equal to 1. </para>
             </listitem>
             <listitem>
-              <para>Long text: Free text, rendered as text area in data entry.</para>
+              <para>Percentage: Whole numbers inclusive between 0 and 100.</para>
+            </listitem>
+            <listitem>
+              <para>Coordinate: A point coordinate specified as longitude/latitude in decimal degrees. All coordinate should be specified in the format &quot;-19.23 , 56.42&quot; with a comma separating the longitude and latitude. <emphasis>(Since v2.21)</emphasis></para>
+            </listitem>
+            <listitem>
+              <para>Text /Long text: Textual values.  Long text renders as text area in forms, while text renders as an input field.The maximum number of characters which are allowed by the system is 50,000.</para>
+            </listitem>
+            <listitem>
+              <para>File: A file resource which can be used to store external files, such as documents and photos. <emphasis>(Since v2.21)</emphasis></para>
+            </listitem>
+            <listitem>
+              <para>Date: Dates, will render as calendar widget in data entry.</para>
+            </listitem>
+            <listitem>
+              <para>Username: This will be populated with the username of the user which performs data entry automatically during the data entry process. </para>
+            </listitem>
+            <listitem>
+              <para>Yes/No: Boolean values, will render as drop-down lists in data entry.</para>
+            </listitem>
+            <listitem>
+              <para>Yes only: True values, will render as check-boxes in data entry.</para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -187,6 +169,9 @@
             <listitem>
               <para>Max: Maximum of data values.</para>
             </listitem>
+            <listitem>
+              <para>None: No aggregation is performed in any dimension.</para>
+            </listitem>
           </itemizedlist>
         </listitem>
         <listitem>
@@ -216,7 +201,7 @@
           <para><emphasis role="bold">Aggregation levels:</emphasis>  The Aggregation Levels option allows the data element to be aggregated at one or more levels. When the user clicks on the Aggregation levels option, a drop down menu appears which displays available aggregation levels. The desired aggregation level is then selected by clicking the ‘Add Selected’ button. By default, the aggregation will start at the lowest assigned organisation unit. If e.g. Chiefdom is selected below it means that Chiefdom, District, and National aggregates will use Chiefdom (the  highest aggregation level available) as the data source, and PHU data will not be included. PHU data will still be available for the PHU level, but not included in aggregations to the levels above. If District and Chiefdom are both selected then the District and National level aggregates will use District data as their source, Chiefdom will use Chiefdom, and PHU will use PHU. Read more about aggregation levels in the Reporting chapter i the section on data sources for reporting.</para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Attributes</emphasis>: This section is only applicable if attributes have been defined  in Data Adminisrtation -&gt; Attributes. As an example &quot;Classification,&quot; &quot;Collection Method,&quot; &quot;Rationale&quot; and &quot;Unit of measure&quot; are all  data element attributes. </para>
+          <para><emphasis role="bold">Attributes</emphasis>: This section is only applicable if attributes have been defined  in Data Adminisrtation -&gt; Attributes. As an example &quot;Classification,&quot; &quot;Collection Method,&quot; &quot;Rationale&quot; and &quot;Unit of measure&quot; are all  data element attributes and are discussed below.</para>
         </listitem>
         <listitem>
           <para><emphasis role="bold">Classification</emphasis><emphasis role="bold">:</emphasis> Here, the classification type of the data element can be defined according to what it is measuring in the health system. </para>
