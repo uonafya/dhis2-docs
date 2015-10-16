@@ -317,9 +317,12 @@
       </screenshot>
       <para>
         The second column is optional, and it allows defining a custom message to the end user in case the rule hides and 
-        blanks out the field after the end user typed in or selected a value. Note: If a <emphasis role="bold">hide field 
+        blanks out the field after the end user typed in or selected a value. 
+          <note>
+              If a <emphasis role="bold">hide field 
         action</emphasis> hides a field that contains a value, the field will always be blanked. If no message is defined,
         a standard message will be displayed to alert the user.
+          </note>
       </para>
       <para>
         The third column specifies which data element that the <emphasis role="bold">hide field action</emphasis> should
@@ -344,12 +347,73 @@
       </screenshot>
       <para>
         The second column is optional, and it allows defining a custom message to the end user in case the rule hides a section that 
-        contains a field that again has a value. Note: If a <emphasis role="bold">hide section action</emphasis> hides a section with one 
+          contains a field that again has a value. 
+          <note>
+        If a <emphasis role="bold">hide section action</emphasis> hides a section with one 
         or more fields that contains a value, these fields will always be blanked. If no message is defined, a standard message will 
-        be displayed to alert the user.
+        be displayed to alert the user.                                
+          </note>
       </para>
       <para>
         The third column specifies which section that the <emphasis role="bold">hide section action</emphasis> should hide.
+      </para>
+    </section>
+    <section>
+      <title>
+        Show warning action
+      </title>
+      <para>
+        A <emphasis role="bold">show warning action</emphasis> is defined by selecting "show warning" in the first column of the
+        <emphasis role="bold">action</emphasis> row. A <emphasis role="bold">show warning action</emphasis> is used to give the user
+        a warning about the data being entered, but at the same time allowing the user to save and continue. Warnings can
+        be used to help the user avoid errors in the data entered, while at the same time allowing the user to consciously disregard
+        it and save a value that is outside preset expectations.
+      </para>
+      <screenshot>
+        <screeninfo>Show warning action</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resources/images/program_rules/program-rule-show-warning-action.png" format="PNG" width="80%"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <para>
+        The second column is mandatory, and is used to definine the message shown to the user when the <emphasis role="bold">expression
+            </emphasis>is true and the <emphasis role="bold">action</emphasis> is triggered.
+      </para>
+      <para>
+        The third column specifies which dataelement or attribute to link the warning to, and is meant to be a cue for the user regarding
+          where the cause of the warning can be rectified. In case several dataelements or attributes is involved, choose the one that is most
+          likely that the user would need to concider.
+      </para>
+    </section>
+    <section>
+      <title>
+        Show error action
+      </title>
+      <para>
+        A <emphasis role="bold">show error action</emphasis> is defined by selecting "show error" in the first column of the
+        <emphasis role="bold">action</emphasis> row. A <emphasis role="bold">show error action</emphasis> is used whenever there is rules that
+        the entered data must conform strictly to. The show error action prevents the user from continuing until the error is resolved. Such
+        a strict validation should only be used whenever it is certain that the evaluated <emphasis role="bold">expression</emphasis> is never
+        true unless the user has made a mistake in data entry.
+      </para>
+      <screenshot>
+        <screeninfo>Show error action</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resources/images/program_rules/program-rule-show-error-action.png" format="PNG" width="80%"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <para>
+        The second column is mandatory, and is used to definine the message shown to the user when the <emphasis role="bold">expression
+            </emphasis>is true and the <emphasis role="bold">action</emphasis> is triggered.
+      </para>
+      <para>
+        The third column specifies which dataelement or attribute to link the error to, and is meant to be a cue for the user regarding
+          where the cause of the error can be rectified. In case several dataelements or attributes is involved, choose the one that is most
+          likely that the user would need to change.
       </para>
     </section>
   </section>
