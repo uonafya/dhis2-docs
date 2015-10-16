@@ -1662,25 +1662,26 @@ http://server/api/constants/ID</screen></para>
   </section>
   <section id="fileresource">
     <title>File resources</title>
-    <para><emphasis role="italic">File resources</emphasis> are special objects used to represent
-      and store binary content. The <emphasis role="italic">FileResource</emphasis> object itself
-      contains the file meta-data (name, Content-Type, size, ...) as well as a key allowing
-      retrieval of the contents from a database-external file store. In short terms: the <emphasis
-        role="italic">FileResource</emphasis> object is stored in the database like any other but
-      the content (actual file) is stored elsewhere and is retrievable through the contained
-      reference <emphasis role="italic">(storageKey)</emphasis>.</para>
+    <para><emphasis role="italic">File resources</emphasis> are objects used to represent and store
+      binary content. The <emphasis role="italic">FileResource</emphasis> object itself contains the
+      file meta-data (name, Content-Type, size, etc) as well as a key allowing retrieval of the
+      contents from a database-external file store. The <emphasis role="italic"
+        >FileResource</emphasis> object is stored in the database like any other but the content
+      (file) is stored elsewhere and is retrievable using the contained reference <emphasis
+        role="italic">(storageKey)</emphasis>.</para>
     <para>The contents of a file resources is not directly accessible but is referenced from other
-      objects (such as data values) to store binary content of virtually unlimited size. </para>
+      objects (such as data values) to store binary content of virtually unlimited size.</para>
     <para>Creation of the file resource itself is done through the <emphasis role="italic"
-        >api/fileResources</emphasis> endpoint as a multipart upload POST
-      request:<screen>curl -X POST -v -F "file=@/Path/to/file;filename=name-of-file.png" https://server/api/fileResources</screen></para>
+        >api/fileResources</emphasis> endpoint as a multipart upload
+      POST-request:<screen>curl -X POST -v -F "file=@/Path/to/file;filename=name-of-file.png" https://server/api/fileResources</screen></para>
     <para>The only form parameter required is the <emphasis role="italic">file</emphasis> which is
       the file to upload. The filename and content-type should also be included in the request (this
-      is handled for you by any browser), but will be replaced by defaults when not supplied.</para>
+      is handled for you by any Web browser) but will be replaced by defaults when not
+      supplied.</para>
     <para>On successfully creating a file resource the returned data will contain a <emphasis
         role="italic">response</emphasis> field which in turn contains the <emphasis role="italic"
         >fileResource</emphasis> like
-      so:<screen>{
+      this:<screen>{
 "httpStatus": "Accepted",
     "httpStatusCode": 202,
     "status": "OK",
@@ -1706,19 +1707,19 @@ http://server/api/constants/ID</screen></para>
       that the returned resource has been submitted for background processing (persisting to the
       external file store in this case). Also note the <emphasis role="italic"
         >storageStatus</emphasis> field which indicates whether the contents have been stored or
-      not. At this point the persistance to the external store is not yet finished (it's likely
-      being uploaded to a cloud store somewhere) as seen by the <emphasis role="italic"
+      not. At this point the persistance to the external store is not yet finished (it is likely
+      being uploaded to a cloud-based store somewhere) as seen by the <emphasis role="italic"
         >PENDING</emphasis> status.</para>
     <para>Even though the content has not been fully stored yet the file resource can now be used,
       for example as referenced content in a data value (see <xref linkend="datavalue_file"/>). If
       we need to check the updated <emphasis role="italic">storageStatus</emphasis> or otherwise
-      retrieve the meta-data of the file the <emphasis role="italic">fileResources</emphasis>
+      retrieve the meta-data of the file, the <emphasis role="italic">fileResources</emphasis>
       endpoint can be
       queried.<screen>curl -v https://server/api/fileResources/xm4JwRwke0i -H "Accept: application/json"</screen></para>
     <para>This request will return the <emphasis role="italic">FileResource</emphasis> object as
       seen in the response of the above example.</para>
     <section>
-      <title>A few important notes on working with file resources</title>
+      <title>File resource constraints</title>
       <para>
         <itemizedlist>
           <listitem>
@@ -1733,9 +1734,8 @@ http://server/api/constants/ID</screen></para>
             <para>The ID returned by the initial creation of the file resource is not retrievable
               from any other location unless the file resource has been referenced (in which the ID
               will be stored as the reference), so losing it will require the POST request to be
-              repeated and a new object to be created. Don't worry about the <emphasis role="italic"
-                >orphaned</emphasis> file resource, it will be cleaned up as described in the former
-              paragraph.</para>
+              repeated and a new object to be created. The <emphasis role="italic"
+                >orphaned</emphasis> file resource will be cleaned up automatically.</para>
           </listitem>
           <listitem>
             <para>File resource objects are <emphasis role="italic">immutable</emphasis>, meaning
@@ -6997,6 +6997,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
     }
 ]</screen></para>
     </section>
+    <section>
+      <title>Get appearance information</title>
+      <para>You can retrieve the available flag icons in JSON format with a GET
+        request:<screen>api/system/flags</screen></para>
+      <para>You can retrieve the available UI styles in JSON format with a GET
+        request:<screen>api/system/styles</screen></para>
+    </section>
   </section>
   <section>
     <title>Users</title>
@@ -7409,31 +7416,87 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <screen>/api/configuration</screen>
     <para>You can send <emphasis role="italic">GET</emphasis> and <emphasis role="italic"
         >POST</emphasis> requests to the following specific resources:</para>
-    <screen>GET  /api/configuration/systemId</screen>
-    <screen>GET  /api/configuration/feedbackRecipients
-POST /api/configuration/feedbackRecipients/&lt;user-group-id></screen>
-    <screen>GET  /api/configuration/offlineOrganisationUnitLevel
-POST /api/configuration/offlineOrganisationUnitLevel/&lt;org-unit-level-id></screen>
-    <screen>GET  /api/configuration/infrastructuralDataElements
-POST /api/configuration/infrastructuralDataElements/&lt;data-element-group-id></screen>
-    <screen>GET  /api/configuration/infrastructuralIndicators
-POST /api/configuration/infrastructuralIndicators/&lt;indicator-group-id></screen>
-    <screen>GET  /api/configuration/infrastructuralPeriodType
-POST /api/configuration/infrastructuralPeriodType/&lt;period-type-name></screen>
-    <screen>GET  /api/configuration/selfRegistrationRole
-POST /api/configuration/selfRegistrationRole/&lt;user-role-id></screen>
-    <screen>GET  /api/configuration/selfRegistrationOrgUnit
-POST /api/configuration/selfRegistrationOrgUnit/&lt;org-unit-id></screen>
-    <screen>GET  /api/configuration/remoteServerUrl
-POST /api/configuration/remoteServerUrl/&lt;url></screen>
-    <screen>GET  /api/configuration/remoteServerUsername
-POST /api/configuration/remoteServerUsername/&lt;username></screen>
-    <screen>POST /api/configuration/smtpPassword/&lt;password>
-POST /api/configuration/remoteServerPassword/&lt;password></screen>
+    <screen>/api/configuration/systemId</screen>
+    <screen>/api/configuration/feedbackRecipients</screen>
+    <screen>GET  /api/configuration/offlineOrganisationUnitLevel</screen>
+    <screen>GET  /api/configuration/infrastructuralDataElements</screen>
+    <screen>GET  /api/configuration/infrastructuralIndicators</screen>
+    <screen>GET  /api/configuration/infrastructuralPeriodType</screen>
+    <screen>GET  /api/configuration/selfRegistrationRole</screen>
+    <screen>GET  /api/configuration/selfRegistrationOrgUnit</screen>
+    <screen>GET  /api/configuration/remoteServerUrl</screen>
+    <screen>GET  /api/configuration/remoteServerUsername</screen>
     <para>For the CORS whitelist configuration you can make a POST request with an array of URLs to
       whitelist as payload using "application/json" as content-type, for instance:</para>
     <screen>["www.google.com", "www.dhis2.org", "www.who.int"]</screen>
-    <screen>POST GET /api/configuration/corsWhitelist</screen>
+    <screen>/api/configuration/corsWhitelist</screen>
+    <para>For POST requests, the configuration value should be sent as the request payload as text.
+      The following table shows appropriate configuration values for each property.</para>
+    <table frame="all">
+      <title>Configuration values</title>
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="2.28*"/>
+        <thead>
+          <row>
+            <entry>Configuration property</entry>
+            <entry>Value</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>feedbackRecipients</entry>
+            <entry>User group ID</entry>
+          </row>
+          <row>
+            <entry>offlineOrganisationUnitLevel</entry>
+            <entry>Organisation unit level ID</entry>
+          </row>
+          <row>
+            <entry>infrastructuralDataElements</entry>
+            <entry>Data element group ID</entry>
+          </row>
+          <row>
+            <entry>infrastructuralIndicators</entry>
+            <entry>Indicator group ID</entry>
+          </row>
+          <row>
+            <entry>infrastructuralPeriodType</entry>
+            <entry>Period type name (e.g. "Monthly")</entry>
+          </row>
+          <row>
+            <entry>selfRegistrationRole</entry>
+            <entry>User role ID</entry>
+          </row>
+          <row>
+            <entry>selfRegistrationOrgUnit</entry>
+            <entry>Organisation unit ID</entry>
+          </row>
+          <row>
+            <entry>smtpPassword</entry>
+            <entry>SMTP email server password</entry>
+          </row>
+          <row>
+            <entry>remoteServerUrl</entry>
+            <entry>URL to remote server</entry>
+          </row>
+          <row>
+            <entry>remoteServerUsername</entry>
+            <entry>Username for remote server authentication</entry>
+          </row>
+          <row>
+            <entry>remoteServerPassword</entry>
+            <entry>Password for remote server authentication</entry>
+          </row>
+          <row>
+            <entry>corsWhitelist</entry>
+            <entry>JSON list of URLs</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>As an example, to set the feedback recipients user group you can invoke the following curl
+      command:<screen>curl "localhost/api/configuration/feedbackRecipients" -d "wl5cDMuUhmF" -H "Content-Type:text/plain"-u admin:district -v</screen></para>
   </section>
   <section>
     <title>Internationalization</title>
