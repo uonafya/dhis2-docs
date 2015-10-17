@@ -286,31 +286,27 @@
                     </thead>
                     <tbody>
                         <row>
-                            <entry>d2:daysBetween</entry>
-                            <entry>(date, date)</entry>
-                            <entry>Produces the number of days between the first and second argument.
-                                If the second argument date is before the first argument the return value
-                                will be the negative number of days between the two dates. The static date 
-                                format is 'yyyy-MM-dd'.</entry>
-                        </row>
-                        <row>
-                            <entry>d2:yearsBetween</entry>
-                            <entry>(date, date)</entry>
-                            <entry>Produces the number of years between the first and second argument.
-                                If the second argument date is before the first argument the return value
-                                will be the negative number of years between the two dates. The static date
-                                format is 'yyyy-MM-dd'.</entry>
+                            <entry>d2:ceil</entry>
+                            <entry>(number)</entry>
+                            <entry>Rounds the input argument <emphasis role="bold">up</emphasis> to the nearest whole number.
+                                <para>
+                                    Example:
+                                    <screen>d2:ceil(#{hemoglobinValue})</screen>
+                                </para>
+                            </entry>
                         </row>
                         <row>
                             <entry>d2:floor</entry>
                             <entry>(number)</entry>
-                            <entry>Rounds the input argument <emphasis role="bold">down</emphasis> to the nearest whole number.</entry>
+                            <entry>Rounds the input argument <emphasis role="bold">down</emphasis> to the nearest whole number.
+                                <para>
+                                        An example producing the number of weeks the woman is pregnant. Notice that the subexpression
+                                        #{gestationalAgeDays}/7 is evaluated before the floor function is executed:
+                                        <screen>d2:floor(#{gestationalAgeDays}/7)</screen>
+                                </para>
+                            </entry>
                         </row>
-                        <row>
-                            <entry>d2:ceil</entry>
-                            <entry>(number)</entry>
-                            <entry>Rounds the input argument <emphasis role="bold">up</emphasis> to the nearest whole number.</entry>
-                        </row>
+
                         <row>
                             <entry>d2:round</entry>
                             <entry>(number)</entry>
@@ -319,7 +315,13 @@
                         <row>
                             <entry>d2:modulus</entry>
                             <entry>(number,number)</entry>
-                            <entry>Produces the modulus when dividing the first with the second argument.</entry>
+                            <entry>Produces the modulus when dividing the first with the second argument.
+                                <para>
+                                    An example producing the number of days the woman is into her current
+                                    pregnancy week:
+                                    <screen>d2:modulus(#{gestationalAgeDays},7)</screen>
+                                </para>
+                            </entry>
                         </row>
                         <row>
                             <entry>d2:zing</entry>
@@ -336,14 +338,42 @@
                         <row>
                             <entry>d2:concatenate</entry>
                             <entry>(object, [,object, object,...])</entry>
-                            <entry>Produces a string concatenated string from the input parameters. 
-                                Will be in use in future action types.</entry>
+                            <entry>Produces a string concatenated string from the input parameters. Supports 
+                                any number of parameters. Will mainly be in use in future action types, for
+                                example to display gestational age with d2:concatenate('weeks','+','gestationalageDays').
+                            </entry>
+                        </row>
+                        <row>
+                            <entry>d2:daysBetween</entry>
+                            <entry>(date, date)</entry>
+                            <entry>Produces the number of days between the first and second argument.
+                                If the second argument date is before the first argument the return value
+                                will be the negative number of days between the two dates. The static date 
+                                format is 'yyyy-MM-dd'.
+                                <para>
+                                    Example, calculating the gestational age(in days) of a woman, based on 
+                                    the last menstrual period and the current event date:
+                                    <screen>d2:daysBetween(#{lastMenstrualDate},V{event_date})</screen>
+                                </para>
+                            </entry>
+                        </row>
+                        <row>
+                            <entry>d2:yearsBetween</entry>
+                            <entry>(date, date)</entry>
+                            <entry>Produces the number of years between the first and second argument.
+                                If the second argument date is before the first argument the return value
+                                will be the negative number of years between the two dates. The static date
+                                format is 'yyyy-MM-dd'.</entry>
                         </row>
                         <row>
                             <entry>d2:addDays</entry>
                             <entry>(date, number)</entry>
                             <entry>Produces a date based on the first argument date, adding the second argument
-                                number of days. <screen></screen>
+                                number of days.
+                                <para>
+                                    An example calculating the pregnancy due date based on the last menstrual period:
+                                    <screen>d2:addDays(#{lastMenstrualDate},283)</screen>
+                                </para>
                             </entry>
                         </row>
                         <row>
