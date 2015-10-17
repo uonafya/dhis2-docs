@@ -384,8 +384,8 @@
                                 fields in the program - see example
                                 <para>
                                     Example usage where #{previousPregnancyOutcome} is one of the source
-                                    fields in a repeatable program stage "previous pregnancy":<screen>
-                                        d2:count('previousPregnancyOutcome')</screen>
+                                    fields in a repeatable program stage "previous pregnancy":
+                                    <screen>d2:count('previousPregnancyOutcome')</screen>
                                 </para>
                             </entry>
                         </row>
@@ -400,8 +400,7 @@
                                     Example usage where #{previousPregnancyOutcome} is one of the source
                                     fields in a repeatable program stage "previous pregnancy". The following function
                                     will produce the number of previous pregnancies that ended with abortion:
-                                    <screen>
-                                        d2:countIfValue('previousPregnancyOutcome','Abortion')
+                                    <screen>d2:countIfValue('previousPregnancyOutcome','Abortion')
                                     </screen>
                                 </para>
                             </entry>
@@ -416,8 +415,7 @@
                                     Example usage where #{fundalHeightDiscrepancy} is one of the source
                                     fields in program, and it can be either positive or negative. The following function
                                     will produce the number of positive occurrences:
-                                    <screen>
-                                        d2:countIfZeroPos('fundalHeightDiscrepancy')
+                                    <screen>d2:countIfZeroPos('fundalHeightDiscrepancy')
                                     </screen>
                                 </para>
                             </entry>
@@ -429,8 +427,7 @@
                             is entered.
                                 <para>
                                     Example usage, to find if the source field #{currentPregnancyOutcome} is yet filled in:
-                                    <screen>
-                                        d2:hasValue('currentPregnancyOutcome')
+                                    <screen>d2:hasValue('currentPregnancyOutcome')
                                     </screen>
                                 </para>
                             </entry>
@@ -452,6 +449,10 @@
                     </tbody>
                 </tgroup>
             </table>
+            <para><emphasis role="italic">A tip to expert users:</emphasis> functions can be nested within each other and
+            with subexpressions to form more complex conditions. An example that produces the gestational age in weeks, 
+            based on last menstrual date:
+            <screen>d2:floor( d2:daysBetween(#{lastMenstrualDate},V{event_date}) / 7 )</screen>
         </para>
     </section>
     <section>
