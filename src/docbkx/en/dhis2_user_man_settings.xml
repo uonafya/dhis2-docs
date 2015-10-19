@@ -15,22 +15,16 @@
       <title>General settings</title>
       <itemizedlist>
         <listitem>
-          <para>Cache strategy: Decides for how long reports and responses related to analysis
-            should be cached. If you are using the scheduled, nightly data mart tasks it makes sense
-            to put this on &quot;Cache until 6 AM tomorrow&quot;. This is because we know that data in reports
-            change at that time, and you can safely cache data up to the moment when the data mart
-            is updated. If you are loading data continuously into the datamart you should set it to
-            &quot;No cache&quot;. If you load data very infrequently into data mart you should consider
-            setting it to &quot;Cache for two weeks&quot;.</para>
+          <para>Maximum number of analytics records: This number can be increased to provide more
+            records from the analytics. The default is 50,000 and can be increased. Note that
+            setting the maximum number of analytics records to "unlimited" should be used with
+            caution as it might result in very high load on your server.</para>
         </listitem>
         <listitem>
-          <para>Maximum number of analytics records: This number can be increased to provide more records from the analytics. The default is 50,000 and can be increased. </para>
-          <warning>
-            <para>You should be exceedingly careful when increasing the maximum number of analytics records, for instance to &quot;Unlimited&quot;. This could result in severe server instability, due to clients requesting large amounts of data from the system. </para>
-          </warning>
-        </listitem>
-        <listitem>
-          <para>Number of database server CPUs: The number of CPU cores of your database server can be configured as a system setting. This allows the system to perform optimally when the database is hosted on a different server than the application server, as the analytics engine scales linearly on the number of available cores. </para>
+          <para>Infrastructural indicators: This setting defines an indicator group where the member
+            indicators should describe data about the infrastructure of organisation units. This
+            infrastructural data can currently be viewed in the GIS module in the facility
+            information sheet.</para>
         </listitem>
         <listitem>
           <para>Infrastructural data elements: This setting defines a data element group where the member data elements should describe data about the infrastructure of organisation units. Examples of such infrastructural data elements could be population, doctors, beds, Internet connectivity and climate. This infrastructural data can currently be viewed in the GIS module in the facility information sheet.</para>
@@ -40,6 +34,12 @@
             infrastructural data elements group are captured. This will typically be yearly. When
             viewing the infrastructural data you will be able to select the time period of the data
             source.</para>
+        </listitem>
+        <listitem>
+          <para>Default relative period for analysis: Defines the relative period to use by default
+            in analytics apps such as pivot table, charts and GIS. This relative period will be
+            automatically selected when the apps are opened, and should likely be the most commonly
+            used relative period among your users.</para>
         </listitem>
         <listitem>
           <para>Feedback recipients: This setting defines a user group where the members will
@@ -56,38 +56,28 @@
             more than 30 000.</para>
         </listitem>
         <listitem>
-          <para>System notifications email address: An email address can be specified to receive system notifications. Notifications about failures in processes such as analytics table generation will be sent here. This is useful for application monitoring.</para>
-        </listitem>
-        <listitem>
           <para>Data analysis std dev factor: Sets the number of standard deviations for use in the outlier analysis performed on the captured data in the data entry module. The default value is 2; a high value will catch less outlier values than a low value.</para>
         </listitem>
         <listitem>
-          <para>Days after period end to qualify for timely data submission: Sets the number of days after the end of a period in which a data entry form must be marked as complete in order to be considered timely. This affects the &quot;reporting rate&quot; tool in the reporting module which lists forms marked as complete as well as marked as complete in time. The default value is 15.</para>
-        </listitem>
-        <listitem>
-          <para>Phone number area code: The area code for the area in which your deployment is located. Used for sending and receiving
-            SMS.Typically, this would be a country code, for instance , +260 , which is the country code for Zambia. </para>
-        </listitem>
-        <listitem>
-          <para>Help page link: A URL can be provided for an alternative help source. This defines the URL which users will see when selecting Profile-&gt;Help.  </para>
-        </listitem>
-        <listitem>
-          <para>Server base URL: The full, externally accessible base URL for this server. Example:
-            https://apps.dhis2.org/demo is the server base URL for the DHIS 2 demo server. The URL
-            is used to provide links to this server from external locations such as in emails sent
-            from the system. Note that if this URL is not present, emails sent from the messaging
-            system will not contain a reply link.</para>
-        </listitem>
-        <listitem>
-          <para>Google Analytics (Universal Analytics) Key: Set your Google UA key here to provide analytics for your DHIS 2 instance. Most
-            places are covered, but it will not be provided for custom apps. Read more about Google Analytics at <ulink url="http://google.com/analytics">http://google.com/analytics</ulink>
-              .</para>
+          <para>Phone number area code: The area code for the area in which your deployment is
+            located. Used for sending and receiving SMS.Typically, this would be a country code, for
+            instance , +260 , which is the country code for Zambia. </para>
         </listitem>
         <listitem>
           <para>Enable multi-organisation unit forms: Enable support for entering data forms for
             multiple organisation units at the same time, in data entry, click on the parent
             organisation unit for the children that you want to enter data for, and the dataset list
             will include datasets that are assigned to the children of that parent.</para>
+        </listitem>
+        <listitem>
+          <para>Put analytics in maintenance mode: Puts the analytics engine / Web API resource in
+            maintenance mode, implying that 503 Service Unavailable will be returned for all
+            requests. This is useful when you need to perform maintenance on the server like
+            rebuilding indexes while the server is running in production, in order to reduce load
+            and more efficiently carry out the maintenance.</para>
+        </listitem>
+        <listitem>
+          <para>Days after period end to qualify for timely data submission: Sets the number of days after the end of a period in which a data entry form must be marked as complete in order to be considered timely. This affects the &quot;reporting rate&quot; tool in the reporting module which lists forms marked as complete as well as marked as complete in time. The default value is 15.</para>
         </listitem>
         <listitem>
           <para>Omit indicator values with zero numerator value in data mart: Defines whether
@@ -99,17 +89,48 @@
             written to the data mart (which again will improve performance) and could safely be set
             to omit.</para>
         </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>Server settings</title>
+      <itemizedlist>
         <listitem>
-          <para>Put analytics in maintenance mode: Puts the analytics engine / Web API resource in
-            maintenance mode, implying that 503 Service Unavailable will be returned for all
-            requests. This is useful when you need to perform maintenance on the server like
-            rebuilding indexes while the server is running in production, in order to reduce load
-            and more efficiently carry out the maintenance.</para>
+          <para>Cache strategy: Decides for how long reports and responses related to analysis
+            should be cached. If you are using the scheduled, nightly data mart tasks it makes sense
+            to put this on &quot;Cache until 6 AM tomorrow&quot;. This is because we know that data
+            in reports change at that time, and you can safely cache data up to the moment when the
+            data mart is updated. If you are loading data continuously into the datamart you should
+            set it to &quot;No cache&quot;. If you load data very infrequently into data mart you
+            should consider setting it to &quot;Cache for two weeks&quot;.</para>
+        </listitem>
+        <listitem>
+          <para>Number of database server CPUs: The number of CPU cores of your database server can
+            be configured as a system setting. This allows the system to perform optimally when the
+            database is hosted on a different server than the application server, as the analytics
+            engine scales linearly on the number of available cores. </para>
+        </listitem>
+        <listitem>
+          <para>System notifications email address: An email address can be specified to receive
+            system notifications. Notifications about failures in processes such as analytics table
+            generation will be sent here. This is useful for application monitoring.</para>
+        </listitem>
+        <listitem>
+          <para>Server base URL: The full, externally accessible base URL for this server. Example:
+            https://apps.dhis2.org/demo is the server base URL for the DHIS 2 demo server. The URL
+            is used to provide links to this server from external locations such as in emails sent
+            from the system. Note that if this URL is not present, emails sent from the messaging
+            system will not contain a reply link.</para>
+        </listitem>
+        <listitem>
+          <para>Google Analytics (Universal Analytics) Key: Set your Google UA key here to provide
+            analytics for your DHIS 2 instance. Most places are covered, but it will not be provided
+            for custom apps. Read more about Google Analytics at <ulink
+              url="http://google.com/analytics">http://google.com/analytics</ulink> .</para>
         </listitem>
       </itemizedlist>
     </section>
     <section id="systemAppearanceSettings">
-      <title>System appearance settings</title>
+      <title>Appearance settings</title>
       <itemizedlist>
         <listitem>
           <para>Application title: Sets the application title on the top menu.</para>
@@ -123,7 +144,12 @@
             Will be visible on the front page under the login area.</para>
         </listitem>
         <listitem>
-          <para>Application footer: Sets a text in the footer area of the login page.</para>
+          <para>Application left-side footer: Sets a text in the left-side footer area of the login
+            page.</para>
+        </listitem>
+        <listitem>
+          <para>Application right-side footer: Sets a text in the right-side footer area of the
+            login page.</para>
         </listitem>
         <listitem>
           <para>Style: Sets the style / look-and-feel of the system. The corresponding user style setting overrides this.</para>
@@ -131,6 +157,10 @@
         <listitem>
           <para>Start page: Sets page / module which the user will be redirected to after logging
             in. The dashboard module is the recommended start module.</para>
+        </listitem>
+        <listitem>
+          <para>Help page link: A URL can be provided for an alternative help source. This defines
+            the URL which users will see when selecting Profile-&gt;Help. </para>
         </listitem>
         <listitem>
           <para>Flag: Sets the flag which is displayed in the left menu of the dashboard module.</para>
@@ -161,6 +191,9 @@
         <listitem>
           <para>TLS: Refers to whether the SMPT server requires TLS for connections.</para>
         </listitem>
+        <listitem>
+          <para>Email sender: The email address to use as sender when sending out emails.</para>
+        </listitem>
       </itemizedlist>
     </section>
     <section>
@@ -186,19 +219,14 @@
             you have configured email settings (SMTP).</para>
         </listitem>
         <listitem>
-          <para>Enable user account invite: Defines user account invites can be sent. Account
-            invites let you invite new users to create their own accounts by sending an email
-            invitation.</para>
-        </listitem>
-        <listitem>
           <para>Allow users to grant own user roles: Defines whether users should be allowed to
             grant the user roles they are granted themselves to others.</para>
         </listitem>
         <listitem>
-          <para>Users must belong to a group controlled by the user manager: This allows user groups
-            to play a role in user management. When checked, user A can manage user B only if user
-            B belongs to a user group to which user A has read/write access. When user A creates a
-            new user, she or he must assign the new user to such a user group.</para>
+          <para>Allow assigning object to related objects during add or update: Defines whether to
+            allow users to assign an object to a related object in the add or updated object
+            screens. As an example, you can allow users to assign an organisation unit to data sets
+            and org unit group sets when creating or updating the org unit.</para>
         </listitem>
         <listitem>
           <para>Require user account password change: Require that users change their password every
@@ -215,6 +243,19 @@
       </itemizedlist>
     </section>
     <section>
+      <title>Approval</title>
+      <itemizedlist>
+        <listitem>
+          <para>Hide unapproved data in analytics: Defines whether unapproved data should be visible
+            or hidden in analytics.</para>
+        </listitem>
+        <listitem>
+          <para>Acceptance required before approval: Defines whether to include an acceptance step
+            before the approval step in the approval workflow.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
       <title>Calendar settings</title>
       <itemizedlist>
         <listitem>
@@ -223,6 +264,44 @@
         </listitem>
         <listitem>
           <para>Date format: Defines which date format should be used throughout the system.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>Data import</title>
+      <para>These settings apply to the data import process, and provide optional constraints on
+        what should be considered a conflict during import. The constraints are applied to each
+        individual data value in the import.</para>
+      <itemizedlist>
+        <listitem>
+          <para>Require periods to match period type of  data set: Require period of data value to
+            be of the same period type as the data sets for which the data element of data value is
+            assigned to.</para>
+        </listitem>
+        <listitem>
+          <para>Require category option combos to match category combo of data element: Require
+            category option combo of data value to be part of the category combo of the data element
+            of the data value.</para>
+        </listitem>
+        <listitem>
+          <para>Require organisation units to match assignment of data set: Require organisation
+            unit of data value to be assigned to one or more of the data sets which the data element
+            of data value is assigned to.</para>
+        </listitem>
+        <listitem>
+          <para>Require attribute option combos to match category combo of data set: Require
+            attribute option combo of data value to be part of the category combo of the data set
+            which the data element of data value is assigned to.</para>
+        </listitem>
+        <listitem>
+          <para>Require category option combo to be specified: Require category option combo of data
+            value to be specifed. By default it will fall back to default category option combo if
+            not specified.</para>
+        </listitem>
+        <listitem>
+          <para>Require attribute option combo to be specified: Require attribute option combo of
+            data value to be specifed. By default it will fall back to default attribute option
+            combo if not specified.</para>
         </listitem>
       </itemizedlist>
     </section>
@@ -256,6 +335,10 @@
             living on another domain than the DHIS 2 instance. </para>
         </listitem>
       </itemizedlist>
+    </section>
+    <section>
+      <title>OAuth2 clients</title>
+      <para/>
     </section>
   </section>
 </chapter>
