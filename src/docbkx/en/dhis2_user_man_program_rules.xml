@@ -449,7 +449,8 @@
                     </tbody>
                 </tgroup>
             </table>
-            <para><emphasis role="italic">A tip to expert users:</emphasis> functions can be nested within each other and
+        </para>
+        <para><emphasis role="italic">A tip to expert users:</emphasis> functions can be nested within each other and
             with subexpressions to form more complex conditions. An example that produces the gestational age in weeks, 
             based on last menstrual date:
             <screen>d2:floor( d2:daysBetween(#{lastMenstrualDate},V{event_date}) / 7 )</screen>
@@ -500,13 +501,10 @@
             </screenshot>
             <para>
                 The second column is optional, and it allows defining a custom message to the end user in case the rule hides and 
-                blanks out the field after the end user typed in or selected a value. 
-                <note>
-                    If a <emphasis role="bold">hide field 
-                        action</emphasis> hides a field that contains a value, the field will always be blanked. If no message is defined,
-                    a standard message will be displayed to alert the user.
-                </note>
+                blanks out the field after the end user typed in or selected a value.
             </para>
+            <para>If a <emphasis role="bold">hide field action</emphasis> hides a field that contains a value, the field will always be blanked.
+                If no message is defined, a standard message will be displayed to alert the user</para>
             <para>
                 The third column specifies which data element that the <emphasis role="bold">hide field action</emphasis> should
                 hide.
@@ -531,11 +529,11 @@
             <para>
                 The second column is optional, and it allows defining a custom message to the end user in case the rule hides a section that 
                 contains a field that again has a value. 
-                <note>
-                    If a <emphasis role="bold">hide section action</emphasis> hides a section with one 
-                    or more fields that contains a value, these fields will always be blanked. If no message is defined, a standard message will 
-                    be displayed to alert the user.                                
-                </note>
+            </para>
+            <para>
+                If a <emphasis role="bold">hide section action</emphasis> hides a section with one 
+                or more fields that contains a value, these fields will always be blanked. If no message is defined, a standard message will 
+                be displayed to alert the user.                                
             </para>
             <para>
                 The third column specifies which section that the <emphasis role="bold">hide section action</emphasis> should hide.
