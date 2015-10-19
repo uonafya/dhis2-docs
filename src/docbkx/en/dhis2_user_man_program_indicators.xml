@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. -->
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Program Indicators</title>
-  <para>This chapter covers how to configure and use program indicators. Program indicators in
-    essence are expressions based on data elements and attributes of tracked entities.</para>
+  <para>This chapter covers how to configure and use program indicators. Program indicators are expressions based on data elements and attributes of tracked entities, which can be used to calculate values based on a formula.</para>
   <section>
     <title>Overview</title>
     <para>The purpose of program indicators is to provide a way to produce calculated values based
@@ -12,32 +12,32 @@
   </section>
   <section>
     <title>Setup</title>
-    <para>Program indicators can be managed from the "Programs and Attributes" app. Once in the app,
+    <para>Program indicators can be managed from the &quot;Programs and Attributes&quot; app. Once in the app,
       navigate to Programs. A program indicator belongs to exactly one program, so click on the
-      program for which you want to create an indicator and from the context menu navigate to "View
-      program indicators". This will open the list of existing indicators, if any, for this
+      program for which you want to create an indicator and from the context menu navigate to &quot;View
+      program indicators&quot;. This will open the list of existing indicators, if any, for this
       program.</para>
-    <para>To <emphasis role="bold">add</emphasis> an indicator, click the "Add new" button in the
+    <para>To <emphasis role="bold">add</emphasis> an indicator, click the &quot;Add new&quot; button in the
       top right corner. This will open the new indicator screen. Provide a name, short name, code,
       description, value type, expression and filter for the indicator.</para>
     <para>To <emphasis role="bold">edit</emphasis> an indicator, click on the relevant indicator in
-      the list to open the context menu and click "Edit". This will open the edit indicator screen,
+      the list to open the context menu and click &quot;Edit&quot;. This will open the edit indicator screen,
       where you can modify the relevant values.</para>
     <para>To <emphasis role="bold">remove</emphasis> an  indicator, click on the relevant indicator
-      in the list to open the context menu and click "Remove". Click "OK" in the confirmation dialog
+      in the list to open the context menu and click &quot;Remove&quot;. Click &quot;OK&quot; in the confirmation dialog
       to remove the indicator.</para>
     <screenshot>
       <screeninfo>Program indicator list with context menu</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="resources/images/program_indicator/program-indicator-list.png" format="PNG"/>
+          <imagedata fileref="resources/images/program_indicator/program-indicator-list.png" format="PNG" align="center" width="60%"/>
         </imageobject>
       </mediaobject>
     </screenshot>
   </section>
   <section>
     <title>Indicator evaluation</title>
-    <para>Program indicators are evaluated based on its aggregation type, expression and filter. The
+    <para>Program indicators are evaluated based on the assigned aggregation type, expression and filter. The
       order of evaluation is as follows:</para>
     <itemizedlist>
       <listitem>
@@ -54,17 +54,16 @@
     </itemizedlist>
     <section>
       <title>Aggregation type</title>
-    <para>The aggregation type determines how the program indicator
+      <para>The aggregation type determines how the program indicator
         will be aggregated. The following aggregation types are available:</para>
-      <para>average, sum, count, std dev, variance, min, max, custom (allows inline aggregation
-        types in expression)</para>
-      <para>The custom aggregation type is special as it allows you to specify the aggregation type
-        inline in the expression. All other aggregation types are applied to the entire
+      <para>Average, Sum, Count, Standard Deviation, Variance, Min, Max, Custom</para>
+      <para>The custom aggregation type is special, as it allows you to specify the aggregation type
+        in-line in the expression. All other aggregation types are applied to the entire
         expression.</para>
     </section>
     <section>
       <title>Expression</title>
-    <para>The expression defines how the indicator is being calculated. The expression can contain
+      <para>The expression defines how the indicator is being calculated. The expression can contain
         references to various entities which will be substituted with a related values when the
         indicator is calculated:<itemizedlist>
           <listitem>
@@ -86,26 +85,25 @@
             <para>Constants: Will be substituted with the value of the constant.</para>
           </listitem>
         </itemizedlist></para>
-    <para>The expression is a mathematical expression that can contain operators which include
-      multiply, divide, plus and minus. The expression will be evaluated <emphasis role="italic">per
-        event</emphasis>, then aggregated according to its aggregation type.</para>    
-    <screenshot>
-      <screeninfo>Program indicator list with context menu</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="resources/images/program_indicator/program-indicator-expression.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para>An example expression that includes both attributes, data elements and constants looks like
+      <para>The expression is a mathematical expression that can contain operators which include
+      multiply, divide, plus and minus. The expression will be evaluated <emphasis role="italic">per event</emphasis>, then aggregated according to its aggregation type.</para>
+      <screenshot>
+        <screeninfo>Program indicator list with context menu</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resources/images/program_indicator/program-indicator-expression.png" format="PNG" align="center" width="60%"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <para>An example expression that includes both attributes, data elements and constants looks like
       this:<screen>(A{GPkGfbmArby} + #{mCXR7u4kNBW.NFkjsNiQ9PH}) * C{bCqvfPR02Im}</screen></para>
-    <para>An example expression which uses the custom aggregation type and hence can use inline
+      <para>An example expression which uses the custom aggregation type and hence can use inline
       aggregation types looks like
       this:<screen>(sum(#{mCXR7u4kNBW.K0A4BauXJDl} * #{mCXR7u4kNBW.NFkjsNiQ9PH}) / sum(#{mCXR7u4kNBW.NFkjsNiQ9PH})) * 100</screen></para>
     </section>
     <section>
       <title>Filter</title>
-    <para>The filter is applied to events and filters the data
+      <para>The filter is applied to events and filters the data
       source used for the calculation of the indicator. I.e. the filter is applied to the set of
       events before the indicator expression is being evaluated. The filter must evaluate to either
       true or false. It filter is applied to each individual event. If the filter evaluates to true
@@ -117,8 +115,8 @@
       <table frame="all">
         <title>Operators</title>
         <tgroup cols="2">
-          <colspec colname="c1" colnum="1" colwidth="1*"/>
-          <colspec colname="c2" colnum="2" colwidth="5.11*"/>
+          <colspec colnum="1" colname="c1" colwidth="1*"/>
+          <colspec colnum="2" colname="c2" colwidth="5.11*"/>
           <thead>
             <row>
               <entry>Operator</entry>
@@ -151,37 +149,37 @@
               <entry>Less than or equal to</entry>
             </row>
             <row>
-              <entry>></entry>
+              <entry>&gt;</entry>
               <entry>Greater than</entry>
             </row>
             <row>
-              <entry>>=</entry>
+              <entry>&gt;=</entry>
               <entry>Greater than or equal to</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
-      <para>These operators can be used to form logical expressions which ultimately evaluates to
-        true or false. E.g. one can express that multiple data elements must be a specific value, or
+      <para>These operators can be used to form logical expressions which ultimately evaluate to either
+        true or false. For example. one can assert that multiple data elements must be a specific value, or
         that specific attributes must have numerical values less or greater than a constant.</para>
-    <screenshot>
-      <screeninfo>Program indicator list with context menu</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="resources/images/program_indicator/program-indicator-filter.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para>You can switch between data elements, attributes, variables and constants by using the
+      <screenshot>
+        <screeninfo>Program indicator list with context menu</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resources/images/program_indicator/program-indicator-filter.png" format="PNG" align="center" width="60%"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <para>You can switch between data elements, attributes, variables and constants by using the
       tabs. You can include such items into expressions and filters by double-clicking in the list.
       The buttons below the expression area can be used to insert operators.</para>
-    <para>An example filter that uses both attributes and data elements looks like
-      this:<screen>A{cejWyOfXge6} == 'Female' and #{A03MvHHogjR.a3kGcGDCuk6} &lt;= 2</screen></para>    
-    <para><emphasis role="italic">A tip to expert users:</emphasis> DHIS 2 is using the JEXL library
+      <para>An example filter that uses both attributes and data elements looks like
+      this:<screen>A{cejWyOfXge6} == &apos;Female&apos; and #{A03MvHHogjR.a3kGcGDCuk6} &lt;= 2</screen></para>
+      <tip>
+        <para>DHIS 2 is using the JEXL library
       for evaluating expressions which supports additional syntax beyond what is covered in this
-      documentation. See the reference at the <ulink
-        url="http://commons.apache.org/proper/commons-jexl/reference/syntax.html">project home
-        page</ulink> to learn how you can create more sophisticated expressions.</para>
+      documentation. See the reference at the <ulink url="http://commons.apache.org/proper/commons-jexl/reference/syntax.html">project home page</ulink> to learn how you can create more sophisticated expressions</para>
+      </tip>
     </section>
     <section>
       <title>Functions</title>
@@ -190,9 +188,9 @@
       <table frame="all">
         <title>Functions</title>
         <tgroup cols="3">
-          <colspec colname="c1" colnum="1" colwidth="1*"/>
-          <colspec colname="newCol2" colnum="2" colwidth="2*"/>
-          <colspec colname="c2" colnum="3" colwidth="3.61*"/>
+          <colspec colnum="1" colname="c1" colwidth="1*"/>
+          <colspec colnum="2" colname="newCol2" colwidth="2*"/>
+          <colspec colnum="3" colname="c2" colwidth="3.61*"/>
           <thead>
             <row>
               <entry>Function</entry>
@@ -204,43 +202,38 @@
             <row>
               <entry>d2:daysBetween</entry>
               <entry>(date, date)</entry>
-              <entry>Produces the number of days between two data elements/attributes of type date.
-                The static date format is 'yyyy-MM-dd'.</entry>
+              <entry>Produces the number of days between two data elements/attributes of type date. The static date format is &apos;yyyy-MM-dd&apos;.</entry>
             </row>
             <row>
               <entry>d2:condition</entry>
               <entry>(boolean-expr, true-val, false-val)</entry>
-              <entry>Evaluates the conditional expression and if true returns the true value, if
-                false returns the false value. The conditional expression must be quoted.</entry>
+              <entry>Evaluates the conditional expression and if true returns the true value, if false returns the false value. The conditional expression must be quoted.</entry>
             </row>
             <row>
               <entry>d2:zing</entry>
               <entry>(number)</entry>
-              <entry>Evaluates the data element/attribute of type number to zero if the value is
-                negative, otherwise to the value itself.</entry>
+              <entry>Evaluates the data element/attribute of type number to zero if the value is negative, otherwise to the value itself.</entry>
             </row>
             <row>
               <entry>d2:oizp</entry>
               <entry>(number)</entry>
-              <entry>Evaluates the data element/attribute of type number to one if the value is zero
-                or positive, otherwise to zero. </entry>
+              <entry>Evaluates the data element/attribute of type number to one if the value is zero or positive, otherwise to zero. </entry>
             </row>
             <row>
               <entry>d2:zpvc</entry>
               <entry>(object, [,object, object,...])</entry>
-              <entry>Returns the number of numeric zero and positive values among the given object
-                arguments. Can be provided any number of arguments.</entry>
+              <entry>Returns the number of numeric zero and positive values among the given object arguments. Can be provided any number of arguments.</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
-      <para>An example expression that uses the "zing" and "oizp" functions looks like
+      <para>An example expression that uses the &quot;zing&quot; and &quot;oizp&quot; functions looks like
         this:<screen>d2:zing(A{GPkGfbmArby}) + d2:oizp(#{mCXR7u4kNBW.NFkjsNiQ9PH}))</screen></para>
-      <para>An example expression that uses the "daysBetween" function looks like
-        this:<screen>d2:daysBetween(#{mCXR7u4kNBW.k8ja2Aif1Ae},'2015-06-01')</screen></para>
-      <para>An example expression that uses the "condition" function looks like
-        this:<screen>d2:condition('#{mCXR7u4kNBW.NFkjsNiQ9PH} > 100',150,50)</screen></para>
-      <para>An example expression that uses the "zpvc" function looks like
+      <para>An example expression that uses the &quot;daysBetween&quot; function looks like
+        this:<screen>d2:daysBetween(#{mCXR7u4kNBW.k8ja2Aif1Ae},&apos;2015-06-01&apos;)</screen></para>
+      <para>An example expression that uses the &quot;condition&quot; function looks like
+        this:<screen>d2:condition(&apos;#{mCXR7u4kNBW.NFkjsNiQ9PH} &gt; 100&apos;,150,50)</screen></para>
+      <para>An example expression that uses the &quot;zpvc&quot; function looks like
         this:<screen>d2:zpvc(A{GPkGfbmArby}),#{mCXR7u4kNBW.NFkjsNiQ9PH}),4,-1)</screen></para>
     </section>
     <section>
@@ -249,8 +242,8 @@
       <table frame="all">
         <title>Variables</title>
         <tgroup cols="2">
-          <colspec colname="c1" colnum="1" colwidth="1*"/>
-          <colspec colname="c2" colnum="2" colwidth="3.55*"/>
+          <colspec colnum="1" colname="c1" colwidth="1*"/>
+          <colspec colnum="2" colname="c2" colwidth="3.55*"/>
           <thead>
             <row>
               <entry>Variable</entry>
@@ -272,8 +265,7 @@
             </row>
             <row>
               <entry>enrollment_date</entry>
-              <entry>The date of when the tracked entity instance was enrolled in the
-                program.</entry>
+              <entry>The date of when the tracked entity instance was enrolled in the program.</entry>
             </row>
             <row>
               <entry>current_date</entry>
@@ -285,8 +277,7 @@
             </row>
             <row>
               <entry>zero_pos_value_count</entry>
-              <entry>The number of numeric positive values in the expression part of the
-                event.</entry>
+              <entry>The number of numeric positive values in the expression part of the event.</entry>
             </row>
             <row>
               <entry>event_count</entry>
@@ -298,13 +289,12 @@
             </row>
             <row>
               <entry>tei_count</entry>
-              <entry>The count of tracked entity instances (useful in combination with
-                filters).</entry>
+              <entry>The count of tracked entity instances (useful in combination with filters).</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
-      <para>An example expression that uses the "value count" variable looks like
+      <para>An example expression that uses the &quot;value count&quot; variable looks like
         this:<screen>(#{A03MvHHogjR.a3kGcGDCuk6} + #{A03MvHHogjR.wQLfBvPrXqq}) / V{value_count}</screen></para>
     </section>
   </section>
