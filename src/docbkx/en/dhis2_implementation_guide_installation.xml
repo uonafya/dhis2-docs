@@ -173,55 +173,46 @@ encryption.password = xxxx</screen></para>
       <screen>chmod 0600 hibernate.properties</screen>
     </section>
     <section>
-      <title>File store configuration</title>
-      <para>To support certain features DHIS2 needs to store binary content (files) outside of the
-        database. By default the <emphasis role="italic">file store</emphasis> will be created as a
-        folder named <emphasis role="italic">files</emphasis> within the configured <emphasis
-          role="italic">external directory</emphasis>, in most cases this corresponds to the
-          <emphasis role="italic">DHIS2_HOME</emphasis> location (see information on environment
-        configuration below). This default configuration will work fine, but might not be suitable
-        for your production environment as it will store (potentially large) files directly to disk.
-        Depending on the use cases supported by the DHIS2 implementation this might hog a lot of
-        valuable and expensive disk space on the server. </para>
-      <para>There are two strategies to solve this; store to disk as per the default behaviour and
-          <emphasis role="italic">symlink</emphasis> the file store location to an external one
-        (i.e. separate hard drive on the server) or configure an <emphasis role="italic"
-          >external</emphasis> file store on <emphasis role="italic">Amazon Web Services
-          S3</emphasis>. In any of these cases you'll want to add a few lines to your <emphasis
-          role="italic">hibernate.properties</emphasis> file as shown below.</para>
-      <screen># 'filesystem' and 'aws-s3' currently supported
+      <title>File store configuration (optional)</title>
+      <para>DHIS 2 is capable of capturing and storing files. By default files will be stored on the
+        file system of the server which runs DHIS 2 in a <emphasis role="italic">files</emphasis>
+        directory under the <emphasis role="italic">DHIS2_HOME</emphasis> external directory
+        location.</para>
+      <para>You can also configure DHIS 2 to store files on cloud-based storage providers.
+        Currently, AWS S3 is the only supported provider. To enable cloud-based storage you must
+        define the following addtional properties in your <emphasis role="italic"
+          >hibernate.properties</emphasis> file:</para>
+      <screen># File store provider. Currently 'filesystem' and 'aws-s3' are supported.
 filestore.provider = filesystem
 
-# Corresponds to folder within external directory on file system and 'bucket' on AWS S3
+# Directory / bucket name. Corresponds to folder within external directory on file system and 'bucket' on AWS S3.
 filestore.container = files
 
-##
-# Only applicable on non-filesystem providers (AWS S3)
-##
+# The following configuration is applicable only on non-filesystem providers (AWS S3).
 
-# Not required but recommended for performance reasons
+# Datacenter location. Not required but recommended for performance reasons.
 filestore.location = eu-west-1
 
-# Public identity
+# Public identity / username.
 filestore.identity = xxxx
 
-# Secret key (sensitive)
+# Secret key / password (sensitive).
 filestore.secret = xxxx</screen>
       <para>This configuration is an example reflecting the defaults and should be changed to fit
-        your needs (or could even not be present at all if using the defaults). If you want to use
-        an external provider the last block of properties need to be present, as well as the
-          <emphasis role="italic">provider</emphasis> property being set to a supported provider
-        (currently only AWS S3).</para>
+        your needs. In other words, you can omit it entirely if you plan to use the default values.
+        If you want to use an external provider the last block of properties need to be defined, as
+        well as the <emphasis role="italic">provider</emphasis> property being set to a supported
+        provider (currently only AWS S3).</para>
       <para>For a production system the initial setup of the file store should be carefully
-        considered as moving files across storage providers whilst keeping the integrity of the
-        database references could prove laboursome. Keep in mind that the contents of the file store
-        might contain both sensitive and integral information and protecting access to the folder as
-        well as making sure a backup plan is in place is recommended on a production
+        considered as moving files across storage providers while keeping the integrity of the
+        database references could be complex. Keep in mind that the contents of the file store might
+        contain both sensitive and integral information and protecting access to the folder as well
+        as making sure a backup plan is in place is recommended on a production
         implementation.</para>
-      <para><emphasis role="italic">A note on external provider support: Though AWS S3 is the only
-          supported provider at the moment more are likely to be added since DHIS2 implements all of
-          this functionality through a universal cloud store API . Let the developers know if you
-          have any inquiries about adding support for more providers.</emphasis></para>
+      <para><emphasis role="italic">A note on external provider support: AWS S3 is the only
+          supported provider at the moment but more providers are likely to be added, such as Google
+          Cloud Store and Rackspace Cloud Files. Let the developers know if you have inquiries about
+          adding support for more providers.</emphasis></para>
     </section>
     <section>
       <title>Install Java</title>
