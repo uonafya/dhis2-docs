@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/dhis2/dhis2-docs.svg?branch=master)](https://travis-ci.org/dhis2/dhis2-docs)
 This is the DHIS2 documentation project. 
 
 To build the documents, consult the <a href="https://www.dhis2.org/doc/snapshot/en/implementer/dhis2_documentation_guide.pdf">DHIS2 documentation guide</a> for details. 
