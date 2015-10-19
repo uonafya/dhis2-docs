@@ -1,17 +1,14 @@
----
 language: java
-# disable the default submodule logic
 git:
   submodules: false
-
-# use sed to replace the SSH URL with the public URL, then init and update submodules
 before_install:
-  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-  - git submodule update --init --recursive
-
+- sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+- git submodule update --init --recursive
 script: mvn clean install
 jdk:
 - openjdk7
 notifications:
   email:
   - jason.p.pickering@gmail.com
+dd:
+  secure: j8o/CjjpUHW5maKuroMnxWCXHqEnIB/l6DpUzARBBXs3klQahmCidxqAMkqTG5sdgMuXT1bv8LXI2pbCy5ZUxD32S13bypL9M4IKvJsCq7xqrUNQJ/Kys/Pb8DXvpq8ZY6ER/Df32NsUDoiBohseEP6rLfe6JFlW1HvtNmtP/o8=
