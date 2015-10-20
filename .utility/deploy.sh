@@ -5,9 +5,10 @@ set -e # exit with nonzero exit code if anything fails
 #rm -rf target || exit 0;
 #mkdir target;
 #mvn clean install 
-
+git checkout gh-pages-static
+cp index.html target/site/
 # go to the out directory and create a *new* Git repo
-cd target/site/en/ 
+cd target/site/
 git init
 
 # inside this git repo we'll pretend to be a new user
