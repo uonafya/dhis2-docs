@@ -79,8 +79,11 @@
     </section>
     <section>
       <title>OAuth2</title>
-      <para>DHIS 2 support the OAuth2 protocol (since 2.20) for authenication. This allows you to
-        request a bearer token which be can reused multiple times.</para>
+      <para>DHIS 2 support the OAuth2 protocol, which is an open standard for authorization, it
+        allows 3rd party clients to connect on behalf of a DHIS 2 user, and get a re-usable bearer
+        token for multiple requests to the web-api (without requiring getting the users permission
+        again). We do not support fine-grained OAuth2 roles, rather we gives the application access
+        based on the users DHIS 2 user role.</para>
       <para>Each client for which you want to allow OAuth 2 authentication must be registered in
         DHIS 2. To add a new OAuth2 client, go to <emphasis role="italic">settings => OAuth2
           Clients</emphasis>, click add new and at least the name of client, and the grant types you
