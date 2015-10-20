@@ -4,7 +4,6 @@ set -e # exit with nonzero exit code if anything fails
 # clear and re-create the out directory
 #rm -rf target || exit 0;
 #mkdir target;
-
 #mvn clean install 
 
 # go to the out directory and create a *new* Git repo
@@ -14,6 +13,7 @@ git init
 # inside this git repo we'll pretend to be a new user
 git config user.name "Travis CI"
 git config user.email "travis@dhis2.org"
+touch .nojekyll
 
 # The first and only commit to this new Git repo contains all the
 # files present with the commit message "Deploy to GitHub Pages".

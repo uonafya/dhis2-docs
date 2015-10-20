@@ -1,12 +1,14 @@
+---
 language: java
 git:
   submodules: false
 before_install:
-- sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-- git submodule update --init --recursive
-script: bash ./deploy.sh
+    - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+    - git submodule update --init --recursive
+after_success: 
+    - bash ./.utility/deploy.sh
 jdk:
-- openjdk7
+    - openjdk7
 notifications:
   email:
   - jason.p.pickering@gmail.com
