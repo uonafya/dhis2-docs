@@ -39,7 +39,7 @@
     <title>Indicator evaluation</title>
     <para>Program indicators are evaluated based on the assigned aggregation type, expression and filter. The
       order of evaluation is as follows:</para>
-    <itemizedlist>
+    <orderedlist>
       <listitem>
         <para>The <emphasis role="italic">filter</emphasis> will filter the events which become part
           of the evaluation / aggregation routine.</para>
@@ -51,15 +51,43 @@
         <para>All evaluated expression values will be <emphasis role="italic">aggregated</emphasis>
           according to the aggregation type of the program indicator.</para>
       </listitem>
-    </itemizedlist>
+    </orderedlist>
     <section>
       <title>Aggregation type</title>
       <para>The aggregation type determines how the program indicator
         will be aggregated. The following aggregation types are available:</para>
-      <para>Average, Sum, Count, Standard Deviation, Variance, Min, Max, Custom</para>
-      <para>The custom aggregation type is special, as it allows you to specify the aggregation type
-        in-line in the expression. All other aggregation types are applied to the entire
+      <itemizedlist>
+        <listitem>
+          <para>Average</para>
+        </listitem>
+        <listitem>
+          <para>Sum</para>
+        </listitem>
+        <listitem>
+          <para>Count</para>
+        </listitem>
+        <listitem>
+          <para>Standard Deviation</para>
+        </listitem>
+        <listitem>
+          <para>Variance</para>
+        </listitem>
+        <listitem>
+          <para>Min</para>
+        </listitem>
+        <listitem>
+          <para>Max</para>
+        </listitem>
+        <listitem>
+          <para>Custom</para>
+        </listitem>
+      </itemizedlist>
+      <para>The "custom" aggregation type is special, as it allows you to specify the aggregation
+        type in-line in the expression. All other aggregation types are applied to the entire
         expression.</para>
+      <para>Using the "custom" aggregation type might lead to an exception of the order of
+        evaluation described above where individual parts of the expression can be evaluated and
+        aggregated, as opposed to the entire expressio being evaluated prior to aggregation.</para>
     </section>
     <section>
       <title>Expression</title>
@@ -100,6 +128,7 @@
       <para>An example expression which uses the custom aggregation type and hence can use inline
       aggregation types looks like
       this:<screen>(sum(#{mCXR7u4kNBW.K0A4BauXJDl} * #{mCXR7u4kNBW.NFkjsNiQ9PH}) / sum(#{mCXR7u4kNBW.NFkjsNiQ9PH})) * 100</screen></para>
+      <para>Notice how the "sum" aggregation operator is used inside the expression itself.</para>
     </section>
     <section>
       <title>Filter</title>
