@@ -252,8 +252,8 @@ sudo apt-get install oracle-java8-installer</programlisting>
         system to system, e.g. on AMD systems you might see <emphasis role="italic"
           >/java-7-openjdk-amd64</emphasis> Note that you should adjust this to your
         environment:</para>
-      <para><screen>export JAVA_HOME=&apos;/usr/lib/jvm/java-7-openjdk&apos;
-export JAVA_OPTS=&apos;-Xmx7500m -Xms4000m -XX:MaxPermSize=500m -XX:PermSize=300m&apos;
+      <para><screen>export JAVA_HOME=&apos;/usr/lib/jvm/java-8-oracle/&apos;
+export JAVA_OPTS=&apos;-Xmx7500m -Xms4000m&apos;
 export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
       <para>The Tomcat configiration file is located in <emphasis role="italic"
           >tomcat-dhis/conf/server.xml</emphasis>. The element which defines the connection to DHIS
@@ -268,7 +268,7 @@ export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
       <para>The next step is to download the DHIS 2 WAR file and place it into the webapps directory
         of Tomcat. You can download the DHIS version 2.15 WAR release like this (replace 2.15 with
         your preferred version if necessary):</para>
-      <screen>wget https://www.dhis2.org/download/releases/2.15/dhis.war</screen>
+      <screen>wget https://www.dhis2.org/download/releases/2.21/dhis.war</screen>
       <para>Move the WAR file into the Tomcat webapps directory. We want to call the WAR file
         ROOT.war in order to make it available at localhost directly without a context path:</para>
       <screen>mv dhis.war tomcat-dhis/webapps/ROOT.war</screen>
