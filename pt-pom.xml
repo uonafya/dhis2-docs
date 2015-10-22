@@ -7,7 +7,21 @@
   <version>2.21</version>
   <description>DHIS 2 Documentation</description>
   <packaging>pom</packaging>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>docbkx.snapshots</id>
+      <name>Maven Plugin Snapshots</name>
+      <url>http://docbkx-tools.sourceforge.net/snapshots/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
   <properties>
+    <docbkx.plugin.version>2.0.15</docbkx.plugin.version>
     <docbook.source>${project.basedir}/src/docbkx</docbook.source>
     <docbook.target>${project.basedir}/target/site</docbook.target>
   </properties>
@@ -150,7 +164,7 @@
               </postProcess>
             </configuration>
           </execution>
-          <execution>
+	  <execution>
             <id>html-docs-impl-pt</id>
             <phase>package</phase>
             <goals>
@@ -174,7 +188,7 @@
               </postProcess>
             </configuration>
           </execution>
-          <execution>
+         <!-- <execution>
             <id>pdf-docs-impl-pt</id>
             <phase>package</phase>
             <goals>
@@ -206,8 +220,8 @@
                 </copy>
               </postProcess>
             </configuration>
-          </execution>
-        </executions>
+          </execution>-->
+        </executions> 
         <dependencies>
           <dependency>
             <groupId>org.docbook</groupId>
@@ -220,6 +234,7 @@
       <plugin>
         <groupId>com.agilejava.docbkx</groupId>
         <artifactId>docbkx-fop-support</artifactId>
+        <version>${docbkx.plugin.version}</version>
         <executions>
           <execution>
             <phase>generate-resources</phase>
