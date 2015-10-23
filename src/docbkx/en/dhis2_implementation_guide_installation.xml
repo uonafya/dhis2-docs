@@ -71,18 +71,7 @@
       <screen>sudo passwd -l root</screen>
     </section>
     <section>
-      <title>Operating system kernel tuning</title>
-      <para>These settings are completely optional and does not have to be changed for normal-sized
-        servers. Open the kernel configuration file by invoking <code>sudo nano
-          /etc/sysctl.conf</code> At the end of the file add the following lines and save.</para>
-      <screen>kernel.shmmax = 4294967296
-net.core.rmem_max = 8388608
-net.core.wmem_max = 8388608</screen>
-      <para>Load the settings like this:</para>
-      <screen>sudo sysctl -p</screen>
-    </section>
-    <section>
-      <title>Setting server time zone and locale</title>
+      <title>Setting server time zone and locale (optional)</title>
       <para>It may be necessary to reconfigure the time zone of the server to match the time zone of
         the location which the DHIS2 server will be covering. If you are using a virtual private
         server, the default time zone may not correspond to the time zone of your DHIS2 location.
@@ -90,9 +79,9 @@ net.core.wmem_max = 8388608</screen>
         instructions.</para>
       <screen>sudo dpkg-reconfigure tzdata</screen>
       <para>PostgreSQL is sensitive to locales so you might have to install your locale first. To
-        check existing locales and install new ones (e.g. Russian):</para>
+        check existing locales and install new ones (e.g. Norwegian):</para>
       <screen>locale -a
-sudo locale-gen ru_RU.UTF-8</screen>
+sudo locale-gen nb_NO.UTF-8</screen>
     </section>
     <section>
       <title>PostgreSQL installation</title>
