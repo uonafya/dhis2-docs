@@ -27,6 +27,31 @@
   </properties>
   <build>
     <plugins>
+            <!--This section dynamically builds the build.properties which is replaced inside the document preface -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>revision</id>
+            <phase>package</phase>
+            <configuration>
+              <tasks>
+                <tstamp>
+                  <format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
+                </tstamp>
+                <exec executable="git" outputproperty="revision" failifexecutionfails="false">
+                  <arg line="rev-list --count HEAD"/>
+                </exec>
+                <echo file="${project.basedir}/src/docbkx/build.properties" message="&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;&lt;revhistory&gt;&lt;revision&gt;&lt;revnumber&gt;Revision  ${revision}&lt;/revnumber&gt;&lt;revremark&gt;Version ${project.version} ${now}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;" />
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>com.agilejava.docbkx</groupId>
         <artifactId>docbkx-maven-plugin</artifactId>
