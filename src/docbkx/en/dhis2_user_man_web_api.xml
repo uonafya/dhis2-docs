@@ -7419,20 +7419,22 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <screen>/api/configuration</screen>
     <para>You can send <emphasis role="italic">GET</emphasis> and <emphasis role="italic"
         >POST</emphasis> requests to the following specific resources:</para>
-    <screen>/api/configuration/systemId</screen>
-    <screen>/api/configuration/feedbackRecipients</screen>
-    <screen>GET  /api/configuration/offlineOrganisationUnitLevel</screen>
-    <screen>GET  /api/configuration/infrastructuralDataElements</screen>
-    <screen>GET  /api/configuration/infrastructuralIndicators</screen>
-    <screen>GET  /api/configuration/infrastructuralPeriodType</screen>
-    <screen>GET  /api/configuration/selfRegistrationRole</screen>
-    <screen>GET  /api/configuration/selfRegistrationOrgUnit</screen>
-    <screen>GET  /api/configuration/remoteServerUrl</screen>
-    <screen>GET  /api/configuration/remoteServerUsername</screen>
+    <screen>GET      /api/configuration/systemId</screen>
+    <screen>GET POST /api/configuration/feedbackRecipients</screen>
+    <screen>GET POST /api/configuration/offlineOrganisationUnitLevel</screen>
+    <screen>GET POST /api/configuration/infrastructuralDataElements</screen>
+    <screen>GET POST /api/configuration/infrastructuralIndicators</screen>
+    <screen>GET POST /api/configuration/infrastructuralPeriodType</screen>
+    <screen>GET POST /api/configuration/selfRegistrationRole</screen>
+    <screen>GET POST /api/configuration/selfRegistrationOrgUnit</screen>
+    <screen>POST     /api/configuration/smtpPassword</screen>
+    <screen>GET POST /api/configuration/remoteServerUrl</screen>
+    <screen>GET POST /api/configuration/remoteServerUsername</screen>
+    <screen>POST     /api/configuration/remoteServerPassword</screen>
     <para>For the CORS whitelist configuration you can make a POST request with an array of URLs to
       whitelist as payload using "application/json" as content-type, for instance:</para>
     <screen>["www.google.com", "www.dhis2.org", "www.who.int"]</screen>
-    <screen>/api/configuration/corsWhitelist</screen>
+    <screen>GET POST /api/configuration/corsWhitelist</screen>
     <para>For POST requests, the configuration value should be sent as the request payload as text.
       The following table shows appropriate configuration values for each property.</para>
     <table frame="all">
