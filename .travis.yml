@@ -16,6 +16,8 @@ install: true
 script: 
     - mvn -Ddocbkx.fopLogLevel=ERROR -q package 
 after_success: 
+    - mv target/site/en target/site/$TRAVIS_BRANCH 
+    - cp .utility/index.html target/site/$TRAVIS_BRANCH
     - bash ./.utility/deploy.sh
 jdk:
     - openjdk7
