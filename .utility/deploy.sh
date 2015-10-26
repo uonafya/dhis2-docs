@@ -1,5 +1,4 @@
 #!/bin/bash
-f this is fork - just exit
 if [[ -n "${TRAVIS_PULL_REQUEST}" && "${TRAVIS_PULL_REQUEST}" != "false"  ]]; then
   echo -e '\n============== deploy will not be started (from the fork) ==============\n'
   exit 0
