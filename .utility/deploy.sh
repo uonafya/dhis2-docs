@@ -5,9 +5,11 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
 
 	#TODO Find a better solution for this
 	#Copy the static index file
-	cp .utility/index.html target/site/
+	cmd = "mv target/site target/${TRAVIS_BRANCH}"
+	exec cmd
+	cp .utility/index.html target/
 	# go to the out directory and create a *new* Git repo
-	cd target/site/
+	cd target/
 	git init
 
 	# inside this git repo we'll pretend to be a new user
