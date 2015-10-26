@@ -16,7 +16,6 @@ install: true
 script: 
     - mvn -Ddocbkx.fopLogLevel=ERROR -q package 
 after_success: 
-    - bach ./.utility/get_env_specific_value.sh 
     - bash ./.utility/deploy.sh
 jdk:
     - openjdk7
