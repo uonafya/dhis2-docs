@@ -151,7 +151,7 @@
 
     <!-- More space in the center header for long text -->
     <xsl:attribute-set name="header.content.properties">
-        <xsl:attribute name="font-family">Arial</xsl:attribute>
+        <xsl:attribute name="font-family">DejaVu Sans</xsl:attribute>
         <xsl:attribute name="font-size">9pt</xsl:attribute>
 		
 <!--
@@ -272,7 +272,7 @@
                       Custom Footer
     ################################################### -->  
     <xsl:attribute-set name="footer.content.properties">
-        <xsl:attribute name="font-family">Arial</xsl:attribute>
+        <xsl:attribute name="font-family">DejaVu Sans</xsl:attribute>
         <xsl:attribute name="font-size">9pt</xsl:attribute>
     </xsl:attribute-set>
    
@@ -439,10 +439,10 @@
     <xsl:param name="hyphenate">false</xsl:param>
 
     <!-- Default Font size -->
-	<xsl:param name="body.font.family">Arial</xsl:param>
+	<xsl:param name="body.font.family">DejaVu Sans</xsl:param>
     <xsl:param name="body.font.master">10</xsl:param>
     <xsl:param name="body.font.small">9</xsl:param>
-	<xsl:param name="symbol.font.family">Arial</xsl:param>
+	<xsl:param name="symbol.font.family">DejaVu Sans</xsl:param>
 
     <!-- Line height in body text -->
     <xsl:param name="line-height">1.3</xsl:param>
