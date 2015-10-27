@@ -7,9 +7,9 @@ git:
   #Hack to get the revision number correct
   depth: 9999999 
 branches:
-  only:
-    - master
-    - 2.21
+    only:
+        - master
+        - 2.21
 before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
     - git submodule update --init --recursive
