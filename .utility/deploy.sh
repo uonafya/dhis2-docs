@@ -3,15 +3,13 @@
 if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 	set -e # exit with nonzero exit code if anything fails
 
-	#TODO Find a better solution for this
-	#Copy the static index file
-        mkdir ${HOME}/gh-pages/
-	cp -R target/site/en ${HOME}/gh-pages/${TRAVIS_BRANCH}
+        cd ${HOME}
+        git clone -b gh-pages ${TRAVIS_BRANCH} gh-pages
+	rm -rf ${HOME}/gh-pages/${TRAVIS_BRANCH}	
+        cp -R target/site/en ${HOME}/gh-pages/${TRAVIS_BRANCH}
+        #TODO Find a better solution for this static page	
 	cp .utility/index.html ${HOME}/gh-pages/
-	# go to the out directory and create a *new* Git repo
-	cd ${HOME}/gh-pages/ 
-	git init
-
+	
 	# inside this git repo we'll pretend to be a new user
 	git config user.name "Travis CI"
 	git config user.email "travis@dhis2.org"
