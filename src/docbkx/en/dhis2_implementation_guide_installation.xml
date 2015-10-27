@@ -168,16 +168,18 @@ encryption.password = xxxx</screen></para>
     <section>
       <title>LDAP configuration (optional)</title>
       <para>DHIS 2 is capable of using an LDAP server for authentication of users. To enable this
-        you need to define an LDAP server URL, the distinguised name (DN from now on) and password
-        for an LDAP manager user and a list of DN patterns for binding to the LDAP server. It also
-        requires you to have a matching user in the DHIS 2 database. The DHIS 2 user will be used to
-        represent authorities (user roles).</para>
+        you need to define an LDAP server URL, the distinguished name (DN from now on) and password
+        for an LDAP manager user and a list of DN patterns for binding to the LDAP server in the
+        DHIS 2 configuration file.</para>
+      <para>For LDAP authentication it is required to have a matching user in the DHIS 2 database.
+        The DHIS 2 user will be used to represent authorities /user roles.</para>
       <para>When logging in, DHIS 2 will take the supplied username and password, combine the
-        username with the DN patterns and attempt to authenticate (bind) to the LDAP server. If
-        authenticate was successful, the username is used to look up a matching DHIS 2 user, from
+        username with the configured DN patterns and attempt to authenticate with the LDAP server.
+        If authentication was successful the username is used to look up a matching DHIS 2 user from
         which the authorities (user roles) are fetched. If the user is found, the combined LDAP
-        entry user credentials and DHIS 2 user authorities are used for the user
-        session.<screen># LDAP URL.
+        entry user credentials and DHIS 2 user authorities are used for the user session.</para>
+      <para>An example LDAP configuration looks like this:</para>
+      <screen># LDAP URL.
 ldap.url = ldaps://domain.org:636
 
 # LDAP manager entry distinguished name.
@@ -186,8 +188,31 @@ ldap.manager.dn = cn=johndoe,dc=domain,dc=org
 # LDAP manager entry password.
 ldap.manager.password = xxxx
 
-# LDAP user distinguised name patterns.
-ldap.dn.patterns = cn={0},dc=domain,dc=org</screen></para>
+# LDAP user distinguished name patterns.
+ldap.dn.patterns = cn={0},dc=domain,dc=org</screen>
+      <para>The LDAP configuration properties are listed below.<itemizedlist>
+          <listitem>
+            <para><emphasis role="italic">ldap.url:</emphasis> The URL of the LDAP server. Using
+              SSL/encryption is strongly recommended in order to make authentication secure. As
+              example URL is ldaps://domain.org:636, where ldaps refers to the protocol, domain.org
+              refers to the domain name or IP address, and 636 refers to the port (636 is default
+              for LDAPS).</para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="italic">ldap.manager.db:</emphasis> An LDAP manager user is
+              required for binding to the LDAP server for the user authentication process. This
+              property refers to the DN of that entry.</para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="italic">ldap.manager.password:</emphasis> The password of the LDAP
+              manager user.</para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="italic">ldap.dn.patterns:</emphasis> A list of DN patterns to use.
+              Can be any number of patterns. The {0} variable will be substituted with the username
+              of the user that attempts to log in.</para>
+          </listitem>
+        </itemizedlist></para>
     </section>
     <section>
       <title>File store configuration (optional)</title>
