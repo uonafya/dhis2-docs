@@ -4,7 +4,7 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
 	set -e # exit with nonzero exit code if anything fails
 
         cd ${HOME}
-        git clone -b gh-pages gh-pages
+        git clone -b gh-page-pages "https://${GH_REF}" gh-pages
 	rm -rf ${HOME}/gh-pages/${TRAVIS_BRANCH}	
         cp -R ${TRAVIS_BUILD_DIR}/target/site/en ${HOME}/gh-pages/${TRAVIS_BRANCH}
         #TODO Find a better solution for this static page	
