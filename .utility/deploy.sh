@@ -5,7 +5,7 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
 
         cd ${HOME}
         mkdir gh-pages
-	cp ${TRAVIS_BUILD_DIR}/.utility/index.html target/
+	cp ${TRAVIS_BUILD_DIR}/.utility/index.html ${HOME}/gh-pages/
         cp -R ${TRAVIS_BUILD_DIR}/target/site/en ${HOME}/gh-pages/${TRAVIS_BRANCH}
 	
 	# inside this git repo we'll pretend to be a new user
