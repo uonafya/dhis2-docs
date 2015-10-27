@@ -11,11 +11,12 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
 	#cp ${TRAVIS_BUILD_DIR}/.utility/index.html ${HOME}/gh-pages/
 	
 	# inside this git repo we'll pretend to be a new user
-	git config user.name "Travis CI"
+        cd ${HOME}/gh-pages/	
+        git config user.name "Travis CI"
 	git config user.email "travis@dhis2.org"
 	#Add the .nojekyll file since we are not using it for now
 	#touch .nojekyll
-	git add -A .
+	git add -A ${TRAVIS_BRANCH}
 	git commit -a -m "Deploy to GitHub Pages"
 	git push --force --quiet "https://${GITHUB_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
 
