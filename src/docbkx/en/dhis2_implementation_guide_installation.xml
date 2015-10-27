@@ -166,6 +166,30 @@ encryption.password = xxxx</screen></para>
       <screen>chmod 0600 hibernate.properties</screen>
     </section>
     <section>
+      <title>LDAP configuration (optional)</title>
+      <para>DHIS 2 is capable of using an LDAP server for authentication of users. To enable this
+        you need to define an LDAP server URL, the distinguised name (DN from now on) and password
+        for an LDAP manager user and a list of DN patterns for binding to the LDAP server. It also
+        requires you to have a matching user in the DHIS 2 database. The DHIS 2 user will be used to
+        represent authorities (user roles).</para>
+      <para>When logging in, DHIS 2 will take the supplied username and password, combine the
+        username with the DN patterns and attempt to authenticate (bind) to the LDAP server. If
+        authenticate was successful, the username is used to look up a matching DHIS 2 user, from
+        which the authorities (user roles) are fetched. If the user is found, the combined LDAP
+        entry user credentials and DHIS 2 user authorities are used for the user
+        session.<screen># LDAP URL.
+ldap.url = ldaps://domain.org:636
+
+# LDAP manager entry distinguished name.
+ldap.manager.dn = cn=johndoe,dc=domain,dc=org
+
+# LDAP manager entry password.
+ldap.manager.password = xxxx
+
+# LDAP user distinguised name patterns.
+ldap.dn.patterns = cn={0},dc=domain,dc=org</screen></para>
+    </section>
+    <section>
       <title>File store configuration (optional)</title>
       <para>DHIS 2 is capable of capturing and storing files. By default files will be stored on the
         file system of the server which runs DHIS 2 in a <emphasis role="italic">files</emphasis>
