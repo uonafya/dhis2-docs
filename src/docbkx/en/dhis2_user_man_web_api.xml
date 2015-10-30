@@ -9004,4 +9004,35 @@ curl -u username:password -X POST -d @updated_facility.json
   }</screen></para>
     </section>
   </section>
+  <section>
+    <title>Metadata repository</title>
+    <para>DHIS 2 provides a metadata repository containing metadata packages with various content. A
+      metadata package is a </para>
+    <para>To retrieve an index over available metadata packages you can issue a GET request to the
+        <emphasis role="italic">metadataRepo</emphasis>
+      resource:<screen>GET /api/metadatRepo</screen></para>
+    <para>A metadata package entry contains information about the package and a URL to the relevant
+      package. A metadata package is simply a DXF metadata file. An index could look like
+      this:<screen>{
+  "packages": [ {
+    "id": "sierre-leone-demo",
+    "name": "Sierra Leone demo",
+    "description": "Sierra Leone demo database",
+    "version": "0.1",
+    "href": "https://raw.githubusercontent.com/dhis2/dhis2-metadata-repo/master/repo/221/sierra-leone-demo/metadata.json"
+  }, 
+  {
+    "id": "trainingland-org-units",
+    "name": "Trainingland organisation units",
+    "description": "Trainingland organisation units with four levels",
+    "version": "0.1",
+    "href": "https://raw.githubusercontent.com/dhis2/dhis2-metadata-repo/master/repo/221/trainingland-org-units/metadata.json"
+  }
+ ]
+}</screen></para>
+    <para>A client can follow the URLs in a RESTful fashion and install a metadata package by
+      supplying the URL of the package in a POST request to the <emphasis role="italic"
+        >metadataPull</emphasis>
+      resource:<screen>POST /api/metadataPull?url=https://raw.githubusercontent.com/dhis2/dhis2-metadata-repo/master/repo/221/sierra-leone-demo/metadata.json</screen></para>
+  </section>
 </chapter>
