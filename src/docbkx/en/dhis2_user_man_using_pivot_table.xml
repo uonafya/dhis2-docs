@@ -35,10 +35,10 @@
     <para>Based on the demo database, a pivot table approximately as below will be displayed. Notice
       how indicators are listed on columns and periods as rows.</para>
     <screenshot>
-      <screeninfo>Example pivot table with indicators on columns and periods as rows.</screeninfo>
+      <screeninfo>Example pivot table with data elements on columns and periods as rows.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="85%" fileref="resources/images/pivot_table/basic_pivot.png" format="PNG"/>
+          <imagedata width="80%" fileref="resources/images/pivot_table/basic_pivot221.png" format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -52,7 +52,7 @@
       on the item. Before you can use a data dimension in your pivot table you must at least select
       one dimension item. If you arrange a dimension as columns or rows but do not select any
       dimension items, the dimension will be ignored.</para>
-    <para>At least one member of the data dimension is required for all pivot tables. Available types of the include the following:</para>
+    <para>At least one member of the data dimension is required for all pivot tables. Available types include the following:</para>
     <para><itemizedlist>
         <listitem>
           <para>Indicators</para>
@@ -70,7 +70,7 @@
           <para>Program indicators</para>
         </listitem>
       </itemizedlist></para>
-    <para>These dimensions can me combined together, so that you can display for instance aggregate data with reporting rates, or event data items together with program indicators, all in the same pivot tables. For the &quot;data element&quot; data dimension, you are also able to select &quot;Totals&quot; and &quot;Details&quot;, which will allow you to view different category combination options together on the same pivot table. </para>
+    <para>These dimensions can be combined together, so that you can display for instance aggregate data with reporting rates, or event data items together with program indicators, all in the same pivot tables. For the &quot;data element&quot; data dimension, you are also able to select &quot;Totals&quot; and &quot;Details&quot;, which will allow you to view different category combination options together on the same pivot table. </para>
     <para>For the period dimension you can choose between using fixed periods or relative periods.
       An example of a fixed period is &quot;January 2012&quot;. To select fixed periods start by selecting a
       period type from the period type list. You can then select periods from the list of available
@@ -84,7 +84,7 @@
       the hierarchy. To select all organisation units below a specific parent organisation unit,
       right click and click &quot;Select all children&quot;. To manually select multiple organisation units,
       click and hold the Ctrl button while clicking on organisation units. You can tick &quot;User
-      organisation unit&quot;, &quot;User organisation unit children&quot; or &quot;User organisation unit grand children&quot;
+      org unit&quot;, &quot;User sub-units&quot; or &quot;User sub-x2-units&quot;
       in order to dynamically insert the organisation unit or units associated with your user account.
       This is useful when you save a pivot table favorite and want to share it with other users, as the
       organisation units linked with the other user&apos;s account will be used when viewing the favorite.</para>
@@ -92,7 +92,7 @@
       <screeninfo>Selection of fixed and relative periods.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="40%" align="center" fileref="resources/images/pivot_table/period_dimension.png" format="PNG"/>
+          <imagedata width="80%" align="center" fileref="resources/images/pivot_table/period_dimension.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -111,13 +111,13 @@
       list in order to position the organisation unit dimension as table rows.  Note that
       indicators, data elements and data set reporting rates are part of the common &quot;Data&quot; dimension
       and will be displayed together in the pivot table. For instance, after selecting indicators
-      and data elements in the left menu, you can drag &quot;Data&quot; from the available dimensions list to
+      and data elements in the left menu, you can drag &quot;Organisation Unit&quot; from the available dimensions list to
       the row dimension list in order to arrange them as rows in the pivot table.</para>
     <screenshot>
       <screeninfo>The table layout screen.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="45%" fileref="resources/images/pivot_table/table_layout.png" format="PNG"/>
+          <imagedata fileref="resources/images/pivot_table/table_layout.png" width="40%" align="center" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -130,7 +130,7 @@
       <screeninfo>Pivot table where organisation units and periods are repeated on rows.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="90%" fileref="resources/images/pivot_table/pivot_rows.png" format="PNG"/>
+          <imagedata width="80%" fileref="resources/images/pivot_table/pivot_rows221.png" format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -151,12 +151,15 @@
           dimension, as the values in that case are equal to the subtotals.</para>
       </listitem>
       <listitem>
-        <para><emphasis role="bold">Show dimension items</emphasis>: Show the dimension names as part of the pivot tables.</para>
+        <para><emphasis role="bold">Show dimension labels</emphasis>: Show the dimension names as part of the pivot tables.</para>
       </listitem>
       <listitem>
         <para><emphasis role="bold">Hide empty rows:</emphasis> Hides empty rows from the table, which is useful when looking at
           large tables where a big part of the dimension items do not have data in order to keep the
           table more readable.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Skip Rounding: </emphasis>Skips the rounding of data values, offering the full precision of data values. Can be useful for finance data where the full dollar amount is required. </para>
       </listitem>
       <listitem>
         <para><emphasis role="bold">Aggregation type: </emphasis>The default aggregation operator can be over-ridden here, by selecting a different aggregation operator, e.g. &quot;Count&quot;, &quot;Min&quot; or &quot;Max&quot;. </para>
@@ -165,6 +168,9 @@
         <para><emphasis role="bold">Show hierarchy:</emphasis> Shows the name of all ancestors for organisation units, e.g.
     &quot;Sierra Leone / Bombali / Tamabaka / Sanya CHP&quot; for Sanya CHP. The organisation units are then
     sorted alphabetically which will order the organisation units perfectly according to the hierarchy.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Include only completed events: </emphasis>Only include completed events in the aggregation process. This is useful e.g. to exclude partial events in indicator calculations</para>
       </listitem>
       <listitem>
         <para><emphasis role="bold">Display density: </emphasis>Controls the size of the cells in the table. Can be set to
@@ -275,11 +281,17 @@
       table in Microsoft Excel from the downloaded Excel file by clicking on &quot;pivot table&quot; in the
       top panel, then clicking on &quot;create pivot table&quot;, then marking the data range in the
       spreadsheet before clicking &quot;OK&quot;.u can </para>
-    <para>Data can also be downloaded in JSON, XML, Excel and CSV as plain data formats with different identification schemes (ID, Code, and Name).   The data document will use identifiers of the
+    <para>Data can also be downloaded in JSON, XML, Excel, and CSV as plain data formats with different identification schemes (ID, Code, and Name).   The data document will use identifiers of the
       dimension items and will be opened in a new browser window in order to reveal the URL of the
       request to the Web API in the address bar. This will be useful for developers of apps and 
       other client modules based on the DHIS 2 Web API or for those who require a plan data source, for instance for import into statistical packages.</para>
     <para>For advanced users, two additional options are available under &quot;Advanced&quot;. JXRML will produce a template of a Jasper Report which can be further customized based on your exact needs and used as the basis for a standard report in DHIS2. The &quot;Raw data SQL&quot; will provide the actual SQL statement used to generate the pivot table. This could then be used as a data source in a Jasper report, or as the basis for an SQL view. </para>
+    <para>Lastly, the pivot table app allows you to download data in CSV format directly without first rendering the data in the Web Browser. This will help overcome any constraint in the system settings  that has been set in regards to the maximum number of analytic recrods. This allows for much larger batches of data to be downloaded and used for later offline analysis. This can be done by clicking on the arrow beside the update button.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="resources/images/pivot_table/data_dump.png" align="center" format="PNG"/>
+      </imageobject>
+    </mediaobject>
   </section>
   <section>
     <title>Constraints and tips</title>
