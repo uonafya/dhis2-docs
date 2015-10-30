@@ -8875,8 +8875,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <section>
       <title>Metadata pull</title>
       <para>To initiate a metadata pull from a remote JSON document you can make a POST request with
-        a <emphasis role="italic">url</emphasis> query parameter to the following
-        resource:<screen>api/synchronization/metadataPull?url=&lt;url-to-json-document></screen></para>
+        a <emphasis role="italic">url</emphasis> as request payload to the following
+        resource:<screen>api/synchronization/metadataPull</screen></para>
     </section>
   </section>
   <section>
@@ -9012,7 +9012,7 @@ curl -u username:password -X POST -d @updated_facility.json
       metadata package is a </para>
     <para>To retrieve an index over available metadata packages you can issue a GET request to the
         <emphasis role="italic">metadataRepo</emphasis>
-      resource:<screen>GET /api/metadatRepo</screen></para>
+      resource:<screen>GET /api/synchronization/metadataRepo</screen></para>
     <para>A metadata package entry contains information about the package and a URL to the relevant
       package. A metadata package is simply a DXF metadata file. An index could look like
       this:<screen>{
@@ -9035,7 +9035,7 @@ curl -u username:password -X POST -d @updated_facility.json
     <para>A client can follow the URLs in a RESTful fashion and install a metadata package by
       supplying POST request as text/plain with the metadata package URL as the payload to the
         <emphasis role="italic">metadataPull</emphasis>
-      resource:<screen>POST /api/metadataPull</screen></para>
+      resource:<screen>POST /api/synchronization/metadataPull</screen></para>
     <para>An example curl command looks like
       this:<screen>curl "localhost:8080/api/synchronization/metadataPull" -X POST 
 -d "https://raw.githubusercontent.com/dhis2/dhis2-metadata-repo/master/repo/221/trainingland-org-units/metadata.json" 
