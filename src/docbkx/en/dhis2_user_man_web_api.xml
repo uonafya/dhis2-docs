@@ -1962,6 +1962,14 @@ http://server/api/constants/ID</screen></para>
               <entry>Skip checks for existing data values. Improves performance. Only use for empty
                 databases or when the data values to import do not exist already.</entry>
             </row>
+            <row>
+              <entry>async</entry>
+              <entry>false | true</entry>
+              <entry>Indicates wether the import should be done asynchronous or synchronous. The
+                former is suitable for very large imports as it ensures that the request does not
+                time out, although it has a significant performance overhead. The latter is faster
+                but requires the connection to persist until the process is finished.</entry>
+            </row>
           </tbody>
         </tgroup>
       </table>
