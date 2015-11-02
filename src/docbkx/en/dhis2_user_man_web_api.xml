@@ -2546,11 +2546,12 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     </section>
     <section>
       <title>POSTing data</title>
-      <para>DHIS2 exposes an endpoint for POST adx data at <emphasis>/ohie/dataValueSets</emphasis>.
-        So, for example, the following curl command can be used to POST the example data above to
-        the DHIS2 demo server:
-        <screen>curl -u admin:district -X POST -H "Content-Type: application/xml" 
-  -d @data.xml "https://apps.dhis2.org/demo/ohie/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=code"</screen>
+      <para>DHIS2 exposes an endpoint for POST adx data at <emphasis>/api/dataValueSets</emphasis>
+        using <emphasis role="italic">application/xml+adx</emphasis> as content type. So, for
+        example, the following curl command can be used to POST the example data above to the DHIS2
+        demo server:
+        <screen>curl -u admin:district -X POST -H "Content-Type: application/xml+adx" 
+  -d @data.xml "https://apps.dhis2.org/demo/api/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=code"</screen>
         Note the query parameters are the same as are used with DXF data. The adx endpoint should
         interpret all the existing DXF parameters with the same semantics as DXF.</para>
     </section>
