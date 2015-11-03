@@ -7,7 +7,7 @@
     <para>The data visualizer module enables users to easily create dynamic data analysis and visualizations through charts and data tables.  You can freely select content (like indicators, periods and organisation units) for your analysis. This module can be accessed by selecting Data Visualizer from the app menu. The image below shows the viewport of the module. For a quick start:</para>
     <orderedlist>
       <listitem>
-        <para> Look under the &quot;Indicator&quot; heading and select an indicator group from the list of groups. </para>
+        <para> Look under the &quot;Data&quot; heading and select an indicator group from the list of groups. </para>
       </listitem>
       <listitem>
         <para>Look under &quot;Available indicators&quot; and select a few indicators from the list by double-clicking on them.</para>
@@ -21,7 +21,7 @@
       <screeninfo>Data visualizer module displaying a column chart.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="100%" fileref="resources/images/visualizer/column_chart1.png" format="PNG" align="center"/>
+          <imagedata width="100%" align="center" fileref="resources/images/visualizer/column_chart.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -73,7 +73,7 @@
     <para><screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="resources/images/visualizer/chart_layout.png" align="center" width="80%"/>
+            <imagedata width="80%" align="center" fileref="resources/images/visualizer/chart_layout.png"/>
           </imageobject>
         </mediaobject>
       </screenshot></para>
@@ -95,7 +95,7 @@
       <screeninfo>Example chart illustrating the concepts of series, categories and filter.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" fileref="resources/images/visualizer/series_category_filter.png" format="PNG" align="center"/>
+          <imagedata width="80%" align="center" fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -117,12 +117,12 @@
   </section>
   <section>
     <title>Selecting indicators and data elements</title>
-    <para>The visualizer module can display any number of indicators and data elements in a chart and data table. Both indicators and data elements can be selected and appear together in the same chart. You can select indicators by clicking at the &quot;Indicators&quot; header  and selecting an indicator group from the list of groups below it. This will make the indicators in the selected group appear in the list under &quot;Available indicators&quot; to the left. From that list you can double click on any indicator in order to select it, this will move it to the list under &quot;Selected indicators&quot;. Alternatively you can mark one or more indicators and click the single-arrow button. To select all indicators you simply click on the double-arrow button. To deselect indicators you can do correspondingly in the &quot;Selected indicators&quot; list.</para>
-    <para>To select data elements click on the &quot;Data elements&quot; header. The same principle for selecting and deselecting applies as for indicators.</para>
+    <para>The visualizer module can display any number of indicators and data elements in a chart and data table. Both indicators and data elements can be selected and appear together in the same chart, with their order of appearance the same as the order in which they are selected. You can select indicators by choosing Indicators from the &quot;Data&quot; header  and selecting an indicator group from the list of groups below it. This will make the indicators in the selected group appear in the list under &quot;Available indicators&quot; to the left. From that list you can double click on any indicator in order to select it, this will move it to the list under &quot;Selected indicators&quot;. Alternatively you can mark one or more indicators and click the single-arrow button. To select all indicators you simply click on the double-arrow button. To deselect indicators you can do correspondingly in the &quot;Selected indicators&quot; list.</para>
+    <para>To select data elements choose Data Elements from the &quot;Data&quot; header. The same principle for selecting and deselecting indicators applies for data elements.</para>
   </section>
   <section>
     <title>Selecting reporting rates</title>
-    <para>The visualizer can display reporting rates in a chart, by itself or together with indicators and data elements. Reporting rates can be selected by clicking at the &quot;Reporting rates&quot; header. Reporting rates are defined by data sets. It can be selected by double-clicking in the list of available data sets to the left.</para>
+    <para>The visualizer can display reporting rates in a chart, by itself or together with indicators and data elements. Reporting rates can be selected by choosing Reporting Rates from the &quot;Data&quot; header. Reporting rates are defined by data sets. It can be selected by double-clicking in the list of available data sets to the left.</para>
   </section>
   <section>
     <title>Selecting fixed and relative periods</title>
@@ -147,7 +147,7 @@
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="resources/images/visualizer/chart_options2.png" align="center" width="80%" scale="100"/>
+          <imagedata width="80%" align="center" scale="100" fileref="resources/images/visualizer/chart_options221.png"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -174,6 +174,9 @@
       </listitem>
       <listitem>
         <para>Aggregation Type: Defines how the data elements or indicators will be aggregated within the chart.</para>
+      </listitem>
+      <listitem>
+        <para>Include only completed events: All analysis apps provides an option for only including completed events in the aggregation process. This is useful e.g. to exclude partial events in indicator calculations</para>
       </listitem>
       <listitem>
         <para>Range axis max/min: Defines the maximum and minium value which will be visible on the
@@ -210,13 +213,14 @@
   </section>
   <section id="dvDisplayChart">
     <title>Displaying a chart</title>
-    <para>You can display a chart based on your selections simply by clicking the &quot;Update&quot; button on the top centre menu. This requires that you have selected one or more elements from all of the three dimensions - data (indicators, data elements, reporting rates), periods (relative, fixed) and organisation units (units or groups). Note that &quot;Months this year&quot; from the period dimension and the root organisation unit are selected by default.</para>
+    <para>You can display a chart based on your selections simply by clicking the &quot;Update&quot; button on the top centre menu. This requires that you have selected one or more elements from all of the three dimensions - data (indicators, data elements, reporting rates), periods (relative, fixed) and organisation units (units or groups). Note that &quot;Last 12 Months&quot; from the period dimension and the root organisation unit are selected by default.</para>
     <para>Notice that you can hide and show individual data series in the chart by clicking directly on the series label in the chart - they appear either at the top or to the right of the chart.</para>
     <para>If you want to give the chart more space on your screen you can click on the triple left-arrow button on the top centre menu. This will collapse the left side menu. You can get this menu back by clicking on the same button again.</para>
   </section>
   <section id="dvSaveChart">
     <title>Downloading chart as image or PDF</title>
     <para>After you have rendered a chart you can download it to your local computer as and image or pdf by clicking on &quot;Download&quot; on the top centre menu. The file will be automatically downloaded to your computer - for instance can you now embed the image file into a text document as part of a report. You can also download the data source behind the chart in json, xml, csv or Microsoft Excel format.</para>
+    <para>For advanced users, two additional options are available under &quot;Advanced&quot;. JXRML will produce a template of a Jasper Report which can be further customized based on your exact needs and used as the basis for a standard report in DHIS2. The &quot;Raw data SQL&quot; will provide the actual SQL statement used to generate the data visualization. This could then be used as a data source in a Jasper report, or as the basis for an SQL view</para>
   </section>
   <section id="dvFavorites">
     <title>Saving chart as favorite</title>
@@ -227,7 +231,7 @@
       <screeninfo>Data visualizer module displaying a column chart.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="100%" fileref="resources/images/visualizer/chart_favorites.png" format="PNG"/>
+          <imagedata width="100%" fileref="resources/images/visualizer/chart_favorites221.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -257,7 +261,7 @@
       <screeninfo>Analysis integration</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="25%" fileref="resources/images/visualizer/chart_integration.png" format="PNG" align="center"/>
+          <imagedata align="center" fileref="resources/images/visualizer/chart_integration.png" format="PNG" scale="100"/>
         </imageobject>
       </mediaobject>
     </screenshot>
