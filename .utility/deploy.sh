@@ -29,8 +29,8 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
     # Add the .nojekyll file since we are not using it for now
 	touch .nojekyll
 
-    # Add change files
-	git add -u .
+    # Make sure we add all files
+	git add .; git add -u .
 
 	git commit -a -m "Build $TRAVIS_JOB_NUMBER from updates to $TRAVIS_REPO_SLUG"
 	git push --quiet "https://${GITHUB_TOKEN}@${GH_REF}" gh-pages > /dev/null 2>&1
