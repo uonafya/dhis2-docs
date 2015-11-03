@@ -1,8 +1,5 @@
 #!/bin/bash
 
-TRAVIS_REPO_SLUG=dhis2/dhis2-docs
-TRAVIS_PULL_REQUEST=false
-
 if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 	set -e # exit with nonzero exit code if anything fails
 
