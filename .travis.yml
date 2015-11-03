@@ -5,10 +5,7 @@ git:
   submodules: false
   #https://github.com/travis-ci/travis-ci/issues/3412
   #Hack to get the revision number correct
-  depth: 9999999 
-branches:
-  only:
-    - 2.21
+  depth: 9999999
 before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
     - git submodule update --init --recursive
@@ -22,6 +19,7 @@ jdk:
 notifications:
   email:
   - jason.p.pickering@gmail.com
+  - mark@thedutchies.com
 env:
     global:
     - GH_REF: github.com/dhis2/dhis2-docs.git
