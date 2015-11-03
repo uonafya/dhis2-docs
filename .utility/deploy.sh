@@ -1,5 +1,8 @@
 #!/bin/bash
 
+TRAVIS_REPO_SLUG=dhis2/dhis2-docs
+TRAVIS_PULL_REQUEST=false
+
 if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 	set -e # exit with nonzero exit code if anything fails
 
@@ -33,5 +36,5 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
 	git add -u .
 
 	git commit -a -m "Build $TRAVIS_JOB_NUMBER from updates to $TRAVIS_REPO_SLUG"
-	git push --force --quiet "https://${GITHUB_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
+	git push --quiet "https://${GITHUB_TOKEN}@${GH_REF}" gh-pages > /dev/null 2>&1
 fi
