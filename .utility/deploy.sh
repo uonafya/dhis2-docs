@@ -4,8 +4,12 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
 	set -e # exit with nonzero exit code if anything fails
 
     cd ${HOME}
+
+    # Remove master git dir
+    rm -rf ${HOME}/.git
+
     # Grab the pages branch we want to push the updated docs to
-    git clone -b gh-pages https://github.com/dhis2/dhis2-docs.git dhis2/dhis2-docs
+    git clone -b gh-pages https://github.com/dhis2/dhis2-docs.git gh-pages
     
     # Start with a clean dir so we also account for deletions
     rm -rf ${HOME}/gh-pages/${TRAVIS_BRANCH}
@@ -28,6 +32,6 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
     # Make sure we add all files
 	git add .; git add -u .
 
-	git commit -a -m "Build $TRAVIS_JOB_NUMBER from updates to $TRAVIS_REPO_SLUG"
-	git push --force --quiet "https://${GITHUB_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
+	git commit -a -m "Build $TRAVIS_JOB_NUMBER from updates to $TRAVIS_BRANCH"
+	git push --quiet "https://${GITHUB_TOKEN}@${GH_REF}" gh-pages > /dev/null 2>&1
 fi
