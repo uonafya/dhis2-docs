@@ -6,6 +6,7 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
         cd ${HOME}
         git clone -b gh-pages https://github.com/dhis2/dhis2-docs.git dhis2/dhis2-docs
         rm -rf ${HOME}/gh-pages/${TRAVIS_BRANCH}
+        mkdir -p ${HOME}/gh-pages/${TRAVIS_BRANCH}
         cp -R ${TRAVIS_BUILD_DIR}/target/site/en ${HOME}/gh-pages/${TRAVIS_BRANCH}
 	cp ${TRAVIS_BUILD_DIR}/.utility/index.html ${HOME}/gh-pages/
         
