@@ -119,7 +119,7 @@ curl -X POST -H "Content-Type: application/json" -d @client.json -u admin:distri
           <screen>SERVER="https://apps.dhis2.org/dev"
 SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
 
-curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token 
+curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token
 -d grant_type=password -d username=admin -d password=district</screen>
         </para>
         <para>This will give you a response similar to
@@ -148,7 +148,7 @@ curl -H "Authorization: Bearer 07fc551c-806c-41a4-9a8c-10658bd15435" $SERVER/api
 SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
 REFRESH_TOKEN="a4e4de45-4743-481d-9345-2cfe34732fcc"
 
-curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token 
+curl -X POST -H "Accept: application/json" -u demo:$SECRET $SERVER/uaa/oauth/token
 -d grant_type=refresh_token -d refresh_token=$REFRESH_TOKEN</screen></para>
         <para>The response will be exactly the same as when you get an token to start with.</para>
       </section>
@@ -332,8 +332,8 @@ curl -X POST -u demo:$SECRET -H "Accept: application/json" $SERVER/token -d gran
       periods in addition to fixed periods (defined above). The relative periods are relative to the
       current date, and allows e.g. for creating dynamic reports. The available relative period
       values are:</para>
-    <screen>THIS_WEEK, LAST_WEEK, LAST_4_WEEKS, LAST_12_WEEKS, LAST_52_WEEKS, 
-THIS_MONTH, LAST_MONTH, THIS_BIMONTH, LAST_BIMONTH, THIS_QUARTER, LAST_QUARTER, 
+    <screen>THIS_WEEK, LAST_WEEK, LAST_4_WEEKS, LAST_12_WEEKS, LAST_52_WEEKS,
+THIS_MONTH, LAST_MONTH, THIS_BIMONTH, LAST_BIMONTH, THIS_QUARTER, LAST_QUARTER,
 THIS_SIX_MONTH, LAST_SIX_MONTH, MONTHS_THIS_YEAR, QUARTERS_THIS_YEAR,
 THIS_YEAR, MONTHS_LAST_YEAR, QUARTERS_LAST_YEAR, LAST_YEAR, LAST_5_YEARS, LAST_12_MONTHS,
 LAST_3_MONTHS, LAST_6_BIMONTHS, LAST_4_QUARTERS, LAST_2_SIXMONTHS, THIS_FINANCIAL_YEAR,
@@ -2215,18 +2215,18 @@ http://server/api/constants/ID</screen></para>
           Conflict</emphasis> status code and descriptive text message. If the operation lead to a
         saved or updated value, <emphasis role="italic">200 OK</emphasis> will be returned. An
         example of a request looks like this:</para>
-      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&amp;value=12&quot; 
+      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&amp;value=12&quot;
 -X POST -u admin:district -v</screen>
       <para>This resource also allows a special syntax for associating the value to an attribute
         option combination. This can be done by sending the identifier of the attribute combination,
         together with the identifier(s) of the attribute option(s) which the value represents within
         the combination. An example looks like this:</para>
-      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValues?de=s46m5MS0hxu&amp;ou=DiszpKrYNg8&amp;pe=201308&amp;cc=dzjKKQq0cSO&amp;cp=wbrDrL2aYEc;btOyqprQ9e8&amp;value=26&quot; 
+      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValues?de=s46m5MS0hxu&amp;ou=DiszpKrYNg8&amp;pe=201308&amp;cc=dzjKKQq0cSO&amp;cp=wbrDrL2aYEc;btOyqprQ9e8&amp;value=26&quot;
 -X POST -u admin:district -v</screen>
       <para>You can retrieve a data value with a request using the <emphasis role="italic"
           >GET</emphasis> method. The value, comment and followUp params are not applicable in this
         regard:</para>
-      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&quot; 
+      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&quot;
 -X GET -u admin:district -v</screen>
       <para>You can delete a data value with a request using the <emphasis role="italic"
           >DELETE</emphasis> method. </para>
@@ -2363,7 +2363,7 @@ http://server/api/constants/ID</screen></para>
       <para>Assuming that we have posted data values to DHIS according to the previous section
         called &quot;Sending data values&quot; we can now put together our request for a single data
         value set and request it using cURL:</para>
-      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValueSets?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&quot; 
+      <screen>curl &quot;https://apps.dhis2.org/demo/api/dataValueSets?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&quot;
 -H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
       <para>We can also use the start and end dates query parameters to request a larger bulk of
         data values. I.e. you can also request data values for multiple data sets and org units and
@@ -2393,9 +2393,9 @@ http://server/api/constants/ID</screen></para>
   &quot;dataValues&quot;: [
     { &quot;dataElement&quot;: &quot;eY5ehpbEsB7&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;,
       &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;, &quot;value&quot;: &quot;10003&quot; },
-    { &quot;dataElement&quot;: &quot;Ix2HsbDMLea&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;, 
+    { &quot;dataElement&quot;: &quot;Ix2HsbDMLea&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;,
       &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;, &quot;value&quot;: &quot;10002&quot; },
-    { &quot;dataElement&quot;: &quot;f7n9E0hX8qk&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;, 
+    { &quot;dataElement&quot;: &quot;f7n9E0hX8qk&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;,
       &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;, &quot;value&quot;: &quot;10001&quot; }
   ]
 }</screen></para>
@@ -2442,7 +2442,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     <para>The structure of an ADX data message is quite similar to what you might already be
       familiar with from DXF 2 data described earlier. There are a few important differences. We
       will describe these differences with reference to a small example:
-      <screen>&lt;adx xmlns="urn:ihe:qrph:adx:2015" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      <screen>&lt;adx xmlns="urn:ihe:qrph:adx:2015" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="urn:ihe:qrph:adx:2015 ../schema/adx_loose.xsd" exported="2015-02-08T19:30:00Z">
 
   &lt;group orgUnit="OU_559" period="2015-06-01/P1M" completeDate="2015-07-01" dataSet="(TB/HIV)VCCT">
@@ -2452,25 +2452,25 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     &lt;dataValue dataElement="VCCT_2" GENDER="FMLE" HIV_AGE="AGE0-14" value="10"/>
     &lt;dataValue dataElement="PLHIV_TB_0" GENDER="FMLE" HIV_AGE="AGE0-14" value="10"/>
     &lt;dataValue dataElement="PLHIV_TB_1" GENDER="FMLE" HIV_AGE="AGE0-14" value="10"/>
-        
+
     &lt;dataValue dataElement="VCCT_0" GENDER="MLE" HIV_AGE="AGE0-14" value="32"/>
     &lt;dataValue dataElement="VCCT_1" GENDER="MLE" HIV_AGE="AGE0-14" value="20"/>
     &lt;dataValue dataElement="VCCT_2" GENDER="MLE" HIV_AGE="AGE0-14" value="10"/>
     &lt;dataValue dataElement="PLHIV_TB_0" GENDER="MLE" HIV_AGE="AGE0-14" value="10"/>
     &lt;dataValue dataElement="PLHIV_TB_1" GENDER="MLE" HIV_AGE="AGE0-14" value="10"/>
-        
+
     &lt;dataValue dataElement="VCCT_0" GENDER="FMLE" HIV_AGE="AGE15-24" value="32"/>
     &lt;dataValue dataElement="VCCT_1" GENDER="FMLE" HIV_AGE="AGE15-24" value="20"/>
     &lt;dataValue dataElement="VCCT_2" GENDER="FMLE" HIV_AGE="AGE15-24" value="10"/>
     &lt;dataValue dataElement="PLHIV_TB_0" GENDER="FMLE" HIV_AGE="AGE15-24" value="10"/>
     &lt;dataValue dataElement="PLHIV_TB_1" GENDER="FMLE" HIV_AGE="AGE15-24" value="10"/>
-        
+
     &lt;dataValue dataElement="VCCT_0" GENDER="MLE" HIV_AGE="AGE15-24" value="32"/>
     &lt;dataValue dataElement="VCCT_1" GENDER="MLE" HIV_AGE="AGE15-24" value="20"/>
     &lt;dataValue dataElement="VCCT_2" GENDER="MLE" HIV_AGE="AGE15-24" value="10"/>
     &lt;dataValue dataElement="PLHIV_TB_0" GENDER="MLE" HIV_AGE="AGE15-24" value="10"/>
     &lt;dataValue dataElement="PLHIV_TB_1" GENDER="MLE" HIV_AGE="AGE15-24" value="10"/>
-        
+
   &lt;/group>
 &lt;/adx></screen>
     </para>
@@ -2550,7 +2550,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         using <emphasis role="italic">application/xml+adx</emphasis> as content type. So, for
         example, the following curl command can be used to POST the example data above to the DHIS2
         demo server:
-        <screen>curl -u admin:district -X POST -H "Content-Type: application/xml+adx" 
+        <screen>curl -u admin:district -X POST -H "Content-Type: application/xml+adx"
   -d @data.xml "https://apps.dhis2.org/demo/api/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=code"</screen>
         Note the query parameters are the same as are used with DXF data. The adx endpoint should
         interpret all the existing DXF parameters with the same semantics as DXF.</para>
@@ -4014,7 +4014,7 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
         with the <ulink
           url="http://apps.dhis2.org/demo/api/interpretations/{interpretationId}/comment"/> like
         this:</para>
-      <screen>curl -d &quot;An intervention is needed&quot; &quot;https://apps.dhis2.org/demo/api/interpretations/j8sjHLkK8uY/comment&quot; 
+      <screen>curl -d &quot;An intervention is needed&quot; &quot;https://apps.dhis2.org/demo/api/interpretations/j8sjHLkK8uY/comment&quot;
 -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
       <para>You can also write interpretations for report tables in a similar way by interacting
         with the <ulink
@@ -4022,7 +4022,7 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
         report tables you can also provide an optional <emphasis role="italic">ou</emphasis> query
         parameter to supply an organisation unit identifier in the case where the report table has
         an organisation unit report parameter:</para>
-      <screen>curl -d &quot;This table reveals poor data quality&quot; &quot;https://apps.dhis2.org/demo/api/interpretations/reportTable/xIWpSo5jjT1?ou=O6uvpzGd5pu&quot; 
+      <screen>curl -d &quot;This table reveals poor data quality&quot; &quot;https://apps.dhis2.org/demo/api/interpretations/reportTable/xIWpSo5jjT1?ou=O6uvpzGd5pu&quot;
 -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
     </section>
     <section>
@@ -4193,7 +4193,7 @@ api/reports/OeJsA6K1Otx/data.pdf?date=2014-01-01</screen>
     var base = &quot;https://apps.dhis2.org/demo&quot;;
 
     // Login - if OK, call the setLinks function
-    
+
     Ext.onReady( function() {
       Ext.Ajax.request({
         url: base + &quot;dhis-web-commons-security/login.action&quot;,
@@ -4206,11 +4206,11 @@ api/reports/OeJsA6K1Otx/data.pdf?date=2014-01-01</screen>
     function setLinks() {
 
       // Referring to an existing table through the id parameter, render to &quot;table1&quot; div
-      
+
       DHIS.getTable({ url: base, el: &quot;table1&quot;, id: &quot;R0DVGvXDUNP&quot; });
 
       // Full table configuration, render to &quot;table2&quot; div
-      
+
       DHIS.getTable({
         url: base,
         el: &quot;table2&quot;,
@@ -4420,7 +4420,7 @@ Ext.onReady( function() {
       <para>We continue by adding one pre-defined and one dynamic pivot table to our HTML document.
         You can browse the list of available pivot tables using the Web API here: <ulink
           url="http://apps.dhis2.org/demo/api/reportTables"/>.</para>
-      <screen>function setLinks() {  
+      <screen>function setLinks() {
   DHIS.getTable({ url: base, el: &quot;table1&quot;, id: &quot;R0DVGvXDUNP&quot; });
 
   DHIS.getTable({
@@ -4476,7 +4476,7 @@ Ext.onReady( function() {
     var base = &quot;https://apps.dhis2.org/demo&quot;;
 
     // Login - if OK, call the setLinks function
-    
+
     Ext.onReady( function() {
       Ext.Ajax.request({
         url: base + &quot;dhis-web-commons-security/login.action&quot;,
@@ -4489,11 +4489,11 @@ Ext.onReady( function() {
     function setLinks() {
 
       // Referring to an existing chart through the id parameter, render to &quot;chart1&quot; div
-      
+
       DHIS.getChart({ url: base, el: &quot;chart1&quot;, id: &quot;R0DVGvXDUNP&quot; });
 
       // Full chart configuration, render to &quot;chart2&quot; div
-      
+
       DHIS.getChart({
         url: base,
         el: &quot;chart2&quot;,
@@ -4797,7 +4797,7 @@ Ext.onReady( function() {
     var base = &quot;https://apps.dhis2.org/demo&quot;;
 
     // Login - if OK, call the setLinks function
-    
+
     Ext.onReady( function() {
       Ext.Ajax.request({
         url: base + &quot;dhis-web-commons-security/login.action&quot;,
@@ -6831,8 +6831,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Generate identifiers</title>
       <para>To generate valid, random DHIS 2 identifiers you can do a GET request to this
         resource:</para>
-      <screen>http://&lt;server-url&gt;/api/system/id?n=3</screen>
-      <para>The <emphasis role="italic">n</emphasis> query parameter is optional and indicates how
+      <screen>http://&lt;server-url&gt;/api/system/id?limit=3</screen>
+      <para>The <emphasis role="italic">limit</emphasis> query parameter is optional and indicates how
         many identifiers you want to be returned with the response. The default is to return one
         identifier. The response will contain a JSON object with a array named codes, similar to
         this:</para>
@@ -7407,7 +7407,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <para> To upload a file, send the file with a <emphasis>POST</emphasis> request
       to:<screen>POST /api/staticContent/&lt;key></screen></para>
     <para>Example request to upload logo.png to the logo_front
-      key:<screen>curl -F "file=@logo.png;type=image/png" "aps.dhis2.org/demo/api/staticContent/logo_front" 
+      key:<screen>curl -F "file=@logo.png;type=image/png" "aps.dhis2.org/demo/api/staticContent/logo_front"
 -X POST -H "Content-Type: multipart/form-data" -u admin:district -v</screen></para>
     <para>Uploading multiple files with the same key will overwrite the existing file. This way,
       retrieving a file for any given key will only return the latest file uploaded.</para>
@@ -8957,7 +8957,7 @@ curl -u username:password -X POST -d @updated_facility.json
       <para>Example curl request for
         retrieval:<screen>curl "apps.dhis2.org/demo/api/dataStore/foo/key_1/metaData" -X GET -u admin:district -v</screen></para>
       <para>Example
-        response:<screen>{  
+        response:<screen>{
     "created": "...",
     "user": {...},
     "namespace": "foo",
@@ -9031,7 +9031,7 @@ curl -u username:password -X POST -d @updated_facility.json
     "description": "Sierra Leone demo database",
     "version": "0.1",
     "href": "https://raw.githubusercontent.com/dhis2/dhis2-metadata-repo/master/repo/221/sierra-leone-demo/metadata.json"
-  }, 
+  },
   {
     "id": "trainingland-org-units",
     "name": "Trainingland organisation units",
@@ -9046,8 +9046,8 @@ curl -u username:password -X POST -d @updated_facility.json
         <emphasis role="italic">metadataPull</emphasis>
       resource:<screen>POST /api/synchronization/metadataPull</screen></para>
     <para>An example curl command looks like
-      this:<screen>curl "localhost:8080/api/synchronization/metadataPull" -X POST 
--d "https://raw.githubusercontent.com/dhis2/dhis2-metadata-repo/master/repo/221/trainingland-org-units/metadata.json" 
+      this:<screen>curl "localhost:8080/api/synchronization/metadataPull" -X POST
+-d "https://raw.githubusercontent.com/dhis2/dhis2-metadata-repo/master/repo/221/trainingland-org-units/metadata.json"
 -H "Content-Type:text/plain" -u admin:district -v</screen></para>
   </section>
 </chapter>
