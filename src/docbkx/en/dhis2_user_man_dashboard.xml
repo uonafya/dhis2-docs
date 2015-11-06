@@ -5,7 +5,7 @@
   <para>Dashboards are intended to provide quick access to different analytical objects (maps, charts, reports, tables, etc) to an individual user. Dashboards can also be shared with user groups. For instance, a user or administrator could create a dashboard called &quot;Malaria&quot; which might contain all relevant information on malaria. This dashboard could then be shared with the user group called &quot;Malaria control&quot;, which might consist of all users of the malaria control programme. All users within this group would then be able to view the same dashboard.</para>
   <section id="dashboards_setup">
     <title>Setting up the dashboard</title>
-    <para>The dashboard can contain any number of objects (charts, maps, reports, tables, resources, etc). These can be freely arranged on the dashboard as you wish.  </para>
+    <para>The dashboard can contain any number of objects (charts, maps, reports, tables, resources, etc). These can be freely arranged on the dashboard as you wish.  Dashboard items can be located and added by searching for favourites, resources, users or messages in the available search box and clicking on the &quot;Add&quot; button. </para>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -37,7 +37,58 @@
       </listitem>
     </itemizedlist>
     <para>Maps, charts and tables can be viewed as full size as images (in the case of charts and map views) or as HTML resources (in the case of reports, tables and messages). </para>
-    <para>To reorder how the dashboard appears, simply drag-and-drop any of the objects to a new position. </para>
+    <para>To reorder how the dashboard appears, simply drag-and-drop any of the objects to a new position. In order to change between the various dashboards which are available, simply select the listed items that are available to review. The list can be scrolled though by using the &lt;, &gt; symbols to the left of the dashboard names.  </para>
+  </section>
+  <section>
+    <title>Managing the Dashboard</title>
+    <para>In addition to adding items or modifying the layout of a dashboard, further options allow you to add additional dashboards, modify their names, delete an entire dashboard an share the dashboard with other users. These additional items can be managed using the &quot;Add,&quot; &quot;Manage,&quot; and &quot;Share&quot; links on the top left of the dashboard next to the dashboard names. </para>
+    <para><itemizedlist>
+        <listitem>
+          <para>Add</para>
+          <para>Allows additional dashboards to be added.</para>
+        </listitem>
+        <listitem>
+          <para>Manage</para>
+          <para>Can change the name of the dashboard, add messages to  or delete the dashboard. This applies to the currently selected dashboard item. </para>
+        </listitem>
+        <listitem>
+          <para>Share</para>
+          <para>Allows the sharing of dashboard items with  user groups. User permissions can also be assigned to each user group.</para>
+        </listitem>
+      </itemizedlist></para>
+  </section>
+  <section>
+    <title>Dashboard Sharing</title>
+    <para>In order to share a dashboard with user groups, first select &quot;Share&quot; from the dashboard page. This will bring up the dashboard sharing settings options. To share the dashboard with specific user groups, type in their name in the sharing settings dialogue box and click on the &quot;+&quot; sign to add them to the dashboard sharing settings</para>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/dashboard/dashboard_sharing settings.png" align="center" format="PNG" scale="80"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>All dashboards have two sharing groups set by default.</para>
+    <para><itemizedlist>
+        <listitem>
+          <para>External access (without login)</para>
+          <para>This option, when selected, provides access to the dashboard as an external resource. This is useful for when you are creating an external web portal but would like to call information from a dashboard you have made internally within DHIS2. By default, this option is not selected. </para>
+        </listitem>
+        <listitem>
+          <para>Public access (with login)</para>
+          <para>This option allows  the selected dashboard to be pushed to all users within your DHIS2 instance. This can also be hidden from public view by selecting the &quot;None&quot; option, which is the default option for new dashboards.</para>
+        </listitem>
+      </itemizedlist></para>
+    <para>User groups which have been added manually can be assigned two types of permissions within the dashboard</para>
+    <para><itemizedlist>
+        <listitem>
+          <para>Can view</para>
+          <para>Provides the user group with view only rights to the dashboard.</para>
+        </listitem>
+        <listitem>
+          <para>Can edit and view</para>
+          <para>Allows the user groups to edit the dashboard in addition to viewing it. Editing allows for altering the layout, resizing and removing items, renaming/deleting the dashboard etc. </para>
+        </listitem>
+      </itemizedlist></para>
   </section>
   <section>
     <title id="dashboard_messages">Messages and feedback</title>
@@ -57,7 +108,7 @@
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="90%" align="center" fileref="resources/images/dashboard/dashboard_message.png" scale="70"/>
+          <imagedata width="90%" align="center" scale="70" fileref="resources/images/dashboard/dashboard_message.png"/>
         </imageobject>
       </mediaobject>
     </screenshot>
