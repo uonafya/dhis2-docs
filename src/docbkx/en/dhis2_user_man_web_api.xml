@@ -7330,6 +7330,44 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <screen>curl -d @replica.json "localhost/api/users/N3PZBUlN8vq/replica" -H "Content-Type:application/json" -u admin:district -v</screen>
     </section>
   </section>
+  
+  <section>
+    <title>SMS</title>
+    <para>This section covers the sms API exposed for sending and collecting(receiving) text messages.</para>
+    <section>
+      <title>OutBound sms service</title>
+      <para>The Web API supports sending outgoing sms using <emphasis
+        role="italic">outbound</emphasis> resource. For sending out message you can POST a message in JSON format. It needs a recipient and message text.
+        Gateway needs to be configured before using this service. Sms will not be sent if there is no gateway confired.
+        An example payload in JSON looks like this:</para>
+      <screen>{
+  "message": "Sms Text",
+  "recipient": "47XXXXXXX"
+}</screen>
+      <para>Outbound service can be tested like this</para>
+      <screen>curl -d @message.json &quot;https://play.dhis2.org/dev/api/sms/outbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <para>Query parameters can also be used like this</para>
+      <screen>https://play.dhis2.org/dev/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
+    </section>
+    <section>
+      <title>InBound sms service</title>
+      <para>The Web API supports collecting incoming sms using <emphasis
+        role="italic">inbound</emphasis> resource. For collecting incoming messages routed towards Dhis2 can be received using this api. API collects inbound sms and provide it to
+        listeners for parsing based on the sms text. This API can be tested by posting JSON format.
+        An example payload is JSON looks like this:</para>
+      <screen>{
+  "gateway": "clickatel",
+  "originator": "47XXXXXX",
+  "message": "alert DHIS Message"
+}</screen>
+      <para>Inbound service can be tested like this</para>
+      <screen>curl -d @message.json &quot;https://play.dhis2.org/dev/api/sms/inbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <para>Query parameters can also be used like this</para>
+      <screen>https://play.dhis2.org/dev/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
+      
+    </section>   
+  </section>
+  
   <section>
     <title>Current user information and associations</title>
     <para>In order to get information about the currently authenticated user and its associations to
