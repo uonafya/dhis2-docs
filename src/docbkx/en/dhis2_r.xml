@@ -151,7 +151,7 @@ OPD.ct.summary$OPDUnder5Male/
   </section>
   <section id="dhis2_r_mydatamart">
     <title>Using R with MyDatamart</title>
-    <para>MyDatamart provides  useful interface to the DHIS2 database by making a local copy of the database available on a users desktop. This means that the user does not need direct access to the database and the data can be worked with offline on the users local machine. In this example, we will have used the <ulink url="http://apps.dhis2.org/demo">demo database</ulink>. Data was downloaded at the district level for Jan 2011-Dec 201l. Consult the MyDatamart section in this manual for more detailed information. </para>
+    <para>MyDatamart provides  useful interface to the DHIS2 database by making a local copy of the database available on a users desktop. This means that the user does not need direct access to the database and the data can be worked with offline on the users local machine. In this example, we will have used the <ulink url="http://play.dhis2.org/demo">demo database</ulink>. Data was downloaded at the district level for Jan 2011-Dec 201l. Consult the MyDatamart section in this manual for more detailed information. </para>
     <para>First, lets load some required R packages. If you do not have these packages already installed in your version of R, you will need to do so before proceeding with the example.</para>
     <screen>library(&quot;DBI&quot;)
 library(&quot;RSQLite&quot;)
@@ -449,7 +449,7 @@ require(XML)
 #This is a URL endpoint for a report table which we can 
 #get from the WebAPI. 
 
-url&lt;-&quot;https://apps.dhis2.org/dev/api/reportTables/KJFbpIymTAo/data.csv&quot;
+url&lt;-&quot;https://play.dhis2.org/dev/api/reportTables/KJFbpIymTAo/data.csv&quot;
 #Lets get the response and we do not need the headers
 #This site has some issues with its SSL certificate
 #so lets not verify it.
@@ -466,7 +466,7 @@ head(mydata)
     <screen>#Get the list of data elements. Turn off paging and links
 #This site has some issues with its SSL certificate
 #so lets not verify it.
-url&lt;-&quot;https://apps.dhis2.org/dev/api/dataElements.xml?
+url&lt;-&quot;https://play.dhis2.org/dev/api/dataElements.xml?
 paging=false&amp;links=false&quot;
 response&lt;-getURL(url,userpwd=&quot;admin:district&quot;,
 httpauth = 1L, header=FALSE,ssl.verifypeer = FALSE)
