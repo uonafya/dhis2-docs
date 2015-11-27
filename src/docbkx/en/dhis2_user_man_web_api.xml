@@ -172,7 +172,7 @@ $SERVER/uaa/oauth/authorize?client_id=demo&amp;response_type=code</screen></para
           token:<screen>SERVER="https://play.dhis2.org/dev"
 SECRET="1e6db50c-0fee-11e5-98d0-3c15c2c6caf6"
 
-curl -X POST -u demo:$SECRET -H "Accept: application/json" $SERVER/token -d grant_type=authorized_code -d code=XYZ</screen></para>
+curl -X POST -u demo:$SECRET -H "Accept: application/json" $SERVER/uaa/oauth/token -d grant_type=authorized_code -d code=XYZ</screen></para>
       </section>
     </section>
   </section>
