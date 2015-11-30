@@ -149,65 +149,6 @@ OPD.ct.summary$OPDUnder5Male/
     <para>We can see that the male and female attendances are very similar for each month of the year, with seemingly higher male attendance relative to female attendance in the month of December.</para>
     <para>In this example, we showed how to retrieve data from the DHIS2 database and manipulate in with some simple R commands. The basic pattern for using DHIS2 and R together, will be the retrieval of data from the DHIS2 database with an SQL query into an R data frame, followed by whatever routines (statistical analysis, plotting, etc) which may be required.  </para>
   </section>
-  <section id="dhis2_r_mydatamart">
-    <title>Using R with MyDatamart</title>
-    <para>MyDatamart provides  useful interface to the DHIS2 database by making a local copy of the database available on a users desktop. This means that the user does not need direct access to the database and the data can be worked with offline on the users local machine. In this example, we will have used the <ulink url="http://play.dhis2.org/demo">demo database</ulink>. Data was downloaded at the district level for Jan 2011-Dec 201l. Consult the MyDatamart section in this manual for more detailed information. </para>
-    <para>First, lets load some required R packages. If you do not have these packages already installed in your version of R, you will need to do so before proceeding with the example.</para>
-    <screen>library(&quot;DBI&quot;)
-library(&quot;RSQLite&quot;)
-library(&quot;lattice&quot;)
-library(&quot;latticeExtra&quot;)</screen>
-    <para>Next, we are going to connect to the local copy of the MyDatamart database. In this case, it was located at C:\dhis2\sl.dmart. </para>
-    <screen>dbPath&lt;-&quot;C:\\dhis2\\sl.dmart&quot;
-drv&lt;-dbDriver(&quot;SQLite&quot;)
-db&lt;-dbConnect(drv,dbPath)</screen>
-    <para>Let suppose we have been asked to compare ANC 1, 2, 3 coverage rates for each district for 2011. We can define an SQL query to retrieve data from the MyDatamart database into an R data frame as follows.</para>
-    <screen>#An SQL query which will retreive all indicators 
-#at OU2 le
-sql&lt;-&quot;SELECT * FROM pivotsource_indicator_ou2_m 
-WHERE year = &apos;2011&apos;&quot;
-#Execute the query into a new result set
-rs&lt;-dbSendQuery(db,sql)
-#Put the entire result set into a new data frame
-Inds&lt;-fetch(rs,n=-1)
-#Clean up a bit
-dbClearResult(rs)
-dbDisconnect(db)</screen>
-    <para>We used one of the pre-existing Pivot Source queries in the database to get all of the indicator values. Of course, we could have retrieved only the ANC indicators, but we did not exactly know how the data was structured, or how the columns were named, so lets take a closer look. </para>
-    <screen>#Get the name of the columns
-colnames(Inds)
-#output not shown for brevity
-levels(as.factor(Inds$indshort)) </screen>
-    <para>We see from the <command>colnames</command> command that there is an column called &quot;indshort&quot; which looks like it contains some indicator names. We can see the names using the second command. After we have determined which ones we need (ANC 1, 2, and 3), lets further subset the data so that we only have these. </para>
-    <screen>#Subset the data for ANC
-ANC&lt;-Inds[grep(&quot;ANC (1|2|3) Coverage&quot;,as.factor(Inds$indshort)),]</screen>
-    <para>We just used R&apos;s grep function to retrieve all the rows and columns of the Inds data frame which matched the regular expression &quot;ANC (1|2|3) Coverage&quot; and put this into a new data frame called &quot;ANC&quot;. </para>
-    <para>By looking at the data with the <command>str(ANC)</command> command, we will notice that the time periods are not ordered correctly, so lets fix this before we try and create a plot of the data.  </para>
-    <screen>#Lets reorder the months
-MonthOrder&lt;-c(&apos;Jan&apos;,&apos;Feb&apos;,&apos;Mar&apos;,&apos;Apr&apos;,
-&apos;May&apos;,&apos;Jun&apos;,&apos;Jul&apos;,&apos;Aug&apos;,&apos;Sep&apos;,&apos;Oct&apos;,&apos;Nov&apos;,&apos;Dec&apos;)
-ANC$month&lt;-factor(ANC$month,levels=MonthOrder)</screen>
-    <para>Next, we need to actually calculate the indicator value from the numerator, factor and denominator. </para>
-    <screen>#Calculate the indicator value
-ANC$value&lt;-ANC$numxfactor/ANC$denominatorvalue</screen>
-    <para>Finally, lets create a simple trellis plot which compares ANC 1, 2, 3 for each district by month and save it to our local working directory in a file called &quot;District_ANC.png&quot;. </para>
-    <screen>png(filename=&quot;District_ANC.png&quot;,width=1024,height=768)
-plot.new()
- xyplot(value ~ month | ou2, data=ANC, type=&quot;a&quot;, main=&quot;District ANC Comparison Sierra Leone 2011&quot;,
- groups=indshort,xlab=&quot;Month&quot;,ylab=&quot;ANC Coverage&quot;,
- scales = list(x = list(rot=90)),
- key = simpleKey(levels(factor(ANC$indshort)),
- points=FALSE,lines=TRUE,corner=c(1,1)))
- mtext(date(), side=1, line=3, outer=F, adj=0, cex=0.7)
-dev.off()</screen>
-    <para>The results of which are displayed below.</para>
-    <mediaobject>
-      <imageobject>
-        <imagedata width="80%" fileref="resources/images/r/District_ANC.png"/>
-      </imageobject>
-    </mediaobject>
-  </section>
-  <section id="dhis2_r_maps">
     <title>Mapping with R and PostgreSQL</title>
     <para>A somewhat more extended example, will use the RPostgreSQL library and several other libraries to produce a map from the coordinates stored in the database. We will define a few helper functions to provide a layer of abstraction, which will make the R code more reusable. </para>
     <programlisting>#load some dependent libraries
