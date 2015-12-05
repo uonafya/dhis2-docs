@@ -6871,6 +6871,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
       available. </para>
     <para>Period pruning will remove periods which are not linked to any data values:</para>
     <screen>/api/maintenance/periodPruning</screen>
+    <para>Data pruning will remove complete data set registrations, data approvals, data value
+      audits and data values, in this case for an organisation
+      unit.<screen>/api/maintenance/dataPruning/organisationUnits/&lt;org-unit-id></screen></para>
     <para>Zero data value removal will delete zero data values linked to data elements where zero
       data is defined as not significant:</para>
     <screen>/api/maintenance/zeroDataValueRemoval</screen>
