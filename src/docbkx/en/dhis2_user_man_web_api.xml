@@ -7472,10 +7472,33 @@ ORDER BY oul.level, par.name, ou.name</screen>
       logos used in DHIS2. The resource lets the user upload a file with an associated key, which
       can later be retrieved using the key. Only PNG files are supported and can only be uploaded to
       the "logo_banner" and "logo_front" keys.</para>
+    <table frame="all">
+      <title>Static content keys</title>
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+        <thead>
+          <row>
+            <entry>Key</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>logo_banner</entry>
+            <entry>Logo in the application top menu on the left side.</entry>
+          </row>
+          <row>
+            <entry>logo_front</entry>
+            <entry>Logo on the login-page above the login form.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
     <para> To upload a file, send the file with a <emphasis>POST</emphasis> request
       to:<screen>POST /api/staticContent/&lt;key></screen></para>
     <para>Example request to upload logo.png to the logo_front
-      key:<screen>curl -F "file=@logo.png;type=image/png" "aps.dhis2.org/demo/api/staticContent/logo_front"
+      key:<screen>curl -F "file=@logo.png;type=image/png" "https://play.dhis2.org/demo/api/staticContent/logo_front"
 -X POST -H "Content-Type: multipart/form-data" -u admin:district -v</screen></para>
     <para>Uploading multiple files with the same key will overwrite the existing file. This way,
       retrieving a file for any given key will only return the latest file uploaded.</para>
