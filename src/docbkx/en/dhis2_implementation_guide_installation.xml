@@ -312,9 +312,8 @@ sudo /etc/init.d/nginx stop</screen></para>
       <para><screen>http {
   gzip on; # Enables compression, including particular Web API content-type
   gzip_types 
-    "application/json;charset=utf-8" text/plain text/css 
-    application/json application/x-javascript text/xml 
-    application/xml application/xml+rss text/javascript;
+    application/json* text/plain text/css text/xml
+    application/x-javascript application/xml text/javascript;
 
   server {
     listen               80;
@@ -366,9 +365,8 @@ sudo /etc/init.d/nginx stop</screen></para>
       <screen>http {
   gzip on; # Enables compression, including particular Web API content-type
   gzip_types 
-    "application/json;charset=utf-8" text/plain text/css 
-    application/json application/x-javascript text/xml 
-    application/xml application/xml+rss text/javascript;
+    application/json* text/plain text/css text/xml
+    application/x-javascript application/xml text/javascript;
 
   # HTTP server - rewrite to force use of SSL
 
@@ -438,9 +436,8 @@ sudo /etc/init.d/nginx stop</screen></para>
 
   gzip on; # Enables compression, including particular Web API content-type
   gzip_types 
-    "application/json;charset=utf-8" text/plain text/css 
-    application/json application/x-javascript text/xml 
-    application/xml application/xml+rss text/javascript;
+    application/json* text/plain text/css text/xml
+    application/x-javascript application/xml text/javascript;
 
   <![CDATA[# HTTP server - rewrite to force use of HTTPS
 
