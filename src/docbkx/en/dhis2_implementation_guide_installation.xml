@@ -310,7 +310,7 @@ sudo /etc/init.d/nginx stop</screen></para>
         listen on by default) to our Tomcat instance. Include the following configuration in
         nginx.conf:</para>
       <para><screen>http {
-  gzip on; # Enables compression, including particular Web API content-type
+  gzip on; # Enables compression, incl Web API content-types
   gzip_types 
     application/json* text/plain text/css text/xml
     application/x-javascript application/xml text/javascript;
@@ -363,7 +363,7 @@ sudo /etc/init.d/nginx stop</screen></para>
         located.</para>
       <para>Below is an nginx server block where the certificate files are named server.crt and server.key. Since SSL connections usually occur on port 443 (HTTPS) we pass requests on that port (443) on to the DHIS instance running on <emphasis role="italic">http://localhost:8080</emphasis> The first server block will rewrite all requests connecting to port 80 and force the use of HTTPS/SSL. This is also necessary because DHIS is using a lot of redirects internally which must be passed on to use HTTPS. Remember to replace <emphasis role="italic">&lt;server-ip&gt;</emphasis> with the  IP of your server. These blocks should replace the  one from the previous section.</para>
       <screen>http {
-  gzip on; # Enables compression, including particular Web API content-type
+  gzip on; # Enables compression, incl Web API content-types
   gzip_types 
     application/json* text/plain text/css text/xml
     application/x-javascript application/xml text/javascript;
@@ -434,7 +434,7 @@ sudo /etc/init.d/nginx stop</screen></para>
   root              /home/dhis/tomcat/webapps/ROOT; # Update path!
   proxy_cache_path  /var/cache/nginx  keys_zone=dhis:250m  inactive=1d;
 
-  gzip on; # Enables compression, including particular Web API content-type
+  gzip on; # Enables compression, incl Web API content-types
   gzip_types 
     application/json* text/plain text/css text/xml
     application/x-javascript application/xml text/javascript;
