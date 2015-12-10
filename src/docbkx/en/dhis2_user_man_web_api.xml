@@ -6870,26 +6870,26 @@ ORDER BY oul.level, par.name, ou.name</screen>
         <emphasis role="italic">PUT</emphasis> as method for requests. The following requests are
       available. </para>
     <para>Period pruning will remove periods which are not linked to any data values:</para>
-    <screen>/api/maintenance/periodPruning</screen>
+    <screen>api/maintenance/periodPruning</screen>
     <para>Data pruning will remove complete data set registrations, data approvals, data value
       audits and data values, in this case for an organisation
-      unit.<screen>/api/maintenance/dataPruning/organisationUnits/&lt;org-unit-id></screen></para>
+      unit.<screen>api/maintenance/dataPruning/organisationUnits/&lt;org-unit-id></screen></para>
     <para>Zero data value removal will delete zero data values linked to data elements where zero
       data is defined as not significant:</para>
-    <screen>/api/maintenance/zeroDataValueRemoval</screen>
+    <screen>api/maintenance/zeroDataValueRemoval</screen>
     <para>Drop SQL views will drop all SQL views in the database. Note that it will not delete the
       DHIS 2 SQL views.</para>
-    <screen>/api/maintenance/dropSqlViews</screen>
+    <screen>api/maintenance/dropSqlViews</screen>
     <para>Create SQL views will recreate all SQL views in the database.</para>
-    <screen>/api/maintenance/createSqlViews</screen>
+    <screen>api/maintenance/createSqlViews</screen>
     <para>Category option combo update will remove obsolete and generate missing category option
       combos for all category combinations:</para>
-    <screen>/api/maintenance/categoryOptionComboUpdate</screen>
+    <screen>api/maintenance/categoryOptionComboUpdate</screen>
     <para>Cache clearing will clear the application Hibernate cache and the analytics partition
       caches:</para>
-    <screen>/api/maintenance/cache</screen>
+    <screen>api/maintenance/cache</screen>
     <para>Re-generate organisation unit path property (can be useful if you imported org units with
-      SQL):<screen>/api/maintenance/ouPathUpdate</screen></para>
+      SQL):<screen>api/maintenance/ouPathUpdate</screen></para>
   </section>
   <section>
     <title>System resource</title>
@@ -6899,7 +6899,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Generate identifiers</title>
       <para>To generate valid, random DHIS 2 identifiers you can do a GET request to this
         resource:</para>
-      <screen>http://&lt;server-url&gt;/api/system/id?limit=3</screen>
+      <screen>api/system/id?limit=3</screen>
       <para>The <emphasis role="italic">limit</emphasis> query parameter is optional and indicates how
         many identifiers you want to be returned with the response. The default is to return one
         identifier. The response will contain a JSON object with a array named codes, similar to
@@ -6928,7 +6928,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <section>
       <title>View system information</title>
       <para>To get information about the current system you can do a GET request to this URL:</para>
-      <screen>http://yourdomain.com/api/system/info</screen>
+      <screen>api/system/info</screen>
       <para>JSON and JSONP response formats are supported. The system info response currently
         includes the below properties. Note that if the user who is requesting this resourec does
         not have full authority in the system then only the first seven properties will be included,
@@ -6956,18 +6956,18 @@ ORDER BY oul.level, par.name, ou.name</screen>
     },
     memoryInfo: &quot;Mem Total in JVM: 848 Free in JVM: 581 Max Limit: 1333&quot;,
     cpuCores: 8
-    }</screen>
+}</screen>
       <para>To get information about the system context (<emphasis role="italic"
           >contextPath</emphasis> and <emphasis role="italic">userAgent</emphasis>) only you can do
         a GET request to the below URL. JSON and JSONP response formats are supported:
-        <screen>http://yourdomain.com/api/system/context</screen></para>
+        <screen>api/system/context</screen></para>
     </section>
     <section>
       <title>Check if username and password combination is correct</title>
       <para>To check if some user credentials (a username and password combination) is correct you
         can make a <emphasis role="italic">GET</emphasis> request to the following resource using
           <emphasis role="italic">basic authentication</emphasis>:</para>
-      <screen>http://&lt;server-url&gt;/api/system/ping</screen>
+      <screen>api/system/ping</screen>
       <para>You can detect the outcome of the authentication by inspecting the <emphasis
           role="italic">HTTP status code</emphasis> of the response header. The meaning of the
         possible status codes are listed below. Note that this applies to Web API requests in
