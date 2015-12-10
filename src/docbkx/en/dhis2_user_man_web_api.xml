@@ -1253,10 +1253,10 @@ http://server/api/constants/ID</screen></para>
     <table frame="all">
       <title>Data Element CSV Format</title>
       <tgroup cols="4">
-        <colspec colnum="1" colname="c1" colwidth="1.33*"/>
+        <colspec colnum="1" colname="c1" colwidth="1.87*"/>
         <colspec colnum="2" colname="c2" colwidth="1*"/>
-        <colspec colnum="3" colname="newCol3" colwidth="2.06*"/>
-        <colspec colnum="4" colname="c3" colwidth="5.11*"/>
+        <colspec colnum="3" colname="newCol3" colwidth="3.7*"/>
+        <colspec colnum="4" colname="c3" colwidth="6.79*"/>
         <thead>
           <row>
             <entry>Column</entry>
@@ -1307,31 +1307,22 @@ http://server/api/constants/ID</screen></para>
           <row>
             <entry>Domain type</entry>
             <entry>No</entry>
-            <entry>aggregate | tracker</entry>
+            <entry>AGGREGATE | TRACKER</entry>
             <entry>Domain type for data element, can be aggregate or tracker. Max 16 char.</entry>
           </row>
           <row>
             <entry>Value type</entry>
             <entry>No</entry>
-            <entry>int | string | bool | trueOnly | date | unitInterval</entry>
+            <entry>INTEGER | NUMBER | UNIT_INTERVAL | PERCENTAGE |  INTEGER_POSITIVE |
+              INTEGER_NEGATIVE | INTEGER_ZERO_OR_POSITIVE | FILE_RESOURCE | COORDINATE |TEXT |
+              LONG_TEXT | LETTER | PHONE_NUMBER | EMAIL | BOOLEAN | TRUE_ONLY | DATE | DATETIME </entry>
             <entry>Value type. Max 16 char.</entry>
-          </row>
-          <row>
-            <entry>Number type</entry>
-            <entry>No</entry>
-            <entry>int | posInt | negInt | number | zeroPositiveInt</entry>
-            <entry>Only relevant if type is int. Max 16 char.</entry>
-          </row>
-          <row>
-            <entry>Text type</entry>
-            <entry>No</entry>
-            <entry>text | longText</entry>
-            <entry>Only relevant if type is string. Max 16 char.</entry>
           </row>
           <row>
             <entry>Aggregation operator</entry>
             <entry>No</entry>
-            <entry>sum | average | count | stddev | variance</entry>
+            <entry>SUM | AVERAGE | AVERAGE_SUM_ORG_UNIT | COUNT | STDDEV | VARIANCE | MIN | MAX |
+              NONE</entry>
             <entry>Operator indicating how to aggregate data in the time dimension. Max 16
               char.</entry>
           </row>
@@ -1451,8 +1442,8 @@ http://server/api/constants/ID</screen></para>
           <row>
             <entry>Feature type</entry>
             <entry>No</entry>
-            <entry/>
-            <entry>Can be Point, Polygon, MultiPolygon. Max 50 char.</entry>
+            <entry>NONE | MULTI_POLYGON | POLYGON | POINT | SYMBOL</entry>
+            <entry>Geospatial feature type.</entry>
           </row>
           <row>
             <entry>Coordinates</entry>
@@ -1543,13 +1534,13 @@ http://server/api/constants/ID</screen></para>
           <row>
             <entry>Importance</entry>
             <entry>No</entry>
-            <entry>medium | high | low</entry>
+            <entry>MEDIUM | HIGH | LOW</entry>
             <entry/>
           </row>
           <row>
             <entry>Rule type</entry>
             <entry>No</entry>
-            <entry>validation | surveillance</entry>
+            <entry>VALIDATION | SURVEILLANCE</entry>
             <entry/>
           </row>
           <row>
