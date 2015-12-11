@@ -700,19 +700,22 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
           <tbody>
             <row>
               <entry>eq</entry>
-              <entry> string | boolean | integer | float | enum | collection (checks for size) | date </entry>
+              <entry> string | boolean | integer | float | enum | collection (checks for size) |
+                date </entry>
               <entry>true</entry>
               <entry>Equality</entry>
             </row>
             <row>
               <entry>!eq</entry>
-              <entry> string | boolean | integer | float | enum | collection (checks for size) | date </entry>
+              <entry> string | boolean | integer | float | enum | collection (checks for size) |
+                date </entry>
               <entry>true</entry>
               <entry>Inequality</entry>
             </row>
             <row>
               <entry>ne</entry>
-              <entry> string | boolean | integer | float | enum | collection (checks for size) | date </entry>
+              <entry> string | boolean | integer | float | enum | collection (checks for size) |
+                date </entry>
               <entry>true</entry>
               <entry>Inequality</entry>
             </row>
@@ -3126,6 +3129,404 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
           entity instance in the year 2014:
           <screen>api/events.json?orgUnit=DiszpKrYNg8&amp;program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m&amp;startDate=2014-01-01&amp;endDate=2014-12-31</screen></para>
       </section>
+    </section>
+  </section>
+  <section>
+    <title>Program rules</title>
+    <para>This section is about sending and reading program rules, and explains the program rules
+      data model. The program rules gives functionality to configure dynamic behavior in the
+      programs in DHIS.</para>
+    <section>
+      <title>Program rules model</title>
+      <para>The program rules data model consists of programRuleVariables, programRules and
+        programRuleActions. The programRule contains an expression - when this expression is true,
+        the child programRuleActions is triggered. The programRuleVariables is used to address data
+        elements, tracked entity data values and other data values needed to run the expressions.
+        All programRules in a program share the same library of programRuleVariables, and one
+        programRuleVariable can be used in several programRules' expressions. </para>
+
+      <screenshot>
+        <screeninfo>DHIS2 Login screen</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resources/images/program_rules/program-rule-model.jpg" format="JPG"
+              width="80%"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <!-- original google drawing: https://docs.google.com/drawings/d/1q2Fb5DyknrgkHm6mveSyclokJTSGRuCfo4VMRauJnlU/edit?usp=sharing -->
+
+      <section>
+        <title>programRule model details</title>
+        <para>The following table gives a detailed overview over the programRule model.</para>
+        <table frame="all">
+          <title> programRule </title>
+          <tgroup cols="3">
+            <colspec colnum="1" colname="c1" colwidth="1*"/>
+            <colspec colnum="2" colname="c2" colwidth="4*"/>
+            <colspec colnum="2" colname="c2" colwidth="1*"/>
+            <thead>
+              <row>
+                <entry>name</entry>
+                <entry>description</entry>
+                <entry>Compulsory</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>program</entry>
+                <entry>The program of which the programRule is executed in.</entry>
+                <entry>Compulsory</entry>
+              </row>
+              <row>
+                <entry>name</entry>
+                <entry>The name with which the program rule will be displayed to dhis configurators.
+                  Not visisble to the end user of the program.</entry>
+                <entry>Compulsory</entry>
+              </row>
+              <row>
+                <entry>description</entry>
+                <entry>The description of the program rule, can be used by configurators to describe
+                  the rule. Not visisble to the end user of the program.</entry>
+                <entry>Compulsory</entry>
+              </row>
+              <row>
+                <entry>programStage</entry>
+                <entry>If a programStage is set for a program rule, the rule will only be evaluated
+                  inside the specified program stage.</entry>
+                <entry>optional</entry>
+              </row>
+              <row>
+                <entry>condition</entry>
+                <entry>The expression that needs to be evaluated to true in order for the program
+                  rule to trigger its child actions. The expression is written using operators,
+                  function calls, hard coded values, constants and program rule variables.
+                  <screen>d2:hasValue('hemoglobin') &amp;&amp; #{hemoglobin} &lt;= 7</screen></entry>
+                <entry>Compulsory</entry>
+              </row>
+              <row>
+                <entry>priority</entry>
+                <entry>The priority to run the rule in cases where the order of the rules matters.
+                  In most cases the rules does not depend on being run before or after other rules,
+                  and in these cases the priority can be omitted. If no priority is set, the rule
+                  will be run after any rules that has a priority defined. If a priority(integer) is
+                  set, the rule with the lowest priority will be run before rules with higher
+                  priority.</entry>
+                <entry>optional</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section>
+        <title>programRuleAction model details</title>
+        <para>The following table gives a detailed overview over the programRuleAction model.</para>
+        <table frame="all">
+          <title> programRuleAction </title>
+          <tgroup cols="3">
+            <colspec colnum="1" colname="c1" colwidth="1*"/>
+            <colspec colnum="2" colname="c2" colwidth="4*"/>
+            <colspec colnum="2" colname="c2" colwidth="1*"/>
+            <thead>
+              <row>
+                <entry>name</entry>
+                <entry>description</entry>
+                <entry>Compulsory</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>programRule</entry>
+                <entry>The programRule that is the parent of this action.</entry>
+                <entry>Compulsory</entry>
+              </row>
+              <row>
+                <entry>programRule- ActionType</entry>
+                <entry>The type of action that is to be performed. <itemizedlist>
+                    <listitem>
+                      <para><emphasis role="bold">DISPLAYTEXT</emphasis> - Displays a text in a
+                        given widget.</para>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">DISPLAYKEYVALUEPAIR</emphasis> - Displays a key
+                        and value pair(like a program indicator) in a given widget.</para>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">HIDEFIELD</emphasis> - Hide a specified
+                        dataElement or trackedEntityAttribute.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">content</emphasis> - if defined, the text in
+                              <emphasis role="italic">content</emphasis> will be displayed to the
+                            end user in the instance where a value is previously entered into a
+                            field that is now about to be hidden (and therefore blanked). If
+                              <emphasis role="italic">content</emphasis> is not defined, a standard
+                            message will be shown to the user in this instance. </para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">dataElement</emphasis> - if defined*, the
+                            HIDEFIELD action will hide this dataElement when the rule is
+                            effective.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">trackedEntityDataValue</emphasis> - if
+                            defined*, the HIDEFIELD action will hide this trackedEntityDataValue
+                            when the rule is effective. </para>
+                        </listitem>
+                      </itemizedlist>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">HIDESECTION</emphasis> - Hide a specified
+                        section.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">programStageSection</emphasis> - must be
+                            defined. This is the programStageSection that will be hidden in case the
+                            parent rule is effective.</para>
+                        </listitem>
+                      </itemizedlist>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">ASSIGN</emphasis> - Assign a dataElement a
+                        value(help the user calculate something or fill in an obvious value
+                        somewhere)</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">content</emphasis> - if defined*, the value
+                            in <emphasis role="italic">data</emphasis> is assigned to this variable.
+                            If content id defined, and thus a variable is assigned for use in other
+                            rules, it is important to also assign a <emphasis role="italic">
+                              programRule.priority</emphasis> to make sure the rule with an ASSIGN
+                            action runs before the rule that will in turn evaluate the assigned
+                            variable.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">data</emphasis> - must be defined, data
+                            forms an expression that is evaluated and assigned to either a
+                            variable(#{myVariable}), a dataElement, or both.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">dataElement</emphasis> - if defined*, the
+                            value in <emphasis role="italic">data</emphasis> is assigned to this
+                            data element.</para>
+                        </listitem>
+                      </itemizedlist>
+                      <para>* Either the content or dataElement must be defined for the ASSIGN
+                        action to be effective.</para>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">SHOWWARNING</emphasis> - Show a warning to the
+                        user, not blocking the user from completing the event or
+                        registration.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">content</emphasis> - if defined, content is
+                            a static part that is displayed at the end of the error message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">data</emphasis> - if defined, data forms an
+                            expression that is evaluated and added to the end of the warning
+                            message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">dataElement</emphasis> - if defined*, the
+                            warning message is displayed next to this data element.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">trackedEntityAttribute</emphasis> - if
+                            defined*, the warning message is displayed next to this tracked entity
+                            attribute.</para>
+                        </listitem>
+                      </itemizedlist>
+                      <para>*Either dataElement or trackedEntityAttribute must be specified.</para>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">SHOWERROR</emphasis> - Show an error to the user,
+                        blocking the user from completing the event or registration.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">content</emphasis> - if defined, content is
+                            a static part that is displayed in the start of the error
+                            message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">data</emphasis> - if defined, data forms an
+                            expression that is evaluated and added to the end of the error
+                            message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">dataElement</emphasis> - if defined*, the
+                            error message is linked to this data element.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">trackedEntityAttribute</emphasis> - if
+                            defined*, the error message is linked to this tracked entity
+                            attribute.</para>
+                        </listitem>
+                      </itemizedlist>
+                      <para>*Either dataElement or trackedEntityAttribute must be specified.</para>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">CREATEEVENT</emphasis> - Create an event within
+                        the same enrollment.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">content</emphasis></para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">data</emphasis> - if defined, contains data
+                            values to assign the created event. The format is &lt;uid&gt;:&lt;data
+                            value&gt;. Where several values is specified, these are separated with
+                            comma.
+                            <screen>AcMrnleqHqc:100,AqK1IHqCkEE:'Polyhydramnios'</screen></para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">programStage</emphasis> - must be defined,
+                            and designates the program stage that the rule shall create an event
+                            of.</para>
+                        </listitem>
+                      </itemizedlist>
+                    </listitem>
+                  </itemizedlist>
+                </entry>
+                <entry>Compulsory</entry>
+              </row>
+              <row>
+                <entry>location</entry>
+                <entry>Used for actionType DISPLAYKEYVALUEPAIR and DISPLAYTEXT to designate which
+                  widget to display the text or keyvalyepair in. Compulsory for DISPLAYKEYVALUEPAIR
+                  and DISPLAYTEXT.</entry>
+                <entry>See description</entry>
+              </row>
+              <row>
+                <entry>content</entry>
+                <entry>Used for user messages in the different actions. See the actionType overview
+                  for a detailed explanation for how it is used in each of the action types.
+                  Compulsory for SHOWWARNING, SHOWERROR, DISPLAYTEXT and DISPLAYKEYVALUEPAIR.
+                  Optional for HIDEFIELD and ASSIGN.</entry>
+                <entry>See description</entry>
+              </row>
+              <row>
+                <entry>data</entry>
+                <entry>Used for expressions in the different actions. See the actionType overview
+                  for a detailed explanation for how it is used in each of the action types.
+                  Compulsory for ASSIGN. Optional for SHOWWARNING, SHOWERROR, DISPLAYTEXT,
+                  CREATEEVENT and DISPLAYKEYVALUEPAIR</entry>
+                <entry>See description</entry>
+              </row>
+              <row>
+                <entry>dataElement</entry>
+                <entry>Used for linking rule actions to dataElements. See the actionType overview
+                  for a detailed explanation for how it is used in each of the action types.
+                  Optional for SHOWWARNING, SHOWERROR, ASSIGN and HIDEFIELD</entry>
+                <entry>See description</entry>
+              </row>
+              <row>
+                <entry>trackedEntity- Attribute</entry>
+                <entry>Used for linking rule actions to trackedEntityAttributes. See the actionType
+                  overview for a detailed explanation for how it is used in each of the action
+                  types. Optional for SHOWWARNING, SHOWERROR and HIDEFIELD.</entry>
+                <entry>See description</entry>
+              </row>
+              <row>
+                <entry>programStage</entry>
+                <entry>Only used for CREATEEVENT rule actions. Compulsory for CREATEEEVENT.</entry>
+                <entry>See description</entry>
+              </row>
+              <row>
+                <entry>programStage- Section</entry>
+                <entry>Only used for HIDESECTION rule actions. Compulsory for HIDESECTION</entry>
+                <entry>See description</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section>
+        <title>programRuleVariable model details</title>
+        <para>The following table gives a detailed overview over the programRuleVariable
+          model.</para>
+        <table frame="all">
+          <title> programRuleVariable </title>
+          <tgroup cols="3">
+            <colspec colnum="1" colname="c1" colwidth="1*"/>
+            <colspec colnum="2" colname="c2" colwidth="4*"/>
+            <colspec colnum="2" colname="c2" colwidth="1*"/>
+            <thead>
+              <row>
+                <entry>name</entry>
+                <entry>description</entry>
+                <entry>Compulsory</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>name</entry>
+                <entry>the name for the programRuleVariable - this name is used in expressions.
+                  <screen>#{myVariable} > 5</screen></entry>
+                <entry>Compulsory</entry>
+              </row>
+              <row>
+                <entry>sourceType</entry>
+                <entry>Defines how this variable is populated with data from the enrollment and
+                  events. <itemizedlist>
+                    <listitem>
+                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE - Get the newest value that
+                        exists for a dataelement, within the events of a given program stage in the
+                        current enrollment.</para>
+                    </listitem>
+                    <listitem>
+                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM - Get the newest value that exists for
+                        a dataelement across the whole enrollment.</para>
+                    </listitem>
+                    <listitem>
+                      <para>DATAELEMENT_CURRENT_EVENT - Gets the value of the given dataelement in
+                        the current event only.</para>
+                    </listitem>
+                    <listitem>
+                      <para>DATAELEMENT_PREVIOUS_EVENT - Gets the newest value that exists among
+                        events in the program that precedes the current event.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>CALCULATED_VALUE - Used to reserve a variable name that will be assigned
+                        by a ASSIGN program rule action</para>
+                    </listitem>
+                    <listitem>
+                      <para>TEI_ATTRIBUTE - Gets the value of a given tracked entity
+                        attribute</para>
+                    </listitem>
+                  </itemizedlist>
+                </entry>
+                <entry>Compulsory</entry>
+              </row>
+              <row>
+                <entry>dataElement</entry>
+                <entry>Used for linking the programRuleVariable to a dataElement. Compulsory for all
+                  sourceTypes that starts with DATAELEMENT_.</entry>
+                <entry>See description</entry>
+              </row>
+              <row>
+                <entry>trackedEntity- Attribute</entry>
+                <entry>Used for linking the programRuleVariable to a trackedEntityAttribute.
+                  Compulsory for sourceType TEI_ATTRIBUTE.</entry>
+                <entry>See description</entry>
+              </row>
+              <row>
+                <entry>programStage</entry>
+                <entry>Used for specifying a specific program stage to retreive the
+                  programRuleVariable value from. Compulsory for
+                  DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE.</entry>
+                <entry>See description</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+    </section>
+    <section>
+      <title>Posting rules through the API</title>
+      <para>-coming-</para>
     </section>
   </section>
   <section>
@@ -6891,8 +7292,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>To generate valid, random DHIS 2 identifiers you can do a GET request to this
         resource:</para>
       <screen>api/system/id?limit=3</screen>
-      <para>The <emphasis role="italic">limit</emphasis> query parameter is optional and indicates how
-        many identifiers you want to be returned with the response. The default is to return one
+      <para>The <emphasis role="italic">limit</emphasis> query parameter is optional and indicates
+        how many identifiers you want to be returned with the response. The default is to return one
         identifier. The response will contain a JSON object with a array named codes, similar to
         this:</para>
       <screen>{
@@ -9044,22 +9445,22 @@ curl -u username:password -X POST -d @updated_facility.json
     </section>
     <section>
       <title>Get keys and namespaces</title>
-        <para>For a list of all existing namespaces:<screen>GET /api/dataStore</screen></para>
-        <para>Example curl request for
-          listing:<screen>curl "play.dhis2.org/demo/api/dataStore" -X GET -u admin:district -v</screen></para>
-        <para>Example response:</para>
-        <para>
-          <screen>[
+      <para>For a list of all existing namespaces:<screen>GET /api/dataStore</screen></para>
+      <para>Example curl request for
+        listing:<screen>curl "play.dhis2.org/demo/api/dataStore" -X GET -u admin:district -v</screen></para>
+      <para>Example response:</para>
+      <para>
+        <screen>[
     "foo",
     "bar"
 ]</screen>
-        </para>
-        <para>For a list of all keys in a
-          namespace:<screen>GET /api/dataStore/&lt;namespace></screen></para>
-        <para>Example curl request for
-          listing:<screen>curl "play.dhis2.org/demo/api/dataStore/foo" -X GET -u admin:district -v</screen></para>
-        <para>Example response:</para>
-        <screen>[
+      </para>
+      <para>For a list of all keys in a
+        namespace:<screen>GET /api/dataStore/&lt;namespace></screen></para>
+      <para>Example curl request for
+        listing:<screen>curl "play.dhis2.org/demo/api/dataStore/foo" -X GET -u admin:district -v</screen></para>
+      <para>Example response:</para>
+      <screen>[
     "key_1",
     "key_2"
 ]</screen>
@@ -9110,11 +9511,11 @@ curl -u username:password -X POST -d @updated_facility.json
     </section>
     <section>
       <title>Delete keys</title>
-        <para>To delete an existing key from a
-          namespace:<screen>DELETE /api/dataStore/&lt;namespace>/&lt;key></screen></para>
-        <para>Example curl request for
-          delete:<screen>curl "play.dhis2.org/demo/api/dataStore/foo/key_1" -X DELETE -u admin:district -v</screen></para>
-        <para>Example
+      <para>To delete an existing key from a
+        namespace:<screen>DELETE /api/dataStore/&lt;namespace>/&lt;key></screen></para>
+      <para>Example curl request for
+        delete:<screen>curl "play.dhis2.org/demo/api/dataStore/foo/key_1" -X DELETE -u admin:district -v</screen></para>
+      <para>Example
         response:<screen>{
     "httpStatus": "OK",
     "httpStatusCode": 200,
