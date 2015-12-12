@@ -3723,33 +3723,54 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
       <para>
         <table frame="all">
           <title>Indicator variables</title>
-          <tgroup cols="2">
-            <colspec colname="c1" colnum="1" colwidth="1*"/>
-            <colspec colname="c2" colnum="2" colwidth="2.32*"/>
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.4*"/>
+            <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+            <colspec colname="c2" colnum="3" colwidth="2.11*"/>
             <thead>
               <row>
                 <entry>Variable</entry>
+                <entry>Object</entry>
                 <entry>Description</entry>
               </row>
             </thead>
             <tbody>
               <row>
-                <entry>${&lt;dataelement-id>.&lt;catoptcombo-id>}</entry>
-                <entry>Refers to a combination of a data element and a category option
+                <entry>${&lt;dataelement-id>.&lt;category-opt-combo-id>}</entry>
+                <entry>Data element operand</entry>
+                <entry>Refers to a combination of an aggregate data element and a category option
                   combination.</entry>
               </row>
               <row>
                 <entry>${&lt;dataelement-id>}</entry>
-                <entry>Refers to the total value of a data element across all category option
-                  combinations.</entry>
+                <entry>Aggregate data element</entry>
+                <entry>Refers to the total value of an aggregate data element across all category
+                  option combinations.</entry>
+              </row>
+              <row>
+                <entry>D{&lt;program-id>.&lt;dataelement-id></entry>
+                <entry>Program data element</entry>
+                <entry>Refers to the value of a tracker data element within a program.</entry>
+              </row>
+              <row>
+                <entry>A{&lt;program-id>.&lt;tracked-entity-attribute-id></entry>
+                <entry>Program tracked entity attribute</entry>
+                <entry>Refers to the value of a tracked entity attribute within a program.</entry>
+              </row>
+              <row>
+                <entry>I{program-indicator-id></entry>
+                <entry>Program indicator</entry>
+                <entry>Refers to the value of a program indicator.</entry>
               </row>
               <row>
                 <entry>C{&lt;constant-id>}</entry>
-                <entry>Refers to a constant.</entry>
+                <entry>Constant</entry>
+                <entry>Refers to a constant value.</entry>
               </row>
               <row>
                 <entry>OUG{&lt;orgunitgroup-id>}</entry>
-                <entry>Refers to the count of organisation units in an organisation unit
+                <entry>Organisation unit group</entry>
+                <entry>Refers to the count of organisation units within an organisation unit
                   group.</entry>
               </row>
             </tbody>
@@ -3763,6 +3784,10 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
       <para>Note that for data element variables the category option combo identifier can be
         omitted. The variable will then represent the total for the data element, e.g. across all
         category option combos. Example:<screen>#{P3jJH5Tu5VC} + 2</screen></para>
+      <para>An example which use a program data element and a program
+        attribute:<screen>( D{eBAyeGv0exc.vV9UWAZohSf} * A{IpHINAT79UW.cejWyOfXge6} ) / D{eBAyeGv0exc.GieVkTxp4HH}</screen></para>
+      <para>An example which combines program indicators and aggregate
+        indicators:<screen>I{EMOt6Fwhs1n} * 1000 / #{WUg3MYWQ7pt}</screen></para>
       <para>Expressions can be any kind of valid mathematical expression, as an
         example:<screen>( 2 * #{P3jJH5Tu5VC.S34ULMcHMca} ) / ( #{FQ2o8UBlcrS.S34ULMcHMca} - 200 ) * 25</screen></para>
     </section>
