@@ -7503,6 +7503,38 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
+    <title>SMS</title>
+    <para>This section covers the sms API exposed for sending and collecting(receiving) text messages.</para> 
+    <section>
+      <title>OutBound sms service</title>
+      <para>The Web API supports sending outgoing sms using <emphasis role="italic">outbound</emphasis> 
+        resource. For sending out message you can POST a message in JSON format. It needs a recipient and message text.  
+        Gateway needs to be configured before using this service. Sms will not be sent if there is no gateway confired. 
+        An example payload in JSON looks like this:</para>
+     <screen>{   "message": "Sms Text",   "recipient": "47XXXXXXX" }</screen>
+      <para>Outbound service can be tested like this
+      </para>
+      <screen>curl -d @message.json &quot;https://play.dhis2.org/dev/api/sms/outbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <para>Query parameters can also be used like this</para>
+      <screen>https://play.dhis2.org/dev/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
+    </section>
+    
+    <section>
+      <title>InBound sms service</title>
+      <para>The Web API supports collecting incoming sms using <emphasis role="italic">inbound</emphasis> 
+        resource. For collecting incoming messages routed towards Dhis2 can be received using this api. API collects inbound sms and provide it to   
+        listeners for parsing based on the sms text. This API can be tested by posting JSON format.        
+        An example payload is JSON looks like this:</para>
+      <screen>{   "gateway": "clickatel",   "originator": "47XXXXXX",   "message": "alert DHIS Message" }</screen>
+      <para>Inbound service can be tested like this</para>
+      <screen>curl -d @message.json &quot;https://play.dhis2.org/dev/api/sms/inbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <para>Query parameters can also be used like this</para>
+      <screen>https://play.dhis2.org/dev/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
+    </section>
+    
+    
+  </section>
+  <section>
     <title>Users</title>
     <para>This section covers the user resource methods.</para>
     <section>
@@ -7626,16 +7658,16 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>After the user is created, a <emphasis role="italic">Location</emphasis> header is sent
         back with the newly generated ID (you can also provide your own using /api/system/id
         endpoint). The same payload can then be used to do updates, but remember to then use
-          <emphasis role="bold">PUT</emphasis> instead of <emphasis role="bold">POST</emphasis> and
+        <emphasis role="bold">PUT</emphasis> instead of <emphasis role="bold">POST</emphasis> and
         the endpoint is now <emphasis role="italic"
-        >/api/users/ID</emphasis>.<screen>curl -X PUT -u user:pass -d @u.json -H "Content-Type: application/json" http://server/api/users/ID</screen></para>
+          >/api/users/ID</emphasis>.<screen>curl -X PUT -u user:pass -d @u.json -H "Content-Type: application/json" http://server/api/users/ID</screen></para>
       <para>For more info about the full payload available, please see <emphasis role="italic"
-          >/api/schemas/user</emphasis></para>
+        >/api/schemas/user</emphasis></para>
     </section>
     <section>
       <title>User account invitations</title>
       <para>The Web API supports inviting people to create user accounts through the <emphasis
-          role="italic">invite</emphasis> resource. To create an invitation you should POST a user
+        role="italic">invite</emphasis> resource. To create an invitation you should POST a user
         in XML or JSON format to the invite resource. A specific username can be forced by defining
         the username in the posted entity. By omitting the username, the person will be able to
         specify it herself. The system will send out an invitation through email. This requires that
@@ -7697,40 +7729,40 @@ ORDER BY oul.level, par.name, ou.name</screen>
         like this:</para>
       <screen>curl -d @invites.json &quot;localhost/api/users/invites&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
       <para>There are certain requirements for user account invitations to be sent out:<itemizedlist>
-          <listitem>
-            <para>Email SMTP server must be configured properly on the server.</para>
-          </listitem>
-          <listitem>
-            <para>The user to be invited must have specified a valid email.</para>
-          </listitem>
-          <listitem>
-            <para>The user to be invited must not be granted user roles with critical authorities
-              (see below).</para>
-          </listitem>
-          <listitem>
-            <para>If username is specified it must not be already taken by another existing
-              user.</para>
-          </listitem>
-        </itemizedlist>If any of these requirements are not met the invite resource will return with
+        <listitem>
+          <para>Email SMTP server must be configured properly on the server.</para>
+        </listitem>
+        <listitem>
+          <para>The user to be invited must have specified a valid email.</para>
+        </listitem>
+        <listitem>
+          <para>The user to be invited must not be granted user roles with critical authorities
+            (see below).</para>
+        </listitem>
+        <listitem>
+          <para>If username is specified it must not be already taken by another existing
+            user.</para>
+        </listitem>
+      </itemizedlist>If any of these requirements are not met the invite resource will return with
         a <emphasis role="italic">409 Conflict</emphasis> status code together with a descriptive
         message. </para>
       <para>The critical authorities which cannot be granted with invites include:<itemizedlist>
-          <listitem>
-            <para>ALL</para>
-          </listitem>
-          <listitem>
-            <para>Scheduling administration</para>
-          </listitem>
-          <listitem>
-            <para>Set system settings</para>
-          </listitem>
-          <listitem>
-            <para>Add, update, delete and list user roles</para>
-          </listitem>
-          <listitem>
-            <para>Add, update, delete and view SQL views</para>
-          </listitem>
-        </itemizedlist></para>
+        <listitem>
+          <para>ALL</para>
+        </listitem>
+        <listitem>
+          <para>Scheduling administration</para>
+        </listitem>
+        <listitem>
+          <para>Set system settings</para>
+        </listitem>
+        <listitem>
+          <para>Add, update, delete and list user roles</para>
+        </listitem>
+        <listitem>
+          <para>Add, update, delete and view SQL views</para>
+        </listitem>
+      </itemizedlist></para>
     </section>
     <section>
       <title>User replication</title>
