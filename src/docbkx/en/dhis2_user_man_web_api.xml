@@ -7503,7 +7503,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
-    <title>SMS</title>
+    <title>SMS Services</title>
     <para>This section covers the sms API exposed for sending and collecting(receiving) text messages.</para> 
     <section>
       <title>OutBound sms service</title>
@@ -7514,9 +7514,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
      <screen>{   "message": "Sms Text",   "recipient": "47XXXXXXX" }</screen>
       <para>Outbound service can be tested like this
       </para>
-      <screen>curl -d @message.json &quot;https://play.dhis2.org/dev/api/sms/outbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <screen>curl -d @message.json &quot;http://server/api/sms/outbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
       <para>Query parameters can also be used like this</para>
-      <screen>https://play.dhis2.org/dev/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
+      <screen>http://server/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
     </section>
     
     <section>
@@ -7527,9 +7527,37 @@ ORDER BY oul.level, par.name, ou.name</screen>
         An example payload is JSON looks like this:</para>
       <screen>{   "gateway": "clickatel",   "originator": "47XXXXXX",   "message": "alert DHIS Message" }</screen>
       <para>Inbound service can be tested like this</para>
-      <screen>curl -d @message.json &quot;https://play.dhis2.org/dev/api/sms/inbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <screen>curl -d @message.json &quot;http://server/api/sms/inbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
       <para>Query parameters can also be used like this</para>
-      <screen>https://play.dhis2.org/dev/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
+      <screen>http://server/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
+      <table frame="all">
+        <title>User query parameters</title>
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1.01*"/>
+          <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+          <colspec colname="c2" colnum="3" colwidth="5.52*"/>
+          <thead>
+            <row>
+              <entry>Parameter</entry>
+              <entry>Type</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>gateway</entry>
+              <entry>Text</entry>
+              <entry>This is optional parameter which gives gateway id. If not present default text "UNKNOWN" will be stored</entry>
+            </row>
+            <row>
+              <entry>receiveTime</entry>
+              <entry>Date</entry>
+              <entry>This is optional parameter. It is timestemp at which message was received by gateway.</entry>
+            </row>
+            
+          </tbody>
+        </tgroup>
+      </table>
     </section>
     
     
