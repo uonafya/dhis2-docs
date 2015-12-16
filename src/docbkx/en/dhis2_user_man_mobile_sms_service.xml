@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
+<section id="mobile_sms_command">
+  <title>SMS Service</title>
+  <para>SMS Service is generic service used for sending/receiving sms. Any other Dhis2 module can include this service and utilize it to send and receive sms from users or workers in the field.</para>
+  <section>
+    <title>Setting up SMS service</title>
+    <para>There are few pre-requisite steps in order to make this service functional. There are two way to complete these steps. One way is to configure gateway from GUI in Mobile Configuration Module. The other
+    way is to use SMS Web Api.</para>
+    <itemizedlist>
+      <listitem>
+        <para>Configure SMS Gateway</para>
+      </listitem>
+      <listitem>
+        <para>Start SMS Service</para>
+      </listitem>
+    </itemizedlist>
+    <section>
+      <title>Configure SMS Gateway</title>
+      <para>There are five different types of Gateways supported by SMS Service. SMS can be sent if any one of the gateway is configured. If more than one gateways are present then they will be used in round-robin fashion for load balancing.
+      There are different parameters for different type of gateway. Gateway can be configured in GUI in Mobile Configuration Module as shown in the figure. More information about parameters needed to configure 
+      gateway can be found in <link linkend="gateway.configuration">Gateway Configuraitons</link></para>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="40%" align="center" fileref="resources/images/dhis2_mobile_sms/gateway_configuration.png"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </section>
+    <section>
+      <title>Start SMS Service</title>
+      <para>Once gateway configuration is in place then SMS service can be started/stopped from Mobile Configuration Module as shown in the figure. This can also be done using SMS web api.</para>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="40%" align="center" fileref="resources/images/dhis2_mobile_sms/sms_service_start_stop.png"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </section>
+  </section>
+  <section id="gateway.configuration">
+    <title>Gateway Configurations</title>
+    <para>Below tables shows the papameters required for configuring gateway.</para>
+    <table frame="all">
+      <title>Gateway Configuration Parameters</title>
+      <tgroup cols="3">
+        <colspec colname="c1" colnum="1" colwidth="5.52*"/>
+        <colspec colname="c2" colnum="2" colwidth="5.52*"/>
+        <colspec colname="c3" colnum="3" colwidth="5.52*"/>
+        <colspec colname="c4" colnum="4" colwidth="5.52*"/>
+        <colspec colname="c5" colnum="5" colwidth="5.52*"/>
+        <colspec colname="c6" colnum="6" colwidth="5.52*"/>
+        <colspec colname="c7" colnum="7" colwidth="5.52*"/>
+        <thead>
+          <row>
+            <entry>Parameter</entry>
+            <entry>BulkSMS  Gateway</entry>
+            <entry>Clickatell Gateway</entry>
+            <entry>Generic HTTP Gateway</entry>
+            <entry>Modem Gateway</entry>
+            <entry>SMPP Gateway</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Gateway Name</entry>         
+            <entry>Optional</entry>
+            <entry>Optional</entry>
+            <entry>Optional</entry>
+            <entry>Optional</entry>
+            <entry>Optional</entry>
+            <entry>Used as gateway identity. Default name will be stored in case this parameter is not configured. Its use is recommended</entry>
+          </row>
+          <row>
+            <entry>User Name</entry>         
+            <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Not Applicable</entry>
+            <entry>Required</entry>
+            <entry>Used for API authentication</entry>
+          </row>
+          <row>
+            <entry>API ID</entry>         
+            <entry>Not Applicable</entry>
+            <entry>Required</entry>
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Used to identify specific sms account on Clickatell Server</entry>
+          </row>
+          <row>
+            <entry>Address</entry>         
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Required</entry>
+            <entry>Systemid required for SMPP communication</entry>
+          </row>
+          <row>
+            <entry>Port</entry>         
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Serial Port in case of Modem, for example COM1 or /dev/ttyS0. 
+            Application Port in case of SMPP, for example 2775</entry>
+          </row>
+          <row>
+            <entry>Region</entry>         
+            <entry>Required</entry>
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>The BULKSMS region servers you wish to use. Should be one of the following: UNITEDKINGDOM, SOUTHAFRICA, SPAIN, USA, GERMANY. Leave the setting empty to use the INTERNATIONAL setting.</entry>
+          </row>
+          <row>
+            <entry>URL Template</entry>         
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Required</entry>
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>API URL for sending sms</entry>
+          </row>
+          <row>
+            <entry>Baud Rate</entry>         
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Not Applicable</entry>
+            <entry>Required</entry>
+            <entry>Not Applicable</entry>
+            <entry>The baudrate, for example 19200.</entry>
+          </row>
+
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+</section>
+
