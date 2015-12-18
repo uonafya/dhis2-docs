@@ -1184,14 +1184,16 @@ http://server/api/constants/ID</screen></para>
       </listitem>
     </itemizedlist>
     <para>The formats for the currently supported object types for CSV import are listed
-      below.</para>
+      in the following sections.</para>
+    <section>
+      <title>Data elements</title>
     <table frame="all">
       <title>Data Element CSV Format</title>
       <tgroup cols="4">
-        <colspec colnum="1" colname="c1" colwidth="1.33*"/>
+        <colspec colnum="1" colname="c1" colwidth="1.87*"/>
         <colspec colnum="2" colname="c2" colwidth="1*"/>
-        <colspec colnum="3" colname="newCol3" colwidth="2.06*"/>
-        <colspec colnum="4" colname="c3" colwidth="5.11*"/>
+        <colspec colnum="3" colname="newCol3" colwidth="3.7*"/>
+        <colspec colnum="4" colname="c3" colwidth="6.79*"/>
         <thead>
           <row>
             <entry>Column</entry>
@@ -1242,31 +1244,22 @@ http://server/api/constants/ID</screen></para>
           <row>
             <entry>Domain type</entry>
             <entry>No</entry>
-            <entry>aggregate | tracker</entry>
+            <entry>AGGREGATE | TRACKER</entry>
             <entry>Domain type for data element, can be aggregate or tracker. Max 16 char.</entry>
           </row>
           <row>
             <entry>Value type</entry>
             <entry>No</entry>
-            <entry>int | string | bool | trueOnly | date | unitInterval</entry>
+            <entry>INTEGER | NUMBER | UNIT_INTERVAL | PERCENTAGE |  INTEGER_POSITIVE |
+              INTEGER_NEGATIVE | INTEGER_ZERO_OR_POSITIVE | FILE_RESOURCE | COORDINATE |TEXT |
+              LONG_TEXT | LETTER | PHONE_NUMBER | EMAIL | BOOLEAN | TRUE_ONLY | DATE | DATETIME </entry>
             <entry>Value type. Max 16 char.</entry>
-          </row>
-          <row>
-            <entry>Number type</entry>
-            <entry>No</entry>
-            <entry>int | posInt | negInt | number | zeroPositiveInt</entry>
-            <entry>Only relevant if type is int. Max 16 char.</entry>
-          </row>
-          <row>
-            <entry>Text type</entry>
-            <entry>No</entry>
-            <entry>text | longText</entry>
-            <entry>Only relevant if type is string. Max 16 char.</entry>
           </row>
           <row>
             <entry>Aggregation operator</entry>
             <entry>No</entry>
-            <entry>sum | average | count | stddev | variance</entry>
+            <entry>SUM | AVERAGE | AVERAGE_SUM_ORG_UNIT | COUNT | STDDEV | VARIANCE | MIN | MAX |
+              NONE</entry>
             <entry>Operator indicating how to aggregate data in the time dimension. Max 16
               char.</entry>
           </row>
@@ -1304,6 +1297,15 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
+      <para>An example of a CSV file for data elements can be seen below. The first row will always be
+        ignored. Note how you can skip columns and rely on default values to be used by the system.
+        You can also skip columns which you do not use which appear to the right of the ones</para>
+      <screen>name,uid,code,shortname,description,formname,domaintype,type,numbertype,texttype,aggregationoperator,categorycombo,url,zero
+&quot;Women participated in skill development training&quot;,,&quot;D0001&quot;,&quot;Women participated development training&quot;
+&quot;Women participated in community organizations&quot;,,&quot;D0002&quot;,&quot;Women participated community organizations&quot;</screen>
+    </section>
+    <section>
+      <title>Organisation units</title>
     <table frame="all">
       <title>Organisation Unit CSV Format</title>
       <tgroup cols="4">
@@ -1386,8 +1388,8 @@ http://server/api/constants/ID</screen></para>
           <row>
             <entry>Feature type</entry>
             <entry>No</entry>
-            <entry/>
-            <entry>Can be Point, Polygon, MultiPolygon. Max 50 char.</entry>
+            <entry>NONE | MULTI_POLYGON | POLYGON | POINT | SYMBOL</entry>
+            <entry>Geospatial feature type.</entry>
           </row>
           <row>
             <entry>Coordinates</entry>
@@ -1428,6 +1430,14 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
+      <para>A minimal example for importing organisation units with a parent unit looks like
+        this:</para>
+      <screen>name,uid,code,parent
+&quot;West province&quot;,,&quot;WESTP&quot;,&quot;ImspTQPwCqd&quot;
+&quot;East province&quot;,,&quot;EASTP&quot;,&quot;ImspTQPwCqd&quot;</screen>
+    </section>
+    <section>
+      <title>Validation rules</title>
     <table frame="all">
       <title>Validation Rule CSV Format</title>
       <tgroup cols="4">
@@ -1478,13 +1488,13 @@ http://server/api/constants/ID</screen></para>
           <row>
             <entry>Importance</entry>
             <entry>No</entry>
-            <entry>medium | high | low</entry>
+            <entry>MEDIUM | HIGH | LOW</entry>
             <entry/>
           </row>
           <row>
             <entry>Rule type</entry>
             <entry>No</entry>
-            <entry>validation | surveillance</entry>
+            <entry>VALIDATION | SURVEILLANCE</entry>
             <entry/>
           </row>
           <row>
@@ -1539,6 +1549,9 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
+    </section>
+    <section>
+      <title>Option sets</title>
     <table frame="all">
       <title>Option Set CSV Format</title>
       <tgroup cols="4">
@@ -1596,6 +1609,25 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
+      <para>The format for option sets is special. The three first values represent an option set. The
+        three last values represent an option. The first three values representing the option set
+        should be repeated for each option.</para>
+      <screen>optionsetname,optionsetuid,optionsetcode,optionname,optionuid,optioncode
+"Color",,"COLOR","Blue",,"BLUE"
+"Color",,"COLOR","Green",,"GREEN"
+"Color",,"COLOR","Yellow",,"YELLOW"
+"Sex",,,"Male",,"MALE"
+"Sex",,,"Female",,"FEMALE"
+"Sex",,,"Uknown",,"UNKNOWN"
+"Result",,,"High",,"HIGH"
+"Result",,,"Medium",,"MEDIUM"
+"Result",,,"Low",,"LOW"
+"Impact","cJ82jd8sd32","IMPACT","Great",,"GREAT"
+"Impact","cJ82jd8sd32","IMPACT","Medium",,"MEDIUM"
+"Impact","cJ82jd8sd32","IMPACT","Poor",,"POOR"</screen>
+    </section>
+    <section>
+      <title>Other objects</title>
     <table frame="all">
       <title>Data Element Group, Category Option, Category Option Group, Organisation Unit Group CSV
         Format</title>
@@ -1635,33 +1667,11 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
-    <para>An example of a CSV file for data elements can be seen below. The first row will always be
-      ignored. Note how you can skip columns and rely on default values to be used by the system.
-      You can also skip columns which you do not use which appear to the right of the ones</para>
-    <screen>name,uid,code,shortname,description,formname,domaintype,type,numbertype,texttype,aggregationoperator,categorycombo,url,zero
-&quot;Women participated in skill development training&quot;,,&quot;D0001&quot;,&quot;Women participated development training&quot;
-&quot;Women participated in community organizations&quot;,,&quot;D0002&quot;,&quot;Women participated community organizations&quot;</screen>
-    <para>A minimal example for importing organisation units with a parent unit looks like
-      this:</para>
-    <screen>name,uid,code,parent
-&quot;West province&quot;,,&quot;WESTP&quot;,&quot;ImspTQPwCqd&quot;
-&quot;East province&quot;,,&quot;EASTP&quot;,&quot;ImspTQPwCqd&quot;</screen>
-    <para>The format for option sets is special. The three first values represent an option set. The
-      three last values represent an option. The first three values representing the option set
-      should be repeated for each option.</para>
-    <screen>optionsetname,optionsetuid,optionsetcode,optionname,optionuid,optioncode
-"Color",,"COLOR","Blue",,"BLUE"
-"Color",,"COLOR","Green",,"GREEN"
-"Color",,"COLOR","Yellow",,"YELLOW"
-"Sex",,,"Male",,"MALE"
-"Sex",,,"Female",,"FEMALE"
-"Sex",,,"Uknown",,"UNKNOWN"
-"Result",,,"High",,"HIGH"
-"Result",,,"Medium",,"MEDIUM"
-"Result",,,"Low",,"LOW"
-"Impact","cJ82jd8sd32","IMPACT","Great",,"GREAT"
-"Impact","cJ82jd8sd32","IMPACT","Medium",,"MEDIUM"
-"Impact","cJ82jd8sd32","IMPACT","Poor",,"POOR"</screen>
+      <para>An example for category options looks like this:</para>
+      <screen>name,uid,code
+"Male",,"MALE"
+"Female",,"FEMALE"</screen>
+    </section>
   </section>
   <section id="fileresource">
     <title>File resources</title>
