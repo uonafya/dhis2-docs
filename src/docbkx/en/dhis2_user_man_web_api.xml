@@ -1252,7 +1252,9 @@ http://server/api/constants/ID</screen></para>
       </listitem>
     </itemizedlist>
     <para>The formats for the currently supported object types for CSV import are listed
-      below.</para>
+      in the following sections.</para>
+    <section>
+      <title>Data elements</title>
     <table frame="all">
       <title>Data Element CSV Format</title>
       <tgroup cols="4">
@@ -1363,6 +1365,15 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
+      <para>An example of a CSV file for data elements can be seen below. The first row will always be
+        ignored. Note how you can skip columns and rely on default values to be used by the system.
+        You can also skip columns which you do not use which appear to the right of the ones</para>
+      <screen>name,uid,code,shortname,description,formname,domaintype,type,numbertype,texttype,aggregationoperator,categorycombo,url,zero
+&quot;Women participated in skill development training&quot;,,&quot;D0001&quot;,&quot;Women participated development training&quot;
+&quot;Women participated in community organizations&quot;,,&quot;D0002&quot;,&quot;Women participated community organizations&quot;</screen>
+    </section>
+    <section>
+      <title>Organisation units</title>
     <table frame="all">
       <title>Organisation Unit CSV Format</title>
       <tgroup cols="4">
@@ -1487,6 +1498,14 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
+      <para>A minimal example for importing organisation units with a parent unit looks like
+        this:</para>
+      <screen>name,uid,code,parent
+&quot;West province&quot;,,&quot;WESTP&quot;,&quot;ImspTQPwCqd&quot;
+&quot;East province&quot;,,&quot;EASTP&quot;,&quot;ImspTQPwCqd&quot;</screen>
+    </section>
+    <section>
+      <title>Validation rules</title>
     <table frame="all">
       <title>Validation Rule CSV Format</title>
       <tgroup cols="4">
@@ -1598,6 +1617,9 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
+    </section>
+    <section>
+      <title>Option sets</title>
     <table frame="all">
       <title>Option Set CSV Format</title>
       <tgroup cols="4">
@@ -1655,6 +1677,25 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
+      <para>The format for option sets is special. The three first values represent an option set. The
+        three last values represent an option. The first three values representing the option set
+        should be repeated for each option.</para>
+      <screen>optionsetname,optionsetuid,optionsetcode,optionname,optionuid,optioncode
+"Color",,"COLOR","Blue",,"BLUE"
+"Color",,"COLOR","Green",,"GREEN"
+"Color",,"COLOR","Yellow",,"YELLOW"
+"Sex",,,"Male",,"MALE"
+"Sex",,,"Female",,"FEMALE"
+"Sex",,,"Uknown",,"UNKNOWN"
+"Result",,,"High",,"HIGH"
+"Result",,,"Medium",,"MEDIUM"
+"Result",,,"Low",,"LOW"
+"Impact","cJ82jd8sd32","IMPACT","Great",,"GREAT"
+"Impact","cJ82jd8sd32","IMPACT","Medium",,"MEDIUM"
+"Impact","cJ82jd8sd32","IMPACT","Poor",,"POOR"</screen>
+    </section>
+    <section>
+      <title>Other objects</title>
     <table frame="all">
       <title>Data Element Group, Category Option, Category Option Group, Organisation Unit Group CSV
         Format</title>
@@ -1694,33 +1735,11 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
-    <para>An example of a CSV file for data elements can be seen below. The first row will always be
-      ignored. Note how you can skip columns and rely on default values to be used by the system.
-      You can also skip columns which you do not use which appear to the right of the ones</para>
-    <screen>name,uid,code,shortname,description,formname,domaintype,type,numbertype,texttype,aggregationoperator,categorycombo,url,zero
-&quot;Women participated in skill development training&quot;,,&quot;D0001&quot;,&quot;Women participated development training&quot;
-&quot;Women participated in community organizations&quot;,,&quot;D0002&quot;,&quot;Women participated community organizations&quot;</screen>
-    <para>A minimal example for importing organisation units with a parent unit looks like
-      this:</para>
-    <screen>name,uid,code,parent
-&quot;West province&quot;,,&quot;WESTP&quot;,&quot;ImspTQPwCqd&quot;
-&quot;East province&quot;,,&quot;EASTP&quot;,&quot;ImspTQPwCqd&quot;</screen>
-    <para>The format for option sets is special. The three first values represent an option set. The
-      three last values represent an option. The first three values representing the option set
-      should be repeated for each option.</para>
-    <screen>optionsetname,optionsetuid,optionsetcode,optionname,optionuid,optioncode
-"Color",,"COLOR","Blue",,"BLUE"
-"Color",,"COLOR","Green",,"GREEN"
-"Color",,"COLOR","Yellow",,"YELLOW"
-"Sex",,,"Male",,"MALE"
-"Sex",,,"Female",,"FEMALE"
-"Sex",,,"Uknown",,"UNKNOWN"
-"Result",,,"High",,"HIGH"
-"Result",,,"Medium",,"MEDIUM"
-"Result",,,"Low",,"LOW"
-"Impact","cJ82jd8sd32","IMPACT","Great",,"GREAT"
-"Impact","cJ82jd8sd32","IMPACT","Medium",,"MEDIUM"
-"Impact","cJ82jd8sd32","IMPACT","Poor",,"POOR"</screen>
+      <para>An example for category options looks like this:</para>
+      <screen>name,uid,code
+"Male",,"MALE"
+"Female",,"FEMALE"</screen>
+    </section>
   </section>
   <section id="fileresource">
     <title>File resources</title>
