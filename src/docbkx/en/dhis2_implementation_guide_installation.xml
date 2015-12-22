@@ -141,9 +141,9 @@ sudo locale-gen nb_NO.UTF-8</screen>
     <section>
       <title>Database configuration</title>
       <para>The database connection information is provided to DHIS 2 through a configuration file
-        called <emphasis role="italic">hibernate.properties</emphasis>. Create this file and save it
-        in a convenient location. A configuration file for PostgreSQL corresponding to the above
-        setup has these properties: </para>
+        called <emphasis role="italic">dhis.conf</emphasis>. Create this file and save it in a
+        convenient location. A configuration file for PostgreSQL corresponding to the above setup
+        has these properties: </para>
       <para><screen>hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
 hibernate.connection.driver_class = org.postgresql.Driver
 hibernate.connection.url = jdbc:postgresql:dhis2
@@ -770,14 +770,6 @@ ldap.search.filter = (cn={0})</screen>
     <para>DHIS 2 Live is running on an embedded Jetty servlet container and an embedded H2 database. However it can easily be configured to run on other database systems such as PostgreSQL. Please read the section above about server installations for an explanation of the database configuration. The <emphasis role="italic">hibernate.properties</emphasis> configuration file is located in the <emphasis role="italic">conf</emphasis> folder. Remember to restart the Live package for your changes to take effect. The server port is 8082 by default. This can be changed by modifying the value in the<emphasis role="italic"> jetty.port</emphasis> configuration file located in the <emphasis role="italic">conf</emphasis> directory.</para>
   </section>
   <section>
-    <title>Backup</title>
-    <para>Doing automated database backups for information systems in production is an absolute must, and might have uncomfortable consequences if ignored. Backups have two main purposes: The primary is data recovery in case data is lost, the secondary purpose is archiving of data for a historical period of time.</para>
-    <para>Backup should be central in a disaster recovery plan. Even though such a plan should cover additional subjects, the database is the key component to consider since this is where all data used in the DHIS 2 application is stored. Most other parts of the IT infrastructure surrounding the application can be restored based on standard components.</para>
-    <para>There are of course many ways to set up backup; however the following describes a setup where the database is copied into a dump file and saved on the file system. This can be considered a <emphasis role="italic">full</emphasis> backup. The backup is done with a <emphasis role="italic">cron job</emphasis>, which is a time-based scheduler in Unix/Linux operating systems.</para>
-    <remark>You can download both files from http://dhis2.com/download/pg_backup.zip</remark>
-    <para>The cron job is set up with two files. The first is a <emphasis role="italic">script</emphasis> which performs the actual task of backup up the database. It uses a PostgreSQL program called <emphasis role="italic">pg_dump</emphasis> for creating the database copy. The second is a crontab file which runs the backup script every day at 23:00. Note that this script backs up the database file to the local disk. It is strongly recommended to store a copy of the backup at a location outside the server where the application is hosted. This can be achieved with the <emphasis role="italic">scp</emphasis> tool. Make sure that you have set the system date correctly on your server.</para>
-  </section>
-  <section>
     <title>Working with the PostgreSQL database</title>
     <para>Common operations when managing a DHIS instance are dumping and restoring databases. To
       make a dump (copy) of your database, assuming the setup from the installation section, you can
@@ -817,5 +809,89 @@ ldap.search.filter = (cn={0})</screen>
         >JAVA_OPTS</emphasis> environment variable.</para>
     <para>DHIS 2 will eventually phase out logging to standard out / catalina.out and as a result it
       is recommended to rely on the logs under DHIS2_HOME.</para>
+  </section>
+  <section>
+    <title>Complete dhis.conf configuration reference</title>
+    <para>The following describes the full set of configuration options for the <emphasis
+        role="italic">dhis.conf</emphasis> configuration file. The uncommented properties are
+      mandatory. The commented properties are optional and set to the default values. The
+      configuration file should be placed in a directory which is pointed to by a <emphasis
+        role="italic">DHIS2_HOME</emphasis> environment
+      variable.<screen># ----------------------------------------------------------------------
+# Database connection for PostgreSQL
+# ----------------------------------------------------------------------
+
+# Hibernate SQL dialect
+connection.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+# JDBC driver class
+connection.driver_class = org.postgresql.Driver
+
+# JDBC driver connection URL
+connection.url = jdbc:postgresql:dhis2
+
+# Database username
+connection.username = dhis
+
+# Database password (sensitive)
+connection.password = xxxx
+
+# Database schema behavior, can be 'validate', 'update', 'create', 'create-drop'
+connection.schema = update
+
+# ----------------------------------------------------------------------
+# System
+# ----------------------------------------------------------------------
+
+# System base URL
+system.base_url = http://localhost:8080/dhis
+
+# System mode for database read operations only, can be 'off', 'on'
+# system.read_only_mode = off
+
+# ----------------------------------------------------------------------
+# Encryption
+# ----------------------------------------------------------------------
+
+# Encryption key (sensitive)
+# encryption.password = xxxx
+
+# ----------------------------------------------------------------------
+# File store
+# ----------------------------------------------------------------------
+
+# File store provider, currently 'filesystem' and 'aws-s3' are supported
+# filestore.provider = filesystem
+
+# Directory / bucket name, corresponds to folder within external directory on file system and 'bucket' on AWS S3
+# filestore.container = files
+
+# Datacenter location (not required)
+# filestore.location = eu-west-1
+
+# Public identity / username
+# filestore.identity = dhis2-id
+
+# Secret key / password (sensitive)
+# filestore.secret = xxxx
+
+# ----------------------------------------------------------------------
+# LDAP
+# ----------------------------------------------------------------------
+
+# LDAP server URL
+# ldap.url = ldaps://300.20.300.20:636
+
+# LDAP manager user distinguished name
+# ldap.manager.dn = cn=JohnDoe,ou=Country,ou=Admin,dc=hisp,dc=org
+
+# LDAP manager user password (sensitive)
+# ldap.manager.password = xxxx
+
+# LDAP entry distinguished name search base
+# ldap.search.base = dc=hisp,dc=org
+
+# LDAP entry distinguished name filter
+# ldap.search.filter = (cn={0})</screen></para>
   </section>
 </chapter>
