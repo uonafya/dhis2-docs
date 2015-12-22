@@ -9476,33 +9476,39 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
-    <title>FRED API</title>
-    <para>DHIS 2 from version 2.11 implements support for the current draft of the FRED API version
-      1.0. The project defines itself as <quote>open standard for sharing and updating health
-        facility data</quote>. The full specification, including representation format and basic
-      usage, can be found at <ulink url="http://facilityregistry.org/"
-        >http://facilityregistry.org/</ulink>.</para>
-    <para>Since version 1.0 is not finalized there are parts of the current specification that has
-      not been implemented as we found it not to be in a stable enough state. Most notably we do not
-      currently support sorting (we do however sort on name by default) and filtering of
-      facilities.</para>
-    <para>The entry point for the implementation can be found at http://&lt;server-url&gt;/api-fred
-      and the current version is located at http://&lt;server-url&gt;/api-fred/v1.</para>
-    <para>This section will give some simple examples of using the API.</para>
-    <para>Get all facilities:</para>
-    <screen>curl -u username:password -X GET http://&lt;server-url&gt;/api-fred/v1/facilities.json</screen>
-    <para>Get a specific facility based on either identifier or UUID:</para>
-    <screen>curl -u username:password -X GET http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;id&gt;.json
-curl -u username:password -X GET http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;uuid&gt;.json</screen>
-    <para>Create a new facility:</para>
-    <screen>curl -u username:password -X POST -d @new_facility.json
-  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities.json</screen>
-    <para>Update a facility:</para>
-    <screen>curl -u username:password -X POST -d @updated_facility.json
-  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;id&gt;.json
-
-curl -u username:password -X POST -d @updated_facility.json
-  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;uuid&gt;.json</screen>
+    <title>Apps</title>
+    <para>From version 2.14 there is also additional support for apps through the web-api. The
+      <emphasis role="italic">/api/apps</emphasis> endpoint can be used for installing, deleting
+      and listing apps. The app key is derived from the name of the ZIP archive, exluding the file
+      extension.</para>
+    <para>You can read the keys for apps by listing all apps from the apps resource and look for the
+      <emphasis role="italic">key</emphasis> property. To list all installed apps in
+      JSON:<screen>curl -X GET -u user:pass -H &quot;Accept: application/json&quot; http://server.com/api/apps</screen></para>
+    <para>You can also simply point your web browser to the resource URL:</para>
+    <screen>http://server.com/api/apps</screen>
+    <para>To install an app, the following command can be issued:
+      <screen>curl -X POST -u user:pass -F file=@app.zip http://server.com/api/apps</screen></para>
+    <para>To delete an app, you can issue the following command:
+      <screen>curl -X DELETE -u user:pass http://server.com/api/apps/&lt;app-key></screen></para>
+    <para>To force a reload of currently installed apps, you can issue the following command. This
+      is useful if you added a file manually directly to the file system, instead of uploading
+      through the DHIS 2 user interface.
+      <screen>curl -X PUT -u user:pass http://server.com/api/apps</screen></para>
+    <para>To let DHIS 2 serve apps from the Web API make sure to set the "App base URL" to point to
+      the apps resource, i.e.:<screen>http://server.com/api/apps</screen></para>
+    <para>To set the apps configuration you can make a POST request to the <emphasis role="italic"
+      >config</emphasis> resourec with a JSON payload:</para>
+    <screen>{
+  "appFolderPath": "/home/dhis/config/apps",
+  "appBaseUrl": "http://server.com/api/apps"
+}</screen>
+    <screen>curl -X POST -u user:pass -d @config.json http://server.com/api/apps/config</screen>
+    <para>To restore the default app settings you can make a DELETE request to the config
+      resource:</para>
+    <screen>curl -X DELETE -u user:pass http://server.com/api/apps/config</screen>
+    <para>Note that by default apps will be served through the apps Web API resource, and the file
+      system folder will be <emphasis role="italic">DHIS2_HOME/apps</emphasis>. These systems should
+      be fine for most situations.</para>
   </section>
   <section>
     <title>Data store</title>
@@ -9673,5 +9679,34 @@ curl -u username:password -X POST -d @updated_facility.json
       this:<screen>curl "localhost:8080/api/synchronization/metadataPull" -X POST
 -d "https://raw.githubusercontent.com/dhis2/dhis2-metadata-repo/master/repo/221/trainingland-org-units/metadata.json"
 -H "Content-Type:text/plain" -u admin:district -v</screen></para>
+  </section>
+  <section>
+    <title>FRED API</title>
+    <para>DHIS 2 from version 2.11 implements support for the current draft of the FRED API version
+      1.0. The project defines itself as <quote>open standard for sharing and updating health
+        facility data</quote>. The full specification, including representation format and basic
+      usage, can be found at <ulink url="http://facilityregistry.org/"
+        >http://facilityregistry.org/</ulink>.</para>
+    <para>Since version 1.0 is not finalized there are parts of the current specification that has
+      not been implemented as we found it not to be in a stable enough state. Most notably we do not
+      currently support sorting (we do however sort on name by default) and filtering of
+      facilities.</para>
+    <para>The entry point for the implementation can be found at http://&lt;server-url&gt;/api-fred
+      and the current version is located at http://&lt;server-url&gt;/api-fred/v1.</para>
+    <para>This section will give some simple examples of using the API.</para>
+    <para>Get all facilities:</para>
+    <screen>curl -u username:password -X GET http://&lt;server-url&gt;/api-fred/v1/facilities.json</screen>
+    <para>Get a specific facility based on either identifier or UUID:</para>
+    <screen>curl -u username:password -X GET http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;id&gt;.json
+curl -u username:password -X GET http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;uuid&gt;.json</screen>
+    <para>Create a new facility:</para>
+    <screen>curl -u username:password -X POST -d @new_facility.json
+  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities.json</screen>
+    <para>Update a facility:</para>
+    <screen>curl -u username:password -X POST -d @updated_facility.json
+  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;id&gt;.json
+
+curl -u username:password -X POST -d @updated_facility.json
+  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;uuid&gt;.json</screen>
   </section>
 </chapter>
