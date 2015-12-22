@@ -9478,9 +9478,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
   <section>
     <title>Apps</title>
     <para>From version 2.14 there is also additional support for apps through the web-api. The
-      <emphasis role="italic">/api/apps</emphasis> endpoint can be used for installing, deleting
+        <emphasis role="italic">/api/apps</emphasis> endpoint can be used for installing, deleting
       and listing apps. The app key is derived from the name of the ZIP archive, exluding the file
-      extension.</para>
+      extension.<screen>api/apps</screen></para>
     <para>You can read the keys for apps by listing all apps from the apps resource and look for the
       <emphasis role="italic">key</emphasis> property. To list all installed apps in
       JSON:<screen>curl -X GET -u user:pass -H &quot;Accept: application/json&quot; http://server.com/api/apps</screen></para>
@@ -9509,6 +9509,40 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <para>Note that by default apps will be served through the apps Web API resource, and the file
       system folder will be <emphasis role="italic">DHIS2_HOME/apps</emphasis>. These systems should
       be fine for most situations.</para>
+  </section>
+  <section>
+    <title>App store</title>
+    <para>The Web API exposes the content of the DHIS 2 App Store as a JSON representation which can
+      found at the <emphasis role="italic">api/appStore</emphasis>
+      resource.<screen>GET api/appStore</screen></para>
+    <para>A sample response is described
+      below.<screen>{
+  "name": "DHIS 2 App Store",
+  "description": "Send your apps with a description to us at apps@dhis2.org",
+  "apps": [
+    {
+      "name": "Tabular Tracker Capture",
+      "description": "Tabular Tracker Capture is an app that makes you more effective.",
+      "developer": "John Develop",
+      "img_large": "https://www.dhis2.org/images/appstore/tabular-tracker-capture.png",
+      "versions": [
+        {
+          "id": "upAPqrVgwK6",
+          "version": "1.2",
+          "min_platform_version": "2.17",
+          "max_platform_version": "2.20",
+          "download_url": "https://www.dhis2.org/download/appstore/tabular-tracker-capture-12.zip",
+          "demo_url": "http://play.dhis2.org/demo"
+        }
+      ]
+    }
+  ]
+}</screen></para>
+    <para>You can install apps on your instance of DHIS 2 assuming you have the appropriate
+      permissions. An app is referred to using the <emphasis role="italic">id</emphasis> property of
+      the relevant <emphasis role="italic">version</emphasis> of the <emphasis role="italic"
+        >app</emphasis>. An app is installed with a POST request with the version id to the
+      following resource:<screen>POST api/appStore/{app-version-id}</screen></para>
   </section>
   <section>
     <title>Data store</title>
