@@ -9514,9 +9514,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <title>App store</title>
     <para>The Web API exposes the content of the DHIS 2 App Store as a JSON representation which can
       found at the <emphasis role="italic">api/appStore</emphasis>
-      resource.<screen>GET api/appStore</screen></para>
+      resource.</para>
+      <section>
+        <title>Get apps</title>
+        <para>You can retrieve apps with a GET request:
+          <screen>GET api/appStore</screen></para>
     <para>A sample JSON response is described
-      below.<screen>{
+      below.
+      <screen>{
   "name": "DHIS 2 App Store",
   "description": "Send your apps with a description to us at apps@dhis2.org",
   "apps": [
@@ -9538,11 +9543,15 @@ ORDER BY oul.level, par.name, ou.name</screen>
     }
   ]
 }</screen></para>
+  </section>
+  <section>
+    <title>Install apps</title>
     <para>You can install apps on your instance of DHIS 2 assuming you have the appropriate
       permissions. An app is referred to using the <emphasis role="italic">id</emphasis> property of
       the relevant <emphasis role="italic">version</emphasis> of the <emphasis role="italic"
         >app</emphasis>. An app is installed with a POST request with the version id to the
       following resource:<screen>POST api/appStore/{app-version-id}</screen></para>
+  </section>
   </section>
   <section>
     <title>Data store</title>
