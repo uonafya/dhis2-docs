@@ -894,4 +894,31 @@ system.base_url = http://localhost:8080/dhis
 # LDAP entry distinguished name filter
 # ldap.search.filter = (cn={0})</screen></para>
   </section>
+  <section>
+    <title>Encrypting confidential data</title>
+    <para>Encrypting confidential data is possible in DHIS 2, but requires some extra set up. DHIS 2
+      uses an encryption-algorithm classified as "strong", and therefore requires so called
+        <emphasis>Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
+        Files</emphasis> to be used. Without these files, encryping and decrypting confidential data
+      in DHIS 2 will not be possible. These files can easily be installed by following these
+      steps:</para>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>Find and download JCE Unlimited Strength Jurisdiction Policy Files for your java
+            version</para>
+          <para>It is important that these files are for your version of java. You can find these
+            files on the same page as you download java. For the newest java and corresponding JCE
+            files, see this link: <link
+              linkend="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
+              >http://www.oracle.com/technetwork/java/javase/downloads/index.html</link></para>
+        </listitem>
+        <listitem>
+          <para>Among the files you just downloaded (JCE files) there should be a README.txt. This
+            contains, among other things, instructions on how to proceed with the
+            installation.</para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </section>
 </chapter>
