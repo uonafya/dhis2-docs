@@ -7522,7 +7522,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
-    <title>SMS Services</title>
+    <title>Shot Message Service</title>
     <para>This section covers the sms API exposed for sending and collecting(receiving) text messages.</para> 
     <section>
       <title>OutBound sms service</title>
@@ -7577,6 +7577,25 @@ ORDER BY oul.level, par.name, ou.name</screen>
           </tbody>
         </tgroup>
       </table>
+    </section>
+    
+    <section>
+      <title>Sms Service Administration</title>
+      <para>Sms service administration APIs can be used to start/stop service or to reload configuration incase of refresh.</para>
+      <para><emphasis role="italic">start</emphasis> API can be used to start sms service</para>
+      <screen>curl &quot;http://server/api/sms/sercice/start&quot; -u admin:district -v</screen>
+      <para><emphasis role="italic">stop</emphasis> API can be used to stop sms service</para>
+      <screen>curl &quot;http://server/api/sms/service/stop &quot; -u admin:district -v</screen>
+    </section>
+    <section>
+      <title>Gateway Configuration Service</title>
+      <para>Dhis2 expose Web APIs to provide a convinient way to configure and update sms gateway configurations. A list is given below with a small description of the exposed resource.</para>
+      <para><emphasis role="italic">listall</emphasis> API can be used to get list of configured gateways</para>
+      <screen>curl &quot;http://server/api/sms/gateway&quot; -u admin:district -v</screen>
+      <para><emphasis role="italic">default</emphasis> API can be used to get default sms gateway. Default gateway will be the first one to be used for sending sms.</para>
+      <screen>curl &quot;http://server/api/sms/gateway/default &quot; -u admin:district -v</screen>
+      <para><emphasis role="italic">setdefault</emphasis> API can be used to set Default sms gateway. It takes parameter indexId. IndexId is the position of gateway in the list that we receive from <emphasis role="italic">listall</emphasis> resource. </para>
+      <screen>curl &quot;http://server/api/sms/gateway/setdefault?indexId=0 &quot; -u admin:district -v</screen>
     </section>
     
     
