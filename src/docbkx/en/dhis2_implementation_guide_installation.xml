@@ -629,41 +629,7 @@ ProxyPassReverse /dhis  ajp://localhost:8009/dhis
       <para>You now can restart Tomcat and the Apache HTTPD server and your DHIS 2 instance should be available on http://<emphasis>myserver</emphasis>/dhis where <emphasis>myserver</emphasis> is the hostname of your server. </para>
     </section>
     <section>
-      <title>Basic load-balancing with Apache and Tomcat</title>
-      <para>Load balancing may be employed to more evenly distribute system load across multiple Tomcat instances in situations where user load is too high to be handled by a single server instance. In this example, we will create a simple load-balanced architecture using &quot;sticky sessions&quot; to distribute users across two instances of Tomcat. </para>
-      <para>First, we need at least two instances of Tomcat running DHIS2, which are connected to the same database. There are various architectures, such as running the application servers (Tomcat) on separate (virtual) machines connected to a single database server, or perhaps running multiple Tomcat instances and a database on a single-high capacity machine in situations with I/O is not an issue, but when CPU usage of a single Tomcat instance limits overall system performance. In this scenario, we will configure connect two Tomcat instances running on the same machine to a single database through a load-balanced reverse proxy. Apache will take care of the details of determining which Tomcat instance a particular client is interfaced to with the </para>
-      <para>The first step is to configure our  Tomcat instances. The previous sections have detailed how this should be done. Importantly, both Tomcat instances should be configured to use the same database server. Some modifications need to be made to the server.xml file of each Tomcat instance, which will be used to uniquely identify each instance. Two copies of Tomcat should be extracted to a directory of your choice. Modify the server.xml file so that the following lines are unique for each instance. </para>
-      <para><screen>&lt;Server port=&quot;<emphasis>800<emphasis>5</emphasis></emphasis>&quot; shutdown=&quot;SHUTDOWN&quot;&gt;
-...
-&lt;Connector port=<emphasis>&quot;8009</emphasis>&quot; protocol=&quot;AJP/1.3&quot; redirectPort=&quot;8444&quot; /&gt;
-...
-
-&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;localhost&quot; jvmRoute=&quot;<emphasis>jvm1</emphasis>&quot;&gt;</screen></para>
-      <para>The important parameters here are the server port, the AJP connector port, and the <parameter>jvmRoute</parameter> identifier. The <parameter>jvmRoute</parameter> identifier will be appended to the JSESSIONID so that Apache will know which Tomcat instance a particular session should be routed to. The parameters must be unique for each Tomcat instance. After configuring Tomcat, setup DHIS2 according to the normal procedures detailed in other sections.  </para>
-      <para>Next, we will configure the Apache HTTP server to perform load balancing. Incoming client requests will be assigned to one of the instances with a sticky session. Alter the <filename>/etc/apache2/apache2.conf </filename>file (or other appropriate file depending on your exact configuration) to define a proxy load balancer and a proxy and reverse proxy path. Note that the port numbers and <parameter>route</parameter> parameters must match the Tomcat port and <parameter>jvmRoute</parameter> parameters which were defined earlier in the Tomcat configuration.</para>
-      <screen>&lt;Proxy balancer://dhiscluster&gt;
-Order Allow,Deny
-Allow from all
-&lt;/Proxy&gt;
-
-&lt;Proxy balancer://dhiscluster&gt;
-BalancerMember ajp://127.0.0.1:8009/dhis route=dhis1
-BalancerMember ajp://127.0.0.1:9009/dhis route=dhis2
-
-ProxySet lbmethod=byrequests
-ProxySet stickysession=JSESSIONID
-&lt;/Proxy&gt;
-
-ProxyVia Off
-ProxyPass /dhis/ balancer://dhiscluster/ stickysession=JSESSIONID nofailover=on
-
-ProxyPassReverse /dhis/ balancer://dhiscluster/ stickysession=JSESSIONID|jsessionid
-</screen>
-      <para>Finally, start both Tomcat instances, and then restart Apache HTTP. </para>
-      <para>This example demonstrates how to implement a simple load balanced system with sticky sessions using Apache HTTP server.</para>
-    </section>
-    <section>
-      <title>Basic SSL encryption with Apache</title>
+      <title>SSL encryption with Apache</title>
       <para>Using Apache and the reverse proxy  setup described in the previous section, we can easily implement encrypted transfer of data between clients and the server over HTTPS. This section will describe how to use self-signed certificates, although  the same procedure could be used if you have fully-signed certificates as well. </para>
       <para>First (as root), generate the necessary private key files and CSR (Certificate Signing Request) </para>
       <screen>mkdir /etc/apache2/ssl
