@@ -43,7 +43,7 @@
     <title>Server setup</title>
     <para>This section describes how to set up a server instance of DHIS 2 on Ubuntu 14.04 64 bit
       with PostgreSQL as database system and Tomcat as Servlet container. This guide is not meant to
-      be a step-by-step guide per se, but rather to serve as a reference to how DHIS2 can be
+      be a step-by-step guide per se, but rather to serve as a reference to how DHIS 2 can be
       deployed on a server. There are many possible deployment strategies, which will differ
       depending on the operating system and database you are using, and other factors. The term
         <emphasis role="italic">invoke</emphasis> refers to executing a given command in a terminal. </para>
@@ -57,7 +57,7 @@
         <emphasis role="italic">optional</emphasis>, like the step for performance tuning, can be
       done at a later stage.</para>
     <section>
-      <title>Creating a user to run DHIS2</title>
+      <title>Creating a user to run DHIS 2</title>
       <para>You should create a dedicated user for running DHIS - it is not recommended to run as
         the root user. Create a new user called dhis by invoking:</para>
       <screen>useradd -d /home/dhis -m dhis -s /bin/bash</screen>
@@ -73,8 +73,8 @@
     <section>
       <title>Setting server time zone and locale (optional)</title>
       <para>It may be necessary to reconfigure the time zone of the server to match the time zone of
-        the location which the DHIS2 server will be covering. If you are using a virtual private
-        server, the default time zone may not correspond to the time zone of your DHIS2 location.
+        the location which the DHIS 2 server will be covering. If you are using a virtual private
+        server, the default time zone may not correspond to the time zone of your DHIS 2 location.
         You can easily reconfigure the time zone by invoking the below and following the
         instructions.</para>
       <screen>sudo dpkg-reconfigure tzdata</screen>
@@ -239,7 +239,7 @@ sudo apt-get install oracle-java8-installer</screen>
       <screen>sudo apt-get install oracle-java8-set-default</screen>
     </section>
     <section>
-      <title>Install Tomcat and DHIS2</title>
+      <title>Install Tomcat and DHIS 2</title>
       <para>To install the Tomcat servlet container we will utilize the Tomcat user package by
         invoking:</para>
       <screen>sudo apt-get install tomcat7-user</screen>
@@ -279,7 +279,7 @@ export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
       <screen>mv dhis.war tomcat-dhis/webapps/ROOT.war</screen>
     </section>
     <section>
-      <title>Running DHIS2</title>
+      <title>Running DHIS 2</title>
       <para>DHIS 2 can now be started by invoking:</para>
       <screen>tomcat-dhis/bin/startup.sh</screen>
       <para>DHIS 2 can be stopped by invoking:</para>
@@ -621,9 +621,14 @@ sudo chmod +x /etc/init.d/tomcat</screen>
       <title>Basic reverse proxy setup with Apache</title>
       <para>The Apache HTTP server is the most common </para>
       <important>
-        <para>Using nginx is the preferred option as reverse proxy with DHIS2 and you should not attempt to install both nginx and Apache on the same server. If you have installed nginx please ignore this section. </para>
+        <para>Using nginx is the preferred option as reverse proxy with DHIS 2 and you should not
+          attempt to install both nginx and Apache on the same server. If you have installed nginx
+          please ignore this section. </para>
       </important>
-      <para>The Apache HTTP server is the most widely used HTTP server currently. Depdenign on your exact nature of deployment, you may need to use Apache as a reverse proxy for your DHIS2 server. In this section, we will describe how to implement a simple reverse proxy setup with Apache. </para>
+      <para>The Apache HTTP server is the most widely used HTTP server currently. Depdenign on your
+        exact nature of deployment, you may need to use Apache as a reverse proxy for your DHIS 2
+        server. In this section, we will describe how to implement a simple reverse proxy setup with
+        Apache. </para>
       <para>First we need to install a few necessary programs modules for Apache and enable the modules. </para>
       <para><screen>sudo apt-get install apache2 libapache2-mod-proxy-html libapache2-mod-jk
 a2enmod proxy proxy_ajp proxy_connect</screen></para>
