@@ -765,21 +765,19 @@ ldap.search.filter = (cn={0})</screen>
   </section>
   <section>
     <title>Encryption</title>
-    <para>DHIS 2 allows for encryption of data. This however requires some extra set up due to
-      export restrictions. DHIS 2 uses an encryption-algorithm classified as strong and therefore
-      requires the <emphasis>Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction
-        Policy Files</emphasis> to be installed. These files can be installed by following these
-      steps:</para>
+    <para>DHIS 2 allows for encryption of data. This however requires some extra setup due to export
+      restrictions. DHIS 2 uses an encryption algorithm classified as strong and therefore requires
+      the <emphasis>Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
+        Files</emphasis> to be installed. These files can be installed through these steps:</para>
     <para>
       <orderedlist>
         <listitem>
           <para>Download the JCE Unlimited Strength Jurisdiction Policy Files for your java version
-            of Java from: <ulink
-              url="http://www.oracle.com/technetwork/java/javase/downloads/index.htm"
-              >http://www.oracle.com/technetwork/java/javase/downloads/index.html</ulink> (scroll
-            down the "Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
-            Files" section). It is important that the version of the files match the version of Java
-            on your server.</para>
+            of Java from the Oracle Web site. Scroll down the "Java Cryptography Extension (JCE)
+            Unlimited Strength Jurisdiction Policy Files" section. It is important that the version
+            of the files match the version of Java on your server.</para>
+          <para><ulink url="http://www.oracle.com/technetwork/java/javase/downloads/index.htm"
+              >http://www.oracle.com/technetwork/java/javase/downloads/index.html</ulink></para>
         </listitem>
         <listitem>
           <para>Extract the downloaded ZIP archive. It contains two JAR files: <emphasis
@@ -788,8 +786,9 @@ ldap.search.filter = (cn={0})</screen>
         </listitem>
         <listitem>
           <para>Locate the JDK directory of your Java installation. From there, navigate into the
-            jre/security directory. On Ubuntu it is often found
-            at:<screen>/usr/lib/jvm/java-8-oracle/jre/lib/security</screen></para>
+              <emphasis role="italic">jre/security</emphasis> directory. On Ubuntu it is often found
+            at <emphasis role="italic"
+            >/usr/lib/jvm/java-8-oracle/jre/lib/security</emphasis>.</para>
         </listitem>
         <listitem>
           <para>(Optional) Back up your existing <emphasis role="italic">local_policy.jar</emphasis>
@@ -799,8 +798,9 @@ ldap.search.filter = (cn={0})</screen>
         <listitem>
           <para>Copy the <emphasis role="italic">local_policy.jar</emphasis> and <emphasis
               role="italic">US_export_policy.jar</emphasis> files into the security folder. You
-            should now have the following
-            files:<screen>/usr/lib/jvm/java-8-oracle/jre/lib/security/local_policy.jar
+            should now have the following files which completes the installation. Remember to
+            restart your servlet container for it to take
+            effect.<screen>/usr/lib/jvm/java-8-oracle/jre/lib/security/local_policy.jar
 /usr/lib/jvm/java-8-oracle/jre/lib/security/US_export_policy.jar</screen></para>
         </listitem>
       </orderedlist>
