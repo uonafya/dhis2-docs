@@ -180,7 +180,7 @@ encryption.password = xxxx</screen></para>
         clear text password for your DHIS 2 database so it needs to be protected from unauthorized
         access. To do this invoke the following command which ensures that only the dhis user which
         owns the file is allowed to read it:</para>
-      <screen>chmod 0600 hibernate.properties</screen>
+      <screen>chmod 0600 dhis.conf</screen>
     </section>
     <section>
       <title>File store configuration (optional)</title>
@@ -191,7 +191,7 @@ encryption.password = xxxx</screen></para>
       <para>You can also configure DHIS 2 to store files on cloud-based storage providers.
         Currently, AWS S3 is the only supported provider. To enable cloud-based storage you must
         define the following addtional properties in your <emphasis role="italic"
-          >hibernate.properties</emphasis> file:</para>
+          >dhis.conf</emphasis> file:</para>
       <screen># File store provider. Currently 'filesystem' and 'aws-s3' are supported
 filestore.provider = filesystem
 
@@ -253,11 +253,10 @@ sudo apt-get install oracle-java8-installer</screen>
       <para>Next edit the file <emphasis role="italic">tomcat-dhis/bin/setenv.sh</emphasis> and add
         the lines below. The first line will set the location of your Java Runtime Environment, the
         second will dedicate memory to Tomcat and the third will set the location for where DHIS 2
-        will search for the <emphasis role="italic">hibernate.properties</emphasis> configuration
-        file. Please check that the path the Java binaries are correct as they might vary from
-        system to system, e.g. on AMD systems you might see <emphasis role="italic"
-          >/java-7-openjdk-amd64</emphasis> Note that you should adjust this to your
-        environment:</para>
+        will search for the <emphasis role="italic">dhis.conf</emphasis> configuration file. Please
+        check that the path the Java binaries are correct as they might vary from system to system,
+        e.g. on AMD systems you might see <emphasis role="italic">/java-7-openjdk-amd64</emphasis>
+        Note that you should adjust this to your environment:</para>
       <para><screen>export JAVA_HOME=&apos;/usr/lib/jvm/java-8-oracle/&apos;
 export JAVA_OPTS=&apos;-Xmx7500m -Xms4000m&apos;
 export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
@@ -682,8 +681,8 @@ XXX.XX.XXX.XXX foo.mydomain.org</screen></para>
       The DHIS 2 user will be used to represent authorities / user roles. </para>
     <para>To set up LDAP authentication you need to configure the LDAP server URL, a manager user
       and an LDAP search base and search filter. This configuration should be done in the main DHIS
-      2 configuration file (hibernate.properties). LDAP users, or entries, are identified by
-      distinguished names (DN from now on). An example configuration looks like this:</para>
+      2 configuration file (dhis.conf). LDAP users, or entries, are identified by distinguished
+      names (DN from now on). An example configuration looks like this:</para>
     <screen># LDAP server URL
 ldap.url = ldaps://domain.org:636
 
@@ -810,7 +809,14 @@ ldap.search.filter = (cn={0})</screen>
     <title>DHIS 2 Live setup</title>
     <para>The DHIS 2 Live package is extremely convenient to install and run. It is intended for demonstrations, for users who want to explore the system and for small, offline installations typically at districts or facilities. It only requires a Java Runtime Environment and runs on all browsers except Internet Explorer 7 and lower.</para>
     <para>To install start by downloading DHIS 2 Live from <emphasis role="italic">http://dhis2.org</emphasis> and extract the archive to any location. On Windows click the executable archive. On Linux invoke the startup.sh script. After the startup process is done your default web browser will automtically be pointed to  <emphasis role="italic">http://localhost:8082</emphasis> where the application is accessible. A system tray menu is accessible on most operating systems where you can start and stop the server and start new browser sesssions. Please note that if you have the server running there is no need to start it again, simply open the application from the tray  menu.</para>
-    <para>DHIS 2 Live is running on an embedded Jetty servlet container and an embedded H2 database. However it can easily be configured to run on other database systems such as PostgreSQL. Please read the section above about server installations for an explanation of the database configuration. The <emphasis role="italic">hibernate.properties</emphasis> configuration file is located in the <emphasis role="italic">conf</emphasis> folder. Remember to restart the Live package for your changes to take effect. The server port is 8082 by default. This can be changed by modifying the value in the<emphasis role="italic"> jetty.port</emphasis> configuration file located in the <emphasis role="italic">conf</emphasis> directory.</para>
+    <para>DHIS 2 Live is running on an embedded Jetty servlet container and an embedded H2 database.
+      However it can easily be configured to run on other database systems such as PostgreSQL.
+      Please read the section above about server installations for an explanation of the database
+      configuration. The <emphasis role="italic">dhis.conf</emphasis> configuration file is located
+      in the <emphasis role="italic">conf</emphasis> folder. Remember to restart the Live package
+      for your changes to take effect. The server port is 8082 by default. This can be changed by
+      modifying the value in the<emphasis role="italic"> jetty.port</emphasis> configuration file
+      located in the <emphasis role="italic">conf</emphasis> directory.</para>
   </section>
   <section>
     <title>Working with the PostgreSQL database</title>
