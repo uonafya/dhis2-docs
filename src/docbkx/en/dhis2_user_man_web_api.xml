@@ -7557,11 +7557,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <section>
       <title>OutBound sms service</title>
       <para>The Web API supports sending outgoing sms using <emphasis role="italic">outbound</emphasis> 
-        resource. For sending out message you can POST a message in JSON format. It needs a recipient and message text.  
-        Gateway needs to be configured before using this service. Sms will not be sent if there is no gateway configured. 
+        resource. For sending out message you can POST a message in JSON format. It needs a Set of recipients and message text.  
+        Gateway needs to be configured before using this service. Sms will not be sent if there is no gateway configured.  
         An example payload in JSON looks like this:</para>
-     <screen>{   "message": "Sms Text",   "recipient": "47XXXXXXX" }</screen>
-      <para>Outbound service can be tested like this
+     <screen>{   "message": "Sms Text",   ["recipient": "47XXXXXX1","47XXXXXX2"] }</screen>
+      <para>Outbound service can be tested like this, BUT this parametric API can only be used for sending sms to single destination.
       </para>
       <screen>curl -d @message.json &quot;http://server/api/sms/outbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
       <para>Query parameters can also be used like this</para>
@@ -7611,21 +7611,38 @@ ORDER BY oul.level, par.name, ou.name</screen>
     
     <section>
       <title>Sms Service Administration</title>
-      <para>Sms service administration APIs can be used to start/stop service or to reload configuration incase of refresh.</para>
-      <para><emphasis role="italic">start</emphasis> API can be used to start sms service</para>
-      <screen>curl &quot;http://server/api/sms/sercice/start&quot; -u admin:district -v</screen>
-      <para><emphasis role="italic">stop</emphasis> API can be used to stop sms service</para>
-      <screen>curl &quot;http://server/api/sms/service/stop &quot; -u admin:district -v</screen>
+      <para>Following below mentioned operations can be used to for sms service administration.</para>
+      <para><emphasis role="italic">START</emphasis> API can be used to start sms service</para>
+      <screen>curl -X POST &quot;http://server/api/sms/sercice/&quot; -u admin:district -v</screen>
+      <para><emphasis role="italic">STOP</emphasis> API can be used to stop sms service</para>
+      <screen>curl -X DELETE &quot;http://server/api/sms/service/&quot; -u admin:district -v</screen>
+      <para><emphasis role="italic">RELOAD</emphasis> API can be used to reload sms configuration</para>
+      <screen>curl -X PUT &quot;http://server/api/sms/service/&quot; -u admin:district -v</screen>
+      <para><emphasis role="italic">GET STATUS</emphasis> API can be used to get Sms service status</para>
+      <screen>curl -X GET &quot;http://server/api/sms/service/&quot; -u admin:district -v</screen>
+      
     </section>
     <section>
       <title>Gateway Configuration Service</title>
-      <para>Dhis2 expose Web APIs to provide a convinient way to configure and update sms gateway configurations. A list is given below with a small description of the exposed resource.</para>
-      <para><emphasis role="italic">listall</emphasis> API can be used to get list of configured gateways</para>
-      <screen>curl &quot;http://server/api/sms/gateway&quot; -u admin:district -v</screen>
-      <para><emphasis role="italic">default</emphasis> API can be used to get default sms gateway. Default gateway will be the first one to be used for sending sms.</para>
-      <screen>curl &quot;http://server/api/sms/gateway/default &quot; -u admin:district -v</screen>
-      <para><emphasis role="italic">setdefault</emphasis> API can be used to set Default sms gateway. It takes parameter indexId. IndexId is the position of gateway in the list that we receive from <emphasis role="italic">listall</emphasis> resource. </para>
-      <screen>curl &quot;http://server/api/sms/gateway/setdefault?indexId=0 &quot; -u admin:district -v</screen>
+      <para>Dhis2 expose Web APIs to provide a convinient way for configuring and updating sms gateway configurations. A list is given below with a small description of the exposed resource.</para>
+      <para><emphasis role="italic">LISTALL</emphasis> API can be used to get list of configured gateways</para>
+      <screen>curl -X GET &quot;http://server/api/sms/gateway&quot; -u admin:district -v</screen>
+      <para><emphasis role="italic">GET CONFIGURATION</emphasis> API can be used to get specific gateway configurations.</para>
+      <screen>curl -X GET &quot;http://server/api/sms/gateway/{id}&quot; -u admin:district -v</screen>
+      <para><emphasis role="italic">DELETE GATEWAY</emphasis> API can be used to remove specific gateway configurations.</para>
+      <screen>curl -X DELETE &quot;http://server/api/sms/gateway/{id}&quot; -u admin:district -v</screen>     
+      <para><emphasis role="italic">GET/SET DEFAULT GATEWAY</emphasis> API can be used to get/set default sms gateway. Default gateway will be the first one to be used for sending sms.</para>
+      <screen>curl -X GET &quot;http://server/api/sms/gateway/default &quot; -u admin:district -v</screen>
+      <screen>curl -X PUT  &quot;http://server/api/sms/gateway/default/{id} &quot; -u admin:district -v</screen>
+      
+      <para><emphasis role="italic">ADD GATEWAY</emphasis> API can be used to add new gateway configurations. For each different type of Gateway, there are different 
+      parameters in JSON payload. For example for BulkSms gateway JSON looks like this</para>
+      <screen>{ "type": "Bulksms", "name": "BulkSMS", "password": "abc123", "region": "SPAIN" }</screen>
+      <screen>curl -X POST -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateway/&quot; -u admin:district -v -d gateway.json</screen>    
+      <para><emphasis role="italic">UPDATE GATEWAY</emphasis> API can be used to update already existing gateway configurations. For each different type of Gateway, there are different 
+        parameters in JSON payload. For example for BulkSms gateway JSON looks like this</para>
+      <screen>{ "type": "Bulksms", "name": "BulkSMS", "password": "abc123", "region": "SPAIN" }</screen>
+      <screen>curl &quot; -X PUT -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateway/&quot; -u admin:district -v -d gateway.json</screen>   
     </section>
     
     
