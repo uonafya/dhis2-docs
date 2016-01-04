@@ -764,6 +764,49 @@ ldap.search.filter = (cn={0})</screen>
       as a DHIS 2 username.</para>
   </section>
   <section>
+    <title>Encryption</title>
+    <para>DHIS 2 allows for encryption of data. This however requires some extra set up due to
+      export restrictions. DHIS 2 uses an encryption-algorithm classified as strong and therefore
+      requires the <emphasis>Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction
+        Policy Files</emphasis> to be installed. These files can be installed by following these
+      steps:</para>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>Download the JCE Unlimited Strength Jurisdiction Policy Files for your java version
+            of Java from: <ulink
+              url="http://www.oracle.com/technetwork/java/javase/downloads/index.htm"
+              >http://www.oracle.com/technetwork/java/javase/downloads/index.html</ulink> (scroll
+            down the "Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
+            Files" section). It is important that the version of the files match the version of Java
+            on your server.</para>
+        </listitem>
+        <listitem>
+          <para>Extract the downloaded ZIP archive. It contains two JAR files: <emphasis
+              role="italic">local_policy.jar</emphasis> and <emphasis role="italic"
+              >US_export_policy.jar</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Locate the JDK directory of your Java installation. From there, navigate into the
+            jre/security directory. On Ubuntu it is often found
+            at:<screen>/usr/lib/jvm/java-8-oracle/jre/lib/security</screen></para>
+        </listitem>
+        <listitem>
+          <para>(Optional) Back up your existing <emphasis role="italic">local_policy.jar</emphasis>
+            and <emphasis role="italic">US_export_policy.jar</emphasis> in case you want to revert
+            to them later.</para>
+        </listitem>
+        <listitem>
+          <para>Copy the <emphasis role="italic">local_policy.jar</emphasis> and <emphasis
+              role="italic">US_export_policy.jar</emphasis> files into the security folder. You
+            should now have the following
+            files:<screen>/usr/lib/jvm/java-8-oracle/jre/lib/security/local_policy.jar
+/usr/lib/jvm/java-8-oracle/jre/lib/security/US_export_policy.jar</screen></para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </section>
+  <section>
     <title>DHIS 2 Live setup</title>
     <para>The DHIS 2 Live package is extremely convenient to install and run. It is intended for demonstrations, for users who want to explore the system and for small, offline installations typically at districts or facilities. It only requires a Java Runtime Environment and runs on all browsers except Internet Explorer 7 and lower.</para>
     <para>To install start by downloading DHIS 2 Live from <emphasis role="italic">http://dhis2.org</emphasis> and extract the archive to any location. On Windows click the executable archive. On Linux invoke the startup.sh script. After the startup process is done your default web browser will automtically be pointed to  <emphasis role="italic">http://localhost:8082</emphasis> where the application is accessible. A system tray menu is accessible on most operating systems where you can start and stop the server and start new browser sesssions. Please note that if you have the server running there is no need to start it again, simply open the application from the tray  menu.</para>
@@ -893,32 +936,5 @@ system.base_url = http://localhost:8080/dhis
 
 # LDAP entry distinguished name filter
 # ldap.search.filter = (cn={0})</screen></para>
-  </section>
-  <section>
-    <title>Encrypting confidential data</title>
-    <para>Encrypting confidential data is possible in DHIS 2, but requires some extra set up. DHIS 2
-      uses an encryption-algorithm classified as "strong", and therefore requires so called
-        <emphasis>Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
-        Files</emphasis> to be used. Without these files, encryping and decrypting confidential data
-      in DHIS 2 will not be possible. These files can easily be installed by following these
-      steps:</para>
-    <para>
-      <orderedlist>
-        <listitem>
-          <para>Find and download JCE Unlimited Strength Jurisdiction Policy Files for your java
-            version</para>
-          <para>It is important that these files are for your version of java. You can find these
-            files on the same page as you download java. For the newest java and corresponding JCE
-            files, see this link: <link
-              linkend="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
-              >http://www.oracle.com/technetwork/java/javase/downloads/index.html</link></para>
-        </listitem>
-        <listitem>
-          <para>Among the files you just downloaded (JCE files) there should be a README.txt. This
-            contains, among other things, instructions on how to proceed with the
-            installation.</para>
-        </listitem>
-      </orderedlist>
-    </para>
   </section>
 </chapter>
