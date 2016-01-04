@@ -731,10 +731,12 @@ ldap.search.filter = (cn={0})</screen>
   </section>
   <section>
     <title>Encryption</title>
-    <para>DHIS 2 allows for encryption of data. This however requires some extra setup due to export
-      restrictions. DHIS 2 uses an encryption algorithm classified as strong and therefore requires
-      the <emphasis>Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
-        Files</emphasis> to be installed. These files can be installed through these steps:</para>
+    <para>DHIS 2 allows for encryption of data. This however requires some extra setup.</para>
+      <section>
+        <title>Java Cryptography Extension</title>
+        <para>DHIS 2 uses an encryption algorithm classified as strong and therefore requires the
+          <emphasis>Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
+          Files</emphasis> to be installed. These files can be installed through these steps:</para>
     <para>
       <orderedlist>
         <listitem>
@@ -771,6 +773,21 @@ ldap.search.filter = (cn={0})</screen>
         </listitem>
       </orderedlist>
     </para>
+      </section>
+    <section>
+      <title>Password configuration</title>
+      <para>To provide security to the encryption alogorithm you will have to set a password in the
+          <emphasis role="italic">dhis.conf</emphasis> configuration file through the <emphasis
+          role="italic">encryption.password</emphasis>
+        property:<screen>encryption.password = xxxx</screen></para>
+      <para>The password must be at least <emphasis role="bold">24 characters long</emphasis> and it
+        is recommended to use a mix of numbers and lower- and uppercase letters. The encryption
+        password must be kept secret.</para>
+      <para><emphasis role="italic">A word of caution:</emphasis> It is not possible to recover
+        encrypted data if the encryption password is lost . Conversely, the encryption provides no
+        security if the password is exposed. Hence, great consideration should be given to storing
+        the password in a safe place.</para>
+    </section>
   </section>
   <section>
     <title>DHIS 2 Live setup</title>
