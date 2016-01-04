@@ -139,25 +139,42 @@ sudo locale-gen nb_NO.UTF-8</screen>
       <para>Restart PostgreSQL by invoking <code>sudo /etc/init.d/postgresql restart</code></para>
     </section>
     <section>
-      <title>Database configuration</title>
+      <title>Database and system configuration</title>
       <para>The database connection information is provided to DHIS 2 through a configuration file
         called <emphasis role="italic">dhis.conf</emphasis>. Create this file and save it in a
         convenient location. A configuration file for PostgreSQL corresponding to the above setup
         has these properties: </para>
-      <para><screen>hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
-hibernate.connection.driver_class = org.postgresql.Driver
-hibernate.connection.url = jdbc:postgresql:dhis2
-hibernate.connection.username = dhis
-hibernate.connection.password = xxxx
-hibernate.hbm2ddl.auto = update
+      <para><screen># Hibernate SQL dialect
+connection.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+# JDBC driver class
+connection.driver_class = org.postgresql.Driver
+
+# JDBC driver connection URL
+connection.url = jdbc:postgresql:dhis2
+
+# Database username
+connection.username = dhis
+
+# Database password
+connection.password = xxxx
+
+# Database schema behavior, can be validate, update, create, create-drop
+connection.schema = update
+
+# System base URL
+system.base_url = https://www.server.com
+
+# Encryption password (sensitive)
 encryption.password = xxxx</screen></para>
+      <para>The <emphasis role="italic">system.base_url</emphasis> property refers to the URL which
+        identifies the system on the Web. As an example, the base URL for the DHIS 2 demo is
+          <emphasis role="italic">https://play.dhis2.org/demo</emphasis>.</para>
       <para>The <emphasis role="italic">encryption.password</emphasis> property is the password used
-        when encrypting and decrypting data in the database. It applies for version 2.16 and later.
-        Note that the password must not be changed once it has been set and data has been encrypted
-        as the data can then no longer be decrypted. If the database is copied to another server the
-        encryption password must be identical. Remember to set a strong password of at least 8
-        characters. A system-provided password will be used if not set in the configuration file,
-        this can however not be considered secure.</para>
+        when encrypting and decrypting data in the database. Note that the password must not be
+        changed once it has been set and data has been encrypted as the data can then no longer be
+        decrypted. Remember to set a strong password of at least <emphasis role="bold">24
+          characters</emphasis>.</para>
       <para>A common mistake is to have a white-space after the last property value so make sure
         there is no white-space at the end of any line. Also remember that this file contains the
         clear text password for your DHIS 2 database so it needs to be protected from unauthorized
@@ -175,21 +192,21 @@ encryption.password = xxxx</screen></para>
         Currently, AWS S3 is the only supported provider. To enable cloud-based storage you must
         define the following addtional properties in your <emphasis role="italic"
           >hibernate.properties</emphasis> file:</para>
-      <screen># File store provider. Currently 'filesystem' and 'aws-s3' are supported.
+      <screen># File store provider. Currently 'filesystem' and 'aws-s3' are supported
 filestore.provider = filesystem
 
-# Directory / bucket name. Corresponds to folder within external directory on file system and 'bucket' on AWS S3.
+# Directory / bucket name, refers to folder within external directory on file system and 'bucket' on AWS S3
 filestore.container = files
 
-# The following configuration is applicable only on non-filesystem providers (AWS S3).
+# The following configuration is applicable only on non-filesystem providers (AWS S3)
 
 # Datacenter location. Not required but recommended for performance reasons.
 filestore.location = eu-west-1
 
-# Public identity / username.
+# Public identity / username
 filestore.identity = xxxx
 
-# Secret key / password (sensitive).
+# Secret password (sensitive)
 filestore.secret = xxxx</screen>
       <para>This configuration is an example reflecting the defaults and should be changed to fit
         your needs. In other words, you can omit it entirely if you plan to use the default values.
@@ -870,7 +887,7 @@ connection.schema = update
 # ----------------------------------------------------------------------
 
 # System base URL
-system.base_url = http://localhost:8080/dhis
+system.base_url = https://www.server.com
 
 # System mode for database read operations only, can be 'off', 'on'
 # system.read_only_mode = off
@@ -879,7 +896,7 @@ system.base_url = http://localhost:8080/dhis
 # Encryption
 # ----------------------------------------------------------------------
 
-# Encryption key (sensitive)
+# Encryption password (sensitive)
 # encryption.password = xxxx
 
 # ----------------------------------------------------------------------
