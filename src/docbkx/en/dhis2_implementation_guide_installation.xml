@@ -749,7 +749,7 @@ ldap.search.filter = (cn={0})</screen>
       as a DHIS 2 username.</para>
   </section>
   <section>
-    <title>Encryption configuration</title>
+    <title>Encryption setup</title>
     <para>DHIS 2 allows for encryption of data. This however requires some extra setup.</para>
       <section>
         <title>Java Cryptography Extension</title>
@@ -845,60 +845,6 @@ remote_instance.username = admin
 
 # Remote instance account password
 remote_instance.password = district</screen></para>
-  </section>
-  <section>
-    <title>DHIS 2 Live setup</title>
-    <para>The DHIS 2 Live package is extremely convenient to install and run. It is intended for demonstrations, for users who want to explore the system and for small, offline installations typically at districts or facilities. It only requires a Java Runtime Environment and runs on all browsers except Internet Explorer 7 and lower.</para>
-    <para>To install start by downloading DHIS 2 Live from <emphasis role="italic">http://dhis2.org</emphasis> and extract the archive to any location. On Windows click the executable archive. On Linux invoke the startup.sh script. After the startup process is done your default web browser will automtically be pointed to  <emphasis role="italic">http://localhost:8082</emphasis> where the application is accessible. A system tray menu is accessible on most operating systems where you can start and stop the server and start new browser sesssions. Please note that if you have the server running there is no need to start it again, simply open the application from the tray  menu.</para>
-    <para>DHIS 2 Live is running on an embedded Jetty servlet container and an embedded H2 database.
-      However it can easily be configured to run on other database systems such as PostgreSQL.
-      Please read the section above about server installations for an explanation of the database
-      configuration. The <emphasis role="italic">dhis.conf</emphasis> configuration file is located
-      in the <emphasis role="italic">conf</emphasis> folder. Remember to restart the Live package
-      for your changes to take effect. The server port is 8082 by default. This can be changed by
-      modifying the value in the<emphasis role="italic"> jetty.port</emphasis> configuration file
-      located in the <emphasis role="italic">conf</emphasis> directory.</para>
-  </section>
-  <section>
-    <title>Working with the PostgreSQL database</title>
-    <para>Common operations when managing a DHIS instance are dumping and restoring databases. To
-      make a dump (copy) of your database, assuming the setup from the installation section, you can
-      invoke the following: </para>
-    <screen>pg_dump dhis2 -U dhis -f dhis2.sql</screen>
-    <para>The first argument (dhis2) refers to the name of the database. The second argument (dhis)
-      refers to the database user. The last argument (dhis2.sql) is the file name of the copy. If
-      you want to compress the file copy immediately you can do:</para>
-    <screen>pg_dump dhis2 -U dhis | gzip &gt; dhis2.sql.gz</screen>
-    <para>To restore this copy on another system, you first need to create an empty database as
-      described in the installation section. You also need to gunzip the copy if you created a
-      compressed version. You can the invoke:</para>
-    <screen>psql -d dhis2 -U dhis -f dhis2.sql</screen>
-  </section>
-  <section>
-    <title>Application logging</title>
-    <para>The DHIS 2 application log output is directed to multiple files and locations. First, log
-      output is sent to standard output. The Tomcat servlet container usually outputs standard
-      output to a file under "logs":<screen>&lt;tomcat-dir>/logs/catalina.out</screen></para>
-    <para>Second, log output is written to a "logs" directory under the DHIS 2 home directory as
-      defined by the the DHIS2_HOME environment variables. There is a main log file for all output,
-      and separate log files for various background processes. The main file includes the background
-      process logs as well. The log files are capped at 50 Mb and log content is continuously
-      appended.<screen>&lt;DHIS2_HOME>/logs/dhis.log
-
-&lt;DHIS2_HOME>/logs/dhis-analytics-table.log
-
-&lt;DHIS2_HOME>/logs/dhis-data-exchange.log
-
-&lt;DHIS2_HOME>/logs/dhis-data-sync.log</screen></para>
-    <para>In order to override the default logging you can specify a Java system property with the
-      name <emphasis role="italic">log4j.configuration</emphasis> and a value pointing to the Log4j
-      configuration file on the classpath. If you want to point to a file on the file system (i.e.
-      outside Tomcat) you can use the <emphasis role="italic">file</emphasis> prefix e.g. like
-      this:<screen>-Dlog4j.configuration=file:/home/dhis/config/log4j.properties</screen></para>
-    <para>Java system properties can be set e.g. through the <emphasis role="italic"
-        >JAVA_OPTS</emphasis> environment variable.</para>
-    <para>DHIS 2 will eventually phase out logging to standard out / catalina.out and as a result it
-      is recommended to rely on the logs under DHIS2_HOME.</para>
   </section>
   <section>
     <title>Complete configuration reference</title>
@@ -1019,5 +965,69 @@ system.base_url = https://www.server.com
 
 # Remote instance account password
 # remote_instance.password = district</screen></para>
+  </section>
+  <section>
+    <title>Application logging</title>
+    <para>The DHIS 2 application log output is directed to multiple files and locations. First, log
+      output is sent to standard output. The Tomcat servlet container usually outputs standard
+      output to a file under "logs":<screen>&lt;tomcat-dir>/logs/catalina.out</screen></para>
+    <para>Second, log output is written to a "logs" directory under the DHIS 2 home directory as
+      defined by the the DHIS2_HOME environment variables. There is a main log file for all output,
+      and separate log files for various background processes. The main file includes the background
+      process logs as well. The log files are capped at 50 Mb and log content is continuously
+      appended.<screen>&lt;DHIS2_HOME>/logs/dhis.log
+
+&lt;DHIS2_HOME>/logs/dhis-analytics-table.log
+
+&lt;DHIS2_HOME>/logs/dhis-data-exchange.log
+
+&lt;DHIS2_HOME>/logs/dhis-data-sync.log</screen></para>
+    <para>In order to override the default logging you can specify a Java system property with the
+      name <emphasis role="italic">log4j.configuration</emphasis> and a value pointing to the Log4j
+      configuration file on the classpath. If you want to point to a file on the file system (i.e.
+      outside Tomcat) you can use the <emphasis role="italic">file</emphasis> prefix e.g. like
+      this:<screen>-Dlog4j.configuration=file:/home/dhis/config/log4j.properties</screen></para>
+    <para>Java system properties can be set e.g. through the <emphasis role="italic"
+        >JAVA_OPTS</emphasis> environment variable.</para>
+    <para>DHIS 2 will eventually phase out logging to standard out / catalina.out and as a result it
+      is recommended to rely on the logs under DHIS2_HOME.</para>
+  </section>
+  <section>
+    <title>Working with the PostgreSQL database</title>
+    <para>Common operations when managing a DHIS instance are dumping and restoring databases. To
+      make a dump (copy) of your database, assuming the setup from the installation section, you can
+      invoke the following: </para>
+    <screen>pg_dump dhis2 -U dhis -f dhis2.sql</screen>
+    <para>The first argument (dhis2) refers to the name of the database. The second argument (dhis)
+      refers to the database user. The last argument (dhis2.sql) is the file name of the copy. If
+      you want to compress the file copy immediately you can do:</para>
+    <screen>pg_dump dhis2 -U dhis | gzip &gt; dhis2.sql.gz</screen>
+    <para>To restore this copy on another system, you first need to create an empty database as
+      described in the installation section. You also need to gunzip the copy if you created a
+      compressed version. You can the invoke:</para>
+    <screen>psql -d dhis2 -U dhis -f dhis2.sql</screen>
+  </section>
+  <section>
+    <title>DHIS 2 Live setup</title>
+    <para>The DHIS 2 Live package is extremely convenient to install and run. It is intended for
+      demonstrations, for users who want to explore the system and for small, offline installations
+      typically at districts or facilities. It only requires a Java Runtime Environment and runs on
+      all browsers except Internet Explorer 7 and lower.</para>
+    <para>To install start by downloading DHIS 2 Live from <emphasis role="italic"
+        >http://dhis2.org</emphasis> and extract the archive to any location. On Windows click the
+      executable archive. On Linux invoke the startup.sh script. After the startup process is done
+      your default web browser will automtically be pointed to <emphasis role="italic"
+        >http://localhost:8082</emphasis> where the application is accessible. A system tray menu is
+      accessible on most operating systems where you can start and stop the server and start new
+      browser sesssions. Please note that if you have the server running there is no need to start
+      it again, simply open the application from the tray menu.</para>
+    <para>DHIS 2 Live is running on an embedded Jetty servlet container and an embedded H2 database.
+      However it can easily be configured to run on other database systems such as PostgreSQL.
+      Please read the section above about server installations for an explanation of the database
+      configuration. The <emphasis role="italic">dhis.conf</emphasis> configuration file is located
+      in the <emphasis role="italic">conf</emphasis> folder. Remember to restart the Live package
+      for your changes to take effect. The server port is 8082 by default. This can be changed by
+      modifying the value in the<emphasis role="italic"> jetty.port</emphasis> configuration file
+      located in the <emphasis role="italic">conf</emphasis> directory.</para>
   </section>
 </chapter>
