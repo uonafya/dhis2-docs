@@ -809,6 +809,44 @@ ldap.search.filter = (cn={0})</screen>
     </section>
   </section>
   <section>
+    <title>SMTP / Email configuration</title>
+    <para>DHIS 2 is capabable of sending emails in various settings. This requires that an SMTP
+      (Simple Mail Transfer Protocol) outgoing email service is configured, including hostname,
+      port, whether to communicate over TLS, sender address as well as a username and password to
+      access the
+      service.<screen># SMTP server hostname
+smtp.hostname = email-smtp.eu-west-1.amazonaws.com
+
+# SMTP port number, typically 587, 465, 25
+smtp.port = 587
+
+# SMTP TLS / encryption, can be true, false
+smtp.tls = true
+
+# SMTP username
+smtp.username = user
+
+# SMTP password (sensitive)
+smtp.password = xxxx
+
+# Email address to appear as sender
+smtp.sender = noreply@dhis2.org</screen></para>
+  </section>
+  <section>
+    <title>Remote instance configuration</title>
+    <para>DHIS 2 is capable of pushing data to another, remote instance of DHIS 2. This requires
+      that information about the URL and username and password of an account of the remote instance
+      is
+      configured.<screen># Remote instance URL
+remote_instance.url = https://play.dhis2.org/demo
+
+# Remote instance account username
+remote_instance.username = admin
+
+# Remote instance account password
+remote_instance.password = district</screen></para>
+  </section>
+  <section>
     <title>DHIS 2 Live setup</title>
     <para>The DHIS 2 Live package is extremely convenient to install and run. It is intended for demonstrations, for users who want to explore the system and for small, offline installations typically at districts or facilities. It only requires a Java Runtime Environment and runs on all browsers except Internet Explorer 7 and lower.</para>
     <para>To install start by downloading DHIS 2 Live from <emphasis role="italic">http://dhis2.org</emphasis> and extract the archive to any location. On Windows click the executable archive. On Linux invoke the startup.sh script. After the startup process is done your default web browser will automtically be pointed to  <emphasis role="italic">http://localhost:8082</emphasis> where the application is accessible. A system tray menu is accessible on most operating systems where you can start and stop the server and start new browser sesssions. Please note that if you have the server running there is no need to start it again, simply open the application from the tray  menu.</para>
@@ -866,10 +904,11 @@ ldap.search.filter = (cn={0})</screen>
     <title>Complete configuration reference</title>
     <para>The following describes the full set of configuration options for the <emphasis
         role="italic">dhis.conf</emphasis> configuration file. The uncommented properties are
-      mandatory. The commented properties are optional and set to the default values. The
-      configuration file should be placed in a directory which is pointed to by a <emphasis
-        role="italic">DHIS2_HOME</emphasis> environment
-      variable.<screen># ----------------------------------------------------------------------
+      mandatory. The commented properties are optional. The configuration file should be placed in a
+      directory which is pointed to by a <emphasis role="italic">DHIS2_HOME</emphasis> environment
+      variable. You can copy and paste the following content as a viable starting point for your own
+      configuration
+      file.<screen># ----------------------------------------------------------------------
 # Database connection for PostgreSQL
 # ----------------------------------------------------------------------
 
@@ -944,6 +983,41 @@ system.base_url = https://www.server.com
 # ldap.search.base = dc=hisp,dc=org
 
 # LDAP entry distinguished name filter
-# ldap.search.filter = (cn={0})</screen></para>
+# ldap.search.filter = (cn={0})
+
+# ----------------------------------------------------------------------
+# SMTP
+# ----------------------------------------------------------------------
+
+# SMTP server hostname
+# smtp.hostname = email-smtp.eu-west-1.amazonaws.com
+
+# SMTP port number, typically 587, 465, 25
+# smtp.port = 587
+
+# SMTP TLS / encryption, can be false, true
+# smtp.tls = true
+
+# SMTP username
+# smtp.username = user
+
+# SMTP password (sensitive)
+# smtp.password = xxxx
+
+# Email address to appear as sender
+# smtp.sender = noreply@dhis2.org
+
+# ----------------------------------------------------------------------
+# Remote DHIS 2 instance
+# ----------------------------------------------------------------------
+
+# Remote instance URL
+# remote_instance.url = https://play.dhis2.org/demo
+
+# Remote instance account username
+# remote_instance.username = admin
+
+# Remote instance account password
+# remote_instance.password = district</screen></para>
   </section>
 </chapter>
