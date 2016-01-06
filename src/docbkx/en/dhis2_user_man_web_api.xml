@@ -7982,7 +7982,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <screen>/api/systemSettings/my-key?value=my-val</screen>
     <para>Alternatively, you can submit the setting value as the request body, where content type is
       set to &quot;text/plain&quot;. As an example, you can use curl like this:</para>
-    <screen>curl &quot;play.dhis2.org/demo/api/systemSettings/my-key&quot; -d &quot;My long value&quot; -H &quot;Content-Type: text/plain&quot; -u admin:district -v</screen>
+    <screen>curl &quot;play.dhis2.org/demo/api/systemSettings/my-key&quot; -d &quot;My long value&quot; 
+-H &quot;Content-Type: text/plain&quot; -u admin:district -v</screen>
     <para>To set system settings in bulk you can send a JSON object with a property -value pair for
       each system setting key-value pair using a POST request:</para>
     <screen>{
