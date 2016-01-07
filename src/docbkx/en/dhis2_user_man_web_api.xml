@@ -7634,53 +7634,21 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <section>
       <title>Gateway Configuration Service</title>
       <para>Dhis2 expose Web APIs to provide a convinient way for configuring and updating sms gateway configurations. A list is given below with a small description of the exposed resource.</para>
-      <para>LISTALL API can be used to get list of configured gateways.</para>
+      <para>LISTALL can be used to get list of configured gateways.</para>
       <screen>curl -X GET &quot;http://server/api/sms/gateway&quot; -u admin:district -v</screen>
-      <para>GET CONFIGURATION API can be used to get specific gateway configurations.</para>
-      <screen>curl -X GET &quot;http://server/api/sms/gateway/{id}&quot; -u admin:district -v</screen>
-      <para>DELETE GATEWAY API can be used to remove specific gateway configurations.</para>
-      <screen>curl -X DELETE &quot;http://server/api/sms/gateway/{id}&quot; -u admin:district -v</screen>     
-      <para>GET/SET DEFAULT GATEWAY API can be used to get/set default sms gateway. Default gateway will be the first one to be used for sending sms.</para>
+      <para>GET CONFIGURATION can be used to get specific gateway configurations.</para>
+      <screen>curl -X GET &quot;http://server/api/sms/gateway/{uid}&quot; -u admin:district -v</screen>
+      <para>DELETE GATEWAY can be used to remove specific gateway configurations.</para>
+      <screen>curl -X DELETE &quot;http://server/api/sms/gateway/{uid}&quot; -u admin:district -v</screen>     
+      <para>GET/SET DEFAULT can be used to get/set default sms gateway. Default gateway will be the first one to be used for sending sms.</para>
       <screen>curl -X GET &quot;http://server/api/sms/gateway/default &quot; -u admin:district -v</screen>
-      <screen>curl -X PUT  &quot;http://server/api/sms/gateway/default/{id}&quot; -u admin:district -v</screen>
+      <screen>curl -X PUT  &quot;http://server/api/sms/gateway/default/{uid}&quot; -u admin:district -v</screen>
       
-      <para>ADD GATEWAY API can be used to add new gateway configurations. For each different type of Gateway, there are different 
+      <para>ADD/UPDATE GATEWAY API can be used to add new gateway configurations. For each different type of Gateway, there are different 
       parameters in JSON payload. For example for BulkSms gateway JSON looks like this.</para>
-      <screen>{ "type": "Bulksms", "name": "BulkSMS", "password": "abc123", "region": "Spain" }</screen>
-      <screen>curl -X POST -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateway/&quot; -u admin:district -v -d gateway.json</screen>    
-      <para>UPDATE GATEWAY API can be used to update already existing gateway configurations. For each different type of Gateway, there are different 
-        parameters in JSON payload. For example for BulkSms gateway JSON looks like this.</para>
-      <screen>{ "type": "2", "name": "BulkSMS", "password": "abc123", "region": "SPAIN" }</screen>
-      
-      <screen>curl -X PUT -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateway/&quot; -u admin:district -v -d gateway.json</screen>  
-      <para>TYPE parameter is important. Its value decides which gateway configuration to be added or updated.</para>
-      <itemizedlist>
-        <listitem><para>
-          1 = Clickatel Gateway
-        </para>
-          
-        </listitem>
-        <listitem><para>
-          2 = Bulksms Gateway
-        </para>
-          
-        </listitem>
-        <listitem><para>
-          3 = Generic Http Gateway
-        </para>
-          
-        </listitem>
-        <listitem><para>
-          4 = Modem Gateway
-        </para>
-          
-        </listitem>
-        <listitem><para>
-          5 = SMPP Gateway
-        </para>
-          
-        </listitem>
-      </itemizedlist>
+      <screen>{ "name": "BulkSMS", "password": "abc123", "region": "Spain" }</screen>
+      <screen>curl -X POST -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateway/bulksms&quot; -u admin:district -v -d gateway.json</screen>    
+      <screen>curl -X PUT -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateway/bulksms&quot; -u admin:district -v -d gateway.json</screen>  
     </section>
     
     
