@@ -2520,16 +2520,15 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
   </section>
   <section>
     <title>ADX formatted data</title>
-    <para>From version 2.20 we have included support for an upcoming international standard for
-      aggregate data exchange called ADX. ADX is developed and maintained by the Quality Research
-      and Public Health committee of the IHE (Integerating the HealthCare Enterprise). The wiki page
-      detailing QRPH activity can be found at <ulink
+    <para>From version 2.20 we have included support for an international standard for aggregate
+      data exchange called ADX. ADX is developed and maintained by the Quality Research and Public
+      Health committee of the IHE (Integerating the HealthCare Enterprise). The wiki page detailing
+      QRPH activity can be found at <ulink
         url="http://wiki.ihe.net/index.php?title=Quality,_Research_and_Public_Health#Current_Domain_Activities"
-        >wiki.ihe.net</ulink>. ADX is still under active development and is due to be published
-      before the end of 2015. Nevertheless, the data format for aggregate datavalues is currently
-      fairly stable and is unlikely to change much from what is described here. Note that what is
-      implemented currently in DHIS 2 is the functionality to read adx formatted data, i.e. what is
-      described as a Content Consumer actor in the ADX profile.</para>
+        >wiki.ihe.net</ulink>. ADX is still under active development and has now been published for
+      trial implementation. Note that what is implemented currently in DHIS 2 is the functionality
+      to read and write adx formatted data, i.e. what is described as Content Consumer and Content
+      Producer actors in the ADX profile.</para>
     <para>The structure of an ADX data message is quite similar to what you might already be
       familiar with from DXF 2 data described earlier. There are a few important differences. We
       will describe these differences with reference to a small example:
@@ -2575,9 +2574,8 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
       <title>The group element</title>
       <para>Unlike dxf2, adx requires that the datavalues are grouped according to orgUnit, period
         and dataSet. The example above shows a data report for the "(TB/HIV) VCCT" dataset from the
-        online demo database. This example is using codes as identifiers instead of dhis2 uids (An
-        adx message can also be coded using uids using the same idScheme mechanism used with dxf2.
-        More on this when we describe posting the data below).</para>
+        online demo database. This example is using codes as identifiers instead of dhis2 uids.
+        Codes are the preferred form of identifiier when using adx.</para>
       <para>The orgUnit, period and dataSet attributes are mandatory in adx. The group element may
         contain additional attributes. In our DHIS2 implementation any additional attributes are
         simply passed through to the underlying importer. This means that all attributes which
@@ -2636,7 +2634,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
           <emphasis>ragged-right</emphasis> adx data message.</para>
     </section>
     <section>
-      <title>POSTing data</title>
+      <title>Importing data - HTTP POST</title>
       <para>DHIS2 exposes an endpoint for POST adx data at <emphasis>/api/dataValueSets</emphasis>
         using <emphasis role="italic">application/xml+adx</emphasis> as content type. So, for
         example, the following curl command can be used to POST the example data above to the DHIS2
@@ -2645,6 +2643,18 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
 -d @data.xml "https://play.dhis2.org/demo/api/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=code"</screen>
         Note the query parameters are the same as are used with DXF data. The adx endpoint should
         interpret all the existing DXF parameters with the same semantics as DXF.</para>
+    </section>
+    <section>
+      <title>Exporting data - HTTP GET</title>
+      <para>DHIS2 exposes an endpoint to GET adx data sets at
+          <emphasis>/api/dataValueSets</emphasis> using <emphasis role="italic"
+          >application/xml+adx</emphasis> as the accepted content type. So, for example, the
+        following curl command can be used to retrieve the adx data:
+        <screen>curl -u admin:district -X POST -H "Accept: application/xml+adx"
+ "https://play.dhis2.org/demo/api/dataValueSets?dataValueSets?orgUnit=M_CLINIC&amp;dataSet=MALARIA&amp;period=201501"</screen>
+        Note the query parameters are the same as are used with DXF data. An important difference is
+        that the identifiers for dataSet and orgUnit are assumed to be codes rather than
+        uids.</para>
     </section>
   </section>
   <section>
