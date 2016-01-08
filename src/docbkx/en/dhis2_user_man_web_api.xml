@@ -46,11 +46,12 @@
       <listitem>
         <para>Resource representations are <emphasis role="italic">linkable</emphasis>, meaning that
           representations advertise other resources which are relevant to the current one by
-          embedding links into itself. This feature greatly improves the usability and robustness of
-          the API as we will see later. For instance, you can easily navigate to the indicators
-          which are associated with a report table from the <emphasis role="italic"
-            >reportTable</emphasis> resource through the embedded links using your preferred
-          representation format.</para>
+          embedding links into itself (please be aware that you need to request <emphasis
+            role="italic">href</emphasis> in your field filter to have this working. This feature
+          greatly improves the usability and robustness of the API as we will see later. For
+          instance, you can easily navigate to the indicators which are associated with a report
+          table from the <emphasis role="italic">reportTable</emphasis> resource through the
+          embedded links using your preferred representation format.</para>
       </listitem>
     </orderedlist>
     <para>While all of this might sound complicated, the Web API is actually very simple to use. We
@@ -366,12 +367,6 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
             </row>
           </thead>
           <tbody>
-            <row>
-              <entry>links</entry>
-              <entry>true | false</entry>
-              <entry>true</entry>
-              <entry>Indicates whether to include links to relevant elements.</entry>
-            </row>
             <row>
               <entry>paging</entry>
               <entry>true | false</entry>
