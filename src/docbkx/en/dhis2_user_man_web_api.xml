@@ -4354,7 +4354,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
               <entry>One or more data element identifiers.</entry>
             </row>
             <row>
-              <entry>psi</entry>
+              <entry>ps</entry>
               <entry>Program Stage Entity</entry>
               <entry>One or more program stage instance identifiers.</entry>
             </row>
@@ -4404,7 +4404,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
               <entry>One or more tracked entity attribute identifiers.</entry>
             </row>
             <row>
-              <entry>tei</entry>
+              <entry>te</entry>
               <entry>Tracked Entity Instances</entry>
               <entry>One or more tracked entity instance identifiers.</entry>
             </row>
@@ -7834,13 +7834,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <section>
       <title>Sms Service Administration</title>
       <para>Following below mentioned operations can be used to for sms service administration.</para>
-      <para>START can be used to start sms service</para>
-      <screen>curl -X POST &quot;http://server/api/sms/sercices/&quot; -u admin:district -v</screen>
-      <para>STOP can be used to stop sms services</para>
+      <para>START API can be used to start sms service</para>
+      <screen>curl -X POST &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
+      <para>STOP API can be used to stop sms service</para>
       <screen>curl -X DELETE &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
-      <para>RELOAD can be used to reload sms configuration</para>
+      <para>RELOAD API can be used to reload sms configuration</para>
       <screen>curl -X PUT &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
-      <para>GET STATUS can be used to get Sms service status</para>
+      <para>GET STATUS API can be used to get Sms service status</para>
       <screen>curl -X GET &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
       
     </section>
@@ -7848,7 +7848,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Gateway Configuration Service</title>
       <para>Dhis2 expose Web APIs to provide a convinient way for configuring and updating sms gateway configurations. A list is given below with a small description of the exposed resource.</para>
       <para>LISTALL can be used to get list of configured gateways.</para>
-      <screen>curl -X GET &quot;http://server/api/sms/gateways/&quot; -u admin:district -v</screen>
+      <screen>curl -X GET &quot;http://server/api/sms/gateways&quot; -u admin:district -v</screen>
       <para>GET CONFIGURATION can be used to get specific gateway configurations.</para>
       <screen>curl -X GET &quot;http://server/api/sms/gateways/{uid}&quot; -u admin:district -v</screen>
       <para>DELETE GATEWAY can be used to remove specific gateway configurations.</para>
@@ -7858,14 +7858,54 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <screen>curl -X PUT  &quot;http://server/api/sms/gateways/default/{uid}&quot; -u admin:district -v</screen>
       
       <para>ADD/UPDATE GATEWAY API can be used to add new gateway configurations. For each different type of Gateway, there are different 
-      parameters in JSON payload. Moreover there are separate API end points for all different type of gatways. Clickatell and BulkSms gateway sample is given below. POST method is used for 
-      adding new gateway and PUT method is used for updating existing gateway configuration.</para>
+      parameters in JSON payload. For example for BulkSms gateway JSON looks like this.Below mentioned table describe different gateway types and their api end points.</para>
       <screen>{ "name": "BulkSMS", "password": "abc123", "region": "Spain" }</screen>
       <screen>curl -X POST -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateways/bulksms&quot; -u admin:district -v -d gateway.json</screen>    
       <screen>curl -X PUT -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateways/bulksms&quot; -u admin:district -v -d gateway.json</screen>  
-      <screen>{ "name": "Clickaltell", "username":"clickatelluser ", "password": "abc123", "apiid": "1111111" }</screen>
-      <screen>curl -X POST -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateways/clickatell&quot; -u admin:district -v -d gateway.json</screen>    
-      <screen>curl -X PUT -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateways/clickatell&quot; -u admin:district -v -d gateway.json</screen>  
+      <table frame="all">
+        <title>Gateway api end points</title>
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1.01*"/>
+          <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+          <colspec colname="c2" colnum="3" colwidth="5.52*"/>
+          <thead>
+            <row>
+              <entry>Gatway Type</entry>
+              <entry>Method</entry>
+              <entry>API End Points</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>Clickatell</entry>
+              <entry>POST/PUT</entry>
+              <entry>http://server/api/sms/gateways/clickatell</entry>
+            </row>
+            <row>
+              <entry>Bulksms</entry>
+              <entry>POST/PUT</entry>
+              <entry>http://server/api/sms/gateways/bulksms</entry>
+            </row>
+            <row>
+              <entry>Generichttp</entry>
+              <entry>POST/PUT</entry>
+              <entry>http://server/api/sms/gateways/generichttp</entry>
+            </row>
+            <row>
+              <entry>SMPP</entry>
+              <entry>POST/PUT</entry>
+              <entry>http://server/api/sms/gateways/smpp</entry>
+            </row>
+            <row>
+              <entry>Modem</entry>
+              <entry>POST/PUT</entry>
+              <entry>http://server/api/sms/gateways/modem</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    
+    
     </section>
     
   </section>
