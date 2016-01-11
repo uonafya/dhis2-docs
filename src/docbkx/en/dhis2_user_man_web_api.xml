@@ -7740,6 +7740,32 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
+    <title>Translations</title>
+    <para>DHIS 2 allows for translations of database content. You can work with translations through
+      the Web API using the <emphasis role="italic">translations</emphasis> resource.</para>
+    <section>
+      <title>Create translation</title>
+      <para>You can create a translation with a POST request in JSON
+        format:<screen>{
+  "objectUid": "P3jJH5Tu5VC",
+  "className": "DataElement",
+  "locale": "es",
+  "property": "name",
+  "value": "Casos de fiebre amarilla"
+}</screen><screen>POST api/translations</screen></para>
+    </section>
+    <section>
+      <title>Get translations</title>
+      <para>You can browse all translations through the translations
+        resource:<screen>GET api/translations</screen></para>
+      <para>You can use the standard filtering technique to fetch translations of interest. E.g. to
+        get all translations for data elements in the Spanish locale you can use this
+        request:<screen>api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:es</screen></para>
+      <para>To get translations for a specific object for all
+        properties:<screen>api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:fr&amp;filter=objectId:eq:fbfJHSPpUQD</screen></para>
+    </section>
+  </section>
+  <section>
     <title>Shot Message Service</title>
     <para>This section covers the sms API exposed for sending and collecting(receiving) text messages.</para> 
     <section>
