@@ -7793,7 +7793,10 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <screen>/api/sms/outbound</screen>
       <screen>{ 
   "message":"Sms Text",  
-  ["recipient": "47XXXXXX1","47XXXXXX2"] 
+  "recipient": [
+  "47XXXXXX1",
+  "47XXXXXX2"
+  ] 
 }</screen>
       <para>Outbound service can be tested like with parameters, BUT parametric API can only be used for sending sms to single destination.
       </para>
@@ -7807,13 +7810,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
         An example payload is JSON is given below. text, originator, receiveddate and sentdat are mendatory parameters. Rest of them are optional but system will store default value for these parameters.</para>
       <screen>/api/sms/inbound</screen>
       <screen>{
-"text": "",
-"originator": "47XXXXXXXX",
-"gatewayid" : "unknown",
- "receiveddate" : "2016-05-01",
- "sentdate" :"2016-05-01",
- "smsencoding" : "1",
- "smsstatus" :"1"          
+  "text": "sample text",
+  "originator": "47XXXXXXXX",
+  "gatewayid" : "unknown",
+  "receiveddate" : "2016-05-01",
+  "sentdate" :"2016-05-01",
+  "smsencoding" : "1",
+  "smsstatus" :"1"          
 }</screen>
       <para>Api also supports query parameters.</para>
       <screen>/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
