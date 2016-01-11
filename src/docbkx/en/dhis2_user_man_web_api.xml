@@ -2082,21 +2082,37 @@ http://server/api/constants/ID</screen></para>
   ..
 &lt;/dataValueSet></screen>
         <para>The parameter table above explains how the id schemes can be specified as query
-          parameters. The following rules apply for what takes precedence:</para>
-        <itemizedlist>
-          <listitem>
-            <para>Id schemes defined in the XML or JSON payload take precedence over id schemes
-              defined as URL query parameters.</para>
-          </listitem>
-          <listitem>
-            <para>Specific id schemes including dataElementIdScheme and orgUnitIdScheme take
-              precedence over the general idScheme.</para>
-          </listitem>
-          <listitem>
-            <para>The default id scheme is UID, which will be used if no explicit id scheme is
-              defined.</para>
-          </listitem>
-        </itemizedlist>
+          parameters. The following rules apply for what takes precedence: <itemizedlist>
+            <listitem>
+              <para>Id schemes defined in the XML or JSON payload take precedence over id schemes
+                defined as URL query parameters.</para>
+            </listitem>
+            <listitem>
+              <para>Specific id schemes including dataElementIdScheme and orgUnitIdScheme take
+                precedence over the general idScheme.</para>
+            </listitem>
+            <listitem>
+              <para>The default id scheme is UID, which will be used if no explicit id scheme is
+                defined.</para>
+            </listitem>
+          </itemizedlist></para>
+        <para>The following identifier schemes are availabe.<itemizedlist>
+            <listitem>
+              <para>uid (default)</para>
+            </listitem>
+            <listitem>
+              <para>code</para>
+            </listitem>
+            <listitem>
+              <para>name</para>
+            </listitem>
+            <listitem>
+              <para>attribute (followed by UID of attribute)</para>
+            </listitem>
+          </itemizedlist></para>
+        <para>The attribute option is special and refers to meta-data attributes which have been
+          marked as "unique". When using this option, "attribute" must be immediately followed by
+          the uid of the attribute, e.g. "attributeDnrLSdo4hMl".</para>
       </section>
     </section>
     <section>
