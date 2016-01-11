@@ -7791,13 +7791,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
         An example payload is JSON is given below. text, originator, receiveddate and sentdat are mendatory parameters. Rest of them are optional but system will store default value for these parameters.</para>
       <screen>/api/sms/inbound</screen>
       <screen>{
-"text": "",
-"originator": "47XXXXXXXX",
-"gatewayid" : "unknown",
-"receiveddate" : "2016-05-01",
-"sentdate" :"2016-05-01",
-"smsencoding" : "1",
-"smsstatus" :"1"          
+  "text": "sample text",
+  "originator": "47XXXXXXXX",
+  "gatewayid" : "unknown",
+  "receiveddate" : "2016-05-01",
+  "sentdate" :"2016-05-01",
+  "smsencoding" : "1",
+  "smsstatus" :"1"          
 }</screen>
       <para>Api also supports query parameters.</para>
       <screen>/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
