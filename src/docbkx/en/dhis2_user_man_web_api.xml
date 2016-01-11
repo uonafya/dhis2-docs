@@ -7765,42 +7765,42 @@ ORDER BY oul.level, par.name, ou.name</screen>
         properties:<screen>api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:fr&amp;filter=objectId:eq:fbfJHSPpUQD</screen></para>
     </section>
   </section>
+  
   <section>
-    <title>Shot Message Service</title>
+    <title>Short Message Service</title>
     <para>This section covers the sms API exposed for sending and collecting(receiving) text messages.</para> 
     <section>
       <title>OutBound sms service</title>
-      <para>The Web API supports sending outgoing sms using <emphasis role="italic">outbound</emphasis> 
-        resource. Sms can be sent to single or multiple destinations. It needs a Set of recipients and message text in JSON format as shown below. 
-        Gateway needs to be configured before using this service. Sms will NOT be sent if there is no gateway configured.  
-        An example payload in JSON looks like this:</para>
-     <screen>{  "message": "Sms Text",   ["recipient": "47XXXXXX1","47XXXXXX2"] }</screen>
+      <para>The Web API supports sending outgoing sms using POST method. Sms can be sent to single or multiple destinations. Gateway needs to be configured before using this service. Sms will NOT be sent if there is no gateway configured.  
+        It needs a Set of recipients and message text in JSON format as shown below. 
+      </para>
+      <screen>/api/sms/outbound</screen>
+      <screen>{ 
+  "message":"Sms Text",  
+  ["recipient": "47XXXXXX1","47XXXXXX2"] 
+}</screen>
       <para>Outbound service can be tested like with parameters, BUT parametric API can only be used for sending sms to single destination.
       </para>
-      <screen>curl -d @message.json &quot;http://server/api/sms/outbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
-      <para>Query parameters can also be used like this</para>
-      <screen>http://server/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
+      <screen>/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
     </section>
     
     <section>
       <title>InBound sms service</title>
-      <para>The Web API supports collecting incoming sms using <emphasis role="italic">inbound</emphasis> 
-        resource. For collecting incoming messages routed towards Dhis2 can be received using this api. API collects inbound sms and provide it to   
-        listeners for parsing based on the sms text. This API can be tested by posting JSON format.        
+      <para>The Web API supports collecting incoming sms using POST method. For collecting incoming messages routed towards dhis can be received using this api. API collects inbound sms and provide it to   
+        listeners for parsing based on the sms text.
         An example payload is JSON is given below. text, originator, receiveddate and sentdat are mendatory parameters. Rest of them are optional but system will store default value for these parameters.</para>
+      <screen>/api/sms/inbound</screen>
       <screen>{
-             "text": "",
-             "originator": "47XXXXXXXX",
-             "gatewayid" : "unknown",
-             "receiveddate" : "2016-05-01",
-             "sentdate" :"2016-05-01",
-             "smsencoding" : "1",
-             "smsstatus" :"1"          
+"text": "",
+"originator": "47XXXXXXXX",
+"gatewayid" : "unknown",
+ "receiveddate" : "2016-05-01",
+ "sentdate" :"2016-05-01",
+ "smsencoding" : "1",
+ "smsstatus" :"1"          
 }</screen>
-      <para>Inbound service can be tested like this.</para>
-      <screen>curl -d @message.json &quot;http://server/api/sms/inbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
-      <para>Query parameters can also be used like this.</para>
-      <screen>http://server/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
+      <para>Api also supports query parameters.</para>
+      <screen>/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
       <table frame="all">
         <title>User query parameters</title>
         <tgroup cols="3">
@@ -7833,35 +7833,75 @@ ORDER BY oul.level, par.name, ou.name</screen>
     
     <section>
       <title>Sms Service Administration</title>
-      <para>Following below mentioned operations can be used to for sms service administration.</para>
-      <para>START API can be used to start sms service</para>
-      <screen>curl -X POST &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
-      <para>STOP API can be used to stop sms service</para>
-      <screen>curl -X DELETE &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
-      <para>RELOAD API can be used to reload sms configuration</para>
-      <screen>curl -X PUT &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
-      <para>GET STATUS API can be used to get Sms service status</para>
-      <screen>curl -X GET &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
+      <para>Dhis2 supports Sms service API for service administraiton.</para>
+      <para>Sms service can be started using POST method.</para>
+      <screen>/api/sms/services/</screen>
+      <para>Sms service can be stopped using DELETE method.</para>
+      <screen>/api/sms/services/</screen>
+      <para>Sms configurations can be reloaded using PUT method.</para>
+      <screen>/api/sms/services/</screen>
+      <para>Sms service status can be retrived using GET method.</para>
+      <screen>/api/sms/services/</screen>
       
     </section>
     <section>
-      <title>Gateway Configuration Service</title>
+      <title>Gateway Service Administration</title>
       <para>Dhis2 expose Web APIs to provide a convinient way for configuring and updating sms gateway configurations. A list is given below with a small description of the exposed resource.</para>
-      <para>LISTALL can be used to get list of configured gateways.</para>
-      <screen>curl -X GET &quot;http://server/api/sms/gateways&quot; -u admin:district -v</screen>
-      <para>GET CONFIGURATION can be used to get specific gateway configurations.</para>
-      <screen>curl -X GET &quot;http://server/api/sms/gateways/{uid}&quot; -u admin:district -v</screen>
-      <para>DELETE GATEWAY can be used to remove specific gateway configurations.</para>
-      <screen>curl -X DELETE &quot;http://server/api/sms/gateways/{uid}&quot; -u admin:district -v</screen>     
-      <para>GET/SET DEFAULT can be used to get/set default sms gateway. Default gateway will be the first one to be used for sending sms.</para>
-      <screen>curl -X GET &quot;http://server/api/sms/gateways/default &quot; -u admin:district -v</screen>
-      <screen>curl -X PUT  &quot;http://server/api/sms/gateways/default/{uid}&quot; -u admin:district -v</screen>
+      <para>List of different gateways configured can be retrieved using GET method.</para>
+      <screen>/api/sms/gateways</screen>
+      <para>Configurations can also be retrieved for specific gateway type using GET method.</para>
+      <screen>/api/sms/gateways/{uid}</screen>
+      <para>Configurations can be removed for specific gateway type using DELETE method.</para>
+      <screen>/api/sms/gateways/{uid}</screen>     
+      <para>Default gateway can be retrived by GET method.</para>
+      <screen>/api/sms/gateways/default</screen>
+      <para>Default gateway can be set by PUT method.</para>
+      <screen>/api/sms/gateways/default/{uid}</screen>
       
-      <para>ADD/UPDATE GATEWAY API can be used to add new gateway configurations. For each different type of Gateway, there are different 
-      parameters in JSON payload. For example for BulkSms gateway JSON looks like this.Below mentioned table describe different gateway types and their api end points.</para>
-      <screen>{ "name": "BulkSMS", "password": "abc123", "region": "Spain" }</screen>
-      <screen>curl -X POST -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateways/bulksms&quot; -u admin:district -v -d gateway.json</screen>    
-      <screen>curl -X PUT -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateways/bulksms&quot; -u admin:district -v -d gateway.json</screen>  
+      <para>Dhis2 expose Web APIs for create and update of gateway configuraitons. For each different type of Gateway, there are different 
+        parameters in JSON payload. Sample JSON for each different gateway is given below. POST is used to create and PUT to update configurations. </para>
+      
+      <para>Clickatell</para>
+      <screen>{
+  "name" : "clickatell",
+  "username": "clickatelluser",
+  "password": "abc123",
+  "apiid": "12121"
+}</screen>
+      <para>Bulksms</para>
+      <screen>{ 
+  "name": "bulkSMS",
+  "password": "abc123",
+  "region": "Spain"
+}</screen>
+      <para>GenericHttp</para>
+      <screen>{
+  "name" : "generic",
+  "username": "genericUser",
+  "password": "abc123", "Url Template":
+  "http://localhost:template"
+}</screen>
+      <para>SMPP</para>
+      <screen>{
+  "name" : "smpp",
+  "username": "smppUser",
+  "password": "abc123",
+  "Address": "http://localhost:template",
+  "Address" : "sample.smpp.com" ,
+  "Port" : "8143"
+}</screen>
+      <para>Modem</para>
+      <screen>{
+  "name": "modem",
+  "Port": "COM1",
+  "BaudRate": "1000",
+  "Poolinterval" : "10",
+  "Manufacturer" : "Nokia" ,
+  "Model" : "8124",
+  "PIN" : "1212"
+}</screen>
+      
+      
       <table frame="all">
         <title>Gateway api end points</title>
         <tgroup cols="3">
@@ -7879,36 +7919,38 @@ ORDER BY oul.level, par.name, ou.name</screen>
             <row>
               <entry>Clickatell</entry>
               <entry>POST/PUT</entry>
-              <entry>http://server/api/sms/gateways/clickatell</entry>
+              <entry>/api/sms/gateways/clickatell</entry>
             </row>
             <row>
               <entry>Bulksms</entry>
               <entry>POST/PUT</entry>
-              <entry>http://server/api/sms/gateways/bulksms</entry>
+              <entry>/api/sms/gateways/bulksms</entry>
             </row>
             <row>
               <entry>Generichttp</entry>
               <entry>POST/PUT</entry>
-              <entry>http://server/api/sms/gateways/generichttp</entry>
+              <entry>/api/sms/gateways/generichttp</entry>
             </row>
             <row>
               <entry>SMPP</entry>
               <entry>POST/PUT</entry>
-              <entry>http://server/api/sms/gateways/smpp</entry>
+              <entry>/api/sms/gateways/smpp</entry>
             </row>
             <row>
               <entry>Modem</entry>
               <entry>POST/PUT</entry>
-              <entry>http://server/api/sms/gateways/modem</entry>
+              <entry>/api/sms/gateways/modem</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
-    
-    
+      
+      
     </section>
     
   </section>
+  
+  
   <section>
     <title>Users</title>
     <para>This section covers the user resource methods.</para>
