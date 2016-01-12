@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"[]>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"[]>
 <chapter>
   <title>Web API</title>
   <para>The Web API is a component which makes it possible for external systems to access and
@@ -339,6 +339,60 @@ THIS_SIX_MONTH, LAST_SIX_MONTH, MONTHS_THIS_YEAR, QUARTERS_THIS_YEAR,
 THIS_YEAR, MONTHS_LAST_YEAR, QUARTERS_LAST_YEAR, LAST_YEAR, LAST_5_YEARS, LAST_12_MONTHS,
 LAST_3_MONTHS, LAST_6_BIMONTHS, LAST_4_QUARTERS, LAST_2_SIXMONTHS, THIS_FINANCIAL_YEAR,
 LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
+  </section>
+  <section>
+    <title>Identifier Schemes</title>
+    <para>Throughout the Web API we refer to different kinds of id schemes, this section will give a
+      explanation to how they can be used. Please note that not all schemes works for all web-api
+      calls, and not not all schemes can be used for both input and output (this is outlined in the
+      sections explaining the web-apis themself). Setting the <emphasis role="italic"
+        >idScheme</emphasis> allows you to override the default for <emphasis role="italic"
+        >all</emphasis> schemes, but if other schemes are declared like <emphasis role="italic"
+        >dataElementIdScheme</emphasis> this this will be used instead.</para>
+    <para>The full range of scheme parameters available
+      are:<screen>idScheme, dataElementIdScheme, categoryOptionComboIdScheme, orgUnitIdScheme,
+programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttributeIdScheme</screen></para>
+    <para>The default scheme for all parameters are what we call the <emphasis role="italic">stable
+        identifiers</emphasis> i.e. UIDs, but we also have different schemes depending on how you
+      want object matching to behave.<table frame="all">
+        <title>Scheme Values</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="6.14*"/>
+          <thead>
+            <row>
+              <entry>Scheme</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>ID, UID</entry>
+              <entry>Match on DHIS 2 stable Identifier, this is the default id scheme.</entry>
+            </row>
+            <row>
+              <entry>CODE</entry>
+              <entry>Match on DHIS 2 Code, mainly used to exchange data with an external
+                system.</entry>
+            </row>
+            <row>
+              <entry>NAME</entry>
+              <entry>Match on DHIS 2 Name, please not that this uses what is available as <emphasis
+                  role="italic">object.name</emphasis>, and not the translated name. Also not that
+                names are not always unique, and in that case they can not be used.</entry>
+            </row>
+            <row>
+              <entry>ATTRIBUTE:ID</entry>
+              <entry>Match on metadata attribute, this attribute needs to be assigned to the type
+                you are matching on, and also that the unique property is set to <emphasis
+                  role="italic">true</emphasis>. The main usage of this is also to exchange data
+                with external systems, it has some advantages over <emphasis role="italic"
+                  >CODE</emphasis> since multiple attributes can be added, so it can be used to
+                synchronize with more than one system.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table></para>
   </section>
   <section>
     <title>Browsing the Web API</title>
@@ -1995,6 +2049,9 @@ http://server/api/constants/ID</screen></para>
         by the last data value having an invalid reference to org unit. The data set complete
         element will display the date of which the data value set was completed, or false if no data
         element attribute was supplied.</para>
+    </section>
+      <section>
+        <title>Import parameters</title>
       <para>The import process can be customized using a set of import parameters:</para>
       <table>
         <title>Import parameters</title>
@@ -2009,17 +2066,17 @@ http://server/api/constants/ID</screen></para>
           <tbody>
             <row>
               <entry>dataElementIdScheme</entry>
-              <entry>id | name | code</entry>
+              <entry>id | name | code | attribute:ID</entry>
               <entry>Property of the data element object to use to map the data values.</entry>
             </row>
             <row>
               <entry>orgUnitIdScheme</entry>
-              <entry>id | name | code</entry>
+              <entry>id | name | code | attribute:ID</entry>
               <entry>Property of the org unit object to use to map the data values.</entry>
             </row>
             <row>
               <entry>idScheme</entry>
-              <entry>id | name | code</entry>
+              <entry>id | name | code| attribute:ID</entry>
               <entry>Property of all objects including data elements, org units and category option
                 combos, to use to map the data values.</entry>
             </row>
@@ -2082,21 +2139,37 @@ http://server/api/constants/ID</screen></para>
   ..
 &lt;/dataValueSet></screen>
         <para>The parameter table above explains how the id schemes can be specified as query
-          parameters. The following rules apply for what takes precedence:</para>
-        <itemizedlist>
-          <listitem>
-            <para>Id schemes defined in the XML or JSON payload take precedence over id schemes
-              defined as URL query parameters.</para>
-          </listitem>
-          <listitem>
-            <para>Specific id schemes including dataElementIdScheme and orgUnitIdScheme take
-              precedence over the general idScheme.</para>
-          </listitem>
-          <listitem>
-            <para>The default id scheme is UID, which will be used if no explicit id scheme is
-              defined.</para>
-          </listitem>
-        </itemizedlist>
+          parameters. The following rules apply for what takes precedence: <itemizedlist>
+            <listitem>
+              <para>Id schemes defined in the XML or JSON payload take precedence over id schemes
+                defined as URL query parameters.</para>
+            </listitem>
+            <listitem>
+              <para>Specific id schemes including dataElementIdScheme and orgUnitIdScheme take
+                precedence over the general idScheme.</para>
+            </listitem>
+            <listitem>
+              <para>The default id scheme is UID, which will be used if no explicit id scheme is
+                defined.</para>
+            </listitem>
+          </itemizedlist></para>
+        <para>The following identifier schemes are availabe.<itemizedlist>
+            <listitem>
+              <para>uid (default)</para>
+            </listitem>
+            <listitem>
+              <para>code</para>
+            </listitem>
+            <listitem>
+              <para>name</para>
+            </listitem>
+            <listitem>
+              <para>attribute (followed by UID of attribute)</para>
+            </listitem>
+          </itemizedlist></para>
+        <para>The attribute option is special and refers to meta-data attributes which have been
+          marked as "unique". When using this option, "attribute" must be immediately followed by
+          the uid of the attribute, e.g. "attributeDnrLSdo4hMl".</para>
       </section>
     </section>
     <section>
@@ -2765,15 +2838,16 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     ] }
   ]
 }</screen>
-      <para>(From 2.13) As part of the import summary you will also get the identifier <emphasis
-          role="italic">reference</emphasis> to the event you just sent, together with a <emphasis
-          role="italic">href</emphasis> element which points to the server location of this event. </para>
+      <para>As part of the import summary you will also get the identifier <emphasis role="italic"
+          >reference</emphasis> to the event you just sent, together with a <emphasis role="italic"
+          >href</emphasis> element which points to the server location of this event. </para>
       <para><emphasis role="bold">OrgUnit matching</emphasis>: By default the orgUnit parameter will
-        match on the ID (of the orgUnit, but from 2.15 you can also select the orgUnit id matching
-        scheme by using the parameter orgUnitIdScheme=SCHEME, where the options are: <emphasis
-          role="italic">ID</emphasis>, <emphasis role="italic">UID</emphasis>, <emphasis
-          role="italic">UUID</emphasis>, <emphasis role="italic">CODE</emphasis>, and <emphasis
-          role="italic">NAME</emphasis> (ID and UID will both matchUIDs).</para>
+        match on the ID, you can also select the orgUnit id matching scheme by using the parameter
+        orgUnitIdScheme=SCHEME, where the options are: <emphasis role="italic">ID</emphasis>,
+          <emphasis role="italic">UID</emphasis>, <emphasis role="italic">UUID</emphasis>, <emphasis
+          role="italic">CODE</emphasis>, and <emphasis role="italic">NAME</emphasis>. There is also
+        the <emphasis role="italic">ATTRIBUTE:</emphasis> scheme, which matches on a <emphasis
+          role="italic">unique</emphasis> metadata attribute value.</para>
       <para><emphasis role="bold">Update</emphasis>: To update an existing event, the format of the
         payload is the same, but the URL you are posting to must add the identifier to the end of
         the URL string and the request must be PUT.
@@ -4354,7 +4428,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
               <entry>One or more data element identifiers.</entry>
             </row>
             <row>
-              <entry>psi</entry>
+              <entry>ps</entry>
               <entry>Program Stage Entity</entry>
               <entry>One or more program stage instance identifiers.</entry>
             </row>
@@ -4404,7 +4478,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
               <entry>One or more tracked entity attribute identifiers.</entry>
             </row>
             <row>
-              <entry>tei</entry>
+              <entry>te</entry>
               <entry>Tracked Entity Instances</entry>
               <entry>One or more tracked entity instance identifiers.</entry>
             </row>
@@ -7726,41 +7800,84 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
-    <title>Shot Message Service</title>
+    <title>Locales</title>
+    <para>DHIS 2 supports translations both for the user interface and for database content.</para>
+    <section>
+      <title>UI locales</title>
+      <para>You can retrieve the available locales for the user interface through the following
+        resource with a GET request.<screen>api/locales/ui</screen></para>
+    </section>
+    <section>
+      <title>Database content locales</title>
+      <para>You can retrieve and create locales for database content with GET and POST requests
+        through the following resource.<screen>api/locales/db</screen></para>
+    </section>
+  </section>
+  <section>
+    <title>Translations</title>
+    <para>DHIS 2 allows for translations of database content. You can work with translations through
+      the Web API using the <emphasis role="italic">translations</emphasis> resource.</para>
+    <section>
+      <title>Create translation</title>
+      <para>You can create a translation with a POST request in JSON
+        format:<screen>{
+  "objectUid": "P3jJH5Tu5VC",
+  "className": "DataElement",
+  "locale": "es",
+  "property": "name",
+  "value": "Casos de fiebre amarilla"
+}</screen><screen>POST api/translations</screen></para>
+    </section>
+    <section>
+      <title>Get translations</title>
+      <para>You can browse all translations through the translations
+        resource:<screen>GET api/translations</screen></para>
+      <para>You can use the standard filtering technique to fetch translations of interest. E.g. to
+        get all translations for data elements in the Spanish locale you can use this
+        request:<screen>api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:es</screen></para>
+      <para>To get translations for a specific object for all
+        properties:<screen>api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:fr&amp;filter=objectId:eq:fbfJHSPpUQD</screen></para>
+    </section>
+  </section>
+  
+  <section>
+    <title>Short Message Service</title>
     <para>This section covers the sms API exposed for sending and collecting(receiving) text messages.</para> 
     <section>
       <title>OutBound sms service</title>
-      <para>The Web API supports sending outgoing sms using <emphasis role="italic">outbound</emphasis> 
-        resource. Sms can be sent to single or multiple destinations. It needs a Set of recipients and message text in JSON format as shown below. 
-        Gateway needs to be configured before using this service. Sms will NOT be sent if there is no gateway configured.  
-        An example payload in JSON looks like this:</para>
-     <screen>{  "message": "Sms Text",   ["recipient": "47XXXXXX1","47XXXXXX2"] }</screen>
+      <para>The Web API supports sending outgoing sms using POST method. Sms can be sent to single or multiple destinations. Gateway needs to be configured before using this service. Sms will NOT be sent if there is no gateway configured.  
+        It needs a Set of recipients and message text in JSON format as shown below. 
+      </para>
+      <screen>/api/sms/outbound</screen>
+      <screen>{ 
+  "message":"Sms Text",  
+  "recipient": [
+  "47XXXXXX1",
+  "47XXXXXX2"
+  ] 
+}</screen>
       <para>Outbound service can be tested like with parameters, BUT parametric API can only be used for sending sms to single destination.
       </para>
-      <screen>curl -d @message.json &quot;http://server/api/sms/outbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
-      <para>Query parameters can also be used like this</para>
-      <screen>http://server/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
+      <screen>/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
     </section>
     
     <section>
       <title>InBound sms service</title>
-      <para>The Web API supports collecting incoming sms using <emphasis role="italic">inbound</emphasis> 
-        resource. For collecting incoming messages routed towards Dhis2 can be received using this api. API collects inbound sms and provide it to   
-        listeners for parsing based on the sms text. This API can be tested by posting JSON format.        
+      <para>The Web API supports collecting incoming sms using POST method. For collecting incoming messages routed towards dhis can be received using this api. API collects inbound sms and provide it to   
+        listeners for parsing based on the sms text.
         An example payload is JSON is given below. text, originator, receiveddate and sentdat are mendatory parameters. Rest of them are optional but system will store default value for these parameters.</para>
+      <screen>/api/sms/inbound</screen>
       <screen>{
-             "text": "",
-             "originator": "47XXXXXXXX",
-             "gatewayid" : "unknown",
-             "receiveddate" : "2016-05-01",
-             "sentdate" :"2016-05-01",
-             "smsencoding" : "1",
-             "smsstatus" :"1"          
+  "text": "sample text",
+  "originator": "47XXXXXXXX",
+  "gatewayid" : "unknown",
+  "receiveddate" : "2016-05-01",
+  "sentdate" :"2016-05-01",
+  "smsencoding" : "1",
+  "smsstatus" :"1"          
 }</screen>
-      <para>Inbound service can be tested like this.</para>
-      <screen>curl -d @message.json &quot;http://server/api/sms/inbound&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
-      <para>Query parameters can also be used like this.</para>
-      <screen>http://server/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
+      <para>Api also supports query parameters.</para>
+      <screen>/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
       <table frame="all">
         <title>User query parameters</title>
         <tgroup cols="3">
@@ -7793,42 +7910,124 @@ ORDER BY oul.level, par.name, ou.name</screen>
     
     <section>
       <title>Sms Service Administration</title>
-      <para>Following below mentioned operations can be used to for sms service administration.</para>
-      <para>START can be used to start sms service</para>
-      <screen>curl -X POST &quot;http://server/api/sms/sercices/&quot; -u admin:district -v</screen>
-      <para>STOP can be used to stop sms services</para>
-      <screen>curl -X DELETE &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
-      <para>RELOAD can be used to reload sms configuration</para>
-      <screen>curl -X PUT &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
-      <para>GET STATUS can be used to get Sms service status</para>
-      <screen>curl -X GET &quot;http://server/api/sms/services/&quot; -u admin:district -v</screen>
+      <para>Dhis2 supports Sms service API for service administraiton.</para>
+      <para>Sms service can be started using POST method.</para>
+      <screen>/api/sms/services/</screen>
+      <para>Sms service can be stopped using DELETE method.</para>
+      <screen>/api/sms/services/</screen>
+      <para>Sms configurations can be reloaded using PUT method.</para>
+      <screen>/api/sms/services/</screen>
+      <para>Sms service status can be retrived using GET method.</para>
+      <screen>/api/sms/services/</screen>
       
     </section>
     <section>
-      <title>Gateway Configuration Service</title>
+      <title>Gateway Service Administration</title>
       <para>Dhis2 expose Web APIs to provide a convinient way for configuring and updating sms gateway configurations. A list is given below with a small description of the exposed resource.</para>
-      <para>LISTALL can be used to get list of configured gateways.</para>
-      <screen>curl -X GET &quot;http://server/api/sms/gateways/&quot; -u admin:district -v</screen>
-      <para>GET CONFIGURATION can be used to get specific gateway configurations.</para>
-      <screen>curl -X GET &quot;http://server/api/sms/gateways/{uid}&quot; -u admin:district -v</screen>
-      <para>DELETE GATEWAY can be used to remove specific gateway configurations.</para>
-      <screen>curl -X DELETE &quot;http://server/api/sms/gateways/{uid}&quot; -u admin:district -v</screen>     
-      <para>GET/SET DEFAULT can be used to get/set default sms gateway. Default gateway will be the first one to be used for sending sms.</para>
-      <screen>curl -X GET &quot;http://server/api/sms/gateways/default &quot; -u admin:district -v</screen>
-      <screen>curl -X PUT  &quot;http://server/api/sms/gateways/default/{uid}&quot; -u admin:district -v</screen>
+      <para>List of different gateways configured can be retrieved using GET method.</para>
+      <screen>/api/sms/gateways</screen>
+      <para>Configurations can also be retrieved for specific gateway type using GET method.</para>
+      <screen>/api/sms/gateways/{uid}</screen>
+      <para>Configurations can be removed for specific gateway type using DELETE method.</para>
+      <screen>/api/sms/gateways/{uid}</screen>     
+      <para>Default gateway can be retrived by GET method.</para>
+      <screen>/api/sms/gateways/default</screen>
+      <para>Default gateway can be set by PUT method.</para>
+      <screen>/api/sms/gateways/default/{uid}</screen>
       
-      <para>ADD/UPDATE GATEWAY API can be used to add new gateway configurations. For each different type of Gateway, there are different 
-      parameters in JSON payload. Moreover there are separate API end points for all different type of gatways. Clickatell and BulkSms gateway sample is given below. POST method is used for 
-      adding new gateway and PUT method is used for updating existing gateway configuration.</para>
-      <screen>{ "name": "BulkSMS", "password": "abc123", "region": "Spain" }</screen>
-      <screen>curl -X POST -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateways/bulksms&quot; -u admin:district -v -d gateway.json</screen>    
-      <screen>curl -X PUT -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateways/bulksms&quot; -u admin:district -v -d gateway.json</screen>  
-      <screen>{ "name": "Clickaltell", "username":"clickatelluser ", "password": "abc123", "apiid": "1111111" }</screen>
-      <screen>curl -X POST -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateways/clickatell&quot; -u admin:district -v -d gateway.json</screen>    
-      <screen>curl -X PUT -H  &quot;Content-Type: application/json&quot;  &quot;http://server/api/sms/gateways/clickatell&quot; -u admin:district -v -d gateway.json</screen>  
+      <para>Dhis2 expose Web APIs for create and update of gateway configuraitons. For each different type of Gateway, there are different 
+        parameters in JSON payload. Sample JSON for each different gateway is given below. POST is used to create and PUT to update configurations. </para>
+      
+      <para>Clickatell</para>
+      <screen>{
+  "name" : "clickatell",
+  "username": "clickatelluser",
+  "password": "abc123",
+  "apiid": "12121"
+}</screen>
+      <para>Bulksms</para>
+      <screen>{ 
+  "name": "bulkSMS",
+  "password": "abc123",
+  "region": "Spain"
+}</screen>
+      <para>GenericHttp</para>
+      <screen>{
+  "name" : "generic",
+  "username": "genericUser",
+  "password": "abc123", "Url Template":
+  "http://localhost:template"
+}</screen>
+      <para>SMPP</para>
+      <screen>{
+  "name" : "smpp",
+  "username": "smppUser",
+  "password": "abc123",
+  "Address": "http://localhost:template",
+  "Address" : "sample.smpp.com" ,
+  "Port" : "8143"
+}</screen>
+      <para>Modem</para>
+      <screen>{
+  "name": "modem",
+  "Port": "COM1",
+  "BaudRate": "1000",
+  "Poolinterval" : "10",
+  "Manufacturer" : "Nokia" ,
+  "Model" : "8124",
+  "PIN" : "1212"
+}</screen>
+      
+      
+      <table frame="all">
+        <title>Gateway api end points</title>
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1.01*"/>
+          <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+          <colspec colname="c2" colnum="3" colwidth="5.52*"/>
+          <thead>
+            <row>
+              <entry>Gatway Type</entry>
+              <entry>Method</entry>
+              <entry>API End Points</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>Clickatell</entry>
+              <entry>POST/PUT</entry>
+              <entry>/api/sms/gateways/clickatell</entry>
+            </row>
+            <row>
+              <entry>Bulksms</entry>
+              <entry>POST/PUT</entry>
+              <entry>/api/sms/gateways/bulksms</entry>
+            </row>
+            <row>
+              <entry>Generichttp</entry>
+              <entry>POST/PUT</entry>
+              <entry>/api/sms/gateways/generichttp</entry>
+            </row>
+            <row>
+              <entry>SMPP</entry>
+              <entry>POST/PUT</entry>
+              <entry>/api/sms/gateways/smpp</entry>
+            </row>
+            <row>
+              <entry>Modem</entry>
+              <entry>POST/PUT</entry>
+              <entry>/api/sms/gateways/modem</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      
+      
     </section>
     
   </section>
+  
+  
   <section>
     <title>Users</title>
     <para>This section covers the user resource methods.</para>
@@ -8163,14 +8362,89 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <screen>/api/userSettings/my-key?user=username&amp;value=my-val</screen>
     <para>Alternatively, you can submit the setting value as the request body, where content type is
       set to &quot;text/plain&quot;. As an example, you can use curl like this:</para>
-    <screen>curl &quot;play.dhis2.org/demo/api/userSettings/my-key&quot; -d &quot;My long value&quot; 
+    <screen>curl &quot;https://play.dhis2.org/demo/api/userSettings/my-key&quot; -d &quot;My long value&quot; 
 -H &quot;Content-Type: text/plain&quot; -u admin:district -v</screen>
+    <para>As an example, to set the UI locale of the current user to French you can use the
+      following command.</para>
+    <screen>curl "https://play.dhis2.org/demo/api/userSettings/keyUiLocale?value=fr" -X POST -u admin:district -v</screen>
     <para>You should replace my-key with your real key and my-val with your real value. To retrieve
       the value for a given key in plain text you can make a <emphasis role="italic">GET</emphasis>
       request to the following URL:</para>
     <screen>/api/userSettings/my-key</screen>
     <para>To delete a user setting, you can make a <emphasis role="italic">DELETE</emphasis> request
       to the URL similar to the one used above for retrieval.</para>
+    <para>The available system settings are listed below.<table frame="all">
+        <title>User settings</title>
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="newCol2" colnum="2" colwidth="1.36*"/>
+          <colspec colname="c2" colnum="3" colwidth="2.35*"/>
+          <thead>
+            <row>
+              <entry>Key</entry>
+              <entry>Options</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>keyCurrentStyle</entry>
+              <entry>light_blue/light_blue.css | green/green.css | vietnam/vietnam.css</entry>
+              <entry>User interface stylesheet.</entry>
+            </row>
+            <row>
+              <entry>keyMessageEmailNotification</entry>
+              <entry>false | true</entry>
+              <entry>Whether to send email notifications.</entry>
+            </row>
+            <row>
+              <entry>keyMessageSmsNotification</entry>
+              <entry>false | true</entry>
+              <entry>Whether to send SMS notifications.</entry>
+            </row>
+            <row>
+              <entry>keyUiLocale</entry>
+              <entry>Locale value</entry>
+              <entry>User interface locale.</entry>
+            </row>
+            <row>
+              <entry>keyDbLocale</entry>
+              <entry>Locale value</entry>
+              <entry>Database content locale.</entry>
+            </row>
+            <row>
+              <entry>keyAnalysisDisplayProperty</entry>
+              <entry>name | shortName</entry>
+              <entry>Property to display for metadata in analysis apps.</entry>
+            </row>
+            <row>
+              <entry>keyCurrentDomainType</entry>
+              <entry>all | aggregate | tracker</entry>
+              <entry>Data element domain type to display in lists.</entry>
+            </row>
+            <row>
+              <entry>keyAutoSaveCaseEntryForm</entry>
+              <entry>false | true</entry>
+              <entry>Save case entry forms periodically.</entry>
+            </row>
+            <row>
+              <entry>keyAutoSaveTrackedEntityForm</entry>
+              <entry>false | true</entry>
+              <entry>Save person registration forms periodically.</entry>
+            </row>
+            <row>
+              <entry>keyAutoSaveDataEntryForm</entry>
+              <entry>false | true</entry>
+              <entry>Save aggregate data entry forms periodically.</entry>
+            </row>
+            <row>
+              <entry>keyTrackerDashboardLayout</entry>
+              <entry>false | true</entry>
+              <entry>Tracker dasboard layout.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table></para>
   </section>
   <section>
     <title>Organisation units</title>
@@ -9562,6 +9836,42 @@ ORDER BY oul.level, par.name, ou.name</screen>
     ]
 }</screen>
     </section>
+  </section>
+  <section>
+    <title>Tracker Bulk Deletion</title>
+    <para>Bulk deletion of tracker objects work in a similar fashion to adding and updating tracker
+      objects, the only difference is that the <emphasis role="italic">importStrategy</emphasis> is
+        <emphasis role="bold">DELETE</emphasis>.</para>
+    <para><emphasis role="italic">Example: Bulk deletion of tracked entity
+      instances:</emphasis><screen>{
+  "trackedEntityInstances": [
+    { "trackedEntityInstance": "ID1" },
+    { "trackedEntityInstance": "ID2" },
+    { "trackedEntityInstance": "ID3" }
+  ]
+}</screen></para>
+    <screen>curl -X POST -d @data.json -H "Content-Type: application/json"
+  "http://server/api/trackedEntityInstasnces?importStrategy=DELETE"</screen>
+    <para><emphasis role="italic">Example: Bulk deletion of
+      enrollments:</emphasis><screen>{
+  "enrollments": [
+    { "enrollment": "ID1" },
+    { "enrollment": "ID2" },
+    { "enrollment": "ID3" }
+  ]
+}</screen></para>
+    <screen>curl -X POST -d @data.json -H "Content-Type: application/json"
+  "http://server/api/enrollments?importStrategy=DELETE"</screen>
+    <para><emphasis role="italic">Example: Bulk deletion of
+      events:</emphasis><screen>{
+  "events": [
+    { "event": "ID1" },
+    { "event": "ID2" },
+    { "event": "ID3" }
+  ]
+}</screen></para>
+    <screen>curl -X POST -d @data.json -H "Content-Type: application/json"
+  "http://server/api/events?importStrategy=DELETE"</screen>
   </section>
   <section>
     <title>Email</title>
