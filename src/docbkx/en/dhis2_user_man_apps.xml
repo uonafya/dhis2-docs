@@ -91,25 +91,9 @@
   </section>
   <section>
     <title>Configuring DHIS 2 for Apps Installation</title>
-    <para>The <emphasis>App Manager</emphasis> is found under Services → Apps. If your logged in user has
-      permissions to view and edit settings you will see the Settings link in the left menu.</para>
-    <para><inlinegraphic fileref="resources/images/apps/app-settings.png" format="PNG" align="center" width="70%"/></para>
-    <para>The following settings can be configured:</para>
-    <orderedlist>
-      <listitem>
-        <para><emphasis role="italic">App Installation Folder:</emphasis> The folder on the file
-          system where apps are unpacked. By default this is under the expanded DHIS folder suffixed
-          by /apps. If you like to install your apps in another location, say <filename>www</filename> folder of Apache
-          2, you can specify the absolute path to that directory on the server, making your apps to
-          be unpacked at that location.</para>
-      </listitem>
-      <listitem>
-        <para><emphasis role="italic">App Base URL:</emphasis> The URL through which the apps can be
-          found on the Web. By default this is the same as your DHIS 2 URL suffixed by /apps. If you
-          are installing apps through a different web server you need to provide the full URL for
-          that web server.</para>
-      </listitem>
-    </orderedlist>
+    <para>For apps to work properly, make sure that you have set the <emphasis role="italic"
+        >system.base_url</emphasis> parameter in the <emphasis role="italic">dhis.conf</emphasis>
+      configuration file.<screen>system.base_url = https://www.server.com</screen></para>
   </section>
   <section>
     <title>Installing Apps into DHIS 2</title>
