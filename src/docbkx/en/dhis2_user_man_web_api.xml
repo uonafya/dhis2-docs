@@ -8362,14 +8362,76 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <screen>/api/userSettings/my-key?user=username&amp;value=my-val</screen>
     <para>Alternatively, you can submit the setting value as the request body, where content type is
       set to &quot;text/plain&quot;. As an example, you can use curl like this:</para>
-    <screen>curl &quot;play.dhis2.org/demo/api/userSettings/my-key&quot; -d &quot;My long value&quot; 
+    <screen>curl &quot;https://play.dhis2.org/demo/api/userSettings/my-key&quot; -d &quot;My long value&quot; 
 -H &quot;Content-Type: text/plain&quot; -u admin:district -v</screen>
+    <para>As an example, to set the UI locale of the current user to French you can use the
+      following command.</para>
+    <screen>curl "https://play.dhis2.org/demo/api/userSettings/keyUiLocale?value=fr" -X POST -u admin:district -v</screen>
     <para>You should replace my-key with your real key and my-val with your real value. To retrieve
       the value for a given key in plain text you can make a <emphasis role="italic">GET</emphasis>
       request to the following URL:</para>
     <screen>/api/userSettings/my-key</screen>
     <para>To delete a user setting, you can make a <emphasis role="italic">DELETE</emphasis> request
       to the URL similar to the one used above for retrieval.</para>
+    <para>The available system settings are listed below.<table frame="all">
+        <title>User settings</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="3.17*"/>
+          <thead>
+            <row>
+              <entry>Key</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>keyCurrentStyle</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>keyMessageEmailNotification</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>keyMessageSmsNotification</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>keyUiLocale</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>keyDbLocale</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>keyAnalysisDisplayProperty</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>keyCurrentDomainType</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>keyAutoSaveCaseEntryForm</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>keyAutoSavetTrackedEntityForm</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>keyAutoSaveDataEntryForm</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>keyTrackerDashboardLayout</entry>
+              <entry/>
+            </row>
+          </tbody>
+        </tgroup>
+      </table></para>
   </section>
   <section>
     <title>Organisation units</title>
