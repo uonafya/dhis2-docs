@@ -9711,14 +9711,29 @@ ORDER BY oul.level, par.name, ou.name</screen>
         <emphasis role="bold">DELETE</emphasis>.</para>
     <para><emphasis role="italic">Example: Bulk deletion of tracked entity
       instances:</emphasis><screen>{
+  "trackedEntityInstances": [
+    { "trackedEntityInstance": "ID1" },
+    { "trackedEntityInstance": "ID2" },
+    { "trackedEntityInstance": "ID3" }
+  ]
 }</screen></para>
     <screen>curl -X POST -d @data.json -H "Content-Type: application/json" "http://server/api/trackedEntityInstasnces?importStrategy=DELETE"</screen>
     <para><emphasis role="italic">Example: Bulk deletion of
       enrollments:</emphasis><screen>{
+  "enrollments": [
+    { "enrollment": "ID1" },
+    { "enrollment": "ID2" },
+    { "enrollment": "ID3" }
+  ]
 }</screen></para>
     <screen>curl -X POST -d @data.json -H "Content-Type: application/json" "http://server/api/enrollments?importStrategy=DELETE"</screen>
     <para><emphasis role="italic">Example: Bulk deletion of
       events:</emphasis><screen>{
+  "events": [
+    { "event": "ID1" },
+    { "event": "ID2" },
+    { "event": "ID3" }
+  ]
 }</screen></para>
     <screen>curl -X POST -d @data.json -H "Content-Type: application/json" "http://server/api/events?importStrategy=DELETE"</screen>
   </section>
