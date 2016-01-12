@@ -345,10 +345,16 @@ LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
     <para>Throughout the Web API we refer to different kinds of id schemes, this section will give a
       explanation to how they can be used. Please note that not all schemes works for all web-api
       calls, and not not all schemes can be used for both input and output (this is outlined in the
-      sections explaining the web-apis themself). The full range of scheme parameters available
+      sections explaining the web-apis themself). Setting the <emphasis role="italic"
+        >idScheme</emphasis> allows you to override the default for <emphasis role="italic"
+        >all</emphasis> schemes, but if other schemes are declared like <emphasis role="italic"
+        >dataElementIdScheme</emphasis> this this will be used instead.</para>
+    <para>The full range of scheme parameters available
       are:<screen>idScheme, dataElementIdScheme, categoryOptionComboIdScheme, orgUnitIdScheme,
 programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttributeIdScheme</screen></para>
-    <para>The scheme values available are:<table frame="all">
+    <para>The default scheme for all parameters are what we call the <emphasis role="italic">stable
+        identifiers</emphasis> i.e. UIDs, but we also have different schemes depending on what you
+      want to achive.<table frame="all">
         <title>Scheme Values</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
@@ -362,11 +368,12 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
           <tbody>
             <row>
               <entry>ID, UID</entry>
-              <entry>Match on DHIS 2 Identifier.</entry>
+              <entry>Match on DHIS 2 stable Identifier, this is the default id scheme.</entry>
             </row>
             <row>
               <entry>CODE</entry>
-              <entry>Match on DHIS 2 Code.</entry>
+              <entry>Match on DHIS 2 Code, mainly used to exchange data with an external
+                system.</entry>
             </row>
             <row>
               <entry>NAME</entry>
@@ -378,7 +385,10 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
               <entry>ATTRIBUTE:ID</entry>
               <entry>Match on metadata attribute, this attribute needs to be assigned to the type
                 you are matching on, and also that the unique property is set to <emphasis
-                  role="italic">true</emphasis>.</entry>
+                  role="italic">true</emphasis>. The main usage of this is also to exchange data
+                with external systems, it has some advantages over <emphasis role="italic"
+                  >CODE</emphasis> since multiple attributes can be added, so it can be used to
+                synchronize with more than one system.</entry>
             </row>
           </tbody>
         </tgroup>
