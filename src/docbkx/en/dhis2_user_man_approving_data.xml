@@ -3,11 +3,21 @@
 <chapter>
   <title>Data approval</title>
   <para>DHIS 2 has an optional feature that allows authorized users to approve data that has been entered. It allows data to be reviewed and approved at selected levels in the organisation unit hierarchy, so the approval follows the structure of the hierarchy from lower levels to higher levels.</para>
-  <para>Data is approved for a combination of (a) data set, (b) period and (c) organisation unit. Data may be approved for the organisation unit for which it is entered, as well as for higher-level organisation units to which the data is aggregated. As part of system settings, you can choose the organisation unit level(s) at which data is approved. It can be approved at higher levels only after it has been approved for all that organisation unit&apos;s descendants at lower levels for the same data set and period.</para>
-  <para>After a data set, period and organisation unit combination has been approved, the form will
-    be locked and any further data entry or modification will be prohibited, unless it is later
-    un-approved.</para>
-  <para>For example, the following diagram illustrates that data has already been approved for organisation units C and D, for a given data set and period. It may now be approved for organisation unit B for the same data set and period. But it is not ready to be approved for organization unit A. Before it can be approved for organisation unit A, it must be approved for B, and for any other children of organisation unit A, for that data set and period.</para>
+  <para>Data is approved for a combination of (a) period, (b) organisation unit and (c) workflow.
+    Data may be approved for the organisation unit for which it is entered, as well as for
+    higher-level organisation units to which the data is aggregated. As part of system settings, you
+    can choose the organisation unit level(s) at which data is approved. It can be approved at
+    higher levels only after it has been approved for all that organisation unit&apos;s descendants
+    at lower levels for the same workflow and period. When you approve a workflow, it approves data
+    for any data sets that have been assigned to that workflow.</para>
+  <para>After a period, organisation unit and workflow combination has been approved, data sets
+    associated with that workflow will be locked for that period and organisation unit, and any
+    further data entry or modification will be prohibited unless it is first un-approved.</para>
+  <para>For example, the following diagram illustrates that data has already been approved for
+    organisation units C and D, for a given period and workflow. It may now be approved for
+    organisation unit B for the same period and workflow. But it is not ready to be approved for
+    organization unit A. Before it can be approved for organisation unit A, it must be approved for
+    B, and for any other children of organisation unit A, for that period and workflow.</para>
   <figure>
     <title>Approving at organisation units</title>
     <mediaobject>
@@ -48,10 +58,24 @@
   </section>
   <section>
     <title>Configuring data approval</title>
-    <para>When you add or edit a data set, you specify whether or not data entered for that data set
-      will be available for approval. This is done with the <emphasis role="italic">Approve data</emphasis> option when adding or editing a data set.</para>
-    <para>You can configure the organisation unit levels at which you want to approve data in these data sets. This is done in the <emphasis role="italic">Settings</emphasis> section, under <emphasis role="italic">System Approval Settings</emphasis>. Click the Add new button on this page and select the organisation unit level at which you want approvals. It will be added to the list of approval settings. You may configure the system for approving data at every organisation unit level, or only at selected organisation unit levels.</para>
-    <para>Note that when you add a new approval level, you may optionally choose a Category option group set. This feature is discussed later in this chapter.</para>
+    <para>In the <emphasis role="italic">Settings</emphasis> section under <emphasis role="italic"
+        >System Approval Settings</emphasis> you can specify the levels at which you want to approve
+      data in the system. Click the Add new button on this page and select the organisation unit
+      level at which you want approvals. It will be added to the list of approval settings. You may
+      configure the system for approving data at every organisation unit level, or only at selected
+      organisation unit levels.</para>
+    <para>Note that when you add a new approval level, you may optionally choose a Category option
+      group set. This feature is discussed later in this chapter.</para>
+    <para>Also under <emphasis role="italic">System Approval Settings</emphasis>, you can define the
+      workflows that will be used for approving data. Each workflow can be associated with one or
+      more approval levels. Any two workflows may operate at all the same approval levels as each
+      other, some of the same and some different levels, or completely different levels.</para>
+    <para>If you want data for a data set to be approved according to a workflow, then assign the
+      workflow to the data set when you add or edit the data set. If you do not want data for a data
+      set to be subject to approval, then do not assign any workflow to that data set. For data sets
+      that you want to approve at the same time as each other, assign them to the same workflow. For
+      data sets that you want to approve independently, assign each data set to its own
+      workflow.</para>
     <para>On the <emphasis role="italic">System Approval Settings</emphasis> page, you may select
       the option <emphasis role="italic">Hide unapproved data in analytics</emphasis> to hide
       unapproved data in reports, pivot table, data visualizer and GIS. If this option is checked,
@@ -116,7 +140,10 @@
     <para>To approve data, go to <emphasis role="italic">Reports</emphasis> and choose <emphasis role="italic">Data Approval</emphasis>. When this report shows data that is configured for approval, it shows the approval status of the data in the report. The approval status will be one of the following:</para>
     <itemizedlist>
       <listitem>
-        <para><emphasis role="bold">Waiting for lower level org units to approve</emphasis> - This data is not yet ready to be approved, because it first needs to be approved for all the child organisation units to this organisation unit, for the same data set and period.</para>
+        <para><emphasis role="bold">Waiting for lower level org units to approve</emphasis> - This
+          data is not yet ready to be approved, because it first needs to be approved for all the
+          child organisation units to this organisation unit, for the same workflow and
+          period.</para>
       </listitem>
       <listitem>
         <para><emphasis role="bold">Ready for approval</emphasis> - This data may now be approved by an authorized user.</para>
@@ -175,7 +202,10 @@
           </tbody>
         </tgroup>
       </table>
-      <para>Each partner could enter data for their accounts independently of the other, for the same or different data sets, at the same or different facilities. So for example, data can be entered and/or aggregated at the following levels for each partner, independently of each other:</para>
+      <para>Each partner could enter data for their accounts independently of the other, for the
+        same or different workflows, at the same or different facilities. So for example, data can
+        be entered and/or aggregated at the following levels for each partner, independently of each
+        other:</para>
       <figure>
         <title>Example category option groups</title>
         <mediaobject>
