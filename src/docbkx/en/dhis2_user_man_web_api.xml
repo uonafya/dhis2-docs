@@ -341,6 +341,46 @@ LAST_3_MONTHS, LAST_6_BIMONTHS, LAST_4_QUARTERS, LAST_2_SIXMONTHS, THIS_FINANCIA
 LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
   </section>
   <section>
+    <title>Identifier Schemes</title>
+    <para>Throughout the Web API we refer to different kinds of id schemes, this section will give a
+      explanation to how they can be used. Please note that not all schemes works for all web-api
+      calls, and not not all schemes can be used for both input and output (this is outlined in the
+      sections explaining the web-apis themself). The full range of scheme parameters available
+      are:<screen>idScheme, dataElementIdScheme, categoryOptionComboIdScheme, orgUnitIdScheme,
+programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttributeIdScheme</screen></para>
+    <para>The scheme values available are:<table frame="all">
+        <title>Scheme Values</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="6.14*"/>
+          <thead>
+            <row>
+              <entry>Scheme</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>ID, UID</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>CODE</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>NAME</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>ATTRIBUTE:ID</entry>
+              <entry/>
+            </row>
+          </tbody>
+        </tgroup>
+      </table></para>
+  </section>
+  <section>
     <title>Browsing the Web API</title>
     <para>The entry point for browsing the Web API is <emphasis role="italic">/api/</emphasis>. This
       resource provide links to all available resources. Four resource representation formats are
