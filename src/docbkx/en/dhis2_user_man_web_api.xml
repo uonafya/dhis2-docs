@@ -2781,15 +2781,16 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     ] }
   ]
 }</screen>
-      <para>(From 2.13) As part of the import summary you will also get the identifier <emphasis
-          role="italic">reference</emphasis> to the event you just sent, together with a <emphasis
-          role="italic">href</emphasis> element which points to the server location of this event. </para>
+      <para>As part of the import summary you will also get the identifier <emphasis role="italic"
+          >reference</emphasis> to the event you just sent, together with a <emphasis role="italic"
+          >href</emphasis> element which points to the server location of this event. </para>
       <para><emphasis role="bold">OrgUnit matching</emphasis>: By default the orgUnit parameter will
-        match on the ID (of the orgUnit, but from 2.15 you can also select the orgUnit id matching
-        scheme by using the parameter orgUnitIdScheme=SCHEME, where the options are: <emphasis
-          role="italic">ID</emphasis>, <emphasis role="italic">UID</emphasis>, <emphasis
-          role="italic">UUID</emphasis>, <emphasis role="italic">CODE</emphasis>, and <emphasis
-          role="italic">NAME</emphasis> (ID and UID will both matchUIDs).</para>
+        match on the ID, you can also select the orgUnit id matching scheme by using the parameter
+        orgUnitIdScheme=SCHEME, where the options are: <emphasis role="italic">ID</emphasis>,
+          <emphasis role="italic">UID</emphasis>, <emphasis role="italic">UUID</emphasis>, <emphasis
+          role="italic">CODE</emphasis>, and <emphasis role="italic">NAME</emphasis>. There is also
+        the <emphasis role="italic">ATTRIBUTE:</emphasis> scheme, which matches on a <emphasis
+          role="italic">unique</emphasis> metadata attribute value.</para>
       <para><emphasis role="bold">Update</emphasis>: To update an existing event, the format of the
         payload is the same, but the URL you are posting to must add the identifier to the end of
         the URL string and the request must be PUT.
