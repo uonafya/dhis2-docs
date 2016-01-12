@@ -9705,6 +9705,24 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
+    <title>Tracker Bulk Deletion</title>
+    <para>Bulk deletion of tracker objects work in a similar fashion to adding and updating tracker
+      objects, the only difference is that the <emphasis role="italic">importStrategy</emphasis> is
+        <emphasis role="bold">DELETE</emphasis>.</para>
+    <para><emphasis role="italic">Example: Bulk deletion of tracked entity
+      instances:</emphasis><screen>{
+}</screen></para>
+    <screen>curl -X POST -d @data.json -H "Content-Type: application/json" "http://server/api/trackedEntityInstasnces?importStrategy=DELETE"</screen>
+    <para><emphasis role="italic">Example: Bulk deletion of
+      enrollments:</emphasis><screen>{
+}</screen></para>
+    <screen>curl -X POST -d @data.json -H "Content-Type: application/json" "http://server/api/enrollments?importStrategy=DELETE"</screen>
+    <para><emphasis role="italic">Example: Bulk deletion of
+      events:</emphasis><screen>{
+}</screen></para>
+    <screen>curl -X POST -d @data.json -H "Content-Type: application/json" "http://server/api/events?importStrategy=DELETE"</screen>
+  </section>
+  <section>
     <title>Email</title>
     <para>The Web API features a resource for sending emails. For emails to be sent it is required
       that the SMTP configuration has been properly set up and that a system notification email
