@@ -341,6 +341,60 @@ LAST_3_MONTHS, LAST_6_BIMONTHS, LAST_4_QUARTERS, LAST_2_SIXMONTHS, THIS_FINANCIA
 LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
   </section>
   <section>
+    <title>Identifier Schemes</title>
+    <para>Throughout the Web API we refer to different kinds of id schemes, this section will give a
+      explanation to how they can be used. Please note that not all schemes works for all web-api
+      calls, and not not all schemes can be used for both input and output (this is outlined in the
+      sections explaining the web-apis themself). Setting the <emphasis role="italic"
+        >idScheme</emphasis> allows you to override the default for <emphasis role="italic"
+        >all</emphasis> schemes, but if other schemes are declared like <emphasis role="italic"
+        >dataElementIdScheme</emphasis> this this will be used instead.</para>
+    <para>The full range of scheme parameters available
+      are:<screen>idScheme, dataElementIdScheme, categoryOptionComboIdScheme, orgUnitIdScheme,
+programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttributeIdScheme</screen></para>
+    <para>The default scheme for all parameters are what we call the <emphasis role="italic">stable
+        identifiers</emphasis> i.e. UIDs, but we also have different schemes depending on how you
+      want object matching to behave.<table frame="all">
+        <title>Scheme Values</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="6.14*"/>
+          <thead>
+            <row>
+              <entry>Scheme</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>ID, UID</entry>
+              <entry>Match on DHIS 2 stable Identifier, this is the default id scheme.</entry>
+            </row>
+            <row>
+              <entry>CODE</entry>
+              <entry>Match on DHIS 2 Code, mainly used to exchange data with an external
+                system.</entry>
+            </row>
+            <row>
+              <entry>NAME</entry>
+              <entry>Match on DHIS 2 Name, please not that this uses what is available as <emphasis
+                  role="italic">object.name</emphasis>, and not the translated name. Also not that
+                names are not always unique, and in that case they can not be used.</entry>
+            </row>
+            <row>
+              <entry>ATTRIBUTE:ID</entry>
+              <entry>Match on metadata attribute, this attribute needs to be assigned to the type
+                you are matching on, and also that the unique property is set to <emphasis
+                  role="italic">true</emphasis>. The main usage of this is also to exchange data
+                with external systems, it has some advantages over <emphasis role="italic"
+                  >CODE</emphasis> since multiple attributes can be added, so it can be used to
+                synchronize with more than one system.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table></para>
+  </section>
+  <section>
     <title>Browsing the Web API</title>
     <para>The entry point for browsing the Web API is <emphasis role="italic">/api/</emphasis>. This
       resource provide links to all available resources. Four resource representation formats are
@@ -2012,17 +2066,17 @@ http://server/api/constants/ID</screen></para>
           <tbody>
             <row>
               <entry>dataElementIdScheme</entry>
-              <entry>id | name | code</entry>
+              <entry>id | name | code | attribute:ID</entry>
               <entry>Property of the data element object to use to map the data values.</entry>
             </row>
             <row>
               <entry>orgUnitIdScheme</entry>
-              <entry>id | name | code</entry>
+              <entry>id | name | code | attribute:ID</entry>
               <entry>Property of the org unit object to use to map the data values.</entry>
             </row>
             <row>
               <entry>idScheme</entry>
-              <entry>id | name | code</entry>
+              <entry>id | name | code| attribute:ID</entry>
               <entry>Property of all objects including data elements, org units and category option
                 combos, to use to map the data values.</entry>
             </row>
@@ -2784,15 +2838,16 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     ] }
   ]
 }</screen>
-      <para>(From 2.13) As part of the import summary you will also get the identifier <emphasis
-          role="italic">reference</emphasis> to the event you just sent, together with a <emphasis
-          role="italic">href</emphasis> element which points to the server location of this event. </para>
+      <para>As part of the import summary you will also get the identifier <emphasis role="italic"
+          >reference</emphasis> to the event you just sent, together with a <emphasis role="italic"
+          >href</emphasis> element which points to the server location of this event. </para>
       <para><emphasis role="bold">OrgUnit matching</emphasis>: By default the orgUnit parameter will
-        match on the ID (of the orgUnit, but from 2.15 you can also select the orgUnit id matching
-        scheme by using the parameter orgUnitIdScheme=SCHEME, where the options are: <emphasis
-          role="italic">ID</emphasis>, <emphasis role="italic">UID</emphasis>, <emphasis
-          role="italic">UUID</emphasis>, <emphasis role="italic">CODE</emphasis>, and <emphasis
-          role="italic">NAME</emphasis> (ID and UID will both matchUIDs).</para>
+        match on the ID, you can also select the orgUnit id matching scheme by using the parameter
+        orgUnitIdScheme=SCHEME, where the options are: <emphasis role="italic">ID</emphasis>,
+          <emphasis role="italic">UID</emphasis>, <emphasis role="italic">UUID</emphasis>, <emphasis
+          role="italic">CODE</emphasis>, and <emphasis role="italic">NAME</emphasis>. There is also
+        the <emphasis role="italic">ATTRIBUTE:</emphasis> scheme, which matches on a <emphasis
+          role="italic">unique</emphasis> metadata attribute value.</para>
       <para><emphasis role="bold">Update</emphasis>: To update an existing event, the format of the
         payload is the same, but the URL you are posting to must add the identifier to the end of
         the URL string and the request must be PUT.
@@ -9706,6 +9761,42 @@ ORDER BY oul.level, par.name, ou.name</screen>
     ]
 }</screen>
     </section>
+  </section>
+  <section>
+    <title>Tracker Bulk Deletion</title>
+    <para>Bulk deletion of tracker objects work in a similar fashion to adding and updating tracker
+      objects, the only difference is that the <emphasis role="italic">importStrategy</emphasis> is
+        <emphasis role="bold">DELETE</emphasis>.</para>
+    <para><emphasis role="italic">Example: Bulk deletion of tracked entity
+      instances:</emphasis><screen>{
+  "trackedEntityInstances": [
+    { "trackedEntityInstance": "ID1" },
+    { "trackedEntityInstance": "ID2" },
+    { "trackedEntityInstance": "ID3" }
+  ]
+}</screen></para>
+    <screen>curl -X POST -d @data.json -H "Content-Type: application/json"
+  "http://server/api/trackedEntityInstasnces?importStrategy=DELETE"</screen>
+    <para><emphasis role="italic">Example: Bulk deletion of
+      enrollments:</emphasis><screen>{
+  "enrollments": [
+    { "enrollment": "ID1" },
+    { "enrollment": "ID2" },
+    { "enrollment": "ID3" }
+  ]
+}</screen></para>
+    <screen>curl -X POST -d @data.json -H "Content-Type: application/json"
+  "http://server/api/enrollments?importStrategy=DELETE"</screen>
+    <para><emphasis role="italic">Example: Bulk deletion of
+      events:</emphasis><screen>{
+  "events": [
+    { "event": "ID1" },
+    { "event": "ID2" },
+    { "event": "ID3" }
+  ]
+}</screen></para>
+    <screen>curl -X POST -d @data.json -H "Content-Type: application/json"
+  "http://server/api/events?importStrategy=DELETE"</screen>
   </section>
   <section>
     <title>Email</title>
