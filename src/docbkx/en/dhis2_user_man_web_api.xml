@@ -10229,7 +10229,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>To create a new key and value for a
         namespace:<screen>POST /api/dataStore/&lt;namespace>/&lt;key></screen></para>
       <para>Example curl request for create, assuming a valid json
-        payload:<screen>curl "play.dhis2.org/demo/api/dataStore/foo/key_1" -X POST -d "{\"foo\":\"bar\"}" -u admin:district -v</screen></para>
+        payload:<screen>curl "https://play.dhis2.org/demo/api/dataStore/foo/key_1" -X POST 
+-H "Content-Type: application/json" -d "{\"foo\":\"bar\"}" -u admin:district -v</screen></para>
       <para>Example
         response:<screen>{
     "httpStatus": "OK",
@@ -10240,7 +10241,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>To update a key that exists in a
         namespace:<screen>PUT /api/dataStore/&lt;namespace>/&lt;key></screen></para>
       <para>Example curl request for update, assuming valid JSON
-        payload:<screen>curl "play.dhis2.org/demo/api/dataStore/foo/key_1" -X PUT -d "[1, 2, 3]" 
+        payload:<screen>curl "https://play.dhis2.org/demo/api/dataStore/foo/key_1" -X PUT -d "[1, 2, 3]" 
 -H "Content-Type: application/json" -u admin:district -v</screen></para>
       <para>Example
         response:<screen>{
