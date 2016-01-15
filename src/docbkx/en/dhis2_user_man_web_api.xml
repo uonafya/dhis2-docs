@@ -7930,29 +7930,28 @@ ORDER BY oul.level, par.name, ou.name</screen>
     
     <section>
       <title>SMS service administration</title>
-      <para>The Web API supports SMS service APIs for service administraiton.</para>
-      <para>The SMS service can be started using the POST method.</para>
+      <para>The Web API supports SMS service APIs for service administration.</para>
+      <para>Service can be started using the POST method.</para>
       <screen>POST /api/sms/service</screen>
-      <para>The SMS service can be stopped using the DELETE method.</para>
+      <para>Service can be stopped using the DELETE method.</para>
       <screen>DELETE /api/sms/service</screen>
-      <para>The SMS configurations can be reloaded using the PUT method.</para>
-      <screen>PUT /api/sms/service</screen>
-      <para>The SMS service status can be retrived using the GET method.</para>
+      <para>Service status can be retrieved using the GET method.</para>
       <screen>GET /api/sms/service</screen>
-      
+      <para>SMS configurations can be reloaded using the PUT method.</para>
+      <screen>PUT /api/sms/service</screen>
     </section>
     <section>
       <title>Gateway service administration</title>
       <para>The Web API exposes resources which provide a way to configure and update SMS gateway
         configurations.</para>
-      <para>The list of different gateways configured can be retrieved using GET method.</para>
+      <para>The list of different gateways configured can be retrieved using a GET method.</para>
       <screen>GET /api/sms/gateways</screen>
       <para>Configurations can also be retrieved for a specific gateway type using GET
         method.</para>
       <screen>GET /api/sms/gateways/{uid}</screen>
       <para>Configurations can be removed for specific gateway type using DELETE method.</para>
       <screen>DELETE /api/sms/gateways/{uid}</screen>     
-      <para>Default gateway can be retrived with the GET method.</para>
+      <para>Default gateway can be retrieved with the GET method.</para>
       <screen>GET /api/sms/gateways/default</screen>
       <para>Default gateway can be set using the PUT method.</para>
       <screen>PUT /api/sms/gateways/default/{uid}</screen>
@@ -7973,6 +7972,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para><emphasis role="italic">Bulksms</emphasis></para>
       <screen>{ 
   "name": "bulkSMS",
+  "username": "bulkuser",
   "password": "abc123",
   "region": "Spain"
 }</screen>
@@ -7980,27 +7980,30 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <screen>{
   "name" : "generic",
   "username": "genericUser",
-  "password": "abc123", "Url Template":
-  "http://localhost:template"
+  "password": "abc123",
+  "urlTemplate": "http://localhost:template",
+  "parameters": {
+  "parameter1": "value1",
+  "parameter2": "value2"
+  }
 }</screen>
       <para><emphasis role="italic">SMPP</emphasis></para>
       <screen>{
   "name" : "smpp",
   "username": "smppUser",
   "password": "abc123",
-  "Address": "http://localhost:template",
-  "Address" : "sample.smpp.com" ,
-  "Port" : "8143"
+  "address" : "sample.smpp.com",
+  "port" : "8143"
 }</screen>
       <para><emphasis role="italic">Modem</emphasis></para>
       <screen>{
   "name": "modem",
-  "Port": "COM1",
-  "BaudRate": "1000",
-  "Poolinterval" : "10",
-  "Manufacturer" : "Nokia" ,
-  "Model" : "8124",
-  "PIN" : "1212"
+  "port": "COM1",
+  "baudrate": "1000",
+  "pollingInterval" : "10",
+  "manufacturer" : "Nokia",
+  "model" : "8124",
+  "pin" : "1212"
 }</screen>
       <para>The various gateway configurations can be instantiated using the endpoints listed
         below.</para>
