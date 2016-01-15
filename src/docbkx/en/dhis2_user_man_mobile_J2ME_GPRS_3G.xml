@@ -52,12 +52,6 @@
       </listitem>
     </itemizedlist>
   </section>
-  <section id="mobile_j2me_gprs_3g_activity_reporting">
-    <title>J2ME GPRS 3G program reporting client</title>
-    <para>Like facility reporting module, sever side of activity reporting included in DHIS2 war file.</para>
-    <para>Basically, server side setup for activity does not require any additional step. The mobile application use the same user name and password as  the web-based application. Make sure that the user is assigned to the correct organization unit.</para>
-    <para>In short, if a user is able to enter data for activity reporting in DHIS2 web-based application, he/she is able to download and enter data in mobile application.</para>
-  </section>
   <section>
     <title>Detailed configuration of data sets and reporting forms</title>
     <para>Though the previous steps is all that should be needed for testing the solution more detail configuration of the datasets may be required and are described in the following sections. </para>
@@ -159,8 +153,7 @@
       <title>Installation and initialization</title>
       <section>
         <title>Installation</title>
-        <para>Download the jar packages from the DHIS 2 homepage: <ulink
-            url="www.dhis2.org/downloads">www.dhis2.org/downloads</ulink></para>
+        <para>Download the jar packages from the DHIS 2 homepage: <ulink url="www.dhis2.org/downloads">www.dhis2.org/downloads</ulink></para>
       </section>
       <section>
         <title>Initialization</title>
@@ -168,8 +161,7 @@
         <para><screenshot>
             <mediaobject>
               <imageobject>
-                <imagedata width="260px" align="center"
-                  fileref="resources/images/dhis_mobile/mobile_login_screen.png"/>
+                <imagedata width="260px" align="center" fileref="resources/images/dhis_mobile/mobile_login_screen.png"/>
               </imageobject>
             </mediaobject>
           </screenshot>Once the client has been installed on the phone, an initialization process
@@ -392,140 +384,13 @@
             <screenshot>
               <mediaobject>
                 <imageobject>
-                  <imagedata width="146px" align="center" fileref="resources/images/dhis_mobile/http_error_mobile_client.png"/>
+                  <imagedata width="30%" align="center" fileref="resources/images/dhis_mobile/http_error_mobile_client.png"/>
                 </imageobject>
               </mediaobject>
             </screenshot>
             <para>Users should be informed that if  they see this error, then it means that their data has not been transmitted.</para>
           </listitem>
         </itemizedlist>
-      </section>
-    </section>
-    <section>
-      <title>Community Reporting</title>
-      <para>The community based reporting function works in a similar manner as the aggregate reporting function, but patient based data elements.</para>
-      <section>
-        <title>Regular Use</title>
-        <orderedlist>
-          <listitem>
-            <para>Activity Main Menu</para>
-            <para><graphic fileref="resources/images/dhis_mobile/activity_main_menu.png" align="center"/></para>
-            <para><itemizedlist>
-                <listitem>
-                  <para>Current Activity Plan: Contain all new activities that need to be completed.</para>
-                </listitem>
-                <listitem>
-                  <para>Sent Activity Plan: Contain all the activities that have been completed and sent to server. This list is for review only.</para>
-                </listitem>
-              </itemizedlist></para>
-          </listitem>
-          <listitem>
-            <para>Choose Village or Location</para>
-            <para><graphic fileref="resources/images/dhis_mobile/choose_village.png" align="center"/></para>
-            <para>From Activity main menu, select “Current Activity Plan”. You will be navigated to “Grampanchayat Name” screen where you can select the village. Use the “Up” or “Down” button on your mobile phone to focus on a village. Use “Select” button to select a village.</para>
-          </listitem>
-          <listitem>
-            <para>Choose Beneficiary</para>
-            <para><graphic fileref="resources/images/dhis_mobile/choose_beneficiary.png" align="center"/></para>
-            <para>In a village, beneficiary name will be display in a list. User can use the &quot;Select&quot; button to view the activities of  the selected name.</para>
-          </listitem>
-          <listitem>
-            <para>Choose Activity</para>
-            <para><graphic fileref="resources/images/dhis_mobile/choose_activity.png" align="center"/></para>
-            <para>Each Activity is represented by the name of the Beneficiary.  Select the name of the beneficiary you want to view. Note that the name start with “*” means that this is a late Activity.</para>
-          </listitem>
-          <listitem>
-            <para>Beneficiary Detail</para>
-            <para><graphic fileref="resources/images/dhis_mobile/beneficiary_detail_screen.png" align="center"/></para>
-            <para>Select the &quot;Detail&quot; command on the left of the activity screen , a Beneficiary Detail screen will be displayed.  The detail screen may contain personal information and some additional information of the Beneficiary (depends on the setting from server). Select “OK” to go back to activity screen.</para>
-          </listitem>
-          <listitem>
-            <para>Fill in values (Entry screen)</para>
-            <para><graphic fileref="resources/images/dhis_mobile/fill_in_values.png" align="center"/></para>
-            <para>On the top of the screen is the name of the Program Stage. Below is the form, a form include many fields for user to input data. Focus on a field by press the “Up” or “Down” button on your mobile phone. After the field is focused, you can start entering data. Press the “Up” or “Down” button to go to the next field. At the bottom is the menu with &quot;Save&quot;, &quot;Complete&quot; and &quot;Back&quot; command. </para>
-            <para><graphic fileref="resources/images/dhis_mobile/popup_window.png" align="center"/></para>
-            <para><emphasis role="bold">*Notes:</emphasis><itemizedlist>
-                <listitem>
-                  <para>For the field with Yes/No value: press the select button on a focused field to open the popup menu then you can select “Yes”, “No” or “Select Option”. Select “Select Option” means that you have no data for that field.</para>
-                </listitem>
-                <listitem>
-                  <para>For the field with pre-suggested values: press the select button to open the popup menu then you can choose one of the options. Select “Select Option” means that you have no data for that field..</para>
-                </listitem>
-                <listitem>
-                  <para>For date-type value: </para>
-                  <para>- If server Date is available,  application will take server Date as default value.</para>
-                  <para>- If  server Date is not available, date filed will be leave blank for user to input manually.</para>
-                </listitem>
-              </itemizedlist></para>
-          </listitem>
-          <listitem>
-            <para>Saving/Completing.</para>
-            <para>After finish step [4], you can choose either “Save” or “Complete” to finish your work.<itemizedlist>
-                <para><graphic fileref="resources/images/dhis_mobile/save_command.png" align="center"/></para>
-                <listitem>
-                  <para><emphasis role="bold">Save</emphasis>: you may want to use this option if you have not finished your work yet and you want to store the data to continue later.<itemizedlist>
-                      <listitem>
-                        <para>Select “Menu” or “Option” at the bottom of your screen (The name “Menu” or “Option” depend on your mobile phone) and then select “Save”. A success message (“Form Saved”) will be display. Select “Done” or “Dismiss” to go back to Entry Screen.</para>
-                      </listitem>
-                      <listitem>
-                        <para>Your data will not be sent to server. It is stored in the Record Store of your mobile phone. To see the data again. Go back to step [2] and select the name of the Beneficiary that you have just entered data. Repeat step [3] and [4]. If you feel that you are ready to send data to server. Select “Complete”.</para>
-                      </listitem>
-                    </itemizedlist></para>
-                  <para><graphic fileref="resources/images/dhis_mobile/complete_command.png" align="center"/></para>
-                </listitem>
-                <listitem>
-                  <para><emphasis role="bold">Complete</emphasis>: you may use this option when you fill the entire field on the form and make sure that your data is correct.
-      </para>
-                  <para><itemizedlist>
-                      <listitem>
-                        <para>Select “Menu” or “Option” at the bottom of your screen (The name “Menu” or “Option” depend on your mobile phone) and then select “Complete”. </para>
-                      </listitem>
-                      <listitem>
-                        <para>If you did not fill all the field in the form, a warning message will be display “x fields is not filled. Do you want to complete anyway?” With x is the number of empty field(s). Select “Yes” if you want to send data to server, select “No”, if you do not want to send and go back to Entry screen again. </para>
-                      </listitem>
-                      <listitem>
-                        <para>After select “Yes”, a security message will appear and inform that the application will connect to server. Select “Yes” to give the permission for the application to do so.</para>
-                        <para><graphic fileref="resources/images/dhis_mobile/security_message.png" align="center"/></para>
-                      </listitem>
-                      <listitem>
-                        <para>User will receive a success message: “Activity uploaded successfully”.</para>
-                        <para><graphic fileref="resources/images/dhis_mobile/success_message.png" align="center"/></para>
-                      </listitem>
-                      <listitem>
-                        <para>A finished activity (activity that is completed and data is send to server) will be move to &quot;Completed Activity&quot; and it will be display as &quot;Uneditable Form&quot;. User can go to &quot;Completed Activity&quot; at &quot;Activity Main Menu&quot; to review.</para>
-                      </listitem>
-                    </itemizedlist></para>
-                </listitem>
-              </itemizedlist></para>
-          </listitem>
-          <listitem>
-            <para>Sent Activities</para>
-            <para><graphic fileref="resources/images/dhis_mobile/sent_activities.png" align="center"/></para>
-            <para>From &quot;Activity Main Menu&quot; screen, select &quot;Sent Activities&quot; to go to the list of all activities you sent to server. The structure of this screen is exactly the same as &quot;Activity Plan List&quot;. Select &quot;Detail&quot; to see the detail of the activity of select &quot;Select&quot; to go to the &quot;Uneditable Screen&quot;.</para>
-            <para><graphic fileref="resources/images/dhis_mobile/unediatble_form.png" align="center"/></para>
-            <para>In this screen, user can only review the form they sent to server. No edit or change is allowed. Select &quot;Back&quot; to go back to &quot;Sent Activities&quot; screen.</para>
-          </listitem>
-        </orderedlist>
-      </section>
-      <section>
-        <title>Updating Activity Plan and Program Form</title>
-        <para>After some days, weeks or months, new Activities may automatically generated from server, some Program Stage Data Element may be removed  from original form. In order to update these new changes, we have a &quot;Automatic Update Activity Plan and Program&quot; function.</para>
-        <para><graphic fileref="resources/images/dhis_mobile/activity_plan_blocked.png" align="center"/></para>
-        <orderedlist>
-          <listitem>
-            <para>This function is completely automatic. After user start the application and enter PIN, a requested to be sent to server to update new data.</para>
-          </listitem>
-          <listitem>
-            <para>While this function perform, the &quot;Current Activity Plan&quot; is temporarily blocked and it will be open again as soon as the updating process complete.</para>
-          </listitem>
-          <listitem>
-            <para>This function update both &quot;Activity Plan&quot; and &quot;Program Form&quot;.</para>
-            <para>“Update Completed” message will appear on the screen after the update process finish. Select ”Dismiss” to close this window and go back to Activity Main Menu. Your Current Activity Plan is now updated.</para>
-          </listitem>
-          <listitem>
-            <para>When a data element removed due to the changing of form structure, all data value that related to that data element will be hiding also. You are no longer seeing the value in the form. </para>
-          </listitem>
-        </orderedlist>
       </section>
     </section>
   </section>
