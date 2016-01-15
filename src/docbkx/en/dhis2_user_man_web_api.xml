@@ -7847,42 +7847,46 @@ ORDER BY oul.level, par.name, ou.name</screen>
   </section>
   
   <section>
-    <title>Short Message Service</title>
-    <para>This section covers the sms API exposed for sending and collecting(receiving) text messages.</para> 
+    <title>Short Message Service (SMS)</title>
+    <para>This section covers the SMS Web API for sending and receiving short text messages.</para> 
     <section>
-      <title>OutBound sms service</title>
-      <para>The Web API supports sending outgoing sms using POST method. Sms can be sent to single or multiple destinations. Gateway needs to be configured before using this service. Sms will NOT be sent if there is no gateway configured.  
-        It needs a Set of recipients and message text in JSON format as shown below. 
-      </para>
+      <title>Outbound SMS service</title>
+      <para>The Web API supports sending outgoing SMS using the POST method. SMS can be sent to a
+        single or multiple destinations. One or more gateways need to be configured before using the
+        service. An SMS will not be sent if there is no gateway configured.  It needs a set of
+        recipients and message text in JSON format as shown below. </para>
       <screen>/api/sms/outbound</screen>
       <screen>{ 
   "message":"Sms Text",  
   "recipient": [
-  "47XXXXXX1",
-  "47XXXXXX2"
+    "47XXXXXX1",
+    "47XXXXXX2"
   ] 
 }</screen>
-      <para>Outbound service can be tested like with parameters, BUT parametric API can only be used for sending sms to single destination.
-      </para>
+      <para>The outbound service can be tested like with parameters, bet the parameterized API can
+        only be used for sending SMS to a single destination. </para>
       <screen>/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
     </section>
     
     <section>
-      <title>InBound sms service</title>
-      <para>The Web API supports collecting incoming sms using POST method. For collecting incoming messages routed towards dhis can be received using this api. API collects inbound sms and provide it to   
-        listeners for parsing based on the sms text.
-        An example payload is JSON is given below. text, originator, receiveddate and sentdat are mendatory parameters. Rest of them are optional but system will store default value for these parameters.</para>
+      <title>Inbound SMS service</title>
+      <para>The Web API supports collecting incoming sms using the POST method. Incoming messages
+        routed towards the DHIS 2 Web API can be received using this api. The API collects inbound
+        SMSs and provides it to  listeners for parsing based on the SMS content. An example payload
+        in JSON format is given below. Text, originator, received date and sent date are mandatory
+        parameters. The rest are optional but the system will use the default value for these
+        parameters.</para>
       <screen>/api/sms/inbound</screen>
       <screen>{
   "text": "sample text",
   "originator": "47XXXXXXXX",
-  "gatewayid" : "unknown",
-  "receiveddate" : "2016-05-01",
-  "sentdate" :"2016-05-01",
-  "smsencoding" : "1",
-  "smsstatus" :"1"          
+  "gatewayid": "unknown",
+  "receiveddate": "2016-05-01",
+  "sentdate":"2016-05-01",
+  "smsencoding": "1",
+  "smsstatus":"1"          
 }</screen>
-      <para>Api also supports query parameters.</para>
+      <para>The Web API also supports a query parameter-based version:</para>
       <screen>/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
       <table frame="all">
         <title>User query parameters</title>
@@ -7915,56 +7919,61 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
     
     <section>
-      <title>Sms Service Administration</title>
-      <para>Dhis2 supports Sms service API for service administraiton.</para>
-      <para>Sms service can be started using POST method.</para>
-      <screen>/api/sms/services/</screen>
-      <para>Sms service can be stopped using DELETE method.</para>
-      <screen>/api/sms/services/</screen>
-      <para>Sms configurations can be reloaded using PUT method.</para>
-      <screen>/api/sms/services/</screen>
-      <para>Sms service status can be retrived using GET method.</para>
-      <screen>/api/sms/services/</screen>
+      <title>SMS service administration</title>
+      <para>The Web API supports SMS service APIs for service administraiton.</para>
+      <para>The SMS service can be started using the POST method.</para>
+      <screen>POST /api/sms/service</screen>
+      <para>The SMS service can be stopped using the DELETE method.</para>
+      <screen>DELETE /api/sms/service</screen>
+      <para>The SMS configurations can be reloaded using the PUT method.</para>
+      <screen>PUT /api/sms/service</screen>
+      <para>The SMS service status can be retrived using the GET method.</para>
+      <screen>GET /api/sms/service</screen>
       
     </section>
     <section>
-      <title>Gateway Service Administration</title>
-      <para>Dhis2 expose Web APIs to provide a convinient way for configuring and updating sms gateway configurations. A list is given below with a small description of the exposed resource.</para>
-      <para>List of different gateways configured can be retrieved using GET method.</para>
-      <screen>/api/sms/gateways</screen>
-      <para>Configurations can also be retrieved for specific gateway type using GET method.</para>
-      <screen>/api/sms/gateways/{uid}</screen>
+      <title>Gateway service administration</title>
+      <para>The Web API exposes resources which provide a way to configure and update SMS gateway
+        configurations.</para>
+      <para>The list of different gateways configured can be retrieved using GET method.</para>
+      <screen>GET /api/sms/gateways</screen>
+      <para>Configurations can also be retrieved for a specific gateway type using GET
+        method.</para>
+      <screen>GET /api/sms/gateways/{uid}</screen>
       <para>Configurations can be removed for specific gateway type using DELETE method.</para>
-      <screen>/api/sms/gateways/{uid}</screen>     
-      <para>Default gateway can be retrived by GET method.</para>
-      <screen>/api/sms/gateways/default</screen>
-      <para>Default gateway can be set by PUT method.</para>
-      <screen>/api/sms/gateways/default/{uid}</screen>
+      <screen>DELETE /api/sms/gateways/{uid}</screen>     
+      <para>Default gateway can be retrived with the GET method.</para>
+      <screen>GET /api/sms/gateways/default</screen>
+      <para>Default gateway can be set using the PUT method.</para>
+      <screen>PUT /api/sms/gateways/default/{uid}</screen>
+    </section>
+    <section>
+      <title>Gateway configuration</title>
+      <para>The Web API lets you create and update gateway configurations. For each type of gateway
+        there are different parameters in the JSON payload. Sample JSON payloads for each gateway
+        are given below. POST is used to create and PUT to update configurations. </para>
       
-      <para>Dhis2 expose Web APIs for create and update of gateway configuraitons. For each different type of Gateway, there are different 
-        parameters in JSON payload. Sample JSON for each different gateway is given below. POST is used to create and PUT to update configurations. </para>
-      
-      <para>Clickatell</para>
+      <para><emphasis role="italic">Clickatell</emphasis></para>
       <screen>{
   "name" : "clickatell",
   "username": "clickatelluser",
   "password": "abc123",
   "apiid": "12121"
 }</screen>
-      <para>Bulksms</para>
+      <para><emphasis role="italic">Bulksms</emphasis></para>
       <screen>{ 
   "name": "bulkSMS",
   "password": "abc123",
   "region": "Spain"
 }</screen>
-      <para>GenericHttp</para>
+      <para><emphasis role="italic">GenericHttp</emphasis></para>
       <screen>{
   "name" : "generic",
   "username": "genericUser",
   "password": "abc123", "Url Template":
   "http://localhost:template"
 }</screen>
-      <para>SMPP</para>
+      <para><emphasis role="italic">SMPP</emphasis></para>
       <screen>{
   "name" : "smpp",
   "username": "smppUser",
@@ -7973,7 +7982,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
   "Address" : "sample.smpp.com" ,
   "Port" : "8143"
 }</screen>
-      <para>Modem</para>
+      <para><emphasis role="italic">Modem</emphasis></para>
       <screen>{
   "name": "modem",
   "Port": "COM1",
