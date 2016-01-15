@@ -37,7 +37,11 @@
         </listitem>
         <listitem>
           <para>Update the database and WAR file on play.dhis2.org/demo and play.dhis2.org/dev
-            instances. Run reinit-dhis-instance to make the changes take effect.</para>
+            instances. To create a dump in directory format and turn it into a tar
+            file:<screen>pg_dump dhis2 -Fd -U dhis -j 4 -f db.pgdump
+tar zcvf db.tar.gz db.pgdump</screen></para>
+          <para>To unpack the tar file:<screen>tar zxvf db.tar.gz</screen></para>
+          <para>Run reinit-db-instance to make the changes take effect.</para>
         </listitem>
         <listitem>
           <para>Create a new DHIS 2 Live package on dhis2.org and place it in download/live
