@@ -7863,7 +7863,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     "47XXXXXX2"
   ] 
 }</screen>
-      <para>The outbound service can be tested like with parameters, bet the parameterized API can
+      <para>The Web API also supports a query parameter version, but the parameterized API can
         only be used for sending SMS to a single destination. </para>
       <screen>/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
     </section>
@@ -7872,7 +7872,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Inbound SMS service</title>
       <para>The Web API supports collecting incoming sms using the POST method. Incoming messages
         routed towards the DHIS 2 Web API can be received using this api. The API collects inbound
-        SMSs and provides it to  listeners for parsing based on the SMS content. An example payload
+        SMSs and provides it to  listeners for parsing, based on the SMS content (SMS Command). An example payload
         in JSON format is given below. Text, originator, received date and sent date are mandatory
         parameters. The rest are optional but the system will use the default value for these
         parameters.</para>
@@ -7886,7 +7886,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
   "smsencoding": "1",
   "smsstatus":"1"          
 }</screen>
-      <para>The Web API also supports a query parameter-based version:</para>
+      <para>The Web API also supports a query parameter-based version.</para>
       <screen>/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
       <table frame="all">
         <title>User query parameters</title>
@@ -7903,14 +7903,24 @@ ORDER BY oul.level, par.name, ou.name</screen>
           </thead>
           <tbody>
             <row>
+              <entry>message</entry>
+              <entry>String</entry>
+              <entry>This is mandatory parameter which carries the actual text message.</entry>
+            </row>
+            <row>
+              <entry>originator</entry>
+              <entry>String</entry>
+              <entry>This is mandatory parameter which shows by whom this message was actually sent from.</entry>
+            </row>
+            <row>
               <entry>gateway</entry>
-              <entry>Text</entry>
-              <entry>This is optional parameter which gives gateway id. If not present default text "UNKNOWN" will be stored</entry>
+              <entry>String</entry>
+              <entry>This is an optional parameter which gives gateway id. If not present default text "UNKNOWN" will be stored</entry>
             </row>
             <row>
               <entry>receiveTime</entry>
               <entry>Date</entry>
-              <entry>This is optional parameter. It is timestemp at which message was received by gateway.</entry>
+              <entry>This is an optional parameter. It is timestamp at which message was received at the gateway.</entry>
             </row>
             
           </tbody>
