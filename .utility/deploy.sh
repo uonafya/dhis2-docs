@@ -20,6 +20,7 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
     # Add the landing pages for the github pages webpage
     cp ${TRAVIS_BUILD_DIR}/.utility/index.html ${HOME}/gh-pages/
     cp ${TRAVIS_BUILD_DIR}/.utility/google4d4dd2fbabf00e20.html ${HOME}/gh-pages/
+    cp ${TRAVIS_BUILD_DIR}/.utility/dhis2-docs.css ${HOME}/gh-pages/
     cd ${HOME}/gh-pages/
 
     # Re-init the git repo for gh-pages so we start clean
