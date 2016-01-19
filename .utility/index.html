@@ -4,13 +4,21 @@
     <meta charset="utf-8">
     <title>DHIS2 Documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="dhis2-docs.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
-    <h3>DHIS 2 Latest Build Documentation (English)</h3>
-    <h4>Search:</h4>
+
+
+<div class="container-fluid">
+<div class="row">
+<div id="gsearch"></div>
+
 <script>
+   var gcseDiv = document.getElementById('gsearch');
+   gcseDiv.innerHTML = '<gcse:search enableAutoComplete="true"></gcse:search>'
+</script>
+    <script>
   (function() {
     var cx = '013455182391248228050:up9ggdr_gk0';
     var gcse = document.createElement('script');
@@ -22,15 +30,19 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
-<gcse:search></gcse:search>
- 
+</div>
+<div class="row">
+    <h3>DHIS 2 Latest Build Documentation (English)</h3>
     	<table class="table table-bordered table-striped">
-        <th>
+        <thead>
+        <tr>
             <th>Package</th>
             <th>PDF</th>
             <th>HTML</th>
             <th>HTML single page</th>
-        </th>
+        </tr>
+    </thead>
+    <tbody>
         <tr>
             <td>User Documentation</td>
             <td><a href="master/en/user/dhis2_user_manual_en.pdf">PDF</a></td>
@@ -61,16 +73,20 @@
             <td><a href="master/en/developer/html/dhis2_developer_manual.html">HTML</a></td>
             <td><a href="master/en/developer/html/dhis2_developer_manual_full.html">HTML single page</a></td>
         </tr>
+    </tbody>
     </table>
 
     <h3>DHIS 2.21 Documentation (English)</h3>
     <table class="table table-bordered table-striped">
-        <th>
+        <thead>
+        <tr>
             <th>Package</th>
             <th>PDF</th>
             <th>HTML</th>
             <th>HTML single page</th>
-        </th>
+        </tr>
+    </thead>
+    <tbody>
         <tr>
             <td>User Documentation</td>
             <td><a href="2.21/en/user/dhis2_user_manual_en.pdf">PDF</a></td>
@@ -101,8 +117,9 @@
             <td><a href="2.21/en/developer/html/dhis2_developer_manual.html">HTML</a></td>
             <td><a href="2.21/en/developer/html/dhis2_developer_manual_full.html">HTML single page</a></td>
         </tr>
+    </tbody>
     </table>
-
+</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
