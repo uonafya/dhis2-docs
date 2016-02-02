@@ -7,7 +7,7 @@
   <screenshot>
     <mediaobject>
       <imageobject>
-        <imagedata fileref="resources/images/maintainence/data_element_main_1.png" align="center" width="80%"/>
+        <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_main_1.png"/>
       </imageobject>
     </mediaobject>
   </screenshot>
@@ -42,7 +42,7 @@
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="resources/images/maintainence/data_element_main2.png" width="80%" align="center" format="PNG"/>
+          <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_main2.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -51,7 +51,7 @@
     <para><screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="resources/images/maintainence/data_element_context_menu.png" align="center" format="PNG"/>
+            <imagedata align="center" fileref="resources/images/maintainence/data_element_context_menu.png" format="PNG"/>
           </imageobject>
         </mediaobject>
       </screenshot></para>
@@ -78,7 +78,7 @@
             form name will be applied automatically </para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Domain type:</emphasis> Defines whether a data element is an aggregate or patient type of data element. </para>
+          <para><emphasis role="bold">Domain type:</emphasis> Defines whether a data element is an aggregate or tracker type of data element. </para>
         </listitem>
         <listitem>
           <para><emphasis role="bold">Value type: </emphasis>Defines the type of data this data
@@ -210,7 +210,7 @@
     </section>
     <section>
       <title>Deleting a data element</title>
-      <para>In order to delete a data element, click the name of the data element you wish to delete, and then select &quot;Remove&quot; from the context menu. Note that this operation is only possible if there is no data attached to the data element itself.  The user will be prompted to ensure that the data element should be deleted.</para>
+      <para>In order to delete a data element, right-click the name of the data element you wish to delete, and then select &quot;Delete&quot; from the context menu. Note that this operation is only possible if there is no data attached to the data element itself.  The user will be prompted to ensure that the data element should be deleted.</para>
     </section>
     <section>
       <title>Cloning existing data elements</title>
@@ -218,14 +218,14 @@
     </section>
     <section>
       <title>Displaying data element details</title>
-      <para>This operation displays an in-line panel in the browser which displays all metadata about a given data element. Click the name of the data element and then select &quot;Show details&quot; from the context menu. </para>
+      <para>This operation displays an in-line panel in the browser which displays all metadata about a given data element. You can left-click to quickly show the details of the data element. Also, you can rdataight-click the name of the data element and then select &quot;Show details&quot; from the context menu. </para>
     </section>
   </section>
   <section id="dataElementGroup">
     <title>Data element groups</title>
-    <para>Data element groups provide a mechanism for classifying related data elements into a common theme. For instance, two data elements &quot;Measles immunisation&quot; and  &quot;BCG Immunisation&quot; might be grouped together into a data element group &quot;Childhood immunisation&quot;. To access the data element group maintenance page, click Maintenance -&gt; Data elements and Indicators -&gt; Data Element Group.</para>
-    <para>Similar to the &quot;Data element&quot; maintenance page, data elements groups can be searched with by entering a search string in the &quot;Filter by name&quot; field. </para>
-    <para>To add a new data element group, click the <guibutton>&quot;Add new&quot;</guibutton> button and the following screen will be displayed:</para>
+    <para>Data element groups provide a mechanism for classifying related data elements into a common theme. For instance, two data elements &quot;Measles immunisation&quot; and  &quot;BCG Immunisation&quot; might be grouped together into a data element group &quot;Childhood immunisation&quot;. To access the data element group maintenance page, click Apps -&gt; Data elements / Indicators -&gt; Data Element Group.</para>
+    <para>Similar to the &quot;Data element&quot; maintenance page, data elements groups can be searched with by entering a search string in the &quot;Search by name&quot; field. </para>
+    <para>To add a new data element group, click the <guibutton>&quot;+&quot;</guibutton> button and the following screen will be displayed:</para>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -233,7 +233,7 @@
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>Fill in the &quot;Name&quot; field and then select all data elements that should belong to the group from the left panel. Click the &quot;Move selected&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center"/>button to add the selected data elements to the data element group. Click the &quot;Remove selected&quot; button to remove all data elements from the group that have been selected in the right panel.  Finally, click the &quot;Add&quot; button to save changes, or the &quot;Cancel&quot; button to discard any changes. </para>
+    <para>Fill in the &quot;Name&quot; field and then select all data elements that should belong to the group from the left panel. Click the &quot;-&gt;&quot; button to add the selected data elements to the data element group. Click the &quot;&lt;- Remove all&quot; button to remove all data elements from the group that have been selected in the right panel.  Finally, click the &quot;Save&quot; button to save changes, or the &quot;Cancel&quot; button to discard any changes. </para>
   </section>
   <section id="dataElementGroupEditor">
     <title>Data element group editor</title>
@@ -242,14 +242,14 @@
   </section>
   <section id="dataElementGroupSet">
     <title>Data element group sets</title>
-    <para>Data element group sets allow multiple data element groups to be categorised into a set. Data element group sets are used during analysis and reporting to combine similar data element groups into a common theme. To access the data element group set maintenance module, choose &quot;Maintenance -&gt; Data elements and Indicators -&gt; Data Element Group Set&quot;.  Similar to the other data element maintenance modules, new data element group sets can be added by pressing the &quot;Add new button&quot;.  Other operations include Edit, Translate, Delete and Information, similar to data elements and data element groups as described in the previous sections.</para>
-    <para>Existing data element group  set members can be edited by clicking the name  and selecting &quot;Edit&quot; from the context menu of the desired data element group set as seen below.</para>
+    <para>Data element group sets allow multiple data element groups to be categorised into a set. Data element group sets are used during analysis and reporting to combine similar data element groups into a common theme. To access the data element group set maintenance module, choose &quot;Apps -&gt; Data elements /  Indicators -&gt; Data Element Group Set&quot;.  Similar to the other data element maintenance modules, new data element group sets can be added by pressing the &quot;+&quot;.  Other operations include Edit, Clone, Share, Delete and Show details, similar to data elements and data element groups as described in the previous sections.</para>
+    <para>Existing data element group  set members can be edited by right-clicking the name  and selecting &quot;Edit&quot; from the context menu of the desired data element group set as seen below.</para>
     <mediaobject>
       <imageobject>
         <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_group_set.png" format="PNG"/>
       </imageobject>
     </mediaobject>
-    <para>Available data element groups are displayed in the left panel. They can be moved into the selected data element group set by pressing the &quot;Move right&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center"/> button. Data element groups that are currently members of the data element group set are displayed in the right hand panel. They can be removed from the data element group set by clicking the desired data element group and pressing the &quot;Move left&quot;<inlinegraphic fileref="resources/images/dhis2_images/move_left.png" align="center"/> button.  The ordering of the data element groups can be set with the &quot;Move Up&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_up.png" align="center"/> and &quot;Move Down&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_down.png" align="center"/>arrows. This ordering will be used in the datamart and reports to order the data element groups.  Press the <guibutton>&quot;Update&quot;</guibutton> button to save any changes and the <guibutton>&quot;Cancel&quot;</guibutton> button to discard all changes. </para>
+    <para>Available data element groups are displayed in the left panel. They can be moved into the selected data element group set by pressing the &quot;-&gt;&quot; button. Data element groups that are currently members of the data element group set are displayed in the right hand panel. They can be removed from the data element group set by clicking the desired data element group and pressing the &quot;&lt;-&quot; button.  Press the <guibutton>&quot;Save&quot;</guibutton> button to save any changes and the <guibutton>&quot;Cancel&quot;</guibutton> button to discard all changes. </para>
   </section>
   <section id="dataElementCategory">
     <title>Categories</title>
@@ -283,23 +283,16 @@
       </listitem>
     </orderedlist>
     <para>A  category option consists of a name, along with an optional code, and a concept. </para>
-    <para>Categories can be added by accessing the &quot;Data Element Category Option&quot; dialog. (Maintenance -&gt; Data Elements and Indicators-&gt;Data Element Category Options&quot; as seen below. The category option must consist of a name, an optional code, and a concept. </para>
+    <para>Categories can be added by accessing &quot;Category Option&quot; from the Data elements / Indicators App.  The category option must consist of a name, and short name at minimum. </para>
+    <para>Once all category options have been defined for a particular category, the category can be defined with the &quot;Data Element Category Management&quot; dialog.  Add a new data element category by clicking on the &quot;+&quot; icon. You can also edit existing categories by right-clicking and selecting edit from the contextual menu.</para>
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="50%" align="center" fileref="resources/images/maintainence/data_element_category_options.PNG"/>
+          <imagedata fileref="resources/images/maintainence/data_element_categories_add_new.png" align="center" width="80%" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>Once all category options have been defined for a particular category, the category can be defined with the &quot;Data Element Category&quot; dialog.(Maintenance -&gt; Data Elements and Indicators-&gt;Data Element Category). Enter the name of the data element category and press &quot;Save&quot;. Once you have defined the name of the category, you can assign category options to it by selecting the category which you have just defined, clicking its name, and then selecting &quot;Edit&quot; from the context menu as seen below. </para>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="80%" fileref="resources/images/maintainence/data_element_categories_add_new.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para>Type the name of the new data element category in the &quot;Name&quot; field in the &quot;Details&quot; region and assign a concept to the category.  Category options can be added by moving category options from the left-side pane (Available category options) into the right-side pane(Selected category options). Category options can be reordered using the &quot;Move Up&quot;<inlinegraphic fileref="resources/images/dhis2_images/move_up.png" align="center"/> and &quot;Move Down&quot;<inlinegraphic fileref="resources/images/dhis2_images/move_down.png" align="center"/> buttons. . Once all data element categories options have been added to the data element category, press the <guibutton>&quot;Add&quot;</guibutton> button to save all changes or the <guibutton>&quot;Cancel&quot;</guibutton>  button to discard any changes.</para>
+    <para>Type the name of the new data element category in the &quot;Name&quot; field.  Category options can be added by moving category options from the left-side pane (Available category options) into the right-side pane(Selected category options). Once all data element categories options have been added to the data element category, press the <guibutton>&quot;Save&quot;</guibutton> button to save all changes or the <guibutton>&quot;Cancel&quot;</guibutton>  button to discard any changes.</para>
     <para>A  category can have two types &quot;Disaggregation&quot; or &quot;Attribute&quot;. For disaggregation of data elements, you should select &quot;Disaggregation&quot;.  A dimension type of &quot;Attribute&quot; will allow the category to be used to assign a combination of categories to data recorded through a dataset.</para>
     <para>If the &quot;Use as data dimension&quot; box is ticked, the category will be available to the analytics as another dimension, in addition to the standard dimensions of &quot;Period&quot; and &quot;Organisation unit&quot;. </para>
   </section>
@@ -308,23 +301,23 @@
     <para>Category combinations allow multiple categories to be combined into a related set. As an example, a data element &quot;Number of new HIV infections&quot; might be disaggregated according to the following categories. </para>
     <itemizedlist>
       <listitem>
-        <para>Age: &quot;Under 5&quot;, &quot;5-15&quot;, &quot;15-24&quot;, &quot;24 and above&quot;</para>
+        <para>HIV Service: &quot;Other&quot;, &quot;PMTCT&quot;, TB</para>
       </listitem>
       <listitem>
         <para>Gender: Male, Female</para>
       </listitem>
     </itemizedlist>
     <para> In this example, there would be two levels of disaggregation, consisting of two separate data element categories, each consisting of several data element category options. In most HMIS systems, different data elements are disaggregated according to a common set of categories. By combining these different categories into a category combination and assigning these combinations to data elements, the appropriate disaggregation levels can be applied efficiently and quickly to a large number of data elements. </para>
-    <para>To access the  category combination maintenance module, select &quot;Maintenance-&gt;Data element and indicators-&gt;Data element category combinations&quot; from the main DHIS2 menu. As with the  other maintains modules, you can filter the listed category combinations by entering the name (or portion thereof) of the category combination. Other operations such as &quot;Edit&quot;, &quot;Delete&quot; and &quot;Information&quot; should be familiar to the reader. </para>
-    <para>To add a new category combination, click the &quot;Add new&quot; button. The following dialogue will be displayed. </para>
+    <para>To access the  category combination maintenance module, select &quot;Apps -&gt; Data Elements / Indicators -&gt; Category combination&quot; from the main DHIS2 menu. As with the  other maintenance  modules, you can filter the listed category combinations by entering the name (or portion thereof) of the category combination. Other operations such as &quot;Edit&quot;, &quot;Delete&quot; and &quot;Show details&quot; should be familiar to the reader. </para>
+    <para>To add a new category combination, click the &quot;+&quot; button. The following will be displayed. </para>
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" align="center" fileref="resources/images/maintainence/data_element_category_combo_add_new.png" format="PNG"/>
+          <imagedata fileref="resources/images/maintainence/data_element_category_combo_add_new.png" width="80%" align="center" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>Type the name of the category combination in the &quot;Name&quot; field, and then select the desired categories from the left panel. Press the &quot;Move right&quot; button to add the selected categories to the category combination. Press &quot;Move left&quot; to remove any categories that should not be part of the category combination. </para>
+    <para>Type the name of the category combination in the &quot;Name&quot; field, and then select the desired categories from the left panel. Press the &quot;-&gt;&quot; button to add the selected categories to the category combination. Press &quot;&lt;-&quot; to remove any categories that should not be part of the category combination. </para>
     <para>Categories can only be added to a category combination at this step. Categories can be removed from category combinations later by editing the category combination, however, it is not allowed to add additional categories once the combination has been created. Ensure that the category combination and its respective categories is final before you create the category combination and assign it to a data element. </para>
   </section>
   <section>
@@ -348,10 +341,10 @@
   <section>
     <title>Category option groups and group sets</title>
     <para>Category options can be groups and classified using category option groups. Category
-        option groups can be created from &quot;Category option group&quot; &gt; &quot;Add new&quot;, and contains a set of
+        option groups can be created from &quot;Category option group&quot; -&gt; &quot;+&quot;, and contains a set of
         category options.</para>
     <para>Category option groups can be included in category option group sets. Category option
-        group sets can be created from &quot;Category option group set&quot; &gt; &quot;Add new&quot;, and contains a set
+        group sets can be created from &quot;Category option group set&quot; -&gt; &quot;+&quot;, and contains a set
         of category option groups.</para>
     <para>The main purpose of the these entities is to be able to add more dimensionality to your
         captured data for analysis in apps such as pivot table and data visualizer. An example of
