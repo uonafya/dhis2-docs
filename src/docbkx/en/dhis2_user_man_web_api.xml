@@ -4098,9 +4098,11 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
     <para>This section explains how to approve, unapprove and check approval status using the
         <emphasis role="italic">dataApprovals</emphasis> resource. Approval is done per data set,
       period, organisation unit and attribute option combo. </para>
+    <section>
+      <title>Get approval status</title>
     <para>To get approval information for a data set you can issue a GET request similar to
       this:</para>
-    <screen>api/dataApprovals?ds=aLpVgfXiz0f&amp;pe=2013&amp;ou=DiszpKrYNg8</screen>
+    <screen>GET api/dataApprovals?ds=aLpVgfXiz0f&amp;pe=2013&amp;ou=DiszpKrYNg8</screen>
     <table frame="all">
       <title>Data approval query parameters</title>
       <tgroup cols="3">
@@ -4130,17 +4132,6 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
             <entry>Yes</entry>
             <entry>Organisation unit identifier</entry>
           </row>
-          <row>
-            <entry>cog</entry>
-            <entry>No</entry>
-            <entry>Attribute category option group identifier</entry>
-          </row>
-          <row>
-            <entry>cp</entry>
-            <entry>No</entry>
-            <entry>Attribute category option identifier(s), repeat the parameter for multiple
-              values</entry>
-          </row>
         </tbody>
       </tgroup>
     </table>
@@ -4148,9 +4139,9 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
     <screen>{
   &quot;mayApprove&quot;: false,
   &quot;mayUnapprove&quot;: false,
-  &quot;mayAccept&quot;:false,
-  &quot;mayUnaccept&quot;:false,
-  &quot;state&quot;:&quot;UNAPPROVED_ELSEWHERE&quot;
+  &quot;mayAccept&quot;: false,
+  &quot;mayUnaccept&quot;: false,
+  &quot;state&quot;: &quot;UNAPPROVED_ELSEWHERE&quot;
 }</screen>
     <para>The returned parameters are:</para>
     <table frame="all">
@@ -4270,12 +4261,19 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
           is approved for all the data set periods within the period you specify.</para>
       </listitem>
     </itemizedlist>
+    </section>
+    <section>
+      <title>Approve data</title>
     <para>To approve data you can issue a <emphasis role="italic">POST</emphasis> request to the
-      dataApprovals resource. To un-approve data you can issue a <emphasis role="italic"
-        >DELETE</emphasis> request to the dataApprovals resource.</para>
+          <emphasis role="italic">dataApprovals</emphasis> resource. To un-approve data you can
+        issue a <emphasis role="italic">DELETE</emphasis> request to the dataApprovals
+        resource.</para>
+      <screen>POST DELETE api/dataApprovals</screen>
     <para>To accept data you can issue a <emphasis role="italic">POST</emphasis> request to the
-      dataApprovals/acceptances resource. To un-accept data you can issue a <emphasis role="italic"
-        >DELETE</emphasis> request to the dataApprovals/acceptances resource.</para>
+          <emphasis role="italic">dataApprovals/acceptances</emphasis> resource. To un-accept data
+        you can issue a <emphasis role="italic">DELETE</emphasis> request to the <emphasis
+          role="italic">dataApprovals/acceptances</emphasis> resource.</para>
+      <screen>POST DELETE dataApprovals/acceptances</screen>
     <para>These requests contain the following parameters:</para>
     <table frame="all">
       <title>Data approval action parameters</title>
@@ -4306,13 +4304,6 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
             <entry>Yes</entry>
             <entry>Organisation unit identifier</entry>
           </row>
-          <row>
-            <entry>cog</entry>
-            <entry>No</entry>
-            <entry>Attribute category option group identifier. Required if approving for an approval
-              level that contains a category option group set, otherwise must not be
-              present.</entry>
-          </row>
         </tbody>
       </tgroup>
     </table>
@@ -4335,6 +4326,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         <para>The data set must specify that data can be approved for this data set.</para>
       </listitem>
     </itemizedlist>
+  </section>
   </section>
   <section>
     <title>Auditing</title>
