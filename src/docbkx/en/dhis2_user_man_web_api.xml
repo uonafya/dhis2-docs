@@ -4315,11 +4315,6 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         <para>The organisation unit&apos;s level must be specified by an approval level.</para>
       </listitem>
       <listitem>
-        <para>The category option group (if specified) must be a member of an approval level&apos;s
-          category option group set (if specified) for an approval level with the same organisation
-          unit level.</para>
-      </listitem>
-      <listitem>
         <para>The time period specified must match the period type of the data set.</para>
       </listitem>
       <listitem>
@@ -4327,6 +4322,31 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       </listitem>
     </itemizedlist>
   </section>
+    <section>
+      <title>Bulk approve data</title>
+      <para>You can approve a bulk of data records by posting to the<emphasis role="italic">
+          api/dataApprovals/approvals</emphasis>
+        resource.<screen>POST api/dataApprovals/approvals</screen></para>
+      <para>You can unapprove a bulk of data records by posting to the <emphasis role="italic"
+          >api/dataApprovals/unapprovals</emphasis>
+        resource.<screen>POST api/dataApprovals/unapprovals</screen></para>
+      <para>The approval payload is supported as JSON and looks like
+        this:<screen>{
+  "ds": [
+    "pBOMPrpg1QX", "lyLU2wR22tC"
+  ],
+  "pe": [
+    "201601", "201602"
+  ],
+  "approvals": [{
+      "ou": "cDw53Ej8rju",
+      "aoc": "ranftQIH5M9"
+    }, {
+      "ou": "cDw53Ej8rju",
+      "aoc": "fC3z1lcAW5x"
+    }]
+}</screen></para>
+    </section>
   </section>
   <section>
     <title>Auditing</title>
