@@ -8384,6 +8384,40 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>To push this to the server you can use the cURL command like
         this:<screen>curl -d @tei.json &quot;play.dhis2.org/demo/api/trackedEntityInstances&quot; -X POST 
 -H &quot;Content-Type: application/json&quot; -u admin:district -v</screen></para>
+      <para>To create multiple instances in one request you can wrap the payload in an outer array
+        like this and POST to the same resource as
+        above:<screen>{
+  &quot;trackedEntityInstances&quot;: [
+    {
+      &quot;trackedEntity&quot;: &quot;cyl5vuJ5ETQ&quot;,
+      &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;,
+      &quot;attributes&quot;: [
+        {
+          &quot;attribute&quot;: &quot;dv3nChNSIxy&quot;,
+          &quot;value&quot;: &quot;Joe&quot;
+        },
+        {
+          &quot;attribute&quot;: &quot;hwlRTFIFSUq&quot;,
+          &quot;value&quot;: &quot;Smith&quot;
+        }
+      ]
+    },
+    {
+      &quot;trackedEntity&quot;: &quot;cyl5vuJ5ETQ&quot;,
+      &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;,
+      &quot;attributes&quot;: [
+        {
+          &quot;attribute&quot;: &quot;dv3nChNSIxy&quot;,
+          &quot;value&quot;: &quot;Jennifer&quot;
+        },
+        {
+          &quot;attribute&quot;: &quot;hwlRTFIFSUq&quot;,
+          &quot;value&quot;: &quot;Johnson&quot;
+        }
+      ]
+    }
+  ]
+}    </screen></para>
     </section>
     <section>
       <title>Updating a tracked entity instance</title>
@@ -8405,13 +8439,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Enrolling a tracked entity instance into a program</title>
       <para>For enrolling persons into a program, you will need to first get the identifier of the
         person from the <emphasis role="italic">trackedEntityInstances</emphasis> resource. Then,
-        you will need to get the program identifier from the <emphasis role="italic">programs</emphasis> resource. A template payload can be seen
+        you will need to get the program identifier from the <emphasis role="italic"
+          >programs</emphasis> resource. A template payload can be seen
         below:<screen>{
-    &quot;trackedEntityInstance&quot;: &quot;ZRyCnJ1qUXS&quot;,
-    &quot;orgUnit&quot;: &quot;ImspTQPwCqd&quot;,
-    &quot;program&quot;: &quot;S8uo8AlvYMz&quot;,
-    &quot;dateOfEnrollment&quot;: &quot;2013-09-17&quot;,
-    &quot;dateOfIncident&quot;: &quot;2013-09-17&quot;
+  &quot;trackedEntityInstance&quot;: &quot;ZRyCnJ1qUXS&quot;,
+  &quot;orgUnit&quot;: &quot;ImspTQPwCqd&quot;,
+  &quot;program&quot;: &quot;S8uo8AlvYMz&quot;,
+  &quot;dateOfEnrollment&quot;: &quot;2013-09-17&quot;,
+  &quot;dateOfIncident&quot;: &quot;2013-09-17&quot;
 }</screen></para>
       <para>This payload should be used in a <emphasis role="bold">POST</emphasis> request to the
         enrollments resource identified by the following URL:</para>
