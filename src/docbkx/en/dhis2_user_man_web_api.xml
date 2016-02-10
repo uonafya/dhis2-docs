@@ -8368,56 +8368,56 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para> For example, let us create a new instance of a person tracked entity and specify its
         first name and last name
         attributes:<screen>{
-  &quot;trackedEntity&quot;: &quot;cyl5vuJ5ETQ&quot;,
+  &quot;trackedEntity&quot;: &quot;nEenWmSyUEp&quot;,
   &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;,
   &quot;attributes&quot;: [
     {
-      &quot;attribute&quot;: &quot;dv3nChNSIxy&quot;,
+      &quot;attribute&quot;: &quot;w75KJ2mc4zz&quot;,
       &quot;value&quot;: &quot;Joe&quot;
     },
     {
-      &quot;attribute&quot;: &quot;hwlRTFIFSUq&quot;,
+      &quot;attribute&quot;: &quot;zDhUuAYrxNC&quot;,
       &quot;value&quot;: &quot;Smith&quot;
     }
   ]
 }</screen></para>
       <para>To push this to the server you can use the cURL command like
-        this:<screen>curl -d @tei.json &quot;play.dhis2.org/demo/api/trackedEntityInstances&quot; -X POST 
+        this:<screen>curl -d @tei.json &quot;https://play.dhis2.org/demo/api/trackedEntityInstances&quot; -X POST 
 -H &quot;Content-Type: application/json&quot; -u admin:district -v</screen></para>
       <para>To create multiple instances in one request you can wrap the payload in an outer array
         like this and POST to the same resource as
         above:<screen>{
   &quot;trackedEntityInstances&quot;: [
     {
-      &quot;trackedEntity&quot;: &quot;cyl5vuJ5ETQ&quot;,
+      &quot;trackedEntity&quot;: &quot;nEenWmSyUEp&quot;,
       &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;,
       &quot;attributes&quot;: [
         {
-          &quot;attribute&quot;: &quot;dv3nChNSIxy&quot;,
+          &quot;attribute&quot;: &quot;w75KJ2mc4zz&quot;,
           &quot;value&quot;: &quot;Joe&quot;
         },
         {
-          &quot;attribute&quot;: &quot;hwlRTFIFSUq&quot;,
+          &quot;attribute&quot;: &quot;zDhUuAYrxNC&quot;,
           &quot;value&quot;: &quot;Smith&quot;
         }
       ]
     },
     {
-      &quot;trackedEntity&quot;: &quot;cyl5vuJ5ETQ&quot;,
+      &quot;trackedEntity&quot;: &quot;nEenWmSyUEp&quot;,
       &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;,
       &quot;attributes&quot;: [
         {
-          &quot;attribute&quot;: &quot;dv3nChNSIxy&quot;,
+          &quot;attribute&quot;: &quot;w75KJ2mc4zz&quot;,
           &quot;value&quot;: &quot;Jennifer&quot;
         },
         {
-          &quot;attribute&quot;: &quot;hwlRTFIFSUq&quot;,
+          &quot;attribute&quot;: &quot;zDhUuAYrxNC&quot;,
           &quot;value&quot;: &quot;Johnson&quot;
         }
       ]
     }
   ]
-}    </screen></para>
+}</screen></para>
     </section>
     <section>
       <title>Updating a tracked entity instance</title>
