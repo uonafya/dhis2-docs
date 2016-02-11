@@ -9583,6 +9583,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
           reports.</para>
       </listitem>
     </itemizedlist>
+    <section>
+      <title>Javascript</title>
     <para>To insert Javascript from a file called <emphasis role="italic">script.js</emphasis> you
       can interact with the <emphasis role="italic">files/script</emphasis> resource with a
       POST-request:</para>
@@ -9590,14 +9592,20 @@ ORDER BY oul.level, par.name, ou.name</screen>
 -H &quot;Content-Type:application/javascript&quot; -u admin:district -v</screen>
     <para>Note that we use the --data-binary option to preserve formatting of the file content. You
       can fetch the Javascript content with a GET-request:</para>
-    <screen>localhost/api/files/script</screen>
+    <screen>api/files/script</screen>
+      <para>To remove the Javascript content you can use a DELETE request.</para>
+    </section>
+    <section>
+      <title>CSS</title>
     <para>To insert CSS from a file called <emphasis role="italic">style.css</emphasis> you can
       interact with the <emphasis role="italic">files/style</emphasis> resource with a
       POST-request:</para>
     <screen>curl --data-binary @style.css &quot;localhost/api/files/style&quot; 
 -H &quot;Content-Type:text/css&quot; -u admin:district -v</screen>
     <para>You can fetch the CSS content with a GET-request:</para>
-    <screen>localhost/api/files/style</screen>
+    <screen>api/files/style</screen>
+      <para>To remove the Javascript content you can use a DELETE request.</para>
+    </section>
   </section>
   <section>
     <title>Synchronization</title>
