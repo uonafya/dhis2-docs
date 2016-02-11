@@ -101,8 +101,12 @@ sudo locale-gen nb_NO.UTF-8</screen>
       <para>Tuning PostgreSQL is necessary to achieve a high-performing system but is optional in
         terms of getting DHIS 2 to run. PostgreSQL is configured and tuned through the <emphasis
           role="italic">postgresql.conf</emphasis> file which can be edited like this:</para>
-      <para><screen>sudo nano /etc/postgresql/9.3/main/postgresql.conf</screen></para>
+      <para><screen>sudo nano /etc/postgresql/9.4/main/postgresql.conf</screen></para>
       <para>and set the following properties:</para>
+      <para>
+        <screen>max_connections = 200</screen>
+      </para>
+      <para>Determines maximum number of connections which PostgreSQL will allow.</para>
       <para><screen>shared_buffers = 3200MB</screen></para>
       <para>Determines how much memory should be allocated exclusively for PostgreSQL caching. This
       setting controls the size of the kernel shared memory which should be reserved for PostgreSQL.
