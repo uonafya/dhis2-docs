@@ -439,13 +439,15 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
             <tbody>
               <row>
                 <entry>translate</entry>
-                <entry>true/false</entry>
-                <entry>Translate web-api output, display* properties will be used (displayName, displayShortName, displayDescription)</entry>
+                <entry>true | false</entry>
+                <entry>Translate display* properties in metadata output (displayName,
+                  displayShortName, displayDescription)</entry>
               </row>
               <row>
                 <entry>locale</entry>
                 <entry>Locale to use</entry>
-                <entry>Translate web-api using a specified locale (implies translate=true)</entry>
+                <entry>Translate metadata output using a specified locale (implies
+                  translate=true)</entry>
               </row>
             </tbody>
           </tgroup>
@@ -9604,7 +9606,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
 -H &quot;Content-Type:text/css&quot; -u admin:district -v</screen>
     <para>You can fetch the CSS content with a GET-request:</para>
     <screen>api/files/style</screen>
-      <para>To remove the Javascript content you can use a DELETE-request.</para>
+      <para>To remove the Javascript content you can use a DELETE-e "request.</para>
     </section>
   </section>
   <section>
