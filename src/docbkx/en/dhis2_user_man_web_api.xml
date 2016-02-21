@@ -5744,7 +5744,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         object is shared so the list will be affected by the currently authenticated user. You can
         retrieve more information about a specific dashboard by following its link, similar to
         this:</para>
-      <screen>api/dashboards/vQFhmLJU5sK.json</screen>
+      <screen>/api/dashboards/vQFhmLJU5sK.json</screen>
       <para>A dashboard contains information like name and creation date and an array of dashboard
         items. The response in JSON format will look similar to this response (certain information
         has been removed for the sake of
@@ -5788,7 +5788,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>A more tailored response can be obtained by specifying specific fields in the request.
         An example is provided below, which would return more detailed information about each object
         on a users dashboard.</para>
-      <screen>api/dashboards/vQFhmLJU5sK/?fields=:all,dashboardItems[:all]</screen>
+      <screen>/api/dashboards/vQFhmLJU5sK/?fields=:all,dashboardItems[:all]</screen>
     </section>
     <section>
       <title>Searching dashboards</title>
@@ -5799,9 +5799,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
         the following resource URL pattern, where my-query should be replaced by the preferred
         search query:</para>
       <screen>api/dashboards/q/my-query.json</screen>
-      <para>JSON and XML response formats are currently supported. The response in JSON format will
-        contain references to matching resources and counts of how many matches were found in total
-        and for each type of resource. It will look similar to this:</para>
+      <para>JSON and XML response formats are supported. The response in JSON format will contain
+        references to matching resources and counts of how many matches were found in total and for
+        each type of resource. It will look similar to this:</para>
       <screen>{
     &quot;charts&quot;: [{
         &quot;name&quot;: &quot;ANC: 1-3 dropout rate Yearly&quot;,
@@ -5856,7 +5856,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         resource.</para>
       <para>To remove a dashboard, you can make a <emphasis role="italic">DELETE</emphasis> request
         to the specific dashboard resource similar to this:</para>
-      <screen>api/dashboards/vQFhmLJU5sK</screen>
+      <screen>/api/dashboards/vQFhmLJU5sK</screen>
     </section>
     <section>
       <title>Adding, moving and removing dashboard items and content</title>
