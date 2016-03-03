@@ -2774,7 +2774,9 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
       <title>CSV Import / Export</title>
       <para>In addition to XML and JSON for event import/export, in DHIS 2.17 we introduced support
         for the CSV format. Support for this format builds on what was described in the last
-        section, so here we will only write about what the CSV specific parts are.</para>
+        section, so here we will only write about what the CSV specific parts are, to properly
+        support multiple events with multiple data values each, you need to generate a ID
+        (/api/system/id) and use that so each event is uniquely identified.</para>
       <para>To use the CSV format you must either use the <emphasis role="italic">/api/events.csv</emphasis> endpoint, or add <emphasis role="italic">content-type: text/csv</emphasis> for import, and <emphasis role="italic">accept: text/csv</emphasis>
         for export when using the <emphasis role="italic">/api/events</emphasis> endpoint.</para>
       <para>The order of column in the CSV which are used for both export and import is as
@@ -2880,6 +2882,12 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
           </tgroup>
         </table>
       </para>
+      <para><emphasis role="italic">Example of 2 events with 2 different data value
+        each:</emphasis></para>
+      <screen>EJNxP3WreNP,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2016-01-01,,,&lt;de>,1,,
+EJNxP3WreNP,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2016-01-01,,,&lt;de>,2,,
+qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2016-01-01,,,&lt;de>,3,,
+qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2016-01-01,,,&lt;de>,4,,</screen>
     </section>
     <section>
       <title>Querying and reading events</title>
