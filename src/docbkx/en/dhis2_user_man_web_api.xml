@@ -3058,6 +3058,12 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
           </tgroup>
         </table>
       </para>
+      <para><emphasis role="italic">Example of 2 events with 2 different data value
+        each:</emphasis></para>
+      <screen>EJNxP3WreNP,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2016-01-01,,,&lt;de>,1,,
+EJNxP3WreNP,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2016-01-01,,,&lt;de>,2,,
+qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2016-01-01,,,&lt;de>,3,,
+qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2016-01-01,,,&lt;de>,4,,</screen>
     </section>
     <section>
       <title>Querying and reading events</title>
@@ -7604,27 +7610,35 @@ ORDER BY oul.level, par.name, ou.name</screen>
         >maintenance</emphasis> resource. You should use <emphasis role="italic">POST</emphasis> or
         <emphasis role="italic">PUT</emphasis> as method for requests. The following requests are
       available. </para>
+    <para>Analytics tables clear will drop all analytics tables:</para>
+    <screen>/api/analyticsTablesClear</screen>
+    <para>Expired invitations clear will remove all user account invitations which have
+      expired:</para>
+    <screen>/api/expiredInvitationsClear</screen>
     <para>Period pruning will remove periods which are not linked to any data values:</para>
-    <screen>api/maintenance/periodPruning</screen>
+    <screen>/api/maintenance/periodPruning</screen>
     <para>Data pruning will remove complete data set registrations, data approvals, data value
       audits and data values, in this case for an organisation
-      unit.<screen>api/maintenance/dataPruning/organisationUnits/&lt;org-unit-id&gt;</screen></para>
+      unit.<screen>/api/maintenance/dataPruning/organisationUnits/&lt;org-unit-id&gt;</screen></para>
     <para>Zero data value removal will delete zero data values linked to data elements where zero
       data is defined as not significant:</para>
-    <screen>api/maintenance/zeroDataValueRemoval</screen>
+    <screen>/api/maintenance/zeroDataValueRemoval</screen>
     <para>Drop SQL views will drop all SQL views in the database. Note that it will not delete the
       DHIS 2 SQL views.</para>
-    <screen>api/maintenance/dropSqlViews</screen>
+    <screen>/api/maintenance/sqlViewsDrop</screen>
     <para>Create SQL views will recreate all SQL views in the database.</para>
-    <screen>api/maintenance/createSqlViews</screen>
+    <screen>/api/maintenance/sqlViewsCreate</screen>
     <para>Category option combo update will remove obsolete and generate missing category option
       combos for all category combinations:</para>
-    <screen>api/maintenance/categoryOptionComboUpdate</screen>
+    <screen>/api/maintenance/categoryOptionComboUpdate</screen>
     <para>Cache clearing will clear the application Hibernate cache and the analytics partition
       caches:</para>
-    <screen>api/maintenance/cache</screen>
+    <screen>/api/maintenance/cacheClear</screen>
     <para>Re-generate organisation unit path property (can be useful if you imported org units with
-      SQL):<screen>api/maintenance/ouPathUpdate</screen></para>
+      SQL):<screen>/api/maintenance/ouPathsUpdate</screen></para>
+    <para>Metadata validation will apply all metadata validation rules and return the result of the
+      operation:</para>
+    <screen>/api/metadataValidation</screen>
   </section>
   <section>
     <title>System resource</title>
