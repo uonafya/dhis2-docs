@@ -10645,6 +10645,138 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
+    <title>User data store</title>
+    <para>In addition to the <emphasis>dataStore</emphasis> which is shared between all users of the
+      system, a user-based data store is also available. Data stored to the
+        <emphasis>userDataStore</emphasis> is stored to individual users, so each users can have
+      different data on the same namespace and key combination. The same way
+        <emphasis>dataStore</emphasis> can have namespaces reserved, so can namespaces in the
+        <emphasis>userDataStore</emphasis>. All calls against the <emphasis>userDataStore</emphasis>
+      will be associated with the logged in user. That means you can only see, change, remove and
+      add data associated with your own user.</para>
+    <section>
+      <title>User data store structure</title>
+      <para><emphasis>userDataStore</emphasis> consists of a user, a namespace, keys and associated
+        values. The combination of user, namespace and key is unique.<table frame="all">
+          <title>User data store structure</title>
+          <tgroup cols="3">
+            <colspec colname="newCol1" colnum="1" colwidth="1*"/>
+            <colspec colname="c1" colnum="2" colwidth="1.0*"/>
+            <colspec colname="c2" colnum="3" colwidth="1.0*"/>
+            <thead>
+              <row>
+                <entry>Item</entry>
+                <entry>Description</entry>
+                <entry>Data Type</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>User</entry>
+                <entry>The user this data is associated with</entry>
+                <entry>String</entry>
+              </row>
+              <row>
+                <entry>Namespace</entry>
+                <entry>The namespace the key belongs to</entry>
+                <entry>String</entry>
+              </row>
+              <row>
+                <entry>Key</entry>
+                <entry>The key a value is stored on</entry>
+                <entry>String</entry>
+              </row>
+              <row>
+                <entry>Value</entry>
+                <entry>The value stored</entry>
+                <entry>JSON</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+    </section>
+    <section>
+      <title>Get namespaces</title>
+      <para>Returns an array of all existing
+        namespaces<screen>GET /api/userDataStore</screen></para>
+      <para>Example
+        request:<screen>curl -X GET -H "Content-Type: application/json" -u admin:district "play.dhis2.org/api/userDataStore" -v</screen></para>
+      <para>
+        <screen>[
+  "foo",
+  "bar"
+]</screen>
+      </para>
+    </section>
+    <section>
+      <title>Get keys</title>
+      <para>Returns an array of all existing keys in a given
+        namespace<screen>GET /api/userDataStore/&lt;namespace></screen></para>
+      <para>Example request:</para>
+      <para>
+        <screen>curl -X GET -H "Content-Type: application/json" -u admin:district "play.dhis2.org/api/userDataStore/foo" -v</screen>
+        <screen>[
+  "key_1",
+  "key_2"
+]</screen>
+      </para>
+    </section>
+    <section>
+      <title>Get value</title>
+      <para>Returns the value for a given namespace and
+        key<screen>GET /api/userDataStore/&lt;namespace>/&lt;key></screen></para>
+      <para>Example
+        request:<screen>curl -X GET -H "Content-Type: application/json" -u admin:district "play.dhis2.org/api/userDataStore/foo/bar"</screen><screen>{
+  "some": "value"
+}</screen></para>
+    </section>
+    <section>
+      <title>Add new value</title>
+      <para>Adds a new value to a given key in a given
+        namespace.<screen>POST /api/userDataStore/&lt;namespace>/&lt;key></screen></para>
+      <para>Example
+        request:<screen>curl -X POST -H "Content-Type: application/json" -u admin:district -d "['some value']" "play.dhis2.org/api/userDataStore/foo/bar"</screen><screen>{
+  "httpStatus": "Created",
+  "httpStatusCode": 201,
+  "status": "OK",
+  "message": "Key 'bar' in namespace 'foo' created."
+}</screen></para>
+    </section>
+    <section>
+      <title>Update existing value</title>
+      <para>Updates an existing
+        value<screen>PUT /api/userDataStore/&lt;namespace>/&lt;key></screen></para>
+      <para>Example
+        request:<screen>curl -X PUT -H "Content-Type: application/json" -u admin:district -d "['new value']" "play.dhis2.org/api/userDataStore/foo/bar"</screen><screen>{
+  "httpStatus":"Created",
+  "httpStatusCode":201,
+  "status":"OK",
+  "message":"Key 'bar' in namespace 'foo' updated."
+}</screen></para>
+    </section>
+    <section>
+      <title>Delete key</title>
+      <para>Delete a key<screen>DELETE /api/userDataStore/&lt;namespace>/&lt;key></screen></para>
+      <para>Example
+        request:<screen>curl -X DELETE -u admin:district "play.dhis2.org/api/userDataStore/foo/bar"</screen><screen>{
+  "httpStatus":"OK",
+  "httpStatusCode":200,
+  "status":"OK",
+  "message":"Key 'bar' deleted from the namespace 'foo."}</screen></para>
+    </section>
+    <section>
+      <title>Delete namespace</title>
+      <para>Delete all keys in the given
+        namespace<screen>DELETE /api/userDataStore/&lt;namespace></screen></para>
+      <para>Example
+        request:<screen>curl -X DELETE -u admin:district "play.dhis2.org/api/userDataStore/foo"</screen><screen>{
+  "httpStatus":"OK",
+  "httpStatusCode":200,
+  "status":"OK",
+  "message":"All keys from namespace 'foo' deleted."}</screen></para>
+    </section>
+  </section>
+  <section>
     <title>Metadata repository</title>
     <para>DHIS 2 provides a metadata repository containing metadata packages with various content. A
       metadata package is a </para>
