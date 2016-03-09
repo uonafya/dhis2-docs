@@ -4284,9 +4284,12 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
     </section>
   </section>
   <section>
-    <title>Messages</title>
+    <title>Message conversations</title>
     <para>DHIS 2 features a mechanism for sending messages for purposes such as user feedback,
-      notifications and general information to users. Messages are delivered to the DHIS 2 message
+      notifications and general information to users. Messages are grouped into conversations. To
+      interact with message conversations you can send POST and GET request to the <emphasis
+        role="italic">messageConversations</emphasis>
+      resource.<screen>api/messageConversations</screen>Messages are delivered to the DHIS 2 message
       inbox but can also be sent to the user&apos;s email addresses and mobile phones as SMS. In
       this example we will see how we can utilize the Web API to send, read and manage messages. We
       will pretend to be the <emphasis role="italic">DHIS Administrator</emphasis> user and send a
@@ -4375,8 +4378,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       &quot;id&quot;: &quot;DiszpKrYNg8&quot;
     }
   ]
-}
-      </screen>
+}      </screen>
       <screen>curl -d @message.json &quot;https://play.dhis2.org/demo/api/messageConversations&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -X POST -v</screen>
       <para>If all is well we receive a <emphasis role="italic">201 Created</emphasis> HTTP status
         code. Also note that we receive a <emphasis role="italic">Location </emphasis>HTTP header
