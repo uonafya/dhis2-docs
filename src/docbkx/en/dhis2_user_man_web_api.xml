@@ -8399,13 +8399,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Enrolling a tracked entity instance into a program</title>
       <para>For enrolling persons into a program, you will need to first get the identifier of the
         person from the <emphasis role="italic">trackedEntityInstances</emphasis> resource. Then,
-        you will need to get the program identifier from the <emphasis role="italic">programs</emphasis> resource. A template payload can be seen
+        you will need to get the program identifier from the <emphasis role="italic"
+          >programs</emphasis> resource. A template payload can be seen
         below:<screen>{
     &quot;trackedEntityInstance&quot;: &quot;ZRyCnJ1qUXS&quot;,
     &quot;orgUnit&quot;: &quot;ImspTQPwCqd&quot;,
     &quot;program&quot;: &quot;S8uo8AlvYMz&quot;,
-    &quot;dateOfEnrollment&quot;: &quot;2013-09-17&quot;,
-    &quot;dateOfIncident&quot;: &quot;2013-09-17&quot;
+    &quot;enrollmentDate&quot;: &quot;2013-09-17&quot;,
+    &quot;incidentDate&quot;: &quot;2013-09-17&quot;
 }</screen></para>
       <para>This payload should be used in a <emphasis role="bold">POST</emphasis> request to the
         enrollments resource identified by the following URL:</para>
