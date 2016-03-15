@@ -128,8 +128,6 @@ sudo locale-gen nb_NO.UTF-8</screen>
       shared_buffers setting. PostgreSQL delegates the second layer to the operating system disk
       cache and the size of available memory can be given with the effective_cache_size
       setting.</para>
-      <para><screen>checkpoint_segments = 32</screen></para>
-      <para>PostgreSQL writes new transactions to a log file called WAL segments which are 16MB in size. When a number of segments have been written a checkpoint occurs. Setting this number to a larger value will thus improve performance for write-heavy systems such as DHIS 2.</para>
       <para><screen>checkpoint_completion_target = 0.8</screen></para>
       <para>Determines the percentage of segment completion before a checkpoint occurs. Setting this to a high value will thus spread the writes out and lower the average write overhead.</para>
       <para><screen>wal_buffers = 16MB</screen></para>
