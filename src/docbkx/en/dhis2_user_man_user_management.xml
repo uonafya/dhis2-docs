@@ -116,7 +116,7 @@
               <para><emphasis role="italic">Email invitation to create account</emphasis> - Choose this if you would like to send by email an invitation for
               the user to return to the system and finish setting up their user account. The user will then return to the
               system and fill in most of their personal information. The account that the user finishes setting up will be limited according to how you configure it below.</para>
-              <para>Note that you may not select this option to create an account with &quot;critical&quot; system authorities such as All, Scheduling Administration, Perform maintenance tasks, Merge organisation units, Eliminate duplicate data elements, Sql View Management, Change system settings, and List, Add or Delete user roles.</para>
+              <para>Note that you may not select this option to create an account with &quot;critical&quot; system authorities such as All, Scheduling Administration, Perform maintenance tasks, Merge organisation units, Eliminate duplicate data elements, SQL View Management, Change system settings, and List, Add or Delete user roles.</para>
               <para>If you choose this action, then enter the email address to which the invitation should be sent.
               If you want to, you may also enter the user name that the account will have. If you leave the username
               empty, then the user may choose their own username when they respond to the invitation (as long as it
@@ -155,15 +155,18 @@
         </listitem>
         <listitem>
           <para>Users can be assigned to any number of data view organisation units. This controls
-            which organisation units the user can view aggregated data for in analysis modules.
-            Giving access to an organisation unit implicitly gives access to all organisation unit
-            below it in the organisation unit hierarchy. Note that data view organisation units are
+            which organisation units the user can view aggregated data for in analysis modules.</para>
+          <important>
+            <para>         Giving access to an organisation unit implicitly gives access to all organisation unit
+            below it in the organisation unit hierarchy. Thus, you should not select the descendants of an orgunit which you have already selected. As an example, if the user has been assigned to a disitrct, you should not (and not need to) select the facilities within that district.</para>
+            <para>Note that data view organisation units are
             optional. If you do not specify any, the user will have access to the full organisation
-            unit hierarchy for viewing aggregated data.</para>
+            unit hierarchy for viewing aggregated data. As with the data capture organisation units, <emphasis>you should not select descendant organisation units of a unit which you have already selected</emphasis>. </para>
+          </important>
           <para>In several places in the analysis modules one can select &quot;user organisation unit&quot;
             for the organisation unit dimension. This mechanism will first attempt to use the data
             view organisation units linked to the current user. If not found, it will use the data
-            capture organisation units.</para>
+            capture organisation units. If the user has been assigned to multiple organisation units, the use of &quot;user organisation unit&quot; may result in unpredictable behavior.</para>
           <screenshot>
             <screeninfo>User management screen</screeninfo>
             <mediaobject>
@@ -231,7 +234,7 @@
         the system.</para>
       <para>When granted the &quot;Add/update users within managed groups&quot; authority, the
         system lets a user add members to user groups for which she has read-only access to. The
-        purpose of this is to allow for desentralized user management. You may define a range of
+        purpose of this is to allow for decentralized user management. You may define a range of
         user groups where other users may add or remove members, but not remove or change the name
         of the group.</para>
     </section>
@@ -250,9 +253,9 @@
           </listitem>
           <listitem>
             <para><emphasis role="bold">Set the OpenID identifier on the user</emphasis>: For every
-              user that should be able to login with his openid identifier, you will need to set
+              user that should be able to login with his OpenID identifier, you will need to set
               this on the user itself. This can be done in user management, under the email field,
-              there is noe a field called <emphasis role="italic">OpenID</emphasis> which can be
+              there is not a field called <emphasis role="italic">OpenID</emphasis> which can be
               used to fill in the OpenID identifier. </para>
           </listitem>
         </itemizedlist></para>
