@@ -7007,7 +7007,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
               <entry>No</entry>
               <entry>Value dimension identifier. Can be a data element or an attribute which must be
                 of numeric value type.</entry>
-              <entry>Data element or attribute identifier.</entry>
+              <entry>Data element or attribute identifier</entry>
             </row>
             <row>
               <entry>aggregationType</entry>
@@ -7077,6 +7077,44 @@ ORDER BY oul.level, par.name, ou.name</screen>
               <entry>No</entry>
               <entry>Produce aggregate values for the data dimensions (as opposed to dimension
                 items).</entry>
+              <entry>false | true</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <table frame="all">
+        <title>Query parameters for cluster event analytics only</title>
+        <tgroup cols="4">
+          <colspec colname="c1" colnum="1" colwidth="1.82*"/>
+          <colspec colname="c2" colnum="2" colwidth="1*"/>
+          <colspec colname="c3" colnum="3" colwidth="4.35*"/>
+          <colspec colname="c4" colnum="4" colwidth="1.7*"/>
+          <thead>
+            <row>
+              <entry>Query parameter</entry>
+              <entry>Required</entry>
+              <entry>Description</entry>
+              <entry>Options</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>clusterSize</entry>
+              <entry>No</entry>
+              <entry>Size of clusters in meters.</entry>
+              <entry>Numeric positive value</entry>
+            </row>
+            <row>
+              <entry>bbox</entry>
+              <entry>No</entry>
+              <entry>Bounding box / area of events to include in the response on the format "min
+                longitude , min latitude , max longitude , max latitude".</entry>
+              <entry>String</entry>
+            </row>
+            <row>
+              <entry>includeClusterPoints</entry>
+              <entry>No</entry>
+              <entry>Include information about underlying points for each cluster.</entry>
               <entry>false | true</entry>
             </row>
           </tbody>
@@ -7465,7 +7503,12 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <section>
       <title>Event clustering analytics</title>
       <para>The <emphasis role="italic">analytics/events/cluster</emphasis> resource provides
-        clustered geospatial event data.</para>
+        clustered geospatial event data. A request looks like this:</para>
+      <screen>api/analytics/events/cluster/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:O6uvpzGd5pu&amp;
+clusterSize=100&amp;bbox=BOX(-13.268 7.386,-10.426 9.904)&amp;includeClusterPoints=true</screen>
+      <para>The cluster response provides the count of underlying points, the centre point and
+        extent of each cluster, and looks like this:</para>
+      <screen/>
     </section>
     <section>
       <title>Event count and extent analytics</title>
