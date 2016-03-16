@@ -8683,9 +8683,16 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <para>You can manipulate user settings by interacting with the <emphasis role="italic"
         >userSettings</emphasis> resource. A user setting is a simple key-value pair, where both the
       key and the value are plain text strings. The user setting will be linked to the user who is
-      authenticated for the Web API request. To save or update a setting for the currently
-      authenticated user you can make a <emphasis role="italic">POST</emphasis> request to the
-      following URL:</para>
+      authenticated for the Web API request. To return a list of all user settings, you can send a
+        <emphasis>GET</emphasis> request to the following URL:</para>
+    <para>
+      <screen>/api/userSettings</screen>
+    </para>
+    <para>User settings not set by the user, will fall back to the equvalent system setting. To only
+      return the values set explicitly by the user, you can append ?useFallback=false to the above
+      URL, like this:<screen>/api/userSettings?useFallback=false</screen></para>
+    <para> To save or update a setting for the currently authenticated user you can make a <emphasis
+        role="italic">POST</emphasis> request to the following URL:</para>
     <screen>/api/userSettings/my-key?value=my-val</screen>
     <para>You can specify the user for which to save the setting explicitly with this syntax:</para>
     <screen>/api/userSettings/my-key?user=username&amp;value=my-val</screen>
