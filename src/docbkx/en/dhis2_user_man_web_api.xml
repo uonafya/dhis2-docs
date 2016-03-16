@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!-- This document was created with Syntext Serna Free. -->
+<!--_to_ This document was created with Syntext Serna Free. -->
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Web API</title>
@@ -7114,7 +7114,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
             <row>
               <entry>includeClusterPoints</entry>
               <entry>No</entry>
-              <entry>Include information about underlying points for each cluster.</entry>
+              <entry>Include information about underlying points for each cluster, be careful if
+                cluster represent a very high number of points.</entry>
               <entry>false | true</entry>
             </row>
           </tbody>
@@ -7513,25 +7514,30 @@ ORDER BY oul.level, par.name, ou.name</screen>
         "name": "count",
         "column": "Count",
         "type": "java.lang.Long",
-        "meta": true
+        "meta": false
     }, {
         "name": "center",
         "column": "Center",
         "type": "java.lang.String",
-        "meta": true
+        "meta": false
     }, {
         "name": "extent",
         "column": "Extent",
         "type": "java.lang.String",
-        "meta": true
+        "meta": false
+    }, {
+        "name": "points",
+        "column": "Points",
+        "type": "java.lang.String",
+        "meta": false
     }],
     "width": 3,
     "height": 4,
     "rows": [
-        ["3", "POINT(-13.15818 8.47567)", "BOX(-13.26821 8.47215,-13.08711 8.47807)"],
-        ["9", "POINT(-13.11184 8.66424)", "BOX(-13.24982 8.51961,-13.05816 8.87696)"],
-        ["1", "POINT(-12.46144 7.50597)", "BOX(-12.46144 7.50597,-12.46144 7.50597)"],
-        ["7", "POINT(-12.47964 8.21533)", "BOX(-12.91769 7.66775,-12.21011 8.49713)"]
+        ["3", "POINT(-13.15818 8.47567)", "BOX(-13.26821 8.47215,-13.08711 8.47807)", ""],
+        ["9", "POINT(-13.11184 8.66424)", "BOX(-13.24982 8.51961,-13.05816 8.87696)", ""],
+        ["1", "POINT(-12.46144 7.50597)", "BOX(-12.46144 7.50597,-12.46144 7.50597)", ""],
+        ["7", "POINT(-12.47964 8.21533)", "BOX(-12.91769 7.66775,-12.21011 8.49713)", ""]
     ]
 }</screen>
     </section>
