@@ -2061,9 +2061,9 @@ http://server/api/constants/ID</screen></para>
         <tgroup cols="3">
           <thead>
             <row>
-              <entry> Parameter </entry>
-              <entry> Values (default first) </entry>
-              <entry> Description </entry>
+              <entry>Parameter</entry>
+              <entry>Values (default first)</entry>
+              <entry>Description</entry>
             </row>
           </thead>
           <tbody>
@@ -2841,7 +2841,87 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
 }</screen>
       <para>As part of the import summary you will also get the identifier <emphasis role="italic"
           >reference</emphasis> to the event you just sent, together with a <emphasis role="italic"
-          >href</emphasis> element which points to the server location of this event. </para>
+          >href</emphasis> element which points to the server location of this event. The table
+        below describes the meaning of each element.</para>
+      <table>
+        <title>Events resource format</title>
+        <tgroup cols="5">
+          <colspec colnum="1" colname="c1" colwidth="140pt"/>
+          <colspec colnum="2" colname="c2" colwidth="88pt"/>
+          <colspec colnum="3" colname="c3" colwidth="84pt"/>
+          <colspec colnum="4" colname="c4" colwidth="315pt"/>
+          <colspec colnum="5" colname="c5" colwidth="394pt"/>
+          <thead>
+            <row>
+              <entry> Parameter </entry>
+              <entry> Type </entry>
+              <entry> Required </entry>
+              <entry> Options (default first)</entry>
+              <entry> Description </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>program</entry>
+              <entry>string</entry>
+              <entry>true</entry>
+              <entry/>
+              <entry>Identifier of the single event with no registration program</entry>
+            </row>
+            <row>
+              <entry>orgUnit</entry>
+              <entry>string</entry>
+              <entry>true</entry>
+              <entry/>
+              <entry>Identifier of the organisation unit where the event took place</entry>
+            </row>
+            <row>
+              <entry>eventDate</entry>
+              <entry>date</entry>
+              <entry>true</entry>
+              <entry/>
+              <entry>The date of when the event occured</entry>
+            </row>
+            <row>
+              <entry>status</entry>
+              <entry>enum</entry>
+              <entry>false</entry>
+              <entry>ACTIVE |&#160;COMPLETED |&#160;VISITED | SCHEDULE |&#160;OVERDUE
+                |&#160;SKIPPED</entry>
+              <entry>Whether the event is complete or not</entry>
+            </row>
+            <row>
+              <entry>storedBy</entry>
+              <entry>string</entry>
+              <entry>false</entry>
+              <entry>Defaults to current user</entry>
+              <entry>Who stored this event (can be username, system-name etc)</entry>
+            </row>
+            <row>
+              <entry>coordinate</entry>
+              <entry>double</entry>
+              <entry>false</entry>
+              <entry/>
+              <entry>Refers to wher the event took place geographically (latitude and
+                longitude)</entry>
+            </row>
+            <row>
+              <entry>dataElement</entry>
+              <entry>string</entry>
+              <entry>true</entry>
+              <entry/>
+              <entry>Identifier of data element</entry>
+            </row>
+            <row>
+              <entry>value</entry>
+              <entry>string</entry>
+              <entry>true</entry>
+              <entry/>
+              <entry>Data value or measure for this event</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
       <para><emphasis role="bold">OrgUnit matching</emphasis>: By default the orgUnit parameter will
         match on the ID, you can also select the orgUnit id matching scheme by using the parameter
         orgUnitIdScheme=SCHEME, where the options are: <emphasis role="italic">ID</emphasis>,
@@ -2861,89 +2941,51 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
       <para><emphasis role="bold">Get</emphasis>: To get an existing event you can issue a GET
         request including the identifier like
         this:<screen>curl &quot;localhost/api/events/ID&quot; -H &quot;Content-Type:application/xml&quot; -u admin:district -v</screen></para>
-      <para>The table below describes the meaning of each element. Most elements should be fairly
-        self-explanatory.</para>
-      <para>
+      <section>
+        <title>Import parameters</title>
+        <para>The import process can be customized using a set of import parameters:</para>
         <table>
-          <title>Events resource format</title>
-          <tgroup cols="5">
-            <colspec colnum="1" colname="c1" colwidth="140pt"/>
-            <colspec colnum="2" colname="c2" colwidth="88pt"/>
-            <colspec colnum="3" colname="c3" colwidth="84pt"/>
-            <colspec colnum="4" colname="c4" colwidth="315pt"/>
-            <colspec colnum="5" colname="c5" colwidth="394pt"/>
+          <title>Import parameters</title>
+          <tgroup cols="3">
             <thead>
               <row>
                 <entry> Parameter </entry>
-                <entry> Type </entry>
-                <entry> Required </entry>
-                <entry> Options (default first)</entry>
+                <entry> Values (default first) </entry>
                 <entry> Description </entry>
               </row>
             </thead>
             <tbody>
               <row>
-                <entry>programId</entry>
-                <entry>string</entry>
-                <entry>true</entry>
-                <entry/>
-                <entry>Identifier of the single event with no registration program</entry>
+                <entry>dataElementIdScheme</entry>
+                <entry>id | name | code |&#160;attribute:ID</entry>
+                <entry>Property of the data element object to use to map the data values.</entry>
               </row>
               <row>
-                <entry>organisationUnitId</entry>
-                <entry>string</entry>
-                <entry>true</entry>
-                <entry/>
-                <entry>Identifier of the organisation unit where the event took place</entry>
+                <entry>orgUnitIdScheme</entry>
+                <entry>id | name | code | attribute:ID</entry>
+                <entry>Property of the org unit object to use to map the data values.</entry>
               </row>
               <row>
-                <entry>eventDate</entry>
-                <entry>date</entry>
-                <entry>true</entry>
-                <entry/>
-                <entry>The date of when the event occured</entry>
+                <entry>idScheme</entry>
+                <entry>id | name | code|&#160;attribute:ID</entry>
+                <entry>Property of all objects including data elements, org units and category option
+                  combos, to use to map the data values.</entry>
               </row>
               <row>
-                <entry>status</entry>
-                <entry>enum</entry>
-                <entry>false</entry>
-                <entry>ACTIVE |&#160;COMPLETED |&#160;VISITED | SCHEDULE |&#160;OVERDUE
-                  |&#160;SKIPPED</entry>
-                <entry>Whether the event is complete or not</entry>
+                <entry>dryRun</entry>
+                <entry>false | true</entry>
+                <entry>Whether to save changes on the server or just return the import
+                  summary.</entry>
               </row>
               <row>
-                <entry>storedBy</entry>
-                <entry>string</entry>
-                <entry>false</entry>
-                <entry>Defaults to current user</entry>
-                <entry>Who stored this event (can be username, system-name etc)</entry>
-              </row>
-              <row>
-                <entry>coordinate</entry>
-                <entry>double</entry>
-                <entry>false</entry>
-                <entry/>
-                <entry>Refers to wher the event took place geographically (latitude and
-                  longitude)</entry>
-              </row>
-              <row>
-                <entry>dataElementId</entry>
-                <entry>string</entry>
-                <entry>true</entry>
-                <entry/>
-                <entry>Identifier of data element</entry>
-              </row>
-              <row>
-                <entry>value</entry>
-                <entry>string</entry>
-                <entry>true</entry>
-                <entry/>
-                <entry>Data value or measure for this event</entry>
+                <entry>importStrategy</entry>
+                <entry>CREATE |&#160;UPDATE |&#160;CREATE_AND_UPDATE |&#160;DELETE</entry>
+                <entry>Save objects of all, new or update import status on the server.</entry>
               </row>
             </tbody>
           </tgroup>
         </table>
-      </para>
+      </section>      
     </section>
     <section>
       <title>CSV Import / Export</title>
