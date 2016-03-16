@@ -7309,6 +7309,19 @@ ORDER BY oul.level, par.name, ou.name</screen>
         <para>The <emphasis role="italic">rows</emphasis> section contains the events produced by
           the query. Each row represents exactly one event.</para>
       </section>
+      <section>
+        <title>Event count and extent</title>
+        <para>The <emphasis role="italic">events/count</emphasis> resource is suitable for
+          geometry-related clienst to retrieve the count and extent (bounding box) of events for a
+          specific query. The query syntax is equal to the <emphasis role="italic"
+            >events/query</emphasis> resource. A request looks like this:</para>
+        <screen>api/analytics/events/count/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:O6uvpzGd5pu</screen>
+        <para> The response will provide the count and extent in JSON format:</para>
+        <screen>{
+    extent: "BOX(-13.2682125910096 7.38679562779441,-10.4261178860988 9.90401290212795)",
+    count: 59
+}</screen>
+      </section>
     </section>
     <section>
       <title>Event aggregate analytics</title>
