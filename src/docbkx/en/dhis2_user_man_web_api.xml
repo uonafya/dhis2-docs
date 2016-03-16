@@ -7100,15 +7100,15 @@ ORDER BY oul.level, par.name, ou.name</screen>
           <tbody>
             <row>
               <entry>clusterSize</entry>
-              <entry>No</entry>
+              <entry>Yes</entry>
               <entry>Size of clusters in meters.</entry>
               <entry>Numeric positive value</entry>
             </row>
             <row>
               <entry>bbox</entry>
-              <entry>No</entry>
+              <entry>Yes</entry>
               <entry>Bounding box / area of events to include in the response on the format "min
-                longitude , min latitude , max longitude , max latitude".</entry>
+                longitude, min latitude, max longitude , max latitude".</entry>
               <entry>String</entry>
             </row>
             <row>
@@ -7321,7 +7321,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         },
     },
     &quot;width&quot;: 8,
-    &quot;height&quot;: 25,
+    &quot;height&quot;: 4,
     &quot;rows&quot;: [
         [&quot;yx9IDINf82o&quot;, &quot;Zj7UnCAulEk&quot;, &quot;2014-08-05&quot;, &quot;[5.12, 1.23]&quot;, &quot;Ngelehun&quot;, &quot;OU_559&quot;, &quot;YuQRtpLP10I&quot;, &quot;Female&quot;, &quot;50&quot;],
         [&quot;IPNa7AsCyFt&quot;, &quot;Zj7UnCAulEk&quot;, &quot;2014-06-12&quot;, &quot;[5.22, 1.43]&quot;, &quot;Ngelehun&quot;, &quot;OU_559&quot;, &quot;YuQRtpLP10I&quot;, &quot;Female&quot;, &quot;50&quot;],
@@ -7504,11 +7504,36 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Event clustering analytics</title>
       <para>The <emphasis role="italic">analytics/events/cluster</emphasis> resource provides
         clustered geospatial event data. A request looks like this:</para>
-      <screen>api/analytics/events/cluster/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:O6uvpzGd5pu&amp;
-clusterSize=100&amp;bbox=BOX(-13.268 7.386,-10.426 9.904)&amp;includeClusterPoints=true</screen>
+      <screen>api/analytics/events/cluster/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:LEVEL-2
+&amp;clusterSize=100000&amp;bbox=-13.2682125,7.3721619,-10.4261178,9.904012&amp;includeClusterPoints=false</screen>
       <para>The cluster response provides the count of underlying points, the centre point and
-        extent of each cluster, and looks like this:</para>
-      <screen/>
+        extent of each cluster. A sample response looks like this:</para>
+      <screen>{
+    "headers": [{
+        "name": "count",
+        "column": "Count",
+        "type": "java.lang.Long",
+        "meta": true
+    }, {
+        "name": "center",
+        "column": "Center",
+        "type": "java.lang.String",
+        "meta": true
+    }, {
+        "name": "extent",
+        "column": "Extent",
+        "type": "java.lang.String",
+        "meta": true
+    }],
+    "width": 3,
+    "height": 4,
+    "rows": [
+        ["3", "POINT(-13.1581886203458 8.47567984893893)", "BOX(-13.2682125910096 8.47215740595199,-13.0871128760714 8.47807425577715)"],
+        ["9", "POINT(-13.1118430930706 8.66424322046629)", "BOX(-13.2498201744776 8.51961339805461,-13.0581615014672 8.87696462589502)"],
+        ["1", "POINT(-12.4614440142084 7.50597725161351)", "BOX(-12.4614440142084 7.50597725161351,-12.4614440142084 7.50597725161351)"],
+        ["7", "POINT(-12.479644435266 8.21533177575208)", "BOX(-12.9176902770996 7.66775549162291,-12.2101121467412 8.49713910356872)"]
+    ]
+}</screen>
     </section>
     <section>
       <title>Event count and extent analytics</title>
