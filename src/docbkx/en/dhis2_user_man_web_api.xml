@@ -7085,13 +7085,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
     <section>
       <title>Event query analytics</title>
-      <para>The <emphasis role="italic">events/query</emphasis> resource lets you query for captured
-        events. This resource does not perform any aggregation, rather it lets you query and filter
-        for information about events. You can specify any number of dimensions and any number of
-        filters in a query. Dimension item identifiers can refer to any of data elements, person
-        attributes, person identifiers, fixed and relative periods and organisation units.
-        Dimensions can optionally have a query operator and a filter. Event queries should be on the
-        format described below.</para>
+      <para>The <emphasis role="italic">analytics/events/query</emphasis> resource lets you query
+        for captured events. This resource does not perform any aggregation, rather it lets you
+        query and filter for information about events. You can specify any number of dimensions and
+        any number of filters in a query. Dimension item identifiers can refer to any of data
+        elements, person attributes, person identifiers, fixed and relative periods and organisation
+        units. Dimensions can optionally have a query operator and a filter. Event queries should be
+        on the format described below.</para>
       <screen>api/analytics/events/query/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
 &amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
       <para>For example, to retrieve events from the &quot;Inpatient morbidity and mortality&quot;
@@ -7309,29 +7309,16 @@ ORDER BY oul.level, par.name, ou.name</screen>
         <para>The <emphasis role="italic">rows</emphasis> section contains the events produced by
           the query. Each row represents exactly one event.</para>
       </section>
-      <section>
-        <title>Event count and extent</title>
-        <para>The <emphasis role="italic">events/count</emphasis> resource is suitable for
-          geometry-related clienst to retrieve the count and extent (bounding box) of events for a
-          specific query. The query syntax is equal to the <emphasis role="italic"
-            >events/query</emphasis> resource. A request looks like this:</para>
-        <screen>api/analytics/events/count/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:O6uvpzGd5pu</screen>
-        <para> The response will provide the count and extent in JSON format:</para>
-        <screen>{
-    extent: "BOX(-13.2682125910096 7.38679562779441,-10.4261178860988 9.90401290212795)",
-    count: 59
-}</screen>
-      </section>
     </section>
     <section>
       <title>Event aggregate analytics</title>
-      <para>In order to get <emphasis role="italic">aggregated numbers</emphasis> of events captured
-        in DHIS 2 you can work with the <emphasis role="italic"
-          >analytics/events/aggregate</emphasis> resource. This resource lets you retrieve aggregate
-        data based on a program and optionally a program stage, and lets you filter on any event
-        dimension. In other words, it does not return the event information itself, rather the
-        aggregate numbers of events matching the request query. Event dimensions include data
-        elements, person attributes, person identifiers, periods and organisation units.</para>
+      <para>The <emphasis role="italic">analytics/events/aggregate</emphasis> resource lets you
+        retrieve <emphasis role="italic">aggregated numbers</emphasis> of events captured in DHIS 2.
+        This resource lets you retrieve aggregate data based on a program and optionally a program
+        stage, and lets you filter on any event dimension. In other words, it does not return the
+        event information itself, rather the aggregate numbers of events matching the request query.
+        Event dimensions include data elements, person attributes, person identifiers, periods and
+        organisation units.</para>
       <para>Aggregate event queries should be on the format described below.</para>
       <screen>api/analytics/events/aggregate/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
 &amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
@@ -7474,6 +7461,24 @@ ORDER BY oul.level, par.name, ou.name</screen>
           query produces more than the max limit, a <emphasis role="italic">409 Conflict</emphasis>
           status code will be returned.</para>
       </section>
+    </section>
+    <section>
+      <title>Event clustering analytics</title>
+      <para>The <emphasis role="italic">analytics/events/cluster</emphasis> resource provides
+        clustered geospatial event data.</para>
+    </section>
+    <section>
+      <title>Event count and extent analytics</title>
+      <para>The <emphasis role="italic">analytics/events/count</emphasis> resource is suitable for
+        geometry-related clienst to retrieve the count and extent (bounding box) of events for a
+        specific query. The query syntax is equal to the <emphasis role="italic"
+          >events/query</emphasis> resource. A request looks like this:</para>
+      <screen>api/analytics/events/count/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:O6uvpzGd5pu</screen>
+      <para> The response will provide the count and extent in JSON format:</para>
+      <screen>{
+    extent: "BOX(-13.2682125910096 7.38679562779441,-10.4261178860988 9.90401290212795)",
+    count: 59
+}</screen>
     </section>
   </section>
   <section>
