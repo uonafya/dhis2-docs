@@ -7508,7 +7508,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <screen>api/analytics/events/cluster/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:LEVEL-2
 &amp;clusterSize=100000&amp;bbox=-13.2682125,7.3721619,-10.4261178,9.904012&amp;includeClusterPoints=false</screen>
       <para>The cluster response provides the count of underlying points, the centre point and
-        extent of each cluster. A sample response looks like this:</para>
+        extent of each cluster. If the <emphasis role="italic">includeClusterPoints</emphasis> query
+        parameter is set to true, a comma-separated string with the identifiers of the underlying
+        events is included. A sample response looks like this:</para>
       <screen>{
     "headers": [{
         "name": "count",
