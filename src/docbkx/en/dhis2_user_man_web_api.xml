@@ -8032,6 +8032,21 @@ ORDER BY oul.level, par.name, ou.name</screen>
     &quot;47XXXXXX2&quot;
   ] 
 }</screen>
+      <screen>/api/sms/outbound/batch</screen>
+      <screen>{ 
+  &quot;smsBatch&quot;:[{
+  &quot;message&quot;:&quot;Sms Text&quot;,  
+  &quot;recipients&quot;: [
+  &quot;47XXXXXX1&quot;
+  ]
+  },
+  {
+  &quot;message&quot;:&quot;Sms Text2&quot;,  
+  &quot;recipients&quot;: [
+  &quot;47XXXXXX1&quot;
+  ]
+  }] 
+}</screen>
       <para>The Web API also supports a query parameter version, but the parameterized API can only
         be used for sending SMS to a single destination. </para>
       <screen>/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
