@@ -8097,18 +8097,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </tgroup>
       </table>
     </section>
-    <section>
-      <title>SMS service administration</title>
-      <para>The Web API supports SMS service APIs for service administration.</para>
-      <para>Service can be started using the POST method.</para>
-      <screen>POST /api/sms/service</screen>
-      <para>Service can be stopped using the DELETE method.</para>
-      <screen>DELETE /api/sms/service</screen>
-      <para>Service status can be retrieved using the GET method.</para>
-      <screen>GET /api/sms/service</screen>
-      <para>SMS configurations can be reloaded using the PUT method.</para>
-      <screen>PUT /api/sms/service</screen>
-    </section>
+    
     <section>
       <title>Gateway service administration</title>
       <para>The Web API exposes resources which provide a way to configure and update SMS gateway
@@ -8135,6 +8124,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
   &quot;name&quot; : &quot;clickatell&quot;,
   &quot;username&quot;: &quot;clickatelluser&quot;,
   &quot;password&quot;: &quot;abc123&quot;,
+  &quot;Auth-token&quot;: &quot;XXXXXXXXXXXXXXXXXXXX&quot;,
   &quot;apiid&quot;: &quot;12121&quot;
 }</screen>
       <para><emphasis role="italic">Bulksms</emphasis></para>
@@ -8142,6 +8132,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
   &quot;name&quot;: &quot;bulkSMS&quot;,
   &quot;username&quot;: &quot;bulkuser&quot;,
   &quot;password&quot;: &quot;abc123&quot;,
+   &quot;urlTemplate&quot;: &quot;http://bulksms.vsms.net/&quot;,
   &quot;region&quot;: &quot;Spain&quot;
 }</screen>
       <para><emphasis role="italic">GenericHttp</emphasis></para>
@@ -8162,16 +8153,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
   &quot;password&quot;: &quot;abc123&quot;,
   &quot;address&quot; : &quot;sample.smpp.com&quot;,
   &quot;port&quot; : &quot;8143&quot;
-}</screen>
-      <para><emphasis role="italic">Modem</emphasis></para>
-      <screen>{
-  &quot;name&quot;: &quot;modem&quot;,
-  &quot;port&quot;: &quot;COM1&quot;,
-  &quot;baudrate&quot;: &quot;1000&quot;,
-  &quot;pollingInterval&quot; : &quot;10&quot;,
-  &quot;manufacturer&quot; : &quot;Nokia&quot;,
-  &quot;model&quot; : &quot;8124&quot;,
-  &quot;pin&quot; : &quot;1212&quot;
 }</screen>
       <para>The various gateway configurations can be instantiated using the endpoints listed
         below.</para>
