@@ -11,9 +11,6 @@
       <listitem>
         <para>Configure SMS Gateway</para>
       </listitem>
-      <listitem>
-        <para>Start SMS Service</para>
-      </listitem>
     </itemizedlist>
     <section>
       <title>Configure SMS Gateway</title>
@@ -24,17 +21,6 @@
         <mediaobject>
           <imageobject>
             <imagedata width="40%" align="center" fileref="resources/images/dhis2_mobile_sms/gateway_configuration.png"/>
-          </imageobject>
-        </mediaobject>
-      </screenshot>
-    </section>
-    <section>
-      <title>Start SMS Service</title>
-      <para>Once a gateway configuration is in place, then SMS service can be started/stopped from Mobile Configuration Module as shown in the figure. This can also be done using SMS web api.</para>
-      <screenshot>
-        <mediaobject>
-          <imageobject>
-            <imagedata width="40%" align="center" fileref="resources/images/dhis2_mobile_sms/sms_service_start_stop.png"/>
           </imageobject>
         </mediaobject>
       </screenshot>
@@ -59,7 +45,6 @@
             <entry>BulkSMS  Gateway</entry>
             <entry>Clickatell Gateway</entry>
             <entry>Generic HTTP Gateway</entry>
-            <entry>Modem Gateway</entry>
             <entry>SMPP Gateway</entry>
             <entry>Description</entry>
           </row>
@@ -71,7 +56,6 @@
             <entry>Optional</entry>
             <entry>Optional</entry>
             <entry>Optional</entry>
-            <entry>Optional</entry>
             <entry>Used as gateway identity. Default name will be stored in case this parameter is not configured. Its use is recommended</entry>
           </row>
           <row>
@@ -79,8 +63,23 @@
             <entry>Required</entry>
             <entry>Required</entry>
             <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Used for API authentication</entry>
+          </row>
+          <row>
+            <entry>Password</entry>         
+            <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Used for API authentication</entry>
+          </row>
+          <row>
+            <entry>Auth-Token</entry>         
             <entry>N/A</entry>
             <entry>Required</entry>
+            <entry>N/A</entry>
+            <entry>N/A</entry>
             <entry>Used for API authentication</entry>
           </row>
           <row>
@@ -89,12 +88,10 @@
             <entry>Required</entry>
             <entry>N/A</entry>
             <entry>N/A</entry>
-            <entry>N/A</entry>
             <entry>Used to identify specific sms account on Clickatell Server</entry>
           </row>
           <row>
             <entry>Address</entry>         
-            <entry>N/A</entry>
             <entry>N/A</entry>
             <entry>N/A</entry>
             <entry>N/A</entry>
@@ -107,9 +104,7 @@
             <entry>N/A</entry>
             <entry>N/A</entry>
             <entry>Required</entry>
-            <entry>Required</entry>
-            <entry>Serial Port in case of Modem, for example COM1 or /dev/ttyS0. 
-            Application Port in case of SMPP, for example 2775</entry>
+            <entry>Application Port in case of SMPP, for example 2775</entry>
           </row>
           <row>
             <entry>Region</entry>         
@@ -117,26 +112,15 @@
             <entry>N/A</entry>
             <entry>N/A</entry>
             <entry>N/A</entry>
-            <entry>N/A</entry>
             <entry>The BULKSMS region servers you wish to use. Should be one of the following: UNITEDKINGDOM, SOUTHAFRICA, SPAIN, USA, GERMANY. Leave the setting empty to use the INTERNATIONAL setting.</entry>
           </row>
           <row>
             <entry>URL Template</entry>         
-            <entry>N/A</entry>
-            <entry>N/A</entry>
             <entry>Required</entry>
-            <entry>N/A</entry>
+            <entry>Required</entry>
+            <entry>Required</entry>
             <entry>N/A</entry>
             <entry>API URL for sending sms</entry>
-          </row>
-          <row>
-            <entry>Baud Rate</entry>         
-            <entry>N/A</entry>
-            <entry>N/A</entry>
-            <entry>N/A</entry>
-            <entry>Required</entry>
-            <entry>N/A</entry>
-            <entry>The baudrate, for example 19200.</entry>
           </row>
 
         </tbody>
