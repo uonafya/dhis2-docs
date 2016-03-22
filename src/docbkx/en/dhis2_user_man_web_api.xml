@@ -1306,6 +1306,9 @@ http://server/api/constants/ID</screen></para>
         <para>Validation rules</para>
       </listitem>
       <listitem>
+        <para>Translations</para>
+      </listitem>
+      <listitem>
         <para>Option sets</para>
       </listitem>
     </itemizedlist>
@@ -1672,6 +1675,58 @@ http://server/api/constants/ID</screen></para>
               <entry>No</entry>
               <entry>false | true</entry>
               <entry>Boolean.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <section>
+      <title>Translations</title>
+      <table frame="all">
+        <title>Translation CSV format</title>
+        <tgroup cols="4">
+          <colspec colname="c1" colnum="1" colwidth="2.33*"/>
+          <colspec colname="c2" colnum="2" colwidth="1*"/>
+          <colspec colname="c3" colnum="3" colwidth="3.61*"/>
+          <colspec colname="c4" colnum="4" colwidth="6.17*"/>
+          <thead>
+            <row>
+              <entry>Column</entry>
+              <entry>Required</entry>
+              <entry>Value</entry>
+              <entry/>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>ObjectId</entry>
+              <entry>Yes</entry>
+              <entry>UID</entry>
+              <entry>UID of object to translate.</entry>
+            </row>
+            <row>
+              <entry>ClassName</entry>
+              <entry>Yes</entry>
+              <entry/>
+              <entry>Name of class to translate, e.g. DataElement, IndicatorGroupSet.</entry>
+            </row>
+            <row>
+              <entry>Locale</entry>
+              <entry>Yes</entry>
+              <entry/>
+              <entry>Locale value, e.g. "es", "fr".</entry>
+            </row>
+            <row>
+              <entry>Property</entry>
+              <entry>Yes</entry>
+              <entry>name | shortName | description</entry>
+              <entry>Property to translate.</entry>
+            </row>
+            <row>
+              <entry>Value</entry>
+              <entry>Yes</entry>
+              <entry/>
+              <entry>Translation.</entry>
             </row>
           </tbody>
         </tgroup>
