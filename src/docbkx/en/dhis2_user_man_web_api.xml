@@ -7749,15 +7749,12 @@ ORDER BY oul.level, par.name, ou.name</screen>
         <emphasis role="italic">PUT</emphasis> as method for requests. The following requests are
       available. </para>
     <para>Analytics tables clear will drop all analytics tables:</para>
-    <screen>/api/analyticsTablesClear</screen>
+    <screen>/api/maintenance/analyticsTablesClear</screen>
     <para>Expired invitations clear will remove all user account invitations which have
       expired:</para>
-    <screen>/api/expiredInvitationsClear</screen>
+    <screen>/api/maintenance/expiredInvitationsClear</screen>
     <para>Period pruning will remove periods which are not linked to any data values:</para>
     <screen>/api/maintenance/periodPruning</screen>
-    <para>Data pruning will remove complete data set registrations, data approvals, data value
-      audits and data values, in this case for an organisation
-      unit.<screen>/api/maintenance/dataPruning/organisationUnits/&lt;org-unit-id&gt;</screen></para>
     <para>Zero data value removal will delete zero data values linked to data elements where zero
       data is defined as not significant:</para>
     <screen>/api/maintenance/zeroDataValueRemoval</screen>
@@ -7773,10 +7770,18 @@ ORDER BY oul.level, par.name, ou.name</screen>
       caches:</para>
     <screen>/api/maintenance/cacheClear</screen>
     <para>Re-generate organisation unit path property (can be useful if you imported org units with
-      SQL):<screen>/api/maintenance/ouPathsUpdate</screen></para>
+      SQL):</para>
+    <screen>/api/maintenance/ouPathsUpdate</screen>
+    <para>Data pruning will remove complete data set registrations, data approvals, data value
+      audits and data values, in this case for an organisation unit.</para>
+    <screen>/api/maintenance/dataPruning/organisationUnits/&lt;org-unit-id&gt;</screen>
     <para>Metadata validation will apply all metadata validation rules and return the result of the
       operation:</para>
     <screen>/api/metadataValidation</screen>
+    <para>Maintenance operations are supported in a batch style with a POST request to the
+      api/maintenance resource where the operations are supplied as query parameters:</para>
+    <screen>/api/maintenance?analyticsTablesClear=true&amp;expiredInvitationsClear=true&amp;periodPruning=true&amp;zeroDataValueRemoval=true
+&amp;sqlViewsDrop=true&amp;sqlViewsCreate=true&amp;categoryOptionComboUpdate=true&amp;cacheClear=true&amp;ouPathsUpdate=true</screen>
   </section>
   <section>
     <title>System resource</title>
