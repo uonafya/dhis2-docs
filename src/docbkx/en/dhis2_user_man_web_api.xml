@@ -8199,6 +8199,134 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>The Web API also supports a query parameter version, but the parameterized API can only
         be used for sending SMS to a single destination. </para>
       <screen>/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
+      
+      <section>
+        <title>Gateway response codes</title>
+        <para>Gateway may response with following response codes.</para>
+        <table frame="all">
+          <title>Gateway response codes</title>
+          <tgroup cols="3">
+            <colspec colnum="1" colname="c1" colwidth="1.01*"/>
+            <colspec colnum="2" colname="newCol2" colwidth="1*"/>
+            <colspec colnum="3" colname="c2" colwidth="5.52*"/>
+            <thead>
+              <row>
+                <entry>Response code</entry>
+                <entry>Response Message</entry>
+                <entry>Detail Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>RESULT_CODE_0</entry>
+                <entry>success</entry>
+                <entry>Message has been sent successfully</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_1</entry>
+                <entry>scheduled</entry>
+                <entry>Message has been scheduled successfully</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_22</entry>
+                <entry>internal fatal error</entry>
+                <entry>Internal fatal error</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_23</entry>
+                <entry>authentication failure</entry>
+                <entry>Authentication credentials are incorrect</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_24</entry>
+                <entry>data validation failed</entry>
+                <entry>Parameters provided in request are incorrect</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_25</entry>
+                <entry>insufficient credits</entry>
+                <entry>Credit is not enough to send message</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_26</entry>
+                <entry>upstream credits not available</entry>
+                <entry>Upstream credits not available</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_27</entry>
+                <entry>exceeded your daily quota</entry>
+                <entry>You have exceeded your daily quota</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_40</entry>
+                <entry>temporarily unavailable</entry>
+                <entry>Service is temporarily down</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_201</entry>
+                <entry>maximum batch size exceeded</entry>
+                <entry>Maximum batch size exceeded</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_200</entry>
+                <entry>success</entry>
+                <entry>The request was successfully completed</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_202</entry>
+                <entry>accepted</entry>
+                <entry>The message(s) will be processed</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_207</entry>
+                <entry>multi-status</entry>
+                <entry>More than  one message was submitted to the API; however, not all messages have the same status</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_400</entry>
+                <entry>bad request</entry>
+                <entry>Validation failure (such as missing/invalid parameters or headers)</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_401</entry>
+                <entry>unauthorized</entry>
+                <entry>Authentication failure. This can also be caused by IP lockdown settings</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_402</entry>
+                <entry>payment required</entry>
+                <entry>Not enough credit to send message</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_404</entry>
+                <entry>not found</entry>
+                <entry>Resource does not exist</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_405</entry>
+                <entry>method not allowed</entry>
+                <entry>Http method is not support on the resource</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_410</entry>
+                <entry>gone</entry>
+                <entry>Mobile number is blocked</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_429</entry>
+                <entry>too many requests</entry>
+                <entry>Generic rate limiting error</entry>
+              </row>
+              <row>
+                <entry>RESULT_CODE_503</entry>
+                <entry>service unavailable</entry>
+                <entry>A temporary error has occurred on our platform - please retry</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      
     </section>
     <section>
       <title>Inbound SMS service</title>
