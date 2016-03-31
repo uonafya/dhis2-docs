@@ -37,6 +37,7 @@
     &quot;name&quot;: &quot;My App&quot;,
     &quot;description&quot;: &quot;My App is a Packaged App&quot;,
     &quot;launch_path&quot;: &quot;/index.html&quot;,
+    &quot;appType&quot;: &quot;APP&quot;,
     &quot;icons&quot;: {
         &quot;16&quot;: &quot;/img/icons/mortar-16.png&quot;,
         &quot;48&quot;: &quot;/img/icons/mortar-48.png&quot;,
@@ -69,6 +70,48 @@
         &quot;href&quot;: &quot;http://apps.dhis2.org/demo&quot;
     }
  }</screen>
+    <para>The <emphasis>appType</emphasis> property specifies how the app will be displayed by the
+      DHIS 2 instance. The possible values for appType and their effects are explained in the
+      following table.</para>
+    <para>
+      <table frame="all">
+        <title>App types</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="2.7*"/>
+          <thead>
+            <row>
+              <entry>App type</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>APP</entry>
+              <entry>Will be listed in the "apps" menu</entry>
+            </row>
+            <row>
+              <entry>DASHBOARD_WIDGET</entry>
+              <entry>Available from the search box on the dashboard, can be added as an item on any
+                dashboard</entry>
+            </row>
+            <row>
+              <entry>TRACKER_DASHBOARD_WIDGET</entry>
+              <entry>Can be embedded in the tracker dashboard <emphasis>(this type is not yet
+                  supported)</emphasis></entry>
+            </row>
+            <row>
+              <entry>RESOURCE</entry>
+              <entry>Resource apps are packages that can be shared by multiple other apps. These
+                apps are not shown anywhere in the UI, except from in the app management
+                app.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </para>
+    <para>If no <emphasis>appType</emphasis> is specified in the manifest, the system will use "APP"
+      by default.</para>
     <para>To read the JSON structure into Javascript, you can use a regular AJAX request and parse
       the JSON into an object. Most Javascript libraries provide some support, for instance with
       jQuery it can be done like this:</para>

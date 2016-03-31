@@ -6303,7 +6303,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
               <entry>type</entry>
               <entry>Type of the resource to be represented by the dashboard item</entry>
               <entry>chart | map | reportTable | users | reports | reportTables | resources |
-                patientTabularReports</entry>
+                patientTabularReports | app</entry>
             </row>
             <row>
               <entry>id</entry>
@@ -6317,12 +6317,12 @@ ORDER BY oul.level, par.name, ou.name</screen>
         dashboard could look like this, where the last id query parameter value is the chart
         resource identifier:</para>
       <screen>/api/dashboards/vQFhmLJU5sK/items/content?type=chart&amp;id=LW0O27b7TdD</screen>
-      <para>When adding resource of type map, chart and report table, the API will create and add a
-        new item to the dashboard. When adding a resource of type users, reports, report tables and
-        resources, the API will try to add the resource to an existing dashboard item of the same
-        type. If no item of same type or no item of same type with less than eight resources
-        associated with it exists, the API will create a new dashboard item and the resource to
-        it.</para>
+      <para>When adding resource of type map, chart, report table and app, the API will create and
+        add a new item to the dashboard. When adding a resource of type users, reports, report
+        tables and resources, the API will try to add the resource to an existing dashboard item of
+        the same type. If no item of same type or no item of same type with less than eight
+        resources associated with it exists, the API will create a new dashboard item and add the
+        resource to it.</para>
       <para>In order to move a dashboard item to a new position within the list of items in a
         dashboard, a consumer can make a <emphasis role="italic">POST</emphasis> request to the
         following resource URL, where &lt;dashboard-id&gt; should be replaced by the identifier of
@@ -10922,6 +10922,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
         JSON:<screen>curl -X GET -u user:pass -H &quot;Accept: application/json&quot; http://server.com/api/apps</screen></para>
       <para>You can also simply point your web browser to the resource URL:</para>
       <screen>http://server.com/api/apps</screen>
+      <para>The apps list can also be filtered by app type and by name, by appending one or more
+          <emphasis>filter</emphasis> parameters to the URL:</para>
+      <para>
+        <screen>http://server.com/api/apps?filter=appType:eq:DASHBOARD_APP&amp;filter=name:ilike:youtube</screen>
+      </para>
+      <para>App names support the <emphasis>eq</emphasis> and <emphasis>ilike</emphasis> filter
+        operators, while <emphasis>appType</emphasis> supports <emphasis>eq</emphasis> only.</para>
     </section>
     <section>
       <title>Install an app</title>
