@@ -6491,8 +6491,10 @@ ORDER BY oul.level, par.name, ou.name</screen>
         LEVEL-&lt;level&gt; syntax. Boundary refers to a top node in a sub-hierarchy, meaning that
         all organisation units at the given level below the given boundary organisation unit in the
         hierarchy will be included in the response, and is provided as regular organisation unit
-        dimension items:</para>
+        dimension items. A simple query for all org units at level three:</para>
       <screen>api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014&amp;dimension=ou:LEVEL-3</screen>
+      <para>A query for level three and four with two boundary org units can be specified like
+        this:</para>
       <screen>api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014
 &amp;dimension=ou:LEVEL-3;LEVEL-4;O6uvpzGd5pu;lc3eMKXaEf</screen>
       <para>When selecting organisation units you can also select all organisation units in an
