@@ -6389,7 +6389,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
               <entry>dx</entry>
               <entry>Data element, indicator, data set, data element operand, program indicator,
                 program attribute identifiers, keyword DE_GROUP-&lt;group-id&gt;, use
-                &lt;dataelement-id&gt;-&lt;optioncombo-id&gt; for operands</entry>
+                &lt;dataelement-id&gt;.&lt;optioncombo-id&gt; for data element operands,
+                &lt;program-id>.&lt;dataelement-id> for program data elements,
+                &lt;program-id>.&lt;attribute-id> for program attributes.</entry>
             </row>
             <row>
               <entry>Periods (time)</entry>
@@ -6460,6 +6462,16 @@ ORDER BY oul.level, par.name, ou.name</screen>
         by using the DE_GROUP-&lt;id&gt; syntax:</para>
       <screen>api/analytics?dimension=dx:DE_GROUP-h9cuJOkOwY2
 &amp;dimension=pe:201401&amp;dimension=ou:O6uvpzGd5pu</screen>
+      <para>To query for program data elements (of tracker domain type) you can get those by
+        specifying the program for each data element using the &lt;program-id>.&lt;dataelement-id>
+        syntax:</para>
+      <screen>api/analytics.json?dimension=dx:eBAyeGv0exc.qrur9Dvnyt5;eBAyeGv0exc.GieVkTxp4HH
+&amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
+      <para>To query for program attributes (tracked entity attributes) you can get those by
+        specifying the program for each attribute using the &lt;program.id>.&lt;attribute-id>
+        syntax:</para>
+      <screen>api/analytics.json?dimension=dx:IpHINAT79UW.a3kGcGDCuk6;IpHINAT79UW.UXz7xuGCEhU
+&amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:ImspTQPwCqd</screen>
       <para>To query for organisation unit group sets and data elements you can use the following
         URL - notice how the group set identifier is used as dimension identifier and the groups as
         dimension items:</para>
