@@ -10739,11 +10739,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
   <section>
     <title>Sharing</title>
     <para>The sharing solution allows you to share most objects in the system with specific user
-      groups and to define whether objects should be public and private. To get and set sharing for
-      objects you can interact with the <emphasis role="italic">sharing</emphasis> resource. To
-      request the sharing status for an object use a GET request to:</para>
+      groups and to define whether objects should be publicly accessible or private. To get and set
+      sharing status for objects you can interact with the <emphasis role="italic"
+        >sharing</emphasis> resource.</para>
+    <section>
+      <title>Get sharing status</title>
+    <para>To request the sharing status for an object use a GET request to:</para>
     <screen>api/sharing?type=dataElement&amp;id=fbfJHSPpUQD</screen>
-    <para>The response looks like below.</para>
+    <para>The response looks like the below.</para>
     <screen>{
     &quot;meta&quot;: {
         &quot;allowPublicAccess&quot;: true,
@@ -10767,7 +10770,10 @@ ORDER BY oul.level, par.name, ou.name</screen>
         ]
     }
 }</screen>
-    <para>You can define the sharing status for an object using the same URL with a POST request,
+    </section>
+    <section>
+      <title>Set sharing status</title>
+      <para>You can define the sharing status for an object using the same URL with a POST request,
       where the payload in JSON format looks like this:</para>
     <screen>{
     &quot;object&quot;: {
@@ -10791,6 +10797,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       another user group. You can submit this to the sharing resource using curl:</para>
     <screen>curl -d @sharing.json &quot;localhost/api/sharing?type=dataElement&amp;id=fbfJHSPpUQD&quot; 
 -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+  </section>
   </section>
   <section>
     <title>Scheduling</title>
