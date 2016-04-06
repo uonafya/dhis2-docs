@@ -3041,6 +3041,11 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
                 <entry>CREATE |&#160;UPDATE |&#160;CREATE_AND_UPDATE |&#160;DELETE</entry>
                 <entry>Save objects of all, new or update import status on the server.</entry>
               </row>
+              <row>
+                <entry>sendNotifications</entry>
+                <entry>true | false</entry>
+                <entry>Indicates whether to send notifications for completed events.</entry>
+              </row>
             </tbody>
           </tgroup>
         </table>
@@ -6355,6 +6360,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       elements, periods and organisation units. Also, you can retrieve the aggregated data for a
       combination of any number of dimensions based on data elements and organisation unit group
       sets.</para>
+    <screen>api/analytics</screen>
     <section>
       <title>Dimensions and items</title>
       <para>DHIS 2 features a multi-dimensional data model with several fixed and dynamic data
@@ -6384,7 +6390,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
               <entry>dx</entry>
               <entry>Data element, indicator, data set, data element operand, program indicator,
                 program attribute identifiers, keyword DE_GROUP-&lt;group-id&gt;, use
-                &lt;dataelement-id&gt;-&lt;optioncombo-id&gt; for operands</entry>
+                &lt;dataelement-id&gt;.&lt;optioncombo-id&gt; for data element operands,
+                &lt;program-id>.&lt;dataelement-id> for program data elements,
+                &lt;program-id>.&lt;attribute-id> for program attributes.</entry>
             </row>
             <row>
               <entry>Periods (time)</entry>
@@ -6455,6 +6463,16 @@ ORDER BY oul.level, par.name, ou.name</screen>
         by using the DE_GROUP-&lt;id&gt; syntax:</para>
       <screen>api/analytics?dimension=dx:DE_GROUP-h9cuJOkOwY2
 &amp;dimension=pe:201401&amp;dimension=ou:O6uvpzGd5pu</screen>
+      <para>To query for program data elements (of tracker domain type) you can get those by
+        specifying the program for each data element using the &lt;program-id>.&lt;dataelement-id>
+        syntax:</para>
+      <screen>api/analytics.json?dimension=dx:eBAyeGv0exc.qrur9Dvnyt5;eBAyeGv0exc.GieVkTxp4HH
+&amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
+      <para>To query for program attributes (tracked entity attributes) you can get those by
+        specifying the program for each attribute using the &lt;program.id>.&lt;attribute-id>
+        syntax:</para>
+      <screen>api/analytics.json?dimension=dx:IpHINAT79UW.a3kGcGDCuk6;IpHINAT79UW.UXz7xuGCEhU
+&amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:ImspTQPwCqd</screen>
       <para>To query for organisation unit group sets and data elements you can use the following
         URL - notice how the group set identifier is used as dimension identifier and the groups as
         dimension items:</para>
@@ -6473,8 +6491,10 @@ ORDER BY oul.level, par.name, ou.name</screen>
         LEVEL-&lt;level&gt; syntax. Boundary refers to a top node in a sub-hierarchy, meaning that
         all organisation units at the given level below the given boundary organisation unit in the
         hierarchy will be included in the response, and is provided as regular organisation unit
-        dimension items:</para>
+        dimension items. A simple query for all org units at level three:</para>
       <screen>api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014&amp;dimension=ou:LEVEL-3</screen>
+      <para>A query for level three and four with two boundary org units can be specified like
+        this:</para>
       <screen>api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014
 &amp;dimension=ou:LEVEL-3;LEVEL-4;O6uvpzGd5pu;lc3eMKXaEf</screen>
       <para>When selecting organisation units you can also select all organisation units in an
@@ -6482,8 +6502,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
         syntax. The organisation units in the groups can optionally be constrained by any number of
         boundary organisation units. Both the level and the group items can be repeated any number
         of times:</para>
-      <screen>api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014
-&amp;dimension=ou:OU_GROUP-w0gFTTmsUcF;O6uvpzGd5pu</screen>
       <screen>api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014
 &amp;dimension=ou:OU_GROUP-w0gFTTmsUcF;OU_GROUP-EYbopBOJWsW;O6uvpzGd5pu;lc3eMKXaEf</screen>
       <para>A few things to be aware of when using the analytics resource are listed below.</para>
@@ -6632,6 +6650,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
                 <entry>Property to use for metadata items the query response, can be identifier,
                   code or name.</entry>
                 <entry>UID | CODE | NAME</entry>
+              </row>
+              <row>
+                <entry>inputIdScheme</entry>
+                <entry>No</entry>
+                <entry>Property to use for metadata items in the request, can be identifier or
+                  code.</entry>
+                <entry>UID | CODE</entry>
               </row>
               <row>
                 <entry>approvalLevel</entry>
@@ -7227,11 +7252,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Event query analytics</title>
       <para>The <emphasis role="italic">analytics/events/query</emphasis> resource lets you query
         for captured events. This resource does not perform any aggregation, rather it lets you
-        query and filter for information about events. You can specify any number of dimensions and
-        any number of filters in a query. Dimension item identifiers can refer to any of data
-        elements, person attributes, person identifiers, fixed and relative periods and organisation
-        units. Dimensions can optionally have a query operator and a filter. Event queries should be
-        on the format described below.</para>
+        query and filter for information about events.</para>
+      <screen>api/analytics/events/query</screen>
+      <para> You can specify any number of dimensions and any number of filters in a query.
+        Dimension item identifiers can refer to any of data elements, person attributes, person
+        identifiers, fixed and relative periods and organisation units. Dimensions can optionally
+        have a query operator and a filter. Event queries should be on the format described
+        below.</para>
       <screen>api/analytics/events/query/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
 &amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
       <para>For example, to retrieve events from the &quot;Inpatient morbidity and mortality&quot;
@@ -7455,11 +7482,12 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>The <emphasis role="italic">analytics/events/aggregate</emphasis> resource lets you
         retrieve <emphasis role="italic">aggregated numbers</emphasis> of events captured in DHIS 2.
         This resource lets you retrieve aggregate data based on a program and optionally a program
-        stage, and lets you filter on any event dimension. In other words, it does not return the
-        event information itself, rather the aggregate numbers of events matching the request query.
-        Event dimensions include data elements, person attributes, person identifiers, periods and
-        organisation units.</para>
-      <para>Aggregate event queries should be on the format described below.</para>
+        stage, and lets you filter on any event dimension.</para>
+      <screen>api/analytics/events/aggregate</screen>
+      <para>The events aggregate resource does not return the event information itself, rather the
+        aggregate numbers of events matching the request query. Event dimensions include data
+        elements, person attributes, person identifiers, periods and organisation units. Aggregate
+        event queries should be on the format described below.</para>
       <screen>api/analytics/events/aggregate/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
 &amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
       <para>For example, to retrieve aggregate numbers for events from the &quot;Inpatient morbidity
@@ -10795,11 +10823,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
   <section>
     <title>Sharing</title>
     <para>The sharing solution allows you to share most objects in the system with specific user
-      groups and to define whether objects should be public and private. To get and set sharing for
-      objects you can interact with the <emphasis role="italic">sharing</emphasis> resource. To
-      request the sharing status for an object use a GET request to:</para>
+      groups and to define whether objects should be publicly accessible or private. To get and set
+      sharing status for objects you can interact with the <emphasis role="italic"
+        >sharing</emphasis> resource.</para>
+    <section>
+      <title>Get sharing status</title>
+    <para>To request the sharing status for an object use a GET request to:</para>
     <screen>api/sharing?type=dataElement&amp;id=fbfJHSPpUQD</screen>
-    <para>The response looks like below.</para>
+    <para>The response looks like the below.</para>
     <screen>{
     &quot;meta&quot;: {
         &quot;allowPublicAccess&quot;: true,
@@ -10823,7 +10854,10 @@ ORDER BY oul.level, par.name, ou.name</screen>
         ]
     }
 }</screen>
-    <para>You can define the sharing status for an object using the same URL with a POST request,
+    </section>
+    <section>
+      <title>Set sharing status</title>
+      <para>You can define the sharing status for an object using the same URL with a POST request,
       where the payload in JSON format looks like this:</para>
     <screen>{
     &quot;object&quot;: {
@@ -10847,6 +10881,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       another user group. You can submit this to the sharing resource using curl:</para>
     <screen>curl -d @sharing.json &quot;localhost/api/sharing?type=dataElement&amp;id=fbfJHSPpUQD&quot; 
 -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+  </section>
   </section>
   <section>
     <title>Scheduling</title>
