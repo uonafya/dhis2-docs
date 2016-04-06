@@ -7664,7 +7664,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     "width": 3,
     "height": 4,
     "rows": [
-        ["3", "POINT(-13.15818 8.47567)", "BOX(-13.26821 8.47215,-13.08711 8.47807)", ""],
+        ["3", "POINT(-13.15818 8.47567)", "BOX(-13.26821 8.4St7215,-13.08711 8.47807)", ""],
         ["9", "POINT(-13.11184 8.66424)", "BOX(-13.24982 8.51961,-13.05816 8.87696)", ""],
         ["1", "POINT(-12.46144 7.50597)", "BOX(-12.46144 7.50597,-12.46144 7.50597)", ""],
         ["7", "POINT(-12.47964 8.21533)", "BOX(-12.91769 7.66775,-12.21011 8.49713)", ""]
@@ -11140,6 +11140,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
               <entry>Value holding the information for the entry.</entry>
               <entry>JSON</entry>
             </row>
+            <row>
+              <entry>Encrypted</entry>
+              <entry>Indicates whether the value of the given key should be encrypted</entry>
+              <entry>Boolean</entry>
+            </row>
           </tbody>
         </tgroup>
       </table>
@@ -11199,6 +11204,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
     &quot;status&quot;: &quot;OK&quot;,
     &quot;message&quot;: &quot;Key &apos;key_1&apos; created.&quot;
 }</screen></para>
+      <para>If you require the data you store to be encrypted (For example user credentials or
+        similar) you can append a query to the url like
+        this:<screen>GET /api/dataStore/&lt;namespace>/&lt;key>?encrypt=true</screen></para>
       <para>To update a key that exists in a
         namespace:<screen>PUT /api/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
       <para>Example curl request for update, assuming valid JSON
@@ -11285,6 +11293,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
                 <entry>The value stored</entry>
                 <entry>JSON</entry>
               </row>
+              <row>
+                <entry>Encrypted</entry>
+                <entry>Indicates whether the value should be encrypted</entry>
+                <entry>Boolean</entry>
+              </row>
             </tbody>
           </tgroup>
         </table></para>
@@ -11335,6 +11348,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
   "status": "OK",
   "message": "Key 'bar' in namespace 'foo' created."
 }</screen></para>
+      <para>If you require the value to be encrypted (For example user credetials and such) you can
+        append a query to the url like
+        this:<screen>GET /api/userDataStore/&lt;namespace>/&lt;key>?encrypt=true</screen></para>
     </section>
     <section>
       <title>Update existing value</title>
