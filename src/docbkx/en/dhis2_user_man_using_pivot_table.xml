@@ -103,16 +103,21 @@ See screenshot in word file for error message."?>
       </listitem>
     </itemizedlist>
     <section>
-      <title>Selecting dimension items</title>
-      <para>The left menu will list sections for all available data dimensions. From each section
-        you can select any number of dimension items. As an example, you can open the section for
-        data elements and select any number of data elements from the available list. You can select
-        an item by marking it and clicking on the arrow in the section header or simply
-        double-clicking on the item. Before you can use a data dimension in your pivot table you
-        must at least select one dimension item. If you arrange a dimension as columns or rows but
-        do not select any dimension items, the dimension will be ignored.</para>
-      <para>At least one member of the data dimension is required for all pivot tables. Available
-        types include the following:</para>
+      <title>Selecting dimension
+        <?oxy_comment_start author="Home" timestamp="20160406T163208+0200" comment="Review this section.
+Items in list must correspond to explaintions below. Now they&apos;re not corresponding.
+Consider presenting content in a table."?>items<?oxy_comment_end?></title>
+      <para>The left menu lists sections for all available data dimensions. From each section you
+        can select any number of dimension items. As an example, you can open the section for data
+        elements and select any number of data elements from the available list. You can select an
+        item by marking it and clicking on the arrow in the section header or simply double-clicking
+        on the item. Before you can use a data dimension in your pivot table you must at least
+        select one dimension item. If you arrange a dimension as columns or rows but do not select
+        any dimension items, the dimension is ignored.</para>
+      <para>At least one
+        <?oxy_comment_start author="Home" timestamp="20160406T163002+0200" comment="Member?
+"?>member<?oxy_comment_end?>
+        of the data dimension is required for all pivot tables. The available types are:</para>
       <para>
         <itemizedlist>
           <listitem>
@@ -132,11 +137,11 @@ See screenshot in word file for error message."?>
           </listitem>
         </itemizedlist>
       </para>
-      <para>These dimensions can be combined together, so that you can display for instance
-        aggregate data with reporting rates, or event data items together with program indicators,
-        all in the same pivot tables. For the &quot;data element&quot; data dimension, you are also
-        able to select &quot;Totals&quot; and &quot;Details&quot;, which will allow you to view
-        different category combination options together on the same pivot table. </para>
+      <para>You can combine these dimensions to display for example aggregate data with reporting
+        rates, or event data items together with program indicators, all in the same pivot tables.
+        For the &quot;data element&quot; data dimension, you are also able to select
+        &quot;Totals&quot; and &quot;Details&quot;, which will allow you to view different category
+        combination options together on the same pivot table. </para>
       <para>For the period dimension you can choose between using fixed periods or relative periods.
         An example of a fixed period is &quot;January 2012&quot;. To select fixed periods start by
         selecting a period type from the period type list. You can then select periods from the list
@@ -179,7 +184,8 @@ See screenshot in word file for error message."?>
       </tip>
     </section>
     <section>
-      <title>Modifying pivot table layout</title>
+      <title>Modifying pivot table
+        <?oxy_comment_start author="Home" timestamp="20160406T162540+0200" comment="Would you modify the layout often? Or is it more or less set once you have saved the table as a favorite?"?>layout<?oxy_comment_end?></title>
       <para>After selecting data dimensions it is time to arrange your pivot table. Click
         &quot;Layout&quot; in the top menu to open the layout screen. In this screen you can
         position your data dimensions as table columns, rows or filters by clicking and dragging the
@@ -218,75 +224,208 @@ See screenshot in word file for error message."?>
     </section>
   </section>
   <section>
-    <title>Using table options/Modifying an existing pivot table??</title>
-    <para>Several table options are available when working with a pivot table. Open the options
-      screen by clicking on &quot;Options&quot; in the top menu. The following options are
-      available:</para>
-    <itemizedlist>
+    <title>Using
+      <?oxy_comment_start author="Home" timestamp="20160406T164035+0200" comment="Question for dev:
+What&apos;s the main purpose with these functions?
+
+Changing the look and feel of the table?
+"?>table
+      options<?oxy_comment_end?></title>
+    <para>To change the pivot table settings:</para>
+    <orderedlist>
       <listitem>
-        <para><emphasis role="bold">Show column/row totals:</emphasis> Display total values in the
-          table for each row and column, as well as a grand total for all values in the
-          table.</para>
+        <para>Click <emphasis role="bold">Options</emphasis>.</para>
+        <para>The <emphasis role="bold">TABLE OPTIONS</emphasis> dialog box opens.</para>
       </listitem>
       <listitem>
-        <para><emphasis role="bold">Show column/row sub-totals: </emphasis>Display subtotals in the
-          table for each dimension. In the screenshot above, notice how subtotals are generated for
-          each of the periods in the period dimension. Note that subtotals will be hidden for
-          columns or rows if there is only one selected dimension, as the values in that case are
-          equal to the subtotals.</para>
+        <para>Set the
+          <?oxy_comment_start author="Home" timestamp="20160406T165443+0200" comment="Why these options?"?>options<?oxy_comment_end?>
+          as required.</para>
+        <table frame="all">
+          <title>Table options</title>
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.72*"/>
+            <colspec colname="c3" colnum="3" colwidth="1.02*"/>
+            <thead>
+              <row>
+                <entry><?oxy_comment_start author="Home" timestamp="20160406T170516+0200" comment="Must update this list. More settings in GUI."?>Option<?oxy_comment_end?></entry>
+                <entry>Description</entry>
+                <entry>Example</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show column totals</emphasis></para>
+                  <para><emphasis role="bold">Show row totals</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Display total values in the table for each row and column, as well as a
+                    grand total for all values in the table.</para>
+                </entry>
+                <entry>
+                  <para>-</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show column sub-totals</emphasis></para>
+                  <para><emphasis role="bold">Show row sub-totals</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Display subtotals in the table for each dimension. In the screenshot above,
+                    notice how subtotals are generated for each of the periods in the period
+                    dimension. Note that subtotals will be hidden for columns or rows if there is
+                    only one selected dimension, as the values in that case are equal to the
+                    subtotals.</para>
+                </entry>
+                <entry>
+                  <para>-</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show dimension labels</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Show the dimension names as part of the pivot tables.</para>
+                </entry>
+                <entry>
+                  <para>-</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Hide empty rows</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Hides empty rows from the table, which is useful when looking at large
+                    tables where a big part of the dimension items do not have data in order to keep
+                    the table more readable.</para>
+                </entry>
+                <entry>
+                  <para>-</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Skip Rounding</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Skips the rounding of data values, offering the full precision of data
+                    values. Can be useful for finance data where the full dollar amount is
+                    required.</para>
+                </entry>
+                <entry>
+                  <para>-</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Aggregation type</emphasis></para>
+                </entry>
+                <entry>
+                  <para>The default aggregation operator can be over-ridden here, by selecting a
+                    different aggregation operator.</para>
+                </entry>
+                <entry>
+                  <para><emphasis role="bold">Count</emphasis></para>
+                  <para><emphasis role="bold">Min</emphasis></para>
+                  <para><emphasis role="bold">Max</emphasis></para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show hierarchy</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Shows the name of all ancestors for organisation units. The organisation
+                    units are then sorted alphabetically which will order the organisation units
+                    perfectly according to the hierarchy.</para>
+                </entry>
+                <entry>
+                  <para>Sierra Leone / Bombali / Tamabaka / Sanya CHP&quot; for Sanya CHP</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Include only completed events</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Includes only completed events in the aggregation process. This is useful
+                    for example to exclude partial events in indicator calculations.</para>
+                </entry>
+                <entry>
+                  <para>-</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Display density</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Controls the size of the cells in the table. You can set it to
+                    &quot;comfortable&quot;, &quot;normal&quot; and &quot;compact&quot;. </para>
+                  <para>The &quot;compact&quot; option is handy in order to fit large tables into
+                    the browser screen.</para>
+                </entry>
+                <entry>
+                  <para>-</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Font size</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Controls the size of the table text font. Can be set to &quot;large&quot;,
+                    &quot;normal&quot; and &quot;small&quot;.</para>
+                </entry>
+                <entry>
+                  <para>-</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Digit group separator</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Controls which character to separate groups of digits or
+                    &quot;thousands&quot;. Can be set to &quot;comma&quot;, &quot;space&quot; and
+                    &quot;none&quot;.</para>
+                </entry>
+                <entry>
+                  <para>-</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Legend set</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Shows a color indicator next to the values. Currently the GIS legend sets
+                    are being used.</para>
+                </entry>
+                <entry>
+                  <para>-</para>
+                </entry>
+              </row>
+              <row>
+                <entry/>
+                <entry/>
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
       </listitem>
       <listitem>
-        <para><emphasis role="bold">Show dimension labels</emphasis>: Show the dimension names as
-          part of the pivot tables.</para>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+        <para>The new pivot table
+          <?oxy_comment_start author="Home" timestamp="20160406T170323+0200" comment="Check terminology. Must use standardized verb (generate, display, create...?)"?>generates<?oxy_comment_end?>.</para>
       </listitem>
-      <listitem>
-        <para><emphasis role="bold">Hide empty rows:</emphasis> Hides empty rows from the table,
-          which is useful when looking at large tables where a big part of the dimension items do
-          not have data in order to keep the table more readable.</para>
-      </listitem>
-      <listitem>
-        <para><emphasis role="bold">Skip Rounding: </emphasis>Skips the rounding of data values,
-          offering the full precision of data values. Can be useful for finance data where the full
-          dollar amount is required. </para>
-      </listitem>
-      <listitem>
-        <para><emphasis role="bold">Aggregation type: </emphasis>The default aggregation operator
-          can be over-ridden here, by selecting a different aggregation operator, e.g.
-          &quot;Count&quot;, &quot;Min&quot; or &quot;Max&quot;. </para>
-      </listitem>
-      <listitem>
-        <para><emphasis role="bold">Show hierarchy:</emphasis> Shows the name of all ancestors for
-          organisation units, e.g. &quot;Sierra Leone / Bombali / Tamabaka / Sanya CHP&quot; for
-          Sanya CHP. The organisation units are then sorted alphabetically which will order the
-          organisation units perfectly according to the hierarchy.</para>
-      </listitem>
-      <listitem>
-        <para><emphasis role="bold">Include only completed events: </emphasis>Only include completed
-          events in the aggregation process. This is useful e.g. to exclude partial events in
-          indicator calculations</para>
-      </listitem>
-      <listitem>
-        <para><emphasis role="bold">Display density: </emphasis>Controls the size of the cells in
-          the table. Can be set to &quot;comfortable&quot;, &quot;normal&quot; and
-          &quot;compact&quot;. The &quot;compact&quot; option is handy in order to fit large tables
-          into the browser screen.</para>
-      </listitem>
-      <listitem>
-        <para><emphasis role="bold">Font size: </emphasis>Controls the size of the table text font.
-          Can be set to &quot;large&quot;, &quot;normal&quot; and &quot;small&quot;.</para>
-      </listitem>
-      <listitem>
-        <para><emphasis role="bold">Digit group separator:</emphasis> Controls which character to
-          separate groups of digits or &quot;thousands&quot;. Can be set to &quot;comma&quot;,
-          &quot;space&quot; and &quot;none&quot;.</para>
-      </listitem>
-      <listitem>
-        <para><emphasis role="bold">Legend set:</emphasis> Shows a color indicator next to the
-          values. Currently the GIS legend sets are being used.</para>
-      </listitem>
-    </itemizedlist>
-    <para>Once you have set all options as are required, just press &quot;Update&quot; to generate
-      the new pivot table.</para>
+    </orderedlist>
   </section>
   <section>
     <title>Managing favorites</title>
@@ -350,7 +489,7 @@ See screenshot in word file for error message."?>
       <listitem>
         <para>Click <emphasis role="bold">Favorites</emphasis> > <emphasis role="bold"
             >Share</emphasis>.</para>
-        <para>The <emphasis role="bold">SHARING SETTINGS</emphasis> dialog window opens.</para>
+        <para>The <emphasis role="bold">Sharing settings</emphasis> dialog window opens.</para>
       </listitem>
     </orderedlist>
     <para>Click <emphasis role="bold">Favorites</emphasis> > <emphasis role="bold">Share</emphasis>
@@ -400,7 +539,7 @@ See screenshot in word file for error message."?>
     </itemizedlist>
   </section>
   <section>
-    <title>Analysis integration/Displaying pivot table as a chart??</title>
+    <title>Analysis integration</title>
     <para>The analysis apps in DHIS 2 are completely integrated, so you can easily switch
    between pivot table, chart and map visualization of your data. When you have made a pivot table
    you can click e.g. &quot;Chart&quot; in the top right corner and then select &quot;Open this table as chart&quot;.</para>
@@ -426,7 +565,7 @@ See screenshot in word file for error message."?>
     </screenshot>
   </section>
   <section>
-    <title>Constraints and tips/Tips and tricks ??</title>
+    <title>Constraints and tips</title>
     <para>When selecting and arranging dimensions there are a few constraints that apply. All of
       these constraints are validated and the pivot table module will provide feedback if any
       constraint is violated.</para>
@@ -446,7 +585,13 @@ See screenshot in word file for error message."?>
       </listitem>
     </itemizedlist>
     <tip>
-      <para>Pivot tables in DHIS2 are limited to a system set paramater, which controls the number of data values which can be returned. The reason for this is two fold. First, it would be easy to overwhelm the server with a very complicated request for a large pivot table. Second, the amount of data which is able to be rendered in a browser is fairly limited. If you are having problems with very large or complex tables, consider to try and reduce the number of items. It is usually more useful to have smaller, concise tables which are easier to understand and which address a particular analysis. </para>
+      <para>Pivot tables in DHIS2 are limited to a system set parameter, which controls the number
+        of data values which can be returned. The reason for this is two fold. First, it would be
+        easy to overwhelm the server with a very complicated request for a large pivot table.
+        Second, the amount of data which is able to be rendered in a browser is fairly limited. If
+        you are having problems with very large or complex tables, consider to try and reduce the
+        number of items. It is usually more useful to have smaller, concise tables which are easier
+        to understand and which address a particular analysis. </para>
     </tip>
   </section>
 </chapter>
