@@ -10,10 +10,10 @@ before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
     - git submodule update --init --recursive
 install: true
-script:
-    - mvn -Ddocbkx.fopLogLevel=ERROR -q package
-after_success:
-    - [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [[ $TRAVIS_BRANCH =~ ^([0-9]{1}\.[0-9]{2}|master)$ ]] && bash ./.utility/deploy.sh
+script: 
+    - mvn -Ddocbkx.fopLogLevel=ERROR -q package 
+after_success: 
+    - bash ./.utility/deploy.sh
 jdk:
     - openjdk7
 notifications:
