@@ -43,7 +43,14 @@ Type &apos;q()&apos; to quit R.
   </section>
   <section id="dhis2_r_odbc">
     <title>Using ODBC to retrieve data from DHIS2 into R</title>
-    <para>In this example, we will use a system-wide ODBC connector which will be used to retrieve data from the DHIS2 database. There are some disadvantages with this approach, as ODBC is slower than other methods and it does raise some security concerns by providing a system-wide connector to all users. However, it is a convenient method to provide a connection to multiple users. The use of the R package RODBC will be used in this case. Other alternatives would be the use of the <ulink url="http://dirk.eddelbuettel.com/code/rpostgresql.html">RPostgreSQL</ulink> package, which can interface directly through the  Postgresql driver described in <xref linkend="dhis2_r_maps"/></para>
+    <para>In this example, we will use a system-wide ODBC connector which will be used to retrieve
+      data from the DHIS2 database. There are some disadvantages with this approach, as ODBC is
+      slower than other methods and it does raise some security concerns by providing a system-wide
+      connector to all users. However, it is a convenient method to provide a connection to multiple
+      users. The use of the R package RODBC will be used in this case. Other alternatives would be
+      the use of the <ulink url="http://dirk.eddelbuettel.com/code/rpostgresql.html"
+        >RPostgreSQL</ulink> package, which can interface directly through the PostgreSQL driver
+      described in <xref linkend="dhis2_r_maps"/></para>
     <para>Assuming you have already installed R from the procedure in the previous section. Invoke the following command to add the required libraries for this example.</para>
     <para><command>apt-get install r-cran-rodbc r-cran-lattice odbc-postgresql</command> </para>
     <para>Next, we need to configure the ODBC connection. Edit the file to suit your local situation using the following template as a guide. Lets create and edit a file called odbc.ini</para>
