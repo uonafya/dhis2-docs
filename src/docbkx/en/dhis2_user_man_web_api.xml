@@ -6925,9 +6925,10 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <title>Usage analytics</title>
     <para>The usage analytics API lets you access aggregated usage data captured in DHIS 2. This
       resource lets you retrieve aggregated snapshots of usage analytics based on intervals in time.
-      The resource will capture views (e.g chart and report table views) and saved items. When
-      active, this will be used to create a snapshot that is saved every night. These snapshots are
-      then aggregated at request.</para>
+      The resource will capture user views (e.g the number of times a chart or pivot table has been
+      viewed by some user) and saved favorite items (e.g. favorite charts or pivot tables). When
+      activated, DHIS 2 will capture nightly snapshots which are then aggregated at
+      request.<screen>/api/dataStatistics</screen></para>
     <section>
       <title>Request query parameter</title>
       <para>The usage analytics (data statistics) API is devided into two queries. The first query
