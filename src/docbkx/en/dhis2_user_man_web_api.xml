@@ -1949,6 +1949,12 @@ http://server/api/constants/ID</screen></para>
     <para>Currently in <emphasis role="italic">beta</emphasis> this section explain the new metadata
       exporter available from DHIS 2.23, the metatada API is available at <emphasis role="italic"
         >/api/23/metadata</emphasis> endpoint.</para>
+    <para>The most common parameters are described down below in the "Export Paramter" table, but
+      you can also apply this to all available types by using <emphasis role="italic"
+        >type:fields=&lt;filter></emphasis> and <emphasis role="italic"
+        >type:filter=&lt;filter></emphasis>, you can also enable/disable export of certain types by
+      setting <emphasis role="italic">type=true/false</emphasis>, please see examples of these down
+      below.</para>
     <table frame="all">
       <title>Export Parameter</title>
       <tgroup cols="3">
@@ -1985,6 +1991,17 @@ http://server/api/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
+    <section>
+      <title>Export Examples</title>
+      <para>Export all
+        metadata:<screen>curl -u user:pass http://server/api/23/metadata</screen></para>
+      <para>Export all metadata ordered by lastUpdated
+        descending:<screen>curl -u user:pass http://server/api/23/metadata?defaultOrder=lastUpdated:desc</screen></para>
+      <para>Export id and displayName for all data elements, ordered by
+        displayName:<screen>curl -u user:pass http://server/api/23/metadata?dataElements:fields=id,name&amp;dataElements:order=displayName:desc</screen></para>
+      <para>Export data elements and indicators where name starts with
+        'ANC':<screen>curl -u user:pass http://server/api/23/metadata?defaultFilter=name:^like:ANC&amp;dataElements=true&amp;indicators=true</screen></para>
+    </section>
   </section>
   <section>
     <title>Metadata Import API 23</title>
