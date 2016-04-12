@@ -7150,6 +7150,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
       </section>
       <section>
         <title>Reporting event views</title>
+        <para>The usage analytics API also lets you report event views. Since the event views are
+          half of the aggregated report, the event views are critical to get a useful aggregated
+          usage analytics report. Reporting event views should be done from the DHIS2 portal, and
+          will in the aggregated report describe what parts of the portal is beeing used/not used.
+          The options in the table below shows what type of event views are logged.</para>
         <para>
           <table frame="all">
             <title>Query parameters for adding event views</title>
@@ -7180,9 +7185,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
             </tgroup>
           </table>
         </para>
-        <para>The eventType parameter describe what type of event was viewed. The different options
-          available is listed in the table above. As an example, the following URL can be used to
-          report (post) a new event view:
+        <para>The dataStatisticsEventType parameter describe what type of event was viewed. The
+          different options available is listed in the table above. As an example, the following URL
+          can be used to report (post) a new event view:
           <screen>api/dataStatistics?dataStatisticsEventType=CHART_VIEW</screen></para>
         <para>Reporting (posting) a new event view should only be done from the portal and does not
           give a textual response, only HTTP status code 201 (Created), if everything went as
