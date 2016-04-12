@@ -2,262 +2,235 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Program rules</title>
-  <para>This chapter covers how to configure and use program rules. Program rules provide a means to control
-        dynamic behavior of the user interface in tracker and event capture. Program rules are based on expressions composed of  data elements and 
-        attributes of tracked entities.</para>
+  <para>This chapter covers how to configure and use program rules. Program rules provide a means to
+    control dynamic behavior of the user interface in tracker and event capture. Program rules are
+    based on expressions composed of data elements and attributes of tracked entities.</para>
   <section>
     <title>Overview</title>
-    <para>The purpose of program rules is to provide a way to produce complex dynamic behaviors in 
-            tracker and event capture. The program rules enables the programs to respond to data values
-            entered in a program. The behaviors that can be configured as of now is skip logic and validation
-            rules. Program rules is consisting of one <emphasis role="bold">expression</emphasis>, and one 
-            or more <emphasis role="bold">actions</emphasis> that is triggered in the user interface when 
-            the <emphasis role="bold">expression</emphasis> is true.
-        </para>
+    <para>The purpose of program rules is to provide a way to produce complex dynamic behaviors in
+      tracker and event capture. The program rules enables the programs to respond to data values
+      entered in a program. The behaviors that can be configured as of now is skip logic and
+      validation rules. Program rules is consisting of one <emphasis role="bold"
+        >expression</emphasis>, and one or more <emphasis role="bold">actions</emphasis> that is
+      triggered in the user interface when the <emphasis role="bold">expression</emphasis> is true.
+    </para>
   </section>
   <section>
     <title>Setup</title>
-    <para>          Program rules can be managed from the &quot;Programs and Attributes&quot; app. Once in the app,
-            navigate to Programs. A program rule belongs to exactly one program, so click on the
-            program for which you want to manage rules and from the context menu navigate to &quot;View
-            program rules&quot;. This will open the list of existing rules, if any, for this
-            program.
-        </para>
-    <para>
-            To <emphasis role="bold">add</emphasis> a rule, click the &quot;Add new&quot; button in the
-            top right corner. This will open the new rule screen. Provide a name, short name, code,
-            description, value type, expression and list of actions for the rule.
-        </para>
-    <para>
-            To <emphasis role="bold">edit</emphasis> a rule, click on the relevant rule in the list 
-            to open the context menu and click &quot;Edit&quot;. This will open the edit rule screen, where you 
-            can modify the relevant values.
-        </para>
-    <para>
-            To <emphasis role="bold">remove</emphasis> a rule, click on the relevant rule in the list 
-            to open the context menu and click &quot;Remove&quot;. Click &quot;OK&quot; in the confirmation dialog
-            to remove the rule.
-        </para>
+    <para> Program rules can be managed from the &quot;Programs and Attributes&quot; app. Once in
+      the app, navigate to Programs. A program rule belongs to exactly one program, so click on the
+      program for which you want to manage rules and from the context menu navigate to &quot;View
+      program rules&quot;. This will open the list of existing rules, if any, for this program. </para>
+    <para> To <emphasis role="bold">add</emphasis> a rule, click the &quot;Add new&quot; button in
+      the top right corner. This will open the new rule screen. Provide a name, short name, code,
+      description, value type, expression and list of actions for the rule. </para>
+    <para> To <emphasis role="bold">edit</emphasis> a rule, click on the relevant rule in the list
+      to open the context menu and click &quot;Edit&quot;. This will open the edit rule screen,
+      where you can modify the relevant values. </para>
+    <para> To <emphasis role="bold">remove</emphasis> a rule, click on the relevant rule in the list
+      to open the context menu and click &quot;Remove&quot;. Click &quot;OK&quot; in the
+      confirmation dialog to remove the rule. </para>
     <screenshot>
       <screeninfo>Program rule list with context menu</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" fileref="resources/images/program_rules/program-rule-list.png" format="PNG"/>
+          <imagedata width="80%" fileref="resources/images/program_rules/program-rule-list.png"
+            format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
   </section>
   <section>
     <title>Program rule anatomy</title>
-    <para>
-            During data entry, program rules <emphasis role="bold">expressions</emphasis> are evaluated
-            each time the user interface is displayed, and each time a data element is changed. Most types
-            of actions will take effect immediately as the user enters
-            values in tracker or event capture.
-        </para>
-    <para>
-            Each program rule is given a name and description (see section &quot;Program rule details&quot;). These 
-            fields are not shown to the end user, and are only meant for the program administrator. The 
-            active part of a program rule consists of an <emphasis role="bold">expression</emphasis> (consult <xref linkend="program_rules_expressions"/> for details) more <emphasis role="bold">actions</emphasis>(see 
-            section <xref linkend="program_rules_defining_actions"/> for details) that will be performed if the expression
-            is true. </para>
-    <para>The expression is built from operators, user-defined static  values     and      and <emphasis role="bold">source fields</emphasis>             (see <xref linkend="program_dules_adding_source_fields"/>  for details). The source fields
-represent attribute and data element values which will be evaluated as part of  the 
-            expression.
-        </para>
+    <para> During data entry, program rules <emphasis role="bold">expressions</emphasis> are
+      evaluated each time the user interface is displayed, and each time a data element is changed.
+      Most types of actions will take effect immediately as the user enters values in tracker or
+      event capture. </para>
+    <para> Each program rule is given a name and description (see section &quot;Program rule
+      details&quot;). These fields are not shown to the end user, and are only meant for the program
+      administrator. The active part of a program rule consists of an <emphasis role="bold"
+        >expression</emphasis> (consult <xref linkend="program_rules_expressions"/> for details)
+      more <emphasis role="bold">actions</emphasis>(see section <xref
+        linkend="program_rules_defining_actions"/> for details) that will be performed if the
+      expression is true. </para>
+    <para>The expression is built from operators, user-defined static values and and <emphasis
+        role="bold">source fields</emphasis> (see <xref linkend="program_dules_adding_source_fields"
+      /> for details). The source fields represent attribute and data element values which will be
+      evaluated as part of the expression. </para>
     <screenshot>
       <screeninfo>Edit program rule user interface</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" fileref="resources/images/program_rules/program-rule-edit.png" format="PNG"/>
+          <imagedata width="80%" fileref="resources/images/program_rules/program-rule-edit.png"
+            format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
   </section>
   <section>
     <title id="program_dules_adding_source_fields"> Adding source fields </title>
-    <para>
-            Source fields represent a uniform way to include data values 
-            and attribute values in expressions. The 
-                source fields is defined as needed when creating expressions           .  When creating your first expression, you will
-            typically have to define one or more source fields first,
-            as expressions usually contain at least one data element or attribute value to be meaningful.
-            The source fields is shared between all rules in your program,
-            and by creating several rules, these will share the same library of source 
-                fields.
-        </para>
-    <para>
-            To add a source field, click the &quot;+ Add source field&quot; button 
-            under the source fields list. This will open the following dialog:
-        </para>
+    <para> Source fields represent a uniform way to include data values and attribute values in
+      expressions. The source fields is defined as needed when creating expressions . When creating
+      your first expression, you will typically have to define one or more source fields first, as
+      expressions usually contain at least one data element or attribute value to be meaningful. The
+      source fields is shared between all rules in your program, and by creating several rules,
+      these will share the same library of source fields. </para>
+    <para> To add a source field, click the &quot;+ Add source field&quot; button under the source
+      fields list. This will open the following dialog: </para>
     <screenshot>
       <screeninfo>Add source field dialog</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="50%" fileref="resources/images/program_rules/program-rule-source-field.png" format="PNG"/>
+          <imagedata width="50%"
+            fileref="resources/images/program_rules/program-rule-source-field.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
     <para>
-            <itemizedlist>
+      <itemizedlist>
         <listitem>
           <para>
-<emphasis role="bold"> Source type:</emphasis> The source types is determining how the source field is populated with a value:
-                        <itemizedlist>
+            <emphasis role="bold"> Source type:</emphasis> The source types is determining how the
+            source field is populated with a value: <itemizedlist>
               <listitem>
                 <para>
-<emphasis role="bold"> Data element newest event program: </emphasis>Populates a source field with the newest data value collected
-                                    for one data element within the enrollment. The newest data value is determined with event date.
-                                </para>
+                  <emphasis role="bold"> Data element newest event program: </emphasis>Populates a
+                  source field with the newest data value collected for one data element within the
+                  enrollment. The newest data value is determined with event date. </para>
               </listitem>
               <listitem>
                 <para>
-<emphasis role="bold"> Data element newest event program stage:</emphasis> Populates a source field with the newest data value collected
-                                    for one data element within a specified program stage. In case of several events within the program
-                                    stage, the newest data value will be selected by event date.
-                                </para>
+                  <emphasis role="bold"> Data element newest event program stage:</emphasis>
+                  Populates a source field with the newest data value collected for one data element
+                  within a specified program stage. In case of several events within the program
+                  stage, the newest data value will be selected by event date. </para>
               </listitem>
               <listitem>
                 <para>
-<emphasis role="bold"> Tracked entity attribute:</emphasis> Populates the source field with a specified tracked entity attribute 
-                                    for the current enrollment. Note: When selecting this option, fields for selecting program stage and data
-                                    element is hidden, and a field for selecting tracked entity attribute is displayed instead.
-                                </para>
+                  <emphasis role="bold"> Tracked entity attribute:</emphasis> Populates the source
+                  field with a specified tracked entity attribute for the current enrollment. Note:
+                  When selecting this option, fields for selecting program stage and data element is
+                  hidden, and a field for selecting tracked entity attribute is displayed instead.
+                </para>
               </listitem>
             </itemizedlist>
-                    </para>
+          </para>
         </listitem>
         <listitem>
           <para>
-<emphasis role="bold"> Source program stage:</emphasis> In case of retrieving data value from a specific program stage, this field is used to
-                        define what program stage to retrieve data from.
-                    </para>
+            <emphasis role="bold"> Source program stage:</emphasis> In case of retrieving data value
+            from a specific program stage, this field is used to define what program stage to
+            retrieve data from. </para>
         </listitem>
         <listitem>
           <para>
-<emphasis role="bold"> Source data element:</emphasis> Used to select which data element to retrieve data value for.
-                    </para>
+            <emphasis role="bold"> Source data element:</emphasis> Used to select which data element
+            to retrieve data value for. </para>
         </listitem>
         <listitem>
           <para>
-<emphasis role="bold"> Variable name</emphasis>: Specifying the name that is used for the source field when writing expressions. It is encouraged
-                        to use a name that makes the expressions readable.
-                    </para>
+            <emphasis role="bold"> Variable name</emphasis>: Specifying the name that is used for
+            the source field when writing expressions. It is encouraged to use a name that makes the
+            expressions readable. </para>
         </listitem>
       </itemizedlist>
-        </para>
+    </para>
   </section>
   <section id="program_rules_expressions">
     <title> Defining expressions </title>
-    <para>
-            Each program rule has a single expression that determines whether rules action should be triggered, if the expression evaluates to true. If the expression is true the program rule
-            is in effect and the actions will be executed. If the 
-            expression is false, the program rule is no longer in effect and the 
-            actions will no longer be applied.
-        </para>
-    <para>
-As a simple example, an expression is defined below  using a single user-define static value, 
-                source fields(see previous chapter) and/or operators. Expressions
-            can be typed into the edit expression text box, but buttons are available for inserting operators and
-            source fields at the cursors position. To insert 
-                source fields, click the source field name within the list at the
-            left.
-        </para>
+    <para> Each program rule has a single expression that determines whether rules action should be
+      triggered, if the expression evaluates to true. If the expression is true the program rule is
+      in effect and the actions will be executed. If the expression is false, the program rule is no
+      longer in effect and the actions will no longer be applied. </para>
+    <para> As a simple example, an expression is defined below using a single user-define static
+      value, source fields(see previous chapter) and/or operators. Expressions can be typed into the
+      edit expression text box, but buttons are available for inserting operators and source fields
+      at the cursors position. To insert source fields, click the source field name within the list
+      at the left. </para>
     <screenshot>
       <screeninfo>Expression text box</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="50%" fileref="resources/images/program_rules/program-rule-expression.png" format="PNG"/>
+          <imagedata width="50%"
+            fileref="resources/images/program_rules/program-rule-expression.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
+    <para> The folliwng list provides a comprehensive list of operators which can be used to define
+      an expression. <itemizedlist>
+        <listitem>
+          <para>
+            <emphasis role="bold">+</emphasis> Add numbers together </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">-</emphasis> Subtract numbers from each other </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">*</emphasis> Multiply two numbers </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">/</emphasis> Divide two numbers </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">%</emphasis> The modulus of two numbers </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">&amp;&amp;</emphasis> Logical AND. True only when the expression
+            on the left and right side is true. The left and right side can be yes/no, yes only or a
+            subexpression in parenthesis. </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">||</emphasis> Logical OR. True when either the expression on the
+            left or the expression on the right side is true. The left and right side can be yes/no,
+            yes only or a subexpression in parenthesis. </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">&gt;</emphasis> Left number greater than right number </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">&gt;=</emphasis> Left number greater than or equal to right number
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">&lt;</emphasis> Left number less than right number </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">&lt;=</emphasis> Left number less than or equal to right number
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">==</emphasis> Left side equal to right side. Supports numbers,
+            text, yes/no and yes only. </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">!=</emphasis> Left side not equal to right side. Supports numbers,
+            text, yes/no and yes only. </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">!</emphasis> Negates the following value. Can be used for yes/no,
+            yes only or a subexpression in parenthesis. </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">()</emphasis> Parenthesis is used to group subexpressions. </para>
+        </listitem>
+      </itemizedlist> In addition to the standard mathematical operators, a number of custom
+      functions are also available. </para>
     <para>
-The folliwng list provides a comprehensive list of operators which can be used to define an expression.             <itemizedlist>
-        <listitem>
-          <para>
-                        <emphasis role="bold">+</emphasis> Add numbers together
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">-</emphasis> Subtract numbers from each other
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">*</emphasis> Multiply two numbers
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">/</emphasis> Divide two numbers
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">%</emphasis> The modulus of two numbers                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">&amp;&amp;</emphasis> Logical AND. True only when the expression on the
-                        left and right side is true. The left and right side can be yes/no, yes only or a subexpression 
-                        in parenthesis.
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">||</emphasis> Logical OR. True when either the expression on the left or
-                        the expression on the right side is true. The left and right side can be yes/no, yes only or a 
-                        subexpression in parenthesis.
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">&gt;</emphasis> Left number greater than right number
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">&gt;=</emphasis> Left number greater than or equal to right number
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">&lt;</emphasis> Left number less than right number
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">&lt;=</emphasis> Left number less than or equal to right number
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">==</emphasis> Left side equal to right side. Supports numbers, text, yes/no
-                        and yes only.
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">!=</emphasis> Left side not equal to right side. Supports numbers, text, 
-                        yes/no and yes only.
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">!</emphasis> Negates the following value. Can be used for yes/no, yes only
-                        or a subexpression in parenthesis.
-                    </para>
-        </listitem>
-        <listitem>
-          <para>
-                        <emphasis role="bold">()</emphasis> Parenthesis is used to group subexpressions. 
-                    </para>
-        </listitem>
-      </itemizedlist>
-In addition to the standard mathematical operators, a number of custom functions are also available.         </para>
-    <para>
-            <table frame="all">
+      <table frame="all">
         <title>Functions</title>
         <tgroup cols="3">
           <colspec colnum="1" colname="c1" colwidth="1*"/>
@@ -274,19 +247,18 @@ In addition to the standard mathematical operators, a number of custom functions
             <row>
               <entry>d2:ceil</entry>
               <entry>(number)</entry>
-              <entry>Rounds the input argument <emphasis role="bold">up</emphasis> to the nearest whole number. <para>
-                                    Example:
-                                    <screen>d2:ceil(#{hemoglobinValue})</screen>
-                                </para></entry>
+              <entry>Rounds the input argument <emphasis role="bold">up</emphasis> to the nearest
+                whole number. <para> Example: <screen>d2:ceil(#{hemoglobinValue})</screen>
+                </para></entry>
             </row>
             <row>
               <entry>d2:floor</entry>
               <entry>(number)</entry>
-              <entry>Rounds the input argument <emphasis role="bold">down</emphasis> to the nearest whole number. <para>
-                                        An example producing the number of weeks the woman is pregnant. Notice that the subexpression
-                                        #{gestationalAgeDays}/7 is evaluated before the floor function is executed:
-                                        <screen>d2:floor(#{gestationalAgeDays}/7)</screen>
-                                </para></entry>
+              <entry>Rounds the input argument <emphasis role="bold">down</emphasis> to the nearest
+                whole number. <para> An example producing the number of weeks the woman is pregnant.
+                  Notice that the subexpression #{gestationalAgeDays}/7 is evaluated before the
+                  floor function is executed: <screen>d2:floor(#{gestationalAgeDays}/7)</screen>
+                </para></entry>
             </row>
             <row>
               <entry>d2:round</entry>
@@ -297,34 +269,41 @@ In addition to the standard mathematical operators, a number of custom functions
               <entry>d2:modulus</entry>
               <entry>(number,number)</entry>
               <entry>Produces the modulus when dividing the first with the second argument. <para>
-                                    An example producing the number of days the woman is into her current
-                                    pregnancy week:
-                                    <screen>d2:modulus(#{gestationalAgeDays},7)</screen>
-                                </para></entry>
+                  An example producing the number of days the woman is into her current pregnancy
+                  week: <screen>d2:modulus(#{gestationalAgeDays},7)</screen>
+                </para></entry>
             </row>
             <row>
               <entry>d2:zing</entry>
               <entry>(number)</entry>
-              <entry>Evaluates the argument of type number to zero if the value is negative, otherwise to the value itself.</entry>
+              <entry>Evaluates the argument of type number to zero if the value is negative,
+                otherwise to the value itself.</entry>
             </row>
             <row>
               <entry>d2:oizp</entry>
               <entry>(number)</entry>
-              <entry>Evaluates the argument of type number to one if the value is zero or positive, otherwise to zero. </entry>
+              <entry>Evaluates the argument of type number to one if the value is zero or positive,
+                otherwise to zero. </entry>
             </row>
             <row>
               <entry>d2:concatenate</entry>
               <entry>(object, [,object, object,...])</entry>
-              <entry>Produces a string concatenated string from the input parameters. Supports any number of parameters. Will mainly be in use in future action types, for example to display gestational age with d2:concatenate(&apos;weeks&apos;,&apos;+&apos;,&apos;gestationalageDays&apos;). </entry>
+              <entry>Produces a string concatenated string from the input parameters. Supports any
+                number of parameters. Will mainly be in use in future action types, for example to
+                display gestational age with
+                d2:concatenate(&apos;weeks&apos;,&apos;+&apos;,&apos;gestationalageDays&apos;).
+              </entry>
             </row>
             <row>
               <entry>d2:daysBetween</entry>
               <entry>(date, date)</entry>
-              <entry>Produces the number of days between the first and second argument. If the second argument date is before the first argument the return value will be the negative number of days between the two dates. The static date format is &apos;yyyy-MM-dd&apos;. <para>
-                                    Example, calculating the gestational age(in days) of a woman, based on 
-                                    the last menstrual period and the current event date:
-                                    <screen>d2:daysBetween(#{lastMenstrualDate},V{event_date})</screen>
-                                </para></entry>
+              <entry>Produces the number of days between the first and second argument. If the
+                second argument date is before the first argument the return value will be the
+                negative number of days between the two dates. The static date format is
+                &apos;yyyy-MM-dd&apos;. <para> Example, calculating the gestational age(in days) of
+                  a woman, based on the last menstrual period and the current event date:
+                  <screen>d2:daysBetween(#{lastMenstrualDate},V{event_date})</screen>
+                </para></entry>
             </row>
             <row>
               <entry>d2:weeksBetween</entry>
@@ -345,207 +324,235 @@ In addition to the standard mathematical operators, a number of custom functions
             <row>
               <entry>d2:yearsBetween</entry>
               <entry>(date, date)</entry>
-              <entry>Produces the number of years between the first and second argument. If the second argument date is before the first argument the return value will be the negative number of years between the two dates. The static date format is &apos;yyyy-MM-dd&apos;.</entry>
+              <entry>Produces the number of years between the first and second argument. If the
+                second argument date is before the first argument the return value will be the
+                negative number of years between the two dates. The static date format is
+                &apos;yyyy-MM-dd&apos;.</entry>
             </row>
             <row>
               <entry>d2:addDays</entry>
               <entry>(date, number)</entry>
-              <entry>Produces a date based on the first argument date, adding the second argument number of days. <para>
-                                    An example calculating the pregnancy due date based on the last menstrual period:
-                                    <screen>d2:addDays(#{lastMenstrualDate},283)</screen>
-                                </para></entry>
+              <entry>Produces a date based on the first argument date, adding the second argument
+                number of days. <para> An example calculating the pregnancy due date based on the
+                  last menstrual period: <screen>d2:addDays(#{lastMenstrualDate},283)</screen>
+                </para></entry>
             </row>
             <row>
               <entry>d2:count</entry>
               <entry>(sourcefield)</entry>
-              <entry>Counts the number of values that is entered for the source field in the argument. The source field parameter is the name of one of the defined source fields in the program - see example <para>
-                                    Example usage where #{previousPregnancyOutcome} is one of the source
-                                    fields in a repeatable program stage &quot;previous pregnancy&quot;:
-                                    <screen>d2:count(&apos;previousPregnancyOutcome&apos;)</screen>
-                                </para></entry>
+              <entry>Counts the number of values that is entered for the source field in the
+                argument. The source field parameter is the name of one of the defined source fields
+                in the program - see example <para> Example usage where #{previousPregnancyOutcome}
+                  is one of the source fields in a repeatable program stage &quot;previous
+                  pregnancy&quot;: <screen>d2:count(&apos;previousPregnancyOutcome&apos;)</screen>
+                </para></entry>
             </row>
             <row>
               <entry>d2:countIfValue</entry>
               <entry>(sourcefield,text)</entry>
-              <entry>Counts the number of matching values that is entered for the source field in the first argument. Only occurrences that matches the second argument is counted. The source field parameter is the name of one of the defined source fields in the program - see example. <para>
-                                    Example usage where #{previousPregnancyOutcome} is one of the source
-                                    fields in a repeatable program stage &quot;previous pregnancy&quot;. The following function
-                                    will produce the number of previous pregnancies that ended with abortion:
-                                    <screen>d2:countIfValue(&apos;previousPregnancyOutcome&apos;,&apos;Abortion&apos;)
+              <entry>Counts the number of matching values that is entered for the source field in
+                the first argument. Only occurrences that matches the second argument is counted.
+                The source field parameter is the name of one of the defined source fields in the
+                program - see example. <para> Example usage where #{previousPregnancyOutcome} is one
+                  of the source fields in a repeatable program stage &quot;previous pregnancy&quot;.
+                  The following function will produce the number of previous pregnancies that ended
+                  with abortion:
+                  <screen>d2:countIfValue(&apos;previousPregnancyOutcome&apos;,&apos;Abortion&apos;)
                                     </screen>
-                                </para></entry>
+                </para></entry>
             </row>
             <row>
               <entry>d2:countIfZeroPos</entry>
               <entry>(sourcefield)</entry>
-              <entry>Counts the number of values that is zero or positive entered for the source field in the argument. The source field parameter is the name of one of the defined source fields in the program - see example. <para>
-                                    Example usage where #{fundalHeightDiscrepancy} is one of the source
-                                    fields in program, and it can be either positive or negative. The following function
-                                    will produce the number of positive occurrences:
-                                    <screen>d2:countIfZeroPos(&apos;fundalHeightDiscrepancy&apos;)
+              <entry>Counts the number of values that is zero or positive entered for the source
+                field in the argument. The source field parameter is the name of one of the defined
+                source fields in the program - see example. <para> Example usage where
+                  #{fundalHeightDiscrepancy} is one of the source fields in program, and it can be
+                  either positive or negative. The following function will produce the number of
+                  positive occurrences:
+                  <screen>d2:countIfZeroPos(&apos;fundalHeightDiscrepancy&apos;)
                                     </screen>
-                                </para></entry>
+                </para></entry>
             </row>
             <row>
               <entry>d2:hasValue</entry>
               <entry>(sourcefield)</entry>
-              <entry>Evaluates to true of the argument source field contains a value, false if no value is entered. <para>
-                                    Example usage, to find if the source field #{currentPregnancyOutcome} is yet filled in:
-                                    <screen>d2:hasValue(&apos;currentPregnancyOutcome&apos;)
+              <entry>Evaluates to true of the argument source field contains a value, false if no
+                value is entered. <para> Example usage, to find if the source field
+                  #{currentPregnancyOutcome} is yet filled in:
+                  <screen>d2:hasValue(&apos;currentPregnancyOutcome&apos;)
                                     </screen>
-                                </para></entry>
+                </para></entry>
             </row>
             <row>
               <entry>d2:zpvc</entry>
               <entry>(object, [,object, object,...])</entry>
-              <entry>Returns the number of numeric zero and positive values among the given object arguments. Can be provided with any number of arguments.</entry>
+              <entry>Returns the number of numeric zero and positive values among the given object
+                arguments. Can be provided with any number of arguments.</entry>
             </row>
             <row>
-              <entry>d2:condition</entry>
-              <entry>(boolean-expr, true-val, false-val)</entry>
-              <entry>Evaluates the conditional expression and if true returns the true value, if false returns the false value. The conditional expression must be quoted.</entry>
+              <entry>d2:left</entry>
+              <entry>(text, num-chars)</entry>
+              <entry>Evaluates to the left part of a text, num-chars from the first character.
+                  <para> The text can be quoted or evaluated from a variable:
+                  <screen>d2:left(#{variableWithText}, 3)</screen></para>
+              </entry>
+            </row>
+            <row>
+              <entry>d2:right</entry>
+              <entry>(text, num-chars)</entry>
+              <entry>Evaluates to the right part of a text, num-chars from the last character.
+                  <para> The text can be quoted or evaluated from a variable:
+                  <screen>d2:right(#{variableWithText}, 2)</screen></para>
+              </entry>
+            </row>
+            <row>
+              <entry>d2:substring</entry>
+              <entry>(text, start-char-num, end-char-num)</entry>
+              <entry>Evaluates to the part of a string specified by the start and end character
+                number. <para> The text can be quoted or evaluated from a variable:
+                  <screen>d2:right(#{variableWithText}, 2, 4)</screen></para>
+              </entry>
+            </row>
+            <row>
+              <entry>d2:split</entry>
+              <entry>(text, delimiter, element-num)</entry>
+              <entry>Split the text by delimiter, and keep the nth element(0 is the first).<para>
+                  The text can be quoted or evaluated from a variable, the delimiter must be quoted:
+                  <screen>d2:split(#{variableWithText}, '-', 1)</screen></para>
+              </entry>
+            </row>
+            <row>
+              <entry>d2:length</entry>
+              <entry>(text)</entry>
+              <entry>Find the length of a string. <para> Example:
+                  <screen>d2:length(#{variableWithText})</screen></para></entry>
             </row>
           </tbody>
         </tgroup>
       </table>
-        </para>
+    </para>
     <tip>
-      <para>unctions can be nested within each other and
-            with subexpressions to form more complex conditions. An example that produces the gestational age in weeks, 
-            based on last menstrual date:
-</para>
+      <para>Functions can be nested within each other and with subexpressions to form more complex
+        conditions. An example that produces the gestational age in weeks, based on last menstrual
+        date: </para>
       <screen>d2:floor( d2:daysBetween(#{lastMenstrualDate},V{event_date}) / 7 )</screen>
     </tip>
   </section>
   <section>
     <title id="program_rules_defining_actions"> Defining actions </title>
-    <para>
-            Each program rule has one or more actions attached. These are the behaviors
-            that is triggered in the user interface when the expression(see previous chapter)
-            is true. Actions will be applied at once if the expression
-             is true, and will be reverted if the expression is no longer true.
-        </para>
-    <para>
-            To add a new action, click the &quot;+ add action&quot; button at the bottom of the program
-            rule page. Once actionshas been added, they can be removed again by clicking the 
-            - button at the right side of the actions row.
-        </para>
+    <para> Each program rule has one or more actions attached. These are the behaviors that is
+      triggered in the user interface when the expression(see previous chapter) is true. Actions
+      will be applied at once if the expression is true, and will be reverted if the expression is
+      no longer true. </para>
+    <para> To add a new action, click the &quot;+ add action&quot; button at the bottom of the
+      program rule page. Once actionshas been added, they can be removed again by clicking the -
+      button at the right side of the actions row. </para>
     <screenshot>
       <screeninfo>Expression text box</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" fileref="resources/images/program_rules/program-rule-add-action.png" format="PNG"/>
+          <imagedata width="80%"
+            fileref="resources/images/program_rules/program-rule-add-action.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>
-            There are several types of <emphasis role="bold">actions</emphasis>, and the type is selected individually for each
-            action row. 
-        </para>
+    <para> There are several types of <emphasis role="bold">actions</emphasis>, and the type is
+      selected individually for each action row. </para>
     <section>
       <title> Hide field action </title>
-      <para>
-                A <emphasis role="bold">hide field action</emphasis> is defined by selecting &quot;Hide field&quot; in the first column of the
-                action row. 
-            </para>
+      <para> A <emphasis role="bold">hide field action</emphasis> is defined by selecting &quot;Hide
+        field&quot; in the first column of the action row. </para>
       <screenshot>
         <screeninfo>Hide field action</screeninfo>
         <mediaobject>
           <imageobject>
-            <imagedata width="80%" fileref="resources/images/program_rules/program-rule-hide-field-action.png" format="PNG"/>
+            <imagedata width="80%"
+              fileref="resources/images/program_rules/program-rule-hide-field-action.png"
+              format="PNG"/>
           </imageobject>
         </mediaobject>
       </screenshot>
-      <para>
-                The second column is optional, and it allows defining a custom message to the end user in case the rule hides and 
-                blanks out the field after the end user typed in or selected a value.
-            </para>
-      <para>If a hide field action hides a field that contains a value, the field will always removed.
-                If no message is defined, a standard message will be displayed to alert the user</para>
-      <para>
-                The third column specifies which data element that the <emphasis role="bold">hide field action</emphasis> should
-                hide.
-            </para>
+      <para> The second column is optional, and it allows defining a custom message to the end user
+        in case the rule hides and blanks out the field after the end user typed in or selected a
+        value. </para>
+      <para>If a hide field action hides a field that contains a value, the field will always
+        removed. If no message is defined, a standard message will be displayed to alert the
+        user</para>
+      <para> The third column specifies which data element that the <emphasis role="bold">hide field
+          action</emphasis> should hide. </para>
     </section>
     <section>
       <title> Hide section action </title>
-      <para>
-                A hide field action is defined by selecting &quot;Hide section&quot; in the first column of the
-                action row. 
-            </para>
+      <para> A hide field action is defined by selecting &quot;Hide section&quot; in the first
+        column of the action row. </para>
       <screenshot>
         <screeninfo>Expression text box</screeninfo>
         <mediaobject>
           <imageobject>
-            <imagedata width="80%" fileref="resources/images/program_rules/program-rule-hide-section-action.png" format="PNG"/>
+            <imagedata width="80%"
+              fileref="resources/images/program_rules/program-rule-hide-section-action.png"
+              format="PNG"/>
           </imageobject>
         </mediaobject>
       </screenshot>
-      <para>
-                The second column is optional, and it allows defining a custom message to the end user in case the rule hides a section that 
-                contains a field that again has a value. 
-            </para>
-      <para>
-                If a hide section action hides a section with one 
-                or more fields that contains a value, these fields will always be removed. If no message is defined, a standard message will 
-                be displayed to alert the user.                                
-            </para>
-      <para>
-                The third column specifies which section that the hide section action should hide.
-            </para>
+      <para> The second column is optional, and it allows defining a custom message to the end user
+        in case the rule hides a section that contains a field that again has a value. </para>
+      <para> If a hide section action hides a section with one or more fields that contains a value,
+        these fields will always be removed. If no message is defined, a standard message will be
+        displayed to alert the user. </para>
+      <para> The third column specifies which section that the hide section action should hide.
+      </para>
     </section>
     <section>
       <title> Show warning action </title>
-      <para>
-                A <emphasis role="bold">show warning action</emphasis> is defined by selecting &quot;show warning&quot; in the first column of the
-                action row. A show warning action is used to give the user
-                a warning about the data being entered, but at the same time allowing the user to save and continue. Warnings can
-                be used to help the user avoid errors in the data entered, while at the same time allowing the user to consciously disregard
-                it and save a value that is outside preset expectations.
-            </para>
+      <para> A <emphasis role="bold">show warning action</emphasis> is defined by selecting
+        &quot;show warning&quot; in the first column of the action row. A show warning action is
+        used to give the user a warning about the data being entered, but at the same time allowing
+        the user to save and continue. Warnings can be used to help the user avoid errors in the
+        data entered, while at the same time allowing the user to consciously disregard it and save
+        a value that is outside preset expectations. </para>
       <screenshot>
         <screeninfo>Show warning action</screeninfo>
         <mediaobject>
           <imageobject>
-            <imagedata width="80%" fileref="resources/images/program_rules/program-rule-show-warning-action.png" format="PNG"/>
+            <imagedata width="80%"
+              fileref="resources/images/program_rules/program-rule-show-warning-action.png"
+              format="PNG"/>
           </imageobject>
         </mediaobject>
       </screenshot>
-      <para>
-                The second column is mandatory, and is used to define the message shown to the user when the expression
-                is true and the action is triggered.
-            </para>
-      <para>
-                The third column specifies which data element or attribute to link the warning to, and is meant to be a recommendation to the user regarding
-                where the cause of the warning can be rectified. In case several data elements or attributes are involved,  when defining the rule, you should choose the one that is most
-                likely that the user would need to consider.
-            </para>
+      <para> The second column is mandatory, and is used to define the message shown to the user
+        when the expression is true and the action is triggered. </para>
+      <para> The third column specifies which data element or attribute to link the warning to, and
+        is meant to be a recommendation to the user regarding where the cause of the warning can be
+        rectified. In case several data elements or attributes are involved, when defining the rule,
+        you should choose the one that is most likely that the user would need to consider. </para>
     </section>
     <section>
       <title> Show error action </title>
-      <para>
-                A <emphasis role="bold">show error action</emphasis> is defined by selecting &quot;show error&quot; in the first column of the
-                action row. A show error action is used whenever there are rules which must strictly be adhered to. The show error action prevents the user from continuing until the error is resolved. Such
-                a strict validation should only be used whenever it is certain that the evaluated expression is never
-                true unless the user has made a mistake in data entry.
-            </para>
+      <para> A <emphasis role="bold">show error action</emphasis> is defined by selecting &quot;show
+        error&quot; in the first column of the action row. A show error action is used whenever
+        there are rules which must strictly be adhered to. The show error action prevents the user
+        from continuing until the error is resolved. Such a strict validation should only be used
+        whenever it is certain that the evaluated expression is never true unless the user has made
+        a mistake in data entry. </para>
       <screenshot>
         <screeninfo>Show error action</screeninfo>
         <mediaobject>
           <imageobject>
-            <imagedata width="80%" fileref="resources/images/program_rules/program-rule-show-error-action.png" format="PNG"/>
+            <imagedata width="80%"
+              fileref="resources/images/program_rules/program-rule-show-error-action.png"
+              format="PNG"/>
           </imageobject>
         </mediaobject>
       </screenshot>
-      <para>
-                The second column is mandatory, and is used to define the message shown to the user when the expression
-                is true and the action is triggered.
-            </para>
-      <para>
-                The third column specifies which data element or attribute to link the error to, and is meant to be a cue for the user regarding
-                where the cause of the error can be rectified. In case several data elements or attributes is involved, choose the one that is most
-                likely that the user would need to change.
-            </para>
+      <para> The second column is mandatory, and is used to define the message shown to the user
+        when the expression is true and the action is triggered. </para>
+      <para> The third column specifies which data element or attribute to link the error to, and is
+        meant to be a cue for the user regarding where the cause of the error can be rectified. In
+        case several data elements or attributes is involved, choose the one that is most likely
+        that the user would need to change. </para>
     </section>
   </section>
 </chapter>

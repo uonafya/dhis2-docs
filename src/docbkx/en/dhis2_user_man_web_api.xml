@@ -3860,21 +3860,27 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
                 <entry>Defines how this variable is populated with data from the enrollment and
                   events. <itemizedlist>
                     <listitem>
-                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE - Get the newest value that
-                        exists for a dataelement, within the events of a given program stage in the
-                        current enrollment.</para>
+                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE - In tracker capture, gets the 
+                        newest value that exists for a dataelement, within the events of a given 
+                        program stage in the current enrollment. In event capture, gets the newest
+                        value among the 10 newest events on the organisation unit.</para>
                     </listitem>
                     <listitem>
-                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM - Get the newest value that exists for
-                        a dataelement across the whole enrollment.</para>
+                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM - In tracker capture, get the newest 
+                        value that exists for a dataelement across the whole enrollment. 
+                        In event capture, gets the newest value among the 10 newest events on the 
+                        organisation unit.
+                      </para>
                     </listitem>
                     <listitem>
                       <para>DATAELEMENT_CURRENT_EVENT - Gets the value of the given dataelement in
                         the current event only.</para>
                     </listitem>
                     <listitem>
-                      <para>DATAELEMENT_PREVIOUS_EVENT - Gets the newest value that exists among
-                        events in the program that precedes the current event.</para>
+                      <para>DATAELEMENT_PREVIOUS_EVENT - In tracker capture, gets the newest value that 
+                        exists among events in the program that precedes the current event. In event 
+                        capture, gets the newvest value among the 10 preceeding events registered
+                        on the organisation unit.</para>
                     </listitem>
                     <listitem>
                       <para>CALCULATED_VALUE - Used to reserve a variable name that will be assigned
@@ -7144,6 +7150,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
       </section>
       <section>
         <title>Reporting event views</title>
+        <para>The usage analytics API also lets you report event views. Since the event views are
+          half of the aggregated report, the event views are critical to get a useful aggregated
+          usage analytics report. Reporting event views should be done from the DHIS2 portal, and
+          will in the aggregated report describe what parts of the portal is beeing used/not used.
+          The options in the table below shows what type of event views are logged.</para>
         <para>
           <table frame="all">
             <title>Query parameters for adding event views</title>
@@ -7174,9 +7185,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
             </tgroup>
           </table>
         </para>
-        <para>The eventType parameter describe what type of event was viewed. The different options
-          available is listed in the table above. As an example, the following URL can be used to
-          report (post) a new event view:
+        <para>The dataStatisticsEventType parameter describe what type of event was viewed. The
+          different options available is listed in the table above. As an example, the following URL
+          can be used to report (post) a new event view:
           <screen>api/dataStatistics?dataStatisticsEventType=CHART_VIEW</screen></para>
         <para>Reporting (posting) a new event view should only be done from the portal and does not
           give a textual response, only HTTP status code 201 (Created), if everything went as
