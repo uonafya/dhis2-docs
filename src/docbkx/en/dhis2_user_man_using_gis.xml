@@ -1,26 +1,74 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
-  <title>Using GIS</title>
+  <title>Using GIS app</title>
   <section>
-    <title>GIS module overview</title>
+    <title>GIS overview</title>
     <para>You can access the GIS module from the Apps -&gt; GIS link in the top menu. The picture below shows the GIS viewport.</para>
     <screenshot>
       <screeninfo>Main GIS screen</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="resources/images/gis/gis_main.png" align="center" width="80" format="PNG"/>
+          <imagedata fileref="resources/images/gis/gis_main.png" align="center" width="80%"
+            format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>In the top right corner there is a panel called &quot;Layer overview&quot;. If you are online you will see Google Streets and Google Hybrid which can be used as background maps/layers. Switch between the two of them by checking the checkbox. By unchecking the box you can hide the background completely. If you want to see the background, but with reduced opacity, you can set the visibility to something lower than 100% in the numberbox to the right. The final four layers are the vector layers which the user has at his disposal for thematic mapping (explained in the next section). The panels below hold the map legends when you create a thematic map. A legend explains the link between values and colors on your map.</para>
-    <para>Lets take a look at the map toolbar. The four icons from the left represent the mentioned vector layers and this is the starting point of the GIS application. Further to the right we have &quot;Favorites&quot;: Save your maps to easily restore them later. Saving a map as a favorite also gives you the opportunity of sharing it with other users as an interpretation or put it on the dashboard. &quot;Legend&quot;: Create you own legend sets to ensure meaningful maps. &quot;Download&quot;: Export the maps as a PNG image. &quot;Share&quot;: Share your favorites as map interpretations with other users.</para>
+    <para>In the top right corner there is a panel called &quot;Layer overview&quot;. If you are
+      online you will see
+      <?oxy_comment_start author="Home" timestamp="20160412T152838+0200" comment="Use of trademarks in documentaiton and interface must be reviewed.
+https://www.google.com/permissions/trademark/trademark-list.html
+"?>Google
+      Streets and Google Hybrid<?oxy_comment_end?> which can be used as background maps/layers.
+      Switch between the two of them by checking the checkbox. By unchecking the box you can hide
+      the background completely. If you want to see the background, but with reduced opacity, you
+      can set the visibility to something lower than 100 % in the numberbox to the right. The final
+      four layers are the vector layers which the user has at his disposal for thematic mapping
+      (explained in the next section). The panels below hold the map legends when you create a
+      thematic map. A legend explains the link between values and colors on your map.</para>
+    <para>The four icons from the left represent the mentioned vector layers and this is the
+      starting point of the GIS application. </para>
+    <para>Further to the right we have &quot;Favorites&quot;: Save your maps to easily restore them
+      later. Saving a map as a favorite also gives you the opportunity of sharing it with other
+      users as an interpretation or put it on the dashboard. </para>
+    <para>&quot;Legend&quot;: Create you own legend sets to ensure meaningful maps. </para>
+    <para>&quot;Download&quot;: Export the maps as a PNG image.</para>
+    <para> &quot;Share&quot;: Share your favorites as map interpretations with other users.</para>
     <para>In the top right corner of the map viewport you find four buttons: &quot;Zoom in&quot;, &quot;zoom out&quot;, &quot;zoom to visible extent&quot; (automatically adjusts the zoom level and map center position to put the data on your map in focus) and &quot;measure distances&quot;.</para>
     <para>The current longitude/latitude position of the mouse cursor is displayed in the bottom right corner of the map viewport.</para>
   </section>
   <section>
-    <title>Thematic mapping</title>
+    <title>Creating a new map/Thematic mapping</title>
     <para>This section describes the four vector layers which the user has at his disposal for thematic mapping: &quot;Event Layer&quot;, &quot;Facility layer&quot;, &quot;Boundary layer&quot; and &quot;Thematic layer&quot; 1-4.</para>
+    <para>The workflow for creating a new map is:</para>
+    <orderedlist>
+      <listitem>
+        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold"
+            >GIS</emphasis>.</para>
+        <para>The <emphasis role="bold">DHIS 2 GIS</emphasis> window opens.</para>
+      </listitem>
+      <listitem>
+        <para>In the
+          <?oxy_comment_start author="Home" timestamp="20160406T140229+0200" comment="Must define the names of the different areas of the UI."?>menu
+          to the left<?oxy_comment_end?>, select the dimension items you want to analyse, for
+          example
+          <?oxy_comment_start author="Home" timestamp="20160406T140440+0200" comment="Can you only choose elements from the &quot;Data&quot; field?"?>data
+          elements or indicators<?oxy_comment_end?>.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Layout</emphasis> and arrange the data dimensions as
+          columns, rows and filters. </para>
+        <para>You can keep the default
+          <?oxy_comment_start author="Home" timestamp="20160406T140808+0200" comment="Revise wording. Use &quot;selection&quot; or maybe settings."?>selection<?oxy_comment_end?>
+          if you want.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+        <para>A new pivot table based on your choices
+          <?oxy_comment_start author="Home" timestamp="20160406T142809+0200" comment="Check terminology.
+Occurs maybe?"?>displays<?oxy_comment_end?>.</para>
+      </listitem>
+    </orderedlist>
     <section id="gisEventMap">
       <title>Event layer</title>
       <screenshot>
@@ -112,57 +160,191 @@
       <para>Thematic layer 1-4 menu have a &quot;Filter&quot; option in addition to the boundary layer menu options. It lets you apply value filters to the organisation units on the map. The filter is removed when you close the filter window.</para>
     </section>
   </section>
-  <section>
-    <title>Tools</title>
-    <para>This section describes the available GIS tools.</para>
-    <section id="gisFavoriteMapView">
-      <title>Favorite maps</title>
-      <screenshot>
-        <screeninfo>Favorite maps</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata width="100%" fileref="resources/images/gis/gis_favorites.png" format="PNG"/>
-          </imageobject>
-        </mediaobject>
-      </screenshot>
-      <para>Click the &quot;Favorites&quot; button on the toolbar to open the &quot;Manage favorites&quot; window. To add a new favorite, click the &quot;Add new&quot; button. A new window opens. Enter a name and click the &quot;Create&quot; button. You will find your new favorite in the list.</para>
-      <para>All favorites have four action buttons on the right hand side. Grey: Edit favorite name. Green: Save current map to this favorite (overwrite). Yellow: Add this favorite to dashboard. Red: Delete this favorite.</para>
-      <para>You can search for favorites in the textfield above the favorites. The list will be filtered on every character that is entered. Click the &quot;next&quot; and &quot;prev&quot; buttons in the bottom right corner to navigate between pages.</para>
-    </section>
-    <section id="gisLegendSet">
-      <title>Create predefined legend sets</title>
-      <para>Click the &quot;Legend&quot; button on the map toolbar. To create a new set click the &quot;Add new&quot; button. Example usage (vaccination coverage): Firstly, give the legend set a name. Then create the legends you want in your legend set. The first one could be &quot;Low bad&quot; (name), 0 (start value), 50 (end value), red (color). Click &quot;Add legend&quot; and appears in the list below. Then create &quot;Medium&quot; / 50 / 80 / yellow, &quot;High good&quot; / 80 / 100 / green and finally &quot;Too high&quot; / 100 / 10000 / grey. Now, click the &quot;Create&quot; button in the bottom right corner. If your legend set has overlapping legends (e.g. 0-50 and 40-80) you will not be allowed to proceed. If your legend set has a gap between the legends (e.g. 0-50 and 60-80) you will get a warning, but are allowed to proceed.</para>
-      <para>NOTE! Continuous legends are supposed to end and start on the same value, e.g. 0-50 and
-        50-80. This will automatically be taken care of by the application. Do not try to do this
-        yourself by setting legends to e.g. 0-50 and 51-80. This will cause a usually unwanted gap
-        in your legend set.</para>
-      <para>You can assign a legend set to an indicator or a data element in the Indicator/Data element module. This legend set will then be automatically selected when such an indicator/data element is selected in the GIS.</para>
-    </section>
-    <section id="gisImageExport">
-      <title>Download map as image</title>
-      <para>Click the &quot;Download&quot; button on the map toolbar. Enter a name in the textfield and click &quot;Download&quot;. The browser will download a PNG image. If the toolbar &quot;Download&quot; button is disabled you need to create a map first.</para>
-    </section>
-    <section id="gisInterpretation">
-      <title>Share map interpretation</title>
-      <para>Open a favorite or save a new map as a favorite. Then click the &quot;Share&quot; button on the map toolbar. Type in your interpretation and click &quot;Share&quot;.</para>
-    </section>
-    <section id="gisEmbed">
-      <title>Embed maps in any web page</title>
-      <para>Certain analysis-related resources in DHIS, like pivot tables, charts and maps, can be embeded in any web page by using a plugin. If you have created a map in the GIS app you will get the plugin configuration for this map by clicking the &quot;Share&quot; button the toolbar and then &quot;Embed as plugin&quot;. You will find more information about the plugins in the web api chapter.</para>
+  <section id="gisFavoriteMapView">
+    <title>Managing favorites</title>
+    <screenshot>
+      <screeninfo>Favorite maps</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="100%" fileref="resources/images/gis/gis_favorites.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>Click the &quot;Favorites&quot; button on the toolbar to open the &quot;Manage
+      favorites&quot; window. </para>
+    <para>To add a new favorite, click the &quot;Add new&quot; button. A new window opens. Enter a
+      name and click the &quot;Create&quot; button. You will find your new favorite in the
+      list.</para>
+    <para>All favorites have four action buttons on the right hand side. Grey: Edit favorite name.
+      Green: Save current map to this favorite (overwrite). Yellow: Add this favorite to dashboard.
+      Red: Delete this favorite.</para>
+    <para>You can search for favorites in the textfield above the favorites. The list will be
+      filtered on every character that is entered. Click the &quot;next&quot; and &quot;prev&quot;
+      buttons in the bottom right corner to navigate between pages.</para>
+    <section>
+      <title>Saving a map as favorite</title>
+      <para>When you have created a map it is convenient to save it as a favorite: </para>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Manage favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Add new</emphasis>.</para>
+          <para>The <emphasis role="bold">Create new favorite</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>In the text field, type the name you want to give your pivot table.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Create</emphasis>.</para>
+          <para>Your favorite
+            <?oxy_comment_start author="Home" timestamp="20160412T163409+0200" comment="Rewrite into active voice."?>is
+            added<?oxy_comment_end?> to the list.</para>
+        </listitem>
+      </orderedlist>
     </section>
     <section>
-      <title>Analysis integration</title>
-      <para>The analysis apps in DHIS 2 are completely integrated, so you can easily switch
-    between pivot table, chart and map visualization of your data. When you have made a map
-    you can click e.g. &quot;Chart&quot; in the top right corner and then select &quot;Open this map as chart&quot;.</para>
-      <screenshot>
-        <screeninfo>Analysis integration</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata width="25%" fileref="resources/images/gis/chart_integration.png" format="PNG" scale="100" align="center"/>
-          </imageobject>
-        </mediaobject>
-      </screenshot>
+      <title>Opening a favorite</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Manage favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to open. You can either use <emphasis role="bold"
+              >Prev</emphasis> and <emphasis role="bold">Next</emphasis> or the search field to find
+            a saved favorite. The list is filtered on every character that you enter.</para>
+        </listitem>
+        <listitem>
+          <para>Click the name.</para>
+          <para>The selected favorite opens.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title><?oxy_comment_start author="Home" timestamp="20160412T140454+0200" comment="Revise title."?>Overwriting<?oxy_comment_end?>
+        a favorite</title>
+      <para>Green: Save current map to this favorite (overwrite). </para>
+    </section>
+    <section>
+      <title>Renaming a favorite</title>
+      <para>Grey: Edit favorite name. </para>
+    </section>
+    <section>
+      <title>Adding a favorite to dashboard</title>
+      <para>Yellow: Add this favorite to dashboard.</para>
+    </section>
+    <section>
+      <title>Deleting a favorite</title>
+      <para>Click the &quot;Favorites&quot; button on the toolbar to open the &quot;Manage
+        favorites&quot; window. </para>
+      <para>Red: Delete this favorite.</para>
+    </section>
+    <section id="gisInterpretation">
+      <title>Sharing a interpretation of a favorite/map interpretation</title>
+      <para>Open a favorite or save a new map as a favorite. Then click the &quot;Share&quot; button
+        on the map toolbar. Type in your interpretation and click &quot;Share&quot;.</para>
+    </section>
+  </section>
+  <section id="gisLegendSet">
+    <title>Creating predefined legend sets</title>
+    <para>Click the &quot;Legend&quot; button on the map toolbar. To create a new set click the
+      &quot;Add new&quot; button. Example usage (vaccination coverage): Firstly, give the legend set
+      a name. Then create the legends you want in your legend set. The first one could be &quot;Low
+      bad&quot; (name), 0 (start value), 50 (end value), red (color). Click &quot;Add legend&quot;
+      and appears in the list below. Then create &quot;Medium&quot; / 50 / 80 / yellow, &quot;High
+      good&quot; / 80 / 100 / green and finally &quot;Too high&quot; / 100 / 10000 / grey. Now,
+      click the &quot;Create&quot; button in the bottom right corner. If your legend set has
+      overlapping legends (e.g. 0-50 and 40-80) you will not be allowed to proceed. If your legend
+      set has a gap between the legends (e.g. 0-50 and 60-80) you will get a warning, but are
+      allowed to proceed.</para>
+    <para>NOTE! Continuous legends are supposed to end and start on the same value, e.g. 0-50 and
+      50-80. This will automatically be taken care of by the application. Do not try to do this
+      yourself by setting legends to e.g. 0-50 and 51-80. This will cause a usually unwanted gap in
+      your legend set.</para>
+    <para>You can assign a legend set to an indicator or a data element in the Indicator/Data
+      element module. This legend set will then be automatically selected when such an
+      indicator/data element is selected in the GIS.</para>
+  </section>
+  <section id="gisImageExport">
+    <title><?oxy_comment_start author="Home" timestamp="20160412T144320+0200" comment="Should work for all maps except for cluster maps. Add note in topic.
+Verify that reature works with Bjørn before release.
+Also verify steps."?>Downloading<?oxy_comment_end?>
+      map as image</title>
+    <note>
+      <para>Cluster maps....</para>
+    </note>
+    <orderedlist>
+      <listitem>
+        <para>Create a new map or open a favorite.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Download</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Enter a name in the textfield and click <emphasis role="bold">Download</emphasis>. </para>
+        <para>The browser downloads an image in PNG format. </para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section id="gisEmbed">
+    <title>Embedding map in external web page</title>
+    <para>Certain analysis-related resources in DHIS 2, like pivot tables, charts and maps, can be
+      embedded in any web page by using a plugin. You will find more information about the plugins
+      in the Web API chapter in the <emphasis>DHIS2 Developer Manual</emphasis>.</para>
+    <para>To generate a HTML fragment that you can use to display the map in an external web
+      page:</para>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Share</emphasis> > <emphasis role="bold">Embed in web
+              page</emphasis>.</para>
+          <para>The <emphasis role="bold">Embed in web page</emphasis> window opens.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Select</emphasis> to highlight the HTML fragment.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">x</emphasis> to close the window.</para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </section>
+  <section>
+    <title><?oxy_comment_start author="Home" timestamp="20160412T141635+0200" comment="Does this work? 
+It should work, check again with Bjørn before release."?>Visualizing<?oxy_comment_end?>
+      map as a pivot table or chart</title>
+    <para>When you have made a map you can switch between pivot table, chart and map visualization
+      of your data. </para>
+    <screenshot>
+      <screeninfo>Analysis integration</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="25%" fileref="resources/images/gis/chart_integration.png" format="PNG"
+            scale="100" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <section>
+      <title>Opening map as chart</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this map
+              as chart</emphasis></para>
+          <para>Your current map opens as a chart.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Opening map as pivot table</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this map
+              as table</emphasis></para>
+          <para>Your current map opens as a pivot table.</para>
+        </listitem>
+      </orderedlist>
     </section>
   </section>
 </chapter>
