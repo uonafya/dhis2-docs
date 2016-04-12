@@ -1945,6 +1945,106 @@ http://server/api/constants/ID</screen></para>
     </section>
   </section>
   <section>
+    <title>Metadata Export API 23</title>
+    <para>Currently in <emphasis role="italic">beta</emphasis> this section explain the new metadata
+      exporter available from DHIS 2.23, the metatada API is available at <emphasis role="italic"
+        >/api/23/metadata</emphasis> endpoint.</para>
+    <table frame="all">
+      <title>Export Parameter</title>
+      <tgroup cols="3">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.27*"/>
+        <colspec colname="c3" colnum="3" colwidth="3.61*"/>
+        <thead>
+          <row>
+            <entry>Name</entry>
+            <entry>Options</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>defaultFields</entry>
+            <entry>Same as metadata field filter</entry>
+            <entry>Default field filter to apply for all types, default is <emphasis role="bold"
+                >:owner</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>defaultFilter</entry>
+            <entry>Same as metadata object filter</entry>
+            <entry>Default object filter to apply for all types, default is <emphasis role="bold"
+                >none</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>defaultOrder</entry>
+            <entry>Same as metadata order</entry>
+            <entry>Default order to apply to all types, default is <emphasis role="bold"
+                >name</emphasis> if available, or <emphasis role="bold">created</emphasis> if
+              not.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+  <section>
+    <title>Metadata Import API 23</title>
+    <para>Currently in <emphasis role="italic">beta</emphasis> this section explain the new metadata
+      importer available from DHIS 2.23, the metatada API is available at <emphasis role="italic"
+        >/api/23/metadata</emphasis> endpoint.</para>
+    <table frame="all">
+      <title>Export Parameter</title>
+      <tgroup cols="3">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.27*"/>
+        <colspec colname="c3" colnum="3" colwidth="3.61*"/>
+        <thead>
+          <row>
+            <entry>Name</entry>
+            <entry>Options</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>importMode</entry>
+            <entry>COMMIT / VALIDATE</entry>
+            <entry/>
+          </row>
+          <row>
+            <entry>preheatIdentifier</entry>
+            <entry>UID, CODE, AUTO</entry>
+            <entry/>
+          </row>
+          <row>
+            <entry>preheatMode</entry>
+            <entry>REFERENCE,  ALL, NONE</entry>
+            <entry/>
+          </row>
+          <row>
+            <entry>importStrategy</entry>
+            <entry>CREATE, UPDATE, DELETE, CREATE_AND_UPDATE</entry>
+            <entry/>
+          </row>
+          <row>
+            <entry>atomicMode</entry>
+            <entry>ALL, NONE</entry>
+            <entry/>
+          </row>
+          <row>
+            <entry>mergeMode</entry>
+            <entry>MERGE, REPLACE</entry>
+            <entry/>
+          </row>
+          <row>
+            <entry>flushMode</entry>
+            <entry>OBJECT, AUTO</entry>
+            <entry/>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+  <section>
     <title>Data values</title>
     <para>This section is about sending and reading data values.</para>
     <section>
