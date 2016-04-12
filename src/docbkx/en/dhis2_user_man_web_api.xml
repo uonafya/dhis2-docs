@@ -2011,7 +2011,7 @@ http://server/api/constants/ID</screen></para>
         >/api/23/metadata</emphasis> endpoint, it should be noted that only JSON is currently
       supported in this exporter.</para>
     <table frame="all">
-      <title>Export Parameter</title>
+      <title>Import Parameter</title>
       <tgroup cols="3">
         <colspec colname="c1" colnum="1" colwidth="1*"/>
         <colspec colname="c2" colnum="2" colwidth="1.27*"/>
@@ -2019,7 +2019,7 @@ http://server/api/constants/ID</screen></para>
         <thead>
           <row>
             <entry>Name</entry>
-            <entry>Options</entry>
+            <entry>Options (first is default)</entry>
             <entry>Description</entry>
           </row>
         </thead>
@@ -2027,37 +2027,60 @@ http://server/api/constants/ID</screen></para>
           <row>
             <entry>importMode</entry>
             <entry>COMMIT / VALIDATE</entry>
-            <entry/>
+            <entry>Sets overall import mode, decides whether or not to only <emphasis role="bold"
+                >VALIDATE</emphasis> or also <emphasis role="bold">COMMIT</emphasis> the metadata,
+              this have similar functionality as our old dryRun flag.</entry>
           </row>
           <row>
             <entry>preheatIdentifier</entry>
             <entry>UID, CODE, AUTO</entry>
-            <entry/>
+            <entry>Sets the identifier scheme to use for reference matching. <emphasis role="bold"
+                >AUTO</emphasis> means try <emphasis role="bold">UID</emphasis> first, then
+                <emphasis role="bold">CODE</emphasis>.</entry>
           </row>
           <row>
             <entry>preheatMode</entry>
             <entry>REFERENCE,  ALL, NONE</entry>
-            <entry/>
+            <entry>Sets the preheater mode, used to signal if preheating should be done for
+                <emphasis role="bold">ALL</emphasis> (as it was before with <emphasis role="italic"
+                >preheatingCache=true</emphasis>) or do a more intelligent scan of the objects to
+              see what to preheat (now the default), setting this to <emphasis role="bold"
+                >NONE</emphasis> is not recommended.</entry>
           </row>
           <row>
             <entry>importStrategy</entry>
-            <entry>CREATE, UPDATE, DELETE, CREATE_AND_UPDATE</entry>
-            <entry/>
+            <entry>CREATE_AND_UPDATE, CREATE, UPDATE, DELETE</entry>
+            <entry>Sets import strategy, <emphasis role="bold">CREATE_AND_UPDATE</emphasis> will try
+              and match on identifier, if it doesn't exist, it will create the object.</entry>
           </row>
           <row>
             <entry>atomicMode</entry>
             <entry>ALL, NONE</entry>
-            <entry/>
+            <entry>Sets atomic mode, in the old importer we always did a <emphasis role="italic"
+                >best effort</emphasis> import, which means that even if some references did not
+              exist, we would still import (i.e. missing data elements on a data element group
+              import). Default for new importer is to not allow this, and similar reject any
+              validation errors. Setting the <emphasis role="bold">NONE</emphasis> mode emulated the
+              old behavior.</entry>
           </row>
           <row>
             <entry>mergeMode</entry>
             <entry>MERGE, REPLACE</entry>
-            <entry/>
+            <entry>Sets the merge mode, when doing updates we have two ways of merging the old
+              object with the new one, <emphasis role="bold">MERGE</emphasis> mode will only
+              overwrite the old property if the new one is not-null, for <emphasis role="bold"
+                >REPLACE</emphasis> mode all properties are overwritten regardsless of null or
+              not.</entry>
           </row>
           <row>
             <entry>flushMode</entry>
-            <entry>OBJECT, AUTO</entry>
-            <entry/>
+            <entry>AUTO, OBJECT</entry>
+            <entry>Sets the flush mode, decides when to flush the internal cache, <emphasis
+                role="italic">strongly</emphasis> reommended to keep this to <emphasis role="bold"
+                >AUTO</emphasis> (which is the default). Only use <emphasis role="bold"
+                >OBJECT</emphasis> for debugging purposes, where you are seeing hibernate exceptions
+              and want to pinpoint the exact place where the stack happens (hibernate will only
+              throw when flushing, so it can be hard to know which object had issues).</entry>
           </row>
         </tbody>
       </tgroup>
