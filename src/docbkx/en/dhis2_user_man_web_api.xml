@@ -154,7 +154,7 @@ curl -X POST -H &quot;Accept: application/json&quot; -u demo:$SECRET $SERVER/uaa
         <para>The response will be exactly the same as when you get an token to start with.</para>
       </section>
       <section>
-        <title>Grant type authorized_code</title>
+        <title>Grant type authorization_code</title>
         <para>Authorized code grant type is the recommended approach if you don&apos;t want to store
           the user credentials externally. It allows DHIS 2 to collect the username/password
           directly from the user instead of the client collecting them and then authenticating on
@@ -173,7 +173,7 @@ $SERVER/uaa/oauth/authorize?client_id=demo&amp;response_type=code</screen></para
           token:<screen>SERVER=&quot;https://play.dhis2.org/dev&quot;
 SECRET=&quot;1e6db50c-0fee-11e5-98d0-3c15c2c6caf6&quot;
 
-curl -X POST -u demo:$SECRET -H &quot;Accept: application/json&quot; $SERVER/token -d grant_type=authorized_code -d code=XYZ</screen></para>
+curl -X POST -u demo:$SECRET -H &quot;Accept: application/json&quot; $SERVER/token -d grant_type=authorization_code -d code=XYZ</screen></para>
       </section>
     </section>
   </section>
