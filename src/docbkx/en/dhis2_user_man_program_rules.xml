@@ -398,19 +398,58 @@ In addition to the standard mathematical operators, a number of custom functions
             <row>
               <entry>d2:zpvc</entry>
               <entry>(object, [,object, object,...])</entry>
-              <entry>Returns the number of numeric zero and positive values among the given object arguments. Can be provided with any number of arguments.</entry>
+              <entry>Returns the number of numeric zero and positive values among the given object arguments. Can be 
+                provided with any number of arguments.</entry>
             </row>
             <row>
-              <entry>d2:condition</entry>
-              <entry>(boolean-expr, true-val, false-val)</entry>
-              <entry>Evaluates the conditional expression and if true returns the true value, if false returns the false value. The conditional expression must be quoted.</entry>
+              <entry>d2:left</entry>
+              <entry>(text, num-chars)</entry>
+              <entry>Evaluates to the left part of a text, num-chars from the first character. 
+                <para>
+                  The text can be quoted or evaluated from a variable:
+                  <screen>d2:left(#{variableWithText}, 3)</screen></para>
+              </entry>
+            </row>
+            <row>
+              <entry>d2:right</entry>
+              <entry>(text, num-chars)</entry>
+              <entry>Evaluates to the right part of a text, num-chars from the last character.
+                <para>
+                The text can be quoted or evaluated from a variable:
+                  <screen>d2:right(#{variableWithText}, 2)</screen></para>
+              </entry>
+            </row>
+            <row>
+              <entry>d2:substring</entry>
+              <entry>(text, start-char-num, end-char-num)</entry>
+              <entry>Evaluates to the part of a string specified by the start and end character number.
+                <para>
+                  The text can be quoted or evaluated from a variable:
+                  <screen>d2:right(#{variableWithText}, 2, 4)</screen></para>
+              </entry>
+            </row>
+            <row>
+              <entry>d2:split</entry>
+              <entry>(text, delimiter, element-num)</entry>
+              <entry>Split the text by delimiter, and keep the nth element(0 is the first).<para>
+                The text can be quoted or evaluated from a variable, the delimiter must be quoted:
+                <screen>d2:split(#{variableWithText}, '-', 1)</screen></para>
+              </entry>
+            </row>
+            <row>
+              <entry>d2:length</entry>
+              <entry>(text)</entry>
+              <entry>Find the length of a string.
+                <para>
+                  Example:
+                  <screen>d2:length(#{variableWithText})</screen></para></entry>
             </row>
           </tbody>
         </tgroup>
       </table>
         </para>
     <tip>
-      <para>unctions can be nested within each other and
+      <para>Functions can be nested within each other and
             with subexpressions to form more complex conditions. An example that produces the gestational age in weeks, 
             based on last menstrual date:
 </para>
