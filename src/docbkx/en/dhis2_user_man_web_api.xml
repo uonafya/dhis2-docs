@@ -2004,6 +2004,15 @@ http://server/api/constants/ID</screen></para>
       <para>Export data elements and indicators where name starts with
         'ANC':<screen>curl -u user:pass http://server/api/23/metadata?defaultFilter=name:^like:ANC&amp;dataElements=true&amp;indicators=true</screen></para>
     </section>
+    <section>
+      <title>Data set and program export with dependencies</title>
+      <para>When you want to move a whole set of data set or program metadata from one server to
+        another (possibly empty) server, we have two special endpoints for just that
+        purpose:<screen>/api/dataSets/ID/metadata.json</screen><screen>/api/programs/ID/metadata.json</screen></para>
+      <para>These exports can be imported both using the old importer at <emphasis role="italic"
+          >/api/metadata</emphasis> and the new importer at <emphasis role="italic"
+          >/api/23/metadata</emphasis>.</para>
+    </section>
   </section>
   <section>
     <title>Metadata Import API 23</title>
