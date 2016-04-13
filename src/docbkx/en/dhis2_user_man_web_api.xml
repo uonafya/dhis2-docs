@@ -9121,6 +9121,11 @@ interval=WEEK" -u admin:district</screen></para>
         (the part where username, etc resides) using <emphasis role="italic"
           >/api/userCredentials</emphasis> endpoint, it supports all regular field and object
         filters as the other endpoints.</para>
+      <para>Get user credentials where username is
+        admin:<screen>/api/userCredentials?filter=username:eq:admin</screen></para>
+      <para>Get username  and code from all user credentials where username starts with <emphasis
+          role="italic">adm</emphasis>:</para>
+      <screen>/api/userCredentials?fields=username,code&amp;filter=username:^like:adm</screen>
     </section>
     <section>
       <title>User account create and update</title>
