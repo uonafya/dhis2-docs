@@ -154,7 +154,7 @@ curl -X POST -H &quot;Accept: application/json&quot; -u demo:$SECRET $SERVER/uaa
         <para>The response will be exactly the same as when you get an token to start with.</para>
       </section>
       <section>
-        <title>Grant type authorized_code</title>
+        <title>Grant type authorization_code</title>
         <para>Authorized code grant type is the recommended approach if you don&apos;t want to store
           the user credentials externally. It allows DHIS 2 to collect the username/password
           directly from the user instead of the client collecting them and then authenticating on
@@ -173,7 +173,7 @@ $SERVER/uaa/oauth/authorize?client_id=demo&amp;response_type=code</screen></para
           token:<screen>SERVER=&quot;https://play.dhis2.org/dev&quot;
 SECRET=&quot;1e6db50c-0fee-11e5-98d0-3c15c2c6caf6&quot;
 
-curl -X POST -u demo:$SECRET -H &quot;Accept: application/json&quot; $SERVER/token -d grant_type=authorized_code -d code=XYZ</screen></para>
+curl -X POST -u demo:$SECRET -H &quot;Accept: application/json&quot; $SERVER/token -d grant_type=authorization_code -d code=XYZ</screen></para>
       </section>
     </section>
   </section>
@@ -482,7 +482,8 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
                 <entry>translate</entry>
                 <entry>true | false</entry>
                 <entry>Translate display* properties in metadata output (displayName,
-                  displayShortName, displayDescription)</entry>
+                  displayShortName, displayDescription, and displayFormName for data
+                  elements)</entry>
               </row>
               <row>
                 <entry>locale</entry>
@@ -1945,6 +1946,171 @@ http://server/api/constants/ID</screen></para>
     </section>
   </section>
   <section>
+    <title>Metadata Export API 23</title>
+    <para>Currently in <emphasis role="italic">beta</emphasis> this section explain the new metadata
+      exporter available from DHIS 2.23, the metatada API is available at <emphasis role="italic"
+        >/api/23/metadata</emphasis> endpoint, it should be noted that only JSON is currently
+      supported in this exporter.</para>
+    <para>The most common parameters are described down below in the "Export Paramter" table, but
+      you can also apply this to all available types by using <emphasis role="italic"
+        >type:fields=&lt;filter></emphasis> and <emphasis role="italic"
+        >type:filter=&lt;filter></emphasis>, you can also enable/disable export of certain types by
+      setting <emphasis role="italic">type=true/false</emphasis>, please see examples of these down
+      below.</para>
+    <table frame="all">
+      <title>Export Parameter</title>
+      <tgroup cols="3">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.27*"/>
+        <colspec colname="c3" colnum="3" colwidth="3.61*"/>
+        <thead>
+          <row>
+            <entry>Name</entry>
+            <entry>Options</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>defaultFields</entry>
+            <entry>Same as metadata field filter</entry>
+            <entry>Default field filter to apply for all types, default is <emphasis role="bold"
+                >:owner</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>defaultFilter</entry>
+            <entry>Same as metadata object filter</entry>
+            <entry>Default object filter to apply for all types, default is <emphasis role="bold"
+                >none</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>defaultOrder</entry>
+            <entry>Same as metadata order</entry>
+            <entry>Default order to apply to all types, default is <emphasis role="bold"
+                >name</emphasis> if available, or <emphasis role="bold">created</emphasis> if
+              not.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <section>
+      <title>Export Examples</title>
+      <para>Export all
+        metadata:<screen>curl -u user:pass http://server/api/23/metadata</screen></para>
+      <para>Export all metadata ordered by lastUpdated
+        descending:<screen>curl -u user:pass http://server/api/23/metadata?defaultOrder=lastUpdated:desc</screen></para>
+      <para>Export id and displayName for all data elements, ordered by
+        displayName:<screen>curl -u user:pass http://server/api/23/metadata?dataElements:fields=id,name&amp;dataElements:order=displayName:desc</screen></para>
+      <para>Export data elements and indicators where name starts with
+        'ANC':<screen>curl -u user:pass http://server/api/23/metadata?defaultFilter=name:^like:ANC&amp;dataElements=true&amp;indicators=true</screen></para>
+    </section>
+    <section>
+      <title>Data set and program export with dependencies</title>
+      <para>When you want to move a whole set of data set or program metadata from one server to
+        another (possibly empty) server, we have two special endpoints for just that
+        purpose:<screen>/api/dataSets/ID/metadata.json</screen><screen>/api/programs/ID/metadata.json</screen></para>
+      <para>These exports can be imported both using the old importer at <emphasis role="italic"
+          >/api/metadata</emphasis> and the new importer at <emphasis role="italic"
+          >/api/23/metadata</emphasis>.</para>
+    </section>
+  </section>
+  <section>
+    <title>Metadata Import API 23</title>
+    <para>Currently in <emphasis role="italic">beta</emphasis> this section explain the new metadata
+      importer available from DHIS 2.23, the metatada API is available at <emphasis role="italic"
+        >/api/23/metadata</emphasis> endpoint, it should be noted that only JSON is currently
+      supported in this importer.</para>
+    <para>The importer allows you to import metadata exported with the new exporter, the different
+      parameters are listed down below.</para>
+    <table frame="all">
+      <title>Import Parameter</title>
+      <tgroup cols="3">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.27*"/>
+        <colspec colname="c3" colnum="3" colwidth="3.61*"/>
+        <thead>
+          <row>
+            <entry>Name</entry>
+            <entry>Options (first is default)</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>importMode</entry>
+            <entry>COMMIT, VALIDATE</entry>
+            <entry>Sets overall import mode, decides whether or not to only <emphasis role="bold"
+                >VALIDATE</emphasis> or also <emphasis role="bold">COMMIT</emphasis> the metadata,
+              this have similar functionality as our old dryRun flag.</entry>
+          </row>
+          <row>
+            <entry>identifier</entry>
+            <entry>UID, CODE, AUTO</entry>
+            <entry>Sets the identifier scheme to use for reference matching. <emphasis role="bold"
+                >AUTO</emphasis> means try <emphasis role="bold">UID</emphasis> first, then
+                <emphasis role="bold">CODE</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>preheatMode</entry>
+            <entry>REFERENCE,  ALL, NONE</entry>
+            <entry>Sets the preheater mode, used to signal if preheating should be done for
+                <emphasis role="bold">ALL</emphasis> (as it was before with <emphasis role="italic"
+                >preheatCache=true</emphasis>) or do a more intelligent scan of the objects to see
+              what to preheat (now the default), setting this to <emphasis role="bold"
+                >NONE</emphasis> is not recommended.</entry>
+          </row>
+          <row>
+            <entry>importStrategy</entry>
+            <entry>CREATE_AND_UPDATE, CREATE, UPDATE, DELETE</entry>
+            <entry>Sets import strategy, <emphasis role="bold">CREATE_AND_UPDATE</emphasis> will try
+              and match on identifier, if it doesn't exist, it will create the object.</entry>
+          </row>
+          <row>
+            <entry>atomicMode</entry>
+            <entry>ALL, NONE</entry>
+            <entry>Sets atomic mode, in the old importer we always did a <emphasis role="italic"
+                >best effort</emphasis> import, which means that even if some references did not
+              exist, we would still import (i.e. missing data elements on a data element group
+              import). Default for new importer is to not allow this, and similar reject any
+              validation errors. Setting the <emphasis role="bold">NONE</emphasis> mode emulated the
+              old behavior.</entry>
+          </row>
+          <row>
+            <entry>mergeMode</entry>
+            <entry>MERGE, REPLACE</entry>
+            <entry>Sets the merge mode, when doing updates we have two ways of merging the old
+              object with the new one, <emphasis role="bold">MERGE</emphasis> mode will only
+              overwrite the old property if the new one is not-null, for <emphasis role="bold"
+                >REPLACE</emphasis> mode all properties are overwritten regardsless of null or
+              not.</entry>
+          </row>
+          <row>
+            <entry>flushMode</entry>
+            <entry>AUTO, OBJECT</entry>
+            <entry>Sets the flush mode, decides when to flush the internal cache, <emphasis
+                role="italic">strongly</emphasis> reommended to keep this to <emphasis role="bold"
+                >AUTO</emphasis> (which is the default). Only use <emphasis role="bold"
+                >OBJECT</emphasis> for debugging purposes, where you are seeing hibernate exceptions
+              and want to pinpoint the exact place where the stack happens (hibernate will only
+              throw when flushing, so it can be hard to know which object had issues).</entry>
+          </row>
+          <row>
+            <entry>skipSharing</entry>
+            <entry>false, true</entry>
+            <entry>Skip sharing properties, does not merge sharing when doing updates, and does not
+              add user group accessses when creating new objects.</entry>
+          </row>
+          <row>
+            <entry>skipValidation</entry>
+            <entry>false, true</entry>
+            <entry>Skip validation for import. <emphasis role="bold">NOT
+              RECOMMENDED</emphasis>.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+  <section>
     <title>Data values</title>
     <para>This section is about sending and reading data values.</para>
     <section>
@@ -3335,6 +3501,24 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                 <entry>Allows to set id scheme for data element, category option combo, orgUnit,
                   program and program stage at once.</entry>
               </row>
+              <row>
+                <entry>order</entry>
+                <entry>string</entry>
+                <entry>false</entry>
+                <entry>The order of which to retreive the events from the API. Usage: 
+                  order=(property):asc/desc - Ascending order is default. Properties: event | 
+                  program | programStage | enrollment | enrollmentStatus | orgUnit | orgUnitName |
+                  trackedEntityInstance | eventDate | followup | status | dueDate | storedBy | 
+                  created | lastUpdated | completedBy | completedDate
+                </entry>
+              </row>
+              <row>
+                <entry>event</entry>
+                <entry>comma delimited strings</entry>
+                <entry>false</entry>
+                <entry>Filter the result down to a limited set of IDs by using <emphasis
+                    role="italic">event=id1;id2</emphasis>.</entry>
+              </row>
             </tbody>
           </tgroup>
         </table>
@@ -3348,6 +3532,12 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           sub-hierarchy:<screen>api/events.json?orgUnit=O6uvpzGd5pu&amp;ouMode=DESCENDANTS</screen></para>
         <para>Query for all events with a certain program and organisation unit:
           <screen>api/events.json?orgUnit=DiszpKrYNg8&amp;program=eBAyeGv0exc</screen></para>
+        <para>Query for all events with a certain program and organisation unit, sorting by due date ascending:
+          <screen>api/events.json?orgUnit=DiszpKrYNg8&amp;program=eBAyeGv0exc&amp;order=dueDate</screen></para>
+        <para>Query for the 10 events with the newest event date in a certain program and organisation unit -
+          by paging and ordering by due date descending:
+          <screen>api/events.json?orgUnit=DiszpKrYNg8&amp;program=eBAyeGv0exc&amp;
+order=eventDate:desc&amp;pageSize=10&amp;page=1</screen></para>
         <para>Query for all events with a certain program and organisation unit for a specific
           tracked entity instance:
           <screen>api/events.json?orgUnit=DiszpKrYNg8&amp;
@@ -3699,21 +3889,27 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
                 <entry>Defines how this variable is populated with data from the enrollment and
                   events. <itemizedlist>
                     <listitem>
-                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE - Get the newest value that
-                        exists for a dataelement, within the events of a given program stage in the
-                        current enrollment.</para>
+                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE - In tracker capture, gets the 
+                        newest value that exists for a dataelement, within the events of a given 
+                        program stage in the current enrollment. In event capture, gets the newest
+                        value among the 10 newest events on the organisation unit.</para>
                     </listitem>
                     <listitem>
-                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM - Get the newest value that exists for
-                        a dataelement across the whole enrollment.</para>
+                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM - In tracker capture, get the newest 
+                        value that exists for a dataelement across the whole enrollment. 
+                        In event capture, gets the newest value among the 10 newest events on the 
+                        organisation unit.
+                      </para>
                     </listitem>
                     <listitem>
                       <para>DATAELEMENT_CURRENT_EVENT - Gets the value of the given dataelement in
                         the current event only.</para>
                     </listitem>
                     <listitem>
-                      <para>DATAELEMENT_PREVIOUS_EVENT - Gets the newest value that exists among
-                        events in the program that precedes the current event.</para>
+                      <para>DATAELEMENT_PREVIOUS_EVENT - In tracker capture, gets the newest value that 
+                        exists among events in the program that precedes the current event. In event 
+                        capture, gets the newvest value among the 10 preceeding events registered
+                        on the organisation unit.</para>
                     </listitem>
                     <listitem>
                       <para>CALCULATED_VALUE - Used to reserve a variable name that will be assigned
@@ -6922,6 +7118,195 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
+    <title>Usage analytics</title>
+    <para>The usage analytics API lets you access aggregated usage data captured in DHIS 2. This
+      resource lets you retrieve aggregated snapshots of usage analytics based on intervals in time.
+      The resource will capture user views (e.g the number of times a chart or pivot table has been
+      viewed by some user) and saved favorite items (e.g. favorite charts or pivot tables). When
+      activated, DHIS 2 will capture nightly snapshots which are then aggregated at
+      request.<screen>/api/dataStatistics</screen></para>
+    <section>
+      <title>Request query parameter</title>
+      <para>The usage analytics (data statistics) API is devided into two queries. The first query
+        is a HTTP GET call that responds with aggregated data. The second query is a HTTP POST call
+        that saves an event view. </para>
+      <section>
+        <title>Aggregated usage analytics report</title>
+        <para>The usage analytics (data statistics) API lets you specify some query parameters when
+          asking for an aggregated report. <table frame="all">
+            <title>Query parameters for aggregated usage analytics (data statistics)</title>
+            <tgroup cols="4">
+              <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+              <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+              <colspec colname="c3" colnum="3" colwidth="1.0*"/>
+              <colspec colname="c4" colnum="4" colwidth="1.0*"/>
+              <thead>
+                <row>
+                  <entry>Query parameter</entry>
+                  <entry>Required</entry>
+                  <entry>Description</entry>
+                  <entry>Options</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>startDate</entry>
+                  <entry>Yes</entry>
+                  <entry>Start date for period</entry>
+                  <entry>Date in yyyy-MM-dd format</entry>
+                </row>
+                <row>
+                  <entry>endDate</entry>
+                  <entry>Yes</entry>
+                  <entry>End date for period</entry>
+                  <entry>Date in yyyy-MM-dd format</entry>
+                </row>
+                <row>
+                  <entry>interval</entry>
+                  <entry>Yes</entry>
+                  <entry>Type of interval to be aggregated</entry>
+                  <entry>DAY, WEEK, MONTH, YEAR</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+        <para>The startDate and endDate parameters specifies the period for which snaphots should be
+          used in the aggregation. The dates must be formatted as shown above. If there is no
+          snapshots saved in the specified period an empty list will be sent back. The interval
+          parameter specifies what kind of aggregation will be done. As an example, to query for a
+          yearly aggregation you can use the following URL:
+          <screen>/api/dataStatistics?startDate=2010-01-02&amp;endDate=2016-01-01&amp;interval=YEAR</screen></para>
+      </section>
+      <section>
+        <title>Reporting event views</title>
+        <para>The usage analytics API also lets you report event views. Since the event views are
+          half of the aggregated report, the event views are critical to get a useful aggregated
+          usage analytics report. Reporting event views should be done from the DHIS2 portal, and
+          will in the aggregated report describe what parts of the portal is beeing used/not used.
+          The options in the table below shows what type of event views are logged.</para>
+        <para>
+          <table frame="all">
+            <title>Query parameters for adding event views</title>
+            <tgroup cols="4">
+              <colspec colname="c1" colnum="1" colwidth="2.11*"/>
+              <colspec colname="c2" colnum="2" colwidth="1*"/>
+              <colspec colname="c3" colnum="3" colwidth="1.55*"/>
+              <colspec colname="c4" colnum="4" colwidth="1.55*"/>
+              <thead>
+                <row>
+                  <entry>Query parameter</entry>
+                  <entry>Required</entry>
+                  <entry>Description</entry>
+                  <entry>Options</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>dataStatisticsEventType</entry>
+                  <entry>Yes</entry>
+                  <entry>Type of event view</entry>
+                  <entry>
+                    <para>CHART_VIEW, MAP_VIEW, DASHBOARD_VIEW, REPORT_TABLE_VIEW,
+                      EVENT_REPORT_VIEW, EVENT_CHART_VIEW, INDICATOR_VIEW </para>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </para>
+        <para>The dataStatisticsEventType parameter describe what type of event was viewed. The
+          different options available is listed in the table above. As an example, the following URL
+          can be used to report (post) a new event view:
+          <screen>api/dataStatistics?dataStatisticsEventType=CHART_VIEW</screen></para>
+        <para>Reporting (posting) a new event view should only be done from the portal and does not
+          give a textual response, only HTTP status code 201 (Created), if everything went as
+          expected. </para>
+      </section>
+    </section>
+    <section>
+      <title>Response format</title>
+      <para>The usage analytics response containing aggregate data can be returned in various
+        representation formats. As usual, you can indicate interest in a specific format by
+        appending a file extension to the URL. The default format is JSON. The available formats and
+        content- types are listed below. <itemizedlist>
+          <listitem>
+            <para>json (application/json)</para>
+          </listitem>
+          <listitem>
+            <para>xml (application/xml)</para>
+          </listitem>
+          <listitem>
+            <para>html (text/html)</para>
+          </listitem>
+        </itemizedlist></para>
+      <para>As an example, to request an usage analytics response in XML format you can use the
+        following URL:
+        <screen>/api/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen></para>
+      <para>The aggregated usage analytics response must be retrieved using the HTTP GET method.
+        This allows for direct linking to usage analytics responses from Web pages as well as other
+        HTTP-enabled clients. To do functional testing we can use the cURL library. By executing
+        this command against the demo database you will get an usage analytics response in JSON
+        format:
+        <screen>curl "play.dhis2.org/demo/api/dataStatistics?startDate=2016-02-01&amp;endDate=2016-02-14&amp;
+interval=WEEK" -u admin:district</screen></para>
+      <para>The JSON response will look like this:
+        <screen>[ 
+  {
+    "year": 2016,
+    "week": 5,
+    "activeUsers": 99,
+    "mapViews": 2180,
+    "chartViews": 2227,
+    "reportTablesViews": 5632,
+    "eventReportViews": 5632,
+    "eventChartViews": 9859,
+    "dashboardViews": 10081,
+    "indicatorsViews": 9606,
+    "totalViews": 1819,
+    "averageViews": 6620,
+    "savedMaps": 1804,
+    "savedCharts": 2205,
+    "savedReportTables": 1995,
+    "savedEventReports": 1678,
+    "savedEventCharts": 1613,
+    "savedDashboards": 1922,
+    "savedIndicators": 1831,
+    "users": 969
+}, 
+{     
+    "year": 2016,
+    "week": 6,
+    "activeUsers": 96,
+    "mapViews": 2017,
+    "chartViews": 2266,
+    "reportTablesViews": 4714,
+    "eventReportViews": 4714,
+    "eventChartViews": 9510,
+    "dashboardViews": 12181,
+    "indicatorsViews": 10357,
+    "totalViews": 2029,
+    "averageViews": 6820,
+    "savedMaps": 1642,
+    "savedCharts": 1934,
+    "savedReportTables": 1867,
+    "savedEventReports": 1976,
+    "savedEventCharts": 1713,
+    "savedDashboards": 1736,
+    "savedIndicators": 1646,
+    "users": 953
+  } 
+] </screen></para>
+      <para>The response represents a list of aggregated data over two weekly intervals. The year
+        and week properies shows when the aggregated data is from. The property activeUsers is the
+        maximum (peak) number of unique users that have made an event view. The views properties
+        shows the number of views of each event (e.g map, chart) in the interval. The totalViews
+        property shows the total number of views. averageViews shows the average number of views. </para>
+      <para>The saved properties shows how many items (e.g. indicators, dashboards) have been saved
+        in the interval. Property users shows the total maximum (peak) number of users in the
+        database at the given interval. </para>
+    </section>
+  </section>
+  <section>
     <title>Event analytics</title>
     <para>The event analytics API lets you access aggregated event data and query <emphasis
         role="italic">events</emphasis> captured in DHIS 2. This resource lets you retrieve events
@@ -7686,14 +8071,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
-    <title>Data set reports</title>
+    <title>Data set report</title>
     <para>Data set reports can be generated trough the web api using the
-        <emphasis>/datasetreport</emphasis> resource. This resource generates reports on data set
-      and returns the result in the form of a HTML table. The request to
-        <emphasis>/datasetreport</emphasis> can or must contain the following parameters:</para>
+        <emphasis>/dataSetReport</emphasis> resource. This resource generates reports on data set
+      and returns the result in the form of a HTML table. The request supports the following
+      parameters:</para>
     <para>
       <table frame="all">
-        <title>Accepted parameters of /datasetreport</title>
+        <title>Accepted parameters of /dataSetReport resource</title>
         <tgroup cols="4">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
           <colspec colname="c2" colnum="2" colwidth="3.25*"/>
@@ -7710,41 +8095,41 @@ ORDER BY oul.level, par.name, ou.name</screen>
           <tbody>
             <row>
               <entry>ds</entry>
-              <entry>Data set to create the report from.</entry>
+              <entry>Data set to create the report from</entry>
               <entry>Data set UID</entry>
-              <entry>yes</entry>
+              <entry>Yes</entry>
             </row>
             <row>
               <entry>pe</entry>
-              <entry>Period to create the report from.</entry>
+              <entry>Period to create the report from</entry>
               <entry>ISO String</entry>
-              <entry>yes</entry>
+              <entry>Yes</entry>
             </row>
             <row>
               <entry>ou</entry>
               <entry>Organisation unit to create the report from</entry>
               <entry>Organisation unit UID</entry>
-              <entry>yes</entry>
+              <entry>Yes</entry>
             </row>
             <row>
               <entry>dimension</entry>
               <entry>Dimensions to be used as filters for the report</entry>
               <entry>One or more UIDs</entry>
-              <entry>no</entry>
+              <entry>No</entry>
             </row>
             <row>
               <entry>selectedUnitOnly</entry>
               <entry>Whether to use captured or aggregated data</entry>
               <entry>Boolean</entry>
-              <entry>no</entry>
+              <entry>No</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
     </para>
-    <para><emphasis>/datasetreport</emphasis> only has one accepted method: GET. An example request
-      to retrieve a report for a dataset A and orgunit O for 2015 could
-      be:<screen>GET /api/datasetreport?ds=A&amp;ou=O&amp;pe=2015&amp;selectedUnitOnly=false</screen></para>
+    <para>The data set report resource accepts GET requests only. An example request to retrieve a
+      report for a data set and orgunit for 2015 looks like
+      this:<screen>GET /api/dataSetReport?ds=A&amp;ou=O&amp;pe=2015&amp;selectedUnitOnly=false</screen></para>
   </section>
   <section>
     <title>Geo features</title>
@@ -8729,6 +9114,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>A query for max 10 users with &quot;konan&quot; as first name or surname (case
         in-sensitive) who have a subset of authorities compared to the current user:</para>
       <screen>/api/users?query=konan&amp;authSubset=true&amp;pageSize=10</screen>
+    </section>
+    <section>
+      <title>UserCredentials query</title>
+      <para>An alternative to the previous user query, is to directly query the user credentials
+        (the part where username, etc resides) using <emphasis role="italic"
+          >/api/userCredentials</emphasis> endpoint, it supports all regular field and object
+        filters as the other endpoints.</para>
     </section>
     <section>
       <title>User account create and update</title>
