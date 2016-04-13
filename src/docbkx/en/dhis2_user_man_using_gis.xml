@@ -163,7 +163,7 @@ Occurs maybe?"?>displays<?oxy_comment_end?>.</para>
     </section>
   </section>
   <section id="gisFavoriteMapView">
-    <title>Managing favorites</title>
+    <title>Managing map favorites</title>
     <screenshot>
       <screeninfo>Favorite maps</screeninfo>
       <mediaobject>
@@ -172,9 +172,7 @@ Occurs maybe?"?>displays<?oxy_comment_end?>.</para>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>All favorites have four action buttons on the right hand side. Grey: Edit favorite name.
-      Green: Save current map to this favorite (overwrite). Yellow: Add this favorite to dashboard.
-      Red: Delete this favorite.</para>
+    <para>All favorites have four action buttons on the right hand side. </para>
     <section>
       <title>Saving a map as favorite</title>
       <para>When you have created a map it is convenient to save it as a favorite: </para>
@@ -269,54 +267,50 @@ Occurs maybe?"?>displays<?oxy_comment_end?>.</para>
       </orderedlist>
     </section>
     <section>
-      <title>A<?oxy_comment_start author="Home" timestamp="20160413T090336+0200" comment="As this function disappeard? No longer in devs demo?"?>dding
-        a favorite to dashboard<?oxy_comment_end?></title>
-      <para>Yellow: Add this favorite to dashboard.</para>
+      <title>Deleting a favorite</title>
+      <para>To delete a favorite: </para>
       <orderedlist>
         <listitem>
           <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
           <para>The <emphasis role="bold">Manage favorites</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
-          <para>Find the favorite you want to overrite.</para>
+          <para>Find the favorite you want to delete.</para>
           <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
               >Next</emphasis> or the search field to find a saved favorite. </para>
         </listitem>
         <listitem>
-          <para>Click the gray overwrite icon next to the favorite's name.</para>
-          <para>The <emphasis role="bold">Rename favorite</emphasis> dialog box favorite
-            opens.</para>
+          <para>Click the red delete next to the favorite's name.</para>
         </listitem>
         <listitem>
-          <para>Type the new name and click <emphasis role="bold">Update</emphasis>.</para>
+          <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to delete the
+            favorite.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">x</emphasis> to close the window.</para>
         </listitem>
       </orderedlist>
     </section>
-    <section>
-      <title>Deleting a favorite</title>
-      <para>Click the &quot;Favorites&quot; button on the toolbar to open the &quot;Manage
-        favorites&quot; window. </para>
-      <para>Red: Delete this favorite.</para>
-    </section>
     <section id="gisInterpretation">
       <title>Sharing a interpretation of a favorite/map interpretation</title>
-      <para>Open a favorite or save a new map as a favorite. Then click the &quot;Share&quot; button
-        on the map toolbar. Type in your interpretation and click &quot;Share&quot;.</para>
+      <para>Open a favorite or save a new map as a favorite. </para>
+      <para>Then click the &quot;Share&quot; button on the map toolbar. </para>
+      <para>Type in your interpretation and click &quot;Share&quot;.</para>
       <para role="">For
         <?oxy_comment_start author="Home" timestamp="20160407T151353+0200" comment="Which ones?"?>certain<?oxy_comment_end?>
         analysis-related resources in DHIS 2, you can share a data interpretation. An interpretation
         is a link to the relevant resource together with a text expressing some insight about the
         data. </para>
-      <para role="">To create an interpretation of a pivot table and share it with all users of the
+      <para role="">To create an interpretation of a map and share it with all users of the
         system:</para>
       <orderedlist>
         <listitem>
-          <para>Click <emphasis role="bold">Favorites</emphasis> > <emphasis role="bold">Write
+          <para>Open or create a favorite map.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Share</emphasis> > <emphasis role="bold">Write
               interpretation</emphasis>.</para>
-          <para>The <emphasis role="bold">WRITE INTERPRETATION</emphasis> dialog box opens.</para>
+          <para>The <emphasis role="bold">Write interpretation</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
           <para>In the text field, type a comment, question or interpretation.</para>
@@ -330,24 +324,40 @@ Occurs maybe?"?>displays<?oxy_comment_end?>.</para>
     </section>
   </section>
   <section id="gisLegendSet">
-    <title>Creating predefined legend sets</title>
-    <para>Click the &quot;Legend&quot; button on the map toolbar. To create a new set click the
-      &quot;Add new&quot; button. Example usage (vaccination coverage): Firstly, give the legend set
-      a name. Then create the legends you want in your legend set. The first one could be &quot;Low
-      bad&quot; (name), 0 (start value), 50 (end value), red (color). Click &quot;Add legend&quot;
-      and appears in the list below. Then create &quot;Medium&quot; / 50 / 80 / yellow, &quot;High
-      good&quot; / 80 / 100 / green and finally &quot;Too high&quot; / 100 / 10000 / grey. Now,
-      click the &quot;Create&quot; button in the bottom right corner. If your legend set has
-      overlapping legends (e.g. 0-50 and 40-80) you will not be allowed to proceed. If your legend
-      set has a gap between the legends (e.g. 0-50 and 60-80) you will get a warning, but are
-      allowed to proceed.</para>
-    <para>NOTE! Continuous legends are supposed to end and start on the same value, e.g. 0-50 and
-      50-80. This will automatically be taken care of by the application. Do not try to do this
-      yourself by setting legends to e.g. 0-50 and 51-80. This will cause a usually unwanted gap in
-      your legend set.</para>
+    <title>Managing map legends</title>
+    <note>
+      <para>Continuous legends are supposed to end and start on the same value, for example 0-50 and
+        50-80. The GIS app  automaticallys take care of
+        <?oxy_comment_start author="Home" timestamp="20160413T120439+0200" comment="Of what?"?>this<?oxy_comment_end?>.
+        Do not try to do this yourself by setting legends to e.g. 0-50 and 51-80. This will cause a
+        usually unwanted gap in your legend set.</para>
+    </note>
     <para>You can assign a legend set to an indicator or a data element in the Indicator/Data
       element module. This legend set will then be automatically selected when such an
       indicator/data element is selected in the GIS.</para>
+    <section>
+      <title>Creating a new legend set</title>
+      <para>Click the &quot;Legend&quot; button on the map toolbar. </para>
+      <para>To create a new set click the &quot;Add new&quot; button. Example usage (vaccination
+        coverage): </para>
+      <para>Firstly, give the legend set a name. Then create the legends you want in your legend
+        set. The first one could be &quot;Low bad&quot; (name), 0 (start value), 50 (end value), red
+        (color). Click &quot;Add legend&quot; and appears in the list below. Then create
+        &quot;Medium&quot; / 50 / 80 / yellow, &quot;High good&quot; / 80 / 100 / green and finally
+        &quot;Too high&quot; / 100 / 10000 / grey. </para>
+      <para>Now, click the &quot;Create&quot; button in the bottom right corner. If your legend set
+        has overlapping legends (e.g. 0-50 and 40-80) you will not be allowed to proceed. If your
+        legend set has a gap between the legends (e.g. 0-50 and 60-80) you will get a warning, but
+        are allowed to proceed.</para>
+    </section>
+    <section>
+      <title>Changing a legend set</title>
+      <para/>
+    </section>
+    <section>
+      <title>Deleting a legend set</title>
+      <para/>
+    </section>
   </section>
   <section id="gisImageExport">
     <title><?oxy_comment_start author="Home" timestamp="20160412T144320+0200" comment="Should work for all maps except for cluster maps. Add note in topic.
@@ -413,7 +423,7 @@ It should work, check again with Bjørn before release."?>Visualizing<?oxy_comme
       <orderedlist>
         <listitem>
           <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this map
-              as chart</emphasis></para>
+              as chart</emphasis>.</para>
           <para>Your current map opens as a chart.</para>
         </listitem>
       </orderedlist>
@@ -423,7 +433,7 @@ It should work, check again with Bjørn before release."?>Visualizing<?oxy_comme
       <orderedlist>
         <listitem>
           <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this map
-              as table</emphasis></para>
+              as table</emphasis>.</para>
           <para>Your current map opens as a pivot table.</para>
         </listitem>
       </orderedlist>
