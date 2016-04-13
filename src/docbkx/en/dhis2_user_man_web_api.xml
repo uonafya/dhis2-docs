@@ -154,7 +154,7 @@ curl -X POST -H &quot;Accept: application/json&quot; -u demo:$SECRET $SERVER/uaa
         <para>The response will be exactly the same as when you get an token to start with.</para>
       </section>
       <section>
-        <title>Grant type authorized_code</title>
+        <title>Grant type authorization_code</title>
         <para>Authorized code grant type is the recommended approach if you don&apos;t want to store
           the user credentials externally. It allows DHIS 2 to collect the username/password
           directly from the user instead of the client collecting them and then authenticating on
@@ -173,7 +173,7 @@ $SERVER/uaa/oauth/authorize?client_id=demo&amp;response_type=code</screen></para
           token:<screen>SERVER=&quot;https://play.dhis2.org/dev&quot;
 SECRET=&quot;1e6db50c-0fee-11e5-98d0-3c15c2c6caf6&quot;
 
-curl -X POST -u demo:$SECRET -H &quot;Accept: application/json&quot; $SERVER/token -d grant_type=authorized_code -d code=XYZ</screen></para>
+curl -X POST -u demo:$SECRET -H &quot;Accept: application/json&quot; $SERVER/token -d grant_type=authorization_code -d code=XYZ</screen></para>
       </section>
     </section>
   </section>
@@ -482,7 +482,8 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
                 <entry>translate</entry>
                 <entry>true | false</entry>
                 <entry>Translate display* properties in metadata output (displayName,
-                  displayShortName, displayDescription)</entry>
+                  displayShortName, displayDescription, and displayFormName for data
+                  elements)</entry>
               </row>
               <row>
                 <entry>locale</entry>
@@ -2003,6 +2004,15 @@ http://server/api/constants/ID</screen></para>
       <para>Export data elements and indicators where name starts with
         'ANC':<screen>curl -u user:pass http://server/api/23/metadata?defaultFilter=name:^like:ANC&amp;dataElements=true&amp;indicators=true</screen></para>
     </section>
+    <section>
+      <title>Data set and program export with dependencies</title>
+      <para>When you want to move a whole set of data set or program metadata from one server to
+        another (possibly empty) server, we have two special endpoints for just that
+        purpose:<screen>/api/dataSets/ID/metadata.json</screen><screen>/api/programs/ID/metadata.json</screen></para>
+      <para>These exports can be imported both using the old importer at <emphasis role="italic"
+          >/api/metadata</emphasis> and the new importer at <emphasis role="italic"
+          >/api/23/metadata</emphasis>.</para>
+    </section>
   </section>
   <section>
     <title>Metadata Import API 23</title>
@@ -2083,6 +2093,18 @@ http://server/api/constants/ID</screen></para>
                 >OBJECT</emphasis> for debugging purposes, where you are seeing hibernate exceptions
               and want to pinpoint the exact place where the stack happens (hibernate will only
               throw when flushing, so it can be hard to know which object had issues).</entry>
+          </row>
+          <row>
+            <entry>skipSharing</entry>
+            <entry>false, true</entry>
+            <entry>Skip sharing properties, does not merge sharing when doing updates, and does not
+              add user group accessses when creating new objects.</entry>
+          </row>
+          <row>
+            <entry>skipValidation</entry>
+            <entry>false, true</entry>
+            <entry>Skip validation for import. <emphasis role="bold">NOT
+              RECOMMENDED</emphasis>.</entry>
           </row>
         </tbody>
       </tgroup>
@@ -3489,6 +3511,13 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                   trackedEntityInstance | eventDate | followup | status | dueDate | storedBy | 
                   created | lastUpdated | completedBy | completedDate
                 </entry>
+              </row>
+              <row>
+                <entry>event</entry>
+                <entry>comma delimited strings</entry>
+                <entry>false</entry>
+                <entry>Filter the result down to a limited set of IDs by using <emphasis
+                    role="italic">event=id1;id2</emphasis>.</entry>
               </row>
             </tbody>
           </tgroup>
@@ -9085,6 +9114,18 @@ interval=WEEK" -u admin:district</screen></para>
       <para>A query for max 10 users with &quot;konan&quot; as first name or surname (case
         in-sensitive) who have a subset of authorities compared to the current user:</para>
       <screen>/api/users?query=konan&amp;authSubset=true&amp;pageSize=10</screen>
+    </section>
+    <section>
+      <title>UserCredentials query</title>
+      <para>An alternative to the previous user query, is to directly query the user credentials
+        (the part where username, etc resides) using <emphasis role="italic"
+          >/api/userCredentials</emphasis> endpoint, it supports all regular field and object
+        filters as the other endpoints.</para>
+      <para>Get user credentials where username is
+        admin:<screen>/api/userCredentials?filter=username:eq:admin</screen></para>
+      <para>Get username  and code from all user credentials where username starts with <emphasis
+          role="italic">adm</emphasis>:</para>
+      <screen>/api/userCredentials?fields=username,code&amp;filter=username:^like:adm</screen>
     </section>
     <section>
       <title>User account create and update</title>
