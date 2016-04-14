@@ -9701,8 +9701,9 @@ interval=WEEK" -u admin:district</screen></para>
   </section>
   <section>
     <title>Organisation units</title>
-    <para>The organisationUnits resource follows the standard conventions as other metadata
-      resources in DHIS 2. This resource supports some additional query parameters.</para>
+    <para>The <emphasis>organisationUnits</emphasis> resource follows the standard conventions as
+      other metadata resources in DHIS 2. This resource supports some additional query
+      parameters.<screen>/api/organisationUnits</screen></para>
     <table frame="all">
       <title>Organisation units query parameters</title>
       <tgroup cols="2">
@@ -9740,6 +9741,33 @@ interval=WEEK" -u admin:district</screen></para>
         </tbody>
       </tgroup>
     </table>
+  </section>
+  <section>
+    <title>Filled organisation unit levels</title>
+    <para>The <emphasis>filledOrganisationUnitLevels</emphasis> resource provides an ordered list of
+      organisation unit levels, where generated levels are injected into the list to fill positions
+      for which it does not exist a persisted level.</para>
+    <para>
+      <screen>GET /api/filledOrganisationUnitLevels</screen>
+    </para>
+    <para>To set the organisation unit levels you can issue a POST request with a payload looking
+      like
+      this.<screen>{
+  "organisationUnitLevels": [{
+    "name": "National",
+    "level": 1,
+    "offlineLevels": 3
+  }, {
+    "name": "District",
+    "level": 2
+  }, {
+    "name": "Chiefdom",
+    "level": 3
+  }, {
+    "name": "Facility",
+    "level": 4
+  }]
+}</screen></para>
   </section>
   <section>
     <title>Static content</title>
