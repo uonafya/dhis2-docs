@@ -7131,7 +7131,52 @@ ORDER BY oul.level, par.name, ou.name</screen>
         is a HTTP GET call that responds with aggregated data. The second query is a HTTP POST call
         that saves an event view. </para>
       <section>
-        <title>Aggregated usage analytics report</title>
+        <title>Creating event views (POST)</title>
+        <para>The usage analytics API also lets you create/report event views. Since the event views
+          are half of the aggregated report, the event views are critical to get a useful aggregated
+          usage analytics report. Reporting event views should be done from the DHIS2 portal, and
+          will in the aggregated report describe what parts of the portal is beeing used/not used.
+          The options in the table below shows what type of event views are logged.</para>
+        <para>
+          <table frame="all">
+            <title>Query parameters for adding event views</title>
+            <tgroup cols="4">
+              <colspec colname="c1" colnum="1" colwidth="2.11*"/>
+              <colspec colname="c2" colnum="2" colwidth="1*"/>
+              <colspec colname="c3" colnum="3" colwidth="1.55*"/>
+              <colspec colname="c4" colnum="4" colwidth="1.55*"/>
+              <thead>
+                <row>
+                  <entry>Query parameter</entry>
+                  <entry>Required</entry>
+                  <entry>Description</entry>
+                  <entry>Options</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>dataStatisticsEventType</entry>
+                  <entry>Yes</entry>
+                  <entry>Type of event view</entry>
+                  <entry>
+                    <para>CHART_VIEW, MAP_VIEW, DASHBOARD_VIEW, REPORT_TABLE_VIEW,
+                      EVENT_REPORT_VIEW, EVENT_CHART_VIEW, INDICATOR_VIEW </para>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </para>
+        <para>The dataStatisticsEventType parameter describe what type of event was viewed. The
+          different options available is listed in the table above. As an example, the following URL
+          can be used to report (post) a new event view:
+          <screen>api/dataStatistics?dataStatisticsEventType=CHART_VIEW</screen></para>
+        <para>Reporting (posting) a new event view should only be done from the portal and does not
+          give a textual response, only HTTP status code 201 (Created), if everything went as
+          expected. </para>
+      </section>
+      <section>
+        <title>Aggregated usage analytics report (GET)</title>
         <para>The usage analytics (data statistics) API lets you specify some query parameters when
           asking for an aggregated report. <table frame="all">
             <title>Query parameters for aggregated usage analytics (data statistics)</title>
@@ -7176,51 +7221,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
           parameter specifies what kind of aggregation will be done. As an example, to query for a
           yearly aggregation you can use the following URL:
           <screen>/api/dataStatistics?startDate=2010-01-02&amp;endDate=2016-01-01&amp;interval=YEAR</screen></para>
-      </section>
-      <section>
-        <title>Reporting event views</title>
-        <para>The usage analytics API also lets you report event views. Since the event views are
-          half of the aggregated report, the event views are critical to get a useful aggregated
-          usage analytics report. Reporting event views should be done from the DHIS2 portal, and
-          will in the aggregated report describe what parts of the portal is beeing used/not used.
-          The options in the table below shows what type of event views are logged.</para>
-        <para>
-          <table frame="all">
-            <title>Query parameters for adding event views</title>
-            <tgroup cols="4">
-              <colspec colname="c1" colnum="1" colwidth="2.11*"/>
-              <colspec colname="c2" colnum="2" colwidth="1*"/>
-              <colspec colname="c3" colnum="3" colwidth="1.55*"/>
-              <colspec colname="c4" colnum="4" colwidth="1.55*"/>
-              <thead>
-                <row>
-                  <entry>Query parameter</entry>
-                  <entry>Required</entry>
-                  <entry>Description</entry>
-                  <entry>Options</entry>
-                </row>
-              </thead>
-              <tbody>
-                <row>
-                  <entry>dataStatisticsEventType</entry>
-                  <entry>Yes</entry>
-                  <entry>Type of event view</entry>
-                  <entry>
-                    <para>CHART_VIEW, MAP_VIEW, DASHBOARD_VIEW, REPORT_TABLE_VIEW,
-                      EVENT_REPORT_VIEW, EVENT_CHART_VIEW, INDICATOR_VIEW </para>
-                  </entry>
-                </row>
-              </tbody>
-            </tgroup>
-          </table>
-        </para>
-        <para>The dataStatisticsEventType parameter describe what type of event was viewed. The
-          different options available is listed in the table above. As an example, the following URL
-          can be used to report (post) a new event view:
-          <screen>api/dataStatistics?dataStatisticsEventType=CHART_VIEW</screen></para>
-        <para>Reporting (posting) a new event view should only be done from the portal and does not
-          give a textual response, only HTTP status code 201 (Created), if everything went as
-          expected. </para>
       </section>
     </section>
     <section>
