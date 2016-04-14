@@ -7958,36 +7958,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
         <title>Creating view events (POST)</title>
         <para>The usage analytics API lets you create event views. The table below shows the
           supported types of events.</para>
-        <para>
-          <table frame="all">
-            <title>Query parameters for adding event views</title>
-            <tgroup cols="4">
-              <colspec colname="c1" colnum="1" colwidth="2.11*"/>
-              <colspec colname="c2" colnum="2" colwidth="1*"/>
-              <colspec colname="c3" colnum="3" colwidth="1.55*"/>
-              <colspec colname="c4" colnum="4" colwidth="1.55*"/>
-              <thead>
-                <row>
-                  <entry>Query parameter</entry>
-                  <entry>Required</entry>
-                  <entry>Description</entry>
-                  <entry>Options</entry>
-                </row>
-              </thead>
-              <tbody>
-                <row>
-                  <entry>eventType</entry>
-                  <entry>Yes</entry>
-                  <entry>Type of event view</entry>
-                  <entry>
-                    <para>CHART_VIEW, MAP_VIEW, DASHBOARD_VIEW, REPORT_TABLE_VIEW,
-                      EVENT_REPORT_VIEW, EVENT_CHART_VIEW </para>
-                  </entry>
-                </row>
-              </tbody>
-            </tgroup>
-          </table>
-        </para>
         <para>The dataStatisticsEventType parameter describes what type of item was viewed. As an
           example, the following URL can be used to create a new event view:
           <screen>POST /api/dataStatistics?eventType=CHART_VIEW</screen></para>
@@ -8075,11 +8045,10 @@ interval=WEEK" -u admin:district</screen></para>
     "activeUsers": 99,
     "mapViews": 2180,
     "chartViews": 2227,
-    "reportTablesViews": 5632,
+    "reportTableViews": 5632,
     "eventReportViews": 5632,
     "eventChartViews": 9859,
     "dashboardViews": 10081,
-    "indicatorsViews": 9606,
     "totalViews": 1819,
     "averageViews": 6620,
     "savedMaps": 1804,
