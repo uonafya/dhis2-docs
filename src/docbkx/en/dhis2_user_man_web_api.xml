@@ -2308,6 +2308,12 @@ http://server/api/constants/ID</screen></para>
                 combos, to use to map the data values.</entry>
             </row>
             <row>
+              <entry>preheatCache</entry>
+              <entry>false | true</entry>
+              <entry>Indicates whether to preload metadata caches before starting to import data
+                values, will speed up large import payloads with high metadata cardinality.</entry>
+            </row>
+            <row>
               <entry>dryRun</entry>
               <entry>false | true</entry>
               <entry>Whether to save changes on the server or just return the import
@@ -2327,7 +2333,7 @@ http://server/api/constants/ID</screen></para>
             <row>
               <entry>async</entry>
               <entry>false | true</entry>
-              <entry>Indicates wether the import should be done asynchronous or synchronous. The
+              <entry>Indicates whether the import should be done asynchronous or synchronous. The
                 former is suitable for very large imports as it ensures that the request does not
                 time out, although it has a significant performance overhead. The latter is faster
                 but requires the connection to persist until the process is finished.</entry>
@@ -2344,6 +2350,10 @@ http://server/api/constants/ID</screen></para>
   orgUnitIdScheme=&quot;name&quot; dryRun=&quot;true&quot; importStrategy=&quot;new&quot;&gt;
   ..
 &lt;/dataValueSet&gt;</screen>
+      <para>Note that the <emphasis>preheatCache</emphasis> parameter can have huge impact for
+        performance. For small import files, leaving it to false will be fast. For large import
+        files which contain a large number of distint data elements and organisation units, setting
+        it to true will be orders of magnitude faster.</para>
       <section>
         <title>Identifier schemes</title>
         <para>Regarding the id schemes, by default the identifiers used in the XML messages uses the
