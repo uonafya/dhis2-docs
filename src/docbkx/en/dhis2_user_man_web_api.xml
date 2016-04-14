@@ -9750,8 +9750,8 @@ interval=WEEK" -u admin:district</screen></para>
     <para>
       <screen>GET /api/filledOrganisationUnitLevels</screen>
     </para>
-    <para>To set the organisation unit levels you can issue a POST request with a payload looking
-      like
+    <para>To set the organisation unit levels you can issue a POST request with a JSON payload
+      looking like
       this.<screen>{
   "organisationUnitLevels": [{
     "name": "National",
@@ -9767,7 +9767,8 @@ interval=WEEK" -u admin:district</screen></para>
     "name": "Facility",
     "level": 4
   }]
-}</screen></para>
+}</screen><screen>curl "http://localhost/api/filledOrganisationUnitLevels" -H "Content-Type:application/json"
+-d @levels.json -u admin:district -v</screen></para>
   </section>
   <section>
     <title>Static content</title>
