@@ -2343,11 +2343,11 @@ http://server/api/constants/ID</screen></para>
       </table>
       <para>All parameters are optional and can be supplied as query parameters in the request URL
         like this:</para>
-      <screen>api/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=name&amp;dryRun=true&amp;importStrategy=new</screen>
+      <screen>api/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=name&amp;dryRun=true&amp;importStrategy=CREATE</screen>
       <para>They can also be supplied as XML attributes on the data value set element like below.
         XML attributes will override query string parameters.</para>
       <screen>&lt;dataValueSet xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot; dataElementIdScheme=&quot;code&quot;
-  orgUnitIdScheme=&quot;name&quot; dryRun=&quot;true&quot; importStrategy=&quot;new&quot;&gt;
+  orgUnitIdScheme=&quot;name&quot; dryRun=&quot;true&quot; importStrategy=&quot;CREATE&quot;&gt;
   ..
 &lt;/dataValueSet&gt;</screen>
       <para>Note that the <emphasis>preheatCache</emphasis> parameter can have huge impact for
