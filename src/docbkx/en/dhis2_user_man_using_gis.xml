@@ -280,8 +280,12 @@ https://www.google.com/permissions/trademark/trademark-list.html
   </section>
   <section id="gisFacilityMap">
     <title>Manage
-      <?oxy_comment_start author="Home" timestamp="20160415T112949+0200" comment="Check with Bjørn why Surrounding areas have disappeard from GUI."?>facility<?oxy_comment_end?>
+      <?oxy_comment_start author="Home" timestamp="20160415T112949+0200" comment="Check with Bjørn changes to UI for 2.23. They weren&apos;t on the list of updates."?>facility<?oxy_comment_end?>
       layer</title>
+    <para>The facility layer displays icons that represent facilities based on the facility type.
+      <?oxy_comment_start author="Home" timestamp="20160415T134739+0200" comment="What does this mean in this context?"?>Polygons<?oxy_comment_end?>
+      will not show up on the map, so make sure to select an organisation unit level that has
+      facilities. </para>
     <screenshot>
       <screeninfo>Facility layer</screeninfo>
       <mediaobject>
@@ -291,21 +295,57 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>This layer displays icons that represent facilities based on the facility type. Polygons
-      will not show up on the map, so make sure to select an organisation unit level that has
-      facilities. Click an icon on the map to open the context menu with two options. &quot;Show
-      information sheet&quot; provides you with data for several data elements for this organisation
-      unit. The data element group and period type are &quot;system settings&quot; called
-      &quot;Infrastructural data elements&quot; and &quot;Infrastructural period type&quot;. The
-      second option in the context menu is &quot;Relocate&quot; and lets you graphically move the
-      organisation unit to a different location. The new coordinate will be stored permanently.
-      Browser cache must be deleted to see the change if you reload the page.</para>
-    <para>In the &quot;Edit layer&quot; window will find &quot;surrounding areas&quot; in addition
-      to group set, level and parent. This lets you draw a circle around each facility with a
-      desired radius in kilometers.</para>
+    <?oxy_comment_start author="Home" timestamp="20160415T142014+0200" comment="Is this information still relevant? Must be reviewed by Bjørn or Jan."?>
+    <para>Click an icon on the map to open the context menu with two options. &quot;Show information
+      sheet&quot; provides you with data for several data elements for this organisation unit. The
+      data element group and period type are &quot;system settings&quot; called
+      &quot;Infrastructural data elements&quot; and &quot;Infrastructural period type&quot;. </para>
+    <?oxy_comment_end?>
+    <section>
+      <title>Create or modify facility layer</title>
+      <para>To create or modify the facilty layer:</para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the facility layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Edit layer</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Organisation unit group icons</emphasis> section,
+            select a <emphasis role="bold">Group set</emphasis>. </para>
+        </listitem>
+        <listitem>
+          <para><?oxy_comment_start author="Home" timestamp="20160415T144008+0200" comment="At next revision, explain this task in more detail."?>In
+            the <emphasis role="bold">Organisation units</emphasis> section, select one or several
+            organisation units<?oxy_comment_end?>.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
+            lables and if so, how they look.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to
+            display a circule with a certain radius around each facility.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Update</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title><?oxy_comment_start author="Home" timestamp="20160415T141848+0200" comment="Has this function been removed from 2.23?"?>Change
+        location of an organisation unit<?oxy_comment_end?></title>
+      <para>The second option in the context menu is &quot;Relocate&quot; and lets you graphically
+        move the organisation unit to a different location. The new coordinate will be stored
+        permanently. Browser cache must be deleted to see the change if you reload the page.</para>
+    </section>
   </section>
   <section id="gisBoundaryMap">
     <title>Manage boundary layer</title>
+    <para>The purpose of the boundary layer is to display the boundaries and coordinates in the
+      system. No data will be shown. This layer is useful if you are offline and thus have no
+      background map. </para>
     <screenshot>
       <screeninfo>Boundary layer</screeninfo>
       <mediaobject>
@@ -315,24 +355,59 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>The purpose of the boundary layer is to display the boundaries/coordinates in the system.
-      No data will be shown. This layer is useful if you are offline and thus have no background
-      map. Click the boundary/globe icon on the toolbar and select &quot;Edit layer&quot;. You can
-      select the organisation units you want to show on the map by selecting a level and a parent.
-      That means &quot;show all organisations units at this level that are children of this
-      parent&quot;. When there are visible organisation units on the map, you can easily navigate up
-      and down in the hierarchy without using the level/parent user interface. By clicking one of
-      the organisation units a context menu will open, then select &quot;drill down&quot; or
-      &quot;float up&quot;. The drill down option will be disabled if you are already on the lowest
-      level or if there are no coordinates available on the level below. Vice versa goes for
-      floating up.</para>
+    <?oxy_comment_start author="Home" timestamp="20160415T150919+0200" comment="Looks like this funtion has been removed. Verify with Bjørn."?>
+    <para>When there are visible organisation units on the map, you can easily navigate up and down
+      in the hierarchy without using the level/parent user interface. By clicking one of the
+      organisation units a context menu will open, then select &quot;drill down&quot; or &quot;float
+      up&quot;. The drill down option will be disabled if you are already on the lowest level or if
+      there are no coordinates available on the level below. Vice versa goes for floating up.</para>
+    <?oxy_comment_end?>
+    <?oxy_comment_start author="Home" timestamp="20160415T145614+0200" comment="Still correct? Verify with Bjørn."?>
     <para>The layer menu also offers to put on labels and to locate an organisation unit in the
       map.</para>
+    <?oxy_comment_end?>
+    <?oxy_comment_start author="Home" timestamp="20160415T145201+0200" comment="Still correct? Verify with Bjørn."?>
     <para>The final option in the layer menu is &quot;Close&quot;. This completely resets the layer
       content, the edit layer form and the legend panel.</para>
+    <?oxy_comment_end?>
+    <section>
+      <title>Create or modify boundary layer</title>
+      <para>To create or modify the boundary layer:</para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the boundary layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Edit layer</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para><?oxy_comment_start author="Home" timestamp="20160415T144008+0200" comment="At next revision, explain this task in more detail."?>In
+            the <emphasis role="bold">Organisation units</emphasis> section, select one or several
+            organisation units<?oxy_comment_end?>.</para>
+          <para>You can select the organisation units you want to show on the map by selecting a
+            level and a parent. That means &quot;show all organisations units at this level that are
+            children of this parent&quot;. </para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
+            lables and if so, how they look.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Update</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
   </section>
   <section id="gisThematicMap">
-    <title>Manage thematic layer 1-4</title>
+    <title>Manage thematic layer 1- 4</title>
+    <para>The four thematic layer panels let you use your data for thematic mapping. All you need to
+      do is selecting your desired combination of indicator/dataelement, period and map combination.
+      Then the organisation unit level and parent to define the boundaries. If your database has
+      coordinates and aggregated data values for these organisation units they will appear on the
+      map. </para>
+    <note>
+      <para>The DHIS 2 data mart must be run in order to have aggregated values available.</para>
+    </note>
     <screenshot>
       <screeninfo>Thematic mapping</screeninfo>
       <mediaobject>
@@ -342,26 +417,95 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>The four thematic layer panels let you use your data for thematic mapping. All you need to
-      do is selecting your desired combination of indicator/dataelement, period and map combination.
-      Then the organisation unit level and parent to define the boundaries. If your database has
-      coordinates and aggregated data values for these organisation units they will appear on the
-      map. Note that the DHIS2 data mart must be run in order to have aggregated values
-      available.</para>
-    <para>You may choose between legend types: <guimenuitem>automatic</guimenuitem> and
-        <guimenuitem>predefined</guimenuitem>. Automatic means that the application will create a
-      legend set for you based on your what method, number of classes, low color and high color you
-      select. Method alludes to the size of the legend classes. Set to <guimenuitem>Equal
-        intervals</guimenuitem> they will be “highest map value – lowest map value / number of
-      classes”. Set to <guimenuitem>Equal group count</guimenuitem> the legend creator will try to
-      distribute the organisation units evenly. The legend will appear as an even gradation from the
-      start color to the end color. Predefined legend sets are described in <xref
-        linkend="gisLegendSet"/> .</para>
+    <?oxy_comment_start author="Home" timestamp="20160415T160304+0200" comment="Still applicable? Verify with Bjørn."?>
     <para>Low radius and high radius only have effect on points (facilities) and decides the circle
       radius for points with the lowest and highest value.</para>
-    <para>Thematic layer 1-4 menu have a &quot;Filter&quot; option in addition to the boundary layer
-      menu options. It lets you apply value filters to the organisation units on the map. The filter
-      is removed when you close the filter window.</para>
+    <?oxy_comment_end?>
+    <section>
+      <title>Create or modify a thematic layer</title>
+      <para>To create or modify a thematic layer:</para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the icon of thematic layer you want to create or
+            modify.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Edit layer</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Data and periods</emphasis> section, select </para>
+        </listitem>
+        <listitem>
+          <para><?oxy_comment_start author="Home" timestamp="20160415T144008+0200" comment="At next revision, explain this task in more detail."?>In
+            the <emphasis role="bold">Organisation units</emphasis> section, select one or several
+            organisation units<?oxy_comment_end?>.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Legend</emphasis> seciton, select
+              <guimenuitem>Automatic</guimenuitem> or <guimenuitem>Predefined</guimenuitem> legend
+            type. </para>
+          <para>
+            <itemizedlist>
+              <listitem>
+                <?oxy_comment_start author="Home" timestamp="20160415T160125+0200" comment="Rewrite at next revision."?>
+                <para>Automatic legend types means that the application will create a legend set for
+                  you based on your what method, number of classes, low color and high color you
+                  select. Method alludes to the size of the legend classes. </para>
+                <?oxy_comment_end?>
+                <para>Set to <guimenuitem>Equal intervals</guimenuitem>
+                  <?oxy_comment_start author="Home" timestamp="20160415T160220+0200" comment="What does this refer to?"?>they<?oxy_comment_end?>
+                  will be “highest map value – lowest map value / number of classes”. </para>
+                <para>Set to <guimenuitem>Equal counts</guimenuitem> the legend creator will try to
+                  distribute the organisation units eveenly. </para>
+                <para>The legend appears as an even gradation from the start color to the end color.
+                </para>
+              </listitem>
+              <listitem>
+                <para>For information about <emphasis role="bold">Predefined</emphasis>
+                  <?oxy_comment_start author="Home" timestamp="20160415T160007+0200" comment="Verify that link works in output."?>legend<?oxy_comment_end?>
+                  sets, see <xref linkend="gisLegendSet"/> .</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
+            lables and if so, how they look.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Update</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">x</emphasis> to close the window.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Filter values in a thematic layer</title>
+      <para>Thematic layer 1-4 menu have a &quot;Filter&quot; option in addition to the boundary
+        layer menu options. It lets you apply value filters to the organisation units on the map.
+        The filter is removed when you close the filter window.</para>
+      <para>To filter values in a thematic layer:</para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the icon of thematic layer you want to create or
+            modify.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Filter...</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Modify the <emphasis role="bold">Greater than</emphasis> and <emphasis role="bold"
+              >And/or lower than</emphasis> values.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Update</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">x</emphasis> to close the window.</para>
+        </listitem>
+      </orderedlist>
+    </section>
   </section>
   <section id="gisFavoriteMapView">
     <title>Manage map favorites</title>
