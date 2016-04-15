@@ -1972,19 +1972,19 @@ http://server/api/constants/ID</screen></para>
         </thead>
         <tbody>
           <row>
-            <entry>defaultFields</entry>
+            <entry>fields</entry>
             <entry>Same as metadata field filter</entry>
             <entry>Default field filter to apply for all types, default is <emphasis role="bold"
                 >:owner</emphasis>.</entry>
           </row>
           <row>
-            <entry>defaultFilter</entry>
+            <entry>filter</entry>
             <entry>Same as metadata object filter</entry>
             <entry>Default object filter to apply for all types, default is <emphasis role="bold"
                 >none</emphasis>.</entry>
           </row>
           <row>
-            <entry>defaultOrder</entry>
+            <entry>order</entry>
             <entry>Same as metadata order</entry>
             <entry>Default order to apply to all types, default is <emphasis role="bold"
                 >name</emphasis> if available, or <emphasis role="bold">created</emphasis> if
@@ -2308,6 +2308,12 @@ http://server/api/constants/ID</screen></para>
                 combos, to use to map the data values.</entry>
             </row>
             <row>
+              <entry>preheatCache</entry>
+              <entry>false | true</entry>
+              <entry>Indicates whether to preload metadata caches before starting to import data
+                values, will speed up large import payloads with high metadata cardinality.</entry>
+            </row>
+            <row>
               <entry>dryRun</entry>
               <entry>false | true</entry>
               <entry>Whether to save changes on the server or just return the import
@@ -2327,7 +2333,7 @@ http://server/api/constants/ID</screen></para>
             <row>
               <entry>async</entry>
               <entry>false | true</entry>
-              <entry>Indicates wether the import should be done asynchronous or synchronous. The
+              <entry>Indicates whether the import should be done asynchronous or synchronous. The
                 former is suitable for very large imports as it ensures that the request does not
                 time out, although it has a significant performance overhead. The latter is faster
                 but requires the connection to persist until the process is finished.</entry>
@@ -2337,13 +2343,17 @@ http://server/api/constants/ID</screen></para>
       </table>
       <para>All parameters are optional and can be supplied as query parameters in the request URL
         like this:</para>
-      <screen>api/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=name&amp;dryRun=true&amp;importStrategy=new</screen>
+      <screen>api/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=name&amp;dryRun=true&amp;importStrategy=CREATE</screen>
       <para>They can also be supplied as XML attributes on the data value set element like below.
         XML attributes will override query string parameters.</para>
       <screen>&lt;dataValueSet xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot; dataElementIdScheme=&quot;code&quot;
-  orgUnitIdScheme=&quot;name&quot; dryRun=&quot;true&quot; importStrategy=&quot;new&quot;&gt;
+  orgUnitIdScheme=&quot;name&quot; dryRun=&quot;true&quot; importStrategy=&quot;CREATE&quot;&gt;
   ..
 &lt;/dataValueSet&gt;</screen>
+      <para>Note that the <emphasis>preheatCache</emphasis> parameter can have huge impact for
+        performance. For small import files, leaving it to false will be fast. For large import
+        files which contain a large number of distint data elements and organisation units, setting
+        it to true will be orders of magnitude faster.</para>
       <section>
         <title>Identifier schemes</title>
         <para>Regarding the id schemes, by default the identifiers used in the XML messages uses the
@@ -7118,195 +7128,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
   </section>
   <section>
-    <title>Usage analytics</title>
-    <para>The usage analytics API lets you access aggregated usage data captured in DHIS 2. This
-      resource lets you retrieve aggregated snapshots of usage analytics based on intervals in time.
-      The resource will capture user views (e.g the number of times a chart or pivot table has been
-      viewed by some user) and saved favorite items (e.g. favorite charts or pivot tables). When
-      activated, DHIS 2 will capture nightly snapshots which are then aggregated at
-      request.<screen>/api/dataStatistics</screen></para>
-    <section>
-      <title>Request query parameter</title>
-      <para>The usage analytics (data statistics) API is devided into two queries. The first query
-        is a HTTP GET call that responds with aggregated data. The second query is a HTTP POST call
-        that saves an event view. </para>
-      <section>
-        <title>Aggregated usage analytics report</title>
-        <para>The usage analytics (data statistics) API lets you specify some query parameters when
-          asking for an aggregated report. <table frame="all">
-            <title>Query parameters for aggregated usage analytics (data statistics)</title>
-            <tgroup cols="4">
-              <colspec colname="c1" colnum="1" colwidth="1.0*"/>
-              <colspec colname="c2" colnum="2" colwidth="1.0*"/>
-              <colspec colname="c3" colnum="3" colwidth="1.0*"/>
-              <colspec colname="c4" colnum="4" colwidth="1.0*"/>
-              <thead>
-                <row>
-                  <entry>Query parameter</entry>
-                  <entry>Required</entry>
-                  <entry>Description</entry>
-                  <entry>Options</entry>
-                </row>
-              </thead>
-              <tbody>
-                <row>
-                  <entry>startDate</entry>
-                  <entry>Yes</entry>
-                  <entry>Start date for period</entry>
-                  <entry>Date in yyyy-MM-dd format</entry>
-                </row>
-                <row>
-                  <entry>endDate</entry>
-                  <entry>Yes</entry>
-                  <entry>End date for period</entry>
-                  <entry>Date in yyyy-MM-dd format</entry>
-                </row>
-                <row>
-                  <entry>interval</entry>
-                  <entry>Yes</entry>
-                  <entry>Type of interval to be aggregated</entry>
-                  <entry>DAY, WEEK, MONTH, YEAR</entry>
-                </row>
-              </tbody>
-            </tgroup>
-          </table></para>
-        <para>The startDate and endDate parameters specifies the period for which snaphots should be
-          used in the aggregation. The dates must be formatted as shown above. If there is no
-          snapshots saved in the specified period an empty list will be sent back. The interval
-          parameter specifies what kind of aggregation will be done. As an example, to query for a
-          yearly aggregation you can use the following URL:
-          <screen>/api/dataStatistics?startDate=2010-01-02&amp;endDate=2016-01-01&amp;interval=YEAR</screen></para>
-      </section>
-      <section>
-        <title>Reporting event views</title>
-        <para>The usage analytics API also lets you report event views. Since the event views are
-          half of the aggregated report, the event views are critical to get a useful aggregated
-          usage analytics report. Reporting event views should be done from the DHIS2 portal, and
-          will in the aggregated report describe what parts of the portal is beeing used/not used.
-          The options in the table below shows what type of event views are logged.</para>
-        <para>
-          <table frame="all">
-            <title>Query parameters for adding event views</title>
-            <tgroup cols="4">
-              <colspec colname="c1" colnum="1" colwidth="2.11*"/>
-              <colspec colname="c2" colnum="2" colwidth="1*"/>
-              <colspec colname="c3" colnum="3" colwidth="1.55*"/>
-              <colspec colname="c4" colnum="4" colwidth="1.55*"/>
-              <thead>
-                <row>
-                  <entry>Query parameter</entry>
-                  <entry>Required</entry>
-                  <entry>Description</entry>
-                  <entry>Options</entry>
-                </row>
-              </thead>
-              <tbody>
-                <row>
-                  <entry>dataStatisticsEventType</entry>
-                  <entry>Yes</entry>
-                  <entry>Type of event view</entry>
-                  <entry>
-                    <para>CHART_VIEW, MAP_VIEW, DASHBOARD_VIEW, REPORT_TABLE_VIEW,
-                      EVENT_REPORT_VIEW, EVENT_CHART_VIEW, INDICATOR_VIEW </para>
-                  </entry>
-                </row>
-              </tbody>
-            </tgroup>
-          </table>
-        </para>
-        <para>The dataStatisticsEventType parameter describe what type of event was viewed. The
-          different options available is listed in the table above. As an example, the following URL
-          can be used to report (post) a new event view:
-          <screen>api/dataStatistics?dataStatisticsEventType=CHART_VIEW</screen></para>
-        <para>Reporting (posting) a new event view should only be done from the portal and does not
-          give a textual response, only HTTP status code 201 (Created), if everything went as
-          expected. </para>
-      </section>
-    </section>
-    <section>
-      <title>Response format</title>
-      <para>The usage analytics response containing aggregate data can be returned in various
-        representation formats. As usual, you can indicate interest in a specific format by
-        appending a file extension to the URL. The default format is JSON. The available formats and
-        content- types are listed below. <itemizedlist>
-          <listitem>
-            <para>json (application/json)</para>
-          </listitem>
-          <listitem>
-            <para>xml (application/xml)</para>
-          </listitem>
-          <listitem>
-            <para>html (text/html)</para>
-          </listitem>
-        </itemizedlist></para>
-      <para>As an example, to request an usage analytics response in XML format you can use the
-        following URL:
-        <screen>/api/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen></para>
-      <para>The aggregated usage analytics response must be retrieved using the HTTP GET method.
-        This allows for direct linking to usage analytics responses from Web pages as well as other
-        HTTP-enabled clients. To do functional testing we can use the cURL library. By executing
-        this command against the demo database you will get an usage analytics response in JSON
-        format:
-        <screen>curl "play.dhis2.org/demo/api/dataStatistics?startDate=2016-02-01&amp;endDate=2016-02-14&amp;
-interval=WEEK" -u admin:district</screen></para>
-      <para>The JSON response will look like this:
-        <screen>[ 
-  {
-    "year": 2016,
-    "week": 5,
-    "activeUsers": 99,
-    "mapViews": 2180,
-    "chartViews": 2227,
-    "reportTablesViews": 5632,
-    "eventReportViews": 5632,
-    "eventChartViews": 9859,
-    "dashboardViews": 10081,
-    "indicatorsViews": 9606,
-    "totalViews": 1819,
-    "averageViews": 6620,
-    "savedMaps": 1804,
-    "savedCharts": 2205,
-    "savedReportTables": 1995,
-    "savedEventReports": 1678,
-    "savedEventCharts": 1613,
-    "savedDashboards": 1922,
-    "savedIndicators": 1831,
-    "users": 969
-}, 
-{     
-    "year": 2016,
-    "week": 6,
-    "activeUsers": 96,
-    "mapViews": 2017,
-    "chartViews": 2266,
-    "reportTablesViews": 4714,
-    "eventReportViews": 4714,
-    "eventChartViews": 9510,
-    "dashboardViews": 12181,
-    "indicatorsViews": 10357,
-    "totalViews": 2029,
-    "averageViews": 6820,
-    "savedMaps": 1642,
-    "savedCharts": 1934,
-    "savedReportTables": 1867,
-    "savedEventReports": 1976,
-    "savedEventCharts": 1713,
-    "savedDashboards": 1736,
-    "savedIndicators": 1646,
-    "users": 953
-  } 
-] </screen></para>
-      <para>The response represents a list of aggregated data over two weekly intervals. The year
-        and week properies shows when the aggregated data is from. The property activeUsers is the
-        maximum (peak) number of unique users that have made an event view. The views properties
-        shows the number of views of each event (e.g map, chart) in the interval. The totalViews
-        property shows the total number of views. averageViews shows the average number of views. </para>
-      <para>The saved properties shows how many items (e.g. indicators, dashboards) have been saved
-        in the interval. Property users shows the total maximum (peak) number of users in the
-        database at the given interval. </para>
-    </section>
-  </section>
-  <section>
     <title>Event analytics</title>
     <para>The event analytics API lets you access aggregated event data and query <emphasis
         role="italic">events</emphasis> captured in DHIS 2. This resource lets you retrieve events
@@ -8130,6 +7951,164 @@ interval=WEEK" -u admin:district</screen></para>
     <para>The data set report resource accepts GET requests only. An example request to retrieve a
       report for a data set and orgunit for 2015 looks like
       this:<screen>GET /api/dataSetReport?ds=A&amp;ou=O&amp;pe=2015&amp;selectedUnitOnly=false</screen></para>
+  </section>
+  <section>
+    <title>Data usage analytics</title>
+    <para>The usage analytics API lets you access information about how people are using DHIS 2, in
+      particular related to data analysis. This resource lets you retrieve aggregated snapshots of
+      usage analytics based on intervals in time. The resource will capture user views (e.g the
+      number of times a chart or pivot table has been viewed by some user) and saved analysis
+      favorites (e.g. favorite charts and pivot tables). When enabled, DHIS 2 will capture nightly
+      snapshots which are then aggregated at request.<screen>/api/dataStatistics</screen></para>
+    <section>
+      <title>Request query parameter</title>
+      <para>The usage analytics (data statistics) API supports two operations: POST to create a view
+        event and GET to retrieve aggregated statistics.</para>
+      <section>
+        <title>Creating view events (POST)</title>
+        <para>The usage analytics API lets you create event views. The table below shows the
+          supported types of events.</para>
+        <para>The dataStatisticsEventType parameter describes what type of item was viewed. As an
+          example, the following URL can be used to create a new event view:
+          <screen>POST /api/dataStatistics?eventType=CHART_VIEW</screen></para>
+        <para>A successful save operation returns HTTP status code 201.</para>
+      </section>
+      <section>
+        <title>Aggregated usage analytics report (GET)</title>
+        <para>The usage analytics (data statistics) API lets you specify certain query parameters
+          when asking for an aggregated report.<table frame="all">
+            <title>Query parameters for aggregated usage analytics (data statistics)</title>
+            <tgroup cols="4">
+              <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+              <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+              <colspec colname="c3" colnum="3" colwidth="1.0*"/>
+              <colspec colname="c4" colnum="4" colwidth="1.0*"/>
+              <thead>
+                <row>
+                  <entry>Query parameter</entry>
+                  <entry>Required</entry>
+                  <entry>Description</entry>
+                  <entry>Options</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>startDate</entry>
+                  <entry>Yes</entry>
+                  <entry>Start date for period</entry>
+                  <entry>Date in yyyy-MM-dd format</entry>
+                </row>
+                <row>
+                  <entry>endDate</entry>
+                  <entry>Yes</entry>
+                  <entry>End date for period</entry>
+                  <entry>Date in yyyy-MM-dd format</entry>
+                </row>
+                <row>
+                  <entry>interval</entry>
+                  <entry>Yes</entry>
+                  <entry>Type of interval to be aggregated</entry>
+                  <entry>DAY, WEEK, MONTH, YEAR</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+        <para>The startDate and endDate parameters specifies the period for which snaphots should be
+          used in the aggregation. The dates must be formatted as shown above. If there is no
+          snapshots saved in the specified period an empty list will be sent back. The interval
+          parameter specifies what kind of aggregation will be done. As an example, to query for a
+          yearly aggregation you can use the following URL:
+          <screen>GET /api/dataStatistics?startDate=2014-01-02&amp;endDate=2016-01-01&amp;interval=MONTH</screen></para>
+      </section>
+    </section>
+    <section>
+      <title>Response format</title>
+      <para>The usage analytics response containing aggregate data can be returned in various
+        representation formats. As usual, you can indicate interest in a specific format by
+        appending a file extension to the URL. The default format is JSON. The available formats and
+        content- types are listed below. <itemizedlist>
+          <listitem>
+            <para>json (application/json)</para>
+          </listitem>
+          <listitem>
+            <para>xml (application/xml)</para>
+          </listitem>
+          <listitem>
+            <para>html (text/html)</para>
+          </listitem>
+        </itemizedlist></para>
+      <para>As an example, to request an usage analytics response in XML format you can use the
+        following URL:
+        <screen>/api/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen></para>
+      <para>The aggregated usage analytics response must be retrieved using the HTTP GET method.
+        This allows for direct linking to usage analytics responses from Web pages as well as other
+        HTTP-enabled clients. To do functional testing we can use the cURL library. By executing
+        this command against the demo database you will get an usage analytics response in JSON
+        format:
+        <screen>curl "play.dhis2.org/demo/api/dataStatistics?startDate=2016-02-01&amp;endDate=2016-02-14&amp;
+interval=WEEK" -u admin:district</screen></para>
+      <para>The JSON response will look like this:
+        <screen>[ 
+  {
+    "year": 2016,
+    "week": 5,
+    "activeUsers": 99,
+    "mapViews": 2180,
+    "chartViews": 2227,
+    "reportTableViews": 5632,
+    "eventReportViews": 5632,
+    "eventChartViews": 9859,
+    "dashboardViews": 10081,
+    "totalViews": 1819,
+    "averageViews": 6620,
+    "savedMaps": 1804,
+    "savedCharts": 2205,
+    "savedReportTables": 1995,
+    "savedEventReports": 1678,
+    "savedEventCharts": 1613,
+    "savedDashboards": 1922,
+    "savedIndicators": 1831,
+    "users": 969
+}, 
+{     
+    "year": 2016,
+    "week": 6,
+    "activeUsers": 96,
+    "mapViews": 2017,
+    "chartViews": 2266,
+    "reportTablesViews": 4714,
+    "eventReportViews": 4714,
+    "eventChartViews": 9510,
+    "dashboardViews": 12181,
+    "indicatorsViews": 10357,
+    "totalViews": 2029,
+    "averageViews": 6820,
+    "savedMaps": 1642,
+    "savedCharts": 1934,
+    "savedReportTables": 1867,
+    "savedEventReports": 1976,
+    "savedEventCharts": 1713,
+    "savedDashboards": 1736,
+    "savedIndicators": 1646,
+    "users": 953
+  } 
+] </screen></para>
+      <para>The response represents a list of aggregated data over two weekly intervals.</para>
+      <itemizedlist>
+        <listitem><para>The <emphasis>year</emphasis> and <emphasis>week</emphasis> properties show when the
+            aggregated data is from.</para></listitem>
+        <listitem><para>The <emphasis>activeUsers</emphasis> property is the maximum (peak) number of unique users
+            that have made an event view.</para></listitem>
+        <listitem><para>The various views properties shows the number of views of each event (e.g map, chart) in the
+            interval.</para></listitem>
+        <listitem><para>The <emphasis>totalViews</emphasis> property shows the total number of views.</para></listitem>
+        <listitem><para>The <emphasis>averageViews</emphasis> property shows the average number of views.</para></listitem>
+        <listitem><para>The varuous saved favorite properties shows how many favorites (e.g. report tables,
+            dashboards) have been saved in the interval.</para></listitem>
+        <listitem><para>The <emphasis>users</emphasis> property shows the total maximum (peak) number of users in the
+            database at the given interval.</para></listitem>
+      </itemizedlist>
+    </section>
   </section>
   <section>
     <title>Geo features</title>
@@ -9121,6 +9100,11 @@ interval=WEEK" -u admin:district</screen></para>
         (the part where username, etc resides) using <emphasis role="italic"
           >/api/userCredentials</emphasis> endpoint, it supports all regular field and object
         filters as the other endpoints.</para>
+      <para>Get user credentials where username is
+        admin:<screen>/api/userCredentials?filter=username:eq:admin</screen></para>
+      <para>Get username  and code from all user credentials where username starts with <emphasis
+          role="italic">adm</emphasis>:</para>
+      <screen>/api/userCredentials?fields=username,code&amp;filter=username:^like:adm</screen>
     </section>
     <section>
       <title>User account create and update</title>
@@ -9727,8 +9711,9 @@ interval=WEEK" -u admin:district</screen></para>
   </section>
   <section>
     <title>Organisation units</title>
-    <para>The organisationUnits resource follows the standard conventions as other metadata
-      resources in DHIS 2. This resource supports some additional query parameters.</para>
+    <para>The <emphasis>organisationUnits</emphasis> resource follows the standard conventions as
+      other metadata resources in DHIS 2. This resource supports some additional query
+      parameters.<screen>/api/organisationUnits</screen></para>
     <table frame="all">
       <title>Organisation units query parameters</title>
       <tgroup cols="2">
@@ -9766,6 +9751,36 @@ interval=WEEK" -u admin:district</screen></para>
         </tbody>
       </tgroup>
     </table>
+  </section>
+  <section>
+    <title>Filled organisation unit levels</title>
+    <para>The <emphasis>filledOrganisationUnitLevels</emphasis> resource provides an ordered list of
+      organisation unit levels, where generated levels are injected into the list to fill positions
+      for which it does not exist a persisted level.</para>
+    <para>
+      <screen>GET /api/filledOrganisationUnitLevels</screen>
+    </para>
+    <para>To set the organisation unit levels you can issue a POST request with a JSON payload
+      looking like
+      this.<screen>{
+  "organisationUnitLevels": [{
+    "name": "National",
+    "level": 1,
+    "offlineLevels": 3
+  }, {
+    "name": "District",
+    "level": 2
+  }, {
+    "name": "Chiefdom",
+    "level": 3
+  }, {
+    "name": "Facility",
+    "level": 4
+  }]
+}</screen></para>
+    <para>To do functional testing with curl you can issue the following command.
+      <screen>curl "http://localhost/api/filledOrganisationUnitLevels" -H "Content-Type:application/json"
+-d @levels.json -u admin:district -v</screen></para>
   </section>
   <section>
     <title>Static content</title>
