@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
-  <title>Using GIS
-    <?oxy_comment_start author="Home" timestamp="20160413T083737+0200" comment="Before publishing, review screenshots. Download function removed."?>app<?oxy_comment_end?></title>
+  <title>Using GIS app</title>
   <section>
     <title>GIS overview</title>
     <screenshot>
       <screeninfo>Main GIS screen</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="resources/images/gis/gis_main.png" align="center" width="80%"
+          <imagedata fileref="resources/images/gis/gis_main.png" align="center" width="100%"
             format="PNG"/>
         </imageobject>
       </mediaobject>
@@ -182,28 +181,23 @@ https://www.google.com/permissions/trademark/trademark-list.html
           <para>Click <emphasis role="bold">Update</emphasis>.</para>
         </listitem>
       </orderedlist>
-      <?oxy_comment_start author="Home" timestamp="20160415T091530+0200" comment="What does this mean? Ask Bjørn"?>
-      <para>The layer menu also offers to put labels on the map </para>
-      <?oxy_comment_end?>
-      <?oxy_comment_start author="Home" timestamp="20160415T091844+0200" comment="Ask Bjørn what this mean"?>
-      <para>to close the layer, which completely resets the layer content.</para>
-      <?oxy_comment_end?>
     </section>
     <section>
       <title>Turn off cluster</title>
       <para>By default events are clustered in a map. You can turn off this function to display all
-        events
-        <?oxy_comment_start author="Home" timestamp="20160414T165650+0200" comment="Add note that if you try to view a lot of events in one map the system can hang."?>seperatly<?oxy_comment_end?>.</para>
+        events separately.</para>
       <orderedlist>
         <listitem>
-          <para>Click <emphasis role="bold">Event layer</emphasis> > <emphasis role="bold">Edit
-              layer</emphasis>.</para>
+          <para>In the top menu, click the event layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Edit layer</emphasis>.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Options</emphasis>.</para>
         </listitem>
         <listitem>
-          <para>Clear <emphasis role="bold">Group nearby events</emphasis> checkbox.</para>
+          <para>Clear <emphasis role="bold">Group nearby events</emphasis> check box.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Update</emphasis>.</para>
@@ -211,8 +205,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </orderedlist>
     </section>
     <section>
-      <title>Modify the style of cluster
-        <?oxy_comment_start author="Home" timestamp="20160415T101636+0200" comment="Correct term?"?>points<?oxy_comment_end?></title>
+      <title>Modify cluster style</title>
       <para>
         <orderedlist>
           <listitem>
@@ -277,15 +270,27 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </orderedlist>
       </para>
     </section>
+    <section>
+      <title>Clear event layer</title>
+      <para>To clear all data in a map: </para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the event layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Clear</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
   </section>
   <section id="gisFacilityMap">
-    <title>Manage
-      <?oxy_comment_start author="Home" timestamp="20160415T112949+0200" comment="Check with Bjørn changes to UI for 2.23. They weren&apos;t on the list of updates."?>facility<?oxy_comment_end?>
-      layer</title>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+    <title>Manage facility layer</title>
+    <?oxy_custom_end?>
     <para>The facility layer displays icons that represent facilities based on the facility type.
-      <?oxy_comment_start author="Home" timestamp="20160415T134739+0200" comment="What does this mean in this context?"?>Polygons<?oxy_comment_end?>
-      will not show up on the map, so make sure to select an organisation unit level that has
-      facilities. </para>
+      <?oxy_comment_start author="Home" timestamp="20160418T155400+0200" comment="At next revision, explain polygon."?>Polygons
+      <?oxy_comment_end?>will not show up on the map, so make sure to select an organisation unit
+      level that has facilities. </para>
     <screenshot>
       <screeninfo>Facility layer</screeninfo>
       <mediaobject>
@@ -295,15 +300,9 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </imageobject>
       </mediaobject>
     </screenshot>
-    <?oxy_comment_start author="Home" timestamp="20160415T142014+0200" comment="Is this information still relevant? Must be reviewed by Bjørn or Jan."?>
-    <para>Click an icon on the map to open the context menu with two options. &quot;Show information
-      sheet&quot; provides you with data for several data elements for this organisation unit. The
-      data element group and period type are &quot;system settings&quot; called
-      &quot;Infrastructural data elements&quot; and &quot;Infrastructural period type&quot;. </para>
-    <?oxy_comment_end?>
     <section>
       <title>Create or modify facility layer</title>
-      <para>To create or modify the facilty layer:</para>
+      <para>To create or modify the facility layer:</para>
       <orderedlist>
         <listitem>
           <para>In the top menu, click the facility layer icon.</para>
@@ -322,11 +321,11 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </listitem>
         <listitem>
           <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
-            lables and if so, how they look.</para>
+            labels and if so, how they look.</para>
         </listitem>
         <listitem>
           <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to
-            display a circule with a certain radius around each facility.</para>
+            display a circle with a certain radius around each facility.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Update</emphasis>.</para>
@@ -334,15 +333,79 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </orderedlist>
     </section>
     <section>
-      <title><?oxy_comment_start author="Home" timestamp="20160415T141848+0200" comment="Has this function been removed from 2.23?"?>Change
-        location of an organisation unit<?oxy_comment_end?></title>
-      <para>The second option in the context menu is &quot;Relocate&quot; and lets you graphically
-        move the organisation unit to a different location. The new coordinate will be stored
-        permanently. Browser cache must be deleted to see the change if you reload the page.</para>
+      <title>Display
+        <?oxy_comment_start author="Home" timestamp="20160418T142843+0200" comment="Check with Jan and Bjørn what type of information is displayed in this window.
+
+And what is the difference compared to the leftclick window?"?><?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="7"?>facility<?oxy_comment_end?><?oxy_custom_end mid="7"?>
+        information</title>
+      <para>To display data for several data elements for a selected facility:</para>
+      <orderedlist>
+        <listitem>
+          <para>In a facility layer, right click a facility and click <emphasis role="bold">Show
+              information</emphasis>.</para>
+          <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+          <?oxy_comment_start author="Home" timestamp="20160418T155148+0200" comment="More information about Jan is needed here." mid="9"?>
+          <para>The data element group and period type are &quot;system settings&quot; called
+            &quot;Infrastructural data elements&quot; and &quot;Infrastructural period type&quot;. </para>
+          <?oxy_custom_end?>
+          <?oxy_comment_end mid="9"?>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">x</emphasis> to close the window.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+      <title><?oxy_comment_start author="Home" timestamp="20160415T141848+0200" comment="Is there a difference between facility and organisation unit?
+If so, what can you change with &quot;Relocate&quot;?"?>Change
+        location of a facility<?oxy_comment_end?></title>
+      <?oxy_custom_end?>
+      <para> To graphically move the organisation unit to a different location:</para>
+      <orderedlist>
+        <listitem>
+          <para>In a facility layer, right click a facility and click <emphasis role="bold"
+              >Relocate</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Put the cursor in the new location.</para>
+          <para>The new coordinate is stored permanently.</para>
+        </listitem>
+        <listitem>
+          <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+          <para>Delete the browser
+            <?oxy_comment_start author="Home" timestamp="20160418T151717+0200" comment="Still applicable?"?>cache<?oxy_comment_end?>
+            and reload the page to see the change.</para>
+          <?oxy_custom_end?>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Swap longitude and latitude of a facility</title>
+      <orderedlist>
+        <listitem>
+          <para>In a facility layer, right click a facility and click <emphasis role="bold">Swap
+              lon/lat</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Clear facility layer</title>
+      <para>To clear all data in a facility layer: </para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the facility layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Clear</emphasis>.</para>
+        </listitem>
+      </orderedlist>
     </section>
   </section>
   <section id="gisBoundaryMap">
-    <title>Manage boundary layer</title>
+    <title>Manage
+      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>boundary<?oxy_custom_end?>
+      layer</title>
     <para>The purpose of the boundary layer is to display the boundaries and coordinates in the
       system. No data will be shown. This layer is useful if you are offline and thus have no
       background map. </para>
@@ -355,21 +418,6 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </imageobject>
       </mediaobject>
     </screenshot>
-    <?oxy_comment_start author="Home" timestamp="20160415T150919+0200" comment="Looks like this funtion has been removed. Verify with Bjørn."?>
-    <para>When there are visible organisation units on the map, you can easily navigate up and down
-      in the hierarchy without using the level/parent user interface. By clicking one of the
-      organisation units a context menu will open, then select &quot;drill down&quot; or &quot;float
-      up&quot;. The drill down option will be disabled if you are already on the lowest level or if
-      there are no coordinates available on the level below. Vice versa goes for floating up.</para>
-    <?oxy_comment_end?>
-    <?oxy_comment_start author="Home" timestamp="20160415T145614+0200" comment="Still correct? Verify with Bjørn."?>
-    <para>The layer menu also offers to put on labels and to locate an organisation unit in the
-      map.</para>
-    <?oxy_comment_end?>
-    <?oxy_comment_start author="Home" timestamp="20160415T145201+0200" comment="Still correct? Verify with Bjørn."?>
-    <para>The final option in the layer menu is &quot;Close&quot;. This completely resets the layer
-      content, the edit layer form and the legend panel.</para>
-    <?oxy_comment_end?>
     <section>
       <title>Create or modify boundary layer</title>
       <para>To create or modify the boundary layer:</para>
@@ -390,21 +438,134 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </listitem>
         <listitem>
           <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
-            lables and if so, how they look.</para>
+            labels and if so, how they look.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Update</emphasis>.</para>
         </listitem>
       </orderedlist>
     </section>
+    <section>
+      <title>Navigate between organisation hierarchies</title>
+      <para>When there are visible organisation units on the map, you can easily navigate up and
+        down in the hierarchy without using the level/parent user interface. </para>
+      <orderedlist>
+        <listitem>
+          <para>Right-click one of the
+            <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?><?oxy_comment_start author="Home" timestamp="20160418T160253+0200" comment="Verify correct term with Jan."?>organisation<?oxy_comment_end?>
+            units/facilitie<?oxy_custom_end?>s.</para>
+        </listitem>
+        <listitem>
+          <para>Select <emphasis role="bold">Float up</emphasis> or <emphasis role="bold">Drill
+              down</emphasis>.</para>
+          <para>The drill down option is disabled if you are on the lowest level or if there are no
+            coordinates available on the level below. Vice versa goes for
+            <?oxy_comment_start author="Home" timestamp="20160418T160509+0200" comment="At next release, review term float up with devs."?>floating<?oxy_comment_end?>
+            up. </para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Search for an organisation unit </title>
+      <para>To locate an organisation unit in the map:</para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the boundary layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Search</emphasis>.</para>
+          <para>The <emphasis role="bold">Organisation unit search</emphasis> dialog box
+            opens.</para>
+        </listitem>
+        <listitem>
+          <para>In the text field, type the name of the organisation unit you are looking for or
+            click a name in the list.</para>
+          <para>The organisation unit is highlighted in the map.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">x</emphasis> to close the
+            <?oxy_comment_start author="Home" timestamp="20160418T112813+0200" comment="At next revision, verify term (window or dialog box)"?>dialog<?oxy_comment_end?>
+            box.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Display
+        <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>boundary<?oxy_custom_end?>
+        information</title>
+      <para>To display data for several data elements for a selected facility:</para>
+      <orderedlist>
+        <listitem>
+          <para>In a boundary layer, right-click a facility and click <emphasis role="bold">Show
+              information</emphasis>.</para>
+          <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+          <?oxy_comment_start author="Home" timestamp="20160418T155148+0200" comment="More information about Jan is needed here." mid="22"?>
+          <para>The data element group and period type are &quot;system settings&quot; called
+            &quot;Infrastructural data elements&quot; and &quot;Infrastructural period type&quot;. </para>
+          <?oxy_custom_end?>
+          <?oxy_comment_end mid="22"?>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">x</emphasis> to close the window.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+      <title><?oxy_comment_start author="Home" timestamp="20160415T141848+0200" comment="Is there a difference between facility and organisation unit?
+If so, what can you change with &quot;Relocate&quot;?"?>Change
+        location of a facility<?oxy_comment_end?></title>
+      <?oxy_custom_end?>
+      <para> To graphically move the organisation unit to a different location:</para>
+      <orderedlist>
+        <listitem>
+          <para>In a boundary layer, right-click a facility and click <emphasis role="bold"
+              >Relocate</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Put the cursor in the new location.</para>
+          <para>The new coordinate is stored permanently.</para>
+        </listitem>
+        <listitem>
+          <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+          <para>Delete the browser
+            <?oxy_comment_start author="Home" timestamp="20160418T151717+0200" comment="Still applicable?"?>cache<?oxy_comment_end?>
+            and reload the page to see the change.</para>
+          <?oxy_custom_end?>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Swap longitude and latitude of a facility</title>
+      <orderedlist>
+        <listitem>
+          <para>In a boundary layer, right-click a facility and click <emphasis role="bold">Swap
+              lon/lat</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Clear boundary layer</title>
+      <para>To clear all data in a boundary layer: </para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the boundary layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Clear</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
   </section>
   <section id="gisThematicMap">
-    <title>Manage thematic layer 1- 4</title>
+    <title>Manage
+      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>thematic<?oxy_custom_end?>
+      layer 1- 4</title>
     <para>The four thematic layer panels let you use your data for thematic mapping. All you need to
-      do is selecting your desired combination of indicator/dataelement, period and map combination.
-      Then the organisation unit level and parent to define the boundaries. If your database has
-      coordinates and aggregated data values for these organisation units they will appear on the
-      map. </para>
+      do is selecting your desired combination of indicator/data element, period and map
+      combination. Then the organisation unit level and parent to define the boundaries. If your
+      database has coordinates and aggregated data values for these organisation units they will
+      appear on the map. </para>
     <note>
       <para>The DHIS 2 data mart must be run in order to have aggregated values available.</para>
     </note>
@@ -417,12 +578,10 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </imageobject>
       </mediaobject>
     </screenshot>
-    <?oxy_comment_start author="Home" timestamp="20160415T160304+0200" comment="Still applicable? Verify with Bjørn."?>
-    <para>Low radius and high radius only have effect on points (facilities) and decides the circle
-      radius for points with the lowest and highest value.</para>
-    <?oxy_comment_end?>
     <section>
-      <title>Create or modify a thematic layer</title>
+      <title>Create or
+        <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>modify<?oxy_custom_end?>
+        a thematic layer</title>
       <para>To create or modify a thematic layer:</para>
       <orderedlist>
         <listitem>
@@ -441,7 +600,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
             organisation units<?oxy_comment_end?>.</para>
         </listitem>
         <listitem>
-          <para>In the <emphasis role="bold">Legend</emphasis> seciton, select
+          <para>In the <emphasis role="bold">Options</emphasis> section, select
               <guimenuitem>Automatic</guimenuitem> or <guimenuitem>Predefined</guimenuitem> legend
             type. </para>
           <para>
@@ -456,9 +615,24 @@ https://www.google.com/permissions/trademark/trademark-list.html
                   <?oxy_comment_start author="Home" timestamp="20160415T160220+0200" comment="What does this refer to?"?>they<?oxy_comment_end?>
                   will be “highest map value – lowest map value / number of classes”. </para>
                 <para>Set to <guimenuitem>Equal counts</guimenuitem> the legend creator will try to
-                  distribute the organisation units eveenly. </para>
+                  distribute the organisation units evenly. </para>
                 <para>The legend appears as an even gradation from the start color to the end color.
                 </para>
+              </listitem>
+              <listitem>
+                <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+                <?oxy_comment_start author="Home" timestamp="20160418T163230+0200" comment="Can you really change the look and feel? &quot;For Facility information, you can change the look and feel of the Legend....&quot;
+Good example: favorite ANC IPT 2 and LLITN Coverage 2016, and BCG doses given.
+See also screenshot."?>
+                <?oxy_comment_start author="Home" timestamp="20160418T163410+0200" comment="New version, is it correct? Verify with Jan and Bjørn."?>
+                <para>If you have facilities in your thematic layer, the legend automatically
+                  creates a larger circle radius for the points with the lowest and highest
+                  value.</para>
+                <?oxy_comment_end?>
+                <para>Low radius and high radius only have effect on points (facilities) and decides
+                  the circle radius for points with the lowest and highest value.<?oxy_comment_end?>
+                </para>
+                <?oxy_custom_end?>
               </listitem>
               <listitem>
                 <para>For information about <emphasis role="bold">Predefined</emphasis>
@@ -470,13 +644,13 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </listitem>
         <listitem>
           <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
-            lables and if so, how they look.</para>
+            labels and if so, how they look.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Update</emphasis>.</para>
         </listitem>
         <listitem>
-          <para>Click <emphasis role="bold">x</emphasis> to close the window.</para>
+          <para>Click <emphasis role="bold">x</emphasis> to close the dialog box.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -502,7 +676,47 @@ https://www.google.com/permissions/trademark/trademark-list.html
           <para>Click <emphasis role="bold">Update</emphasis>.</para>
         </listitem>
         <listitem>
-          <para>Click <emphasis role="bold">x</emphasis> to close the window.</para>
+          <para>Click <emphasis role="bold">x</emphasis> to close the dialog box.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+      <title>Search for an
+        <?oxy_comment_start author="Home" timestamp="20160418T160859+0200" comment="How does the search function for an org unit work in a thematic layer?"?>organisation<?oxy_comment_end?>
+        unit </title>
+      <?oxy_custom_end?>
+      <para>To locate an organisation unit in a thematic layer:</para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the relevant thematic layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Search</emphasis>.</para>
+          <para>The <emphasis role="bold">Organisation unit search</emphasis> dialog box
+            opens.</para>
+        </listitem>
+        <listitem>
+          <para>In the text field, type the name of the organisation unit you are looking for or
+            click a name in the list.</para>
+          <para>The organisation unit is highlighted in the map.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">x</emphasis> to close the
+            <?oxy_comment_start author="Home" timestamp="20160418T112813+0200" comment="At next revision, verify term (window or dialog box)"?>dialog<?oxy_comment_end?>
+            box.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Clear thematic layer</title>
+      <para>To clear all data in a thematic layer: </para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the relevant thematic layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Clear</emphasis>.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -518,9 +732,9 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </mediaobject>
     </screenshot>
     <para>Saving your maps as favorites makes it easy to restore them later. It also gives you the
-      opportunity to share it with other users as an interpretation or put it on the dashboard.
-      <?oxy_comment_start author="Home" timestamp="20160415T104455+0200" comment="Can you save all map types as favorite?"?>You
-      can also save an even layer as a favorite.<?oxy_comment_end?></para>
+      opportunity to share it with other users as an interpretation or put it on the dashboard. You
+      can save all types of layers as a favorite. A favorite always opens with the default
+      background map.</para>
     <section>
       <title>Save a map as favorite</title>
       <para>When you have created a map it is convenient to save it as a favorite: </para>
@@ -572,7 +786,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
           <para>The <emphasis role="bold">Manage favorites</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
-          <para>Find the favorite you want to overrite.</para>
+          <para>Find the favorite you want to overwrite.</para>
           <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
               >Next</emphasis> or the search field to find a saved favorite. </para>
         </listitem>
@@ -597,7 +811,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
           <para>The <emphasis role="bold">Manage favorites</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
-          <para>Find the favorite you want to overrite.</para>
+          <para>Find the favorite you want to overwrite.</para>
           <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
               >Next</emphasis> or the search field to find a saved favorite. </para>
         </listitem>
@@ -718,7 +932,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
             <title>Vaccination coverage legends</title>
             <para>
               <table frame="all">
-                <title/>
+                <title>Example of vaccination coverage legends</title>
                 <tgroup cols="4">
                   <colspec colname="c1" colnum="1" colwidth="1.0*"/>
                   <colspec colname="c2" colnum="2" colwidth="1.0*"/>
@@ -862,8 +1076,8 @@ At the moment, feature doesn&apos;t work and is not included in version 2.23. Wi
     <para>To measure distance and area in a map:</para>
     <orderedlist>
       <listitem>
-        <para>In the upper left part of the map, put the curser on the <emphasis role="bold">Measure
-            distances and areas</emphasis> icon anc click <emphasis role="bold">Create new
+        <para>In the upper left part of the map, put the cursor on the <emphasis role="bold">Measure
+            distances and areas</emphasis> icon and click <emphasis role="bold">Create new
             measurement</emphasis>.</para>
       </listitem>
       <listitem>
