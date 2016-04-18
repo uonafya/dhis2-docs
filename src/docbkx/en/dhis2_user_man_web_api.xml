@@ -9835,14 +9835,14 @@ interval=WEEK" -u admin:district</screen></para>
     <screen>/api/configuration</screen>
     <para>You can send <emphasis role="italic">GET</emphasis> and <emphasis role="italic"
         >POST</emphasis> requests to the following specific resources:</para>
-    <screen>GET      /api/configuration/systemId</screen>
-    <screen>GET POST /api/configuration/feedbackRecipients</screen>
-    <screen>GET POST /api/configuration/offlineOrganisationUnitLevel</screen>
+    <screen>GET /api/configuration/systemId</screen>
+    <screen>GET POST DELETE /api/configuration/feedbackRecipients</screen>
+    <screen>GET POST DELETE /api/configuration/offlineOrganisationUnitLevel</screen>
     <screen>GET POST /api/configuration/infrastructuralDataElements</screen>
     <screen>GET POST /api/configuration/infrastructuralIndicators</screen>
     <screen>GET POST /api/configuration/infrastructuralPeriodType</screen>
-    <screen>GET POST /api/configuration/selfRegistrationRole</screen>
-    <screen>GET POST /api/configuration/selfRegistrationOrgUnit</screen>
+    <screen>GET POST DELETE /api/configuration/selfRegistrationRole</screen>
+    <screen>GET POST DELETE /api/configuration/selfRegistrationOrgUnit</screen>
     <para>For the CORS whitelist configuration you can make a POST request with an array of URLs to
       whitelist as payload using &quot;application/json&quot; as content-type, for instance:</para>
     <screen>[&quot;www.google.com&quot;, &quot;www.dhis2.org&quot;, &quot;www.who.int&quot;]</screen>
