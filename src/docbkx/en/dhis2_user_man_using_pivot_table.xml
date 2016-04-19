@@ -1,15 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
-  <title>Using Pivot
+  <title>Using <?oxy_insert_start author="rachaelb" timestamp="20160414T151121+0200"?>the
+    <?oxy_insert_end?>Pivot
     <?oxy_comment_start author="Home" timestamp="20160406T133408+0200" comment="I haven&apos;t changed from UK to US spelling. Pending implementation decision. [Cecilia 6 Apr 2016]]"?>Table<?oxy_comment_end?>
     app</title>
   <section>
     <title>Pivot table
       <?oxy_comment_start author="Home" timestamp="20160406T132638+0200" comment=" Look into revising title, should have a common structure with other topics. (Action for tech writer) [Cecilia 6 Apr 2016]"?>overview<?oxy_comment_end?></title>
-    <para>With the Pivot Table app you can create pivot tables based on all available data
-      dimensions in DHIS 2. A pivot table is a dynamic tool for data analysis which lets you
-      summarize and arrange data according to its dimensions. Examples of data dimensions in DHIS 2 are:<itemizedlist>
+    <para>With the Pivot Table
+      app<?oxy_insert_start author="rachaelb" timestamp="20160414T151134+0200"?>,<?oxy_insert_end?>
+      you can create pivot tables based on all available data dimensions in DHIS 2. A pivot table is
+      a dynamic tool for data analysis which lets you summarize and arrange data according to its
+      dimensions. Examples of data dimensions in DHIS 2 are:<itemizedlist>
         <listitem>
           <para>data dimension itself (for example data elements, indicators and events)</para>
         </listitem>
@@ -18,7 +21,8 @@
             <?oxy_comment_start author="Home" timestamp="20160406T133122+0200" comment="What does &quot;represents&quot; mean here? Clarification needed."?>represents<?oxy_comment_end?>)</para>
         </listitem>
         <listitem>
-          <para>organisational hierarchy (representing the geographical location of the data)</para>
+          <para><?oxy_comment_start author="rachaelb" timestamp="20160414T151427+0200" comment="organization rather than organizational (cf terminilogy entry for &quot;organization unit&quot;)"?>organi<?oxy_delete author="rachaelb" timestamp="20160414T151225+0200" content="s"?><?oxy_insert_start author="rachaelb" timestamp="20160414T151225+0200"?>z<?oxy_insert_end?>ational<?oxy_comment_end?>
+            hierarchy (representing the geographical location of the data)</para>
         </listitem>
       </itemizedlist></para>
     <para>From these dimensions you can freely select dimension <emphasis role="italic"
@@ -43,19 +47,27 @@ Revise phrase to &quot;A pivot table arranges data...&quot; = correct?"?>can
       and filter the table data based on the selected filter items.</para>
   </section>
   <section>
-    <title>Creating a new pivot table</title>
-    <para>The workflow for creating a new pivot table is:</para>
+    <title>Creat<?oxy_delete author="rachaelb" timestamp="20160414T152120+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160414T152120+0200"?>e<?oxy_insert_end?>
+      a
+      <?oxy_comment_start author="rachaelb" timestamp="20160414T151557+0200" comment="What is the difference between creating a pivot table and creating a &quot;new&quot; pivot table? Why is the distinction being made here?"?>new<?oxy_comment_end?>
+      pivot table</title>
+    <para><?oxy_delete author="rachaelb" timestamp="20160414T151603+0200" content="The workflow for creating"?><?oxy_insert_start author="rachaelb" timestamp="20160414T151603+0200"?>To
+      create<?oxy_insert_end?> a new pivot
+      table<?oxy_delete author="rachaelb" timestamp="20160414T151614+0200" content=" is"?>:</para>
     <orderedlist>
       <listitem>
         <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Pivot
             Table</emphasis>.</para>
-        <para>The <emphasis role="bold">DHIS 2 Pivot Table</emphasis> window opens.</para>
+        <?oxy_comment_start author="rachaelb" timestamp="20160414T151706+0200" comment="I have a preference to remove these &quot;validation&quot; type sentences. I find that they make the doc lengthier. Unless they are important, I would suggest removing them."?>
+        <para>The <emphasis role="bold">DHIS 2 Pivot Table</emphasis> window
+          opens.<?oxy_comment_end?></para>
       </listitem>
       <listitem>
         <para>In the
           <?oxy_comment_start author="Home" timestamp="20160406T140229+0200" comment="Must define the names of the different areas of the UI."?>menu
-          to the left<?oxy_comment_end?>, select the dimension items you want to analyse, for
-          example
+          to the left<?oxy_comment_end?>, select the dimension items you want to
+          analy<?oxy_delete author="rachaelb" timestamp="20160414T151719+0200" content="s"?><?oxy_insert_start author="rachaelb" timestamp="20160414T151719+0200"?>z<?oxy_insert_end?>e,
+          for example
           <?oxy_comment_start author="Home" timestamp="20160406T140440+0200" comment="Can you only choose elements from the &quot;Data&quot; field?"?>data
           elements or indicators<?oxy_comment_end?>.</para>
       </listitem>
@@ -75,10 +87,16 @@ Occurs maybe?"?>displays<?oxy_comment_end?>.</para>
     </orderedlist>
     <example>
       <title>Pivot table based on the demo database.</title>
-      <para>Notice how indicators are listed on columns and periods as rows.</para>
+      <para><?oxy_delete author="rachaelb" timestamp="20160414T152021+0200" content="Notice how"?><?oxy_insert_start author="rachaelb" timestamp="20160414T152021+0200"?>In
+        this example,
+        <?oxy_insert_end?><?oxy_delete author="rachaelb" timestamp="20160414T152038+0200" content=" "?>indicators
+        are listed
+        <?oxy_comment_start author="rachaelb" timestamp="20160414T152107+0200" comment="on or &quot;as&quot;?"?>on<?oxy_comment_end?>
+        columns and periods as rows.</para>
       <screenshot>
+        <?oxy_comment_start author="rachaelb" timestamp="20160414T151841+0200" comment="As we have the example text &quot;Pivot table based on the demo...&quot; maybe we can remove this line of text and/or merge it with the other one?"?>
         <screeninfo>Example pivot table with data elements on columns and periods as
-          rows.</screeninfo>
+          rows.<?oxy_comment_end?></screeninfo>
         <mediaobject>
           <imageobject>
             <imagedata width="80%" align="center"
@@ -88,7 +106,8 @@ Occurs maybe?"?>displays<?oxy_comment_end?>.</para>
       </screenshot>
     </example>
     <section>
-      <title>Selecting dimension
+      <title>Select<?oxy_delete author="rachaelb" timestamp="20160414T152125+0200" content="ing"?>
+        dimension
         <?oxy_comment_start author="Home" timestamp="20160406T163208+0200" comment="Review this section.
 Items in list must correspond to explaintions below. Now they&apos;re not corresponding.
 Consider presenting content in a table."?>items<?oxy_comment_end?></title>
@@ -99,41 +118,67 @@ Consider presenting content in a table."?>items<?oxy_comment_end?></title>
         on the item. Before you can use a data dimension in your pivot table you must at least
         select one dimension item. If you arrange a dimension as columns or rows but do not select
         any dimension items, the dimension is ignored.</para>
-      <para>You must choose at least one data dimension item to create a pivot table. The available
-        types are:</para>
-      <para>
-        <itemizedlist>
-          <listitem>
-            <para>Indicators</para>
-          </listitem>
-          <listitem>
-            <para>Data elements</para>
-          </listitem>
-          <listitem>
-            <para>Data sets </para>
-            <itemizedlist>
-              <listitem>
-                <para>Reporting rates</para>
-                <para>The actual number of reports devided by the expected number of reports.</para>
-              </listitem>
-              <listitem>
-                <para>Actual reports</para>
-              </listitem>
-              <listitem>
-                <para>Expected
-                  reports<?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?></para>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-          <?oxy_custom_end?>
-          <listitem>
-            <para>Event data items</para>
-          </listitem>
-          <listitem>
-            <para>Program indicators</para>
-          </listitem>
-        </itemizedlist>
-      </para>
+      <para>You must choose at least one data dimension<?oxy_delete author="rachaelb" timestamp="20160419T091454+0200" content=" "?><?oxy_insert_start author="rachaelb" timestamp="20160419T091510+0200"?>
+        <?oxy_insert_end?><?oxy_delete author="rachaelb" timestamp="20160419T091454+0200" content="item "?><?oxy_insert_start author="rachaelb" timestamp="20160419T091454+0200"?>type
+        <?oxy_insert_end?>to create a pivot table. The available types
+        are<?oxy_insert_start author="rachaelb" timestamp="20160419T091425+0200"?> described in this
+          table<?oxy_insert_end?>:<table frame="all">
+          <title><?oxy_insert_start author="rachaelb" timestamp="20160419T093704+0200"?>Data
+            dimension types<?oxy_insert_end?></title>
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+            <colspec colname="newCol3" colnum="3" colwidth="1*"/>
+            <thead>
+              <row>
+                <entry>Data dimension type</entry>
+                <entry>Definition</entry>
+                <entry>Examples</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>Indicators</entry>
+                <entry>An indicator is a calculated formula based on data elements.</entry>
+                <entry>Coverage of immunization across a specific district.</entry>
+              </row>
+              <row>
+                <entry>Data elements</entry>
+                <entry>Represents the  phenomenon for which data has been captured.</entry>
+                <entry>Number of malaria cases; number of BCG doses given.</entry>
+              </row>
+              <row>
+                <entry>Data sets</entry>
+                <entry>A collection of data elements grouped for data collection. You can select :<itemizedlist>
+                    <listitem>
+                      <para>Reporting rates (the percentage of actual reports compared to the
+                        expected number of reports)</para>
+                    </listitem>
+                    <listitem>
+                      <para>Number of actual reports</para>
+                    </listitem>
+                    <listitem>
+                      <para>Number of expected reports (based on organization units where the data
+                        set and the reporting frequency has been assigned)</para>
+                    </listitem>
+                  </itemizedlist></entry>
+                <entry>Reporting rates for immunization and morbidity forms. </entry>
+              </row>
+              <row>
+                <entry>Event data items</entry>
+                <entry>A data element that is part of a program representing events that have been
+                  captured.</entry>
+                <entry>Average weight and height for children in a nutrition program.</entry>
+              </row>
+              <row>
+                <entry>Program indicators</entry>
+                <entry>A calculated formula based on data elements in a program representing events. </entry>
+                <entry>Average BMI score for children in a nutrition program.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+      <para/>
       <para>You can combine these dimensions to display for example aggregate data with reporting
         rates, or event data items together with program indicators, all in the same pivot tables.
         For the &quot;data element&quot; data dimension, you are also able to select
@@ -181,7 +226,8 @@ Consider presenting content in a table."?>items<?oxy_comment_end?></title>
       </tip>
     </section>
     <section>
-      <title>Modifying pivot table
+      <title>Modify<?oxy_delete author="rachaelb" timestamp="20160414T152130+0200" content="ing"?>
+        pivot table
         <?oxy_comment_start author="Home" timestamp="20160406T162540+0200" comment="Would you modify the layout often? Or is it more or less set once you have saved the table as a favorite?"?>layout<?oxy_comment_end?></title>
       <para>After selecting data dimensions it is time to arrange your pivot table. Click
         &quot;Layout&quot; in the top menu to open the layout screen. In this screen you can
@@ -221,19 +267,15 @@ Consider presenting content in a table."?>items<?oxy_comment_end?></title>
     </section>
   </section>
   <section>
-    <title>Using
-      <?oxy_comment_start author="Home" timestamp="20160406T164035+0200" comment="Question for dev:
-What&apos;s the main purpose with these functions?
-
-Changing the look and feel of the table?
-
-Consider changing title to &quot; Modifying table settings&quot;, ev Modifying table options"?>table
-      options<?oxy_comment_end?></title>
-    <para>To change the pivot table settings:</para>
+    <title><?oxy_insert_start author="rachaelb" timestamp="20160414T152724+0200"?>Change the display
+      of your
+      table<?oxy_insert_end?><?oxy_delete author="rachaelb" timestamp="20160414T152722+0200" content="Using table options"?></title>
+    <para><?oxy_comment_start author="rachaelb" timestamp="20160414T154616+0200" comment="Again, thinking of removing these intro sentences that often repeat the section heading."?>To
+      change the pivot table settings:<?oxy_comment_end?></para>
     <orderedlist>
       <listitem>
         <para>Click <emphasis role="bold">Options</emphasis>.</para>
-        <para>The <emphasis role="bold">TABLE OPTIONS</emphasis> dialog box opens.</para>
+        <?oxy_delete author="rachaelb" timestamp="20160414T154624+0200" content="&lt;para&gt;The &lt;emphasis role=&quot;bold&quot;&gt;TABLE OPTIONS&lt;/emphasis&gt; dialog box opens.&lt;/para&gt;"?>
       </listitem>
       <listitem>
         <para>Set the options as required.</para>
@@ -267,9 +309,15 @@ Consider changing title to &quot; Modifying table settings&quot;, ev Modifying t
                 <entry>
                   <para>Displays subtotals in the table for each dimension. In the screenshot above,
                     notice how subtotals are generated for each of the periods in the period
-                    dimension. Note that subtotals will be hidden for columns or rows if there is
-                    only one selected dimension, as the values in that case are equal to the
-                    subtotals.</para>
+                    dimension.
+                    <?oxy_insert_start author="rachaelb" timestamp="20160414T154751+0200"?>If you
+                    only select one dimension, subtotals will be hidden for those columns or rows.
+                    This is because
+                    <?oxy_insert_end?><?oxy_delete author="rachaelb" timestamp="20160414T155003+0200" content="Note that subtotals will be hidden for columns or rows if there is only one selected dimension, as"?>
+                    the values
+                    <?oxy_insert_start author="rachaelb" timestamp="20160414T155031+0200"?>will
+                    be<?oxy_insert_end?><?oxy_delete author="rachaelb" timestamp="20160414T155026+0200" content="in that case are"?>
+                    equal to the subtotals.</para>
                 </entry>
               </row>
               <row>
@@ -382,18 +430,20 @@ Consider changing title to &quot; Modifying table settings&quot;, ev Modifying t
     </orderedlist>
   </section>
   <section>
-    <title>Managing favorites</title>
+    <title>Manag<?oxy_delete author="rachaelb" timestamp="20160419T092818+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160419T092818+0200"?>e<?oxy_insert_end?>
+      favorites</title>
     <section>
-      <title>Saving a pivot table as favorite</title>
-      <para>When you have created a pivot table it is convenient to save it as a favorite: </para>
+      <title>Sav<?oxy_delete author="rachaelb" timestamp="20160419T092823+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160419T092823+0200"?>e<?oxy_insert_end?>
+        a pivot table as <?oxy_insert_start author="rachaelb" timestamp="20160419T092826+0200"?>a
+        <?oxy_insert_end?>favorite</title>
+      <para>To save a pivot table as a favorite: </para>
       <orderedlist>
         <listitem>
           <para>Click <emphasis role="bold">Favorites</emphasis> > <emphasis role="bold">Save
               as</emphasis>.</para>
-          <para>The <emphasis role="bold">SAVE FAVORITE AS</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
-          <para>In the text field, type the name you want to give your pivot table.</para>
+          <para>In the text field, enter the name you want to give your pivot table.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Save</emphasis>.</para>
@@ -401,36 +451,30 @@ Consider changing title to &quot; Modifying table settings&quot;, ev Modifying t
       </orderedlist>
     </section>
     <section>
-      <title>Opening a favorite</title>
+      <title>Open<?oxy_delete author="rachaelb" timestamp="20160419T092836+0200" content="ing"?> a
+        favorite</title>
       <orderedlist>
         <listitem>
           <para>Click <emphasis role="bold">Favorites</emphasis> > <emphasis role="bold"
               >Open</emphasis>.</para>
-          <para>The <emphasis role="bold">OPEN FAVORITE</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
-          <para>Find the favorite you want to open. You can either use <emphasis role="bold"
-              >Prev</emphasis> and <emphasis role="bold">Next</emphasis> or the search field to find
-            a saved favorite.</para>
-        </listitem>
-        <listitem>
-          <para>Click the name.</para>
-          <?oxy_comment_start author="Home" timestamp="20160407T143856+0200" comment="Necessary to include the result?"?>
-          <para>The selected favorite opens.</para>
-          <?oxy_comment_end?>
+          <para>Find and click the favorite you want to open. You can either use <emphasis
+              role="bold">Prev</emphasis> and <emphasis role="bold">Next</emphasis> or the search
+            field to find a saved favorite.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Renaming a favorite</title>
+      <title>Renam<?oxy_delete author="rachaelb" timestamp="20160419T092841+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160419T092841+0200"?>e<?oxy_insert_end?>
+        a favorite</title>
       <orderedlist>
         <listitem>
           <para>Click <emphasis role="bold">Favorites</emphasis> > <emphasis role="bold"
               >Rename</emphasis>.</para>
-          <para>The <emphasis role="bold">RENAME FAVORITE</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
-          <para>In the text field, type the new name you want to give your pivot table.</para>
+          <para>In the text field, enter the new name you want to give your pivot table.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Rename</emphasis>.</para>
@@ -438,7 +482,8 @@ Consider changing title to &quot; Modifying table settings&quot;, ev Modifying t
       </orderedlist>
     </section>
     <section>
-      <title>Sharing a favorite</title>
+      <title>Shar<?oxy_delete author="rachaelb" timestamp="20160419T092848+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160419T092848+0200"?>e<?oxy_insert_end?>
+        a favorite</title>
       <para>After you have created a pivot table and saved it as a favorite, you can share the pivot
         table with everyone or a user group: </para>
       <para>
@@ -446,11 +491,10 @@ Consider changing title to &quot; Modifying table settings&quot;, ev Modifying t
           <listitem>
             <para>Click <emphasis role="bold">Favorites</emphasis> > <emphasis role="bold"
                 >Share</emphasis>.</para>
-            <para>The <emphasis role="bold">SHARING SETTINGS</emphasis> dialog box opens.</para>
           </listitem>
           <listitem>
-            <para>In the text field, type the name of the user group you want to share your favorite
-              with and click the <emphasis role="bold">+</emphasis> icon.</para>
+            <para>In the text field, enter the name of the user group you want to share your
+              favorite with and click the <emphasis role="bold">+</emphasis> icon.</para>
             <para>The chosen user group is added to the list of recipients. </para>
             <para>Repeat the step to add more user groups. </para>
           </listitem>
@@ -480,38 +524,37 @@ Consider changing title to &quot; Modifying table settings&quot;, ev Modifying t
       </para>
     </section>
     <section>
-      <title>Sharing an interpretation of a favorite</title>
+      <title>Shar<?oxy_delete author="rachaelb" timestamp="20160419T092855+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160419T092855+0200"?>e<?oxy_insert_end?>
+        an interpretation of a favorite</title>
       <para role="">For
         <?oxy_comment_start author="Home" timestamp="20160407T151353+0200" comment="Which ones?"?>certain<?oxy_comment_end?>
         analysis-related resources in DHIS 2, you can share a data interpretation. An interpretation
-        is a link to the relevant resource together with a text expressing some insight about the
-        data. </para>
+        is a link to the relevant resource with a description of the data. </para>
       <para role="">To create an interpretation of a pivot table and share it with all users of the
         system:</para>
       <orderedlist>
         <listitem>
           <para>Click <emphasis role="bold">Favorites</emphasis> > <emphasis role="bold">Write
               interpretation</emphasis>.</para>
-          <para>The <emphasis role="bold">WRITE INTERPRETATION</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
           <para>In the text field, type a comment, question or interpretation.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Share</emphasis>.</para>
-          <para>The dialog box closes automatically. You can see the interpretation on the <emphasis
-              role="bold">Dashboard</emphasis>.</para>
+          <para>You can see the interpretation on the <emphasis role="bold"
+            >Dashboard</emphasis>.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Creating a link to a favorite</title>
+      <title>Creat<?oxy_delete author="rachaelb" timestamp="20160419T092900+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160419T092900+0200"?>e<?oxy_insert_end?>
+        a link to a favorite</title>
       <para>
         <orderedlist>
           <listitem>
             <para>Click <emphasis role="bold">Favorites</emphasis> > <emphasis role="bold">Get
                 link</emphasis>.</para>
-            <para>The <emphasis role="bold">FAVORITE LINK</emphasis> window opens.</para>
           </listitem>
           <listitem>
             <para>Click the type of link you need.</para>
@@ -526,26 +569,26 @@ Consider changing title to &quot; Modifying table settings&quot;, ev Modifying t
                   resource. By default this is a HTML resource, but you can modify the suffix of
                   &quot;.html&quot; to &quot;.json&quot; or &quot;.csv&quot;. Other data types are
                   available. This option is most useful when you need an API link to the pivot table
-                  resource. Consult the DHIS2
+                  resource. See
+                  the<?oxy_comment_start author="rachaelb" timestamp="20160419T125148+0200" comment="dhis2_developer_manual.xml"?>
+                  DHIS2
                   <?oxy_comment_start author="Home" timestamp="20160407T154520+0200" comment="Link to correct document should be inserted here."?>developers<?oxy_comment_end?>
-                  guide for details about the different types which are available.</para>
+                  g<?oxy_comment_end?>uide for details about the different types which are
+                  available.</para>
               </listitem>
             </itemizedlist>
-          </listitem>
-          <listitem>
-            <para>Click <emphasis role="bold">x</emphasis> to close the window.</para>
           </listitem>
         </orderedlist>
       </para>
     </section>
     <section>
-      <title>Deleting a favorite</title>
+      <title>Delet<?oxy_delete author="rachaelb" timestamp="20160419T092905+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160419T092905+0200"?>e<?oxy_insert_end?>
+        a favorite</title>
       <para>
         <orderedlist>
           <listitem>
             <para>Click <emphasis role="bold">Favorites</emphasis> > <emphasis role="bold"
                 >Delete</emphasis>.</para>
-            <para>A dialog box opens.</para>
           </listitem>
           <listitem>
             <para>Click <emphasis role="bold">Delete</emphasis> to confirm your choice.</para>
@@ -555,9 +598,11 @@ Consider changing title to &quot; Modifying table settings&quot;, ev Modifying t
     </section>
   </section>
   <section>
-    <title>Downloading data from a pivot table</title>
+    <title>Download<?oxy_delete author="rachaelb" timestamp="20160419T092910+0200" content="ing"?>
+      data from a pivot table</title>
     <section>
-      <title>Downloading table layout data format</title>
+      <title>Download<?oxy_delete author="rachaelb" timestamp="20160419T092915+0200" content="ing"?>
+        table layout data format</title>
       <para>To download the data in the current pivot table: </para>
       <orderedlist>
         <listitem>
@@ -583,7 +628,8 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
       </tip>
     </section>
     <section>
-      <title>Downloading plain data source format</title>
+      <title>Download<?oxy_delete author="rachaelb" timestamp="20160419T092918+0200" content="ing"?>
+        plain data source format</title>
       <para>You can download data in the current pivot table in JSON, XML, Excel, and CSV as plain
         data formats with different identification schemes (ID, Code, and Name). The data document
         uses identifiers of the dimension items and opens in a new browser window to display the URL
@@ -708,9 +754,14 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
       </orderedlist>
     </section>
     <section>
-      <title>Downloading CSV format without render data in web browser</title>
-      <para>You can download data in CSV format directly without first rendering the data in the web
-        browser. This will help overcome any constraint in the system settings that has been set in
+      <title>Download<?oxy_delete author="rachaelb" timestamp="20160419T092923+0200" content="ing"?>
+        <?oxy_insert_start author="rachaelb" timestamp="20160419T092947+0200"?>a
+        <?oxy_insert_end?>CSV format without
+        render<?oxy_insert_start author="rachaelb" timestamp="20160419T092956+0200"?>ing<?oxy_insert_end?>
+        data in<?oxy_insert_start author="rachaelb" timestamp="20160419T093000+0200"?>
+        the<?oxy_insert_end?> web browser</title>
+      <para>You can download data in CSV format directly without rendering the data in the web
+        browser. This helps to reduce any constraints in the system settings that has been set with
         regards to the maximum number of analytic records. This lets you download much larger
         batches of data that you can use for later offline analysis. </para>
       <para>To download data in CSV format without first rendering data in the web browser:</para>
@@ -739,9 +790,14 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
     </section>
   </section>
   <section>
-    <title>Embedding pivot table in external web page</title>
+    <title>Embed<?oxy_delete author="rachaelb" timestamp="20160419T092926+0200" content="ding"?>
+      <?oxy_insert_start author="rachaelb" timestamp="20160419T092929+0200"?>a
+      <?oxy_insert_end?>pivot table in
+      <?oxy_insert_start author="rachaelb" timestamp="20160419T092932+0200"?>an
+      <?oxy_insert_end?>external web page</title>
     <para>Certain analysis-related resources in DHIS 2, like pivot tables, charts and maps, can be
-      embedded in any web page by using a plugin. You will find more information about the plugins
+      embedded in any web page by using a plug-in. You will find more information about the
+      <?oxy_delete author="rachaelb" timestamp="20160419T093544+0200" content="plugins"?><?oxy_insert_start author="rachaelb" timestamp="20160419T093544+0200"?>plug-ins<?oxy_insert_end?>
       in the Web API chapter in the <emphasis>DHIS2 Developer Manual</emphasis>.</para>
     <para>To generate a HTML fragment that you can use to display the pivot table in an external web
       page:</para>
@@ -749,23 +805,27 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
       <orderedlist>
         <listitem>
           <para>Click <emphasis role="bold">Embed</emphasis>.</para>
-          <para>The <emphasis role="bold">EMBED IN WEB PAGE</emphasis> window opens.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Select</emphasis> to highlight the HTML fragment.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">x</emphasis> to close the window.</para>
         </listitem>
       </orderedlist>
     </para>
   </section>
   <section>
-    <title>Visualizing pivot table data as chart or map</title>
+    <title>Visualiz<?oxy_delete author="rachaelb" timestamp="20160419T093009+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160419T093009+0200"?>e
+      a<?oxy_insert_end?> pivot table data as
+      <?oxy_insert_start author="rachaelb" timestamp="20160419T093016+0200"?>a
+      <?oxy_insert_end?>chart
+      or<?oxy_insert_start author="rachaelb" timestamp="20160419T093017+0200"?> a<?oxy_insert_end?>
+      map</title>
     <para>When you have made a pivot table you can switch between pivot table, chart and map
       visualization of your data. </para>
     <section>
-      <title>Opening pivot table as chart</title>
+      <title>Open<?oxy_delete author="rachaelb" timestamp="20160419T093022+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160419T093022+0200"?>
+        a<?oxy_insert_end?> pivot table as
+        <?oxy_insert_start author="rachaelb" timestamp="20160419T093027+0200"?>a
+        <?oxy_insert_end?>chart</title>
       <orderedlist>
         <listitem>
           <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this table
@@ -784,7 +844,10 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
       </screenshot>
     </section>
     <section>
-      <title>Opening pivot table selection as chart</title>
+      <title>Open<?oxy_delete author="rachaelb" timestamp="20160419T093030+0200" content="ing"?><?oxy_insert_start author="rachaelb" timestamp="20160419T093030+0200"?>
+        a<?oxy_insert_end?> pivot table selection as
+        <?oxy_insert_start author="rachaelb" timestamp="20160419T093035+0200"?>a
+        <?oxy_insert_end?>chart</title>
       <para>If you want to visualize a small part of your pivot table as a chart you can click
         directly on a value in the table instead opening the whole table. </para>
       <orderedlist>
@@ -809,12 +872,14 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Open selection as chart</emphasis>.</para>
-          <para>Your selection opens as a chart.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Opening pivot table as map</title>
+      <title>Open<?oxy_insert_start author="rachaelb" timestamp="20160419T093040+0200"?>
+        a<?oxy_insert_end?><?oxy_delete author="rachaelb" timestamp="20160419T093039+0200" content="ing"?>
+        pivot table as <?oxy_insert_start author="rachaelb" timestamp="20160419T093042+0200"?>a
+        <?oxy_insert_end?>map</title>
       <orderedlist>
         <listitem>
           <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this table
@@ -824,7 +889,10 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
       </orderedlist>
     </section>
     <section>
-      <title>Opening pivot table selection as map</title>
+      <title>Ope<?oxy_insert_start author="rachaelb" timestamp="20160419T093047+0200"?>n<?oxy_insert_end?><?oxy_delete author="rachaelb" timestamp="20160419T093046+0200" content="ning"?><?oxy_insert_start author="rachaelb" timestamp="20160419T093050+0200"?>
+        a<?oxy_insert_end?> pivot table selection as
+        <?oxy_insert_start author="rachaelb" timestamp="20160419T093053+0200"?>a
+        <?oxy_insert_end?>map</title>
       <orderedlist>
         <listitem>
           <para>In the pivot table, click a value.</para>
@@ -859,7 +927,11 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
           table.</para>
       </listitem>
       <listitem>
-        <para>A table cannot contain more than the maximum number of analytics records which have been specified through the system settings. The maximum number of records could also be constrained by the maximum RAM which is available to your browser. Considering making more smaller tables, instead of one table which displays all of your data elements and indicators together.  </para>
+        <para>A table cannot contain more than the maximum number of analytic records which have
+          been specified through the system settings. The maximum number of records could also be
+          constrained by the maximum RAM which is available to your browser. Consider making smaller
+          tables instead of one table which displays all of your data elements and indicators
+          together. </para>
       </listitem>
     </itemizedlist>
     <tip>
