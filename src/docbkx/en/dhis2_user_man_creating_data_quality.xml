@@ -132,7 +132,7 @@
     a <emphasis>sequential sample count</emphasis>
     (<emphasis role="italic">nperiods</emphasis>) and
     a <emphasis>sequential skip count</emphasis>
-    (<emphasis role="italic">skipcount</emphasis>).  For serial
+    (<emphasis role="italic">skipcount</emphasis>). For serial
     rules, <emphasis role="italic">nperiods</emphasis> periods are
     sampled, excluding the immediately
     preceding <emphasis role="italic">skipcount</emphasis> periods.
@@ -140,13 +140,14 @@
     the current year) as well as a window
     of <emphasis role="italic">2*nperiods+1</emphasis> periods around
     the corresponding year in each of
-    the <emphasis role="italic">nyears</emphasis> past years.  For
-    example, suppose a monthly seasonal surveillance rule had an
+    the <emphasis role="italic">nyears</emphasis> past years. 
+    Any periods within skipcount of the current period are excluded.
+    For example, suppose a monthly seasonal surveillance rule had an
     annual sample count of 3 (years), a sequential sample count of 2
-    (months), and a skip count of 1 (month).  There would be up to 16
-    including one sample from the current year (the month before last)
+    (months), and a skip count of 1 (month). There would be up to 16
+    samples including one from the current year (the month before last)
     and 15 samples based on a window of 5 monthly samples (around the
-    current month) in each of 3 preceding years.  Note that if
+    current month) in each of 3 preceding years. Note that if
     surveillance rules operate over a large number of samples, their
     execution may take substantial time and system resources.</para>
     <para>To add a surveillance rule, follow the steps above for validation rules, choosing a <emphasis role="italic">
