@@ -11550,7 +11550,7 @@ interval=WEEK" -u admin:district</screen></para>
     <para>Using the <emphasis>dataStore</emphasis> resource, developers can store arbitrary data for
       their apps. Access to a datastore is limited to the user&apos;s access to the corresponding
       app. For example a user with access to the &quot;sampleApp&quot; application will also be able
-      to use the sampleApp namespace in the datastore.</para>
+      to use the sampleApp namespace in the datastore.<screen>/api/dataStore</screen></para>
     <section>
       <title>Data store structure</title>
       <para>Data store entries consist of a namespace, key and value. The combination of namespace
@@ -11694,12 +11694,11 @@ interval=WEEK" -u admin:district</screen></para>
     <title>User data store</title>
     <para>In addition to the <emphasis>dataStore</emphasis> which is shared between all users of the
       system, a user-based data store is also available. Data stored to the
-        <emphasis>userDataStore</emphasis> is stored to individual users, so each users can have
-      different data on the same namespace and key combination. The same way
-        <emphasis>dataStore</emphasis> can have namespaces reserved, so can namespaces in the
-        <emphasis>userDataStore</emphasis>. All calls against the <emphasis>userDataStore</emphasis>
-      will be associated with the logged in user. That means you can only see, change, remove and
-      add data associated with your own user.</para>
+        <emphasis>userDataStore</emphasis> is associated with individual users, so that each user
+      can have different data on the same namespace and key combination. All calls against the
+        <emphasis>userDataStore</emphasis> will be associated with the logged in user. This means
+      one can only see, change, remove and add values associated with the currently logged in
+      user.<screen>/api/userDataStore</screen></para>
     <section>
       <title>User data store structure</title>
       <para><emphasis>userDataStore</emphasis> consists of a user, a namespace, keys and associated
