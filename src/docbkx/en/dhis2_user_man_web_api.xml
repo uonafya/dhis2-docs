@@ -7966,12 +7966,53 @@ ORDER BY oul.level, par.name, ou.name</screen>
         event and GET to retrieve aggregated statistics.</para>
       <section>
         <title>Creating view events (POST)</title>
-        <para>The usage analytics API lets you create event views. The table below shows the
-          supported types of events.</para>
-        <para>The dataStatisticsEventType parameter describes what type of item was viewed. As an
-          example, the following URL can be used to create a new event view:
+        <para>The usage analytics API lets you create event views. The dataStatisticsEventType
+          parameter describes what type of item was viewed. As an example, the following URL can be
+          used to create a new event view for charts:
           <screen>POST /api/dataStatistics?eventType=CHART_VIEW</screen></para>
-        <para>A successful save operation returns HTTP status code 201.</para>
+        <para>A successful save operation returns HTTP status code 201. The table below shows the
+          supported types of events.</para>
+        <para>
+          <table frame="all">
+            <title>Event types</title>
+            <tgroup cols="2">
+              <colspec colname="c1" colnum="1" colwidth="1*"/>
+              <colspec colname="c2" colnum="2" colwidth="1.63*"/>
+              <thead>
+                <row>
+                  <entry>Key</entry>
+                  <entry>Description</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>CHART_VIEW</entry>
+                  <entry>Chart view.</entry>
+                </row>
+                <row>
+                  <entry>MAP_VIEW</entry>
+                  <entry>Map view (GIS).</entry>
+                </row>
+                <row>
+                  <entry>REPORT_TABLE_VIEW</entry>
+                  <entry>Report table (pivot table) view.</entry>
+                </row>
+                <row>
+                  <entry>EVENT_REPORT_VIEW</entry>
+                  <entry>Event report view.</entry>
+                </row>
+                <row>
+                  <entry>EVENT_CHART_VIEW</entry>
+                  <entry>Event chart view.</entry>
+                </row>
+                <row>
+                  <entry>DASHBOARD_VIEW</entry>
+                  <entry>Dashboard view.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </para>
       </section>
       <section>
         <title>Aggregated usage analytics report (GET)</title>
@@ -8020,23 +8061,21 @@ ORDER BY oul.level, par.name, ou.name</screen>
           yearly aggregation you can use the following URL:
           <screen>GET /api/dataStatistics?startDate=2014-01-02&amp;endDate=2016-01-01&amp;interval=MONTH</screen></para>
       </section>
-    </section>
     <section>
       <title>Response format</title>
       <para>The usage analytics response containing aggregate data can be returned in various
-        representation formats. As usual, you can indicate interest in a specific format by
-        appending a file extension to the URL. The default format is JSON. The available formats and
-        content- types are listed below. <itemizedlist>
-          <listitem>
-            <para>json (application/json)</para>
-          </listitem>
-          <listitem>
-            <para>xml (application/xml)</para>
-          </listitem>
-          <listitem>
-            <para>html (text/html)</para>
-          </listitem>
-        </itemizedlist></para>
+          representation formats. The default format is JSON. The available formats and content-
+          types are listed below. <itemizedlist>
+            <listitem>
+              <para>json (application/json)</para>
+            </listitem>
+            <listitem>
+              <para>xml (application/xml)</para>
+            </listitem>
+            <listitem>
+              <para>html (text/html)</para>
+            </listitem>
+          </itemizedlist></para>
       <para>As an example, to request an usage analytics response in XML format you can use the
         following URL:
         <screen>/api/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen></para>
@@ -8108,6 +8147,7 @@ interval=WEEK" -u admin:district</screen></para>
         <listitem><para>The <emphasis>users</emphasis> property shows the total maximum (peak) number of users in the
             database at the given interval.</para></listitem>
       </itemizedlist>
+    </section>
     </section>
   </section>
   <section>
