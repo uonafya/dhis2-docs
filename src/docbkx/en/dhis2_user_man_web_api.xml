@@ -1867,7 +1867,7 @@ http://server/api/constants/ID</screen></para>
       contents from a database-external file store. The <emphasis role="italic"
         >FileResource</emphasis> object is stored in the database like any other but the content
       (file) is stored elsewhere and is retrievable using the contained reference <emphasis
-        role="italic">(storageKey)</emphasis>.</para>
+        role="italic">(storageKey)</emphasis>.<screen>/api/fileResources</screen></para>
     <para>The contents of a file resources is not directly accessible but is referenced from other
       objects (such as data values) to store binary content of virtually unlimited size.</para>
     <para>Creation of the file resource itself is done through the <emphasis role="italic"
@@ -1881,26 +1881,26 @@ http://server/api/constants/ID</screen></para>
         role="italic">response</emphasis> field which in turn contains the <emphasis role="italic"
         >fileResource</emphasis> like
       this:<screen>{
-&quot;httpStatus&quot;: &quot;Accepted&quot;,
-    &quot;httpStatusCode&quot;: 202,
-    &quot;status&quot;: &quot;OK&quot;,
-    &quot;response&quot;: {
-    &quot;responseType&quot;: &quot;FileResource&quot;,
-        &quot;fileResource&quot;: {
-            &quot;name&quot;: &quot;name-of-file.png&quot;,
-            &quot;created&quot;: &quot;2015-10-16T16:34:20.654+0000&quot;,
-            &quot;lastUpdated&quot;: &quot;2015-10-16T16:34:20.667+0000&quot;,
-            &quot;externalAccess&quot;: false,
-            &quot;publicAccess&quot;: &quot;--------&quot;,
-            &quot;user&quot;: { ... },
-            &quot;displayName&quot;: &quot;name-of-file.png&quot;,
-            &quot;contentType&quot;: &quot;image/png&quot;,
-            &quot;contentLength&quot;: 512571,
-            &quot;contentMd5&quot;: &quot;4e1fc1c3f999e5aa3228d531e4adde58&quot;,
-            &quot;storageStatus&quot;: &quot;PENDING&quot;,
-            &quot;id&quot;: &quot;xm4JwRwke0i&quot;
-        }
+  "httpStatus&quot;: &quot;Accepted&quot;,
+  "httpStatusCode&quot;: 202,
+  "status&quot;: &quot;OK&quot;,
+  "response&quot;: {
+    "responseType&quot;: &quot;FileResource&quot;,
+    &quot;fileResource&quot;: {
+      &quot;name&quot;: &quot;name-of-file.png&quot;,
+      &quot;created&quot;: &quot;2015-10-16T16:34:20.654+0000&quot;,
+      &quot;lastUpdated&quot;: &quot;2015-10-16T16:34:20.667+0000&quot;,
+      &quot;externalAccess&quot;: false,
+      &quot;publicAccess&quot;: &quot;--------&quot;,
+      &quot;user&quot;: { ... },
+      &quot;displayName&quot;: &quot;name-of-file.png&quot;,
+      &quot;contentType&quot;: &quot;image/png&quot;,
+      &quot;contentLength&quot;: 512571,
+      &quot;contentMd5&quot;: &quot;4e1fc1c3f999e5aa3228d531e4adde58&quot;,
+      &quot;storageStatus&quot;: &quot;PENDING&quot;,
+      &quot;id&quot;: &quot;xm4JwRwke0i&quot;
     }
+  }
 }</screen></para>
     <para>Note that the response is a <emphasis role="italic">202 Accepted</emphasis>, indicating
       that the returned resource has been submitted for background processing (persisting to the
@@ -4146,7 +4146,7 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
     <section>
       <title>Aggregate indicators</title>
       <para>To retrieve indicators you can make a GET request to the indicators resource like
-        this:<screen>api/indicators</screen></para>
+        this:<screen>/api/indicators</screen></para>
       <para>Indicators represent expressions which can be calculated and presented as a result. The
         indicator expressions are split into a numerator and denominator. The numerators and
         denominators are mathematical expressions which can contain references to data elements,
@@ -4414,12 +4414,13 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
     <title>Data approval</title>
     <para>This section explains how to approve, unapprove and check approval status using the
         <emphasis role="italic">dataApprovals</emphasis> resource. Approval is done per data set,
-      period, organisation unit and attribute option combo. </para>
+      period, organisation unit and attribute option
+      combo.<screen>/api/dataApprovals</screen></para>
     <section>
       <title>Get approval status</title>
       <para>To get approval information for a data set you can issue a GET request similar to
         this:</para>
-      <screen>GET api/dataApprovals?ds=aLpVgfXiz0f&amp;pe=2013&amp;ou=DiszpKrYNg8</screen>
+      <screen>GET http://server.com/api/dataApprovals?ds=aLpVgfXiz0f&amp;pe=2013&amp;ou=DiszpKrYNg8</screen>
       <table frame="all">
         <title>Data approval query parameters</title>
         <tgroup cols="3">
@@ -4848,13 +4849,13 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       notifications and general information to users. Messages are grouped into conversations. To
       interact with message conversations you can send POST and GET request to the <emphasis
         role="italic">messageConversations</emphasis>
-      resource.<screen>api/messageConversations</screen>Messages are delivered to the DHIS 2 message
-      inbox but can also be sent to the user&apos;s email addresses and mobile phones as SMS. In
-      this example we will see how we can utilize the Web API to send, read and manage messages. We
-      will pretend to be the <emphasis role="italic">DHIS Administrator</emphasis> user and send a
-      message to the <emphasis role="italic">Mobile</emphasis> user. We will then pretend to be the
-      mobile user and read our new message. Following this we will manage the admin user inbox by
-      marking and removing messages.</para>
+      resource.<screen>/api/messageConversations</screen>Messages are delivered to the DHIS 2
+      message inbox but can also be sent to the user&apos;s email addresses and mobile phones as
+      SMS. In this example we will see how we can utilize the Web API to send, read and manage
+      messages. We will pretend to be the <emphasis role="italic">DHIS Administrator</emphasis> user
+      and send a message to the <emphasis role="italic">Mobile</emphasis> user. We will then pretend
+      to be the mobile user and read our new message. Following this we will manage the admin user
+      inbox by marking and removing messages.</para>
     <section>
       <title>Writing and reading messages</title>
       <para>The resource we need to interact with when sending and reading messages is the <emphasis
@@ -6277,6 +6278,9 @@ new Ext.ux.carousel.Carousel( &apos;chartCarousel&apos;, {
   </section>
   <section>
     <title>SQL views</title>
+    <para>The SQL views resource allows you to create and retrieve the result set of SQL views. The
+      SQL views can be executed directly against the database and render the result set through the
+      Web API resource.<screen>/api/sqlViews</screen></para>
     <para>SQL views are useful for creating data views which may be more easily constructed with SQL
       compared combining the multiple objects of the Web API. As an example, lets assume we have
       been asked to provide a view of all organization units with their names, parent names,
@@ -6648,48 +6652,48 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>It is not necessary to be aware of which objects are used for the various dynamic
         dimensions when designing analytics queries. You can get a complete list of dynamic
         dimensions by visiting this URL in the Web API:</para>
-      <screen>api/dimensions</screen>
+      <screen>/api/dimensions</screen>
       <para>The base URL to the analytics resource is <emphasis role="italic"
           >api/analytics</emphasis>. To request specific dimensions and dimension items you can use
         a query string on the following format, where <emphasis role="italic">dim-id</emphasis> and
           <emphasis role="italic">dim-item</emphasis> should be substituted with real values:</para>
-      <screen>api/analytics?dimension=dim-id:dim-item;dim-item&amp;dimension=dim-id:dim-item;dim-item</screen>
+      <screen>/api/analytics?dimension=dim-id:dim-item;dim-item&amp;dimension=dim-id:dim-item;dim-item</screen>
       <para>As illustrated above, the dimension identifier is followed by a colon while the
         dimension items are separated by semi-colons. As an example, a query for two data elements,
         two periods and two organisation units can be done with the following URL:</para>
-      <screen>api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
 &amp;dimension=pe:2014Q1;2014Q2&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
       <para>To query for data broken down by category option combinations instead of data element
         totals you can include the category dimension in the query string, for instance like
         this:</para>
-      <screen>api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
 &amp;dimension=co&amp;dimension=pe:201401&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
       <para>When selecting data elements you can also select all data elements in a group as items
         by using the DE_GROUP-&lt;id&gt; syntax:</para>
-      <screen>api/analytics?dimension=dx:DE_GROUP-h9cuJOkOwY2
+      <screen>/api/analytics?dimension=dx:DE_GROUP-h9cuJOkOwY2
 &amp;dimension=pe:201401&amp;dimension=ou:O6uvpzGd5pu</screen>
       <para>To query for program data elements (of tracker domain type) you can get those by
         specifying the program for each data element using the &lt;program-id>.&lt;dataelement-id>
         syntax:</para>
-      <screen>api/analytics.json?dimension=dx:eBAyeGv0exc.qrur9Dvnyt5;eBAyeGv0exc.GieVkTxp4HH
+      <screen>/api/analytics.json?dimension=dx:eBAyeGv0exc.qrur9Dvnyt5;eBAyeGv0exc.GieVkTxp4HH
 &amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
       <para>To query for program attributes (tracked entity attributes) you can get those by
         specifying the program for each attribute using the &lt;program.id>.&lt;attribute-id>
         syntax:</para>
-      <screen>api/analytics.json?dimension=dx:IpHINAT79UW.a3kGcGDCuk6;IpHINAT79UW.UXz7xuGCEhU
+      <screen>/api/analytics.json?dimension=dx:IpHINAT79UW.a3kGcGDCuk6;IpHINAT79UW.UXz7xuGCEhU
 &amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:ImspTQPwCqd</screen>
       <para>To query for organisation unit group sets and data elements you can use the following
         URL - notice how the group set identifier is used as dimension identifier and the groups as
         dimension items:</para>
-      <screen>api/analytics?dimension=Bpx0589u8y0:oRVt7g429ZO;MAs88nJc9nL
+      <screen>/api/analytics?dimension=Bpx0589u8y0:oRVt7g429ZO;MAs88nJc9nL
 &amp;dimension=pe:2014&amp;dimension=ou:ImspTQPwCqd</screen>
       <para>To query for data elements and categories you can use this URL - use the category
         identifier as dimension identifier and the category options as dimension items:</para>
-      <screen>api/analytics?dimension=dx:s46m5MS0hxu;fClA2Erf6IO&amp;dimension=pe:2014
+      <screen>/api/analytics?dimension=dx:s46m5MS0hxu;fClA2Erf6IO&amp;dimension=pe:2014
 &amp;dimension=YNZyaJHiHYq:btOyqprQ9e8;GEqzEKCHoGA&amp;filter=ou:ImspTQPwCqd</screen>
       <para>To query using relative periods and organisation units associated with the current user
         you can use a URL like this:</para>
-      <screen>api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
 &amp;dimension=pe:LAST_12_MONTHS&amp;dimension=ou:USER_ORGUNIT</screen>
       <para>When selecting organisation units for a dimension you can select an entire level
         optionally constrained by any number of boundary organisation units with the
@@ -6697,17 +6701,17 @@ ORDER BY oul.level, par.name, ou.name</screen>
         all organisation units at the given level below the given boundary organisation unit in the
         hierarchy will be included in the response, and is provided as regular organisation unit
         dimension items. A simple query for all org units at level three:</para>
-      <screen>api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014&amp;dimension=ou:LEVEL-3</screen>
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014&amp;dimension=ou:LEVEL-3</screen>
       <para>A query for level three and four with two boundary org units can be specified like
         this:</para>
-      <screen>api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014
 &amp;dimension=ou:LEVEL-3;LEVEL-4;O6uvpzGd5pu;lc3eMKXaEf</screen>
       <para>When selecting organisation units you can also select all organisation units in an
         organisation unit group to be included as dimension items using the OU_GROUP-&lt;id&gt;
         syntax. The organisation units in the groups can optionally be constrained by any number of
         boundary organisation units. Both the level and the group items can be repeated any number
         of times:</para>
-      <screen>api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014
 &amp;dimension=ou:OU_GROUP-w0gFTTmsUcF;OU_GROUP-EYbopBOJWsW;O6uvpzGd5pu;lc3eMKXaEf</screen>
       <para>A few things to be aware of when using the analytics resource are listed below.</para>
       <itemizedlist>
@@ -6911,7 +6915,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         dimensions, but the filters will not be included as dimensions in the actual response. As an
         example, to query for certain data elements filtered by the periods and organisation units
         you can use the following URL:</para>
-      <screen>api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2014Q1;2014Q2&amp;filter=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2014Q1;2014Q2&amp;filter=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
       <para>The <emphasis role="italic">aggregationType</emphasis> query parameter lets you define
         which aggregation operator should be used for the query. By default the aggregation operator
         defined for data elements included in the query will be used. If your query does not contain
@@ -6920,17 +6924,17 @@ ORDER BY oul.level, par.name, ou.name</screen>
         undefined. This query parameter allows you to override the default and specify a specific
         aggregation operator. As an example you can set the aggregation operator to
         &quot;count&quot; with the following URL:</para>
-      <screen>api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014Q1&amp;dimension=ou:O6uvpzGd5pu&amp;aggregationType=COUNT</screen>
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014Q1&amp;dimension=ou:O6uvpzGd5pu&amp;aggregationType=COUNT</screen>
       <para>The <emphasis role="italic">measureCriteria</emphasis> query parameter lets you filter
         out ranges of data records to return. You can instruct the system to return only records
         where the aggregated data value is equal, greater than, greater or equal, less than or less
         or equal to certain values. You can specify any number of criteria on the following format,
         where <emphasis role="italic">critieria</emphasis> and <emphasis role="italic"
           >value</emphasis> should be substituted with real values:</para>
-      <screen>api/analytics?measureCriteria=criteria:value;criteria:value</screen>
+      <screen>/api/analytics?measureCriteria=criteria:value;criteria:value</screen>
       <para>As an example, the following query will return only records where the data value is
         greater or equal to 6500 and less than 33000:</para>
-      <screen>api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;dimension=pe:2014
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;dimension=pe:2014
 &amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw&amp;measureCriteria=GE:6500;LT:33000</screen>
       <para>In order to have the analytics resource generate the data in the shape of a ready-made
         table, you can provide the <emphasis role="italic">tableLayout</emphasis> parameter with
@@ -6940,7 +6944,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         identifiers separated by semi-colons as values to indicate which ones to use as table
         columns and rows. The column and rows dimensions must be present as a data dimension in the
         query (not a filter). Such a request can look like this:</para>
-      <screen>api/analytics.html?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;dimension=pe:2014Q1;2014Q2
+      <screen>/api/analytics.html?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;dimension=pe:2014Q1;2014Q2
 &amp;dimension=ou:O6uvpzGd5pu&amp;tableLayout=true&amp;columns=dx;ou&amp;rows=pe</screen>
     </section>
     <section>
@@ -6975,7 +6979,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       </itemizedlist>
       <para>As an example, to request an analytics response in XML format you can use the following
         URL:</para>
-      <screen>api/analytics.xml?dimension=dx:fbfJHSPpUQD
+      <screen>/api/analytics.xml?dimension=dx:fbfJHSPpUQD
 &amp;dimension=pe:2014&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
       <para>The analytics responses must be retrieved using the HTTP <emphasis role="italic"
           >GET</emphasis> method. This allows for direct linking to analytics responses from Web
@@ -7123,7 +7127,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         relevant content of the datavalue table. You can produce this SQL by doing a GET request
         with content type &quot;text/html&quot; or &quot;text/plain&quot; like below. The dimension
         and filter syntax is identical to regular analytics queries:</para>
-      <screen>api/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2014Q1;2014Q2&amp;filter=ou:O6uvpzGd5pu</screen>
+      <screen>/api/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2014Q1;2014Q2&amp;filter=ou:O6uvpzGd5pu</screen>
     </section>
   </section>
   <section>
@@ -7457,36 +7461,36 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>The <emphasis role="italic">analytics/events/query</emphasis> resource lets you query
         for captured events. This resource does not perform any aggregation, rather it lets you
         query and filter for information about events.</para>
-      <screen>api/analytics/events/query</screen>
+      <screen>/api/analytics/events/query</screen>
       <para> You can specify any number of dimensions and any number of filters in a query.
         Dimension item identifiers can refer to any of data elements, person attributes, person
         identifiers, fixed and relative periods and organisation units. Dimensions can optionally
         have a query operator and a filter. Event queries should be on the format described
         below.</para>
-      <screen>api/analytics/events/query/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
+      <screen>/api/analytics/events/query/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
 &amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
       <para>For example, to retrieve events from the &quot;Inpatient morbidity and mortality&quot;
         program between January and October 2014, where the &quot;Gender&quot; and &quot;Age&quot;
         data elements are included and the &quot;Age&quot; dimension is filtered on &quot;18&quot;,
         you can use the following query:</para>
-      <screen>api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
+      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
 &amp;dimension=ou:O6uvpzGd5pu;fdc6uOvgoji&amp;dimension=oZg33kd9taw&amp;dimension=qrur9Dvnyt5:EQ:18</screen>
       <para>To retrieve events for the &quot;Birth&quot; program stage of the &quot;Child
         programme&quot; program between March and December 2014, where the &quot;Weight&quot; data
         element, filtered for values larger than 2000:</para>
-      <screen>api/analytics/events/query/IpHINAT79UW?stage=A03MvHHogjR&amp;startDate=2014-03-01&amp;endDate=2014-12-31
+      <screen>/api/analytics/events/query/IpHINAT79UW?stage=A03MvHHogjR&amp;startDate=2014-03-01&amp;endDate=2014-12-31
 &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=UXz7xuGCEhU:GT:2000</screen>
       <para>Sorting can be applied to the query for the event date of the event and any dimensions.
         To sort descending on the event date and ascending on the &quot;Age&quot; data element
         dimension you can use:</para>
-      <screen>api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
+      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
 &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=qrur9Dvnyt5&amp;desc=EVENTDATE&amp;asc=qrur9Dvnyt5</screen>
       <para>Paging can be applied to the query by specifying the page number and the page size
         parameters. If page number is specified but page size is not, a page size of 50 will be
         used. If page size is specified but page number is not, a page number of 1 will be used. To
         get the third page of the response with a page size of 20 you can use a query like
         this:</para>
-      <screen>api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
+      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
 &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=qrur9Dvnyt5&amp;page=3&amp;pageSize=20</screen>
       <section>
         <title>Filtering</title>
@@ -7568,11 +7572,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </itemizedlist>
         <para>As an example, to get a response in Excel format you can use a file extension in the
           request URL like this:</para>
-        <screen>api/analytics/events/query/eBAyeGv0exc.xls?startDate=2014-01-01&amp;endDate=2014-10-31
+        <screen>/api/analytics/events/query/eBAyeGv0exc.xls?startDate=2014-01-01&amp;endDate=2014-10-31
 &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=oZg33kd9taw&amp;dimension=qrur9Dvnyt5</screen>
         <para>You can set the hierarchyMeta query parameter to true in order to include names of all
           ancestor organisation units in the meta-section of the response:</para>
-        <screen>api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
+        <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
 &amp;dimension=ou:YuQRtpLP10I&amp;dimension=qrur9Dvnyt5:EQ:50&amp;hierarchyMeta=true</screen>
         <para>The default response JSON format will look similar to this:</para>
         <screen>{
@@ -7687,45 +7691,45 @@ ORDER BY oul.level, par.name, ou.name</screen>
         retrieve <emphasis role="italic">aggregated numbers</emphasis> of events captured in DHIS 2.
         This resource lets you retrieve aggregate data based on a program and optionally a program
         stage, and lets you filter on any event dimension.</para>
-      <screen>api/analytics/events/aggregate</screen>
+      <screen>/api/analytics/events/aggregate</screen>
       <para>The events aggregate resource does not return the event information itself, rather the
         aggregate numbers of events matching the request query. Event dimensions include data
         elements, person attributes, person identifiers, periods and organisation units. Aggregate
         event queries should be on the format described below.</para>
-      <screen>api/analytics/events/aggregate/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
+      <screen>/api/analytics/events/aggregate/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
 &amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
       <para>For example, to retrieve aggregate numbers for events from the &quot;Inpatient morbidity
         and mortality&quot; program between January and October 2014, where the &quot;Gender&quot;
         and &quot;Age&quot; data elements are included, the &quot;Age&quot; dimension item is
         filtered on &quot;18&quot; and the &quot;Gender&quot; item is filtered on
         &quot;Female&quot;, you can use the following query:</para>
-      <screen>api/analytics/events/aggregate/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
 &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=oZg33kd9taw:EQ:Female&amp;dimension=qrur9Dvnyt5:GT:50</screen>
       <para>To retrieve data for fixed and relative periods instead of start and end date, in this
         case May 2014 and last 12 months, and the organisation unit associated with the current
         user, you can use the following query:</para>
-      <screen>api/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:201405;LAST_12_MONTHS
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:201405;LAST_12_MONTHS
 &amp;dimension=ou:USER_ORGUNIT;fdc6uOvgo7ji&amp;dimension=oZg33kd9taw</screen>
       <para>In order to specify &quot;Female&quot; as a filter for &quot;Gender&quot; for the data
         response, meaning &quot;Gender&quot; will not be part of the response but will filter the
         aggregate numbers in it, you can use the following syntax:</para>
-      <screen>api/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:2014;
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:2014;
 &amp;dimension=ou:O6uvpzGd5pu&amp;filter=oZg33kd9taw:EQ:Female</screen>
       <para>To specify the &quot;Bo&quot; organisation unit and the period &quot;2014&quot; as
         filters, and the &quot;Mode of discharge&quot; and Gender&quot; as dimensions, where
         &quot;Gender&quot; is filtered on the &quot;Male&quot; item, you can use a query like
         this:</para>
-      <screen>api/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2014&amp;filter=ou:O6uvpzGd5pu
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2014&amp;filter=ou:O6uvpzGd5pu
 &amp;dimension=fWIAEtYVEGk&amp;dimension=oZg33kd9taw:EQ:Male</screen>
       <para>To create a &quot;Top 3 report&quot; for &quot;Mode of discharge&quot; you can use the
         limit and sortOrder query parameters similar to this:</para>
-      <screen>api/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2014&amp;filter=ou:O6uvpzGd5pu
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2014&amp;filter=ou:O6uvpzGd5pu
 &amp;dimension=fWIAEtYVEGk&amp;limit=3&amp;sortOrder=DESC</screen>
       <para>To specify a value dimension with a corresponding aggregation type you can use the value
         and aggregationType query parameters. Specifying a value dimension will make the analytics
         engine return aggregate values for the values of that dimension in the response as opposed
         to counts of events.</para>
-      <screen>api/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=ou:ImspTQPwCqd
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=ou:ImspTQPwCqd
 &amp;dimension=pe:LAST_12_MONTHS&amp;dimension=fWIAEtYVEGk&amp;value=qrur9Dvnyt5&amp;aggregationType=AVERAGE</screen>
       <section>
         <title>Ranges / legend sets</title>
@@ -7736,7 +7740,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
           attribute must be associated with the legend set. The format is described below:</para>
         <screen>?dimension=&lt;item-id&gt;-&lt;legend-set-id&gt;</screen>
         <para>An example looks like this:</para>
-        <screen>api/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=qrur9Dvnyt5-Yf6UHoPkdS6
+        <screen>/api/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=qrur9Dvnyt5-Yf6UHoPkdS6
 &amp;dimension=ou:ImspTQPwCqd&amp;dimension=pe:LAST_12_MONTHS</screen>
       </section>
       <section>
@@ -7838,7 +7842,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Event clustering analytics</title>
       <para>The <emphasis role="italic">analytics/events/cluster</emphasis> resource provides
         clustered geospatial event data. A request looks like this:</para>
-      <screen>api/analytics/events/cluster/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:LEVEL-2
+      <screen>/api/analytics/events/cluster/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:LEVEL-2
 &amp;clusterSize=100000&amp;bbox=-13.2682125,7.3721619,-10.4261178,9.904012&amp;includeClusterPoints=false</screen>
       <para>The cluster response provides the count of underlying points, the centre point and
         extent of each cluster. If the <emphasis role="italic">includeClusterPoints</emphasis> query
@@ -7882,7 +7886,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         geometry-related requests for retrieving the count and extent (bounding box) of events for a
         specific query. The query syntax is equal to the <emphasis role="italic"
           >events/query</emphasis> resource. A request looks like this:</para>
-      <screen>api/analytics/events/count/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:O6uvpzGd5pu</screen>
+      <screen>/api/analytics/events/count/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:O6uvpzGd5pu</screen>
       <para> The response will provide the count and extent in JSON format:</para>
       <screen>{
     extent: "BOX(-13.2682125910096 7.38679562779441,-10.4261178860988 9.90401290212795)",
@@ -8246,11 +8250,11 @@ interval=WEEK" -u admin:district</screen></para>
     <para>The resource tables are used internally by the DHIS 2 application for various analysis
       functions. These tables are also valuable for users writing advanced SQL reports. They can be
       generated with a POST or PUT request to the following URL:</para>
-    <screen>api/resourceTables</screen>
+    <screen>/api/resourceTables</screen>
     <para>The analytics tables are optimized for data aggregation and used currently in DHIS 2 for
       the pivot table module. The analytics tables can be generated with a POST or PUT request
       to:</para>
-    <screen>api/resourceTables/analytics</screen>
+    <screen>/api/resourceTables/analytics</screen>
     <table frame="all">
       <title>Analytics tables optional query parameters</title>
       <tgroup cols="3">
@@ -8521,9 +8525,9 @@ interval=WEEK" -u admin:district</screen></para>
     <section>
       <title>Get appearance information</title>
       <para>You can retrieve the available flag icons in JSON format with a GET
-        request:<screen>api/system/flags</screen></para>
+        request:<screen>/api/system/flags</screen></para>
       <para>You can retrieve the available UI styles in JSON format with a GET
-        request:<screen>api/system/styles</screen></para>
+        request:<screen>/api/system/styles</screen></para>
     </section>
   </section>
   <section>
@@ -8533,13 +8537,13 @@ interval=WEEK" -u admin:district</screen></para>
       <title>UI locales</title>
       <para>You can retrieve the available locales for the user interface through the following
         resource with a GET request. XML and JSON resource representations are
-        supported.<screen>api/locales/ui</screen></para>
+        supported.<screen>/api/locales/ui</screen></para>
     </section>
     <section>
       <title>Database content locales</title>
       <para>You can retrieve and create locales for database content with GET and POST requests
         through the following resource. XML and JSON resource representations are
-        supported.<screen>api/locales/db</screen></para>
+        supported.<screen>/api/locales/db</screen></para>
     </section>
   </section>
   <section>
@@ -8555,7 +8559,7 @@ interval=WEEK" -u admin:district</screen></para>
   &quot;locale&quot;: &quot;es&quot;,
   &quot;property&quot;: &quot;name&quot;,
   &quot;value&quot;: &quot;Casos de fiebre amarilla&quot;
-}</screen><screen>POST api/translations</screen></para>
+}</screen><screen>POST /api/translations</screen></para>
       <para>The properties which support translations are listed in the table below.</para>
       <table frame="all">
         <title>Property names</title>
@@ -8704,12 +8708,12 @@ interval=WEEK" -u admin:district</screen></para>
     <section>
       <title>Get translations</title>
       <para>You can browse all translations through the translations
-        resource:<screen>GET api/translations</screen></para>
+        resource:<screen>GET /api/translations</screen></para>
       <para>You can use the standard filtering technique to fetch translations of interest. E.g. to
         get all translations for data elements in the Spanish locale you can use this
-        request:<screen>api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:es</screen></para>
+        request:<screen>/api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:es</screen></para>
       <para>To get translations for a specific object for all
-        properties:<screen>api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:fr&amp;filter=objectId:eq:fbfJHSPpUQD</screen></para>
+        properties:<screen>/api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:fr&amp;filter=objectId:eq:fbfJHSPpUQD</screen></para>
     </section>
   </section>
   <section>
@@ -9037,7 +9041,7 @@ interval=WEEK" -u admin:district</screen></para>
   </section>
   <section>
     <title>Users</title>
-    <para>This section covers the user resource methods.</para>
+    <para>This section covers the user resource methods.<screen>/api/users</screen></para>
     <section>
       <title>User query</title>
       <para>The <emphasis role="italic">users</emphasis> resource offers additional query parameters
@@ -9824,7 +9828,8 @@ interval=WEEK" -u admin:district</screen></para>
     <para>The <emphasis>staticContent</emphasis> resource allowes you to upload and retrieve custom
       logos used in DHIS2. The resource lets the user upload a file with an associated key, which
       can later be retrieved using the key. Only PNG files are supported and can only be uploaded to
-      the &quot;logo_banner&quot; and &quot;logo_front&quot; keys.</para>
+      the &quot;logo_banner&quot; and &quot;logo_front&quot;
+      keys.<screen>/api/staticContent</screen></para>
     <table frame="all">
       <title>Static content keys</title>
       <tgroup cols="2">
@@ -9956,8 +9961,9 @@ interval=WEEK" -u admin:district</screen></para>
   <section>
     <title>Internationalization</title>
     <para>In order to retrieve key-value pairs for translated strings you can use the <emphasis
-        role="italic">i18n</emphasis> resource. The endpoint is located at <emphasis role="italic"
-        >api/i18n</emphasis> and the request format is a simple array of the key-value pairs:</para>
+        role="italic">i18n</emphasis> resource.<screen>/api/i18n</screen> The endpoint is located at
+        <emphasis role="italic">api/i18n</emphasis> and the request format is a simple array of the
+      key-value pairs:</para>
     <screen>[
   &quot;access_denied&quot;,
   &quot;uploading_data_notification&quot;
@@ -10017,23 +10023,6 @@ interval=WEEK" -u admin:district</screen></para>
         </tbody>
       </tgroup>
     </table>
-  </section>
-  <section>
-    <title>Tracked entity management</title>
-    <para>Tracked entity have full CRUD (create, read, update, delete) support in the Web-API. A
-      tracked entity only have two required property, <emphasis role="italic">name</emphasis> and
-        <emphasis role="italic">description</emphasis>.</para>
-    <para>
-      <screen>{
-  &quot;name&quot;: &quot;Name of tracked entity&quot;,
-  &quot;description&quot;: &quot;Description of tracked entity&quot;
-}</screen>
-    </para>
-    <para>This payload can be sent to the <emphasis role="italic">trackedEntities</emphasis>
-      resource, both <emphasis role="bold">POST</emphasis> and <emphasis role="bold">PUT</emphasis>
-      are supported. For deleting a tracked entity you must use the <emphasis role="bold"
-        >DELETE</emphasis> method at the <emphasis role="italic">/api/trackedEntities/UID</emphasis>
-      resource.</para>
   </section>
   <section>
     <title>Tracked entity instance management</title>
@@ -11268,7 +11257,7 @@ interval=WEEK" -u admin:district</screen></para>
     <para>The sharing solution allows you to share most objects in the system with specific user
       groups and to define whether objects should be publicly accessible or private. To get and set
       sharing status for objects you can interact with the <emphasis role="italic"
-        >sharing</emphasis> resource.</para>
+        >sharing</emphasis> resource.<screen>/api/sharing</screen></para>
     <section>
       <title>Get sharing status</title>
     <para>To request the sharing status for an object use a GET request to:</para>
@@ -11453,7 +11442,7 @@ interval=WEEK" -u admin:district</screen></para>
     <title>Apps</title>
     <para> The <emphasis role="italic">/api/apps</emphasis> endpoint can be used for installing,
       deleting and listing apps. The app key is derived from the name of the ZIP archive, exluding
-      the file extension.<screen>api/apps</screen></para>
+      the file extension.<screen>/api/apps</screen></para>
     <section>
       <title>Get apps</title>
       <para>You can read the keys for apps by listing all apps from the apps resource and look for
@@ -11511,7 +11500,7 @@ interval=WEEK" -u admin:district</screen></para>
       found at the <emphasis role="italic">api/appStore</emphasis> resource.</para>
     <section>
       <title>Get apps</title>
-      <para>You can retrieve apps with a GET request: <screen>GET api/appStore</screen></para>
+      <para>You can retrieve apps with a GET request: <screen>GET /api/appStore</screen></para>
       <para>A sample JSON response is described below.
         <screen>{
   &quot;name&quot;: &quot;DHIS 2 App Store&quot;,
@@ -11542,7 +11531,7 @@ interval=WEEK" -u admin:district</screen></para>
         permissions. An app is referred to using the <emphasis role="italic">id</emphasis> property
         of the relevant <emphasis role="italic">version</emphasis> of the <emphasis role="italic"
           >app</emphasis>. An app is installed with a POST request with the version id to the
-        following resource:<screen>POST api/appStore/{app-version-id}</screen></para>
+        following resource:<screen>POST /api/appStore/{app-version-id}</screen></para>
     </section>
   </section>
   <section>
@@ -11550,7 +11539,7 @@ interval=WEEK" -u admin:district</screen></para>
     <para>Using the <emphasis>dataStore</emphasis> resource, developers can store arbitrary data for
       their apps. Access to a datastore is limited to the user&apos;s access to the corresponding
       app. For example a user with access to the &quot;sampleApp&quot; application will also be able
-      to use the sampleApp namespace in the datastore.</para>
+      to use the sampleApp namespace in the datastore.<screen>/api/dataStore</screen></para>
     <section>
       <title>Data store structure</title>
       <para>Data store entries consist of a namespace, key and value. The combination of namespace
@@ -11694,12 +11683,11 @@ interval=WEEK" -u admin:district</screen></para>
     <title>User data store</title>
     <para>In addition to the <emphasis>dataStore</emphasis> which is shared between all users of the
       system, a user-based data store is also available. Data stored to the
-        <emphasis>userDataStore</emphasis> is stored to individual users, so each users can have
-      different data on the same namespace and key combination. The same way
-        <emphasis>dataStore</emphasis> can have namespaces reserved, so can namespaces in the
-        <emphasis>userDataStore</emphasis>. All calls against the <emphasis>userDataStore</emphasis>
-      will be associated with the logged in user. That means you can only see, change, remove and
-      add data associated with your own user.</para>
+        <emphasis>userDataStore</emphasis> is associated with individual users, so that each user
+      can have different data on the same namespace and key combination. All calls against the
+        <emphasis>userDataStore</emphasis> will be associated with the logged in user. This means
+      one can only see, change, remove and add values associated with the currently logged in
+      user.<screen>/api/userDataStore</screen></para>
     <section>
       <title>User data store structure</title>
       <para><emphasis>userDataStore</emphasis> consists of a user, a namespace, keys and associated
