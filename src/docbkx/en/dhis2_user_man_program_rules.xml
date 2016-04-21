@@ -94,24 +94,68 @@
             source field is populated with a value: <itemizedlist>
               <listitem>
                 <para>
-                  <emphasis role="bold"> Data element newest event program: </emphasis>Populates a
-                  source field with the newest data value collected for one data element within the
-                  enrollment. The newest data value is determined with event date. </para>
+                  <emphasis role="bold"> Data element in current event: </emphasis>Source fields
+                  with this source type will contain the data value from the same event that the
+                  user currently has open. This is the most commonly used source type, especially
+                  for skip logic(hide actions) and warning/error rules.</para>
               </listitem>
               <listitem>
                 <para>
-                  <emphasis role="bold"> Data element newest event program stage:</emphasis>
-                  Populates a source field with the newest data value collected for one data element
-                  within a specified program stage. In case of several events within the program
-                  stage, the newest data value will be selected by event date. </para>
+                  <emphasis role="bold"> Data element in the newest event in program: </emphasis>
+                  This source type is used when a source field needs to reflect the newest known
+                  value of a data element, regardless of what event the user currently has open.</para>
+                <para> The source type is slightly differently populated in tracker capture and
+                  event capture. </para>
+                <para>Tracker capture: This source field will be
+                  populated with the newest data value collected for the given data element within
+                  the enrollment. </para>
+                <para>Event capture: This source field will be
+                  populated with the newest data value found within the 10 newest events in the same
+                  orgunit.</para>
+                <para>The newest data value is determined with event date. </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <emphasis role="bold"> Data element newest event program stage:</emphasis> This
+                  source type works the same way as <emphasis role="bold">Data element in the newest
+                    event in program</emphasis>, except that it only evaluates values from one
+                  program stage. Can be useful in rules where the same data element is used in
+                  several program stages, and a rule needs to evaluate the newest data value from
+                  within one specific stage.</para>
+              </listitem>
+              <listitem>
+                <para>
+                  <emphasis role="bold"> Data element from previous event:</emphasis> This source
+                  field will contain the value from a specified data element from a previous event.
+                  Only older events is evaluated, not including the event that the user currently
+                  has open. This source type is commonly used when a data element only should be
+                  collected once during an enrollment, and should be hidden in subsequent events.
+                  Another use case is making rules for validating input where there is an expected
+                  progression from one event to the next - a rule can evaluate wether the previous
+                  value is higher/lower and give a warning if an unexpected value is entered.</para>
+                <para> The source type is slightly differently populated in tracker capture and
+                  event capture. </para>
+                <para>Tracker capture: This source field will be
+                  populated with the newest data value collected for the given data element within
+                  the enrollment - but only evaluating the events that comes before the current
+                  event date.</para>
+                <para>Event capture: This source field will be
+                  populated with the newest data value collected within the 10 events preceding the
+                  current event date - not including the current event.</para>
+                <para>The newest data value is determined with event date.</para>
               </listitem>
               <listitem>
                 <para>
                   <emphasis role="bold"> Tracked entity attribute:</emphasis> Populates the source
-                  field with a specified tracked entity attribute for the current enrollment. Note:
-                  When selecting this option, fields for selecting program stage and data element is
-                  hidden, and a field for selecting tracked entity attribute is displayed instead.
-                </para>
+                  field with a specified tracked entity attribute for the current enrollment. This
+                  is the source type used when creating rules that should evaluate the data values
+                  entered during registration. It is also useful when creating rules that compares
+                  data in events to data entered during registration.</para>
+                <para> When selecting this option, fields for selecting program stage and data
+                  element is hidden, and a field for selecting tracked entity attribute is displayed
+                  instead. </para>
+                <para>This source type is only used for tracker capture(programs with
+                  registration)</para>
               </listitem>
             </itemizedlist>
           </para>
@@ -393,9 +437,9 @@
             <row>
               <entry>d2:validatePattern</entry>
               <entry>(text, regex-pattern)</entry>
-              <entry>Evaluates to true if the input text is an exact match with the supplied
-                regular expression pattern. The regular expression needs to be escaped.<para> Example:
-                <screen>d2:validatePattern(A{nrc},'\\d{6}\/\\d{2}\/\\d')</screen></para></entry>
+              <entry>Evaluates to true if the input text is an exact match with the supplied regular
+                expression pattern. The regular expression needs to be escaped.<para> Example:
+                  <screen>d2:validatePattern(A{nrc},'\\d{6}\/\\d{2}\/\\d')</screen></para></entry>
             </row>
             <row>
               <entry>d2:left</entry>
@@ -426,8 +470,8 @@
               <entry>(text, delimiter, element-num)</entry>
               <entry>Split the text by delimiter, and keep the nth element(0 is the first).<para>
                   The text can be quoted or evaluated from a variable, the delimiter must be quoted:
-                  <screen>d2:split(#{variableWithText}, '-', 1)</screen>
-                  Note: comma delimiter(,) is not supported.</para>
+                  <screen>d2:split(#{variableWithText}, '-', 1)</screen> Note: comma delimiter(,) is
+                  not supported.</para>
               </entry>
             </row>
             <row>
@@ -445,6 +489,22 @@
         conditions. An example that produces the gestational age in weeks, based on last menstrual
         date: </para>
       <screen>d2:floor( d2:daysBetween(#{lastMenstrualDate},V{event_date}) / 7 )</screen>
+    </tip>
+    <tip>
+      <para>The source type will determine how the d2: function calls will evaluate a (sourcefield)
+        parameter.</para>
+      <para>Example, where #{hemoglobinCurrent} is set to source type <emphasis role="bold">Data
+          element current event</emphasis>. The following function call with evaluate wether
+        hemoglobin is entered in the current event.
+        <screen>d2:hasValue( 'hemoglobinCurrent' )</screen></para>
+      <para>Example, where #{hemoglobin} is set to source type <emphasis role="bold">Data element in
+          the newest event in program</emphasis>. The following function call with evaluate wether
+        there exists a value for the hemoglobin in any event in the enrollment.
+        <screen>d2:hasValue( 'hemoglobin' )</screen></para>
+      <para>Example, where #{hemoglobinPrevious} is set to source type <emphasis role="bold">Data
+          element from previous event</emphasis>. The following function call with evaluate wether
+        there exists a value for the hemoglobin among the events preceding the current event.
+        <screen>d2:hasValue( 'hemoglobinPrevious' )</screen></para>
     </tip>
   </section>
   <section>
