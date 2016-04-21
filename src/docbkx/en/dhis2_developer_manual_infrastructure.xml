@@ -21,13 +21,14 @@ mvn versions:commit</screen>
           <screen>bzr push lp:~dhis2-devs-core/dhis2/2.19</screen>
         </listitem>
         <listitem>
-          <para>Tag source code with SNAPSHOT release.</para>
+          <para>Tag source code with SNAPSHOT release. Remember to add the temporary dhis-web
+            dependency in the root pom.xml. Commit the changes to trunk.</para>
         </listitem>
         <listitem>
           <para>Enable email notifications for release branch.</para>
         </listitem>
         <listitem>
-          <para>Create Jenkins for build for the release WAR file.</para>
+          <para>Create Jenkins build for the release WAR file.</para>
         </listitem>
         <listitem>
           <para>Create automatic copy job from Jenkins to dhis2.org.</para>
