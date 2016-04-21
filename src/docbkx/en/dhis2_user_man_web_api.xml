@@ -2139,7 +2139,7 @@ http://server/api/constants/ID</screen></para>
           <emphasis role="italic">dataValueSets</emphasis> resource. A data value set represents a
         set of data values which have a logical relationship, usually from being captured off the
         same data entry form. We follow the link to the HTML representation which will take us to
-          <ulink url="http://play.dhis2.org/demo/api/dataValueSets"/>. The format looks like
+          <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api/dataValueSets"/>. The format looks like
         this:</para>
       <screen language="xml">&lt;dataValueSet xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot; dataSet=&quot;dataSetID&quot;
   completeDate=&quot;date&quot; period=&quot;period&quot; orgUnit=&quot;orgUnitID&quot; attributeOptionCombo=&quot;aocID&quot;&gt;
@@ -2174,7 +2174,7 @@ http://server/api/constants/ID</screen></para>
           <emphasis role="italic">dataSets</emphasis> resource located at <ulink
           url="http://play.dhis2.org/demo/api/dataSets"/>. From there we find and follow the link to
         the <emphasis role="italic">Mortality &lt; 5 years</emphasis> data set which leads us to
-          <ulink url="http://play.dhis2.org/demo/api/dataSets/pBOMPrpg1QX"/>. The resource
+          <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api/dataSets/pBOMPrpg1QX"/>. The resource
         representation for the <emphasis role="italic">Mortality &lt; 5 years</emphasis> data set
         conveniently advertises links to the data elements which are members of it. From here we can
         follow these links and obtain the identifiers of the data elements. For brevity we will only
@@ -2837,7 +2837,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
       Health committee of the IHE (Integerating the HealthCare Enterprise). The wiki page detailing
       QRPH activity can be found at <ulink
         url="http://wiki.ihe.net/index.php?title=Quality,_Research_and_Public_Health#Current_Domain_Activities"
-        >wiki.ihe.net</ulink>. ADX is still under active development and has now been published for
+        >wiki.ihe.net</link>. ADX is still under active development and has now been published for
       trial implementation. Note that what is implemented currently in DHIS 2 is the functionality
       to read and write adx formatted data, i.e. what is described as Content Consumer and Content
       Producer actors in the ADX profile.</para>
@@ -2928,7 +2928,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
               source, such as a vterminology service. Note that in the example above the Gender and
               AgeGroup codes are using code lists from the <ulink
                 url="http://apps.who.int/gho/data/node.resources.api">WHO Global Health
-                Observatory</ulink>.</para>
+                Observatory</link>.</para>
           </listitem>
         </itemizedlist></para>
       <para>Note that this feature may be extremely useful, for example when producing disaggregated
@@ -4869,7 +4869,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <title>Writing and reading messages</title>
       <para>The resource we need to interact with when sending and reading messages is the <emphasis
           role="italic">messageConversations</emphasis> resource. We start by visiting the Web API
-        entry point at <ulink url="http://play.dhis2.org/demo/api"/> where we find and follow the
+        entry point at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api"/> where we find and follow the
         link to the <emphasis role="italic">messageConversations</emphasis> resource at <ulink
           url="http://play.dhis2.org/demo/api/messageConversations"/>. The description tells us that
         we can use a POST request to create a new message using the following XML format for sending
@@ -4913,7 +4913,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         identifier. We do so by going to the Web API entry point and follow the link to the
           <emphasis role="italic">users</emphasis> resource at <ulink
           url="http://play.dhis2.org/demo/api/users"/>. We continue by following link to the mobile
-        user at <ulink url="http://play.dhis2.org/demo/api/users/PhzytPW3g2J"/> where we learn that
+        user at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api/users/PhzytPW3g2J"/> where we learn that
         her identifier is <emphasis role="italic">PhzytPW3g2J</emphasis>. We are now ready to put
         our XML message together to form a message where we want to ask the mobile user whether she
         has reported data for January 2014:</para>
@@ -4977,7 +4977,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <para>From the response we are able to read the identifier of the newly sent message which is
           <emphasis role="italic">ZjHHSjyyeJ2</emphasis>. Note that the link to the specific
         resource is embedded and can be followed in order to read the full message. From the
-        description at <ulink url="http://play.dhis2.org/demo/api/messageConversations"/> we learned
+        description at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api/messageConversations"/> we learned
         that we can reply directly to an existing message conversation once we know the URL by
         including the message text as the request payload (body). We are now able to construct a URL
         for sending our reply:</para>
@@ -5126,7 +5126,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <title>Writing interpretations</title>
       <para>We will start by writing an interpretation for the chart with identifier <emphasis
           role="italic">EbRN2VIbPdV</emphasis>. To write chart interpretations we will interact with
-        the <ulink url="http://play.dhis2.org/demo/api/interpretations/chart/{chartId}"/> resource.
+        the <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api/interpretations/chart/{chartId}"/> resource.
         The interpretation will be the request body. Based on this we can put together the following
         request using cURL:</para>
       <screen>curl -d &quot;This chart shows a significant ANC 1-3 dropout&quot; 
@@ -5588,7 +5588,7 @@ Ext.onReady( function() {
           url="http://www.sencha.com/products/extjs"/>) with data served from a DHIS back-end into a
         Web page. To accomplish this we will use the DHIS Visualizer plug-in. The plug-in is written
         in Javascript and depends on the Ext JS library only. A complete working example can be
-        found at <ulink url="http://play.dhis2.org/portal/chart.html"/>. Open the page in a web
+        found at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/portal/chart.html"/>. Open the page in a web
         browser and view the source to see how it is set up.</para>
       <para>We start by having a look at what the complete html file could look like. This setup
         puts two charts in our web page. The first one is referring to an existing chart. The second
@@ -5907,7 +5907,7 @@ Ext.onReady( function() {
       <para>In this example we will see how we can embed maps with data served from a DHIS back-end
         into a Web page. To accomplish this we will use the GIS map plug-in. The plug-in is written
         in Javascript and depends on the Ext JS library only. A complete working example can be
-        found at <ulink url="http://play.dhis2.org/portal/map.html"/>. Open the page in a web
+        found at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/portal/map.html"/>. Open the page in a web
         browser and view the source to see how it is set up.</para>
       <para>We start by having a look at what the complete html file could look like. This setup
         puts two maps in our web page. The first one is referring to an existing map. The second is
@@ -5965,7 +5965,7 @@ Ext.onReady( function() {
       <para>Four files and Google Maps are included in the header section of the HTML document. The
         first two files are the Ext JS javascript library (we use the DHIS 2 content delivery
         network in this case) and its stylesheet. The third file is the OpenLayers javascript
-        mapping framework (<ulink url="http://openlayers.org"/>) and finally we include the GIS map
+        mapping framework (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://openlayers.org"/>) and finally we include the GIS map
         plug-in. Make sure the path is pointing to your DHIS server installation.</para>
       <screen>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://dhis2-cdn.org/v215/ext/resources/css/ext-plugin-gray.css&quot; /&gt;
 &lt;script src=&quot;http://dhis2-cdn.org/v215/ext/ext-all.js&quot;&gt;&lt;/script&gt;
@@ -11867,8 +11867,8 @@ interval=WEEK" -u admin:district</screen></para>
     <para>DHIS 2 from version 2.11 implements support for the current draft of the FRED API version
       1.0. The project defines itself as <quote>open standard for sharing and updating health
         facility data</quote>. The full specification, including representation format and basic
-      usage, can be found at <ulink url="http://facilityregistry.org/"
-        >http://facilityregistry.org/</ulink>.</para>
+      usage, can be found at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://facilityregistry.org/"
+        >http://facilityregistry.org/</link>.</para>
     <para>Since version 1.0 is not finalized there are parts of the current specification that has
       not been implemented as we found it not to be in a stable enough state. Most notably we do not
       currently support sorting (we do however sort on name by default) and filtering of

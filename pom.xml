@@ -83,7 +83,7 @@
 				<version>${docbkx.plugin.version}</version>
 				<configuration>
 					<xincludeSupported>true</xincludeSupported>
-								<bodyFontFamily>DejaVu Sans</bodyFontFamily>
+				<bodyFontFamily>DejaVu Sans</bodyFontFamily>
 			<fonts>
 				<font>
 					<name>DejaVu Sans</name>
@@ -360,7 +360,7 @@
 							</postProcess>
 						</configuration>
 					</execution>
-					<?ignore <execution>
+					<execution>
 						<id>pdf-docs-en-user</id>
 						<phase>package</phase>
 						<goals>
@@ -368,7 +368,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
+							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_user_manual_en.xml</includes>
@@ -379,7 +379,7 @@
 						</configuration>
 					</execution>
 					<!-- PDF Android docs-->
-					<execution>
+					<?ignore <execution>
 						<id>pdf-docs-en-android</id>
 						<phase>package</phase>
 						<goals>
@@ -463,7 +463,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
+							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> 
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_documentation_guide_book.xml</includes>
@@ -474,7 +474,7 @@
 						</configuration>
 					</execution>
 					<!-- PDF Developer docs-->
-					<execution>
+					 <execution>
 						<id>pdf-developer-guide</id>
 						<phase>package</phase>
 						<goals>
@@ -482,7 +482,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
+							 <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_developer_manual.xml</includes>

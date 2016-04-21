@@ -13,20 +13,20 @@
     <section> 
       <title> Raster images </title> 
       <para> matricielles peuvent être considérées comme des images telles que des images satellite. Les images peuvent être utilisées comme base pour les cartes, et de l'ohm peut les retirer à partir de n'importe conforme aux standards 
-      <ulink url="http://en.wikipedia.org/wiki/Web_Map_Service"> Web Map Service (WMS) </ulink>. Il est également un grand intérêt pour 
-      combiner l'installation d'un DHIS2 <ulink url="http://geoserver.org/display/GEOS/Welcome"> GeoServer instance</ulink>, 
+      <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://en.wikipedia.org/wiki/Web_Map_Service"> Web Map Service (WMS) </link>. Il est également un grand intérêt pour 
+      combiner l'installation d'un DHIS2 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://geoserver.org/display/GEOS/Welcome"> GeoServer instance</link>, 
       qui peut être téléchargé au format. guerre fichier et lancez dans le même conteneur de servlets (par exemple, Tomcat, Jetty, résine). GeoServer peut fournir 
       les deux couches de fond telles que les routes, lacs, etc ou encore afficher les données thématiques comme une alternative au navigateur-rendu 
       mode principal qui utilise> GeoJSON. </para> 
 </section> 
     <section> 
       <title> Vecteur de données </title> 
-      <para> Afin de créer des cartes thématiques (également connu sous le nom <ulink url="http://en.wikipedia.org/wiki/Choropleth_map"> choroplèthe </maps / ulink>) 
+      <para> Afin de créer des cartes thématiques (également connu sous le nom <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://en.wikipedia.org/wiki/Choropleth_map"> choroplèthe </maps / ulink>) 
     Nous avons besoin de polygones vecteur (par exemple pour les bassins versants installation ou régions administratives). En outre, les fichiers vectoriels sont nécessaires pour 
     points (par exemple l'emplacement des installations de santé ou même de différents services au sein d'un hôpital). Ces fichiers vectoriels compose d'une collection de (x, y) 
     coordonnées avec un certain nombre d'attributs associés (au moins un nom). Les données vectorielles peuvent venir dans un grand nombre de formats, tels que le GPS 
-    coordonnées pour les installations. Le plus commun est le <ulink url="http://en.wikipedia.org/wiki/Shapefile"> ESRI format shapefile </ulink>. 
-    Afin de rendre les cartes Web interactives, DHIS 2 utilise le javascript <ulink url="http://en.wikipedia.org/wiki/GeoJSON"> format GeoJSON </ulink>. </Para> 
+    coordonnées pour les installations. Le plus commun est le <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://en.wikipedia.org/wiki/Shapefile"> ESRI format shapefile </link>. 
+    Afin de rendre les cartes Web interactives, DHIS 2 utilise le javascript <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://en.wikipedia.org/wiki/GeoJSON"> format GeoJSON </link>. </Para> 
 </section> 
     <section> 
       <title> L'obtention de données / title> 
@@ -39,19 +39,19 @@
         superpositions, mais aussi l'installation des postes et les frontières administratives. Voici une liste des sources de ces données: </para> 
       <itemizedlist> 
         <listitem> 
-          <para> <ulink url="http://www.openstreetmap.org"> OpenStreetMap </ulink> </para> 
+          <para> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.openstreetmap.org"> OpenStreetMap </link> </para> 
         </Listitem> 
         <listitem> 
-          <para> <ulink url="http://www.openhealthconsortium.org/wiki/doku.php?id=layers_from_openstreetmap"> Manipulation de couches </ulink> </para> 
+          <para> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.openhealthconsortium.org/wiki/doku.php?id=layers_from_openstreetmap"> Manipulation de couches </link> </para> 
         </Listitem> 
         <listitem> 
-          <para> <ulink url="http://www.maplibrary.org/stacks/africa"> Maplibrary </ulink> </para> 
+          <para> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.maplibrary.org/stacks/africa"> Maplibrary </link> </para> 
         </Listitem> 
         <listitem> 
-           <para><ulink url="http://www.gadm.org/country"> Global régions administratives </ulink> </para> 
+           <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.gadm.org/country"> Global régions administratives </link> </para> 
         </Listitem> 
         <listitem> 
-          <para> <ulink url="http://www.unsalb.org"> organisations des Nations Unies, en particulier l'OMS et la FAO, ont administrative <frontières / ulink> </para> 
+          <para> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.unsalb.org"> organisations des Nations Unies, en particulier l'OMS et la FAO, ont administrative <frontières / ulink> </para> 
         </Listitem> 
       </Itemizedlist> 
 </section> 
@@ -61,7 +61,7 @@
         très répandue. Mais il est également fréquent d'obtenir des données dans des formats UTM [http://en.wikipedia.org/wiki/ 
         Universal_Transverse_Mercator_coordinate_system]. Par exemple, les données pour le Malawi est souvent distribué UTM 36S 
         projection, ce qui correspond à EPSG: 2736. La conversion peut se faire par être fait en utilisant soit GeoServer ou ogr2ogr 
-        qui fait partie de GDAL et est livré avec Ubuntu. Pour Windows, il s'inscrit dans le cadre de <ulink> url="http://www.bostongis.com/ PrinterFriendly.aspx?content_name=ogr_cheatsheet"> FW Outils </ulink>. Par exemple, la ligne suivante vous permet de convertir un shapefile 
+        qui fait partie de GDAL et est livré avec Ubuntu. Pour Windows, il s'inscrit dans le cadre de <ulink> url="http://www.bostongis.com/ PrinterFriendly.aspx?content_name=ogr_cheatsheet"> FW Outils </link>. Par exemple, la ligne suivante vous permet de convertir un shapefile 
         inputfile.shp appelé en UTM 36S projection d'un fichier GeoJSON en latitude / longitude: 
         <programlisting><userinput>s_srs ogr2ogr EPSG: 2736 a_srs EPSG: 4326-f "GeoJSON" inputfile.shp outputfile.json </userinput> </programlisting> 
       </Para> 
@@ -70,14 +70,14 @@
       <title> logiciel SIG pour afficher et manipuler des données cartographiques </title> 
       <para> Il ya beaucoup de puissants libre et open source de SIG paquets. Ceux-ci peuvent être proposés: </para> 
       <itemizedlist> 
-          <listitem> <para> <ulink url="http://www.qgis.org/"> Quantum GIS </ulink> </para> </listitem> 
-          <listitem> <para> <ulink url="http://www.openjump.org/"> openjump </ulink> </para> </listitem> 
-          <listitem> <para> <ulink url="http://udig.refractions.net/"> uDig </ulink>, qui fait également fonction de <ulink url = "http://udig.refractions.net/gallery / GCRAI / "> DIVA-GIS </ulink> </para> </listitem> 
-          <listitem> <para> <ulink url="http://www.gvsig.gva.es/eng/inicio-gvsig/"> gvSIG </ulink> </para> </listitem> 
+          <listitem> <para> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.qgis.org/"> Quantum GIS </link> </para> </listitem> 
+          <listitem> <para> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.openjump.org/"> openjump </link> </para> </listitem> 
+          <listitem> <para> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://udig.refractions.net/"> uDig </link>, qui fait également fonction de <ulink url = "http://udig.refractions.net/gallery / GCRAI / "> DIVA-GIS </link> </para> </listitem> 
+          <listitem> <para> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.gvsig.gva.es/eng/inicio-gvsig/"> gvSIG </link> </para> </listitem> 
         </Itemizedlist> 
         <para> Ces outils peuvent par exemple être utilisé pour fusionner les polygones limites du village en polygones de district (à condition que le quartier que chaque village appartient à est répertorié comme un attribut), et 
         on peut éditer des fichiers afin de refléter de nouvelles divisions ou de corriger les erreurs. 
-        Un autre outil pour travailler avec des données SIG est> <ulink url="http://postgis.refractions.net/"> PostGIS </ulink>, qui peut être utilisé sur elle-même ou en conjonction 
+        Un autre outil pour travailler avec des données SIG est> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://postgis.refractions.net/"> PostGIS </link>, qui peut être utilisé sur elle-même ou en conjonction 
           avec les applications ci-dessus. 
         </Para> 
 </section> 
@@ -95,7 +95,7 @@
       <title> production de fichiers avec GeoJSON> GeoServer </title> 
       <para> GeoServer est capable de produire des formats GeoJSON. Si vous avez 
       GeoServer courir quelque part, vous pouvez exécuter la requête suivante. </para> 
-      url <para> ulink <= "http://localhost:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=topp:states&outputformat=json&srs_name=EPSG:4326" > http://localhost:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=topp:states&outputformat=json&srs_name=EPSG:4326 </ulink> </para> 
+      url <para> ulink <= "http://localhost:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=topp:states&outputformat=json&srs_name=EPSG:4326" > http://localhost:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=topp:states&outputformat=json&srs_name=EPSG:4326 </link> </para> 
       <para> Prenez note que vous avez besoin de spécifier le système de coordonnées spatiales. Par défaut, GeoServer reviendra fichiers GeoJSON avec le format "long / lat», tandis que 
 le client s'attend à ce que la cartographie DHIS l'ordre des coordonnées "lat / long format". La déclaration explicite du système de référence spatiale fera en sorte que les coordonnées sont retournés dans le bon ordre. Au moment de la rédaction, le client cartographie DHIS ne supporte pas les systèmes de référence spatiale autre que EPSG 4326. Si vous utilisez GeoServer, l'application se chargera de la reprojection du format natif des données géographiques à EPSG 4326. Si vous utilisez d'autres méthodes décrites ci-dessous pour générer le fichier GeoJSON, vous devrez veiller à ce que la sortie est fixé à GeoJSON EPSG 4326 (géographique lat / long). </Para> 
       <para> Vous aurez besoin d'ajuster la destination d'accueil, si la machine n'est pas 
@@ -114,7 +114,7 @@ le client s'attend à ce que la cartographie DHIS l'ordre des coordonnées "lat / 
       <title> production de fichiers avec GeoJSON> GDAL </title> 
       <para> GDAL est une boîte à outils multi-plate-forme pour la manipulation de 
       données géographiques. Il est librement disponible pour un large éventail de plates-formes 
-      à url="http://gdal.org"> <ulink> http://gdal.org </ulink> </para> 
+      à url="http://gdal.org"> <ulink> http://gdal.org </link> </para> 
       <para> production de fichiers GeoJSON sont simples avec GDAL. Juste 
       execute (sur Windows) </para> 
       <programlisting> <userinput> ogr2ogr.exe-f "GeoJSON" src_datasource_name dst_datasource_name </userinput> </programlisting> 
