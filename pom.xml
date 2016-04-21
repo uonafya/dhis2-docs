@@ -19,6 +19,17 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
+		<pluginRepository>
+			<id>docbook-utils</id>
+			<name>DocBook Utils</name>
+			<url>http://docbook-utils.sourceforge.net/maven2</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+		</pluginRepository>
 	</pluginRepositories>
 	<properties>
 		<docbkx.plugin.version>2.0.16</docbkx.plugin.version>
@@ -349,8 +360,7 @@
 							</postProcess>
 						</configuration>
 					</execution>
-					<!-- PDF User docs-->
-					<execution>
+					<?ignore <execution>
 						<id>pdf-docs-en-user</id>
 						<phase>package</phase>
 						<goals>
@@ -358,7 +368,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
+							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_user_manual_en.xml</includes>
@@ -377,7 +387,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
+							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_android_user_man.xml</includes>
@@ -396,7 +406,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
+							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>ccei_user_manual_en.xml</includes>
@@ -415,7 +425,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
+							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_implementation_guide_en.xml</includes>
@@ -434,7 +444,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
+							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_end_user_manual.xml</includes>
@@ -453,7 +463,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
+							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_documentation_guide_book.xml</includes>
@@ -472,7 +482,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
+							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_developer_manual.xml</includes>
@@ -481,15 +491,23 @@
 								<copy file="target/docbkx/pdf/dhis2_developer_manual.pdf" tofile="${docbook.target}/en/developer/dhis2_developer_manual.pdf" />
 							</postProcess>
 						</configuration>
-					</execution>
+					</execution> ?>
 				</executions>
 				<dependencies>
 					<dependency>
-						<groupId>org.docbook</groupId>
+						<groupId>net.sf.docbook</groupId>
 						<artifactId>docbook-xml</artifactId>
-						<version>4.4</version>
+						<version>5.0-all</version>
+						<classifier>resources</classifier>
+						<type>zip</type>
 						<scope>runtime</scope>
 					</dependency>
+			<dependency>
+            <groupId>net.sf.offo</groupId>
+            <artifactId>fop-hyph</artifactId>
+            <version>1.2</version>
+            <scope>runtime</scope>
+          </dependency>
 				</dependencies>
 			</plugin>
 			<plugin>
