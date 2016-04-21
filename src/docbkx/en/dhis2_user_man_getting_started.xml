@@ -18,7 +18,7 @@
       <para>All changes on this server are deleted each night, so do not save any important work on this server. It is strictly for demonstration purposes on only!</para>
     </note>
   </section>
-  <section id="mod2_1">
+  <section xml:id="mod2_1">
     <title>Using the DHIS 2 live package</title>
     <section>
       <title>Starting the DHIS 2 Live package</title>
@@ -53,13 +53,13 @@ locate the string &apos;jdbc:h2:./database/dhis2&apos; and replace the &apos;dhi
       <para>The latest stable server version can be downloaded from this <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://stable.dhis2.org/">website</link>. For detailed information on how to install it please refer to the installation chapter in the implementation manual.</para>
     </section>
   </section>
-  <section id="mod2_2">
+  <section xml:id="mod2_2">
     <title>Logging on to DHIS 2</title>
     <para>Regardless of whether you have installed the server version of the
     desktop Live version, you will use a web-browser to log on to the
     application. DHIS2 should be compatible with most modern web-browsers,
     although you will need to ensure that Java Script is enabled.</para>
-    <para>To log on to the application just enter <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</link> if you
+    <para>To log on to the application just enter <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:8080/dhis">http://localhost:8080/dhis</link> if you
     are using the DHIS2 live package, or replace <varname>localhost</varname> with the name or IP
     address of the server where the server version is installed.</para>
     <para>Once you have started DHIS2, either on-line or off-line, the displayed
@@ -76,11 +76,11 @@ password. After entering the required information click on log-in button
     <para>If you want to create your own account (and the server administrator allows this), simply click &quot;Create an account&quot; and follow the directions provided. </para>
     <para>Once you have logged into DHIS2, refer to the specific sections in this manual for the different functionality which is available. </para>
   </section>
-  <section id="mod2_4">
+  <section xml:id="dhis_logging_out">
     <title>Logging out of DHIS 2</title>
     <para>Just click on the Profile and the click &quot;Log out&quot; the top-right corner of the DHIS2 menu. </para>
   </section>
-  <section id="database_design">
+  <section xml:id="database_design">
     <title>Quick intro to designing a DHIS 2 database</title>
     <para>DHIS 2 provides a powerful  set of tools for data collection, validation, reporting and analysis, but the contents of the database, e.g. what to collect, who should collect it and on what format will depend on the context of use. However, in order to do anything with DHIS 2, you must first create meta-data. Meta-data, or data about the data, describes what should be collected (data elements and categories), where it should be collected (organisation units) and how frequently it should be collected (periods).  This meta-data needs to be created in the DHIS 2 database before it can be used. This  can be done through the user interface and requires no programming or in-depth technical skills of the software, but does require a good understanding of the processes which you are trying to collect data form. </para>
     <para>This section will provide a very quick and brief introduction to DHIS 2 database design and mainly explain the various steps needed to prepare a new DHIS 2 system for use. How to do each step is explained in other chapters, and best practices on design choices will be explained in the implementers manual. Here are the steps to follow:</para>
