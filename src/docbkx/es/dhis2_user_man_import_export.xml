@@ -25,7 +25,7 @@ How to import data into DHIS2</para>
     <para>In a primary health system, the HMIS typically involves a distributed application, where the same application is running in different geographical locations (PHCs,CHCs, hospitals, districts, and state). Most of these physical locations do not have Internet connectivity, and hence they work offline. At some point (normally at the district level), the data needs to be synchronised in order to have a consolidated database for the a particular geographical region. For this, it is important to be able to export data from one location (which is working offline, say at the health facility  level) to another one say at the district level where the data would need to be imported. This feature of exporting and importing is thus a crucial function of a HMIS. This feature also helps us overcome the dependency on Internet to some degree, as data updates can be transferred via USB key where there is no connectivity, or through email where there is limited Internet connectivity. DHIS 2 provides robust export-import functionality to fulfil these needs.
 </para>
   </section>
-  <section id="export">
+  <section xml:id="export">
     <title>Exporting data</title>
     <para>In the case on on-line data entry, all data is saved into one database only. In an offline deployment, each deployment will have a separate database in their local system. So the data will be stored in their local database. In an offline deployment, after the data entry is finished, it will need to be manually sent to the next level of where the application is running. In an on-line application, however, that is not required, as all data is stored at a central location using the Internet.
 </para>
@@ -92,10 +92,10 @@ If there are no datasets defined for an organisation unit, it indicates that no 
       <para>Auctor natoque ve vulputate quam. Quam duis posuere risus felis mus class tempor eu sociosqu. Risus duis penatibus turpis, tristique dictum enim est. Quisque mi pulvinar ultrices, fusce diam porttitor mi hendrerit viverra, augue leo vestibulum rutrum. Ridiculus dictumst luctus. Eros.</para>
     </section>
   </section>
-  <section id="import">
+  <section xml:id="import">
     <title>Importing data</title>
     <para>The import option allows different instance of DHIS 2 to receive standardised set of data in the absence of a networked system. Typically, a data set is exported from one DHIS instance (e.g. a district level system) to another system (e.g. a provincial level system).  DHIS 2 is capable of importing data from other systems that either support the DXF of IXF formats. DHIS 2 is capable of importing data directly from a DHIS 1.4 Access database. Each of these options will be discussed in the following sections. </para>
-    <section id="import_another_instance">
+    <section xml:id="import_another_instance">
       <title>Importing data from another DHIS 2 instance</title>
       <para>Data can be imported into different instances of DHIS 2 through the use of the DXF data exchange format. There are two screens that are used to import data, with default and advanced options. </para>
       <para>The default data import menu can be accessed by clicking the <guimenuitem>&quot;Import&quot;</guimenuitem> from the main <guimenuitem>Import-Export</guimenuitem> screen. </para>

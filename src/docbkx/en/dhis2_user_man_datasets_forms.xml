@@ -11,7 +11,7 @@
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
   <title>Data sets and data entry forms</title>
-  <section id="datasets">
+  <section xml:id="datasets">
     <title>Data sets</title>
     <para>All data entry in DHIS2 is organised through the use of data sets. You can add and edit
       data sets by selecting the Data Sets App. A data set is a collection of data elements grouped
@@ -108,7 +108,7 @@
     <para>Your data set will then be ready to be used within the Data Entry App for the org units
       that you have assigned and for periods according to your selected frequency (period
       type).</para>
-    <section id="dataSet">
+    <section xml:id="dataSet">
       <title>Data set management</title>
       <para>The data set management function allows you to create new data sets and manage existing
         ones. The dialog can be reached by choosing The Data Set App from the App menu along with the Data set option. A sample
@@ -233,7 +233,7 @@ Show details: Display some informative information about the data set, including
         these functions are supported in section forms. This function can be accessed by choosing
         selecting the dataset and choosing the &quot;View sections&quot; option from the context menu.</para>
     </section>
-    <section id="dataSetSection">
+    <section xml:id="dataSetSection">
       <title>Adding a new section form</title>
       <para>Section forms are separated automatically by data element category combinations, which produce a spreadsheet like data entry form for each section. </para>
       <para>When designing a section form the procedure is as follows:</para>
@@ -288,7 +288,7 @@ Show details: Display some informative information about the data set, including
         </mediaobject>
       </screenshot>
     </section>
-    <section id="customDataEntryForm">
+    <section xml:id="customDataEntryForm">
       <title>Custom Forms</title>
       <para>When the form you want to design is to complicated for the default or section forms then your last option is to use a custom form. This takes more time, but gives you full flexibility in term of the design. DHIS2 uses a built-in HTML editor (FcK Editor) for the form designer and you can either design the form in the UI or paste in your HTML directly (using the Source window in the editor). A complete reference for use of the editor can be found <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docs.cksource.com/CKEditor_3.x/Users_Guide">here</link>.</para>
       <para>One of the big advantages of custom forms, is that they can be created to mimic existing paper aggregation forms. This makes data entry much easier for users, and should reduce the number of data elements which are incorrectly entered, as they are more easily identifiable when entering data from a paper form. </para>
@@ -420,7 +420,7 @@ dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
         where you let the javascript code take action based on which data set is currently
         loaded.</para>
     </section>
-    <section id="dataSetAssignmentEditor">
+    <section xml:id="dataSetAssignmentEditor">
       <title>Data set assignment editor</title>
       <para>The data set assignment editor is a tool for adding and removing many data sets to organisation units in batch style. Start by selecting an organisation unit from the selection tree. In the area below the tree a grid will be displayed showing all data sets as columns and the child organisation units as rows.</para>
       <para>From the grid you can now assign or unassign data sets simply by clicking on of the corresponding icons in the grid. If you want to assign or unassign an organisation unit to all data sets you can check or uncheck the checkbox next to the organisation unit. Your changes will automatically be saved.</para>

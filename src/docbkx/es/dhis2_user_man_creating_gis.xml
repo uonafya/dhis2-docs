@@ -14,7 +14,7 @@
         <para>The only co-ordinate reference system supported by DHIS2 is EPSG:4326, also known as geographic longitude/latitude. Coordinates must be stored with the longitude (east/west position) proceeding the latitude (north/south position). If your vector data is in a different CRS than EPSG 4326, you will need to reproject the data first before importing into DHIS2. </para>
       </important></para>
   </section>
-  <section id="gisSetup">
+  <section xml:id="gisSetup">
     <title>Importing coordinates</title>
     <para>Step 1 - Simplify/generalize your geographical data</para>
     <para>The boundaries in geographical data files are usually very accurate, too much so for the needs of a web-based GIS. This usually does not affect the performance when using GIS files on a a local system, but it is usually necessary to optimize the geographical data for the web-based GIS system of DHIS2. All geographical data needs to be downloaded from the server and rendered in a browser, so if the data is overly complex, the performance of the DHIS2 GIS will be negatively impacted. This optimization process can be described as follows:</para>

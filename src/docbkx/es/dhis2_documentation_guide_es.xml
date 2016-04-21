@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<chapter id="doc_guide_chapter">
+<chapter xml:id="doc_guide_chapter">
   <title>Guía para la Documentación de DHIS2</title>
-  <section id="docs_1">
+  <section xml:id="docs_1">
     <title>Una panorámica del sistema de documentación de DHIS 2</title>
     <para remap="">DHIS2 es un sistema web de gestión de información agregada que está en continuo desarrollo. Dada la naturaleza modular del sistema, su distribución y foco en los usuarios, su naturaleza global de desarrollo, es presico un sistema de documentación integral. Previamente ya se ha considerado una discusión profunda sobre la necesidad de documentar DHIS2. <citation>Store2007</citation>  <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.docbook.org">DocBook</link> es un sistema exhaustivo basado en XML para crear libros, artículos y otros documentos técnicos bajo el soporte de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href=" http://www.oasis-open.org/">OASIS</link> . </para>
   </section>
-  <section id="docs_2">
+  <section xml:id="docs_2">
     <title>Introducción</title>
     <para>Una de las principales ventajas de DocBook es que hay una separación total entre el contenido y la presentación. DocBook es un formato puro XML, y está bastante documentado. En realidad con solo un pequeño conjunto de sus funcionalidades se podría lograr mucho mayor calidad de documentación para DHIS. Hay cerca de 400 elementos de marcado distintos que cubren prácticamente todos los niveles de necesidades en la documentación técnica, pero en realidad, con unas pocas docenas de estos elementos se puede lograr una buena calidad de documentación en DHIS2, tanto para formatos impresos como para formatos digitales como HTML o sistemas integrados de ayuda en la propia aplicación. Entonces, hay un amplio margen de posibilidades en términos de qué editor se puede usar para crear ficheros DocBook. <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://wiki.docbook.org/topic/DocBookAuthoringTools">Aquí</link> hay una lista muy completa de posibilidades. Actualmente recomendamos utilizar <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.syntext.com/products/serna-free/ ">Syntext Serna Free</link> para editar los ficheros fuente de DocBook con un editor amigable WYSIWYG. En principio, cualquier programa de edición de texto o XML también es capaz de manejar y crear ficheros para DocBook. </para>
     <note>
@@ -15,12 +15,12 @@
     <para>Uno de los conceptos clave a tener en mente al escribir documentación en DocBook, o en otros formatos neutrales de presentación, es que el  <emphasis role="bold">contenido</emphasis> del documento debería ser lo prioritario. La <emphasis role="bold">presentación</emphasis> del documento se realizará en una fase separada, donde se renderiza a diferentes formatos como HTML o PDF. Por tanto, es importante que el documento esté organizado y estructurado, con las etiquetas apropiadas de DocBook y los elementos estructurales necesarios.</para>
     <para>Es bueno practicar dividiendo el docmento en varias secciones utando el elemento &quot;section&quot;. Los elementos de sección pueden anidarse, como &quot;Sección 1&quot; y &quot;Sección 2&quot;. Este concepto es esencialmente el mismo que utilizan <productname>Microsoft Word</productname> u otros programas de procesado de textos. DocBook automáticamente anota los números de sección por nosotros al momento de generar el documento. Otros dos elementos importantes son las listas guionizadas (&quot;itemizedlist&quot;) y las listas numeradas (&quot;numberedlist&quot;). Otros elementos clave son la captura de pantalla (&quot;screenshot&quot;) y las tablas (&quot;table&quot;).</para>
   </section>
-  <section id="docs_3">
+  <section xml:id="docs_3">
     <title>Primeros pasos con Launchpad</title>
     <para>Actualmente el sistema de documentación es parte del código fuente alojado en <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://launchpad.net/">Launchpad</link>. Launchpad es una plataforma colaborativa que permite que muchas personas trabajen en proyectos software de forma colaborativa. Para que esto sea posible es necesario un sistema de control de versiones que maneje todos los cambios realizados por múltiples usuarios. Launchpad utiliza el sistema de control de fuentes llamado <emphasis>Bazaar</emphasis>. Aunque se sale del alcance de este documento describir las características de <emphasis>Bazaar</emphasis>, los usuarios que deseen crear documentación necesitarán al menos cierta comprensión de cómo funciona el sistema. En la siguiente sección se detalla una guía breve al respecto.</para>
     <para> Para comenzar añadiendo o editando la documentación, lo primero es sincronizar el código fuente. Si no disponemos aún de un identificador para loguearnos en Launchpad, necesitaremos obtener uno. Esto podemos hacerlo <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://launchpad.net/+login">aquí</link>. Una vez nos hemos registrado en Launchpad, podemos solicitar acceso al archivo de documentadores de DHIS <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://code.launchpad.net/~dhis2-documenters/dhis2/dhis2-docbook-docs">aquí</link>. La solicitud deberá esperar a ser aprobada por el grupo de administradores. Cuando nos hayan concedido acceso al grupo, podemos subir los cambios al archivo de documentación y enviar y recibir emails de la lista de correo del grupo. </para>
   </section>
-  <section id="docs_4">
+  <section xml:id="docs_4">
     <title>Obtención de la fuente de documentos</title>
     <para>Para poder editar la documentación, necesitaremos descargar las páginas fuente de la documentación en nuestra computadora local. Launchpad utiliza un sistema de control de versiones conocido como bzr, <emphasis>Bazaar</emphasis>. Hay diferentes formas de instalar Bazaar en nuestro sistema, dependiendo del sistema operativo que estemos utilizando. Una buena guía por pasos para sistemas operativos <productname>Microsoft</productname> se puede encontrar <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://wiki.showmedo.com/index.php/Using_Launchpad_and_Bazaar#Steps_to_download_a_project_on_Launchpad_that_uses_Bazaar_with_only_one_branch">aquí</link> y para <productname>MacOSX</productname> <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://wiki.bazaar.canonical.com/MacOSXBundle">aquí</link>. Los usuarios de Linux podrán instalar bzr en su sistema mediante el gestor de instalación de paquetes, o desde el código fuente.</para>
     <para>Cuando tenemos instalado bzr en el sistema, necesitaremos descargar la fuente de documentación. Simplemente seguiremos este procedimiento:</para>
@@ -40,7 +40,7 @@
       </listitem>
     </orderedlist>
   </section>
-  <section id="docs_5">
+  <section xml:id="docs_5">
     <title>Editando la documentación</title>
     <para>Cuando hayamos descargado los fuentes, deberemos tener un montón de carpetas dentro del directorio <filename>dhis2-docbook-docs</filename>. Todos los documentos fuente deberían estar ubicados en la carpeta<filename>dhis2-docbook-docs/src/docbkx/XX</filename>. Notemos aquí que <filename>XX</filename> representa la pareja de letras de codificación de idioma ISO 639-1. Entonces, para elaborar la documentación en idioma inglés, nos ubicaremos en la carpeta <filename>/dhis2-docbook-docs/src/docbkx/en/</filename>, mientras que para elaborar la documentación en español trabajaremos siempre en la carpeta <filename>/dhis2-docbook-docs/src/docbkx/es/</filename>. Ubicaremos los ficheros imagen deseados para enlazarlos en nuestros documentos en la carpeta <filename>/dhis2-docbook-docs/src/docbkx/XX/resources/images</filename> y los enlazaremos desde el documento DocBoo utilizando un enlace relativo al fichero. Cuando la documentación ya se ha generado, en otra fase, las imágenes se copiarán al directorio correspondiente.</para>
   </section>
@@ -49,7 +49,7 @@
     <para>DHIS2 tiene un rico conjunto de literatura académica que puede servir como recursos de valor incalculable durante las implementaciones, propuestas de proyectos y como lectura más detallada que el manual de usuario. Hemos añadido una bibliografía especializada al código fuente de la aplicación. <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.bibtex.org">BibTeX</link> es un lenguaje especializado y ampliamente usado en el mundo académico para manejar bases de datos bibliográficas. Gran número de herramientas libres y de código abierto son capaces de trabajar con Bibtex. Actualmente, recomendamos utilizar <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://jabref.sourceforge.net/">JabRef</link> para manejar la bibliografía de DHIS2.</para>
     <para>Para comenzar con la bibliografía, descargaremos una copia de JabRef y abriremos el fichero<filename>/src/bibliography/dhis2_bibliography.bib</filename>. Podemos añadir ahí las referencias nuevas, y exportamos de vuelta la bibliografía al fichero<filename>/src/docbkx/en/dhis2_bibliography.xml</filename>, utilizando el formato de exportación DocBook 4.4. La bibliografía actualizada será incluida automáticamente en la documentación tras subir ("commit") nuestros cambios.</para>
   </section>
-  <section id="docs_6">
+  <section xml:id="docs_6">
     <title>Manejando imágenes</title>
     <para>Las capturas de pantalla son imágenes muy útiles para dar instrucciones a los usuarios sobre cómo llevar a cabo acciones concretas. DocBook no tiene mecanismos intrínsecos para saber exactamente cómo se debe renderizar una imagen en el documento final. Por eso es necesario dar ese detalle mediante atributos de elementos. El fragmento de código XML muestra cómo podemos especificar que una imagen ocupe el 80% de la anchura de página. Para capturas de pantalla en formato horizontal, esta cantidad parece apropiada. Tal vez queramos experimentar un poco para obtener el ancho más adecuado para nuestras imágenes. Una alternativa es editar la resolución de la imagen, para obtener un tamaño adecuado al renderizar. </para>
     <programlisting>&lt;screenshot&gt;
@@ -62,12 +62,12 @@
 &lt;/screenshot&gt;</programlisting>
     <para>Para otras imágenes pueden precisarse valores distintos dependiendo de su tamaño. Si no tenemos una anchura específica para las imágenes y el tamaño real es mayor que el ancho de pantalla, la imagen puede desbordar algunos tipos de documento con anchura fija, como los PDF.</para>
   </section>
-  <section id="docs_7">
+  <section xml:id="docs_7">
     <title>Cómo enlazar documentos</title>
     <para>DocBook tiene un entorno modular donde es posible enlazar muchos documentos distintos en un mismo documento master. Los fragmentos de esos documentos deberían montare en forma de artículo o capítulo. Los capítulos son partes esenciales de un libro, de modo que se pueden enlazar de nuevo en un documento mayor con facilidad. Los artículos son generalmente documentos independientes, pero también pueden combinarse en un documento mayor que los contenga.</para>
     <para>Si queremos enlazar muchos artículos en un libro, DocBook ofrece un mecanismo para asignar un identificador a cada sección. En el ejemplo siguiente, cada sección tiene asignado un identificador ("id"). Este identificador debe ser único en todo el documento. </para>
     <para>
-<programlisting>  &lt;section id=&quot;mod2_1&quot;&gt;
+<programlisting>  &lt;section xml:id=&quot;mod2_1&quot;&gt;
 &lt;title&gt;Getting started with DHIS2&lt;/title&gt; ....</programlisting> </para>
     <para>In order to include an article into a book, an Xinclude statement must be used. The
 following example shows how. </para>
@@ -85,11 +85,11 @@ mod1.xml&quot; encoding=&quot;UTF-8&quot;/&gt; </programlisting>
 </para>
     <para>En este caso no hay necesidad de referenciar explícitamente una parte del documento, a menos que solo queramos incluir una parte del capítulo. Si queremos utilizar una sección del capítulo, podemos asignar un "id" a esa sección, y luego referenciarla mediante un "xpointer". </para>
   </section>
-  <section id="docs_8">
+  <section xml:id="docs_8">
     <title>Manejando documentación en varios idiomas</title>
     <para>La estructura del directorio de documentación ha sido creada para facilitar la generación de documentos en cualquier idioma. Si queremos crear un nuevo conjunto de documentos en un determinado idioma, simplemente crearemos un nuevo directorio en la carpeta <filename>dhis2-docbook-docs/src/docbkx/</filename> y lo llamaremos "XX" reemplazando las x por el código de idioma. Deberemos asegurarnos de utilizar un código ISO 639-1 para el idioma en el que escribiremos los documentos. Hay una lista completa de estos códigos <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://en.wikipedia.org/wiki/ISO_639-1">aquí</link>. Añadiremos una nueva subcarpeta para las imágenes. Deberemos también generar una copia del fichero pom.xml en el directorio <filename>dhis2-docbook-docs</filename>, y lo nombraremos XX-pom.xml y adaptaremos a nuestro árbol nuevo de directorios (ver los ficheros pom.xml y es-pom.xml como ejemplo). Si no estás seguro de cómo hacer los cambios necesarios en este fichero, pregunta en la lista de correo primero, ya que estos ficheros pom controlan la generación de toda la documentación.</para>
   </section>
-  <section id="docs_9">
+  <section xml:id="docs_9">
     <title>Cómo generar la documentación</title>
     <para>Una de las ventajas cruciales del formato DocBook es que la documentación fuente puede transformarse en gran variedad de formatos como HTML, HTML truncado, XHTML, PDF, y muchos otros. Hay variedad de herramientas capaces de realizar esta transformación. Básicamente las páginas XML fuente se transforman utilizando las páginas de estilo XSL de DocBook en el formato deseado. No hemos incluido aquí la lista completa de herramientas capaces de transformar DocBook, pero a continuación damos algunos ejemplos.</para>
     <para>Las últimas generaciones de documentación están disponibles en <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.dhis2.org/documentation">el sitio web de DHIS2</link>. La últimas versiones están disponibles mediante el servidor de integración continua ubicado <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://apps.dhis2.org/ci/job/dhis-documentation/lastSuccessfulBuild/artifact/*zip*/archive.zip">aquí</link>.</para>
@@ -102,7 +102,7 @@ mod1.xml&quot; encoding=&quot;UTF-8&quot;/&gt; </programlisting>
       <para><command>xmlto</command> es una utilidad disponible en plataformas Linux para convertir documentos de DocBook en diversos formatos. Es posible encontrar más información sobre este paquete <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://cyberelk.net/tim/software/xmlto/">aquí</link>. Si por alguna razón no queremos utilizar Apache Maven, podremos instalar <command>xmlto</command> mediante el gestor de paquetes. Después de instalar <command>xmlto</command> bastará con ejecutar <command>xmlto <parameter>html</parameter><parameter>file_to_transform</parameter></command> donde el parámetro <parameter>file_to_transform</parameter> es el nombre del fichero que deseamos convertir. Hay otros formatos disponibles como PDF, PS, Java Help y otros. </para>
     </section>
   </section>
-  <section id="docs_10">
+  <section xml:id="docs_10">
     <title>Cómo subir los cambios a Launchpad</title>
     <para>Una vez hemos terminado de editar los documentos, deberemos subir los cambios a Launchpad mediante la acción "commit". Abrimos un terminal y navegamos a la carpeta donde tenemos la documentación. Si hemos añadido nuevos ficheros o carpetas en el repositorio local, necesitaremos añadirlos al árbol de fuente con el comando <command>bzr add</command> seguido de la ruta al fichero o carpeta añadido. Después de añadir todos los ficheros, deberemos actualizar el repositorio local para asegurarnos de que no hay conflictos utilizando en comando <command> bzr update</command></para>
     <para>Si hay conflictos, Bazaar nos notificará esto. Los conflictos se pueden listar usando el comando <command>bzr conflicts</command>. Si hay conflictos en un fichero, Bazaar creará tres versiones de ese fichero

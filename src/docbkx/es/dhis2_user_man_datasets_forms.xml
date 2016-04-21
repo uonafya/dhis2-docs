@@ -2,13 +2,13 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "docbookV4.5/docbookx.dtd" []>
 <chapter>
   <title>Sets de datos y formularios de entrada de datos</title>
-  <section id="datasets">
+  <section xml:id="datasets">
     <title>Sets de datos</title>
     <para>All data entry in DHIS2 is organised through the use of datasets. You can add and edit datasets in Maintenance-&gt;Datasets. A dataset is a collection of data elements grouped together for data collection and data export between instances of DHIS2 (e.g. from a district office local installation to a national server). .</para>
     <para>A dataset also has a frequency which controls the data collection frequency, which can be daily, weekly, monthly, quarterly, six-monthly, or yearly. Both which data elements to include in the dataset and the frequency is set in the Add/Edit Dataset window, together with a name, short name, and code. In order to use a dataset to collect data for a specific orgunit you must assign the orgunit to the dataset, and this mechanism controls which orgunits that can use which datasets. </para>
     <para>Datasets also are assigned to specific organisation units which will be allowed to enter data for all data elements in a given dataset. You can assign orgunits to a dataset in the Dataset Management (list of available datasets are shown) by clicking on the blue folder icon, the first icon under Operations, corresponding to the dataset you would like to modify. Alternatively you can manage orgunit assignments for all datasets together in the Dataset Assignment Editor (available in the right-side menu for Datasets). </para>
     <para>Your dataset will then be ready to be used in Services-&gt;Data Entry for the orgunits that you have assigned and for periods according to your selected frequency (period type).</para>
-    <section id="dataSet">
+    <section xml:id="dataSet">
       <title>Gestión de sets de datos</title>
       <para>The dataset management function allows you to create new datasets and manage existing ones. The dialog can be reached by choosing Maintenance-&gt;Datasets-&gt;Dataset. A sample dialog is displayed below.</para>
       <screenshot>
@@ -61,7 +61,7 @@
       <title>Section forms</title>
       <para>Section forms allow for a bit more flexibility when it comes to using tabular forms and are quick and simple to design.    Often your data entry form will need multiple tables with subheadings, and sometimes you need to disable (grey out) a few fields in the table, both of these functions are supported in section forms. This function can be access by choosing Maintenance-&gt;Dataset Section. </para>
     </section>
-    <section id="dataSetSection">
+    <section xml:id="dataSetSection">
       <title>Adding a new section form</title>
       <para>Section forms are separated automatically by data element category combinations, which produce a spreadsheet like data entry form for each section. </para>
       <para>When designing a section form the procedure is as follows:</para>
@@ -101,7 +101,7 @@
         </mediaobject>
       </screenshot>
     </section>
-    <section id="customDataEntryForm">
+    <section xml:id="customDataEntryForm">
       <title>Custom Forms</title>
       <para>When the form you want to design is to complicated for the default or section forms then your last option is to use a custom form. This takes more time, but gives you full flexibility in term of the design. DHIS2 uses a built-in HTML editor (FcK Editor) for the form designer and you can either design the form in the UI or paste in your HTML directly (using the Source window in the editor). A complete reference for use of the editor can be found <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docs.cksource.com/CKEditor_3.x/Users_Guide">here</link>.</para>
       <para>One of the big advantages of custom forms, is that they can be created to mimic existing paper aggregation forms. This makes data entry much easier for users, and should reduce the number of data elements which are incorrectly entered, as they are more easily identifiable when entering data from a paper form. </para>
@@ -123,7 +123,7 @@
       <para>You can to intermediary saving by clicking on the Save button, and this will not close the window. It is recommended to save often to ensure you do not loose your work. </para>
       <para>When you are done or want to test your form in data entry click on &lt;Save and close&gt;.</para>
     </section>
-    <section id="dataSetAssignmentEditor">
+    <section xml:id="dataSetAssignmentEditor">
       <title>Data set assignment editor</title>
       <para>The data set assignment editor is a tool for adding and removing many data sets to organisation units in batch style. Start by selecting an organisation unit from the selection tree. In the area below the tree a grid will be displayed showing all data sets as columns and the child organisation units as rows.</para>
       <para>From the grid you can now assign or unassign data sets simply by clicking on of the corresponding icons in the grid. If you want to assign or unassign an organisation unit to all data sets you can check or uncheck the checkbox next to the organisation unit. Your changes will automatically be saved.</para>

@@ -39,7 +39,7 @@
       <para>Create, modify, view and delete data element categories. </para>
     </listitem>
   </itemizedlist>
-  <section id="dataElement">
+  <section xml:id="dataElement">
     <title>Data elements</title>
     <para><?inline true?>Data elements form the basis of DHIS2. Data elements define what is actually recorded in system, e.g. number of immunisations or number of cases of malaria. The actual creation and definition of the data elements themselves are far beyond the scope of this manual to describe, but it is assumed that an administrator will be provided with a list of standardised data elements for inclusion into the DHIS2 system. </para>
     <para>To access the data elements app, Apps- &gt; Data Elements / Indicators - &gt; Data Elements. </para>
@@ -233,7 +233,7 @@
       <para>This operation displays an in-line panel in the browser which displays all metadata about a given data element. You can left-click to quickly show the details of the data element. Also, you can rdataight-click the name of the data element and then select &quot;Show details&quot; from the context menu. </para>
     </section>
   </section>
-  <section id="dataElementGroup">
+  <section xml:id="dataElementGroup">
     <title>Data element groups</title>
     <para>Data element groups provide a mechanism for classifying related data elements into a common theme. For instance, two data elements &quot;Measles immunisation&quot; and  &quot;BCG Immunisation&quot; might be grouped together into a data element group &quot;Childhood immunisation&quot;. To access the data element group maintenance page, click Apps -&gt; Data elements / Indicators -&gt; Data Element Group.</para>
     <para>Similar to the &quot;Data element&quot; maintenance page, data elements groups can be searched with by entering a search string in the &quot;Search by name&quot; field. </para>
@@ -247,12 +247,12 @@
     </screenshot>
     <para>Fill in the &quot;Name&quot; field and then select all data elements that should belong to the group from the left panel. Click the &quot;-&gt;&quot; button to add the selected data elements to the data element group. Click the &quot;&lt;- Remove all&quot; button to remove all data elements from the group that have been selected in the right panel.  Finally, click the &quot;Save&quot; button to save changes, or the &quot;Cancel&quot; button to discard any changes. </para>
   </section>
-  <section id="dataElementGroupEditor">
+  <section xml:id="dataElementGroupEditor">
     <title>Data element group editor</title>
     <para>The data element group editor provides advanced functionality to the administrator to allow multiple data elements to be added or removed from a group. It is also possible to create new data element groups, rename existing groups, and delete groups entirely. To access the data element group editor, go to <guimenu>&quot;Maintenance -&gt; Data elements and Indicators -&gt; Data Element Group Editor&quot;</guimenu>. The following screen will appear.</para>
     <para>Data element groups area listed alphabetically in the leftmost panel. By clicking on a data element group, the current members of that group (data elements) are listed in the centre panel. Available data elements that can be added to the data element group appear are listed alphabetically in the rightmost panel. To remove an existing data element from the group, click the name of the data element in the centre panel, and then press the &quot;Move right&quot;  <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center"/> button. To add data elements to the group, select them from the leftmost panel, and click the &quot;Move left&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_left.png" align="center"/> button. Press the <guibutton>&quot;Update data element group member&quot;</guibutton> button to save your changes.</para>
   </section>
-  <section id="dataElementGroupSet">
+  <section xml:id="dataElementGroupSet">
     <title>Data element group sets</title>
     <para>Data element group sets allow multiple data element groups to be categorised into a set. Data element group sets are used during analysis and reporting to combine similar data element groups into a common theme. To access the data element group set maintenance module, choose &quot;Apps -&gt; Data elements /  Indicators -&gt; Data Element Group Set&quot;.  Similar to the other data element maintenance modules, new data element group sets can be added by pressing the &quot;+&quot;.  Other operations include Edit, Clone, Share, Delete and Show details, similar to data elements and data element groups as described in the previous sections.</para>
     <para>Existing data element group  set members can be edited by right-clicking the name  and selecting &quot;Edit&quot; from the context menu of the desired data element group set as seen below.</para>
@@ -263,7 +263,7 @@
     </mediaobject>
     <para>Available data element groups are displayed in the left panel. They can be moved into the selected data element group set by pressing the &quot;-&gt;&quot; button. Data element groups that are currently members of the data element group set are displayed in the right hand panel. They can be removed from the data element group set by clicking the desired data element group and pressing the &quot;&lt;-&quot; button.  Press the <guibutton>&quot;Save&quot;</guibutton> button to save any changes and the <guibutton>&quot;Cancel&quot;</guibutton> button to discard all changes. </para>
   </section>
-  <section id="dataElementCategory">
+  <section xml:id="dataElementCategory">
     <title>Categories</title>
     <para>Categories can be used to disaggregate data elements into individual atomic components. They can also be used to assign attributes to all data recorded in a specific dataset, such as &quot;Implementing partner&quot; and &quot;Funding agency.&quot; </para>
     <para> Data element categories are typically a concept, such as Gender, Age or  Disease Status. Data elements such as &quot;Number of cases of confirmed malaria&quot; are often broken into smaller component parts to determine, for instance, the number of confirmed malaria cases of particular age groups. As an example, three data element categories: Under 1, 1-5 and Over 5 could be created. They could be assigned as categories to the data element, which would then create in the data entry screens, three separate fields for this data element namely: </para>
@@ -308,7 +308,7 @@
     <para>A  category can have two types &quot;Disaggregation&quot; or &quot;Attribute&quot;. For disaggregation of data elements, you should select &quot;Disaggregation&quot;.  A dimension type of &quot;Attribute&quot; will allow the category to be used to assign a combination of categories to data recorded through a dataset.</para>
     <para>If the &quot;Use as data dimension&quot; box is ticked, the category will be available to the analytics as another dimension, in addition to the standard dimensions of &quot;Period&quot; and &quot;Organisation unit&quot;. </para>
   </section>
-  <section id="dataElementCategoryCombo">
+  <section xml:id="dataElementCategoryCombo">
     <title>Category combinations</title>
     <para>Category combinations allow multiple categories to be combined into a related set. As an example, a data element &quot;Number of new HIV infections&quot; might be disaggregated according to the following categories. </para>
     <itemizedlist>
@@ -368,7 +368,7 @@
         appear as a data dimension, while each donor appear as dimension items, ready for inclusion
         in reports.</para>
   </section>
-  <section id="translation">
+  <section xml:id="translation">
     <title>Translations of data elements and other objects</title>
     <para>DHIS 2 provides functionality for translations of database content like data elements, data element groups, indicators, indicator groups, validation rules and more.  These elements can be translated to any number of locales. A locale  represents a specific geographical, political, or cultural region. </para>
     <para>To add a translation click the Translate icon next to the element you would like to translate. Start by selecting the desired locale from the Locale select box. In the Translate screen, select your locale and enter values for the available element properties. The reference property values are shown on the right. These values are the values which have been entered in the regular add or update user interface for the current object.</para>

@@ -157,7 +157,7 @@
           <para>Schedule an automated person aggregation process, e.g. to run all pre-defined aggregation queries every midnight. </para>
         </listitem>
       </itemizedlist>
-      <section id="patient_attribute">
+      <section xml:id="patient_attribute">
         <title>Person attribute</title>
         <para>Create, modify and view person attributes. An attribute can be used to register extra private information for a person or information when that person enrolled into a certain program.</para>
         <para>From <emphasis role="italic">Maintenance</emphasis> menu, go to <emphasis role="italic">Persons and Programs</emphasis> option and click on it. Select <emphasis role="italic">Person Attribute</emphasis> option to create a new attribute for persons. </para>
@@ -182,7 +182,7 @@
           </listitem>
         </itemizedlist>
       </section>
-      <section id="patient_attribute_group">
+      <section xml:id="patient_attribute_group">
         <title>Person attribute group</title>
         <para>To access the person attribute group maintenance module, from <emphasis role="italic">Maintenance</emphasis> menu, go to <emphasis role="italic">Persons and Programs</emphasis> option and click on it. Select <emphasis role="italic">Person Attribute Group</emphasis> option to create a new an attribute group.</para>
         <para>To create a new attribute group, click the <emphasis role="italic">Add</emphasis> button into <emphasis role="italic">Person Attribute Group</emphasis> window to go to <emphasis role="italic">Add New Person Attribute Group</emphasis> window , click the <emphasis role="italic">Add new</emphasis> button. Fill in the <emphasis role="italic">Name</emphasis> and <emphasis role="italic">Description</emphasis> fields and then select attributes that should belong to the group from the left panel. </para>
@@ -190,7 +190,7 @@
         <para>Finally, click the <emphasis role="italic">Add</emphasis> button to save changes, or the <emphasis role="italic">Cancel</emphasis> button to discard any changes.The created attribute members will be displayed by the attribute groups into person registration form.</para>
         <para>To sort order of attribute groups for displaying  in person registration form, click <emphasis role="italic">Move up</emphasis> and <emphasis role="italic">Move down </emphasis>button next to <emphasis role="italic">Selected attributes</emphasis> section.</para>
       </section>
-      <section id="patient_identifier_type">
+      <section xml:id="patient_identifier_type">
         <title>Person identifier type</title>
         <para>To access the person identifier type maintenance module, from <emphasis role="italic">Maintenance</emphasis> menu, go to <emphasis role="italic">Persons and Programs</emphasis> option and click on it. Select <emphasis role="italic">Person Identifier Type</emphasis> option to create a new identifier type.</para>
         <para>To creating a new identifier type, click the <emphasis role="italic">Add</emphasis> button into <emphasis role="italic">Person Identifier Type Management </emphasis>window to go to <emphasis role="italic">Add New Person Identifier Type</emphasis> window.</para>
@@ -216,13 +216,13 @@
           </listitem>
         </itemizedlist>
       </section>
-      <section id="relationship_type">
+      <section xml:id="relationship_type">
         <title>Relationship type</title>
         <para>Relationship type section provides a mechanism for defining  relationship types and link persons through these relationship types by creating specific relationships.</para>
         <para>To access the relationship type maintenance module, from <emphasis role="italic">Maintenance</emphasis> menu, go to <emphasis role="italic">Persons and Programs</emphasis> option and click on it. Select <emphasis role="italic">Relationship Type</emphasis> option to create a new relationship type.</para>
         <para>To define a new relationship type, click <emphasis role="italic">Add</emphasis> button into <emphasis role="italic">Relationship Type Management </emphasis>window to go to <emphasis role="italic">Add new Relationship Type</emphasis> window.</para>
       </section>
-      <section id="program">
+      <section xml:id="program">
         <title>Program and Program stage</title>
         <para>The section provides a mechanism for defining health programmes and action for each stage  of the programme. </para>
         <section>
@@ -398,7 +398,7 @@ For example: the date in which a person enrolls to the system.</para>
           <para>To search program stages by scheduled days, click <emphasis role="italic">Sort by scheduled</emphasis> days button.</para>
         </section>
       </section>
-      <section id="patient_aggregation_query_builder">
+      <section xml:id="patient_aggregation_query_builder">
         <title>Aggregation query builder</title>
         <para>This is the core functionality for linking data between tracker module and aggregate management module by defining the linking/aggregating rules. The purpose  is to produce aggregated data / statistics based on the low-level case based data. It is based around flexible aggregation query definitions which maps the data elements used for case based data management to data elements used for aggregate data.</para>
         <para>This provides two functions - </para>
@@ -553,20 +553,20 @@ For example: the date in which a person enrolls to the system.</para>
           </orderedlist>
         </section>
       </section>
-      <section id="validation_criteria">
+      <section xml:id="validation_criteria">
         <title>Validation criteria</title>
         <para>Validation criteria section provides a mechanism for defining criteria for persons when enrolling a program.</para>
         <para>To access the validation criteria maintenance module, from <emphasis role="italic">Maintenance</emphasis> menu, go to <emphasis role="italic">Persons and Programs</emphasis> option and click on it. Select <emphasis role="italic">Validation Criteria</emphasis> option to create a new program.</para>
         <para>To create a new validation criterion, click the <emphasis role="italic">Add new</emphasis> button. Fill all fields with read asterisk, and click <emphasis role="italic">Add</emphasis> button.</para>
         <para>You can assign facilities to a validation criterion in the <emphasis role="italic">Validation Criteria Management </emphasis>(list of available validation criteria are shown) by clicking the blue folder icon, the first icon under Operations, corresponding to the validation criterion you would like to assign. Click the <emphasis role="italic">Move selected</emphasis> button to add the selected programs to the validation criterion. Click the <emphasis role="italic">Remove selected</emphasis> button to remove programs from the group that have been selected in the right panel. Finally, click the <emphasis role="italic">Save</emphasis> button to save changes, or the <emphasis role="italic">Cancel</emphasis> button to discard any change.</para>
       </section>
-      <section id="schedule_sending_message">
+      <section xml:id="schedule_sending_message">
         <title>Schedule automated message reminder</title>
         <para>This function is used for scheduling message reminders to be automatically sent to enrolled persons XX days before scheduled appointments and/or XX days after a missed visit. When the schedule is started, messages for each person are generated based on templates defined in each stage at midnight. On the time, the scheduled messages are sent.</para>
         <para>Click <emphasis role="italic">Execute</emphasis> button to generate and send each message for each  person at the time the button clicked.</para>
         <para>Message reminders  can be automatically scheduled to run on regular intervals. Click <emphasis role="italic">Start</emphasis> button will enable the scheduled job to run the task. Messages are generated based on templates defined in each stages at mid-night and sent at a pre-determined time  or can be run immediately by pressing <emphasis role="italic">Execute</emphasis> button.</para>
       </section>
-      <section id="scheduling_aggregation_query_builder">
+      <section xml:id="scheduling_aggregation_query_builder">
         <title>Schedule Automated Aggregation</title>
         <para>The aggregation query builder jobs can be automatically scheduled to run on regular intervals. Simply select  organisation unit group set aggregation level, and strategy to configure how the scheduled job should run. Click <emphasis role="italic">Start</emphasis> button will enable the scheduled job to run at mid-night or can be run immediately by pressing <emphasis role="italic">Execute</emphasis> button.<screenshot>
             <mediaobject>
@@ -623,7 +623,7 @@ For example: the date in which a person enrolls to the system.</para>
 </para>
         </listitem>
       </itemizedlist>
-      <section id="patient">
+      <section xml:id="patient">
         <title>Person registration</title>
         <para>The first step in the tracking is the registration of person/case in the application. In the registration process, the details - which are related to the personal information, identification, contract and location details &amp; health provider details, are entered in the application. In the registration itself, person is provided with the unique identification number. This number will be unique and will not match with the identification number of any person in the state jurisdiction. The issue of identification number will be the responsibility of facility where person is registered first time.</para>
         <warning>
@@ -843,7 +843,7 @@ The case update  is designed in the same manner so that services which are recei
       <section>
         <title>Tracking</title>
         <para>This function supports the work practices around tracking persons within a health program that have not shown up for a scheduled visit (stage), e.g. that are lost to follow-up. </para>
-        <section id="visit_schedule">
+        <section xml:id="visit_schedule">
           <title>Visit Schedule</title>
           <para>This will be used to provide the user at a facility or in an area with a list of upcoming visits to better plan for daily/weekly activities. This can also be used as quick navigation to the data entry screen when using the system as a live/real-time data entry system.
 </para>
@@ -860,7 +860,7 @@ The plan (expected visits for the upcoming period) will typically be a mix of re
             </mediaobject>
           </screenshot>
         </section>
-        <section id="program_tracking">
+        <section xml:id="program_tracking">
           <title>Program Tracking</title>
           <para>This function supports the work practices around tracking persons within a health program that have not shown up for a scheduled visit (stage), e.g. that are lost to follow-up.</para>
           <para>After selecting organisation unit on the left panel,  select a program in list. And click on List All Person button to load all over-due events of persons.</para>
@@ -884,7 +884,7 @@ The plan (expected visits for the upcoming period) will typically be a mix of re
       </section>
       <section>
         <title>Data entry</title>
-        <section id="multiple_individual_records">
+        <section xml:id="multiple_individual_records">
           <title>Multiple individual records</title>
           <para>The multiple individual records function is where individual data is manually registered in the DHIS database. A list events for each person who enrolled into the selected program after clicking a multi events with registration.</para>
           <para>To access the multiple individual records function, from the <emphasis role="italic">Services</emphasis> menu, go to the <emphasis role="italic">Individual Records</emphasis> option and click on it. Select <emphasis role="italic">Multiple individual records</emphasis> option on left menu to proceed.</para>
@@ -910,7 +910,7 @@ The plan (expected visits for the upcoming period) will typically be a mix of re
             </listitem>
           </orderedlist>
         </section>
-        <section id="single_event_with_registration">
+        <section xml:id="single_event_with_registration">
           <title>Single event with registration</title>
           <para>The data to register is defined by a single event with registration program. The functionality supports health providers to register person information and input data values for a program into one form.</para>
           <para>In order to register an event, from the <emphasis role="italic">Services</emphasis> option, go to the <emphasis role="italic">Individual Records</emphasis> option and click it. Then select <emphasis role="italic">Single event with registration</emphasis> option on left menu to proceed.</para>
@@ -933,7 +933,7 @@ The plan (expected visits for the upcoming period) will typically be a mix of re
             </listitem>
           </orderedlist>
         </section>
-        <section id="single_event_without_registration">
+        <section xml:id="single_event_without_registration">
           <title>Single event without registration</title>
           <para>The data to register is defined by a single event without registration program.</para>
           <para>To register an event, from the <emphasis role="italic">Services</emphasis> option, go to the <emphasis role="italic">Individual Records</emphasis> option and click it. Then select <emphasis role="italic">Single event without registration</emphasis> option on left menu to proceed.</para>
@@ -961,7 +961,7 @@ The plan (expected visits for the upcoming period) will typically be a mix of re
               <para><emphasis role="italic">Tabular report</emphasis>  - An interactive reporting tool for tracker-data using tabular presentation with dynamic filters for each person attribute and data element. </para>
             </listitem>
           </itemizedlist></para>
-        <section id="program_summary_report">
+        <section xml:id="program_summary_report">
           <title>Program summary</title>
           <para>The function provides a tool for   generating summary list of individual information with  color shown on program stages to identify status of receiving services in each stage.</para>
           <para>To access the program summary report, choose  <emphasis role="italic">Services</emphasis> -&gt; <emphasis role="italic">Individual Records</emphasis> &gt;  <emphasis role="italic">Program summary</emphasis>.</para>
@@ -1059,7 +1059,7 @@ The plan (expected visits for the upcoming period) will typically be a mix of re
           <para>To export the result to excel file, click <emphasis role="italic">Download</emphasis> button, select  XLS option.</para>
         </section>
       </section>
-      <section id="run_case_aggregation">
+      <section xml:id="run_case_aggregation">
         <title>Manual person aggregation</title>
         <para>The <emphasis role="italic">Manual person Aggregation</emphasis> module is used for aggregating individual data and import into aggregated data element. To open <emphasis>Manual person aggregation</emphasis> module, from the <emphasis role="italic">Services</emphasis> menu, go to the <emphasis role="italic">Individual Records</emphasis> option. Select <emphasis role="italic">Manual Person Aggregation</emphasis> option on left menu.  <emphasis>Manual person aggregation form</emphasis> is opened as below -</para>
         <screenshot>
