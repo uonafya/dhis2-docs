@@ -10,7 +10,8 @@
           <para>In order to tag  the source source code with new release. First temporarily add a dependency to
             dhis-web in the root pom.xml:<screen>&lt;module>dhis-web&lt;/module></screen>Use the mvn
             version plugin with:</para>
-          <screen>mvn versions:set</screen>
+          <screen>mvn versions:set
+mvn versions:commit</screen>
           <para>This will prompt you to enter the version. Remove the dhis-web dependency. Update
             application cache manifests in the various apps to new version. Commit the changes to
             trunk.</para>
