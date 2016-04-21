@@ -1,74 +1,198 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
-  <title>Using Data Visualizer</title>
+  <title>Using the Data
+    <?oxy_comment_start author="CPersson" timestamp="20160421T142956+0200" comment="Review all graphics before commit to master"?>Visualizer<?oxy_comment_end?>
+    app</title>
   <section id="dvIntro">
     <title>Data Visualizer overview</title>
-    <para>The data visualizer module enables users to easily create dynamic data analysis and visualizations through charts and data tables.  You can freely select content (like indicators, periods and organisation units) for your analysis. This module can be accessed by selecting Data Visualizer from the app menu. The image below shows the viewport of the module. For a quick start:</para>
-    <orderedlist>
-      <listitem>
-        <para> Look under the &quot;Data&quot; heading and select an indicator group from the list of groups. </para>
-      </listitem>
-      <listitem>
-        <para>Look under &quot;Available indicators&quot; and select a few indicators from the list by double-clicking on them.</para>
-      </listitem>
-      <listitem>
-        <para>Click &quot;Update&quot; in the top bar and see the chart unfold.</para>
-      </listitem>
-    </orderedlist>
-    <para>The data visualizer is designed firstly to be easy-to-use - you can simply select the indicators, data elements, periods and organisation units you want to include and click &quot;Update&quot; to get your visualization. Secondly it is designed  to be fast and work well over poor Internet connections - charts are generated in the web browser and very little data is transferred over the Internet.</para>
     <screenshot>
       <screeninfo>Data visualizer module displaying a column chart.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="100%" align="center" fileref="resources/images/visualizer/column_chart.png" format="PNG"/>
+          <imagedata width="100%" align="center"
+            fileref="resources/images/visualizer/column_chart.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
+    <para>With the
+      D<?oxy_comment_start author="CPersson" timestamp="20160421T133120+0200" comment="Which type of data? What&apos;s the difference to the Event Visualizer?"?>ata<?oxy_comment_end?>
+      Visualizer app, you can create dynamic data analysis and visualizations through charts and
+      <?oxy_comment_start author="CPersson" timestamp="20160421T135116+0200" comment="What is a data table in this context?"?>data
+      tables<?oxy_comment_end?>. You can freely select content, for example indicators, data
+      elements, periods and organisation units, for an analysis. The app works well over poor
+      Internet connections and generates charts in the web browser. Little data is transferred over
+      the Internet.</para>
   </section>
-  <section id="dvChartTypes">
-    <title>Selecting chart type</title>
-    <para>The visualizer module provides nine different chart types, each with different characteristics. You can select the type of your chart by clicking on one of the icons  in  top left bar titled &quot;Chart type&quot;.</para>
+  <section>
+    <title>Create a chart</title>
     <orderedlist>
       <listitem>
-        <para>Column chart: Chart which displays information as vertical rectangular columns with
-          lengths proportional to the values they represent. Useful e.g. for comparing performance
-          of different districts.</para>
+        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Data
+            Visualizer</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Stacked column chart: Chart with vertical rectangular columns where bars representing
-          multiple categories are stacked on top of each other. Useful e.g. for displaying trends or
-          sums of related data elements.</para>
+        <para>Select a chart type.</para>
       </listitem>
       <listitem>
-        <para>Bar chart: Same as column chart, only with horizontal bars.</para>
+        <para>In the menu to the left, select the
+          <?oxy_comment_start author="CPersson" timestamp="20160421T142756+0200" comment="Correct term = data dimension?"?>dimension<?oxy_comment_end?>
+          items you want to analyse, for
+          example<?oxy_comment_start author="CPersson" timestamp="20160421T140324+0200" comment="Do these terms cover all possible selections?"?>
+          data elements or indicators.<?oxy_comment_end?></para>
       </listitem>
       <listitem>
-        <para>Stacked bar chart: Same as stacked column chart, only with horizontal bars.</para>
+        <para>Click <emphasis role="bold">Layout</emphasis> and
+          <?oxy_comment_start author="CPersson" timestamp="20160421T143134+0200" comment="Is this correct for a chart?"?>arrange
+          the
+          <?oxy_comment_start author="CPersson" timestamp="20160421T142829+0200" comment="Correct term = data dimension item?
+Or data dimension?
+Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
+          .</para>
+        <para>You can keep the default selection if you want.</para>
       </listitem>
       <listitem>
-        <para>Line chart: Graph which displays information as a series of points connected by
-          straight lines. Also referred to as time series. Useful e.g. to visualize trends in
-          indicator data over multiple time periods.</para>
-      </listitem>
-      <listitem>
-        <para>Area chart: Chart which is based on line chart, with the space between the axis and the line filled with colors and the lines stacked on top of each other. Useful for comparing the trends of related indicators.</para>
-      </listitem>
-      <listitem>
-        <para>Pie chart: Circular chart divided into sectors (or slices). Useful e.g. to visualize
-          the proportion of data for individual data elements compared to the total sum of all data
-          elements in the chart.</para>
-      </listitem>
-      <listitem>
-        <para>Radar chart: Displaying multivariate data on axes starting from the same point. Also known as spider chart.</para>
-      </listitem>
-      <listitem>
-        <para>Speedometer Chart: Semi-circle chart which displays values out of 100%. Sometimes referred to as a gauge chart.   </para>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
       </listitem>
     </orderedlist>
   </section>
+  <section id="dvChartTypes">
+    <title>Select a chart type</title>
+    <para>The <emphasis role="bold">Data Visualizer</emphasis> app has nine different chart types,
+      each with different characteristics. To select a chart type:</para>
+    <orderedlist>
+      <listitem>
+        <para>In <emphasis role="bold">Chart type</emphasis>, click the chart type you need.</para>
+        <table frame="all">
+          <title>Chart types</title>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.03*"/>
+            <thead>
+              <row>
+                <entry>
+                  <para>Chart type</para>
+                </entry>
+                <entry>
+                  <para>Description</para>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>Column chart</para>
+                </entry>
+                <entry>
+                  <para>Displays information as vertical rectangular columns with lengths
+                    proportional to the values they represent.</para>
+                  <para>Useful
+                    <?oxy_comment_start author="CPersson" timestamp="20160421T141718+0200" comment="Revise wording."?>for
+                    for example<?oxy_comment_end?> comparing performance of different
+                    districts.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Stacked column chart</para>
+                </entry>
+                <entry>
+                  <para>Displays information as vertical rectangular columns, where bars
+                    representing multiple categories are stacked on top of each other.</para>
+                  <para>Useful
+                    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>for for
+                    example <?oxy_custom_end?>displaying trends or sums of related data
+                    elements.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Bar chart</para>
+                </entry>
+                <entry>
+                  <para>Same as column chart, only with horizontal bars.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Stacked bar chart</para>
+                </entry>
+                <entry>
+                  <para>Same as stacked column chart, only with horizontal bars.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Line chart</para>
+                </entry>
+                <entry>
+                  <para>Displays information as a series of points connected by straight lines. Also
+                    referred to as time series.</para>
+                  <para>Useful
+                    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>e.g<?oxy_custom_end?>.
+                    to visualize trends in indicator data over multiple time periods.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Area chart</para>
+                </entry>
+                <entry>
+                  <para>Is based on line chart, with the space between the axis and the line filled
+                    with colors and the lines stacked on top of each other.</para>
+                  <para>Useful for comparing the trends of related indicators.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Pie chart</para>
+                </entry>
+                <entry>
+                  <para>Circular chart divided into sectors (or slices).</para>
+                  <para>Useful
+                    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>e.g.<?oxy_custom_end?>
+                    to visualize the proportion of data for individual data elements compared to the
+                    total sum of all data elements in the chart.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Radar chart</para>
+                </entry>
+                <entry>
+                  <para>Displays
+                    <?oxy_comment_start author="CPersson" timestamp="20160421T142149+0200" comment="What does this mean?"?>multivariate<?oxy_comment_end?>
+                    data on axes starting from the same point. Also known as spider chart.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Speedometer chart</para>
+                </entry>
+                <entry>
+                  <para> Semi-circle chart which displays values out of 100 %. Also referred to as a
+                    gauge chart. </para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Select dimension items</title>
+    <para/>
+  </section>
+  <section>
+    <title>Modify chart layout</title>
+    <para/>
+  </section>
   <section id="dvSeriesCategoryFilter">
-    <title>Selecting series, category and filter</title>
+    <title>Select series, category and filter</title>
     <para>The series, category and filter can be defined by selecting the &quot;Layout&quot; option in the data visualizer app. </para>
     <para><screenshot>
         <mediaobject>
@@ -102,13 +226,13 @@
     <para>More formally this can be described as following:</para>
     <orderedlist>
       <listitem>
-        <para>Series: A series is a set of continuous, related elements (e.g. periods or data
+        <para>Series: A series is a set of continuous, related elements (for example periods or data
           elements) which you want to visualize in order to emphasize trends or relations in its
           data.</para>
       </listitem>
       <listitem>
-        <para>Categories: A category is a set of elements (e.g. indicators or organisation units)
-          for which you want to compare its data.</para>
+        <para>Categories: A category is a set of elements (for example indicators or organisation
+          units) for which you want to compare its data.</para>
       </listitem>
       <listitem>
         <para>Filter: Since most charts are two-dimensional, a filter must be used on the third dimension  in order to use only a single element for the chart to become meaningful.</para>
@@ -116,33 +240,37 @@
     </orderedlist>
   </section>
   <section>
-    <title>Selecting indicators and data elements</title>
+    <title>Change the display of your chart</title>
+    <para><emphasis role="bold">Options</emphasis></para>
+  </section>
+  <section>
+    <title>Select indicators and data elements</title>
     <para>The visualizer module can display any number of indicators and data elements in a chart and data table. Both indicators and data elements can be selected and appear together in the same chart, with their order of appearance the same as the order in which they are selected. You can select indicators by choosing Indicators from the &quot;Data&quot; header  and selecting an indicator group from the list of groups below it. This will make the indicators in the selected group appear in the list under &quot;Available indicators&quot; to the left. From that list you can double click on any indicator in order to select it, this will move it to the list under &quot;Selected indicators&quot;. Alternatively you can mark one or more indicators and click the single-arrow button. To select all indicators you simply click on the double-arrow button. To deselect indicators you can do correspondingly in the &quot;Selected indicators&quot; list.</para>
     <para>To select data elements choose Data Elements from the &quot;Data&quot; header. The same principle for selecting and deselecting indicators applies for data elements.</para>
   </section>
   <section>
-    <title>Selecting reporting rates</title>
+    <title>Select reporting rates</title>
     <para>The visualizer can display reporting rates in a chart, by itself or together with indicators and data elements. Reporting rates can be selected by choosing Reporting Rates from the &quot;Data&quot; header. Reporting rates are defined by data sets. It can be selected by double-clicking in the list of available data sets to the left.</para>
   </section>
   <section>
-    <title>Selecting fixed and relative periods</title>
+    <title>Select fixed and relative periods</title>
     <para>Click on the &quot;Periods&quot; header. For fixed periods, select a period type from the combo box. You can select any number of fixed periods from any period type. Below the fixed period you will find the relative period checkboxes and you may select as many as you like. The names should be fairly self-descriptive and they are relative to the current date, meaning that if the current month is March and you select &quot;Last month&quot;, the month of February will be included in the chart. You are also free to combine fixed periods and relative periods in the same chart. Overlapping periods will be filtered so that they only appear once.</para>
   </section>
   <section>
-    <title>Selecting organisation units</title>
+    <title>Select organisation units</title>
     <para>You can select which organisation units to include in the chart by clicking the
       &quot;Organisation units&quot; header. This section features three ways of selecting organisation units, which can be selected by clicking on the gear icon directly below the organisation units header. The default mode is called &quot;Organisation units&quot; and lets you select the organisation units you want to appear in the chart from the tree. This mode also features three checkboxes. Checking &quot;User org unit&quot; will disable the organisation unit tree and give you the organisation unit that is related to the current/logged in user instead. This is also useful for administrators as they can create a meaningful &quot;system&quot; favorite with this option checked and all users will find their respective organisation unit when they open it. The the same concept goes for &quot;User sub-units&quot; and &quot;User sub-x2-units&quot;. The second mode is called &quot;Select levels&quot;. Here you can select all organisation units at one or more levels. However, at the same time you also have the option to select parent organisation units in the tree, which makes it easy to select e.g. all facilities inside one or more districts. The same thing goes for the third mode called &quot;Select groups&quot;. Here you can select all organisation units inside one or more groups and parent organisation units at the same time.</para>
   </section>
   <section>
-    <title>Selecting organisation unit group sets and data element group sets</title>
+    <title>Select organisation unit group sets and data element group sets</title>
     <para>Dimension tabs listed below &quot;Organisation units&quot; are organisation unit group sets and data element group sets. You are free to add groups from any of these group sets to your chart. Remember to add the group set in either the series, category or filters combobox.</para>
   </section>
   <section>
-    <title>Selecting additional data dimensions</title>
+    <title>Select additional data dimensions</title>
     <para>Following the organisation unit group sets and data element group sets additional data dimensions which have been configured to be used in analysis are found. Here you can add dimensions such as age, sex, etc. without having to add them in as detailed data element selections. This is useful when you want to separate these categories in your analysis.  </para>
   </section>
   <section>
-    <title>Selecting chart options</title>
+    <title>Select chart options</title>
     <para>You can set various chart options by clicking on the &quot;Options&quot; button the chart toolbar.</para>
     <screenshot>
       <mediaobject>
@@ -212,62 +340,264 @@
     </itemizedlist>
   </section>
   <section id="dvDisplayChart">
-    <title>Displaying a chart</title>
+    <title>Display a chart</title>
     <para>You can display a chart based on your selections simply by clicking the &quot;Update&quot; button on the top centre menu. This requires that you have selected one or more elements from all of the three dimensions - data (indicators, data elements, reporting rates), periods (relative, fixed) and organisation units (units or groups). Note that &quot;Last 12 Months&quot; from the period dimension and the root organisation unit are selected by default.</para>
     <para>Notice that you can hide and show individual data series in the chart by clicking directly on the series label in the chart - they appear either at the top or to the right of the chart.</para>
     <para>If you want to give the chart more space on your screen you can click on the triple left-arrow button on the top centre menu. This will collapse the left side menu. You can get this menu back by clicking on the same button again.</para>
   </section>
   <section id="dvSaveChart">
-    <title>Downloading chart as image or PDF</title>
+    <title>Download chart as image or PDF</title>
     <para>After you have rendered a chart you can download it to your local computer as and image or pdf by clicking on &quot;Download&quot; on the top centre menu. The file will be automatically downloaded to your computer - for instance can you now embed the image file into a text document as part of a report. You can also download the data source behind the chart in json, xml, csv or Microsoft Excel format.</para>
     <para>For advanced users, two additional options are available under &quot;Advanced&quot;. JXRML will produce a template of a Jasper Report which can be further customized based on your exact needs and used as the basis for a standard report in DHIS2. The &quot;Raw data SQL&quot; will provide the actual SQL statement used to generate the data visualization. This could then be used as a data source in a Jasper report, or as the basis for an SQL view</para>
   </section>
   <section id="dvFavorites">
-    <title>Saving chart as favorite</title>
-    <para>Once you have rendered a chart you can save it as a favorite to able to access it easily at a later point. Click on the
-      &quot;Favorites&quot; button on the top menu to open up the favorites window. Click &quot;Add new&quot; and in the name field enter the desired name for your chart. The chart will be visible only to yourself. For every favorite in the list you have four options to the right. You can rename the chart (grey button), overwrite the chart (green button), modify the sharing settings of the chart (blue button) or delete the chart (red button).</para>
-    <para>These favorite charts can later be included on your personal dashboard. After saving you can navigate to the dashboard module, click on the &quot;Insert&quot; link over the chart areas and select your preferred chart.</para>
+    <title>Manage chart favorites</title>
     <screenshot>
       <screeninfo>Data visualizer module displaying a column chart.</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata width="100%" fileref="resources/images/visualizer/chart_favorites.png" format="PNG"/>
+          <imagedata width="50%" fileref="resources/images/visualizer/chart_favorites.png"
+            format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
-  </section>
-  <section id="dvInterpretations">
-    <title>Sharing interpretations</title>
-    <para>For certain analysis-related resources in DHIS, like pivot tables, charts and maps, one can
-      share a data interpretation. An interpretation is simply a link to the relevant resource
-      together with a text expressing some insight about the data. If you want to share a chart
-      interpretation you need to first save the chart you want to share as a favorite. Then, without
-      making any changes to the chart, click the &quot;Share&quot; button the toolbar. A window will
-      open up and this is where you write your interpretation. When you are done, click share button
-      in the bottom right corner of the window. The window will close automatically and if the
-      interpretation was shared successfully you will find a notification on the bottom
-      toolbar.</para>
+    <para>Saving your charts as favorites makes it easy to restore them later. It also gives you the
+      opportunity to share them with other users as an interpretation or put it on the dashboard. </para>
+    <section>
+      <title>Save a chart as a favorite </title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Add new</emphasis>.</para>
+          <para>The <emphasis role="bold">Create new favorite</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>In the text box, type the name you want to give your chart.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Create</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Open a favorite</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to open. You can either use <emphasis role="bold"
+              >Prev</emphasis> and <emphasis role="bold">Next</emphasis> or the search field to find
+            a saved favorite. The list is filtered on every character that you enter.</para>
+        </listitem>
+        <listitem>
+          <para>Click the name.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Rename a favorite</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to rename.</para>
+          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+              >Next</emphasis> or the search field to find a saved favorite. </para>
+        </listitem>
+        <listitem>
+          <para>Click the grey rename icon next to the favorite's name.</para>
+          <para>The <emphasis role="bold">Rename favorite</emphasis> dialog box favorite
+            opens.</para>
+        </listitem>
+        <listitem>
+          <para>Type the new name and click <emphasis role="bold">Update</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title><?oxy_comment_start author="Home" timestamp="20160412T140454+0200" comment="Revise title."?>Overwrite<?oxy_comment_end?>
+        a favorite</title>
+      <para>To save the current chart to an existing favorite (overwrite):</para>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to overwrite.</para>
+          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+              >Next</emphasis> or the search field to find a saved favorite. </para>
+        </listitem>
+        <listitem>
+          <para>Click the green overwrite icon next to the favorite's name.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to overwrite the
+            favorite.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section id="dvInterpretations">
+      <title>Share a chart interpretation</title>
+      <para role="">For
+        <?oxy_comment_start author="Home" timestamp="20160407T151353+0200" comment="Which ones?"?>certain<?oxy_comment_end?>
+        analysis-related resources in DHIS 2, you can share a data interpretation. An interpretation
+        is a link to the relevant resource together with a text expressing some insight about the
+        data. </para>
+      <para role="">To create an interpretation of a map and share it with all users of the
+        system:</para>
+      <orderedlist>
+        <listitem>
+          <para>Open or create a favorite chart.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Share</emphasis> > <emphasis role="bold">Write
+              interpretation</emphasis>.</para>
+          <para>The <emphasis role="bold">Write interpretation</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>In the text field, type a comment, question or interpretation.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Share</emphasis>.</para>
+          <para>The dialog box closes automatically. You can see the interpretation on the <emphasis
+              role="bold">Dashboard</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Modify sharing settings for a favorite</title>
+      <para>After you have created a chart and saved it as a favorite, you can share the favorite
+        with everyone or a user group. To modify the sharing settings:</para>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Find the favorite you want to share.</para>
+            <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+                >Next</emphasis> or the search field to find a saved favorite.</para>
+          </listitem>
+          <listitem>
+            <para> Click the blue share icon next to the favorite's name.</para>
+          </listitem>
+          <listitem>
+            <para>In the text box, enter the name of the user group you want to share your favorite
+              with and click the <emphasis role="bold">+</emphasis> icon.</para>
+            <para>The chosen user group is added to the list of recipients. </para>
+            <para>Repeat the step to add more user groups. </para>
+          </listitem>
+          <listitem>
+            <para>If you want to allow external access, select the corresponding box.</para>
+          </listitem>
+          <listitem>
+            <para>For each user group, choose an
+              <?oxy_comment_start author="Home" timestamp="20160407T150433+0200" comment="Correct term?"?>access
+              setting<?oxy_comment_end?>. The options are:</para>
+            <itemizedlist>
+              <listitem>
+                <para><?oxy_comment_start author="Home" timestamp="20160407T150510+0200" comment="Why is this option only available for Public access?"?>None<?oxy_comment_end?></para>
+              </listitem>
+              <listitem>
+                <para>Can view</para>
+              </listitem>
+              <listitem>
+                <para>Can edit and view</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>Click <emphasis role="bold">Save</emphasis>.</para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section>
+      <title>Delete a favorite</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to delete.</para>
+          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+              >Next</emphasis> or the search field to find a saved favorite. </para>
+        </listitem>
+        <listitem>
+          <para>Click the red delete icon next to the favorite's name.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to delete the
+            favorite.</para>
+        </listitem>
+      </orderedlist>
+    </section>
   </section>
   <section id="dvEmbed">
     <title>Embed charts in any web page</title>
-    <para>Certain analysis-related resources in DHIS, like pivot tables, charts and maps, can be embeded in any web page by using a plugin. If you have created a chart in the Data Visualizer you will get the plugin configuration for this chart by clicking the &quot;Share&quot; button the toolbar and then &quot;Embed as plugin&quot;. You will find more information about the plugins in the web api chapter.</para>
+    <para>Certain analysis-related resources in DHIS 2, like pivot tables, charts and maps, can be
+      embedded in any web page by using a plug-in. You will find more information about the plug-ins
+      in the Web API chapter in the <emphasis>DHIS2 Developer Manual</emphasis>.</para>
+    <para>To generate a HTML fragment that you can use to display the chart in an external web
+      page:</para>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Share</emphasis> > <emphasis role="bold">Embed in web
+              page</emphasis>.</para>
+          <para>The <emphasis role="bold">Embed in web page</emphasis> window opens.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Select</emphasis> to highlight the HTML fragment.</para>
+        </listitem>
+      </orderedlist>
+    </para>
   </section>
   <section>
-    <title>Analysis integration</title>
-    <para>The analysis apps in DHIS 2 are completely integrated, so you can easily switch
-   between pivot table, chart and map visualization of your data. When you have made a chart
-   you can click e.g. &quot;Map&quot; in the top right corner and then select &quot;Open this table as map&quot;.</para>
-    <screenshot>
-      <screeninfo>Analysis integration</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata align="center" scale="100" fileref="resources/images/visualizer/chart_integration.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-  </section>
-  <section>
-    <title>Exiting the data visualizer module</title>
-    <para>If you want to exit the module and go back to the DHIS start page you can click on the &quot;Home&quot; button to the right side of the top centre menu.</para>
+    <title>Visualize a chart as a pivot table or a map</title>
+    <para>When you have made a chart you can switch between pivot table, chart and map visualization
+      of your data.
+      <?oxy_comment_start author="CPersson" timestamp="20160421T155413+0200" comment="Verify with Jan."?>The
+      function is inactive if the data the chart is based on cannot render as a pivot table or
+      map.<?oxy_comment_end?></para>
+    <section>
+      <title>Open a chart as a pivot table</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart
+              as table</emphasis>.</para>
+          <para>Your current chart opens as a pivot table.</para>
+        </listitem>
+      </orderedlist>
+      <screenshot>
+        <screeninfo>Analysis
+          <?oxy_comment_start author="CPersson" timestamp="20160421T155736+0200" comment="Consider removing screen shot."?>integration<?oxy_comment_end?></screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata align="center" scale="100"
+              fileref="resources/images/visualizer/chart_integration.png" format="PNG"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </section>
+    <section>
+      <title>Open a chart as a map</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart
+              as map</emphasis>.</para>
+          <para>Your current chart opens as a map.</para>
+        </listitem>
+      </orderedlist>
+    </section>
   </section>
 </chapter>
