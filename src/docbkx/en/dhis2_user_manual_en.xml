@@ -11,9 +11,21 @@
       xmlns:ns2="http://www.w3.org/1998/Math/MathML"
       xmlns:ns="http://docbook.org/ns/docbook"
       xmlns:date="http://exslt.org/dates-and-times">
-  <title>DHIS 2 User Manual</title>
-  <xi:include  href="resources/bookinfo/bookinfo.xml" encoding="UTF-8"/>
-  <xi:include  href="dhis2_preface.xml" encoding="UTF-8"/>
+
+    <title>DHIS 2 User Manual</title>
+    <info>
+        <releaseinfo><?eval ${project.version}?></releaseinfo>
+      <copyright>
+        <year>2006-2016</year>
+        <holder>DHIS2 Documentation Team</holder>
+      </copyright>
+        <xi:include  href="./resources/bookinfo/copyright.xml" encoding="UTF-8"/>
+        <xi:include  href="./resources/bookinfo/authorgroup.xml" encoding="UTF-8"/>
+        <xi:include  href="./resources/bookinfo/legalnotice.xml" encoding="UTF-8"/>
+        <xi:include  href="../build.properties" encoding="UTF-8"/> 
+    </info>
+  <!-- <xi:include  href="resources/bookinfo/bookinfo.xml" encoding="UTF-8"/> -->
+  <!-- <xi:include  href="dhis2_preface.xml" encoding="UTF-8"/> -->
   <xi:include  href="dhis2_user_man_introduction.xml" encoding="UTF-8"/>
   <xi:include  href="dhis2_user_man_getting_started.xml" encoding="UTF-8"/>
   <xi:include  href="dhis2_user_man_data_dimensions.xml"/>

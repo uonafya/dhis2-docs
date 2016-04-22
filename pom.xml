@@ -54,7 +54,7 @@
 								<exec executable="git" outputproperty="revision" failifexecutionfails="false">
 									<arg line="rev-list --count HEAD"/>
 								</exec>
-								<echo file="${project.basedir}/src/docbkx/build.properties" message="&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;&lt;revhistory&gt;&lt;revision&gt;&lt;revnumber&gt;Revision  ${revision}&lt;/revnumber&gt;&lt;revremark&gt;Version ${project.version} ${now}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;" />
+								<echo file="${project.basedir}/src/docbkx/build.properties" message="&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;&lt;revhistory&gt;&lt;revision&gt;&lt;revnumber&gt;Revision  ${revision}&lt;/revnumber&gt;&lt;date&gt;${now}&lt;/date&gt;&lt;revremark&gt;Version ${project.version}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;" />
 							</tasks>
 						</configuration>
 						<goals>
@@ -137,7 +137,7 @@
 						</configuration>
 					</execution>
 					<!-- Chunked HTML Android docs-->
-					<execution>
+					<?ignore <execution>
 						<id>chunked-html-docs-android</id>
 						<phase>package</phase>
 						<goals>
@@ -359,8 +359,8 @@
 								<copy file="target/docbkx/html/dhis2_developer_manual.html" tofile="${docbook.target}/en/developer/html/dhis2_developer_manual_full.html" />
 							</postProcess>
 						</configuration>
-					</execution>
-					<?ignore <execution>
+					</execution> ?>
+					 <execution>
 						<id>pdf-docs-en-user</id>
 						<phase>package</phase>
 						<goals>
@@ -396,7 +396,7 @@
 								<copy file="target/docbkx/pdf/dhis2_android_user_man.pdf" todir="${docbook.target}/en/android" />
 							</postProcess>
 						</configuration>
-					</execution> ?>
+					</execution>
 					<!-- PDF CCEI User docs-->
 					<execution>
 						<id>pdf-docs-en-ccei-user</id>
@@ -406,7 +406,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
+							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> 
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>ccei_user_manual_en.xml</includes>
