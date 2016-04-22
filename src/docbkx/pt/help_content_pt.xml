@@ -51,7 +51,7 @@
 <para>É possível gerar o valor min-max, por cada elemento, usando o DHIS2. Nesse caso, você só precisa clicar no botão "Gerar-min max" perto do canto superior direito. Em caso de tela de entrada de dados padrão, os valores mínimo e máximo, quando gerados, vão aparecer no lado esquerdo e direito da caixa de entrada de dados. Se você desmarcar a tela de entrada de dados padrão, os valores gerados aparecerão no topo direito da tela.</para>
 </section>
 </section>
-<section id="validationRule">
+<section xml:id="validationRule">
 <title>Regra de Validação</title>
 <para>Este módulo permite a gestão das regras de validação. Uma regra de validação é baseada em uma expressão que define a relação entre um certo número de elementos de dados. A expressão tem um lado esquerdo e um lado direito e um operador que define se o primeiro deve ser menor do que, igual a ou maior do que o último. A expressão constitui uma condição que deve afirmar que certos critérios lógicos sejam atendidos. Por exemplo, uma regra de validação pode afirmar que o número total de vacinas dadas às crianças é inferior ou igual ao número total de lactentes.</para>
 <para>Para adicionar uma regra de validação, basta seguir estes passos:</para>
@@ -121,7 +121,7 @@
 <para>Uma regra de vigilância pode conter elementos de dados por períodos mais longos do que o período determinado pela regra. Isso é útil, por exemplo, se você quiser dividir o valor dum elemento de dados para a contagem da população, e a contagem da população é introduzida anualmente. Os dados para o tipo de período mais longo (por exemplo, contagem de população) devem ser introduzidos por um período que se sobrepõe com o início do período em avaliação. Por exemplo, se o período a ser avaliado é a semana a partir 06 de janeiro de 2014, a população anual deve ser inserida para o ano que contém 06 de janeiro de 2014. Se o elemento de dados é de um tipo de período mais longo do que o tipo de período de regra, ele deve ter um operador de agregação de média, não soma. Em outras palavras, somente os elementos de dados que não somam ao longo do tempo (como contagem de população) podem ser usados por períodos mais longos do que o período de regra.</para>
 <para>Para regras de vigilância, a opção <emphasis role="italic">saltar os valores em falta</emphasis> tem um significado adicional quando os dados estão sendo coletados e agregados a partir dos níveis mais baixos da hierarquia das unidades organicas. Quando essa opção é selecionada e os dados estão presentes em algunas unidades em um nível inferior, mas nem todas as unidades deste nível, a regra é ignorada.</para>
 </section>
-<section id="validationRuleGroup">
+<section xml:id="validationRuleGroup">
 <title>Grupo de Regras de Validação</title>
 <para>Um grupo de regras de validação fornece um mecanismo de classificação de regras de validação relacionadas. Uma outra vantagem de usar grupos de regras de validação é que mais tarde podem ser executadas separadamente, em vez de executar todas as regras de validação.</para>
 <para>Um grupo de regras de validação pode também ser usado para configurar o modo como os usuários recebem notificações de alertas das execuções de validação programadas. Para fazer isso, deve-se identificar um conjunto de regras de validação que se deseja avaliar regularmente, e um conjunto de usuários que devem receber notificações das eventuais excepções a estas regras. Depois:</para>
@@ -140,7 +140,7 @@
 </chapter>
 <chapter>
 <title>Entrada de Dados </title>
-<section id="dataEntry">
+<section xml:id="dataEntry">
 <title>Entrada de Dados usando DHIS 2</title>
 <para>Para abrir a tela de entrada de dados, posicione o cursor do rato na aba serviços no menu principal. Um menu suspenso aparecerá listando os serviços prestados pela DHIS 2. Clique na opção de entrada de dados.</para>
 <para>O módulo de entrada de dados é onde os dados são registados manualmente na base de dados do DHIS 2. Os dados são registrados para uma unidade organizacional, um período, e um conjunto de elementos de dados (conjunto de dados) de cada vez. Um conjunto de dados, muitas vezes corresponde a um instrumento de coleta de dados em papel. </para>
@@ -189,7 +189,7 @@ campo aberto. </para>
 </screenshot>
 <para><emphasis role="bold">Acompanhamento:</emphasis> Na tela de histórico de dados, há também um recurso para marcar ou selecionar a estrela um valor. Por exemplo um valor suspeito que precisa de uma investigação mais aprofundada pode ser mantido no sistema, mas marcado para Acompanhamento. No módulo de Qualidade de Dados pode-se executar uma análise de Acompanhamento e visualizar todos os valores marcados para Acompanhamento, e depois editar os valores caso estejam incorrectos. </para>
 </section>
-<section id="dataEntry_1">
+<section xml:id="dataEntry_1">
 <title>Validando dados no formulário</title>
 <para>Quando todos os valores disponíveis para o formulário estarem preenchidos pode-se executar uma verificação de validação dos dados no formulário. Clique no botão &quot;Run Validation&quot; no canto superior direito. Todas as regras de validação que envolve elementos de dados na forma de corrente (conjunto de dados) será executado contra os novos dados. Após a conclusão, será apresenteado uma lista de violações ou simplesmente uma mensagem que diz: &quot;A tela de entrada de dados passou com sucesso as validações&quot;. Veja o capítulo Qualidade de Dados para obter informações sobre como definir essas regras de validação.</para>
 <para>Quando tiver corrigido os valores errados e são feitas com a forma que a prática recomenda e clicar no botão Concluir abaixo do formulário para registrar o formulário como completo. Esta informação é usada ao gerar relatórios de integralidade dos distritos, municípios, províncias ou a nível nacional.</para>
@@ -248,7 +248,7 @@ como colunas e as unidades de organização que aparecem como linhas no formulá
 </chapter>
 <chapter>
 <title>Uso do Visualizador de Dados</title>
-<section id="dvIntro">
+<section xml:id="dvIntro">
 <title>Resumo do Visualizador de Dados</title>
 <para>O módulo visualizador de dados permite que os usuários criem facilmente análise de dados dinâmica e efeitos visuais por meio de gráficos e tabelas de dados. Pode escolher livremente o conteúdo (como indicadores, períodos e unidades organizacionais) para a sua análise. Se pode ter acesso a este módulo indo para &quot;Serviços - Visualizador de Dados&quot;1 no menu principal. A imagem abaixo mostra a janela de exibição do módulo. Para um início rápido::</para>
 <orderedlist>
@@ -272,7 +272,7 @@ como colunas e as unidades de organização que aparecem como linhas no formulá
 </mediaobject>
 </screenshot>
 </section>
-<section id="dvChartTypes">
+<section xml:id="dvChartTypes">
 <title>Seleção do tipo de gráfico</title>
 <para>O módulo visualizador oferece sete tipos de gráficos diferentes, cada um com características diferentes. Pode selecionar o tipo de gráfico, clicando em um dos ícones na barra superior esquerda intitulado &quot;Tipo de Gráfico&quot;.</para>
 <orderedlist>
@@ -302,7 +302,7 @@ como colunas e as unidades de organização que aparecem como linhas no formulá
 </listitem>
 </orderedlist>
 </section>
-<section id="dvSeriesCategoryFilter">
+<section xml:id="dvSeriesCategoryFilter">
 <title>Seleção de série, categoria e filtro</title>
 <para>Esta seção permite que se defina qual dimensão dos dados deseja que apareça como série, categoria e filtro. Isto precisa uma explicação mais pormenorizada. A dimensão neste contexto refere-se aos elementos que descrevem os valores de dados no sistema. Nós temos três dimensões principais do sistema:</para>
 <orderedlist>
@@ -404,17 +404,17 @@ como colunas e as unidades de organização que aparecem como linhas no formulá
 </listitem>
 </itemizedlist>
 </section>
-<section id="dvDisplayChart">
+<section xml:id="dvDisplayChart">
 <title>Exibição de um gráfico</title>
 <para>Pode exibir um gráfico com base nas seleções, simplesmente clicando no botão &quot;Atualizar&quot; do menu superior central. Isso requer que tenha selecionado um ou mais elementos de todas as três dimensões - dados (indicadores, elementos de dados, taxas de notificação), períodos (relativos, fixos) e unidades orgânicas (unidades ou grupos). Note-se que &quot;meses deste ano&quot; a partir da dimensão do período e unidades orgânicas de base são selecionados por automaticamente..</para>
 <para>Observe que você pode ocultar e mostrar série de dados individual no gráfico clicando diretamente nas etiquetas das séries no gráfico - aparecem tanto na parte superior ou à direita do gráfico..</para>
 <para>Se quiser dar ao gráfico mais espaço na tela pode clicar na tripa seta esquerda no menu superior central. Isto irá recolher o menu do lado esquerdo. Pode obter este menu de volta ao clicar no mesmo botão novamente.</para>
 </section>
-<section id="dvSaveChart">
+<section xml:id="dvSaveChart">
 <title>Baixar gráfico como imagem ou PDF</title>
 <para>Depois de ter gerado um gráfico, pode baixa-lo para o computador local no formato imagem ou pdf, clicando em &quot;Download&quot; no menu superior central. O arquivo será baixado automaticamente para o computador local - por exemplo, pode incorporar a imagem num documento de texto, como parte de um relatório. Pode também baixar a fonte de dados por trás do gráfico em JSON, XML, CSV ou formato Microsoft Excel.</para>
 </section>
-<section id="dvFavorites">
+<section xml:id="dvFavorites">
 <title>Salvar o gráfico como favorito</title>
 <para>Depois de ter gerado um gráfico pode salvá-lo como um dos favoritos para recupera-lo facilmente mais tarde. Clique no botão &quot;Favoritos&quot; no menu superior para abrir a janela de favoritos. Clique em &quot;Adicionar novo&quot; e no campo Nome digite o nome desejado para o gráfico. O quadro será visível apenas para si mesmo. Para cada favorito na lista existem quatro opções para a direita. Pode renomear o gráfico (botão cinzento), substituir o gráfico (botão verde), modificar as configurações de compartilhamento do gráfico (botão azul) ou apagar o gráfico (botão vermelho).</para>
 <para>Os gráficos favoritos podem mais tarde ser incluído no painel individual. Depois de salvar pode navegar para o módulo de painel, clique no link &quot;Inserir&quot; sobre as áreas de gráfico e selecione o gráfico preferido.</para>
@@ -427,11 +427,11 @@ como colunas e as unidades de organização que aparecem como linhas no formulá
 </mediaobject>
 </screenshot>
 </section>
-<section id="dvInterpretations">
+<section xml:id="dvInterpretations">
 <title>Compartilha de interpretações</title>
 <para>Para certos recursos relacionados com a análise no DHIS, como tabelas dinâmicas, gráficos e mapas, é possível compartilhar uma interpretação dos dados. Uma interpretação é simplesmente um link para o recurso relevante juntamente com um texto que exprime algumas dicas sobre os dados. Se quiser compartilhar uma interpretação de gráficos, precisa primeiro salvar o gráfico, que deseja compartilhar, como favorito. Em seguida, sem fazer quaisquer alterações ao gráfico, clique no botão &quot;Compartilhar&quot; na barra de ferramentas. Uma janela se abrirá e é onde escreve a interpretação. Quando estiver pronto, clique no botão Compartilhar no canto inferior direito da janela. A janela será fechada automaticamente e se a interpretação foi compartilhada com êxito, encontrará uma notificação na barra de ferramentas inferior.</para>
 </section>
-<section id="dvEmbed">
+<section xml:id="dvEmbed">
 <title>Incorporar gráficos em qualquer página web</title>
 <para>Certos recursos relacionados com análise no DHIS, como tabelas dinâmicas, gráficos e mapas, pode ser incorporados em qualquer página web usando um plugin. Se tiver criado um gráfico no visualizador de dados, terá a configuração do plugin para este gráfico clicando no botão &quot;Compartilhar&quot; na barra de ferramentas e, em seguida, &quot;Incorporar como plug-in&quot;. Vai encontrar mais informações sobre os plugins no capítulo dedicado ao api web..</para>
 </section>
@@ -478,7 +478,7 @@ como colunas e as unidades de organização que aparecem como linhas no formulá
 <title>Mapeamento Temático</title>
 <para>Esta secção descreve as quatro camadas vectoriais que o usuário tem a sua disposição para o mapeamento temático &quot;Camada de departamentos&quot;, &quot;Camada Limite&quot; e &quot;Camada temática&quot; 1-4.</para>
 
-<section id="gisFacilityMap">
+<section xml:id="gisFacilityMap">
 <title>Camada de departamentos</title>
 <screenshot>
 <title>Camada de departamentos</title>
@@ -495,7 +495,7 @@ e parente. Isso permite que possa ser desenhado um círculo em torno de cada uni
 kilometros.</para>
 </section>
 
-<section id="gisBoundaryMap">
+<section xml:id="gisBoundaryMap">
 <title>Camada limite</title>
 <screenshot>
 <title>Camada limite</title>
@@ -522,7 +522,7 @@ para o float up.</para>
 <para>A última opção no menu de camadas é "Fechar". Isso redefine completamente o conteúdo da camada, forma da camada de edição e o painel de legenda.</para>
 </section>
 
-<section id="gisThematicMap">
+<section xml:id="gisThematicMap">
 <title>Camada temática 1-4</title>
 <screenshot>
 <title>Mapeamento temático</title>
@@ -545,7 +545,7 @@ o raio do círculo para os pontos com o menor e maior valor.</para>
 <section>
 <title>Ferramentas</title>
 <para>Esta secção descreve as ferramentas de GIS disponíveis.</para>
-<section id="gisFavoriteMapView">
+<section xml:id="gisFavoriteMapView">
 <title>Mapas Favoritos</title>
 <screenshot>
 <title>Mapas Favoritos</title>
@@ -562,7 +562,7 @@ o raio do círculo para os pontos com o menor e maior valor.</para>
 <para>Pode procurar favoritos no campo de texto acima dos favoritos. A lista será filtrada em cada carácter que é inserido. Clique nos botões "próximo" e "anterior" no conato inferior direito para navegar entre as páginas.</para>
 </section>
 
-<section id="gisLegendSet">
+<section xml:id="gisLegendSet">
 <title>Criar o conjunto predefinido de legendas</title>
 <para>Clique no botão "Legenda" na barra de ferramentas do mapa. Para criar um novo conjunto clique no botão "Adicionar novo". Exemplo de uso (cobertura de vacinação): Primeiro, dé o conjunto de legendas um nome. Depois crie as legendas desejadas para o conjunto de legendas. O primeiro poderia ser &quot;Baixo mau&quot; (nome), 0 (valor inicial), 50 (valor final), vermelho (cor). Clique "Adicionar legenda" e aparece na lista abaixo. A seguir crie &quot;Médio&quot; / 50 / 80 / amarelo, &quot;Alto bom&quot; / 80 / 100 / verde e finalmente &quot;Muito alto&quot; / 100 / 10000 / cinzento. Agora, clique o botão "Criar" no canto inferior direito. Se o conjunto de legendas estiverem sobrepostos (e.g. 0-50 e 40-80) não terá permissão para avançar. Se o conjunto de legendas tiver uma lacuna entre as legendas (e.g. 0-50 e 60-80) receberá um aviso, mas poderá prosseguir.</para>
 
@@ -574,12 +574,12 @@ na sua legenda definida.</para>
 <para>Pode atribur um conjunto de legendas definido como um indicador ou um elemento de dados no módulo Indicador/Elementos de dados. Este conjunto de legendas será automaticamente seleccionado quando um indicador/elemento de dados é seleccionado no GIS.</para>
 </section>
 
-<section id="gisImageExport">
+<section xml:id="gisImageExport">
 <title>Download o mapa como imagem</title>
 <para>Clique o &quot;botão Download&quot; na barra de ferramentas do mapa. Introduza o nome no campo de texto e clique "Download". O browser fará o download da imagem PNG. Se o butão de &quot;Download&quot; na barra de ferramentas está desactivado, precisará de primeiro criar um mapa.</para>
 </section>
 
-<section id="gisInterpretation">
+<section xml:id="gisInterpretation">
 <title>Partilhar a interpretação do mapa</title>
 <para>Abra um favorito ou guarde um novo mapa como favorito. A seguir clique o butão &quot;Compartilhar&quot; na barra de ferramentas do mapa. Digite a sua interpretação e clique "Compartilhar".</para>
 </section>
@@ -726,7 +726,7 @@ OU1 , UO2 , OU3 , OU4 , DataElement , Período , Valor
 Este formato torna muito mais fácil para v.g. tabelas dinâmicas ou outras ferramentas OLAP para agregar dados na hierarquia ..
 </para>
 </section>
-<section id="reportTable">
+<section xml:id="reportTable">
 <title>Tabelas de relatórios</title>
 <para>Tabelas de relatório são definidos, os relatórios que podem ser usados ​​como base de novos relatórios, tais como tabelas Excel Pivot ou simplesmente baixado como uma folha de Excel cross-tabulados. Tabelas de relatório são destinados a fornecer uma visão específica de dados que é necessário, como &quot;mensais nacionais ANC Indicadores&quot;. Esta tabela relatório pode fornecer todos os indicadores do ANC para um país, agregados por mês para todo o país. Estes dados podem, evidentemente, ser recuperada a partir do datamart principal, mas denunciar tabelas geralmente são realizadas mais rapidamente e apresentam vistas bem definidos de dados de usuários. </para>
 <important>
@@ -1948,7 +1948,7 @@ resources.</para>
 <para>How to make changes to the organisational unit hierarchy</para>
 </listitem>
 </itemizedlist></para>
-<section id="ou_hierarchy">
+<section xml:id="ou_hierarchy">
 <title>A hierarquia organizacional</title>
 <para>A hierarquia organizacional define a estrutura de organização da instância DHIS2, por exemplo, como os centros de saúde, áreas administrativas e outras áreas geográficas estão dispostos com relação ao outro. É, essencialmente, o &quot;onde&quot; dimensão de DHIS2, semelhante à forma como os períodos representam o &quot;quando&quot; ou dimensão de tempo. DHIS2 é estruturado de forma que a hierarquia da unidade organizacional é uma hierarquia geográfica, eo módulo GIS depende disso. Hierarquias não geográficos são desencorajadas, e seria melhor ser representado através do uso de grupos de unidades organizacionais. Esta dimensão aos dados é definida como uma hierarquia com uma unidade de raiz (por exemplo, Ministério da Saúde ou um país) e qualquer número de níveis e nós abaixo. Cada nó dessa hierarquia é chamado de uma unidade organizacional em DHIS2. </para>
 <para>O design desta hierarquia irá determinar as unidades geográficas de análise disponíveis para os usuários como os dados são coletados e agregados nesta estrutura. Só pode haver uma hierarquia organizacional, ao mesmo tempo que a sua estrutura precisa de uma análise cuidadosa.. </para>
@@ -1961,10 +1961,10 @@ resources.</para>
 </section>
 <section>
 <title>Organisation unit maintenance</title>
-<section id="orgunit">
+<section xml:id="orgunit">
 <title>Unidades orgânicas</title>
 <para>Este é o lugar onde você pode criar unidades organizacionais ( de agora em diante referido como orgunits ) e construir a hierarquia OrgUnit . Orgunits são adicionados um a um, como quer unidade de raiz ou um filho de uma unidade selecionada. O menu do lado esquerdo representa a hierarquia organizacional atual e se você selecionar uma unidade lá você vai ver seus filhos listados na lista principal de orgunits no meio da tela. Quando um OrgUnit é selecionado no menu do lado esquerdo você também pode adicionar novas unidades de criança para ele. Para localizar um OrgUnit na hierarquia você pode navegar através da árvore , expandindo os ramos (clique no símbolo +) , ou procure-o , abrindo o campo de busca ( clique no símbolo verde acima da raiz da hierarquia ) . Em busca você pode procurar o nome OrgUnit ou seu código, tanto mostrará apenas correspondências exatas ( case-insensitive ) . Para adicionar um novo OrgUnit primeiro selecione o seu pai e , em seguida, clique no botão Adicionar Novo no canto superior direito da lista de orgunits . Para adicionar uma nova raiz OrgUnit garantir que nenhum OrgUnit é selecionado no menu e clique em &quot; Adicionar novo &quot; . Os detalhes da adição de uma nova OrgUnit são explicados na <xref linkend="editOrganisationalUnits"/>.</para>
-<section id="ou_edit">
+<section xml:id="ou_edit">
 <title id="editOrganisationalUnits">Edição de Unidades orgânicas</title>
 <para>Para editar as propriedades de um OrgUnit existente primeiro selecionar seu pai (se houver), no menu do lado esquerdo, em seguida, llocalizar o OrgUnit nos orgunits listadas, e, finalmente, clique no botão &quot;Editar&quot; <inlinegraphic fileref="resources/images/dhis2_images/edit.png" align="center"/> ao lado do nome do OrgUnit que você deseja modificar. As seguintes propriedades podem ser definidas no Edit (ou criar novos) janela:</para>
 <itemizedlist>
@@ -2004,7 +2004,7 @@ resources.</para>
 </itemizedlist>
 </section>
 </section>
-<section id="ou_groupsets">
+<section xml:id="ou_groupsets">
 <title id="orgunitGroupSets">Conjuntos de grupos de unidades orgânicas</title>
 <para>Conjuntos do Grupo pode ser entendida como uma ferramenta flexível para adicionar mais categorização para orgunits. Qualquer número de conjuntos de grupos podem ser adicionados, mas como padrão iniciar todos os bancos de dados terão a dois jogos do grupo &quot;Tipo&quot; e &quot;propriedade&quot;. Usando esses conjuntos de grupo irá simplificar a forma como os relatórios são feitos, e facilitar a análise por meio do uso de ferramentas como o Excel Tabelas Dinâmicas..</para>
 <para>Enquanto um grupo definido como &quot;tipo&quot;, descreve uma dimensão medida, as categorias reais são representados pelos grupos, e da qualificação de uma OrgUnit através de participações em grupos do OrgUnit. Isso pode ser entendido como uma hierarquia paralela de orgunits com o grupo definido como a raiz (&quot;Type&quot;), os grupos no nível 2 (por exemplo, &quot;Clinic&quot;, quot; Hospital &quot;,&quot; Dispensário &quot;), e o real orgunits no nível 3. O conjunto do grupo pode, como tal, fornecer informações e dimensionalidade adicional para
@@ -2027,7 +2027,7 @@ vários membros de um conjunto de grupo é que você pode usar o recurso de edi�
 </listitem>
 </orderedlist>
 <para>É importante ter em mente quando se usa o &quot;grupo da unidade organizacional&quot; função definida, que a menos que um grande cuidado é tomado, unidades organizacionais pode ser atribuído a vários grupos de um conjunto de grupo. Isto pode ser verificado através do módulo &quot;integridade de dados&quot;, que informará quais as unidades organizacionais não são membros de um conjunto obrigatório de grupo da unidade organizacional, e que as unidades organizacionais foram atribuídos a mais de um membro de um conjunto grupo. </para>
-<section id="ou_groupsets_edit">
+<section xml:id="ou_groupsets_edit">
 <title id="editOrgunitGroupSets"> Edição de Conjuntos de grupos de unidades orgânicas</title>
 <para>Clique no botão &quot;Editar&quot; <inlinegraphic fileref="resources/images/dhis2_images/edit.png" align="center"/> ao lado do nome do grupo OrgUnit set que você deseja modificar. As seguintes propriedades podem ser definidas no Edit (ou criar novos) Janela:</para>
 <itemizedlist>
@@ -2046,10 +2046,10 @@ vários membros de um conjunto de grupo é que você pode usar o recurso de edi�
 </itemizedlist>
 </section>
 </section>
-<section id="ou_groups">
+<section xml:id="ou_groups">
 <title id="orgunitGroups">Grupos de Unidades orgânicas</title>
 <para>Esta função permite-lhe adicionar novos e gerenciar grupos de organização existentes e suas associações. Ele pode ser acessado por escolher Manutenção-&gt; Organização unidades&gt; grupo Unidade de Organização a partir do menu principal. Para adicionar um novo grupo clique OrgUnit no botão &quot;Adicionar novo&quot; no canto superior direito da lista de grupos.. </para>
-<section id="ou_groups_edit">
+<section xml:id="ou_groups_edit">
 <title id="editOrgunitGroups">Edição de Grupos de unidades orgânicas</title>
 <para>Clique no botão &quot;Editar&quot; <inlinegraphic fileref="resources/images/dhis2_images/edit.png" align="center"/> ao lado do nome do grupo OrgUnit que você deseja modificar. As seguintes propriedades podem ser definidas no Edit (ou criar novos) Janela:</para>
 <itemizedlist>
@@ -2062,11 +2062,11 @@ vários membros de um conjunto de grupo é que você pode usar o recurso de edi�
 </itemizedlist>
 </section>
 </section>
-<section id="ou_level">
+<section xml:id="ou_level">
 <title id="orgUnitGroupLevels">Nível de unidades orgânicas</title>
 <para>Aqui você especificar um nome contextual para cada nível da hierarquia, por exemplo, &quot;País&quot;, &quot;Província&quot;, &quot;Distrito&quot;, &quot;Instituições de Saúde&quot;, e esses nomes serão usados ​​em todo o aplicativo, onde os níveis são referidos. Esta página vai demorar algum tempo para carregar, se a hierarquia OrgUnit é muito grande..</para>
 </section>
-<section id="hierarchy_operations">
+<section xml:id="hierarchy_operations">
 <title id="hierarchyOperations">Operações de hierarquia</title>
 <para>Aqui você pode mover-se em torno de orgunits na hierarquia, alterando o pai de um OrgUnit selecionado. Este processo é feito em três etapas:</para>
 <para>1. Selecione o OrgUnit você deseja mover (na hierarquia no menu do lado esquerdo) e clique em &quot;Confirmar&quot; sob &quot;Selecionar uma unidade organizacional para mover&quot; rótulo.</para>
@@ -2096,7 +2096,7 @@ sistemas de informação sanitária (SIS)?</para>
 </listitem>
 </itemizedlist>
 </highlights>
-<section id="mod1_1">
+<section xml:id="mod1_1">
 <title>Visão Geral do DHIS 2</title>
 <para>DHIS 2 é uma ferramenta para a coleta, validação, análise e apresentação de dados estatísticos agregados, sob medida (mas não limitado) para actividades de gestão integrada de informação em saúde. É um instrumento genérico ao invés de um aplicativo de banco de dados pré-configurado, com um modelo de meta-dados aberta e uma interface de usuário flexível, que permite ao usuário projetar o conteúdo de um sistema de informação específico, sem a necessidade de programação. DHIS2 e para cima é um pacote modular de software web-based construído com frameworks Java de código livre e aberto.</para>
 <para>DHIS2 é um software de código aberto lançado sob a licença BSD e pode ser usado sem nenhum custo. Ele roda em qualquer plataforma com um Java Runtime Environment (JRE 6 ou superior) instalado. </para>
@@ -2602,7 +2602,7 @@ traçando as pessoas sendo fornecidos com esses serviços e qualidade desses que
 <para>Agende um processo automatizado agregação pessoa, por exemplo, para executar todos agregação pré-definida consulta a cada meia-noite. </para>
 </listitem>
 </itemizedlist>
-<section id="patient_attribute">
+<section xml:id="patient_attribute">
 <title>atributo pessoa</title>
 <para>Criar, modificar e atributos pessoa vista. Um atributo pode ser utilizado para registar informação extra privado para uma pessoa ou informações quando a pessoa se matriculou em um determinado programa.</para>
 <para>No menu de Manutenção, ir Pessoas e Programas opção e clique sobre ele. Opção Attribute Select Pessoa para criar um novo atributo de pessoas. </para>
@@ -2626,12 +2626,12 @@ traçando as pessoas sendo fornecidos com esses serviços e qualidade desses que
 </listitem>
 </itemizedlist>
 </section>
-<section id="patient_attribute_visit_schedule">
+<section xml:id="patient_attribute_visit_schedule">
 <title>Visita agenda atributo Paciente</title>
 <para>Esta função suporta configuração de atributos pessoa que são adicionados aos schedule.This visita é muito útil quando a lista é impressa e utilizada para rastreamento na comunidade. </para>
 <para>Selecione os atributos do paciente na seção esquerda e movê-los para a seção direita e clique no botão Salvar.</para>
 </section>
-<section id="patient_attribute_group">
+<section xml:id="patient_attribute_group">
 <title>Grupo de atributos Pessoa</title>
 <para>Para acessar o módulo de manutenção do grupo atributo pessoa, a partir do menu de <emphasis>Manutenção</emphasis>, ir toPersons e Programsoption e clique sobre ele e selecione Pessoa Atributo opção Group.</para>
 <para>Para criar um novo grupo de atributos, clique no botão Adicionar para <emphasis role="italic">Pessoa Grupo de Atributos</emphasis> janela para ir para <emphasis role="italic">Adicionar nova pessoa Grupo de Atributos</emphasis> janela, clique no <emphasis role="italic">Adicionar nova</emphasis> botão. Preencha o <emphasis role="italic">Nome</emphasis> e <emphasis role="italic">Descrição</emphasis> fields and then select attributes that should belong to the group from the left panel. </para>
@@ -2639,7 +2639,7 @@ traçando as pessoas sendo fornecidos com esses serviços e qualidade desses que
 <para>Por fim, clique no botão <emphasis>Adicionar</emphasis> para salvar as alterações ou no botão <emphasis>Cancelar</emphasis> para descartar as alterações. Os membros de atributo criado será mostrado pelos grupos de atributos no formulário de registo pessoa.</para>
 <para>Para ordem de classificação dos grupos de atributos para a exibição no formulário de inscrição pessoa, clique em <emphasis>Mover para cima</emphasis> e <emphasis>Mover para baixo</emphasis> botão ao lado de <emphasis>atributos selecionados</emphasis> seção.</para>
 </section>
-<section id="patient_identifier_type">
+<section xml:id="patient_identifier_type">
 <title>Tipo de identificador Pessoa</title>
 <para>Para acessar o módulo de manutenção tipo de identificador pessoa, a partir do menu de <emphasis>Manutenção</emphasis>, ir <emphasis>Pessoas e Programas opção</emphasis> e clique sobre ele. <emphasis>Selecione Pessoa identificador</emphasis> do tipo opção para criar um novo tipo de identificador.</para>
 <para>Para criar um novo tipo de identificador, clique no <emphasis role="italic">adicionar</emphasis> botão em <emphasis role="italic">Tipo de Pessoa Identificador Gestão </emphasis>janela para ir para <emphasis role="italic">Adicionar Novo Tipo de Pessoa Identificador</emphasis> janela.</para>
@@ -2665,20 +2665,20 @@ traçando as pessoas sendo fornecidos com esses serviços e qualidade desses que
 </listitem>
 </itemizedlist>
 </section>
-<section id="relationship_type">
+<section xml:id="relationship_type">
 <title>Tipo de relação</title>
 <para>Seção Tipo de relação fornece um mecanismo para definir os tipos de relacionamento e links de pessoas através destes tipos de relacionamento, criando relações específicas.</para>
 <para>TPara acessar o módulo de manutenção tipo de relação, a partir do menu de Manutenção, ir Pessoas e Programas opção e clique sobre ele e selecione a opção Tipo de Relação.</para>
 <para>Para definir um novo tipo de relação, clique no botão Adicionar na janela Tipo de relação de Gestão para ir para Adicionar nova janela Tipo de Relação.</para>
 </section>
-<section id="person_registration_form">
+<section xml:id="person_registration_form">
 <title>Formulário de inscrição Pessoa</title>
 <para>Seção formulário de inscrição Pessoa fornece um mecanismo para a definição de formulário de inscrição personalizado para cada programa disponível no sistema ou por formulário de inscrição normal.</para>
 <para>Para acessar o módulo de manutenção formulário de inscrição pessoa, a partir do menu de Manutenção, ir Pessoas e Programas opção e clique sobre ele e selecione a opção Pessoa Formulário de Inscrição.</para>
 <para>Para definir um formulário de registro programa personalizado, por favor, selecione um programa na lista e clique em Adicionar ícone, o primeiro ícone correspondente ao programa que você quer projetar.</para>
 <para>Confira na Auto salvar formulários de inscrição pessoa checkbox para salvar a forma de entrada de dados a ser concebido.</para>
 </section>
-<section id="program">
+<section xml:id="program">
 <title>Program and Program stage</title>
 <para>A seção fornece um mecanismo para a definição de programas de saúde e de ação para cada fase do programa </para>
 <section>
@@ -2898,7 +2898,7 @@ A fase do programa tem três tipos de formulário de entrada de dados -</para>
 <para>Para ordenar as fases do programa por dias programados, clique no botão dias <emphasis role="italic">Ordenar por agendado</emphasis>.</para>
 </section>
 </section>
-<section id="patient_aggregation_query_builder">
+<section xml:id="patient_aggregation_query_builder">
 <title>Criador de consultas de agregação</title>
 <para>Esta é a funcionalidade principal para a ligação de dados entre o módulo rastreador e módulo de gestão agregada, definindo a ligação / agregação de regras. O objetivo é produzir dados agregados / estatística com base no caso de baixo nível de dados com base. Baseia-se em torno de definições de consulta agregação flexíveis que mapeia os elementos de dados usados ​​para o caso base de gerenciamento de dados para elementos de dados usados ​​para os dados agregados.</para>
 <para>Isso fornece duas funções -</para>
@@ -3064,7 +3064,7 @@ para criar um programa chamado <emphasis role="italic">Programa de Saúde da Cri
 </orderedlist>
 </section>
 </section>
-<section id="validation_criteria">
+<section xml:id="validation_criteria">
 <title>Critérios de validação</title>
 <para>A Secção critérios de validação fornece um mecanismo para a definição de critérios para as pessoas quando matricular um programa.</para>
 <para>Para aceder o módulo de critérios de validação de manutenção, do menu <emphasis role="italic">Manutenção</emphasis>, vá para a opção <emphasis role="italic">Pessoas e Programas</emphasis> e clique sobre ela. Selecione <emphasis role="italic"> a opção Critérios de Validação</emphasis> para criar um novo programa.</para>
@@ -3072,14 +3072,14 @@ para criar um programa chamado <emphasis role="italic">Programa de Saúde da Cri
 <para>Você pode atribuir as instalações a um critério de validação na <emphasis role="italic">Gestão de Critérios de Validação </emphasis>(lista de critérios de validação disponíveis são mostrados) clicando no ícone de pasta azul, o primeiro ícone no âmbito das operações, o que corresponde ao critério de validação que você gostaria de atribuir. Clique no botão <emphasis role="italic">Move seleccionado</emphasis> para adicionar os programas selecionados para o critério de validação. Clique no botão <emphasis role="italic">Remover seleccionados </emphasis>para remover os programas do grupo que foram selecionados no painel da direita. Finalmente, clique no botão <emphasis role="italic">Salvar</emphasis> para salvar as alterações, ou no botão <emphasis role="italic">Cancelar</emphasis> para descartar qualquer mudança.</para>
 <para>Para traduzir o nome de um programa, clique no ícone <emphasis role="italic">Tradução </emphasis>, o terceiro ícone no âmbito das Operações, que correspondem aos critérios de validação que você gostaria.</para>
 </section>
-<section id="schedule_sending_message">
+<section xml:id="schedule_sending_message">
 <title>Programação automatizada de mensagem de lembrete</title>
 <para>Esta função é usada para lembretes da mensagem de programação para serem enviados automaticamente para as pessoas envolvidas compromissos XX dias antes programadas e / ou XX dias depois de uma visita de perder. uando a programação é iniciada, mensagens para cada pessoa são gerados com base em modelos definidos em cada etapa à meia-noite (Ref. secção <emphasis role="italic"> Adicionar estágio do programa </emphasis> para definir uma mensagem de modelo). Sobre o tempo, as mensagens programadas são enviados.
 </para>
 <para>Clique no botão <emphasis role="italic">Iniciar </emphasis> botão permitirá o trabalho agendado para executar a tarefa. As mensagens são geradas com base em modelos definidos em cada estágio no meio da noite e enviados em um tempo pré-determinado ou podem ser executados imediatamente pressionando no botão <emphasis role="italic">Executar</emphasis>.</para>
 <para>Clique no botão <emphasis role="italic">Executar</emphasis> para gerar e enviar cada mensagem para cada pessoa no momento em que o botão clicado.</para>
 </section>
-<section id="scheduling_aggregation_query_builder">
+<section xml:id="scheduling_aggregation_query_builder">
 <title>Agregação de programação automatizada</title>
 <para>As do criador de consultas Agregação de pode ser programado para ser executado automaticamente em comum
 intervalos. À meia-noite, este trabalho é executado e obter todos os conjuntos de dados que têm elementos de dados
@@ -3146,7 +3146,7 @@ Para conjuntos de dados mensais, a lista de períodos é <emphasis role="italic"
 <para>Gerar valores rotina de dados a partir de dados do paciente por mês (ou outros intervalos, se desejar) e unidade de organização.</para>
 </listitem>
 </itemizedlist>
-<section id="patient">
+<section xml:id="patient">
 <title>Localizar / Adicionar Pessoa</title>
 <para>O primeiro passo para o rastreamento é o registro de pessoa / caso na aplicação. No processo de registro, os detalhes - que estão relacionadas com as informações pessoais, identificação, contrato e localização detalhes e detalhes do provedor de saúde, são inseridos na aplicação. No registo propriamente dito, uma pessoa é fornecido com o número de identificação único. Este número será único e não irá corresponder com o número de qualquer pessoa na jurisdição estadual identificação. A questão do número de identificação será da responsabilidade da instalação onde pessoa é a primeira vez registrada.</para>
 <warning>
@@ -3307,7 +3307,7 @@ fraco e irregular.</para>
 </chapter>
 <chapter>
 <title>Ficha e formulários de entrada de dados</title>
-<section id="datasets">
+<section xml:id="datasets">
 <title>Ficha</title>
 <para>Todas entrada de dados no DHIS2 são organizadas através da utilização das fichas. Você pode adicionar e editar as fichas em Manutenção-&gt;Ficha. Uma Ficha é um conjunto de elementos de dados agrupados para recolha de dados e exportação de dados entre instâncias do DHIS2 (por exemplo, a partir de uma instalação local do distrito para um servidor nacional). </para>
 <para>Uma Ficha tem uma freqüência de coleta de dados, que pode ser definida através da propriedade tipo de período. A freqüência pode ser diário, semanal, mensal, trimestral, semestral ou anual. Ambos os elementos de dados para incluir no conjunto de dados e a freqüência é definida na janela Adicionar/ Editar Ficha, juntamente com um nome, nome curto e código. Para usar um conjunto de dados para recolha de dados para uma unidade organizacional específica deve-se atribuir a unidade organizacional ao conjunto de dados, e este mecanismo controla que unidades organizacional estão associados
@@ -3346,7 +3346,7 @@ O comportamento padrão é sim. Se definido como não, em seguida, um utilizador
 </listitem>
 </itemizedlist>
 <para>Seu conjunto de dados será, então, pronto para ser usado em Serviços -&gt; Entrada de Dados para as unidades organizacionais que você atribuiu e por períodos de acordo com sua freqüência selecionada (tipo de período)</para>
-<section id="dataSet">
+<section xml:id="dataSet">
 <title>Gestão de Fichas</title>
 <para>A função de gestão de ficha permite que você crie novas fichas e gerencie as já existentes. O diálogo pode ser alcançado escolhendo Apps-&gt;Ficha-&gt;Ficha. Um diálogo de amostra é exibido abaixo.</para>
 <screenshot>
@@ -3425,7 +3425,7 @@ combinação de um conjunto de dados, você pode selecioná-lo ao criar ou actua
 <title>Secção de formulário</title>
 <para>Formas Seção permitir um pouco mais de flexibilidade quando se trata de usar formas tabulares e são rápidos e simples para projetar. Muitas vezes, o seu formulário de entrada de dados vai precisar de várias tabelas com subtítulos, e às vezes você precisa desativar (cinza para fora) alguns campos na tabela, essas duas funções são suportadas em formas de seção. Esta função pode ser o acesso ao escolher Maintenance- &gt; Conjunto de dados Seção. </para>
 </section>
-<section id="dataSetSection">
+<section xml:id="dataSetSection">
 <title>Adicionando uma nova secção ao formulário</title>
 <para>Secção de formulários são separados automaticamente por combinações de categoria de elementos de dados, que produzem uma planilha como o formulário de entrada de dados para cada secção. </para>
 <para>Para desenhar uma secção de formulário, o procedimento é descrito abaixo:</para>
@@ -3467,7 +3467,7 @@ combinação de um conjunto de dados, você pode selecioná-lo ao criar ou actua
 </mediaobject>
 </screenshot>
 </section>
-<section id="customDataEntryForm">
+<section xml:id="customDataEntryForm">
 <title>Formulários personalizados</title>
 <para>Quando o formulário que deseja criar é complicado para os formulários padrão ou de secção, sua última opção é a utilização de um formulário personalizado. Isso leva mais tempo, mas dá-lhe total flexibilidade em termos de desenho. DHIS2 usa um editor embutido HTML (FCK Editor) para o criador do formulário e você pode criar o formulário na interface do usuário ou cole no seu HTML diretamente (usando a janela de origem no editor). A referência completa para uso do editor pode ser encontrado aqui &quot;http://docs.cksource.com/CKEditor_3.x/Users_Guide&quot;&gt; aqui <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docs.cksource.com/CKEditor_3.x/Users_Guide">here</link>.</para>
 <para>Uma das grandes vantagens de formulários personalizados, é que eles podem ser criados para imitar Formulários de agregação de papel existentes. Isso faz com que a entrada de dados seja muito mais fácil para os usuários, e deve reduzir o número de elementos de dados que são inseridos incorretamente, pois eles são mais facilmente identificáveis ao digitar os dados a partir de um formulário de papel. </para>
@@ -3590,7 +3590,7 @@ utilize the &quot;files&quot; Web API resource and keep your callback functions 
 where you let the javascript code take action based on which data set is currently
 loaded.</para>
 </section>
-<section id="dataSetAssignmentEditor">
+<section xml:id="dataSetAssignmentEditor">
 <title>Editor atribuição de Ficha</title>
 <para>O editor atribuição de fichas é uma ferramenta para adicionar e remover a associação de fichas para com as unidades de organização no estilo lote. Comece selecionando uma unidade organizacional a partir da árvore de seleção. Na área abaixo da árvore uma grade será exibida mostrando todas fichas como colunas e as unidades de organizacionais filahs como linhas.</para>
 <para>A partir da grelha agora você pode atribuir ou desatribuir as fichas simplesmente clicando em um dos ícones correspondentes na grelha. Se você quiser atribuir ou não atribuir uma unidade de organizaçional para todos os conjuntos de dados que você pode marcar ou desmarcar a caixa de seleção ao lado da unidade de organização. Suas alterações serão salvas automaticamente.</para>
@@ -3608,7 +3608,7 @@ página de configurações</para>
 <section>
 <title>As configurações do sistema</title>
 <para>A secção das configurações do sistema fornece opções de configuração geral e opções específicas para a aparência e e-mail.</para>
-<section id="systemGeneralSettings">
+<section xml:id="systemGeneralSettings">
 <title> Configurações Gerais</title>
 <itemizedlist>
 <listitem>
@@ -3682,7 +3682,7 @@ está em execução na produção, para reduzir a carga e de forma mais eficient
 </listitem>
 </itemizedlist>
 </section>
-<section id="systemAppearanceSettings">
+<section xml:id="systemAppearanceSettings">
 <title>Configurações de aparência do sistema</title>
 <itemizedlist>
 <listitem>
@@ -3708,7 +3708,7 @@ o módulo recomendado.</para>
 </listitem>
 </itemizedlist>
 </section>
-<section id="systemEmailSettings">
+<section xml:id="systemEmailSettings">
 <title>Definições de E-mail</title>
 <itemizedlist>
 <listitem>
@@ -3808,7 +3808,7 @@ Note que deve activar a sincronização de dados de administração de dados> ag
 <chapter>
 <title id="dashboards">Dashboards</title>
 <para>Dashboards são destinados a fornecer acesso rápido aos usuários individuais para os dados que foram armazenados em DHIS2. Dashboards consistem em várias seções, algumas das quais fornecem links para os relatórios ou mapview que já foram definidas. Outras seções do painel de instrumentos permitem aos usuários adicionar gráficos que foram definidos e disponibilizados através do módulo de gráficos. </para>
-<section id="dashboards_setup">
+<section xml:id="dashboards_setup">
 <title>Configurar dashboard</title>
 <para>O painel é dividido em duas seções principais. O painel do lado direito (denotado como A na imagem abaixo) pode ser usado para conter links para os relatórios, documentos (relatórios estáticos), mesas de relatório, visualizações de mapas, e um feed RSS Health. A zona do lado esquerdo (denotado como B na captura de tela) pode ser utilizado para conter um máximo de seis gráficos separadas que foram previamente criadas no módulo de relatórios gráficos. </para>
 <screenshot>
@@ -3850,7 +3850,7 @@ Note que deve activar a sincronização de dados de administração de dados> ag
 </chapter>
 <chapter>
 <title>Começando com DHIS 2</title>
-<section id="mod2_1">
+<section xml:id="mod2_1">
 <title>Começando com DHIS 2</title>
 <para>Depois de ler este capítulo, você será capaz de entender:</para>
 <itemizedlist>
@@ -3933,7 +3933,7 @@ diretório do usuário Linux em casa (representado por ~). Substitua o Caminho a
 <para>A versão mais recente do servidor estável pode ser descarregado a partir deste <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://stable.dhis2.org/">website</link>. Para obter informações detalhadas sobre como instalá-lo, consulte o capítulo de instalação no manual de implementação.</para>
 </section>
 </section>
-<section id="mod2_2">
+<section xml:id="mod2_2">
 <title>Registro no DHIS 2</title>
 <para>Independentemente de você ter instalado a versão do servidor do
 Versão ao vivo, você vai usar um web-browser para efetuar logon no
@@ -3942,7 +3942,7 @@ embora você vai precisar para assegurar que o Java Script está habilitado.</pa
 <para>Para efetuar logon no aplicativo basta digitar <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</link> se você estiver usando o pacote vivo DHIS2 ou substituir localhost com o nome ou endereço IP do servidor em que a versão do servidor está instalado.</para>
 <para>Depois de ter iniciado DHIS2, seja on-line ou off-line, a tela exibida irá pedir-lhe para introduzir o registrado &apos;nome de usuário&apos; e &apos;senha&apos;. Depois de digitar as informações necessárias, clique no botão de login para entrar no aplicativo. O nome de usuário ea senha padrão são &quot;admin&quot; e &quot;distrito&quot;. Eles devem ser trocados imediatamente após a exploração madeireira sobre a primeira vez. </para>
 </section>
-<section id="users">
+<section xml:id="users">
 <title>Criar novos usuários e funções</title>
 <para>Esta seção descreve como adicionar novos usuários para o aplicativo DHIS 2.</para>
 <section>
@@ -3969,7 +3969,7 @@ barra de ferramentas principal na parte superior da tela exibida.</para>
 </screenshot>
 <para>Os nomes de usuários já registrados aparecerá como uma lista como visto na captura de tela abaixo.</para>
 </section>
-<section id="user_roles">
+<section xml:id="user_roles">
 <title>Definir um novo papel</title>
 <para>A seguinte tela será aberta e aqui na primeira caixa de texto que você precisa para dar nome da função, tais como Super User, Administração de usuários, etc A caixa de texto segundo chamado &quot;Descrição&quot; dá mais informações sobre o tipo de função do usuário que está sendo criado para, por exemplo Estado de Administração de Usuário,
 Distrito de entrada de dados..</para>
@@ -4046,11 +4046,11 @@ Buttons. </para>
 </itemizedlist>
 </section>
 </section>
-<section id="mod2_4">
+<section xml:id="mod2_4">
 <title>Sair do DHIS 2</title>
 <para>Basta clicar no link Sair no canto superior direito para sair do aplicativo.</para>
 </section>
-<section id="database_design">
+<section xml:id="database_design">
 <title>Breve introdução em desenho do banco de dados DHIS 2 </title>
 <para>A aplicação DHIS 2 vem com um conjunto de ferramentas para coleta de dados, validação, elaboração de relatórios e análise, mas o conteúdo do banco de dados, por exemplo, o de recolher, quem deve recolher e em qual formato vai depender do contexto de utilização. Esses metadados precisa ser preenchido para o aplicativo antes que ele possa ser usado, e isso pode ser feito através da interface do usuário e não requer nenhuma programação ou em profundidade as habilidades técnicas do software. Nós chamamos este projeto inicial do banco de dados de processo ou personalização.</para>
 <para>Esta seção fornecerá uma introdução muito rápida e breve para DHIS 2 projeto de banco de dados e, principalmente, explicar as várias etapas necessárias para preparar um novo sistema DHIS 2 para uso. Como fazer cada passo é explicado em outros capítulos, e melhores práticas sobre as escolhas de design será explicado em um manual de implementadores (esperado durante o primeiro semestre de 2011). Aqui estão os passos a seguir:</para>
@@ -4170,7 +4170,7 @@ testes . Estas regras devem ser regras absolutas que significa que eles são mat
 <para>Create, modify, view and delete data element categories. </para>
 </listitem>
 </itemizedlist>
-<section id="dataElement">
+<section xml:id="dataElement">
 <title>Elementos de Dados</title>
 <para><?inline true?>Os elementos de dados formam a base da DHIS2. Os elementos de dados definem o que é realmente gravado no sistema, por exemplo, número de vacinções ou número de casos de malária. A criação e definição dos elementos de dados esta muito além do escopo deste manual para descrever, mas presume-se que um administrador será fornecido com uma lista de elementos de dados padronizados para a inclusão no sistema DHIS2.. </para>
 <para>Para acessar o módulo de manutenção de elemento de dados, escolha Manutenção -&gt; Elementos de dados e Indicadores -&gt; Elemento de dados. </para>
@@ -4337,7 +4337,7 @@ zero.</para>
 <para>Esta operação exibe um painel de em linha no navegador que exibe todos os metadados sobre um determinado elemento de dados. Clique no nome do elemento de dados e, em seguida, selecione &quot;Mostrar detalhes&quot;; no menu de contexto. </para>
 </section>
 </section>
-<section id="dataElementGroup">
+<section xml:id="dataElementGroup">
 <title>Grupo de elemento de dados</title>
 <para>Grupos de elementos de dados fornecem um mecanismo para a classificação de elementos de dados relacionados em um tema comum. Por exemplo, dois elementos de dados &quot;Vacinação contra o sarampo&quot; e &quot;vacinação contra a BCG&quot; podem ser agrupados em um grupo de elemento de dados &quot;vacinação infantil&quot;. Para acessar a página de manutenção de grupo de elementos de dados, clique Manutenção -&gt; Elementos de Dados e Indicadores -&gt; Grupo de elemento de dados .</para>
 <para>Semelhante à página de manutenção de &quot;elemento de dados&quot;, os grupos de elementos de dados podem ser pesquisados ​​ digitando uma sequência de pesquisa no campo &quot;Filtrar por nome&quot;. </para>
@@ -4351,7 +4351,7 @@ zero.</para>
 </screenshot>
 <para>Preencha o campo &quot;Nome&quot; e em seguida, selecione todos os elementos de dados que deveriam pertencer ao grupo a partir do painel esquerdo. Clique no botão &quot;Mover selecionado&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center"/>para adicionar os elementos de dados selecionados para o grupo de elementos de dados. Clique no botão &quot;Remover selecionados&quot; para remover todos os elementos de dados do grupo que foram selecionados no painel da direita. Finalmente, clique no botão &quot;Adicionar&quot; para salvar as alterações ou no botão &quot;Cancelar&quot; para descartar as alterações. </para>
 </section>
-<section id="dataElementGroupEditor">
+<section xml:id="dataElementGroupEditor">
 <title>Editor de Grupo de elemento de dado</title>
 <para>O editor de grupo de elementos de dados fornece a funcionalidade avançada para o administrador para permitir que vários elementos de dados sejam adicionados ou removidos de um grupo. Também é possível criar novos grupos de elementos de dados, mudar o nome de grupos existentes, e excluir grupos inteiramente. Para acessar o editor de grupo de elementos de dados, vá para <guimenu>&quot;Manutenção-&gt; Elemento de dados e Indicadores -&gt; Editor de Grupo de elemento de dados &quot;</guimenu>. </para>
 <para>A seguinte tela será exibida.<screenshot>
@@ -4363,7 +4363,7 @@ zero.</para>
 </screenshot></para>
 <para>Grupos de Elemento de Dados são listados em ordem alfabética no painel à esquerda. Ao clicar em um grupo de elementos de dados, os actuais membros desse grupo (elementos de dados) serão listados no painel central. Elementos de dados disponíveis podem ser adicionados ao grupo de elemento de dados aparecem por ordem alfabética no painel mais à direita. Para remover um elemento de dados existente do grupo, clique no nome do elemento de dados no painel central, e, em seguida, clique o botão &quot;Mover para a direita&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center"/>. Para adicionar elementos de dados ao grupo, selecione-as no painel mais à esquerda, e clique no botão &quot;Mover para a esquerda&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_left.png" align="center"/>. Para adicionar elementos de dados ao grupo, selecione-as no painel mais à esquerda, e clique no botão &quot;Mover para a esquerda&quot;.</para>
 </section>
-<section id="dataElementGroupSet">
+<section xml:id="dataElementGroupSet">
 <title>Conjunto de grupo elemento de dado</title>
 <para>Conjunto de grupo elemento de dado permitem que vários grupos de elementos sejam categorizados em um conjunto. Conjunto de grupo elemento de dado são usados durante a análise e a geração de relatórios para combinar grupos de elementos de dados semelhantes em um tema comum. Para acessar o módulo de manutenção conjunto grupo de elementos de dados, escolha &quot;Manutenção -&gt; Elementos de Dados e Indicadores -&gt; Conjunto de grupo elemento de dado&quot;. Similar aos outros módulos de manutenção de elementos de dados, novos conjuntos de grupos de elementos de dados podem ser adicionados ao clicar o &quot;botão Adicionar novo&quot;. Outras operações incluem editar, traduzir, Remover e ver detalhes, semelhante aos outros módulos desta seção.</para>
 <para>Membros existentes Conjunto de grupo elemento de dados podem ser editado clicando no botão &quot;Editar&quot;<inlinegraphic fileref="resources/images/dhis2_images/edit.png" align="center"/> do grupo de elementos de dados desejado definido como visto abaixo.</para>
@@ -4374,7 +4374,7 @@ zero.</para>
 </mediaobject>
 <para>Grupos de elementos de dados disponíveis são exibidos no painel à esquerda. Podem ser movidos para o grupo de elemento de dados selecionando e pressionando o botão &quot;Mover para a direita&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center"/>. Grupos de elementos de dados que são actualmente membros do conjunto grupo de elementos de dados são exibidos no painel do lado direito. Eles podem ser removidos a partir do grupo de elementos de dados definido, clicando no grupo de elementos de dados pretendida e pressione o botão &quot;Mover para a esquerda&quot;<inlinegraphic fileref="resources/images/dhis2_images/move_left.png" align="center"/>. A ordenação dos grupos de elementos de dados podem ser definidos com as setas &quot;Mover para cima&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_up.png" align="center"/> e &quot;Mover para baixo&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_down.png" align="center"/>. Esta ordenação será utilizado no datamart e relatórios para ordenar os grupos de elementos de dados. Prima o botão<guibutton>&quot;Actualizar&quot;</guibutton> para salvar qualquer modificação e botão <guibutton>&quot;Cancelar&quot;</guibutton> para cancelar todas as modificações. </para>
 </section>
-<section id="dataElementCategory">
+<section xml:id="dataElementCategory">
 <title>Categorias</title>
 <para>As categorias podem ser utilizados para desagregar os elementos de dados em componentes atômicos individuais. Eles também podem ser usados para atribuir atributos para todos os dados gravados em um conjunto de dados específico, como &quot;parceiro de implementação&quot; e &quot;agência de Financiamento.&quot;</para>
 <para>Categorias de elementos de dados são tipicamente um conceito, tais como sexo, idade ou estado de doença. Os elementos de dados como &quot;Número de casos de malária confirmados&quot; são muitas vezes divididos em componentes menores para determinar, por exemplo, o número de casos de malária confirmados de determinados grupos etários. Como exemplo, três categorias de elementos de dados: Menos de 1, 1-5 e mais de 5 poderia ser criado. Eles podem ser atribuídos como categorias para o elemento de dados, o que, em seguida, criar nas telas de entrada de dados, três campos separados para esse elemento de dados a saber: </para>
@@ -4426,7 +4426,7 @@ zero.</para>
 <para>A categoria pode ter dois tipos de &quot;desagregação&quot; ou &quot;atributo&quot;. Para desagregação de elementos de dados, você deve selecionar &quot;desagregação&quot;. Um tipo de cota de &quot;Atributo&quot; permitirá que a categoria a ser usado para designar uma combinação de categorias de dados gravados através de um conjunto de dados.</para>
 <para>Se a caixa &quot;Usar como dimensão de dados&quot; está marcada, a categoria estará disponível para os analytics como outra dimensão, para além das dimensões padrão de &quot;Período&quot; e &quot;unidade de Organizacional&quot; </para>
 </section>
-<section id="dataElementCategoryCombo">
+<section xml:id="dataElementCategoryCombo">
 <title>Combinações de categorias</title>
 <para>Combinação de categorias permite que várias categorias de elementos de dados sejam combinados em um conjunto relacionado. Como exemplo, um elemento de dados &quot;Número de novas infecções pelo HIV&quot; poderia ser desagregados de acordo com as seguintes categorias. </para>
 <itemizedlist>
@@ -4470,7 +4470,7 @@ zero.</para>
 <para>Grupos de opções Categoria pode ser incluído no grupo de conjuntos de opção de categoria. Grupo de conjuntos de opção de categoria podem ser criados a partir de &quot;Grupo de conjuntos de opção de categoria&quot; &gt; &quot;Addicionar novo&quot;, e contém um conjunto de grupos de opções de categoria.</para>
 <para>O principal objetivo das estas entidades é ser capaz de adicionar mais dimensionalidade aos seus dados capturados para análise em aplicativos como tabela dinâmica e visualizador de dados. Um exemplo de onde isso se torna útil: Em um sistema, os dados são coletados por &quot;projetos&quot;, onde os projetos são modeladas como opções de categoria. O sistema é necessário para fazer a análise dos dados, segundo a qual doador apóia o projeto. Neste caso, um conjunto de grupo de opção de categoria chamada de &quot;Doador&quot; pode ser criado. Cada doador pode ser criado como um grupo de opção de categoria, onde cada opção de categoria / projeto é colocado no grupo apropriado. Em aplicativos de análise de dados, o conjunto de grupo &quot;Doador&quot; aparecerá como uma dimensão de dados, enquanto que cada um dos doadores aparecem como itens de dimensões, prontos para inclusão nos relatórios.</para>
 </section>
-<section id="translation">
+<section xml:id="translation">
 <title>Traduções de elementos de dados e outros objectos</title>
 <para>DHIS 2 fornece a funcionalidade para traduções do conteúdo de base de dados como elementos de dados, grupos de elementos de dados, indicadores, grupos de indicadores, regras de validação e muito mais. Esses elementos podem ser traduzidos para qualquer número de localidades. A localidade representa um geográfico, político, cultural ou região específica. </para>
 <para>Para adicionar uma tradução clique no ícone Traduzir ao lado do elemento que você gostaria de traduzir. Comece por seleccionar o idioma pretendido e selecione a caixa de Locale. Na tela Traduzir, selecione sua localidade e insira valores para as propriedades dos elementos disponíveis. Os valores das propriedades de referência são mostradas à direita. Estes valores são os valores que foram inseridos na interface de adicionar ou atualizar usuário regular para o objecto actual.</para>
@@ -4508,7 +4508,7 @@ CRS diferentes do que EPSG 4326, você terá que re-projeto os dados antes de im
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; em DHIS2. </para>
 </important></para>
 </section>
-<section id="gisSetup">
+<section xml:id="gisSetup">
 <title>Importar coordenadas</title>
 <para>Passo 1 - Simplificas/generalizar seus dados geográficos</para>
 <para>Os limites em arquivos de dados geográficos são geralmente muito precisas, até demais para o
@@ -4563,7 +4563,7 @@ equivalentes ou seqüências de escape..</para>
 <section>
 <title>Manutenção do Indicador</title>
 <para>Funções de manutenção Indicador essencialmente o mesmo que cada uma das respectivas secções na seção anterior sobre elementos de dados. As operações básicas serão descritos nesta seção, mas o leitor deve consultar as seções correspondentes acima para instruções detalhadas. </para>
-<section id="indicator">
+<section xml:id="indicator">
 <title>Indicadores</title>
 <para>Indicadores são compostos de vários elementos de dados, e normalmente consistem de um numerador
 e denominador. Indicadores nunca são inseridos no DHIS2, mas são derivados de combinações de
@@ -4657,7 +4657,7 @@ outros valores são o resultado de valores de elementos de dados que foram inser
 </listitem>
 </orderedlist>
 </section>
-<section id="indicatorType">
+<section xml:id="indicatorType">
 <title>Tipos de Indicadores</title>
 <para>Tipos Indicador simplesmente definir um fator que será aplicada durante a agregação. Valores dos indicadores que são calculam durante um processo de geração de tabela de exportação data mart ou relatório será apresentado formatado corretamente e, portanto, não vai exigir um multiplicador adicional (por exemplo, 100 no caso de percentuais) para os valores para aparecer corretamente formatado. </para>
 <para>O painel de manutenção tipo de indicador tem todas as mesmas funções (adicionar, editar, traduzir, Excluir e Informação) como a seção de manutenção Indicador. </para>
@@ -4673,15 +4673,15 @@ outros valores são o resultado de valores de elementos de dados que foram inser
 <para>A partir da versão 2.4 do DHIS2, o objeto &quot;elemento de dados Calculado&quot; foi substituída. Em vez disso, um elemento de dados calculados podem ser criados através da criação de um tipo de indicador com um fator de &quot;1&quot; e definindo a opção &quot;Número&quot; para &quot;Sim&quot;. O efeito de definir a opção &quot;Número&quot; para &quot;Sim&quot; será que o indicador de eficácia não terá um denominador. Você vai, portanto, só será capaz de definir um numerador, que servirá como a fórmula do elemento de dados calculados.</para>
 </note>
 </section>
-<section id="indicatorGroup">
+<section xml:id="indicatorGroup">
 <title>Grupo de Indicadores</title>
 <para>Grupos indicadores funcionar essencialmente o mesmo que os grupos de elementos de dados. Os indicadores múltiplos pode ser atribuído a um grupo de fácil filtração e análise. Para atribuir a grupos de indicadores, simples de imprensa Manutenção-&gt; Elementos de dados e indicadores-&gt; grupos de indicadores. Veja a seção sobre grupos de elementos de dados para obter instruções detalhadas de como usar este módulo. </para>
 </section>
-<section id="indicatorGroupEditor">
+<section xml:id="indicatorGroupEditor">
 <title>Editor de grupo de Indicatores</title>
 <para>O grupo indicador de funções do módulo editor essencialmente o mesmo que o módulo editor grupo de elementos de dados, exceto nos indicadores. Você pode facilmente reorganizar os grupos que pertencem a indicadores com este módulo. Para acessá-lo, escolha Para atribuir a grupos de indicadores, simples pressionar de Manutenção-&gt; Elementos de dados e indicadores-&gt; editor grupo indicador a partir do menu principal. Veja a seção editor grupo de elementos de dados para obter mais instruções. </para>
 </section>
-<section id="indicatorGroupSet">
+<section xml:id="indicatorGroupSet">
 <title>Conjuntos do grupo de Indicadores</title>
 <para>Similar para agrupar conjuntos de elementos de dados, conjuntos de grupo indicador servem para criar grupos combinados de indicadores semelhantes. Por exemplo, você pode ter um conjunto de indicadores chamada &quot;malária&quot; e &quot;Leishmaniose&quot;. Ambos os grupos podem ser combinados em um conjunto grupo chamado &quot;doenças transmitidas por vetores&quot;. Conjuntos de grupos de indicadores são usados ​​durante a análise de dados de combinar temas similares de indicadores. Para aceder a este módulo escolher Manutenção-&gt; elementos e dados indicadores&gt; grupo Indicador define a partir do menu principal. O diálogo a seguir será exibida. </para>
 <screenshot>
@@ -4709,7 +4709,7 @@ HMIS . Esse recurso também nos ajuda a superar a dependência de Internet , at�
 atualizações podem ser transferidos através de chave USB , onde não há conectividade, ou através de e-mail onde
 há conectividade com a Internet limitada. DHIS 2 fornece robusta funcionalidade de exportação-importação para
 satisfazer essas necessidades. </para>
-<section id="export">
+<section xml:id="export">
 <title>Exportação de dados</title>
 <para>DHIS 2 torna possível a exportação de vários tipos de dados em vários formatos de dados. você pode
 exportar seus dados, também referidos como medidas ou fatos, e sua meta-dados, o que se refere a
@@ -4811,10 +4811,10 @@ próprios dados. </para>
 Document Format (PDF).</para>
 </section>
 </section>
-<section id="import">
+<section xml:id="import">
 <title>Importação de Dados</title>
 <para>A opção de importação permite que diferentes instâncias DHIS 2 recebam conjunto padronizado de dados na ausência de um sistema em rede. Normalmente, um conjunto de dados é exportado a partir de uma instância DHIS (por exemplo, um sistema de nível distrital) para outro sistema (por exemplo, um sistema de nível provincial). DHIS 2 é capaz de importar dados de outros sistemas que suportam tanto o DXF de formatos IXF. DHIS 2 é capaz de importar dados diretamente a partir de um banco de dados DHIS 1.4 Access. Cada uma dessas opções serão discutidas nas secções seguintes. </para>
-<section id="import_another_instance">
+<section xml:id="import_another_instance">
 <title>Importação de dados de outra instância DHIS 2</title>
 <para>Os dados podem ser importados para diferentes instâncias do DHIS 2 através da utilização de um formato de intercâmbio de dados DXF. Existem duas telas que são utilizados para importar dados, com padrão e opções avançadas. </para>
 <para>O menu de importação de dados padrão pode ser acessado clicando no <guimenuitem>&quot;Import&quot;</guimenuitem> da principal tela de <guimenuitem>Import-Export</guimenuitem>. </para>
@@ -4893,7 +4893,7 @@ identificadores no campo de código, este identificador é necessário para ser 
 para unidades de organização, mas para todos os tipos de metadados, permitindo a fácil importação de outros
 sistemas.</para>
 </section>
-<section id="dhis14import">
+<section xml:id="dhis14import">
 <title>Importando data apartir do DHIS 1.4</title>
 <para>Existem duas formas de importar dados de um banco de dados DHIS 1.4; 1) através dos arquivos de exportação 1.4 baseados em XML, ou 2) diretamente a partir do arquivo de dados DHIS 1.4 (mdb).. Ambos são acessíveis a partir do DHIS</para>
 <para>1.4 Menu Importar em Importar no módulo Import-Export.</para>
@@ -4967,7 +4967,7 @@ suportada pela DHIS 1,4 a DHIS 2. Isto inclui:</para>
 </section>
 </section>
 </section>
-<section id="importCSVdata">
+<section xml:id="importCSVdata">
 <title>Importando dados CSV</title>
 <para>DHIS 2 suporta a importação de dados no formato CSV. Isso pode ser usado para importar o arquivo de troca produzido por DHIS 2 em si. Ele também vem a calhar quando você quer importar dados de um sistema de terceiros como CSV é amplamente apoiada em aplicações e é fácil de produzir manualmente.</para>
 <para>Para importar um arquivo de troca de dados CSV navegue até o <emphasis role="italic">CSV Data Import </emphasis>item no menu do lado esquerdo. Faça o upload do arquivo de troca e clique <emphasis role="italic">Import</emphasis>.</para>
@@ -5035,7 +5035,7 @@ suportada pela DHIS 1,4 a DHIS 2. Isto inclui:</para>
 &quot;DUSpd8Jq3M7&quot;,&quot;201202&quot;,&quot;gP6hn503KUX&quot;,&quot;V6L425pT3A0&quot;,&quot;10&quot;,&quot;bombali&quot;,&quot;2010-04-17&quot;,,&quot;false&quot;
 &quot;DUSpd8Jq3M7&quot;,&quot;201202&quot;,&quot;OjTS752GbZE&quot;,&quot;V6L425pT3A0&quot;,&quot;9&quot;,&quot;bombali&quot;,&quot;2010-04-06&quot;,,&quot;false&quot;</screen>
 </section>
-<section id="importXMLdata">
+<section xml:id="importXMLdata">
 <title>Importing XML data</title>
 <para>DHIS 2 suporta a importação de dados em formato XML. O formato é chamado de DXF (DHIS câmbio
 Format). Para importar um arquivo XML navegar até o item XML Importação de Dados no menu do lado esquerdo.
@@ -5045,7 +5045,7 @@ o resultado do processo de importação em termos de número de registros import
 e os conflitos potenciais.</para>
 <para>Se você precisa para produzir manualmente esses arquivos XML, consulte o capítulo API Web onde você pode encontrar documentação detalhada do formato DXF.</para>
 </section>
-<section id="importPDFdata">
+<section xml:id="importPDFdata">
 <title>Importing PDF data</title>
 <para>DHIS 2 suporta a importação de dados no formato PDF. Isso pode ser usado para importar dados produzidos por formas de entrada de dados de PDF offline. Por favor, consulte a seção &quot;Conjunto de dados de gestão&quot; para obter detalhes sobre como produzir um formulário PDF que pode ser usado para entrada de dados offline. </para>
 <para>Para importar um arquivo de dados PDF, navegue até o <emphasis>PDF Importação de Dados</emphasis> menu do lado esquerdo. Faça o upload do arquivo PDF concluída e clique <emphasis role="italic">Import</emphasis>.</para>
@@ -5055,10 +5055,10 @@ e os conflitos potenciais.</para>
 <chapter>
 <title>Gestão do usuário</title>
 <para>DHIS2 permite que vários usuários acessem o sistema simultaneamente, cada um com um define um conjunto de permissões. Essas permissões podem ser afinado para que determinados usuários só pode inserir dados, enquanto outros podem gerar relatórios. Múltiplas funções de usuário podem ser criadas, cada uma com seu próprio conjunto de permissões, e depois atribuído a usuários que lhes conferem certos privilégios dentro do sistema. Este capítulo descreve como gerenciar usuários e funções de usuário.</para>
-<section id="creating_new_users">
+<section xml:id="creating_new_users">
 <title>Criação de novos usuários e funções</title>
 <para>Esta seção descreve como adicionar novos usuários e gerenciar usuários existentes para a aplicação DHIS2. Você pode criar tantos nomes de usuário que você precisar. Cada usuário pode ser atribuído certos privilégios, e pode ser atribuído a algumas unidades da organização para a qual eles serão habilitados para inserir dados em nome. Para acessar o módulo de usuário, escolha &quot;Maintenance-&gt; Usuários&quot; no menu principal..</para>
-<section id="user_maintenance">
+<section xml:id="user_maintenance">
 <title>Manutenção do usuário</title>
 <screenshot>
 <title>Select Users menu item</title>
@@ -5081,7 +5081,7 @@ e os conflitos potenciais.</para>
 digitando o nome no campo &apos;filtro de nome de usuário por&apos; como mostrado
 acima..</para>
 </section>
-<section id="user_user_roles">
+<section xml:id="user_user_roles">
 <title>Gestão de função do usuário</title>
 <para>Como parte da criação de um nome de utilizador que são necessários para definir o papel do usuário. Faça isso clicando no &apos;papel de usuário &quot;que aparece no lado esquerdo da tela exibida. Isso vai levar você para a página de Gerenciamento de funções, onde você terá que clicar no botão <guibutton>Adicionar novo</guibutton> para criar uma nova função.</para>
 <screenshot>
@@ -5107,7 +5107,7 @@ acima..</para>
 <para>Finalmente, quando você digitou os campos necessários, clique no botão
 <guibutton>Guarad</guibutton> que está localizado na parte inferior do ecrã exibido. O papel do usuário desejado e autorização relacionado será salva no banco de dados, e pode, então, ser ssigned para um usuário específico.</para>
 </section>
-<section id="user_management">
+<section xml:id="user_management">
 <title>Gestão do Usuário</title>
 <para>Sob determinada função de usuário não pode haver mais de um usuário. Para adicionar novos usuários ir às opções do usuário sob o módulo de manutenção.</para>
 <para>Para adicionar um novo usuário, basta seguir estes passos:</para>
@@ -5145,11 +5145,11 @@ acima..</para>
 </listitem>
 </itemizedlist>
 </section>
-<section id="user_group_management">
+<section xml:id="user_group_management">
 <title>Gestão de grupo de usuário</title>
 <para>Os grupos de usuários permite que você envie notificações para vários usuários ao mesmo tempo. Basta clicar em &quot;Adicionar novo&quot; a partir da tela &quot;grupo de usuários&quot;, forneça um nome para o grupo, e adicionar os usuários desejados da lista de &quot;usuários disponíveis&quot; para a lista de &quot;Membros do grupo&quot;. </para>
 </section>
-<section id="user_by_org_unit">
+<section xml:id="user_by_org_unit">
 <title>Usuário por unidade organizacional</title>
 <para>O &quot;Usuário pela organização da unidade&quot; função permite-lhe ver o que os usuários têm sido atribuídos a uma unidade de organização particular. Basta selecionar a unidade de organização da árvore à esquerda, e uma lista de usuários que tenham sido atribuídas a esta unidade organização especial será exibido.</para>
 </section>
@@ -5157,7 +5157,7 @@ acima..</para>
 </chapter>
 <chapter>
 <title>Usando a funcionalidade de relatórios</title>
-<section id="reporting_intro">
+<section xml:id="reporting_intro">
 <title> Funcionalidade de relatórios em DHIS 2</title>
 <para>O módulo de relatórios em DHIS 2 fornece um conjunto de relatórios alternativos, e esta secção irá explicar como usá-los para visualizar e analisar dados. Outra secção explica como configurar e definir as várias ferramentas de relatórios.</para>
 <para><emphasis role="bold">Relatório padrão:</emphasis> Os relatórios padrão são construídos em tabelas do relatório, mas são mais avançados na sua concepção permitindo mais cosméticos e estilos. Esses relatórios também podem combinar várias tabelas e gráficos no mesmo relatório e disponibilizados como relatórios de um clique que são muito fáceis de usar. Estes relatórios podem ser baixados como arquivos PDF que os torna ideais para a impressão, bem como a partilha offline. </para>
@@ -5172,7 +5172,7 @@ acima..</para>
 <para><emphasis role="bold">Web-based pivot tables:</emphasis> O construído na ferramenta pivot table é uma simples ferramenta baseada na Web para exibir dados de indicadores por unidade organizacional e o período em uma vista tipica da pivot table e permite algumas manipulações básicas das tabelas. É uma maneira rápida e fácil de olhar para muitos valores do indicador ao mesmo tempo (por unidade organizacional e/ou periodo), mas não tem a mesma funcionalidade que os offline Excel pivot tables. </para>
 <para><emphasis role="bold">GIS:</emphasis> Apresentar e analisar os dados usando mapas temáticos. Você pode ver ambos os elementos de dados e indicadores uma vez que você tiver as coordenadas para todas as suas unidades organizacionais você pode detalhar a hierarquia e visualizar mapas para todos os níveis do país polígonos para faciliade dos pontos. Veja o capítulo em separado sobre GIS para mais detalhes. Todas as informações do mapa é construído em DHIS 2 e tudo que você precisa fazer é registrar as coordenadas para as suas unidades organizacionais e os mapas estarão disponíveis.</para>
 </section>
-<section id="standard_reports">
+<section xml:id="standard_reports">
 <title>Usando relatórios padrão</title>
 <para>Você pode acessar os relatórios disponíveis a partir do menu Serviços, selecionando Relatório. No menu de relatório na barra à esquerda, clique em Relatório Padrão. Uma lista de todos os relatórios pré-definidos serão exibidos na janela principal.</para>
 <screenshot>
@@ -5185,7 +5185,7 @@ acima..</para>
 </screenshot>
 <para>Você pode executar/exibir um relatório, clicando na seta verde e branco ao lado do relatório que você deseja. Em seguida verá uma janela de parâmetro de relatório onde você deve preencher os valores necessários para unidade organizacional e / ou mês de relatório, dependendo do que tiver sido definido na tabela(s) de relatório subjacente(s) . Clique no &quot;Obter relatório&quot; quando estiver pronto. O relatório será exibido diretamente no seu navegador ou estará disponível como um arquivo .pdf para baixar, dependendo das configurações do seu navegador para lidar com arquivos PDF. Você pode salvar o arquivo e mantê-lo localmente no seu computador para uso posterior. </para>
 </section>
-<section id="report_tables">
+<section xml:id="report_tables">
 <title>Usando Tabelas de relatório </title>
 <para>Tabelas do relatório é uma ferramenta de fácil utilização para criação de análise tabular. Para executar uma tabela de relatório primeiro navegue para a lista de tabelas de relatório disponíveis em Serviços-&gt;Relatórios-&gt;Tabelas de Relatório e clique na seta verde e branco (o primeiro símbolo na lista de operações) ao lado da tabela de relatório que você deseja visualizar. </para>
 <para><emphasis role="bold">Parâmetros de relatório:</emphasis> A maioria das tabelas do relatório possuem parâmetros, o que significa que você pode filtrar quais unidades organizacionais e/ou períodos que deseja no relatório. Isto torna os relatórios muito mais reutilizáveis. Quando você executa o relatório de tabela uma janela de parâmetro de relatório será aberto e pedindo o usuário para inserir os valores para os parâmetros selecionados. O parâmetros possíveis são Mês de relatório e a Unidade organizacional, e qualquer um deles ou ambos irão ser exibidos na janela. Depois de selecionar os valores clique no botão Obter relatório.</para>
@@ -5208,7 +5208,7 @@ acima..</para>
 </screenshot>
 <para> </para>
 </section>
-<section id="dataset_reports">
+<section xml:id="dataset_reports">
 <title>Usando relatórios de conjunto de dados</title>
 <para>Relatórios de conjunto de dados são vistas de impressão da tela de entrada de dados preenchida com dados brutos ou agregados. Estes estão disponíveis apenas para os conjuntos de dados que têm formulários de entrada de dados personalizados e não para padrão ou formulários de seção.</para>
 <para>Você pode acessar relatórios de conjunto de dados a partir do menu Relatório em Serviços.</para>
@@ -5219,17 +5219,17 @@ acima..</para>
 <para><emphasis role="bold">Relatórios de Unidade Organizacional:</emphasis> Aqui seleciona-se a unidade de organizacional para relatório. Isso pode ser em qualquer nível de hierarquia como os dados serão agregados até este nível automaticamente (caso você não marque a opção acima).</para>
 <para>Após terminar de preencher os critérios do relatório clique em &quot;Obter relatório&quot;. O relatório será exibido no modo de exibição HTML em um formato para impressão. Use imprimir e salvar como funções do navegador para imprimir ou guardar (como html) o relatório.</para>
 </section>
-<section id="resource">
+<section xml:id="resource">
 <title>Usando recursos</title>
 <para>A ferramenta de recurso permite o carreguamento dos arquivos de seu computador local para o servidor DHIS
 e adicionar link para outros recursos na Internet através de URLs. Se desejar compartilhar o link direto para o recurso DHIS pode-se clicar no botão &quot;ver recursos&quot; e copiar o endereço do link.</para>
 <para>Ao criar um recurso clique no botão&quot;Adicionar novo&quot;. Digite um nome para o recurso e, em seguida, escolher entre o carregar arquivo ou URL externa. Se optar por carregamento de arquivo clique em &quot;Escolher arquivo&quot; e selecione o arquivo do seu computador local. Se optar por URL insira o link para o recurso na Internet. Em seguida, clique em &quot;Salvar&quot;.</para>
 </section>
-<section id="data_visualizer">
+<section xml:id="data_visualizer">
 <title>Usando visualizador de dados</title>
 <para>O módulo visualizador de dados pode ser acessado em &quot;Serviços&quot; no menu superior. Veja o capítulo &quot;Usando visualizador de dados&quot; para uma explicação completa deste módulo.</para>
 </section>
-<section id="reporting_dashboard">
+<section xml:id="reporting_dashboard">
 <title>Usando o painel de instrumentos</title>
 <para>O painel de instrumentos é a sua primeira vista para os dados cada vez que iniciar sessão no sistema. Cada usuário tem seu próprio painel, e um painel de instrumentos é composto por 4 áreas do gráfico à direita e 3 áreas de atalho à esquerda.</para>
 <screenshot>
@@ -5253,7 +5253,7 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
 </mediaobject>
 </screenshot>
 </section>
-<section id="reporting_reporting_rate_summary">
+<section xml:id="reporting_reporting_rate_summary">
 <title>Usando o Resumo de taxa de reportagem</title>
 <para>Acesse o Resumo de taxa de reportagem no menu Serviços-&gt; Relatórios. Resumo de taxa de reportagem mostrará quantos conjuntos de dados (formulários) foram apresentados por unidade de organizacional e período. A utilização de um dos três métodos diferentes para calcular completude; 1) com base no botão Concluir na introdução de dados, 2) com base em um conjunto de elementos de dados obrigatórios, ou 3) com base no total dos valores dos dados registrados para um conjunto de dados. </para>
 <para><emphasis role="bold">Para executar o relatório, faça o seguinte:</emphasis></para>
@@ -5272,7 +5272,7 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
 </mediaobject>
 </screenshot>
 </section>
-<section id="orgunit_distribution_reports">
+<section xml:id="orgunit_distribution_reports">
 <title>Usando Relatório de distribuição de unidade organizacional </title>
 <para>Pode-se acessar o Relatório de distribuição de unidade organizacional a partir do menu do lado esquerdo do módulo de Serviços-&gt; Reports.</para>
 <para>Relatório de distribuição de unidade organizacional são relatórios que mostram como as unidade organizacional são distribuídas em várias propriedades, como tipo e propriedade, e por áreas geográficas..</para>
@@ -5288,14 +5288,14 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
 </mediaobject>
 </screenshot>
 </section>
-<section id="web_pivot_table">
+<section xml:id="web_pivot_table">
 <title>Usando web pivot table</title>
 <para>A web pivot table é uma ferramenta para exibir e dinamização dos dados de indicadores e elementos de dados de uma maneira fácil. Na caixa de seleção de dados aberto comece por seleccionar o tipo de dados que podem ser elementos de dados ou indicadores. Selecione o grupo como um filtro ou deixá-lo em &quot;Todos&quot;. Selecione data de início, data de término e tipo de período para indicar os períodos que deseja incluir na pivot table.Continue selecionando uma unidade de organização da árvore de seleção. Os filhos no nível abaixo da unidade de organização selecionado será incluído na pivot table. Em seguida, clique em &quot;Obter dados&quot;.</para>
 <para>Depois de carregar uma pivot table, verá que os indicadores (ou elementos de dados) irão aparecer no topo como colunas, enquanto que períodos e unidades organizacionais são combinados como linhas. Se você quiser rodar a tabela, clique no botão &quot;Pivot&quot; e selecione novas dimensões. Essas dimensões serão exibidos como colunas na tabela ao clicar em &quot;Pivot&quot;.</para>
 <para>Na pivot table, pode clicar em qualquer célula, a fim de mostrar um menu. Nesse menu, pode-se escolher a visualização do indicador relevante, unidade organizacional e período como diversas gráfico variantes .</para>
 <para>Para salvar os dados da pivot table para o seu computador local, clique no botão &quot;Baixar como Excel&quot;. A pasta de trabalho Excel mostrará cada período como uma folha.</para>
 </section>
-<section id="data_mart">
+<section xml:id="data_mart">
 <title>Usando o gerenciamento de data mart</title>
 <para>O data mart é um conjunto de tabelas no banco de dados no DHIS que é usado por todas as ferramentas de análise e relatórios para recuperar dados. A data mart é preenchido com base na interface de usuário de gerenciamento de dados. Este gerenciamento permite controlar o processo de conversão de dados coletados em dados agregados e escrever para o data mart.</para>
 <para>A tela de gerenciamento de data mart permite que selecione os tipos de período, data de início e data final que irá controlar quais períodos são incluídos no processo de data mart. Por padrão serão incluídos todos os elementos de dados, indicadores e unidades organizacionais.</para>
@@ -5305,7 +5305,7 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
 <chapter>
 <title>Administração de dados</title>
 <para>O módulo de gestão de dados fornece um conjunto de funções para assegurar que os dados armazenados na base de dados DHIS2 está integrada e que o desempenho da base de dados é optimizado. Estas funções devem ser executadas regularmente por um administrador de dados para assegurar que a qualidade dos dados armazenados é ideal. </para>
-<section id="dataBrowser">
+<section xml:id="dataBrowser">
 <title>Navegador de dados</title>
 <para>A manutenção do navegador de dados e módulo de análise permite ao usuário produzir um resumo dos dados contidos na base de dados DHIS2. A visualização sumária fornece uma contagem de elementos de dados que foram inseridos na unidade de organização seleccionada, bem como seus descendentes. Os dados brutos para todos os elementos de dados para uma série de períodos de tempo e uma determinada unidade organizacional pode ser pesquisado e exportados em formatos Excel, CSV ou PDF. Existem quatro modos de navegador de dados, que determinam como os dados são resumidos</para>
 <itemizedlist>
@@ -5382,7 +5382,7 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
 </listitem>
 </itemizedlist>
 </section>
-<section id="dataIntegrity">
+<section xml:id="dataIntegrity">
 <title>A integridade dos Dados</title>
 <para>DHIS2 pode executar uma grande variedade de verificação de integridade de dados contidos na base de dados. Identificar e corrigir problemas de integridade de dados é extremamente importante para garantir que os dados utilizados para fins de análise é válido. Cada uma das verificações de integridade de dados que são executadas pelo sistema irá ser descrito, juntamente com os procedimentos gerais que podem ser realizadas para resolver estes problemas. </para>
 <section>
@@ -5466,7 +5466,7 @@ Alguns indicadores foram atribuídos a vários grupos de indicadores que são me
 <para>Existe um erro no lado esquerdo da definição da regra de validação. Selecione <command>Serviços-&gt;Qualidade de dados-&gt;Regra de validação</command> e clica no &quot;Edit&quot; Ícone na regra não respeitada. Clica &quot;Editar lado direito&quot; e fazer as correções necessárias.</para>
 </section>
 </section>
-<section id="maintenance">
+<section xml:id="maintenance">
 <title>Manutenção</title>
 <para>O módulo de manutenção de dados tem cinco opções, cada descritas abaixo. </para>
 <itemizedlist>
@@ -5500,7 +5500,7 @@ Alguns indicadores foram atribuídos a vários grupos de indicadores que são me
 </listitem>
 </itemizedlist>
 </section>
-<section id="resourceTables">
+<section xml:id="resourceTables">
 <title>Tabelas de recursos</title>
 <para>Tabelas de recursos apoiam tabelas que são utilizadas durante a análise dos dados. alguém poderia
 tipicamente juntar os conteúdos dessas tabelas com a tabela de valor de dados ao fazer consultas a partir de
@@ -5557,7 +5557,7 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 </screenshot>
 <para>Um local é composto por uma língua e um País. Selecione o valor desejado e clica &quot;Adicionar&quot;. Esse local customizado estará agora disponível no sistema como um dos pontos de tradução. </para>
 </section>
-<section id="sqlView">
+<section xml:id="sqlView">
 <title>Visualização SQL</title>
 <para>A funcionalidade de visualização de SQL de DHIS2 irá armazenar a definição da exibição SQL internamente, e depois materializar a visão quando solicitado. </para>
 <para>Administradores da base de dados deve ter cuidado com criar modos de exibição base de dados diretamente na base de dados DHIS2. Por exemplo, quando as tabelas de recursos são gerados, todos eles, em primeiro lugar ser suprimido e depois re-criada. Se os pontos de vista SQL dependem dessas tabelas, uma exceção na violação de integridade será lançada e o processo será abortado.</para>
@@ -5580,19 +5580,19 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 <para>Para usar a visualização SQL clique &quot;Executar query&quot; botão <inlinegraphic fileref="resources/images/dhis2_images/start_process.png"/> a partir do &quot;página de gerenciamento da visualização de SQL. Assim que o processo for concluído, será informado que a tabela foi criada. O nome da tabela que vai ser fornecido, e é composto a partir da &quot;descrição&quot; atributo fornecido na definição de exibição SQL. Uma vez que o ponto de vista foi materializada, clique no &quot;Exibir&quot; botão <inlinegraphic fileref="resources/images/dhis2_images/view_sections.png"/>.</para>
 </section>
 </section>
-<section id="organisationUnitMerge">
+<section xml:id="organisationUnitMerge">
 <title>Combinação de Unidades orgânicas</title>
 <para>Essa função é útil quando duas Unidades orgânicas necessitam de ser combinadas, p.ex. foi decidido que uma unidade sanitária vai ser fechada e que os serviços passaram a ser fornecidos pela unidade sanitária mais próxima.</para>
 <para>Comece por selecionar a Unidade orgânica a ser eliminada da árvore e clica <emphasis role="italic">confirma</emphasis>. Depois selecione a Unidade orgânica a ser mantida e clica <emphasis role="italic">confirma</emphasis> outra vez. Finalmente, verifique a seleção e clica <emphasis role="italic">combinar</emphasis>. </para>
 <para>Em casos onde já exista dados para a unidade orgânica a ser eliminada e não exista dados na unidade orgânica a ser mantida, os dados serão movidos para a unidade orgânica a ser mantida. No caso de houver dados nas duas unidades orgânicas, os dados seram resumidos e movidos para a unidade orgânica a ser mantida. No caso de dados existirem somente na unidade orgânica a ser mantida nenhuma acção será efectuada. a Unidade orgânica a ser eliminada será eventualmente apagada.</para>
 </section>
-<section id="duplicateDataElimination">
+<section xml:id="duplicateDataElimination">
 <title>Eliminação de dados duplicados</title>
 <para>Esta função é útil quando os dados foram digitados por engano por dois elementos de dados que representa o mesmo fenômeno.</para>
 <para>Comece selecionando o elemento de dados para eliminar da lista e clique em confirmar. Em seguida, selecione o elemento de dados para manter e clique em confirmar novamente. Finalmente, verificar a seleção e clique em combinar.</para>
 <para>Na caso em que existe dados para o elemento de dados para eliminar e não para o elemento de dado a manter, os dados serão transferidos para o manter. Quando existem dados para ambos os elementos de dados, os dados que foi atualizado pela última vez será usado. Quando os dados só existe para o único a manter, será tomada nenhuma acção. O elemento de dados para eliminar acabará por ser excluído, excepto quando for um elemento de dados multidimensional e tem outros dados registrados.</para>
 </section>
-<section id="dataStatistics">
+<section xml:id="dataStatistics">
 <title>Estatísticas de dados</title>
 <para>O módulo de estatísticas de dados fornece uma visão geral de número de objectos guardados na base de dados do DHIS2. </para>
 <screenshot>
@@ -5604,7 +5604,7 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 </screenshot>
 <para>O número total de cada tipo de objecto é apresentada numa tabela, assim como um gráfico. </para>
 </section>
-<section id="lockException">
+<section xml:id="lockException">
 <title>Bloquear excepções </title>
 <para>Bloquear exceções fornecer controle refinado sobre a isenção de um conjunto de dados bloqueado. Após o termo do conjunto de dados, entrada de dados será negado por padrão, a menos que uma exceção foi concedida através da interface exceção Lock. Para habilitar uma exceção de bloqueio, selecione as unidades desejadas organização, conjuntos de dados e período de tempo e pressione &quot;Adicionar&quot;. Ao conceder uma exceção de bloqueio, a entrada de dados será ativado mesmo após o período de validade do conjunto de dados já passou. </para>
 <screenshot>
@@ -5616,7 +5616,7 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 </screenshot>
 <para>No exemplo acima, a exceção de fechamento de dados seria criado para &quot;Organização ab Vida Abundante&quot; e &quot;ab Hospital do Sétimo Dia&quot; para o conjunto de dados &quot;Cuidados e Apoio&quot; para &quot;, fevereiro de 2012&quot;. </para>
 </section>
-<section id="zeroValueStorage">
+<section xml:id="zeroValueStorage">
 <title>Armazenamento de valores zero</title>
 <para>A função de armazenamento de valor igual a zero faz com que seja possível definir para quais elementos de dados do sistema deve armazenar os valores zero. Na maioria dos casos, os zeros são significativos apenas por um subconjunto de elementos de dados na base de dados. Quaisquer zeros inseridos durante a entrada de dados será ignorada por padrão, exceto para os elementos de dados, onde o armazenamento de valor zero, foi ativado. </para>
 </section>
@@ -5624,7 +5624,7 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 <title>Remover de Unidades Organizacionais</title>
 <para>Se você precisa de remover os ramos da hierarquia da unidade organizacional, você pode usar a função de remover unidade organizacional. Tenha em mente que a organização só selecionado (e seus filhos) serão mantidos. Todas as outras orgunits (e todos os dados associados a eles) serão excluídos do banco de dados. </para>
 </section>
-<section id="minMaxValueGeneration">
+<section xml:id="minMaxValueGeneration">
 <title>Geração de valores Min-Max </title>
 <para>Esta função administrativa pode ser usado para gerar valores de min-max, que são utilizados como parte da qualidade de dados e processo de validação para unidades organizacionais específicas e conjuntos de dados. Basta selecionar o conjunto de dados a partir do quadro à esquerda, e selecione as orgunits necessários para gerar os valores mín-máx para o seletor de unidades organizacionais à direita. Pressione o botão &quot;Gerar&quot; para gerar ou regenerar todos os valores mín-máx. Pressione o botão &quot;Remover&quot; para remover todos os valores mínimo-max que estão armazenados no banco de dados. </para>
 <para><screenshot>
@@ -5635,7 +5635,7 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 </mediaobject>
 </screenshot></para>
 </section>
-<section id="constant">
+<section xml:id="constant">
 <title>Constante</title>
 <para>Constantes são valores estáticos que podem ser colocados à disposição dos usuários para uso em elementos e indicadores de dados. Alguns indicadores, como &quot;taxa de proteção ano Casal&quot; dependem de constantes que normalmente não mudam ao longo do tempo. Basta pressionar &quot;Adicionar&quot; e fornecer um nome no campo &quot;Nome&quot; e definir o seu valor no campo &quot;Valor&quot;. Pressione o botão &quot;Adicionar&quot;. A constante de agora estará disponível aos usuários para uso em suas expressões..</para>
 <screenshot>
@@ -5646,7 +5646,7 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 </mediaobject>
 </screenshot>
 </section>
-<section id="optionSet">
+<section xml:id="optionSet">
 <title>Conjunto de opções</title>
 <para> Conjuntos de opções pode ser associada a elementos de dados na interface do elemento de dados add / update para elementos de dados baseados em nomes. Você pode definir qualquer tipo de opções, por exemplo, um conjunto de opções
 chamado de &quot;Tipo de entrega&quot;, onde &quot;Normal&quot;, &quot;Breach&quot;, &quot;cesariana&quot; e
@@ -5656,11 +5656,11 @@ registros em nome do módulo os elementos aparecerão em forma
 como listas drop-down com suporte auto-realização.
 </para>
 </section>
-<section id="cacheStatistics">
+<section xml:id="cacheStatistics">
 <title>Estatísticas de cahe </title>
 <para>Esta opção é para os administradores do sistema apenas para usar. As estatísticas de cache mostra o status do cache de nível de aplicação. O cache de nível de aplicação refere-se aos objetos e os resultados da consulta que o aplicativo está em cache, a fim de acelerar o desempenho. Se o banco de dados foi modificado diretamente o cache de aplicativo precisa ser limpo para que ela tenha .</para>
 </section>
-<section id="attribute">
+<section xml:id="attribute">
 <title>Atributos dinâmicos</title>
 <para>Atributos dinâmicos podem ser usados ​​para adicionar informações adicionais para determinados objetos (ou seja, elementos de dados, indicadores, unidades organizacionais e usuários). Além dos atributos padrão cada um destes objectos têm, pode ser necessário em certas instalações de ter os atributos adicionais, tais como o número de fax, o que está associado com uma unidade de organização. Para adicionar um novo atributo dinâmico de um objeto, selecione &quot;Manutenção-&gt; Administração de dados&quot; a partir do menu principal, em seguida, &quot;Atributo&quot; a partir do painel do lado esquerdo, e pressione o botão &quot;Adicionar novo&quot;.</para>
 <screenshot>
@@ -5673,7 +5673,7 @@ como listas drop-down com suporte auto-realização.
 <para>Para criar um novo atributo, atribuir-lhe um nome. Cada atributo deve ter um nome único. Verifique tick-box &quot;Obrigatório&quot; se o objeto deve ter sempre o atributo dinâmico. Em seguida, selecione qual objeto (ou objetos), o atributo deve ser atribuído. Por fim, selecione o tipo de valor. Você pode escolher entre &quot;texto&quot;, &quot;Yes / No&quot;, &quot;Data&quot;, &quot;Número&quot;, &quot;inteiro&quot;, &quot;inteiro positivo&quot; e &quot;negativo inteiro&quot;. Se o valor fornecido para o atributo não corresponde ao tipo de valor, ocorrerá um erro. Por fim, clique em &quot;Salvar&quot; para salvar o atributo. </para>
 <para>O atributo dinâmico agora estará presente no objeto que você atribuiu a no respectivo &quot;Editar&quot; tela de cada objeto.</para>
 </section>
-<section id="scheduling">
+<section xml:id="scheduling">
 <title>Agendamento</title>
 <para>Data Mart pode ser programado para ser executado automaticamente em intervalos regulares. Basta selecionar o tipo de período de agregação, nível de agregação set organização do grupo da unidade, e estratégia para configurar a forma como o trabalho agendado deve ser executado. Pressionando &quot;Start&quot; vai permitir o trabalho agendado para ser executado em um tempo pré-determinado ou pode ser executado imediatamente pressionando &quot;Executar agora&quot;</para>
 <screenshot>

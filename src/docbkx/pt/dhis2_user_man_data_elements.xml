@@ -36,7 +36,7 @@
         <para>Create, modify, view and delete data element categories. </para>
       </listitem>
     </itemizedlist>
-    <section id="dataElement">
+    <section xml:id="dataElement">
       <title>Elementos de Dados</title>
       <para><?inline true?>Os elementos de dados formam a base da DHIS2. Os elementos de dados definem o que é realmente gravado no sistema, por exemplo, número de vacinções ou número de casos de malária. A criação  e definição dos elementos de dados esta muito além do escopo deste manual para descrever, mas presume-se que um administrador será fornecido com uma lista de elementos de dados padronizados para a inclusão no sistema DHIS2.. </para>
       <para>Para acessar o módulo de manutenção de elemento de dados, escolha Manutenção -&gt; Elementos de dados e Indicadores -&gt; Elemento de dados. </para>
@@ -203,7 +203,7 @@ zero.</para>
         <para>Esta operação exibe um painel de em linha no navegador que exibe todos os metadados sobre um determinado elemento de dados. Clique no nome do elemento de dados e, em seguida, selecione &quot;Mostrar detalhes&quot;; no menu de contexto. </para>
       </section>
     </section>
-    <section id="dataElementGroup">
+    <section xml:id="dataElementGroup">
       <title>Grupo de elemento de dados</title>
       <para>Grupos de elementos de dados fornecem um mecanismo para a classificação de elementos de dados relacionados em um tema comum. Por exemplo, dois elementos de dados &quot;Vacinação contra o sarampo&quot; e &quot;vacinação contra a BCG&quot; podem ser agrupados em um grupo de elemento de dados &quot;vacinação infantil&quot;. Para acessar a página de manutenção de grupo de elementos de dados, clique Manutenção -&gt; Elementos de Dados e Indicadores -&gt; Grupo de elemento de dados .</para>
       <para>Semelhante à página de manutenção de &quot;elemento de dados&quot;, os grupos de elementos de dados podem ser pesquisados ​​ digitando uma sequência de pesquisa no campo &quot;Filtrar por nome&quot;. </para>
@@ -217,7 +217,7 @@ zero.</para>
       </screenshot>
       <para>Preencha o campo &quot;Nome&quot; e em seguida, selecione todos os elementos de dados que deveriam pertencer ao grupo a partir do painel esquerdo. Clique no botão &quot;Mover selecionado&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center"/>para adicionar os elementos de dados selecionados para o grupo de elementos de dados. Clique no botão &quot;Remover selecionados&quot; para remover todos os elementos de dados do grupo que foram selecionados no painel da direita. Finalmente, clique no botão &quot;Adicionar&quot; para salvar as alterações ou no botão &quot;Cancelar&quot; para descartar as alterações. </para>
     </section>
-    <section id="dataElementGroupEditor">
+    <section xml:id="dataElementGroupEditor">
       <title>Editor de Grupo de elemento de dado</title>
       <para>O editor de grupo de elementos de dados fornece a funcionalidade avançada para o administrador para permitir que vários elementos de dados  sejam adicionados ou removidos de um grupo. Também é possível criar novos grupos de elementos de dados, mudar o nome de grupos existentes, e excluir grupos inteiramente. Para acessar o editor de grupo de elementos de dados, vá para <guimenu>&quot;Manutenção-&gt; Elemento de dados e Indicadores -&gt; Editor de Grupo de elemento de dados &quot;</guimenu>. </para>
       <para>A seguinte tela será exibida.<screenshot>
@@ -229,7 +229,7 @@ zero.</para>
         </screenshot></para>
       <para>Grupos de Elemento de Dados são  listados em ordem alfabética no painel à esquerda. Ao clicar em um grupo de elementos de dados, os actuais membros desse grupo (elementos de dados) serão listados no painel central. Elementos de dados disponíveis  podem ser adicionados ao grupo de elemento de dados aparecem  por ordem alfabética no painel mais à direita. Para remover um elemento de dados existente do grupo, clique no nome do elemento de dados no painel central, e, em seguida, clique o botão &quot;Mover para a direita&quot;  <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center"/>. Para adicionar elementos de dados ao grupo, selecione-as no painel mais à esquerda, e clique no botão &quot;Mover para a esquerda&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_left.png" align="center"/>. Para adicionar elementos de dados ao grupo, selecione-as no painel mais à esquerda, e clique no botão &quot;Mover para a esquerda&quot;.</para>
     </section>
-    <section id="dataElementGroupSet">
+    <section xml:id="dataElementGroupSet">
       <title>Conjunto de grupo elemento de dado</title>
       <para>Conjunto de grupo elemento de dado  permitem que vários grupos de elementos sejam categorizados em um conjunto. Conjunto de grupo elemento de dado são usados durante a análise e a geração de relatórios para combinar  grupos de elementos de dados  semelhantes em um tema comum. Para acessar o módulo de manutenção conjunto grupo de elementos de dados, escolha &quot;Manutenção -&gt; Elementos de Dados e Indicadores -&gt; Conjunto de grupo elemento de dado&quot;. Similar aos outros módulos de manutenção de elementos de dados, novos conjuntos de grupos de elementos de dados podem ser adicionados ao clicar o &quot;botão Adicionar novo&quot;. Outras operações incluem editar, traduzir, Remover e ver detalhes, semelhante aos outros módulos desta seção.</para>
       <para>Membros existentes Conjunto de grupo elemento de dados podem ser editado clicando no botão &quot;Editar&quot;<inlinegraphic fileref="resources/images/dhis2_images/edit.png" align="center"/> do grupo de elementos de dados desejado definido como visto abaixo.</para>
@@ -240,7 +240,7 @@ zero.</para>
       </mediaobject>
       <para>Grupos de elementos de dados disponíveis são exibidos no painel à esquerda. Podem ser movidos para o grupo de elemento de dados selecionando e  pressionando o botão &quot;Mover para a direita&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center"/>. Grupos de elementos de dados que são actualmente membros do conjunto grupo de elementos de dados são exibidos no painel do lado direito. Eles podem ser removidos a partir do grupo de elementos de dados definido, clicando no grupo de elementos de dados pretendida e pressione o botão &quot;Mover para a esquerda&quot;<inlinegraphic fileref="resources/images/dhis2_images/move_left.png" align="center"/>. A ordenação dos grupos de elementos de dados podem ser definidos com as setas &quot;Mover para cima&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_up.png" align="center"/> e &quot;Mover para baixo&quot; <inlinegraphic fileref="resources/images/dhis2_images/move_down.png" align="center"/>. Esta ordenação será utilizado no datamart e relatórios para ordenar os grupos de elementos de dados. Prima o botão<guibutton>&quot;Actualizar&quot;</guibutton> para salvar qualquer modificação e botão <guibutton>&quot;Cancelar&quot;</guibutton> para cancelar todas as modificações. </para>
     </section>
-    <section id="dataElementCategory">
+    <section xml:id="dataElementCategory">
       <title>Categorias</title>
       <para>As categorias podem ser utilizados para desagregar os elementos de dados em componentes atômicos individuais. Eles também podem ser usados para atribuir atributos para todos os dados gravados em um conjunto de dados específico, como &quot;parceiro de implementação&quot; e &quot;agência de Financiamento.&quot;</para>
       <para>Categorias de elementos de dados são tipicamente um conceito, tais como sexo, idade ou  estado de doença.  Os elementos de dados como &quot;Número de casos de malária confirmados&quot; são muitas vezes divididos em componentes menores para determinar, por exemplo, o número de casos de malária confirmados de determinados grupos etários. Como exemplo, três categorias de elementos de dados: Menos de 1, 1-5 e mais de 5 poderia ser criado.  Eles podem ser atribuídos como categorias para o elemento de dados, o que, em seguida, criar nas telas de entrada de dados, três campos separados para esse elemento de dados a saber: </para>
@@ -292,7 +292,7 @@ zero.</para>
       <para>A categoria pode ter dois tipos de &quot;desagregação&quot; ou &quot;atributo&quot;. Para desagregação de elementos de dados, você deve selecionar &quot;desagregação&quot;. Um tipo de cota de &quot;Atributo&quot; permitirá que a categoria a ser usado para designar uma combinação de categorias de dados gravados através de um conjunto de dados.</para>
       <para>Se a caixa &quot;Usar como dimensão de dados&quot; está marcada, a categoria estará disponível para os analytics como outra dimensão, para além das dimensões padrão de &quot;Período&quot; e &quot;unidade de Organizacional&quot; </para>
     </section>
-    <section id="dataElementCategoryCombo">
+    <section xml:id="dataElementCategoryCombo">
       <title>Combinações de categorias</title>
       <para>Combinação de categorias permite que várias  categorias de elementos de dados sejam combinados em um conjunto relacionado. Como exemplo, um elemento de dados &quot;Número de novas infecções pelo HIV&quot; poderia ser desagregados de acordo com as seguintes categorias. </para>
       <itemizedlist>
@@ -336,7 +336,7 @@ zero.</para>
       <para>Grupos de opções Categoria pode ser incluído no grupo de conjuntos de opção de categoria. Grupo de conjuntos de opção de categoria podem ser criados a partir de &quot;Grupo de conjuntos de opção de categoria&quot; &gt; &quot;Addicionar  novo&quot;, e contém um conjunto de grupos de opções de categoria.</para>
       <para>O principal objetivo das estas entidades é ser capaz de adicionar mais dimensionalidade aos seus dados capturados para análise em aplicativos como tabela dinâmica e visualizador de dados. Um exemplo de onde isso se torna útil: Em um sistema, os dados são coletados por &quot;projetos&quot;, onde os projetos são modeladas como opções de categoria. O sistema é necessário para fazer a análise dos dados, segundo a qual doador apóia o projeto. Neste caso, um conjunto de grupo de opção de categoria chamada de &quot;Doador&quot; pode ser criado. Cada doador pode ser criado como um grupo de opção de categoria, onde cada opção de categoria / projeto é colocado no grupo apropriado. Em aplicativos de análise de dados, o conjunto de grupo &quot;Doador&quot; aparecerá como uma dimensão de dados, enquanto que cada um dos doadores aparecem como itens de dimensões, prontos para inclusão nos relatórios.</para>
     </section>
-    <section id="translation">
+    <section xml:id="translation">
       <title>Traduções de elementos de dados e outros objectos</title>
       <para>DHIS 2 fornece a funcionalidade para traduções do conteúdo de base de dados como elementos de dados, grupos de elementos de dados, indicadores, grupos de indicadores, regras de validação e muito mais. Esses elementos podem ser traduzidos para qualquer número de localidades. A localidade representa um geográfico, político, cultural ou região específica. </para>
       <para>Para adicionar uma tradução clique no ícone Traduzir ao lado do elemento que você gostaria de traduzir. Comece por seleccionar o idioma pretendido e selecione a caixa de Locale. Na tela Traduzir, selecione sua localidade e insira valores para as propriedades dos elementos disponíveis. Os valores das propriedades de referência são mostradas à direita. Estes valores são os valores que foram inseridos na interface de adicionar ou atualizar usuário regular para o objecto actual.</para>

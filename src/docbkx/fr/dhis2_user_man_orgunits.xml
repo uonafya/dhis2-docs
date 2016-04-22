@@ -16,7 +16,7 @@
       </listitem>
     </itemizedlist>
   </para>
-  <section id="ou_hierarchy">
+  <section xml:id="ou_hierarchy">
     <title>La hiérarchie organisationnelle</title>
     <para>La hiérarchie organisationnelle définit la structure de l'organisation d'une instance DHIS2, comme la façon dont les établissements de santé, les zones administratives et autres zones géographiques sont disposés les uns par rapport aux autres. Elle est essentiellement la dimension "où" de DHIS2, de même que les périodes représentent la dimension temporelle du "quand". L'application DHIS2 est structurée de telle sorte que la hiérarchie de l'unité d'organisation constitue une hiérarchie géographique, et le module SIG s'y appuie. La mise en place de hiérarchies non géographiques est déconseillée, celle-ci pouvant mieux être représentée par l'emploi de groupes d'unités d'organisation. Cette dimension de données est conçue comme une hiérarchie avec une unité racine (par exemple, le Ministère de la Santé ou un pays) et un nombre quelconque de niveaux et de noeuds en dessous. Chaque noeud de cette hiérarchie est appelée une unité organisationnelle dans DHIS2.</para>
     <para>La conception de cette hiérarchie permettra de déterminer les unités géographiques d'analyse disponibles pour les utilisateurs, compte tenu du fait que les données sont collectées et regroupées dans cette structure. Il ne peut y avoir qu'une hiérarchie à la fois, ce qui fait que la structure de celle-ci a besoin d'être étudiée minutieusement.</para>
@@ -29,10 +29,10 @@
   </section>
   <section>
     <title>Administration des unités d’organisation</title>
-    <section id="orgunit">
+    <section xml:id="orgunit">
       <title>Unités d’organisation</title>
       <para>C'est ici que vous pouvez créer des unités d'organisation (appelées à partir de maintenant : orgunits) et construire la hiérarchie des OrgUnits. Les Orgunits sont ajoutées une par une, soit comme unité racine ou un enfant d'une unité sélectionnée. Le menu latéral de gauche représente la hiérarchie organisationnelle courante et si vous sélectionnez une unité vous pouvez y voir ses enfants inscrits dans la liste principale des orgunits au milieu de l'écran. Quand une OrgUnit est sélectionnée dans le menu de gauche, vous pouvez également lui ajouter de nouvelles unités enfants. Pour localiser une OrgUnit dans la hiérarchie, vous pouvez soit naviguer dans l'arborescence en développant les branches (cliquez sur le symbole +), ou le rechercher en ouvrant le champ de recherche (cliquez sur le symbole vert au-dessus de la racine de la hiérarchie). Dans le champ recherche, vous pouvez rechercher le nom de l'OrgUnit ou son code; dans tous les cas, la recherche n'affichera que les résultats correspondant exactement à la recherche (insensible à la casse). Pour ajouter une nouvelle OrgUnit, sélectionnez d'abord son parent, puis cliquez sur le bouton Ajouter une nouvelle dans le coin en haut à droite de la liste des orgunits. Pour ajouter une nouvelle racine OrgUnit, assurez-vous qu'aucune OrgUnit n'est sélectionnée dans le menu et cliquez sur "Ajouter". Les détails de l'ajout d'une nouvelle OrgUnit sont expliqués dans  <xref linkend="editOrganisationalUnits" />.</para>
-      <section id="ou_edit">
+      <section xml:id="ou_edit">
         <title id="editOrganisationalUnits">Modification des unites d’organisation</title>
         <para>Pour modifier les propriétés d'une OrgUnit existante, sélectionnez d'abord son parent (le cas échéant) dans le menu de gauche, puis recherchez l'OrgUnit dans les orgunits listées, et enfin cliquez sur le bouton "Modifier" <inlinegraphic fileref="resources/images/dhis2_images/edit.png" align="center" /> figurant à côté du nom de l'OrgUnit que vous voulez modifier. Les propriétés suivantes peuvent être définies dans la page Modifier (ou créer une nouvelle) :</para>
         <itemizedlist>
@@ -72,7 +72,7 @@
         </itemizedlist>
       </section>
     </section>
-    <section id="ou_groupsets">
+    <section xml:id="ou_groupsets">
       <title id="orgunitGroupSets">Ensemble de groupes d’unité d’organisation</title>
       <para>Les ensembles de groupe peuvent être vus comme un outil flexible permettant d'ajouter plus de catégorisations aux orgunits. N'importe quel nombre d'ensembles de groupe peut être ajoutés, mais  par défaut les bases de données vont avoir au démarrage les deux ensembles de groupe "Type" et "Propriété". L'utilisation de ces ensembles de groupe permettra de simplifier la façon dont le reporting est fait, et facilitera l'analyse par le biais des outils tels que les tableaux croisés dynamiques Excel.</para>
       <para>Alors qu'un ensemble de groupe comme "Type" décrit une dimension de mesure, les catégories actuelles sont représentées par les groupes, et la catégorisation d'un OrgUnit par les appartenances au groupe  de l'OrgUnit. Cela peut être compris comme une hiérarchie parallèle d'orgunits avec un groupe défini comme racine ("Type"), des groupes au niveau 2 (par exemple, "Clinique", "Hôpital", "Dispensaire"), et des orgunits réels au niveau 3. L'ensemble du groupe peut en tant que tel fournir des informations et une dimensionnalité supplémentaire pour l'analyse des données, étant donné que les données sont facilement filtrées, organisées, ou agrégées par groupes au sein d'un ensemble de groupe.</para>
@@ -93,7 +93,7 @@
         </listitem>
       </orderedlist>
       <para>Il est important de garder à l'esprit lors de l'utilisation de la fonction d'attribution à un "groupe d'unité d'organisation" que, à moins de faire très attention, les unités organisationnelles peuvent être attribuées à plusieurs groupes d'un ensemble de groupe. Ceci peut être vérifié par le module "intégrité des données", qui signale les unités organisationnelles qui ne sont pas membres d'un ensemble de groupe d'unité d'organisation obligatoire, ainsi que les unités organisationnelles qui ont été attribuées à plus d'un membre d'un ensemble de groupe.</para>
-      <section id="ou_groupsets_edit">
+      <section xml:id="ou_groupsets_edit">
         <title id="editOrgunitGroupSets">Modifier les ensembles de groupe d’unité d’organisation</title>
         <para>Cliquez sur le bouton 'Modifier" <inlinegraphic fileref="resources/images/dhis2_images/edit.png" align="center" /> à côté du nom du groupe de l'OrgUnit que vous souhaitez modifier. Les propriétés suivantes peuvent être définies dans la page Modifier (ou créer une nouvelle) :</para>
         <itemizedlist>
@@ -112,10 +112,10 @@
         </itemizedlist>
       </section>
     </section>
-    <section id="ou_groups">
+    <section xml:id="ou_groups">
       <title id="orgunitGroups">Groupes d’unités d’organisation</title>
       <para>Cette fonction vous permettra d'ajouter de nouveaux groupes d'unités d'organisation et de gérer ceux qui existent ainsi que leurs membres. Elle est accessible via Administration -&gt; Unités d'organisation -&gt; Groupe d'unités d'Organisation à partir du menu principal. Pour ajouter un nouveau groupe d'OrgUnit cliquez sur le bouton "Ajouter nouveau" dans le coin supérieur droit de la liste des groupes.</para>
-      <section id="ou_groups_edit">
+      <section xml:id="ou_groups_edit">
         <title id="editOrgunitGroups">Modfier les groups d’unités d’organisation</title>
         <para>Cliquez sur le bouton "Modifier" <inlinegraphic fileref="resources/images/dhis2_images/edit.png" align="center" />à côté du nom du groupe d'OrgUnit que vous souhaitez modifier. Les propriétés suivantes peuvent être définies dans la page Modifier (ou créer un nouveau) :</para>
         <itemizedlist>
@@ -128,11 +128,11 @@
         </itemizedlist>
       </section>
     </section>
-    <section id="ou_level">
+    <section xml:id="ou_level">
       <title id="orgUnitGroupLevels">Niveau d’unité d’organisation</title>
       <para>Ici vous pouvez spécifier un nom contextuel pour chaque niveau de la hiérarchie, par exemple : "Pays", "Province", "District", "Etablissement de santé", et ces noms seront utilisés partout dans l'application où les niveaux seront appelés. Cette page pourra prendre du temps à se charger si la hiérarchie des OrgUnit est très grande.</para>
     </section>
-    <section id="hierarchy_operations">
+    <section xml:id="hierarchy_operations">
       <title id="hierarchyOperations">Opérations sur la hiérarchie</title>
       <para>Ici vous pouvez déplacer les orgunits dans la hiérarchie en changeant le parent d'une OrgUnit sélectionnée. Ce processus s’effectue en trois étapes :</para>
       <para>1 . Sélectionnez l'OrgUnit vous souhaitez déplacer (dans la hiérarchie, au niveau du menu de gauche) et cliquez sur "Valider" sous le texte "Sélectionnez une unité d'organisation à déplacer".</para>

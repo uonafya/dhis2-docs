@@ -3,7 +3,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Premiers pas avec DHIS 2</title>
-  <section id="mod2_1">
+  <section xml:id="mod2_1">
     <title>Premiers pas avec DHIS 2</title>
     <para>Après la lecture de ce chapitre, vous serez en mesure de comprendre:</para>
     <itemizedlist>
@@ -70,13 +70,13 @@
       <para>La dernière version stable du serveur peut être téléchargée à partir de ce <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://stable.dhis2.org/">site web</link>. Pour plus d&apos;informations sur la façon de l&apos;installer veuillez consulter le chapitre d&apos;installation présent dans le manuel de mise en oeuvre.</para>
     </section>
   </section>
-  <section id="mod2_2">
+  <section xml:id="mod2_2">
     <title>Connexion à DHIS 2</title>
     <para>Que vous ayiez installé la version serveur ou la version Live, vous devrez utiliser un navigateur Web pour vous connecter à l&apos;application. DHIS2 devrait être compatible avec la plupart des navigateurs web modernes, mais vous devrez tout de même vous assurer que Java Script y est bien activé.</para>
     <para>Pour vous connecter à l&apos;application, veuillez saisir <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</link> si vous utilisez l&apos;application DHIS2 Live, ou remplacer localhost par le nom ou l&apos;adresse IP du serveur sur lequel la version du serveur est installée.</para>
     <para>Une fois que vous avez démarré DHIS2, en ligne ou hors ligne, la page qui s&apos;affiche vous demande de saisir les &apos;nom d&apos;utilisateur&apos; et &apos;mot de passe&apos; que vous avez créés. Après avoir saisi ces informations requises, cliquez sur le bouton d&apos;ouverture de session pour vous connecter à l&apos;application. Notez que le nom d&apos;utilisateur et le mot de passe par défaut sont &quot;admin&quot; et  &quot;district&quot;. Ils doivent être changés dès votre première connexion au système.</para>
   </section>
-  <section id="users">
+  <section xml:id="users">
     <title>Créer de nouveaux utilisateurs et rôles</title>
     <para>Cette section décrit comment ajouter de nouveaux utilisateurs dans l&apos;application DHIS 2.</para>
     <section>
@@ -101,7 +101,7 @@
       </screenshot>
       <para>Vous pouvez effectuer une recherché sur des noms d’utilisateur spécifiques dans la liste des utilisateurs en saisissant un nom dans le champ ‘filtrer par nom d’utilisateur’ comme illustré ci-dessus.</para>
     </section>
-    <section id="user_roles">
+    <section xml:id="user_roles">
       <title>Define a new role</title>
       <para>Dans le cadre de la création d&apos;un nom d&apos;utilisateur, vous devez définir le rôle de l&apos;utilisateur. Vous pouvez le faire en cliquant sur le lien &quot;rôles d&apos;utilisateur&quot; figurant sur le côté gauche de la page. Ce lien vous conduira à la page de gestion des rôles sur laquelle vous devrez cliquer sur <guibutton moreinfo="none">&apos;Ajouter nouveau&apos;</guibutton> pour créer un nouveau rôle.</para>
       <screenshot>
@@ -159,11 +159,11 @@
       </itemizedlist>
     </section>
   </section>
-  <section id="mod2_4">
+  <section xml:id="mod2_4">
     <title>Déconnexion de DHIS 2</title>
     <para>Cliquez simplement sur le lien Déconnexion figurant sur le coin supérieur droit pour quitter l’application. </para>
   </section>
-  <section id="database_design">
+  <section xml:id="database_design">
     <title>Introduction rapide à la conception d&apos;une base de données DHIS 2</title>
     <para>L&apos;application DHIS 2 est livrée avec un ensemble d&apos;outils pour la collecte de données, la validation, le reporting et l&apos;analyse, mais le contenu de la base de données, par exemple ce qui doit être collecté, ceux qui doivent effectuer ces collectes et leur format dépendra du contexte d&apos;utilisation. Ces métadonnées doivent être renseignées dans l&apos;application avant de pouvoir être utilisées, et cela peut être fait par le biais de l&apos;interface utilisateur et ne nécessite aucune programmation ni connaissances techniques du logiciel. Nous appelons ce processus initial: conception ou personnalisation de la base de données.</para>
     <para>Cette section fournit une introduction très rapide et sommaire à la conception de base de données de DHIS 2 et explique surtout les différentes étapes nécessaires à la préparation d&apos;un nouveau système DHIS 2 pour son utilisation. La manière de procéder pour chaque étape est expliquée dans d&apos;autres chapitres, et les meilleures pratiques en matière de choix de conception sont détaillées dans le guide de mise en oeuvre. Voici les étapes à suivre :</para>

@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "docbookV4.5/docbookx.dtd" []>
 <chapter>
   <title>Ficha e formulários de entrada de dados</title>
-  <section id="datasets">
+  <section xml:id="datasets">
     <title>Ficha</title>
     <para>Todas entrada de dados no DHIS2 são organizadas através da utilização das fichas.  Você pode adicionar e editar as fichas em   Manutenção-&gt;Ficha. Uma Ficha é um conjunto de elementos de dados agrupados para recolha de dados e exportação de dados entre instâncias do DHIS2 (por exemplo, a partir de uma instalação local  do distrito para um servidor nacional). </para>
     <para>Uma Ficha tem uma freqüência de coleta de dados, que pode ser definida através da  propriedade tipo de período. A freqüência pode ser diário, semanal, mensal, trimestral, semestral ou anual. Ambos os elementos de dados para incluir no conjunto de dados e a freqüência é definida na janela Adicionar/ Editar Ficha, juntamente com um nome, nome curto e código. Para usar um conjunto de dados para recolha de dados para uma unidade organizacional específica deve-se atribuir a unidade organizacional ao conjunto de dados, e este mecanismo  controla que  unidades organizacional estão associados
@@ -41,7 +41,7 @@ O comportamento padrão é sim. Se definido como não, em seguida, um utilizador
       </listitem>
     </itemizedlist>
     <para>Seu conjunto de dados será, então, pronto para ser usado em Serviços -&gt; Entrada de Dados para as unidades organizacionais que você atribuiu e por períodos de acordo com sua freqüência selecionada (tipo de período)</para>
-    <section id="dataSet">
+    <section xml:id="dataSet">
       <title>Gestão de Fichas</title>
       <para>A função de gestão de ficha permite que você crie novas fichas e gerencie as já existentes. O diálogo pode ser alcançado escolhendo Apps-&gt;Ficha-&gt;Ficha. Um diálogo de amostra é exibido abaixo.</para>
       <screenshot>
@@ -120,7 +120,7 @@ combinação de um conjunto de dados, você pode selecioná-lo ao criar ou actua
       <title>Secção de formulário</title>
       <para>Formas Seção permitir um pouco mais de flexibilidade quando se trata de usar formas tabulares e são rápidos e simples para projetar. Muitas vezes, o seu formulário de entrada de dados vai precisar de várias tabelas com subtítulos, e às vezes você precisa desativar (cinza para fora) alguns campos na tabela, essas duas funções são suportadas em formas de seção. Esta função pode ser o acesso ao escolher Maintenance- &gt; Conjunto de dados Seção. </para>
     </section>
-    <section id="dataSetSection">
+    <section xml:id="dataSetSection">
       <title>Adicionando uma nova secção ao formulário</title>
       <para>Secção de formulários são separados automaticamente por  combinações de categoria de elementos de dados, que produzem uma planilha como o formulário de entrada de dados para cada secção. </para>
       <para>Para desenhar uma secção de formulário, o procedimento é descrito abaixo:</para>
@@ -162,7 +162,7 @@ combinação de um conjunto de dados, você pode selecioná-lo ao criar ou actua
         </mediaobject>
       </screenshot>
     </section>
-    <section id="customDataEntryForm">
+    <section xml:id="customDataEntryForm">
       <title>Formulários personalizados</title>
       <para>Quando o formulário que deseja criar é complicado para os formulários padrão ou de secção, sua última opção é a utilização de um formulário personalizado. Isso leva mais tempo, mas dá-lhe total flexibilidade em termos de desenho. DHIS2 usa um  editor embutido HTML (FCK Editor) para o criador do formulário e você pode criar o formulário na interface do usuário ou cole no seu HTML diretamente (usando a janela de origem no editor). A referência completa para uso do editor pode ser encontrado aqui  &quot;http://docs.cksource.com/CKEditor_3.x/Users_Guide&quot;&gt; aqui  <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://docs.cksource.com/CKEditor_3.x/Users_Guide">here</link>.</para>
       <para>Uma das grandes vantagens de formulários personalizados, é que eles podem ser criados para imitar Formulários de agregação de papel existentes. Isso faz com que a entrada de dados seja muito mais fácil para os usuários, e deve reduzir o número de elementos de dados que são inseridos incorretamente, pois eles são mais facilmente identificáveis ao digitar os dados a partir de um formulário de papel. </para>
@@ -285,7 +285,7 @@ dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
         where you let the javascript code take action based on which data set is currently
         loaded.</para>
     </section>
-    <section id="dataSetAssignmentEditor">
+    <section xml:id="dataSetAssignmentEditor">
       <title>Editor atribuição de Ficha</title>
       <para>O editor atribuição de fichas  é uma ferramenta para adicionar e remover  a associação de fichas  para com as unidades de organização no estilo lote. Comece selecionando uma unidade organizacional a partir da árvore de seleção. Na área abaixo da árvore uma grade será exibida mostrando todas fichas como colunas e as unidades de organizacionais filahs como linhas.</para>
       <para>A partir da grelha agora você pode atribuir ou desatribuir as fichas  simplesmente clicando em um dos ícones correspondentes na grelha. Se você quiser atribuir ou não atribuir uma unidade de organizaçional para todos os conjuntos de dados que você pode marcar ou desmarcar a caixa de seleção ao lado da unidade de organização. Suas alterações serão salvas automaticamente.</para>
