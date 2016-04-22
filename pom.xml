@@ -137,7 +137,7 @@
 						</configuration>
 					</execution>
 					<!-- Chunked HTML Android docs-->
-					<?ignore <execution>
+					<execution>
 						<id>chunked-html-docs-android</id>
 						<phase>package</phase>
 						<goals>
@@ -359,7 +359,7 @@
 								<copy file="target/docbkx/html/dhis2_developer_manual.html" tofile="${docbook.target}/en/developer/html/dhis2_developer_manual_full.html" />
 							</postProcess>
 						</configuration>
-					</execution> ?>
+					</execution>
 					 <execution>
 						<id>pdf-docs-en-user</id>
 						<phase>package</phase>
@@ -368,7 +368,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
+							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_user_manual_en.xml</includes>
@@ -406,7 +406,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> 
+							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>ccei_user_manual_en.xml</includes>
@@ -434,7 +434,7 @@
 								<copy file="target/docbkx/pdf/dhis2_implementation_guide_en.pdf" todir="${docbook.target}/en/implementer" />
 							</postProcess>
 						</configuration>
-					</execution>
+					</execution> ?>
 					<!-- PDF End User docs-->
 					<execution>
 						<id>pdf-docs-en-end-user</id>
@@ -463,7 +463,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> 
+							<!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_documentation_guide_book.xml</includes>
@@ -482,7 +482,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							 <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
+							 <!-- <foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_developer_manual.xml</includes>
@@ -491,7 +491,7 @@
 								<copy file="target/docbkx/pdf/dhis2_developer_manual.pdf" tofile="${docbook.target}/en/developer/dhis2_developer_manual.pdf" />
 							</postProcess>
 						</configuration>
-					</execution> ?>
+					</execution>
 				</executions>
 				<dependencies>
 					<dependency>
