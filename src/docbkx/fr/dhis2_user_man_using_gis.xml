@@ -6,7 +6,7 @@
     <title>Présentation du module SIG</title>
     <para>Vous pouvez accéder au module SIG à partir du lien Services -> SIG du menu supérieur. L'image ci-dessous montre un aperçu de la fenêtre du module SIG.</para>
     <screenshot>
-      <screeninfo>Ecran principal du SIG</screeninfo>
+      <title>Ecran principal du SIG</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/gis/gis_main.png" format="PNG"/>
@@ -26,10 +26,10 @@
     <title>Cartographie thématique</title>
     <para>Cette section est consacrée à la description des quatre couches vectorielles mis à la disposition de  l'utilisateur pour la réalisation de cartographies thématiques. Ce sont : "la couche des centres", "la couche frontière" et les "couches thématiques" numérotées de 1 à 4.</para>
 
-    <section id="gisFacilityMap">
+    <section xml:id="gisFacilityMap">
       <title>La couche des établissements</title>
       <screenshot>
-        <screeninfo>La couche des établissements</screeninfo>
+        <title>La couche des établissements</title>
         <mediaobject>
           <imageobject>
             <imagedata width="100%" fileref="resources/images/gis/gis_facility_layer.png" format="PNG"/>
@@ -41,10 +41,10 @@
       <para>Dans la fenêtre "Modifier la couche", vous trouverez une section dite "zones environnantes", en plus de l’ensemble de groupe, le niveau et le parent. Cela vous permet de dessiner un cercle autour de chaque établissement en précisant le rayon désiré du cercle (en kilomètres).</para>
     </section>
 
-    <section id="gisBoundaryMap">
+    <section xml:id="gisBoundaryMap">
       <title>Boundary layer</title>
       <screenshot>
-        <screeninfo>La couche frontière</screeninfo>
+        <title>La couche frontière</title>
         <mediaobject>
           <imageobject>
             <imagedata width="100%" fileref="resources/images/gis/gis_boundary_layer.png" format="PNG"/>
@@ -58,10 +58,10 @@
       <para>La dernière option du menu de cette couche est l’option "Fermer" qui réinitialise complètement le contenu de la couche, le formulaire de modification de cette couche ainsi que le panneau de légende.</para>
     </section>
     
-    <section id="gisThematicMap">
+    <section xml:id="gisThematicMap">
       <title>Les couches thématiques de 1 à 4</title>
       <screenshot>
-        <screeninfo>ouches thématiques</screeninfo>
+        <title>ouches thématiques</title>
         <mediaobject>
           <imageobject>
             <imagedata width="100%" fileref="resources/images/gis/gis_thematic_mapping.png" format="PNG"/>
@@ -77,10 +77,10 @@
       <para>Les menus thématiques des couches 1-4 ont une option "Filtre" en plus des options de frontières. Cette option vous permet d'appliquer des filtres de valeur pour les unités d'organisation sur la carte. Le filtre est supprimé lorsque vous fermez la fenêtre de filtre.</para>
     </section>
 
-    <section id="gisEventMap">
+    <section xml:id="gisEventMap">
       <title>Couche événement</title>
       <screenshot>
-        <screeninfo>Couche événement</screeninfo>
+        <title>Couche événement</title>
         <mediaobject>
           <imageobject>
             <imagedata width="100%" fileref="resources/images/gis/gis_event_layer.png" format="PNG"/>
@@ -97,10 +97,10 @@
   <section>
     <title>Outils</title>
     <para>Cette section décrit les outils SIG disponibles.</para>
-    <section id="gisFavoriteMapView">
+    <section xml:id="gisFavoriteMapView">
       <title>Cartes favorites</title>
       <screenshot>
-        <screeninfo>Cartes favorites</screeninfo>
+        <title>Cartes favorites</title>
         <mediaobject>
           <imageobject>
             <imagedata width="100%" fileref="resources/images/gis/gis_favorites.png" format="PNG"/>
@@ -114,7 +114,7 @@
       <para>Vous pouvez rechercher des favoris dans le champ de texte au-dessus des favoris. La liste sera filtrée à chaque caractère saisi. Cliquez sur les boutons "suivant" et "précédent" dans le coin inférieur droit pour naviguer entre les pages.</para>
     </section>
     
-    <section id="gisLegendSet">
+    <section xml:id="gisLegendSet">
       <title>Créer des ensembles prédéfinis de légende</title>
       <para>Cliquez sur le bouton "Légende" sur la barre d'outils de la carte. Pour créer un nouveau jeu de légendes, cliquez sur le bouton "Ajouter nouveau". Exemple d'utilisation (dans le cas de la couverture vaccinale): Commencez tout d'abord par donner au jeu de légende un nom. Ensuite, créez les légendes que vous voulez pour votre jeu de légende. La première pourrait être "Bas mauvais» (sur nom), 0 (comme valeur de départ), 50 (comme valeur finale), rouge (couleur). Cliquez alors sur "Ajouter légende" pour la faire apparaître dans la liste en-dessous. Ensuite, créez "Medium" / 50/80 / jaune, "Elevé bon" / 80/100 / vert et enfin "Trop élevé" / 100/10000 / gris. Cliquez une fois de plus sur le bouton "Créer" dans le coin inférieur droit. Notez que si votre jeu de légende a un chevauchement de légendes (par exemple, 0-50 et 40-80), vous ne serez pas autorisé à le créer. De même, si votre jeu de légende a un écart entre les légendes (par exemple, 0-50 et 60-80), vous obtiendrez un avertissement, mais vous serez autorisés à le créer.</para>
       
@@ -123,17 +123,17 @@
       <para>Vous pouvez assigner un jeu de légendes à un indicateur ou un élément de données dans le module éléments de données/indicateurs. Ce jeu de légendes sera alors automatiquement sélectionné lorsque cet indicateur ou cet élément de données sera sélectionné dans le module SIG.</para>
     </section>
     
-    <section id="gisImageExport">
+    <section xml:id="gisImageExport">
       <title>Télécharger la carte comme image</title>
       <para>Cliquez sur le bouton "Télécharger" sur la barre d'outils du module de carte. Saisissez un nom dans le champ texte et cliquez sur "Télécharger". Votre navigateur va alors télécharger pour vous une image PNG. Si le bouton de barre d'outils "Télécharger" est désactivé, c’est que vous devez créer une carte d’abord.</para>
     </section>
     
-    <section id="gisInterpretation">
+    <section xml:id="gisInterpretation">
       <title>Partager l'interprétation des cartes</title>
       <para>Ouvrez un favori ou enregistrez une nouvelle carte comme favori. Puis cliquez sur le bouton "Partager" sur la barre d'outils du module. Saisissez votre interprétation et cliquez sur "Partager".</para>
     </section>
     
-    <section id="gisEmbed">
+    <section xml:id="gisEmbed">
       <title>Insérer des cartes dans une page web</title>
       <para>Certaines ressources liées à l'analyse de DHIS 2, comme des tableaux croisés dynamiques, des graphiques et des cartes, peuvent être insérées dans une page Web à l'aide d'un plugin. Si vous avez créé une carte avec le module SIG, vous obtiendrez la configuration du plug-in pour cette carte en cliquant sur le bouton "Partager" dans la barre d'outils, puis "Insérer comme plug-in". Vous trouverez plus d'informations sur les plugins dans le chapitre traitant de l’API web.</para>
     </section>
@@ -142,7 +142,7 @@
 		<title>Intégration de l’analyse</title>
 		<para>Les applications d'analyse en DHIS 2 sont complètement intégrées, de sorte que vous pouvez facilement basculer entre les tableaux croisés dynamiques, les graphiques et les visualisations des données à travers des cartes. Une fois que vous avez conçu une carte, vous pouvez cliquer par exemple sur "Graphique" dans le coin supérieur droit, puis sélectionner "Ouvrir cette carte graphique comme graphique " pour l’analyser à l’aide du module Graphiques.</para>
 		<screenshot>
-		  <screeninfo>Intégration de l’analyse</screeninfo>
+		  <title>Intégration de l’analyse</title>
 		  <mediaobject>
 			<imageobject>
 			  <imagedata width="25%" fileref="resources/images/gis/chart_integration.png" format="PNG"/>

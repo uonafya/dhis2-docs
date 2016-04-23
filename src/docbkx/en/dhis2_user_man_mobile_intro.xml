@@ -1,6 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<section id="mobile_intro">
+<section version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook" xml:id="mobile_intro" >
   <title>DHIS 2 Mobile Introduction</title>
   <para>DHIS 2 provides a range of options to allow data entry from mobile devices, including a dedicated GPRS/3G J2ME client and two versions of DHIS 2 which have been optimized specifically for mobile browsers. Each of these solutions will be described in detail in the following sections. DHIS 2 offers several Android clients, which are described in detail in other sections of this guid.</para>
   <para>Collection of data in the field can be technically challenging and expensive. Mobile phone solutions have the potential to significantly reduce the complexity of deploying a distributed data collection system. Using a simple Java client installed on a mobile phone or a web browser which works on the mobile phone, field workers can report directly to the DHIS 2 database through their mobile device.</para>
@@ -10,7 +19,7 @@
     <listitem>
       <para>DHIS 2 Light: A mobile browser optimized data entry module for all devices</para>
       <para>This module allows for data entry directly with the browser of the mobile device. A wide range of devices and mobile browsers are supported including: Opera mini 3 &amp; 4 (basic and advanced) - Opera mini 4, Nokia S40 mobiles ,Windows Phone 7, Window Mobile 6, Palm Pre, Blackberry (v5 and v6), Firefox mobile, iOS devices (iPhone) and Android devices. This client does not have offline-support, and an active GPRS/3G connection is required.
- It does not require a new application installation on the phone to support new features, but does require a stable data connection for use. This solution is described in <xref linkend="mobile_web_based"/></para>
+        It does not require a new application installation on the phone to support new features, but does require a stable data connection for use. This solution is described in <xref xmlns:xlink="http://www.w3.org/1999/xlink" linkend="mobile_web_based"/></para>
     </listitem>
     <listitem>
       <para>DHIS 2 Smartphone client: A mobile browser optimized data entry module for Smartphone devices</para>
@@ -18,10 +27,15 @@
     </listitem>
     <listitem>
       <para>J2ME GPRS/3G client</para>
-      <para>DHIS-mobile includes two separate J2ME clients supporting GPRS/EDGE/3G as a transport mechanism. One clients supports facility aggregate reporting and the second client supports name-based program tracking. These clients are split into separate applications to make deployment easier. Some health workers may have both applications installed on their phone. Both of these clients support offline-storage of data and work on J2ME enabled devices (feature phones). This solution is described in <xref linkend="mobile_j2me_gprs_3g"/>.</para>
+      <para>DHIS-mobile includes two separate J2ME clients supporting GPRS/EDGE/3G as a transport
+        mechanism. One clients supports facility aggregate reporting and the second client supports
+        name-based program tracking. These clients are split into separate applications to make
+        deployment easier. Some health workers may have both applications installed on their phone.
+        Both of these clients support offline-storage of data and work on J2ME enabled devices
+        (feature phones). <?ignore This solution is described in<xref
+          xmlns:xlink="http://www.w3.org/1999/xlink" linkend="mobile_j2me_gprs_3g"/>.?></para>
       <para>An active GPRS/3G connection is required in order to send data to the DHIS 2 database, but data can be entered offline and transmitted when a connection is present. This client is intended primarily for low-end devices which support J2ME applications, although the offline-supports adds some memory requirements which limits the handset selection. While the solution is primarily tested on Nokia phones, it also works on several other J2ME capable handsets.</para>
-      <para>The facility reporting J2ME client is described in <xref linkend="mobile_j2me_gprs_3g_facility_reporting"/></para>
-      <para>The name-based program tracking J2ME client is described in  <xref linkend="mobile_j2me_gprs_3g_activity_reporting"/></para>
+      <para>The facility reporting J2ME client is described in the chapter "J2ME GPRS/3G Client" <?ignore <xref xmlns:xlink="http://www.w3.org/1999/xlink" linkend="mobile_j2me_gprs_3g_facility_reporting"/></para> ?></para>
     </listitem>
   </itemizedlist>
 </section>

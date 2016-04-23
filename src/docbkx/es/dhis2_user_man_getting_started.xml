@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Comenzando con DHIS 2</title>
-  <section id="mod2_1">
+  <section xml:id="mod2_1">
     <title>Primeros pasos con DHIS 2</title>
     <para>Tras repasar este capítulo habremos podido entender:</para>
     <itemizedlist>
@@ -25,11 +25,11 @@
     </itemizedlist>
     <section>
       <title>Requisitos previos</title>
-      <para>Primero deberemos asegurarnos de tener la versión más reciente de Java Runtime instalada en la máquina donde correrá la aplicación. Dependiendo del sistema operativo, hay diferentes formas de instalar Java. El lector podrá consultar <ulink url="http://java.sun.com/javase/downloads/index.jsp"> esta web</ulink> para información más detallada sobre cómo instalar Java.</para>
+      <para>Primero deberemos asegurarnos de tener la versión más reciente de Java Runtime instalada en la máquina donde correrá la aplicación. Dependiendo del sistema operativo, hay diferentes formas de instalar Java. El lector podrá consultar <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://java.sun.com/javase/downloads/index.jsp"> esta web</link> para información más detallada sobre cómo instalar Java.</para>
     </section>
     <section>
       <title>Un comienzo con el paquete DHIS 2 Live</title>
-      <para>El paquete DHIS2 Live es la forma más fácil de comenzar con DHIS2. DHIS2 Live es apropiada para una instalación independiente. Simplemente descargamos la aplicación de <ulink url="http://www.dhis2.org/downloads">aquí</ulink>. Una vez el fichero se ha descargado, hacemos doble click en el fichero descargado y comenzarmos a usar DHIS2. </para>
+      <para>El paquete DHIS2 Live es la forma más fácil de comenzar con DHIS2. DHIS2 Live es apropiada para una instalación independiente. Simplemente descargamos la aplicación de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.dhis2.org/downloads">aquí</link>. Una vez el fichero se ha descargado, hacemos doble click en el fichero descargado y comenzarmos a usar DHIS2. </para>
       <section>
         <title>Empezando con una base de datos vacía</title>
         <para>El paquete Live viene con una base de datos demostrativa como la que vemos en la demo online (basada en el SGIS nacional de Sierra Leona), y si queremos empezar con un sistema/base de datos vacía y construir nuestro propio sistema, entonces tendremos que hacer lo siguiente:</para>
@@ -45,9 +45,9 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
     </section>
     <section>
       <title>Trabajando directamente con la base de datos H2</title>
-      <para>DHIS 2 Live utiliza una base de datos <ulink url="www.h2database.com/">H2</ulink> embebida. Esto tiene varias ventajas, ya que no hay necesidad entonces de instalar un motor de base de datos separado como PostgresSql o MySql, y es posible hacer una copia de seguridad simplemente copiando el fichero. Toda la base de datos existe en la memoria, lo que da un alto rendimiento. La desventaja viene de la necesidad de RAM. Este formato no es válido para instalaciones de servidor con múltiples usuarios.
+      <para>DHIS 2 Live utiliza una base de datos <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="www.h2database.com/">H2</link> embebida. Esto tiene varias ventajas, ya que no hay necesidad entonces de instalar un motor de base de datos separado como PostgresSql o MySql, y es posible hacer una copia de seguridad simplemente copiando el fichero. Toda la base de datos existe en la memoria, lo que da un alto rendimiento. La desventaja viene de la necesidad de RAM. Este formato no es válido para instalaciones de servidor con múltiples usuarios.
       </para>
-      <para>En general, es recomendable trabajar con la base de datos mediante el interfaz de usuario de DHIS2, pero en algunas situaciones podemos necesitar manejar los datos directamente. Si descargamos H2 por separado, veremos que viene con un interfaz web. De modo que puede manejarse utilizando <ulink url="http://openoffice.org">OpenOffice.org</ulink>, siguiendo el procedimiento a continuación. Asumimos que dhis2-live está ubicado en el directorio home del usuario Linux (representado por ~). Si no es el caso, sustituiremos aquí la ruta absoluta a nuestra instalación de dhis2-live.
+      <para>En general, es recomendable trabajar con la base de datos mediante el interfaz de usuario de DHIS2, pero en algunas situaciones podemos necesitar manejar los datos directamente. Si descargamos H2 por separado, veremos que viene con un interfaz web. De modo que puede manejarse utilizando <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://openoffice.org">OpenOffice.org</link>, siguiendo el procedimiento a continuación. Asumimos que dhis2-live está ubicado en el directorio home del usuario Linux (representado por ~). Si no es el caso, sustituiremos aquí la ruta absoluta a nuestra instalación de dhis2-live.
         <itemizedlist>
           <listitem>
             <para>Arrancamos el procesador de textos OpenOffice y seleccionamos Herramientas - Opciones, luego Java - Class Path... y hacemos click en Añadir archivo...</para>
@@ -65,7 +65,7 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
             <para>El nombre de usuario es sa, no es necesaria contraseña. Finalmente, seleccionamos un nombre y carpeta para el fichero .odb.</para>
           </listitem>
         </itemizedlist>
-        <ulink url="http://www.oooforum.org/forum/viewtopic.phtml?t=97522">Más info</ulink>        
+        <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oooforum.org/forum/viewtopic.phtml?t=97522">Más info</link>        
       </para>
     </section>
     <section>
@@ -73,20 +73,20 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
       <para>La versión de servidor puede descargarse de dhis2.org/download. Para una información detallada sobre cómo instalarlo veremos el capítulo de instalación en la Guía de Implementación.</para>
     </section>
   </section>
-  <section id="mod2_2">
+  <section xml:id="mod2_2">
     <title>Loguearse en DHIS 2</title>
     <para>Independientemente de si hemos instalado la versión de servidor o la versión Live de escritorio, podremos utilizar un navegador web para loguearnos en el sistema. DHIS2 debería ser compatible con la mayoría de navegadores web modernos, aunque debemos asegurarnos de que Java Script esté habilitado.</para>
-    <para>Para loguearnos en la aplicación introducimos <ulink url="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</ulink> si estamos utilizando el paquete DHIS2 Live, o reemplazamos el localhost con el nombre o dirección IP del servidor donde está instalada la versión de servidor.</para>
+    <para>Para loguearnos en la aplicación introducimos <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</link> si estamos utilizando el paquete DHIS2 Live, o reemplazamos el localhost con el nombre o dirección IP del servidor donde está instalada la versión de servidor.</para>
     <para>Una vez hemos arrancado DHIS2, ya sea online o offline, la pantalla nos pedirá ingresar nuestro nombre de usuario registrado y contraseña. Después de introducir la información requerida haremos click en el botón de Entrar para loguearnos en la aplicación. El nombre de usuario y contraseña por defecto son 'admin' y 'district'. Deberemos cambiarlos inmediatamente después de loguearnos en DHIS2 por primera vez.</para>
   </section>
-  <section id="users">
+  <section xml:id="users">
     <title>Creación de nuevos usuarios y roles</title>
     <para>Esta sección describe cómo añadir nuevos usuarios a la aplicación DHIS2.</para>
     <section>
       <title>Abrir el menú de usuario</title>
       <para>Para crear o encontrar un usuario empezaremos haciendo click en el módulo 'Usuario' que aparece en el menú desplegable del módulo de Mantenimiento, ubicado en la barra de herramientas principal en la parte superior de la pantalla.</para>
       <screenshot>
-        <screeninfo>Seleccionar el elemento Usuario del menú</screeninfo>
+        <title>Seleccionar el elemento Usuario del menú</title>
         <mediaobject>
           <imageobject>
             <imagedata width="100%" fileref="resources/images/dhis2UserManual/select_user_menu.png" format="PNG"/>
@@ -95,7 +95,7 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
       </screenshot>
       <para>Los nombres de usuario ya registrados aparecerán como una lista tal y como se muestra en la pantalla abajo.</para>
       <screenshot>
-        <screeninfo>Buscar por nombre de usuario</screeninfo>
+        <title>Buscar por nombre de usuario</title>
         <mediaobject>
           <imageobject>
             <imagedata width="100%" fileref="resources/images/dhis2UserManual/search_user_by_name.png" format="PNG"/>
@@ -104,11 +104,11 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
       </screenshot>
       <para>Podemos buscar nombres de usuario específicos en la lista de usuarios introduciendo el nombre en 'filtrar por nombre de usuario' como se muestra arriba.</para>
     </section>
-    <section id="user_roles">
+    <section xml:id="user_roles">
       <title>Definir un nuevo rol</title>
       <para>Como parte de la creación de un nombre de usuario deberemos definir el rol del usuario. Para ello hacemos click en 'rol de usuario' que aparece en el lado izquierdo de la pantalla. Esto nos mostrará la pantalla de Gestión de Roles donde podremos pinchar en <guibutton>Añadir nuevo</guibutton> para crear un nuevo rol.</para>
       <screenshot>
-        <screeninfo>Añadir nuevo rol de usuario</screeninfo>
+        <title>Añadir nuevo rol de usuario</title>
         <mediaobject>
           <imageobject>
             <imagedata width="100%" fileref="resources/images/dhis2UserManual/add_user_role.png" format="PNG"/>
@@ -118,7 +118,7 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
       <para>La pantalla siguiente se abrirá y en el primer cuadro de texto introduciremos el Nombre del nuevo Rol como 'Superusuario', 'Administrador', etc. El segundo cuadro de texto llamado 'Descripción' da más información sobre el tipo de Rol de Usuario que se ha creado, por ejemplo Usuario Administrador Estatal, Entrada de datos en distrito.
       </para>
       <screenshot>
-        <screeninfo>Página de gestión de roles</screeninfo>
+        <title>Página de gestión de roles</title>
         <mediaobject>
           <imageobject>
             <imagedata width="100%" fileref="resources/images/dhis2UserManual/role_maintenance_page.png" format="PNG"/>
@@ -154,7 +154,7 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
           <para>Hacemos click en <guibutton>Guardar</guibutton> después de editar todos los detalles de un usuario en particular.
           </para>
           <screenshot>
-            <screeninfo>Pantalla de gestión de usuarios</screeninfo>
+            <title>Pantalla de gestión de usuarios</title>
             <mediaobject>
               <imageobject>
                 <imagedata width="100%" fileref="resources/images/dhis2UserManual/user_management.png" format="PNG"/>
@@ -165,11 +165,11 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
       </itemizedlist>
     </section>
   </section>
-  <section id="mod2_4">
+  <section xml:id="mod2_4">
     <title>Salir de DHIS 2</title>
     <para>Para salir de la aplicación simplemente haremos click en el enlace "Salir" en la esquina superior derecha de la pantalla.</para>
   </section>
-  <section id="database_design">
+  <section xml:id="database_design">
     <title>Una introducción rápida al diseño de una base de datos en DHIS2</title>
     <para>La aplicación DHIS2 viene con un conjunto de herramientas para la recolección, validación, reporte y análisis de datos, pero los contenidos de la base de datos, por ejemplo, qué recolectar, quién debería registrarlo y en qué formato, dependerá del contexto de uso. Estos metadatos deben ser introducidos en la aplicación antes de que pueda utilizarse, y esto puede hacerse directamente mediante el interfaz de usuario sin necesidad de programación de código o grandes habilidades técnicas sobre software. A este proceso inicial lo llamamos diseño de la base de datos o personalización de la aplicación.</para>
     <para>Esta sección ofrece una rápida y breve introducción al diseño de la base de datos en DHIS2 y fundamentalmente explica los pasos necesarios para preparar un nuevo sistema DHIS2 para su uso. Cómo realizar cada paso se explica en otros capítulos, y las buenas prácicas en las decisiones de diseño se explican en la Guía de Implementación. A continuación se listan los pasos a seguir:</para>

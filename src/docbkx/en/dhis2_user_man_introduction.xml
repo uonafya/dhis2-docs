@@ -1,33 +1,60 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<chapter>
+<chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook" >
   <title>What is DHIS 2?</title>
-  <highlights>
-    <para>After reading this chapter you will be able to understand:</para>
-    <itemizedlist>
-      <listitem>
-        <para>What is DHIS 2 and what purpose it serves with respect to
-          health information systems (HIS)?</para>
-      </listitem>
-      <listitem>
-        <para>What are the major technological considerations when it comes to deploying DHIS 2, and what are the options are for extending DHIS 2 with new modules?</para>
-      </listitem>
-      <listitem>
-        <para>What is the difference between patient based and aggregate data?</para>
-      </listitem>
-      <listitem>
-        <para>What are some of the benefits and challenges with using  Free and Open Source Software (FOSS) for HIS?</para>
-      </listitem>
-    </itemizedlist>
-  </highlights>
-  <section id="mod1_1">
+  <para>After reading this chapter you will be able to understand:</para>
+  <itemizedlist>
+    <listitem>
+      <para>What is DHIS 2 and what purpose it serves with respect to health information systems
+        (HIS)?</para>
+    </listitem>
+    <listitem>
+      <para>What are the major technological considerations when it comes to deploying DHIS 2, and
+        what are the options are for extending DHIS 2 with new modules?</para>
+    </listitem>
+    <listitem>
+      <para>What is the difference between patient based and aggregate data?</para>
+    </listitem>
+    <listitem>
+      <para>What are some of the benefits and challenges with using Free and Open Source Software
+        (FOSS) for HIS?</para>
+    </listitem>
+  </itemizedlist>
+  <section xml:id="mod1_1">
     <title>DHIS 2 Background</title>
-    <para>DHIS 2 is a tool for collection, validation, analysis, and presentation of aggregate and patient-based statistical data, tailored (but not limited) to integrated health information management activities. It is a generic tool rather than a pre-configured database application, with an open meta-data model and a flexible user interface that allows the user to design the contents of a specific information system without the need for programming. DHIS2  is a modular web-based software package built with free and open source Java frameworks.</para>
-    <para>DHIS 2 is open source software released under the BSD license and can be obtained at no cost. It runs on any platform with a Java Runtime Environment (JRE 7 or higher) installed. </para>
-    <para>DHIS 2 is developed by the Health Information Systems Programme (HISP) as an open and globally distributed process with developers currently in India, Vietnam, Tanzania, Ireland, and Norway. The development is coordinated by the University of Oslo with support from NORAD and other donors.</para>
-    <para>The DHIS 2 software is used in more than 40  countries in Africa, Asia, and Latin America, and countries that have adopted DHIS 2 as their nation-wide HIS software include Kenya, Tanzania, Uganda, Rwanda, Ghana, Liberia, and Bangladesh. A rapidly increasing number of countries and organisations are starting up new deployments.</para>
-    <para>The documentation provided herewith, will attempt to provide a comprehensive overview of the application. Given the abstract nature of the application, this manual will not serve as a complete step-by-step guide of how to use the application in each and every circumstance, but rather will seek to provide illustrations and examples of how DHIS2 can be implemented in a variety of situations through generalized examples.</para>
-    <para>Before implementing DHIS 2 in a new setting, we highly recommend reading the DHIS 2 Implementation Guide (a separate manual from this one), also available at the main DHIS2 <ulink url="http://dhis2.org/documentation/">website</ulink>.</para>
+    <para>DHIS 2 is a tool for collection, validation, analysis, and presentation of aggregate and
+      patient-based statistical data, tailored (but not limited) to integrated health information
+      management activities. It is a generic tool rather than a pre-configured database application,
+      with an open meta-data model and a flexible user interface that allows the user to design the
+      contents of a specific information system without the need for programming. DHIS2 is a modular
+      web-based software package built with free and open source Java frameworks.</para>
+    <para>DHIS 2 is open source software released under the BSD license and can be obtained at no
+      cost. It runs on any platform with a Java Runtime Environment (JRE 7 or higher) installed. </para>
+    <para>DHIS 2 is developed by the Health Information Systems Programme (HISP) as an open and
+      globally distributed process with developers currently in India, Vietnam, Tanzania, Ireland,
+      and Norway. The development is coordinated by the University of Oslo with support from NORAD
+      and other donors.</para>
+    <para>The DHIS 2 software is used in more than 40 countries in Africa, Asia, and Latin America,
+      and countries that have adopted DHIS 2 as their nation-wide HIS software include Kenya,
+      Tanzania, Uganda, Rwanda, Ghana, Liberia, and Bangladesh. A rapidly increasing number of
+      countries and organisations are starting up new deployments.</para>
+    <para>The documentation provided herewith, will attempt to provide a comprehensive overview of
+      the application. Given the abstract nature of the application, this manual will not serve as a
+      complete step-by-step guide of how to use the application in each and every circumstance, but
+      rather will seek to provide illustrations and examples of how DHIS2 can be implemented in a
+      variety of situations through generalized examples.</para>
+    <para>Before implementing DHIS 2 in a new setting, we highly recommend reading the DHIS 2
+      Implementation Guide (a separate manual from this one), also available at the main DHIS2
+        <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://dhis2.org/documentation/">website</link>.</para>
   </section>
   <section>
     <title>Key features and purpose of DHIS 2</title>
@@ -288,7 +315,7 @@
         </orderedlist>
         <para>All of these aspects must be covered in order to create an appropriate hosting environment. The hardware requirement is deliberately put last since there is a clear tendency to give it too much attention.</para>
         <para>Looking back at the three main hosting options, experience from implementation missions in developing countries suggests that all of the hosting aspects are rarely present in option one and two at a feasible level. Reaching an acceptable level in all these aspects is challenging in terms of both human resources and money, especially when compared to the cost of option three. It has the benefit that is accommodates the mentioned political aspects and building local capacity for server administration, on the other hand can this be provided for in alternative ways.</para>
-        <para>Option three - external hosting - has the benefit that it supports all of the mentioned hosting aspects at a very affordable price. Several hosting providers - of virtual servers or software as a service - offer reliable services for running most kinds of applications. Example of such providers are <ulink url="http://www.linode.com">Linode</ulink> and <ulink url="http://aws.amazon.com">Amazon Web Services</ulink>. Administration of such servers happens over a network connection, which most often anyway is the case with local server administration. The physical location of the server in this case becomes irrelevant as that such providers offer services in most parts of the world. This solution is increasingly becoming the standard solution for hosting of application services. The aspect of building local capacity for server administration is compatible with this option since a local ICT team can be tasked with maintaining the externally hosted server, but with not being burdened with worrying about power supply and bandwidth constraints which usually exist outside of major data centres.</para>
+        <para>Option three - external hosting - has the benefit that it supports all of the mentioned hosting aspects at a very affordable price. Several hosting providers - of virtual servers or software as a service - offer reliable services for running most kinds of applications. Example of such providers are <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.linode.com">Linode</link> and <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://aws.amazon.com">Amazon Web Services</link>. Administration of such servers happens over a network connection, which most often anyway is the case with local server administration. The physical location of the server in this case becomes irrelevant as that such providers offer services in most parts of the world. This solution is increasingly becoming the standard solution for hosting of application services. The aspect of building local capacity for server administration is compatible with this option since a local ICT team can be tasked with maintaining the externally hosted server, but with not being burdened with worrying about power supply and bandwidth constraints which usually exist outside of major data centres.</para>
         <para>An approach for combining the benefits of external hosting with the need for local hosting and physical ownership is to use an external hosting provider for the primary transactional system, while mirroring this server to a locally hosted non-critical server which is used for read-only purposes such as data analysis and accessed over the intranet.</para>
       </section>
     </section>

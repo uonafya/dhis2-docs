@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Usando a funcionalidade de relatórios</title>
-  <section id="reporting_intro">
+  <section xml:id="reporting_intro">
     <title> Funcionalidade de relatórios em DHIS 2</title>
     <para>O módulo de relatórios em DHIS 2 fornece um conjunto de relatórios alternativos, e esta secção irá explicar como usá-los para visualizar e analisar dados. Outra secção explica como configurar e definir as várias ferramentas de relatórios.</para>
     <para><emphasis role="bold">Relatório padrão:</emphasis> Os relatórios padrão são construídos em tabelas do relatório, mas são mais avançados na sua concepção permitindo mais cosméticos e estilos. Esses relatórios também podem combinar várias tabelas e gráficos no mesmo relatório e disponibilizados como relatórios de um clique que são muito fáceis de usar. Estes relatórios podem ser baixados como arquivos PDF que os torna ideais para a impressão, bem como a partilha offline. </para>
@@ -17,11 +17,11 @@
     <para><emphasis role="bold">Web-based pivot tables:</emphasis> O construído na ferramenta pivot table é uma simples ferramenta baseada na Web para exibir dados de indicadores por unidade organizacional e o período em uma vista tipica da  pivot table e permite algumas manipulações básicas das  tabelas. É uma maneira rápida e fácil de olhar para muitos valores do indicador ao mesmo tempo (por unidade organizacional e/ou periodo), mas não tem a mesma funcionalidade que os  offline Excel pivot tables. </para>
     <para><emphasis role="bold">GIS:</emphasis> Apresentar e analisar os dados usando mapas temáticos. Você pode ver ambos os elementos de dados e indicadores uma vez que você tiver as coordenadas para todas as suas unidades organizacionais  você pode detalhar a hierarquia e visualizar mapas para todos os níveis do país polígonos para  faciliade dos pontos.  Veja o capítulo em separado sobre GIS para mais detalhes. Todas as informações do mapa é construído em DHIS 2 e tudo que você precisa fazer é registrar as coordenadas para as suas unidades organizacionais e os mapas estarão disponíveis.</para>
   </section>
-  <section id="standard_reports">
+  <section xml:id="standard_reports">
     <title>Usando relatórios padrão</title>
     <para>Você pode acessar os relatórios disponíveis a partir do menu  Serviços, selecionando Relatório. No menu de relatório na barra à esquerda, clique em Relatório Padrão. Uma lista de todos os relatórios pré-definidos serão exibidos na janela principal.</para>
     <screenshot>
-      <screeninfo>Standard reports</screeninfo>
+      <title>Standard reports</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/dhis2UserManual/standard_reports_ke.png" format="PNG"/>
@@ -30,12 +30,12 @@
     </screenshot>
     <para>Você pode executar/exibir um relatório, clicando na seta verde e branco ao lado do relatório que você deseja. Em seguida verá uma janela de parâmetro de relatório onde você deve preencher os valores necessários para unidade organizacional e / ou mês de relatório, dependendo do que tiver sido definido na tabela(s) de relatório subjacente(s) . Clique no &quot;Obter relatório&quot; quando estiver pronto. O relatório será exibido diretamente no seu navegador ou estará disponível como um arquivo .pdf para baixar, dependendo das configurações do seu navegador para lidar com arquivos PDF. Você pode salvar o arquivo e mantê-lo localmente no seu computador para uso posterior.  </para>
   </section>
-  <section id="report_tables">
+  <section xml:id="report_tables">
     <title>Usando Tabelas de relatório </title>
     <para>Tabelas do relatório é uma ferramenta de fácil utilização para criação de análise tabular. Para executar uma  tabela de relatório primeiro navegue para a lista de  tabelas de relatório disponíveis em Serviços-&gt;Relatórios-&gt;Tabelas de Relatório e  clique  na seta verde e branco (o primeiro símbolo na lista de operações) ao lado da tabela de relatório que você deseja visualizar. </para>
     <para><emphasis role="bold">Parâmetros de relatório:</emphasis> A maioria das tabelas do relatório possuem parâmetros, o que significa que você pode  filtrar quais unidades organizacionais e/ou períodos que deseja no relatório. Isto torna os relatórios muito mais reutilizáveis.  Quando você executa o relatório de tabela uma janela de parâmetro de  relatório  será aberto e pedindo o usuário para inserir os valores para os parâmetros selecionados. O parâmetros possíveis são Mês de relatório e a Unidade  organizacional, e qualquer um deles ou ambos irão ser exibidos  na janela.  Depois de selecionar os valores clique no botão Obter relatório.</para>
     <screenshot>
-      <screeninfo>Report table parameters</screeninfo>
+      <title>Report table parameters</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/dhis2UserManual/report_parameters.png" format="PNG"/>
@@ -44,7 +44,7 @@
     </screenshot>
     <para><emphasis role="bold">Exportar/opções de visualização:</emphasis> Quando a tabela do relatório está pronto será mostrado em uma visualização  html. A tabela do relatório pode ser exportado para PDF (para melhor impressão   e para ser mais fácil salvar),  excel, CSV,  e também para um formato de relatório padrão (Jasper) com uma tabela mais agradável e um gráfico mostrado em PDF, ou como um arquivo de desenho jasper para mais melhorias e alterações no design do relatório antes de enviá-lo como um relatório padrão (veja a seção Criando relatórios padrão).</para>
     <screenshot>
-      <screeninfo>Report table view</screeninfo>
+      <title>Report table view</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/dhis2UserManual/report_table_view.png" format="PNG"/>
@@ -53,7 +53,7 @@
     </screenshot>
     <para> </para>
   </section>
-  <section id="dataset_reports">
+  <section xml:id="dataset_reports">
     <title>Usando relatórios de conjunto de dados</title>
     <para>Relatórios de conjunto de dados são vistas de impressão da tela de entrada de dados preenchida com dados brutos ou agregados. Estes estão disponíveis apenas para os conjuntos de dados que têm formulários de entrada de dados personalizados e não para padrão ou formulários de seção.</para>
     <para>Você pode acessar relatórios de conjunto de dados a partir do menu Relatório em Serviços.</para>
@@ -64,21 +64,21 @@
     <para><emphasis role="bold">Relatórios de Unidade Organizacional:</emphasis> Aqui  seleciona-se a unidade de organizacional para relatório. Isso pode ser em qualquer nível de hierarquia como os dados serão agregados até este nível automaticamente (caso você não marque a opção acima).</para>
     <para>Após  terminar de preencher os critérios do relatório  clique em &quot;Obter relatório&quot;. O relatório será exibido no modo de exibição HTML em um formato para impressão. Use imprimir e salvar como funções do navegador para imprimir ou guardar (como html) o relatório.</para>
   </section>
-  <section id="resource">
+  <section xml:id="resource">
     <title>Usando recursos</title>
     <para>A ferramenta de recurso permite o  carreguamento dos arquivos de seu computador local para o servidor DHIS
 e adicionar link para outros recursos na Internet através de URLs. Se desejar compartilhar o link direto para o recurso DHIS  pode-se clicar no botão &quot;ver  recursos&quot; e copiar o endereço do link.</para>
     <para>Ao criar um recurso clique no botão&quot;Adicionar novo&quot;. Digite um nome para o recurso e,  em seguida, escolher entre o carregar arquivo ou URL externa. Se  optar por carregamento de arquivo clique em &quot;Escolher arquivo&quot; e selecione o  arquivo do seu computador local. Se  optar por URL insira o link para o recurso na Internet. Em seguida, clique em &quot;Salvar&quot;.</para>
   </section>
-  <section id="data_visualizer">
+  <section xml:id="data_visualizer">
     <title>Usando visualizador de dados</title>
     <para>O módulo visualizador de dados pode ser acessado em &quot;Serviços&quot; no menu superior. Veja o capítulo &quot;Usando visualizador de dados&quot; para uma explicação completa deste módulo.</para>
   </section>
-  <section id="reporting_dashboard">
+  <section xml:id="reporting_dashboard">
     <title>Usando o painel de instrumentos</title>
     <para>O painel de instrumentos é a sua primeira vista para os dados cada vez que iniciar sessão no sistema.  Cada usuário tem seu próprio painel, e um painel de instrumentos é composto por 4 áreas do gráfico  à direita e  3 áreas de atalho  à esquerda.</para>
     <screenshot>
-      <screeninfo>Dashboard</screeninfo>
+      <title>Dashboard</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/dhis2UserManual/dashboard_kenya.png" format="PNG"/>
@@ -90,7 +90,7 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
     <para>Use o link Limpar acima da área de atalho para esvaziar uma área. A estreita ligação fecha o menu de inserção sem a inserção de um novo tipo de objecto. </para>
     <para><emphasis role="bold">Personalização de áreas do gráfico:</emphasis> Existem quatro áreas de gráfico. Para inserir um gráfico, basta clicar em Inserir e clique em um dos gráficos na lista. Use Fechar para fechar a lista, sem a adiçionar um novo gráfico e use Limpar para esvaziar uma área do gráfico. Estes gráficos serão atualizados a cada vez que  abrir o painel,  mostrará automaticamente os dados para as Unidades Otganizacionais  atribuída ao usuário actual, e irá atualizar os dados quando novos períodos estarem disponíveis. </para>
     <screenshot>
-      <screeninfo>Adding charts to the dashboard</screeninfo>
+      <title>Adding charts to the dashboard</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/dhis2UserManual/dashboard_add_chart.png" format="PNG"/>
@@ -98,7 +98,7 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
       </mediaobject>
     </screenshot>
   </section>
-  <section id="reporting_reporting_rate_summary">
+  <section xml:id="reporting_reporting_rate_summary">
     <title>Usando o Resumo de taxa de reportagem</title>
     <para>Acesse o Resumo de taxa de reportagem no menu Serviços-&gt; Relatórios. Resumo de taxa de reportagem  mostrará quantos conjuntos de dados (formulários) foram apresentados por unidade de organizacional e período. A utilização de um dos três métodos diferentes para calcular completude; 1) com base no botão Concluir na introdução de dados, 2) com base em um conjunto de elementos de dados obrigatórios, ou 3) com base no total dos valores dos dados registrados para um conjunto de dados. </para>
     <para><emphasis role="bold">Para executar o relatório, faça o seguinte:</emphasis></para>
@@ -109,7 +109,7 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
     <para>Em seguida, o relatório será exibido automaticamente.</para>
     <para>Altere qualquer um dos parâmetros acima e o relatório será actualizado automaticamente.</para>
     <screenshot>
-      <screeninfo>Completeness report</screeninfo>
+      <title>Completeness report</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/dhis2UserManual/completeness_report.png" format="PNG"/>
@@ -117,7 +117,7 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
       </mediaobject>
     </screenshot>
   </section>
-  <section id="orgunit_distribution_reports">
+  <section xml:id="orgunit_distribution_reports">
     <title>Usando Relatório de distribuição de unidade organizacional </title>
     <para>Pode-se acessar o Relatório de distribuição de unidade organizacional  a partir do menu do lado esquerdo do módulo de Serviços-&gt; Reports.</para>
     <para>Relatório de distribuição de unidade organizacional são relatórios que mostram como as unidade organizacional são distribuídas em várias propriedades, como tipo e propriedade, e por áreas geográficas..</para>
@@ -125,7 +125,7 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
     <para><emphasis role="bold">Executando o relatório:</emphasis></para>
     <para>Para executar um relatório primeiro selecione uma unidade organizacional no lado esquerdo superior da árvore da unidade organizacional. O relatório será baseado em unidades organizacional localizados sob as unidades organizacional selecionadas. Selecione o conjunto do grupo que pretende usar, normalmente estes são do tipo, propriedade, rural/urbano, mas podem ser de qulquer tipo de conjunto de unidade organizacional definido pelo usuario. Podendo clicar em  um obter o relatório para obter a apresentação baseada em tabela ou obter gráfico para obter o mesmo resultado em um gráfico.</para>
     <screenshot>
-      <screeninfo>Orgunit distribution report</screeninfo>
+      <title>Orgunit distribution report</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/dhis2UserManual/orgunit_report.png" format="PNG"/>
@@ -133,14 +133,14 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
       </mediaobject>
     </screenshot>
   </section>
-  <section id="web_pivot_table">
+  <section xml:id="web_pivot_table">
     <title>Usando web pivot table</title>
     <para>A web pivot table  é uma ferramenta para exibir e dinamização dos dados de indicadores e elementos de dados de uma maneira fácil. Na caixa de seleção de dados aberto comece por seleccionar o tipo de dados que podem ser elementos de dados ou indicadores. Selecione o grupo como um filtro ou deixá-lo em &quot;Todos&quot;. Selecione data de início, data de término e tipo de período para indicar os períodos que deseja incluir na pivot table.Continue selecionando uma unidade de organização da árvore de seleção. Os filhos no nível abaixo da unidade de organização selecionado será incluído na pivot table. Em seguida, clique em &quot;Obter dados&quot;.</para>
     <para>Depois de carregar uma pivot table,  verá que os indicadores (ou elementos de dados) irão aparecer no topo como colunas, enquanto que períodos e unidades organizacionais são combinados como linhas. Se você quiser rodar a tabela, clique no botão &quot;Pivot&quot; e selecione novas dimensões. Essas dimensões serão exibidos como colunas na tabela ao clicar em &quot;Pivot&quot;.</para>
     <para>Na pivot table,  pode clicar em qualquer célula, a fim de mostrar um menu. Nesse menu,  pode-se escolher a visualização do indicador relevante, unidade organizacional e período como diversas gráfico variantes .</para>
     <para>Para salvar os dados da pivot table para o seu computador local, clique no botão &quot;Baixar como Excel&quot;. A pasta de trabalho Excel mostrará cada período como uma folha.</para>
   </section>
-  <section id="data_mart">
+  <section xml:id="data_mart">
     <title>Usando o gerenciamento de data mart</title>
     <para>O data mart é um conjunto de tabelas no banco de dados no  DHIS que é usado por todas as ferramentas de análise e relatórios para recuperar dados. A data mart é preenchido com base na interface de usuário de gerenciamento de dados. Este gerenciamento  permite controlar o processo de conversão de dados coletados em dados agregados e escrever para o data mart.</para>
     <para>A tela de gerenciamento de data mart permite que  selecione os tipos de período, data de início e data final que irá controlar quais períodos são incluídos no processo de data mart. Por padrão serão incluídos todos os elementos de dados, indicadores e unidades organizacionais.</para>

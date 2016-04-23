@@ -1,6 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<chapter>
+ <chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
   <title>Integration</title>
   <para>This chapter will discuss the following topics:</para>
   <itemizedlist>
@@ -69,6 +78,10 @@
     <para>Since there are many different use-cases for health information, such as monitoring and evaluation, budgeting, patient management and tracking, logistics management, insurance, human resource management, etc, there will be many different types of software applications functioning within the health sector. Above the issue of interoperability has been addressed, and a plan or overview of the various interoperable software applications and their specific uses, along with what data should be shared between them, is termed an architecture for health information. </para>
     <para>The role of the architecture is to function as a plan to coordinate the development and interoperability of various sub-systems within the larger health information system. It is advisable to develop a plan for the various components even if they are not currently running any software, to be able to adequately see the requirements in terms of data sharing. These requirements should then be part of any specification for the software when such is developed or procured.</para>
     <para>Below is a simple illustration of an architecture, with a focus on the data warehouse for aggregate data. The various boxes represent use cases, such as managing logistics, tracking TB patients, general patient management, etc. All of these will share aggregate data with DHIS2. Note that the arrows are two-way, because there is also a synchronization of meta-data (definitions) involved, to make sure that the right data is shared. Also, an example of the logistics and financial data applications sharing data is also shown, as there are strong links between procuring drugs and handling the budget for this. There will be many such instances of sharing data; the architecture helps us to plan better for this being implemented as the ecosystem of software applications grow.</para>
-    <graphic width="100%" format="PNG" fileref="resources/images/implementation_guide/interoperable_his.png" align="center"/>
+    <mediaobject>
+      <imageobject>
+        <imagedata width="80%" format="PNG" fileref="resources/images/implementation_guide/interoperable_his.png" align="center"/>
+      </imageobject>
+    </mediaobject>
   </section>
 </chapter>

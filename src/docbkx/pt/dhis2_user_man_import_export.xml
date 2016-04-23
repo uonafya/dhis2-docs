@@ -14,7 +14,7 @@ HMIS . Esse recurso também nos ajuda a superar a dependência de Internet , at�
 atualizações podem ser transferidos através de chave USB , onde não há conectividade, ou através de e-mail onde
 há conectividade com a Internet limitada. DHIS 2 fornece robusta funcionalidade de exportação-importação para
 satisfazer essas necessidades. </para>
-  <section id="export">
+  <section xml:id="export">
     <title>Exportação de dados</title>
     <para>DHIS 2 torna possível a exportação de vários tipos de dados em vários formatos de dados. você pode
  exportar seus dados, também referidos como medidas ou fatos, e sua meta-dados, o que se refere a
@@ -116,16 +116,16 @@ Se não houver conjuntos de dados definidos para uma unidade de organização, i
  Document Format (PDF).</para>
     </section>
   </section>
-  <section id="import">
+  <section xml:id="import">
     <title>Importação de Dados</title>
     <para>A opção de importação permite que diferentes instâncias DHIS 2  recebam conjunto padronizado de dados na ausência de um sistema em rede. Normalmente, um conjunto de dados é exportado a partir de uma instância DHIS (por exemplo, um sistema de nível distrital) para outro sistema (por exemplo, um sistema de nível provincial). DHIS 2 é capaz de importar dados de outros sistemas que suportam tanto o DXF de formatos IXF. DHIS 2 é capaz de importar dados diretamente a partir de um banco de dados DHIS 1.4 Access. Cada uma dessas opções serão discutidas nas secções seguintes. </para>
-    <section id="import_another_instance">
+    <section xml:id="import_another_instance">
       <title>Importação de dados de outra instância DHIS 2</title>
       <para>Os dados podem ser importados para diferentes instâncias do DHIS 2 através da utilização de um formato de intercâmbio de dados DXF. Existem duas telas que são utilizados para importar dados, com padrão e opções avançadas. </para>
       <para>O menu de importação de dados padrão pode ser acessado clicando no <guimenuitem>&quot;Import&quot;</guimenuitem> da principal tela de <guimenuitem>Import-Export</guimenuitem>. </para>
       <para>Ao clicar no botão <guibutton>&quot;Navegador&quot;</guibutton>, você pode selecionar um arquivo do seu sistema de arquivos local. Este arquivo pode ter sido recebida por e-mail, copiado de outro sistema de usuários, ou recebidos em um CD, por exemplo. Basta selecionar o arquivo que você deseja importar. </para>
       <screenshot>
-        <screeninfo>Default import screen</screeninfo>
+        <title>Default import screen</title>
         <mediaobject>
           <imageobject>
             <imagedata width="100%" fileref="resources/images/import_export/import_default.png" format="PNG"/>
@@ -198,7 +198,7 @@ Se não houver conjuntos de dados definidos para uma unidade de organização, i
  para unidades de organização, mas para todos os tipos de metadados, permitindo a fácil importação de outros
  sistemas.</para>
     </section>
-    <section id="dhis14import">
+    <section xml:id="dhis14import">
       <title>Importando data apartir do DHIS 1.4</title>
       <para>Existem duas formas de importar dados de um banco de dados DHIS 1.4; 1) através dos arquivos de exportação 1.4 baseados em XML, ou 2) diretamente a partir do arquivo de dados DHIS 1.4 (mdb).. Ambos são acessíveis a partir do DHIS</para>
       <para>1.4 Menu Importar em Importar no módulo Import-Export.</para>
@@ -272,7 +272,7 @@ Se não houver conjuntos de dados definidos para uma unidade de organização, i
       </section>
     </section>
   </section>
-  <section id="importCSVdata">
+  <section xml:id="importCSVdata">
     <title>Importando dados CSV</title>
     <para>DHIS 2 suporta a importação de dados no formato CSV. Isso pode ser usado para importar o arquivo de troca produzido por DHIS 2 em si. Ele também vem a calhar quando você quer importar dados de um sistema de terceiros como CSV é amplamente apoiada em aplicações e é fácil de produzir manualmente.</para>
     <para>Para importar um arquivo de troca de dados CSV navegue até o <emphasis role="italic">CSV Data Import </emphasis>item no menu do lado esquerdo. Faça o upload do arquivo de troca e clique <emphasis role="italic">Import</emphasis>.</para>
@@ -340,7 +340,7 @@ Se não houver conjuntos de dados definidos para uma unidade de organização, i
 &quot;DUSpd8Jq3M7&quot;,&quot;201202&quot;,&quot;gP6hn503KUX&quot;,&quot;V6L425pT3A0&quot;,&quot;10&quot;,&quot;bombali&quot;,&quot;2010-04-17&quot;,,&quot;false&quot;
 &quot;DUSpd8Jq3M7&quot;,&quot;201202&quot;,&quot;OjTS752GbZE&quot;,&quot;V6L425pT3A0&quot;,&quot;9&quot;,&quot;bombali&quot;,&quot;2010-04-06&quot;,,&quot;false&quot;</screen>
   </section>
-  <section id="importXMLdata">
+  <section xml:id="importXMLdata">
     <title>Importing XML data</title>
     <para>DHIS 2 suporta a importação de dados em formato XML. O formato é chamado de DXF (DHIS câmbio
  Format). Para importar um arquivo XML navegar até o item XML Importação de Dados no menu do lado esquerdo.
@@ -350,7 +350,7 @@ Se não houver conjuntos de dados definidos para uma unidade de organização, i
  e os conflitos potenciais.</para>
     <para>Se você precisa para produzir manualmente esses arquivos XML, consulte o capítulo API Web onde você pode encontrar documentação detalhada do formato DXF.</para>
   </section>
-  <section id="importPDFdata">
+  <section xml:id="importPDFdata">
     <title>Importing PDF data</title>
     <para>DHIS 2 suporta a importação de dados no formato PDF. Isso pode ser usado para importar dados produzidos por formas de entrada de dados de PDF offline. Por favor, consulte a seção &quot;Conjunto de dados de gestão&quot; para obter detalhes sobre como produzir um formulário PDF que pode ser usado para entrada de dados offline. </para>
     <para>Para importar um arquivo de dados PDF, navegue até o <emphasis>PDF Importação de Dados</emphasis> menu do lado esquerdo. Faça o upload do arquivo PDF concluída e clique <emphasis role="italic">Import</emphasis>.</para>

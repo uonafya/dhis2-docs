@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Utilizando el Visualizador de Datos</title>
-  <section id="dvIntro">
+  <section xml:id="dvIntro">
     <title>Un vistazo al Visualizador de Datos</title>
     <para>El módulo de visualización de datos permite que los usuarios puedan crear fácilmente análisis de datos y visualizaciones dinámicas mediante gráficos o tablas de datos. Para el análisis, podemos seleccionar libremente el contenido (por ejemplo indicadores, periodos y unidades organizativas). Este módulo se accede en el menú principal en "Servicios - Visualizador de Datos. La imagen siguiente nos muestra la vista general del módulo. Para comenzar a usarlo de forma sencilla:</para>
     <orderedlist>
@@ -18,7 +18,7 @@
     </orderedlist>
     <para>El visualizador de datos está diseñado en primer lugar para ser fácil de usar: podemos seleccionar los indicadores, elementos de datos, periodos y unidades organizativas que queramos incluir y pinchar en "Actualizar" para obtener una visualización. En segundo lugar, ha sido diseñado para ser rápido y lograr un buen funcionamiento incluso con conexiones lentas a Internet: los gráficos se generan en el navegador web y muy pocos datos se envían realmente por la red.</para>
     <screenshot>
-      <screeninfo>Módulo de visualización de datos mostrando un diagrama de barras.</screeninfo>
+      <title>Módulo de visualización de datos mostrando un diagrama de barras.</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" height="100%" fileref="resources/images/visualizer/column_chart.png" format="PNG"/>
@@ -26,7 +26,7 @@
       </mediaobject>
     </screenshot>
   </section>
-  <section id="dvChartTypes">
+  <section xml:id="dvChartTypes">
     <title>Seleccionando el tipo de gráfica</title>
     <para>El módulo de visualización proporciona siete tipos diferentes de gráficos, cada uno de ellos con características distintas. Podemos seleccionar el tipo de gráfico que deseamos pinchando en uno de los iconos en la barra superior derecha llamado "Tipo de gráfico".</para>
     <orderedlist>
@@ -53,7 +53,7 @@
       </listitem>
     </orderedlist>
   </section>
-  <section id="dvSeriesCategoryFilter">
+  <section xml:id="dvSeriesCategoryFilter">
     <title>Seleccionando series, categorías y filtros</title>
     <para>Esta sección nos permite definir qué dimensión de los datos queremos que aparezca como series, categorías o filtros. Acá entendemos por dimensión los elementos que describen los valores de datos en el sistema. En DHIS2 hay tres dimensiones principales:</para>
     <orderedlist>
@@ -69,7 +69,7 @@
     </orderedlist>
     <para>El módulo de visualización nos permite usar estas dimensiones de forma totalmente flexible en el sentido de que aparezcan como series, categorías o filtros. Para comprender mejor su funcionamiento observemos la captura de pantalla siguiente:</para>
     <screenshot>
-      <screeninfo>Ejemplo de gráfico que ilustra los conceptos de series, categorías y filtros.</screeninfo>
+      <title>Ejemplo de gráfico que ilustra los conceptos de series, categorías y filtros.</title>
       <mediaobject>
         <imageobject>
           <imagedata width="70%" fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
@@ -151,17 +151,17 @@
       </listitem>
     </itemizedlist>
   </section>
-  <section id="dvDisplayChart">
+  <section xml:id="dvDisplayChart">
     <title>Mostrando una gráfica</title>
     <para>Podemos mostrar un gráfico basado en las selecciones que hemos realizado pinchando en el botón "Actualizar" en el menú superior central. Esto requiere que hayamos seleccionado uno o varios elementos en cada una de las tres dimensiones - datos (indicadores, elementos de datos, tasas de reporte), periodos (relativos, fijos) y unidades organizativas (unidades o grupos). Recordemos que "Meses del año actual" en la dimensión periodo y la unidad organizativa raíz aparecen seleccionadas por defecto.</para>
     <para>Es importante tener en cuenta que podemos ocultar y mostrar series individuales de datos en el gráfico pinchando directamente en la etiqueta  de series del gráfico - que aparece ya sea arriba o a la derecha del gráfico.</para>
     <para>Si queremos ampliar el gráfico en nuestra pantalla podemos pinchar en el botón de flecha triple en el menú superior central. Esto hace que se pliegue el menú del lado izquierdo. Podremos volver a desplegarlo pinchando en este mismo botón de nuevo.</para>
   </section>
-  <section id="dvDisplayDataTable">
+  <section xml:id="dvDisplayDataTable">
     <title>Mostrando una tabla de datos</title>
     <para>Después de haber generado un gráfico podemos mostrar también sus datos en una tabla pinchando en el botón "Tabla de datos" en el menú superior central (junto al botón "Actualizar"). Esto mostrará una tabla con cuatro columnas: una para los datos (sean elementos de datos o indicadores), periodos, unidades organizativas y valor de los datos. Podremos ordenar la tabla en orden creciente o decreciente según cualquiera de las columnas.</para>
     <screenshot>
-      <screeninfo>Ejemplo de tabla de datos obtenida una gráfica.</screeninfo>
+      <title>Ejemplo de tabla de datos obtenida una gráfica.</title>
       <mediaobject>
         <imageobject>
           <imagedata width="70%" fileref="resources/images/visualizer/data_table.png" format="PNG"/>
@@ -169,16 +169,16 @@
       </mediaobject>
     </screenshot>
   </section>
-  <section id="dvSaveChart">
+  <section xml:id="dvSaveChart">
     <title>Descargando una gráfica como imagen o PDF</title>
     <para>Una vez hemos generado una gráfica, podemos guardar esta vista como un fichero y descargarlo a nuestra computadora local pinchando en el botón de "Guardas como" en el menú superior central. Podemso seleccionar entre formato PNG (imagen) o PDF. El fichero se descargará inmediatamente a la computadora, de modo que posteriormente podemos por ejemplo insertar ese fichero imagen en un documento de texto como parte de un informe.</para>
   </section>
-  <section id="dvFavorites">
+  <section xml:id="dvFavorites">
     <title>Guardando una gráfica como favorita</title>
     <para>Tras generar una gráfica podemos también guardarla como favorita. Pincharemos en el botón "Favoritos" en el menú superior y luego en el enlace "Gestionar favoritos". En el campo de nombre introducimos el nombre deseado para la gráfica (es importante elegir nombres autodescriptivos). Seleccionando la casilla "Sistema" el gráfico se hará visible a todos los usuarios del sistema, mientras que si no la chequeamos el gráfico será visible sólo para el usuario logueado. Solo los usuarios con permiso específico para crear gráficos de sistema. Podemos renombrar nuestras gráficas favoritas seleccionándolas en la lista, modificando su nombre en el campo de entrada y pinchando "Renombrar". Podremos también borrar gráficas favoritas seleccionándolas y después pinchando "Borrar".</para>
     <para>Estas gráficas favoritas se pueden incluir posteriormente en nuestro panel de control personal. Después de guardarlas, navegamos al módulo de panel de control (dashboard) y pinchamos en el enlace "Insertar" sobre las áreas de gráficas y seleccionamos nuestra gráfica preferida.</para>
     <screenshot>
-      <screeninfo>Módulo de visualización de datos mostrando un diagrama de barras favorito.</screeninfo>
+      <title>Módulo de visualización de datos mostrando un diagrama de barras favorito.</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/visualizer/favorites.png" format="PNG"/>
@@ -186,7 +186,7 @@
       </mediaobject>
     </screenshot>
   </section>
-  <section id="dvInterpretations">
+  <section xml:id="dvInterpretations">
     <title>Compartiendo interpretaciones de los datos</title>
     <para>En determinados recursos relacionados con el análisis de datos en DHIS2, como son las gráficas y las tablas de reporte, podemos compartir también interpretaciones de los datos. Una interpretación es sencillamente un enlace al recurso relevante junto a un texto explicativo sobre los datos. Si queremos compartir una interpretación de un gráfico primero guardamos el gráfico como favorito. Luego, sin realizar ningún cambio en el gráfico, pinchamos el botón "Compartir" en la barra de herramientas. Se abrirá una ventana donde podremos escribir nuestra interpretación. Cuando hayamos terminado, pinchamos en el botón de "Compartir" en la esquina derecha de la ventana. La ventana se cerrará automáticamente y, si la interpretación se compartió con éxito, encontraremos una notificación en la barra de herramientas inferior.</para>
   </section>
