@@ -16,7 +16,11 @@
     <title>Data warehouses and operational systems</title>
     <para>A <emphasis role="italic">data warehouse</emphasis> is commonly understood as a database used for analysis. Typically data is uploaded from various operational / transactional systems. Before data is loaded into the data warehouse it usually goes through various stages where it is cleaned for anomalies and redundancy and transformed to conform with the overall structure of the integrated database. Data is then made available for use by analysis, also known under terms such as<emphasis role="italic"> data mining </emphasis>and <emphasis role="italic">online analytical processing</emphasis>. The data warehouse design is optimized for speed of data retrieval and analysis. To improve performance the data storage is often redundant in the sense that the data is stored both in its most granular form and in an aggregated (summarized) form.</para>
     <para>A <emphasis role="italic">transactional system</emphasis> (or <emphasis role="italic">operational system</emphasis> from a data warehouse perspective) is a system that collects, stores and modifies low level data. This system is typically used on a day-to-day basis for data entry and validation. The design is optimized for fast insert and update performance.</para>
-    <graphic fileref="resources/images/implementation_guide/data_warehouse.png" format="PNG" width="80%" align="center"/>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="resources/images/implementation_guide/data_warehouse.png" format="PNG" width="80%" align="center"/>
+      </imageobject>
+    </mediaobject>
     <para>There are several benefits of maintaining a data warehouse, some of them being:</para>
     <itemizedlist>
       <listitem>
@@ -52,7 +56,11 @@
         <para>OpenELIS: Laboratory enterprise information system. This system can generate and export data on number and outcome of laboratory tests.</para>
       </listitem>
     </itemizedlist>
-    <graphic fileref="resources/images/implementation_guide/dhis_data_warehouse.png" format="PNG" width="80%" align="center"/>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="resources/images/implementation_guide/dhis_data_warehouse.png" format="PNG" width="80%" align="center"></imagedata>
+      </imageobject>
+    </mediaobject>
   </section>
   <section>
     <title>Aggregation strategy in DHIS 2</title>
@@ -64,6 +72,10 @@
     <para>There are two leading approaches for storing data in a data warehouse, namely the <emphasis role="italic">normalized</emphasis> and <emphasis role="italic">dimensional</emphasis> approach. DHIS 2 lends a bit from the former but mostly from the latter. In the dimensional approach the data is partitioned into <emphasis role="italic">dimensions</emphasis> and <emphasis role="italic">facts</emphasis>. Facts generally refers to transactional numeric data while dimensions are the reference data that gives context and meaning to the data. The strict rules of this approach makes it easy for users to understand the data warehouse structure and provides for good performance since few tables must be combined to produce meaningful analysis, while it on the other hand might make the system less flexible and harder to change.</para>
     <para>
 In DHIS the facts corresponds to the data value object in the data model. The data value captures data as numbers, yes/no or text. The <emphasis role="italic">compulsory dimensions</emphasis> which give meaning to the facts are the <emphasis role="italic">data element</emphasis>, <emphasis role="italic">organisation unit hierarchy</emphasis> and <emphasis role="italic">period</emphasis> dimensions. These dimensions are referred to as compulsory since they must be provided for all stored data records. DHIS 2 also has a custom dimensional model which makes it possible to represent any kind of dimensionality. This model must be defined prior to data capture. DHIS 2 also has a flexible model of groups and group sets which makes it possible to add custom dimensionality to the compulsory dimensions after data capture has taken place. You can read more about dimensionality in DHIS 2 in the chapter by the same name.</para>
-    <graphic fileref="resources/images/implementation_guide/dimensional_approach.png" format="PNG" width="80%" align="center"/>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="resources/images/implementation_guide/dimensional_approach.png" format="PNG" width="80%" align="center"></imagedata>
+      </imageobject>
+    </mediaobject>
   </section>
 </chapter>

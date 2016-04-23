@@ -9,7 +9,7 @@
          xmlns:xhtml="http://www.w3.org/1999/xhtml"
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
-         xmlns:db="http://docbook.org/ns/docbook" id="mobile_j2me_gprs_3g">
+         xmlns:db="http://docbook.org/ns/docbook" xml:id="mobile_j2me_gprs_3g">
   <title>J2ME GPRS/3G Client</title>
   <para>The DHIS2 GPRS/3G mobile module provides a mechanism for remote clients using mobile phones to enter data directly into the DHIS2 system. There are two functions of the client, namely:</para>
   <para>The solution relies on the mobile phone having a data connection available (i.e.
@@ -153,7 +153,11 @@
       <title>Language support</title>
       <para>Multi-language support is available.</para>
       <para>DataSet and DataElement are translated through web-based function. Default language on server is used on mobile in cases requested language from mobile is not available.</para>
-      <para><graphic fileref="resources/images/dhis_mobile/translateDataSet.jpg" width="80%" align="center"/></para>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resources/images/dhis_mobile/translateDataSet.jpg" width="80%" align="center"/>
+          </imageobject>
+        </mediaobject>
     </section>
   </section>
   <section>
@@ -376,9 +380,21 @@
             <para>This function help user to choose language of mobile&apos;s GUI (graphical user interface) and content&apos;s language (Forms).</para>
             <para>The forms must be translated on server, otherwise, default language is used.</para>
             <para>Default language of first login is English. Change language in Setting menu will affect both interface and content.</para>
-            <para><graphic fileref="resources/images/dhis_mobile/settingCmd.jpg" align="center"/></para>
-            <para><graphic fileref="resources/images/dhis_mobile/settingScreen.jpg" align="center"/></para>
-            <para><graphic fileref="resources/images/dhis_mobile/supportedLanguageList.jpg" align="center"/></para>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="resources/images/dhis_mobile/settingCmd.jpg" align="center" width="40%" />
+                </imageobject>
+              </mediaobject>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="resources/images/dhis_mobile/settingScreen.jpg" align="center" width="40%"/>
+                </imageobject>
+              </mediaobject>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="resources/images/dhis_mobile/supportedLanguageList.jpg" align="center" width="40%"/>
+                </imageobject>
+              </mediaobject>
             <para>Multi-Language Interface: In Setting menu, there are list of  supported language (downloaded from server). Language of GUI is only changed after restart application.</para>
             <para>Multi-Language Content (forms): Form&apos;s language is change after click &quot;Save&quot;. In case there are many forms, it take several minutes to save setting.</para>
           </listitem>
