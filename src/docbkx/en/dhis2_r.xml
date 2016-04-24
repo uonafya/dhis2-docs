@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
- <chapter version="5.0"
+ <appendix version="5.0"
          xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
           xmlns="http://docbook.org/ns/docbook"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -59,7 +59,7 @@ Type &apos;q()&apos; to quit R.
       users. The use of the R package RODBC will be used in this case. Other alternatives would be
       the use of the <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://dirk.eddelbuettel.com/code/rpostgresql.html"
         >RPostgreSQL</link> package, which can interface directly through the PostgreSQL driver
-      described in <xref linkend="dhis2_r_maps"/></para>
+      described in the next section.</para>
     <para>Assuming you have already installed R from the procedure in the previous section. Invoke the following command to add the required libraries for this example.</para>
     <para><command>apt-get install r-cran-rodbc r-cran-lattice odbc-postgresql</command> </para>
     <para>Next, we need to configure the ODBC connection. Edit the file to suit your local situation using the following template as a guide. Lets create and edit a file called odbc.ini</para>
@@ -504,4 +504,4 @@ head(data_elements)
 </screen>
     <para>Note that the values which we are interested in are stored as XML attributes and were parsed into two separate matrices and then combined together into a single data frame. </para>
   </section>
-</chapter>
+</appendix>
