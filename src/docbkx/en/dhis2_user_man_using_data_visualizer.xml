@@ -1,16 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<chapter>
-  <title>Using the Data
-    <?oxy_comment_start author="CPersson" timestamp="20160421T142956+0200" comment="Review all graphics before commit to master"?>Visualizer<?oxy_comment_end?>
-    app</title>
-  <section id="dvIntro">
+<chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Using Data Visualizer</title>
+  <section xml:id="dvIntro">
     <title>Data Visualizer overview</title>
     <screenshot>
-      <screeninfo>Data visualizer module displaying a column chart.</screeninfo>
+      <title>Data visualizer module displaying a column chart.</title>
       <mediaobject>
         <imageobject>
-          <imagedata width="100%" align="center"
+          <imagedata width="80%" align="center"
             fileref="resources/images/visualizer/column_chart.png" format="PNG"/>
         </imageobject>
       </mediaobject>
@@ -24,8 +31,9 @@
       Internet connections and generates charts in the web browser. Little data is transferred over
       the Internet.</para>
   </section>
-  <section>
+  <section xml:id="dvChartTypes">
     <title>Create a chart</title>
+    <para>The visualizer module provides nine different chart types, each with different characteristics. You can select the type of your chart by clicking on one of the icons  in  top left bar titled &quot;Chart type&quot;.</para>
     <orderedlist>
       <listitem>
         <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Data
@@ -56,7 +64,7 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
       </listitem>
     </orderedlist>
   </section>
-  <section id="dvChartTypes">
+  <section xml:id="dvChartTypes_mod">
     <title>Select a chart type</title>
     <para>The <emphasis role="bold">Data Visualizer</emphasis> app has nine different chart types,
       each with different characteristics. To select a chart type:</para>
@@ -191,13 +199,14 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
     <title>Modify chart layout</title>
     <para/>
   </section>
-  <section id="dvSeriesCategoryFilter">
+  <section xml:id="dvSeriesCategoryFilter">
     <title>Select series, category and filter</title>
     <para>The series, category and filter can be defined by selecting the &quot;Layout&quot; option in the data visualizer app. </para>
     <para><screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata width="80%" align="center" scale="100" fileref="resources/images/visualizer/chart_layout.png"/>
+            <imagedata width="40%" align="center" scale="100"
+              fileref="resources/images/visualizer/chart_layout.png"/>
           </imageobject>
         </mediaobject>
       </screenshot></para>
@@ -216,10 +225,11 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
     </orderedlist>
     <para>The visualization module lets you use these dimensions completely flexible in terms of appearing as series, categories and filter. Understanding these concepts is most easily done by looking at the screenshot from the opening page below: </para>
     <screenshot>
-      <screeninfo>Example chart illustrating the concepts of series, categories and filter.</screeninfo>
+      <title>Example chart illustrating the concepts of series, categories and filter.</title>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" align="center" fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
+          <imagedata width="60%" align="center"
+            fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -275,7 +285,8 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" align="center" scale="100" fileref="resources/images/visualizer/chart_options.png"/>
+          <imagedata width="50%" align="center" scale="100"
+            fileref="resources/images/visualizer/chart_options.png"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -339,21 +350,23 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
       </listitem>
     </itemizedlist>
   </section>
-  <section id="dvDisplayChart">
+  <section xml:id="dvDisplayChart">
     <title>Display a chart</title>
     <para>You can display a chart based on your selections simply by clicking the &quot;Update&quot; button on the top centre menu. This requires that you have selected one or more elements from all of the three dimensions - data (indicators, data elements, reporting rates), periods (relative, fixed) and organisation units (units or groups). Note that &quot;Last 12 Months&quot; from the period dimension and the root organisation unit are selected by default.</para>
     <para>Notice that you can hide and show individual data series in the chart by clicking directly on the series label in the chart - they appear either at the top or to the right of the chart.</para>
     <para>If you want to give the chart more space on your screen you can click on the triple left-arrow button on the top centre menu. This will collapse the left side menu. You can get this menu back by clicking on the same button again.</para>
   </section>
-  <section id="dvSaveChart">
+  <section xml:id="dvSaveChart">
     <title>Download chart as image or PDF</title>
     <para>After you have rendered a chart you can download it to your local computer as and image or pdf by clicking on &quot;Download&quot; on the top centre menu. The file will be automatically downloaded to your computer - for instance can you now embed the image file into a text document as part of a report. You can also download the data source behind the chart in json, xml, csv or Microsoft Excel format.</para>
     <para>For advanced users, two additional options are available under &quot;Advanced&quot;. JXRML will produce a template of a Jasper Report which can be further customized based on your exact needs and used as the basis for a standard report in DHIS2. The &quot;Raw data SQL&quot; will provide the actual SQL statement used to generate the data visualization. This could then be used as a data source in a Jasper report, or as the basis for an SQL view</para>
   </section>
-  <section id="dvFavorites">
-    <title>Manage chart favorites</title>
+  <section xml:id="dvFavorites">
+    <title>Downloading chart as image or PDF</title>
+    <para>After you have rendered a chart you can download it to your local computer as and image or pdf by clicking on &quot;Download&quot; on the top centre menu. The file will be automatically downloaded to your computer - for instance can you now embed the image file into a text document as part of a report. You can also download the data source behind the chart in json, xml, csv or Microsoft Excel format.</para>
+    <para>For advanced users, two additional options are available under &quot;Advanced&quot;. JXRML will produce a template of a Jasper Report which can be further customized based on your exact needs and used as the basis for a standard report in DHIS2. The &quot;Raw data SQL&quot; will provide the actual SQL statement used to generate the data visualization. This could then be used as a data source in a Jasper report, or as the basis for an SQL view</para>
     <screenshot>
-      <screeninfo>Data visualizer module displaying a column chart.</screeninfo>
+      <title>Data visualizer module displaying a column chart.</title>
       <mediaobject>
         <imageobject>
           <imagedata width="50%" fileref="resources/images/visualizer/chart_favorites.png"
@@ -444,7 +457,7 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
         </listitem>
       </orderedlist>
     </section>
-    <section id="dvInterpretations">
+    <section xml:id="dvInterpretations">
       <title>Share a chart interpretation</title>
       <para role="">For
         <?oxy_comment_start author="Home" timestamp="20160407T151353+0200" comment="Which ones?"?>certain<?oxy_comment_end?>
@@ -542,7 +555,7 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
       </orderedlist>
     </section>
   </section>
-  <section id="dvEmbed">
+  <section xml:id="dvEmbed">
     <title>Embed charts in any web page</title>
     <para>Certain analysis-related resources in DHIS 2, like pivot tables, charts and maps, can be
       embedded in any web page by using a plug-in. You will find more information about the plug-ins
@@ -578,10 +591,8 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
           <para>Your current chart opens as a pivot table.</para>
         </listitem>
       </orderedlist>
-      <screenshot>
-        <screeninfo>Analysis
-          <?oxy_comment_start author="CPersson" timestamp="20160421T155736+0200" comment="Consider removing screen shot."?>integration<?oxy_comment_end?></screeninfo>
-        <mediaobject>
+      <screenshot>        
+      <mediaobject>
           <imageobject>
             <imagedata align="center" scale="100"
               fileref="resources/images/visualizer/chart_integration.png" format="PNG"/>

@@ -3,7 +3,7 @@
 <chapter>
   <title>Data Administration</title>
   <para>The data administration module provides a range of functions to ensure that the data stored in the DHIS2 database is integral and that the database performance is optimised. These functions should be executed on a regular basis by a data administrator to ensure that the quality of the data stored is optimal. </para>
-  <section id="dataBrowser">
+  <section xml:id="dataBrowser">
     <title>Data browser</title>
     <para>The data browser maintenance and analysis module which allows the user to produce a summary of the data contained in the DHIS2 database. The summary view provides a count of data elements which have been entered at the selected organisation unit as well as its descendants. Raw data for all data elements for a range of time periods and a given organisational unit can be browsed and exported to Excel, CSV, or PDF formats. There are four modes of the data browser, which determine how the data is summarized</para>
     <itemizedlist>
@@ -80,7 +80,7 @@
       </listitem>
     </itemizedlist>
   </section>
-  <section id="dataIntegrity">
+  <section xml:id="dataIntegrity">
     <title>Data integrity</title>
     <para>DHIS2 can perform a wide range of data integrity checks on the data contained in the database. Identifying and correcting data integrity issues is extremely important for ensuring that the data used for analysis purposes is valid. Each of the data integrity checks that are performed by the system will be described, along with general procedures that can be performed to resolve these issues. </para>
     <section>
@@ -164,21 +164,21 @@
       <para>An error exists in the left-side validation rule definition. Go to <command>Services-&gt;Data quality-&gt;Validation rule</command> and click the &quot;Edit&quot; icon on the offending rule. Press &quot;Edit right side&quot; and make the corrections that are required.</para>
     </section>
   </section>
-  <section id="dataArchive">
+  <section xml:id="dataArchive">
     <title>Data Archive</title>
     <para>The purpose of the data archive function is to move data which is currently not being used for analysis to a secondary storage location in order to improve performance of the application. Data can be both archived and unarchived. When archiving data one moves it from the primary storage to the secondary storage location, while unarchiving moves it from the secondary storage location to the primary. Analysis functionality in DHIS 2 heavily utilizes queries to the data value database table, and by reducing the size of this table these operations will be significantly faster. Typically one would want to archive data that is older than two years.</para>
     <para>To archive data, first enter a start date and an end date for the time span of the data which should be archived. Then press the archive button. The operation might take a few minutes.</para>
     <para>To unarchive data, first enter a start date and an end date for the time span of the data which should be unarchived. Then press the unarchive button. The operation might take a few minutes.</para>
     <para>In some cases you might end up with overlapping data. For instance one might archive data for a given timespan, then later enter data for a period in that timespan. In such cases the system will automatically overwrite the oldest of the overlapping values with the newest during the archive or unarchive operation.</para>
   </section>
-  <section id="patientDataArchive">
+  <section xml:id="patientDataArchive">
     <title>Beneficiary Data Archive</title>
     <para>The purpose of the beneficiary data archive function is to move beneficiary data value which is currently not being used for analysis to a secondary storage location in order to improve performance of the application. Data can be both archived and unarchived. When archiving data one moves it from the primary storage to the secondary storage location, while unarchiving moves it from the secondary storage location to the primary. Analysis functionality in DHIS 2 heavily utilizes queries to the data value database table, and by reducing the size of this table these operations will be significantly faster. Typically one would want to archive beneficiary data that is older than two years.</para>
     <para>To archive beneficiary data, first enter a start date and an end date for the time span of the data which should be archived. Then press the archive button. The operation might take a few minutes.</para>
     <para>To unarchive beneficiary data, first enter a start date and an end date for the time span of the data which should be unarchived. Then press the unarchive button. The operation might take a few minutes.</para>
     <para>In some cases you might end up with overlapping data. For instance one might archive beneficiary data for a given timespan, then later enter data for a period in that timespan. In such cases the system will automatically overwrite the oldest of the overlapping values with the newest during the archive or unarchive operation.</para>
   </section>
-  <section id="maintenance">
+  <section xml:id="maintenance">
     <title>Maintenance</title>
     <para>The data maintenance module has five options, each described below. </para>
     <itemizedlist>
@@ -204,7 +204,7 @@
       </listitem>
     </itemizedlist>
   </section>
-  <section id="resourceTables">
+  <section xml:id="resourceTables">
     <title>Resource tables</title>
     <para>Resource tables are supporting tables that are used during analysis of data. One would typically join the contents of these tables with the data value table when doing queries from third-party applications like Microsoft Excel. Simply select the tables that should be regenerated and press &quot;Generate tables&quot;. Regeneration of the resource tables should only be done once all data integrity issues are resolved. </para>
     <itemizedlist>
@@ -240,7 +240,7 @@
       </listitem>
     </itemizedlist>
   </section>
-  <section id="sqlView">
+  <section xml:id="sqlView">
     <title>SQL View</title>
     <para> Database administrators must be very careful about creating database views directly in the DHIS 2 database. Certain  DHIS 2 operations drop and recreate tables, for instance when the resource tables are regenerated. If any SQL views depend on these tables, an error will occur, since the tables are referenced in an SQL view. </para>
     <para>The SQL View functionality of DHIS2 will store the SQL view definition internally, and then materialize the view when requested. </para>
@@ -262,19 +262,19 @@
       <para>In order to utilize the SQL views, simply press the &quot;Execute query&quot; button <inlinegraphic fileref="resources/images/dhis2_images/start_process.png"/> from the &quot;SQL View management page. Once the process is completed, you will be informed that a table has been created. The name of the table will be provided, and is composed from the &quot;Description&quot; attribute provided in the SQL view definition. Once the view has been materialized, click on the &quot;View&quot; button <inlinegraphic fileref="resources/images/dhis2_images/view_sections.png"/>.</para>
     </section>
   </section>
-  <section id="organisationUnitMerge">
+  <section xml:id="organisationUnitMerge">
     <title>Organisation unit merge</title>
     <para>This function is useful when two organisation units need to be merged, eg. it is decided that one facility will be shut down and its services will be provided by a nearby facility.</para>
     <para>Start by selecting the organisation unit to eliminate from the tree and click <emphasis role="italic">confirm</emphasis>.  Then select the organisation unit to keep and click <emphasis role="italic">confirm</emphasis> again. Finally, verify the selection and click <emphasis role="italic">merge</emphasis>.  </para>
     <para>In the sitation where data exist  for the organisation unit to eliminate and not for the one to keep, the data will be moved to the one to keep. When data exists for both organisation units, the data will be summarized and moved to the one to keep. When data exists only for the one to keep, no action is taken. The organisation unit to eliminate will eventually be deleted.</para>
   </section>
-  <section id="duplicateDataElimination">
+  <section xml:id="duplicateDataElimination">
     <title>Duplicate data elimination</title>
     <para>This function is useful when data has been entered mistakenly for two data elements which represents the same phenomena.</para>
     <para>Start by selecting the data element to eliminate from the list and click confirm. Then select the data element to keep and click confirm again. Finally, verify the selection and click merge.</para>
     <para>In the situation where data exists for the data element to eliminate and not for the one to keep, the data will be moved to the one to keep. When data exists for both data elements, the data which was updated last will be used. When data exists only for the one to keep, no action will be taken. The data element to eliminate will eventually be deleted, except when it is a multidimensional data element and has other data registered.</para>
   </section>
-  <section id="dataStatistics">
+  <section xml:id="dataStatistics">
     <title>Data statistics</title>
     <para>The data statistics module provides an overview of the number of objects stored in the DHIS2 database. </para>
     <screenshot>
@@ -286,7 +286,7 @@
     </screenshot>
     <para>The total number of each type of object is presented in a table, as well as a graph. </para>
   </section>
-  <section id="lockException">
+  <section xml:id="lockException">
     <title>Lock exceptions</title>
     <para>Lock exceptions provide fine-grained control over exemption from a locked data set. After the expiry of the data set, data entry will be denied by default, unless an exception has been granted through the Lock exception interface. To enable a lock exception, select the desired organization units, data sets, and time period and press &quot;Add&quot;. By granting a lock exception, data entry will be enabled even after the expiry period of the data set has passed. </para>
     <screenshot>
@@ -298,7 +298,7 @@
     </screenshot>
     <para>In the example above, a data lock exception would be created for &quot;ab Abundant Life Organization&quot; and &quot;ab Seventh Day Hospital&quot; for the &quot;Care and Support&quot; dataset for &quot;February 2012&quot;. </para>
   </section>
-  <section id="zeroValueStorage">
+  <section xml:id="zeroValueStorage">
     <title>Zero value storage</title>
     <para>The zero value storage function makes it possible to define for which data elements the system should store zero values. In most cases zeros are significant only for a subset of the data elements in the database. Any zeroes entered during data entry will be ignored by default, except for data elements where the zero value storage has been enabled. </para>
   </section>
@@ -306,7 +306,7 @@
     <title>Organisation unit pruning</title>
     <para>If you need to prune out branches of the organisational unit hierarchy, you can use the  organisational unit pruning function. Keep in mind that the only selected organisational (and its children) will be kept. All other orgunits  (and any data associated with them) will be deleted from the database. </para>
   </section>
-  <section id="minMaxValueGeneration">
+  <section xml:id="minMaxValueGeneration">
     <title>Min-Max Value Generation</title>
     <para>This administrative function can be used to generate min-max values, which are used as part of the data quality and validation process for specific organization units and data sets. Simply select the dataset from the left hand frame, and then select the required orgunits to generate the min-max values for from the organisational units selector on the right. Press the &quot;Generate&quot; button to generate or regenerate all min-max values. Press &quot;Remove&quot; to remove all min-max values which are currently stored in the database. </para>
     <para><screenshot>
@@ -317,7 +317,7 @@
         </mediaobject>
       </screenshot></para>
   </section>
-  <section id="constant">
+  <section xml:id="constant">
     <title>Constant</title>
     <para>Constants are static values which can be made available to users for use in data elements and indicators. Some indicators, such as &quot;Couple year protection rate&quot; depend on constants which usually do not change over time. Simply press &quot;Add&quot; and provide a name in the &quot;Name&quot; field and define it&apos;s value in the &quot;Value&quot; field. Press &quot;Add&quot; . The constant will now be available to users for use in their expressions.</para>
     <screenshot>
@@ -328,7 +328,7 @@
       </mediaobject>
     </screenshot>
   </section>
-  <section id="optionSet">
+  <section xml:id="optionSet">
     <title>Option sets</title>
     <para> Option sets can be associated with data elements in the add / update data element interface for name-based data elements. You can define any kind of options, for instance an option set
 called &quot;Delivery type&quot; where &quot;Normal&quot;, &quot;Breach&quot;, &quot;Caesarian&quot; and
@@ -338,11 +338,11 @@ name-based records module those elements will then appear in the form
 as drop-down lists with auto-completion support.
 </para>
   </section>
-  <section id="cacheStatistics">
+  <section xml:id="cacheStatistics">
     <title>Cache Statistics </title>
     <para>This option is for system administrators only to use. The cache statistics shows the status of the application level cache. The application level cache refers to the objects and query results that the application is caching in order to speed up performance. If the database has been modified directly the application cache needs to be cleared for it to take effect.</para>
   </section>
-  <section id="attribute">
+  <section xml:id="attribute">
     <title>Dynamic attributes</title>
     <para>Dynamic attributes can be used to add additional information to certain objects (namely data elements, indicators, organisation units and users). In addition to the standard attributes each of these objects have, it may be required in certain installations to have additional attributes, such as a fax number which is associated with an organisation unit. To add a new dynamic attribute to an object, select &quot;Maintenance-&gt;Data administration&quot; from the main menue, then &quot;Attribute&quot; from the left side panel, and press the &quot;Add new&quot; button.</para>
     <screenshot>
@@ -355,7 +355,7 @@ as drop-down lists with auto-completion support.
     <para>To create a new attribute, assign it a name. Each attribute should have a unique name. Check the tick-box &quot;Mandatory&quot; if the object should always have the dynamic attribute. Next, select which object (or objects) the attribute should be assigned to. Lastly, select the value type. You can choose from &quot;Text&quot;, &quot;Yes/No&quot;, &quot;Date&quot;, &quot;Number&quot;, &quot;Integer&quot;, &quot;Positive integer&quot; and &quot;Negative integer&quot;. If the value supplied for the attribute does not match the value type, an error will result. Finally, click &quot;Save&quot; to save the attribute. </para>
     <para>The dynamic attribute will now be present in the object which you assigned it to in the respective &quot;Edit&quot; screen of each the object.</para>
   </section>
-  <section id="scheduling">
+  <section xml:id="scheduling">
     <title>Scheduling</title>
     <para>Data mart jobs can be automatically scheduled to run on regular intervals. Simply select the aggregation period types, organisation unit group set aggregation level, and strategy to configure how the scheduled job should run. Pressing &quot;Start&quot; will enable the scheduled job to run at a pre-determined time or can be run immediately by pressing &quot;Execute now&quot;</para>
     <screenshot>

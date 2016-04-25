@@ -1,6 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<chapter>
+      <chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
   <title>Web API</title>
   <para>The Web API is a component which makes it possible for external systems to access and
     manipulate data stored in an instance of DHIS 2. More precisely, it provides a programmatic
@@ -164,7 +173,7 @@ curl -X POST -H &quot;Accept: application/json&quot; -u demo:$SECRET $SERVER/uaa
           might want to add &amp;redirect_uri=http://www.example.org)
           :<screen>SERVER=&quot;https://play.dhis2.org/dev&quot;
 
-$SERVER/uaa/oauth/authorize?client_id=demo&amp;response_type=code</screen></para>
+$SERVER/uaa/oauth/authorize?client_xml:id=demo&amp;response_type=code</screen></para>
         <para>Step 2 - After the user have successfully logged in and accepted your client access,
           it will redirect back to your redirect uri like
           this:<screen>http://www.example.org/?code=XYZ</screen></para>
@@ -1859,7 +1868,7 @@ http://server/api/constants/ID</screen></para>
 &quot;Female&quot;,,&quot;FEMALE&quot;</screen>
     </section>
   </section>
-  <section id="fileresource">
+  <section xml:id="fileresource">
     <title>File resources</title>
     <para><emphasis role="italic">File resources</emphasis> are objects used to represent and store
       binary content. The <emphasis role="italic">FileResource</emphasis> object itself contains the
@@ -2116,8 +2125,7 @@ http://server/api/constants/ID</screen></para>
     <section>
       <title>Sending data values</title>
       <para>A common use-case for system integration is the need to send a set of data values from a
-        third-party system into DHIS. In this example we will use the DHIS 2 demo on <ulink
-          url="http://play.dhis2.org/demo"/> as basis and we recommend that you follow the provided
+        third-party system into DHIS. In this example we will use the DHIS 2 demo on <link xl:href="http://play.dhis2.org/demo"/> as basis and we recommend that you follow the provided
         links with a web browser while reading (log in with <emphasis role="italic"
           >admin</emphasis><emphasis role="italic">/district</emphasis> as username/password). We
         assume that we have collected case-based data using a simple software client running on
@@ -2130,7 +2138,7 @@ http://server/api/constants/ID</screen></para>
           <emphasis role="italic">dataValueSets</emphasis> resource. A data value set represents a
         set of data values which have a logical relationship, usually from being captured off the
         same data entry form. We follow the link to the HTML representation which will take us to
-          <ulink url="http://play.dhis2.org/demo/api/dataValueSets"/>. The format looks like
+          <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api/dataValueSets"/>. The format looks like
         this:</para>
       <screen language="xml">&lt;dataValueSet xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot; dataSet=&quot;dataSetID&quot;
   completeDate=&quot;date&quot; period=&quot;period&quot; orgUnit=&quot;orgUnitID&quot; attributeOptionCombo=&quot;aocID&quot;&gt;
@@ -2160,12 +2168,12 @@ http://server/api/constants/ID</screen></para>
         above for time formats.</para>
       <para>From the example we can see that we need to identify the period, the data set, the org
         unit (facility) and the data elements for which to report.</para>
-      <para>To obtain the identifier for the data set we return to the entry point at <ulink
-          url="http://play.dhis2.org/demo/api"/> and follow the embedded link pointing at the
-          <emphasis role="italic">dataSets</emphasis> resource located at <ulink
-          url="http://play.dhis2.org/demo/api/dataSets"/>. From there we find and follow the link to
+      <para>To obtain the identifier for the data set we return to the entry point at <link
+          xl:href="http://play.dhis2.org/demo/api"/> and follow the embedded link pointing at the
+          <emphasis role="italic">dataSets</emphasis> resource located at <link
+          xl:href="http://play.dhis2.org/demo/api/dataSets"/>. From there we find and follow the link to
         the <emphasis role="italic">Mortality &lt; 5 years</emphasis> data set which leads us to
-          <ulink url="http://play.dhis2.org/demo/api/dataSets/pBOMPrpg1QX"/>. The resource
+          <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api/dataSets/pBOMPrpg1QX"/>. The resource
         representation for the <emphasis role="italic">Mortality &lt; 5 years</emphasis> data set
         conveniently advertises links to the data elements which are members of it. From here we can
         follow these links and obtain the identifiers of the data elements. For brevity we will only
@@ -2176,8 +2184,8 @@ http://server/api/constants/ID</screen></para>
       <para>What remains is to get hold of the identifier of the facility (org unit). The <emphasis
           role="italic">dataSet</emphasis> representation conveniently provides link to org units
         which report on it so we search for<emphasis role="italic"> Ngelehun CHC</emphasis> and
-        follow the link to the HTML representation at <ulink
-          url="http://play.dhis2.org/demo/api/organisationUnits/DiszpKrYNg8"/>, which tells us that
+        follow the link to the HTML representation at <link
+          xl:href="http://play.dhis2.org/demo/api/organisationUnits/DiszpKrYNg8"/>, which tells us that
         the identifier of this org unit is <emphasis role="italic">DiszpKrYNg8</emphasis>.</para>
       <para>From our case-based data we assume that we have 12 cases of measles, 14 cases of
         dysentery and 16 cases of cholera. We have now gathered enough information to be able to put
@@ -2228,8 +2236,8 @@ http://server/api/constants/ID</screen></para>
       <para>The previous example showed us how to send a set of related data values sharing the same
         period and organisation unit. This example will show us how to send large bulks of data
         values which don&apos;t necessarily are logically related.</para>
-      <para>Again we will interact with the with <ulink
-          url="http://play.dhis2.org/demo/api/dataValueSets"/> resource. This time we will not
+      <para>Again we will interact with the with <link
+          xl:href="http://play.dhis2.org/demo/api/dataValueSets"/> resource. This time we will not
         specify the dataSet and completeDate attributes. Also, we will specify the period and
         orgUnit attributes on the individual data value elements instead of on the outer data value
         set element. This will enable us to send data values for various periods and org
@@ -2620,7 +2628,7 @@ http://server/api/constants/ID</screen></para>
 -X GET -u admin:district -v</screen>
       <para>You can delete a data value with a request using the <emphasis role="italic"
           >DELETE</emphasis> method. </para>
-      <section id="datavalue_file">
+      <section xml:id="datavalue_file">
         <title>Working with file data values</title>
         <para>When dealing with data values which have a data element of type <emphasis
             role="italic">file</emphasis> there is some deviation from the method described above.
@@ -2826,9 +2834,9 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     <para>From version 2.20 we have included support for an international standard for aggregate
       data exchange called ADX. ADX is developed and maintained by the Quality Research and Public
       Health committee of the IHE (Integerating the HealthCare Enterprise). The wiki page detailing
-      QRPH activity can be found at <ulink
-        url="http://wiki.ihe.net/index.php?title=Quality,_Research_and_Public_Health#Current_Domain_Activities"
-        >wiki.ihe.net</ulink>. ADX is still under active development and has now been published for
+      QRPH activity can be found at <link
+        xl:href="http://wiki.ihe.net/index.php?title=Quality,_Research_and_Public_Health#Current_Domain_Activities"
+        >wiki.ihe.net</link>. ADX is still under active development and has now been published for
       trial implementation. Note that what is implemented currently in DHIS 2 is the functionality
       to read and write adx formatted data, i.e. what is described as Content Consumer and Content
       Producer actors in the ADX profile.</para>
@@ -2917,9 +2925,9 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
           <listitem>
             <para>The producer and consumer can match their codes to a 3rd party authoritative
               source, such as a vterminology service. Note that in the example above the Gender and
-              AgeGroup codes are using code lists from the <ulink
-                url="http://apps.who.int/gho/data/node.resources.api">WHO Global Health
-                Observatory</ulink>.</para>
+              AgeGroup codes are using code lists from the <link
+                xl:href="http://apps.who.int/gho/data/node.resources.api">WHO Global Health
+                Observatory</link>.</para>
           </listitem>
         </itemizedlist></para>
       <para>Note that this feature may be extremely useful, for example when producing disaggregated
@@ -3576,7 +3584,7 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
         All programRules in a program share the same library of programRuleVariables, and one
         programRuleVariable can be used in several programRules&apos; expressions. </para>
       <screenshot>
-        <screeninfo>DHIS2 Login screen</screeninfo>
+        <title>DHIS2 Login screen</title>
         <mediaobject>
           <imageobject>
             <imagedata width="80%" fileref="resources/images/program_rules/program-rule-model.jpg"
@@ -4860,9 +4868,9 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <title>Writing and reading messages</title>
       <para>The resource we need to interact with when sending and reading messages is the <emphasis
           role="italic">messageConversations</emphasis> resource. We start by visiting the Web API
-        entry point at <ulink url="http://play.dhis2.org/demo/api"/> where we find and follow the
-        link to the <emphasis role="italic">messageConversations</emphasis> resource at <ulink
-          url="http://play.dhis2.org/demo/api/messageConversations"/>. The description tells us that
+        entry point at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api"/> where we find and follow the
+        link to the <emphasis role="italic">messageConversations</emphasis> resource at <link
+          xl:href="http://play.dhis2.org/demo/api/messageConversations"/>. The description tells us that
         we can use a POST request to create a new message using the following XML format for sending
         to multiple users:</para>
       <para>
@@ -4902,9 +4910,9 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       </para>
       <para>Since we want to send a message to our friend the mobile user we need to look up her
         identifier. We do so by going to the Web API entry point and follow the link to the
-          <emphasis role="italic">users</emphasis> resource at <ulink
-          url="http://play.dhis2.org/demo/api/users"/>. We continue by following link to the mobile
-        user at <ulink url="http://play.dhis2.org/demo/api/users/PhzytPW3g2J"/> where we learn that
+          <emphasis role="italic">users</emphasis> resource at <link
+          xl:href="http://play.dhis2.org/demo/api/users"/>. We continue by following link to the mobile
+        user at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api/users/PhzytPW3g2J"/> where we learn that
         her identifier is <emphasis role="italic">PhzytPW3g2J</emphasis>. We are now ready to put
         our XML message together to form a message where we want to ask the mobile user whether she
         has reported data for January 2014:</para>
@@ -4968,7 +4976,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <para>From the response we are able to read the identifier of the newly sent message which is
           <emphasis role="italic">ZjHHSjyyeJ2</emphasis>. Note that the link to the specific
         resource is embedded and can be followed in order to read the full message. From the
-        description at <ulink url="http://play.dhis2.org/demo/api/messageConversations"/> we learned
+        description at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api/messageConversations"/> we learned
         that we can reply directly to an existing message conversation once we know the URL by
         including the message text as the request payload (body). We are now able to construct a URL
         for sending our reply:</para>
@@ -5117,7 +5125,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <title>Writing interpretations</title>
       <para>We will start by writing an interpretation for the chart with identifier <emphasis
           role="italic">EbRN2VIbPdV</emphasis>. To write chart interpretations we will interact with
-        the <ulink url="http://play.dhis2.org/demo/api/interpretations/chart/{chartId}"/> resource.
+        the <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/demo/api/interpretations/chart/{chartId}"/> resource.
         The interpretation will be the request body. Based on this we can put together the following
         request using cURL:</para>
       <screen>curl -d &quot;This chart shows a significant ANC 1-3 dropout&quot; 
@@ -5128,15 +5136,15 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         header is returned. This header tells us the URL of the newly created interpretation and
         from that we can read its identifier. This identifier is randomly generated so you will have
         to replace the one in the command below with your own. To write a comment we can interact
-        with the <ulink
-          url="http://play.dhis2.org/demo/api/interpretations/{interpretationId}/comment"/> like
+        with the <link
+          xl:href="http://play.dhis2.org/demo/api/interpretations/{interpretationId}/comment"/> like
         this:</para>
       <screen>curl -d &quot;An intervention is needed&quot; 
 &quot;https://play.dhis2.org/demo/api/interpretations/j8sjHLkK8uY/comment&quot;
 -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
       <para>You can also write interpretations for report tables in a similar way by interacting
-        with the <ulink
-          url="http://app.dhis2.org/demo/api/interpretations/reportTable/{reportTableId}"/>. For
+        with the <link
+          xl:href="http://app.dhis2.org/demo/api/interpretations/reportTable/{reportTableId}"/>. For
         report tables you can also provide an optional <emphasis role="italic">ou</emphasis> query
         parameter to supply an organisation unit identifier in the case where the report table has
         an organisation unit report parameter:</para>
@@ -5295,8 +5303,8 @@ api/reports/OeJsA6K1Otx/data.pdf?date=2014-01-01</screen>
       <para>In this example we will see how we can embed good-looking, light-weight html pivot
         tables with data served from a DHIS back-end into a Web page. To accomplish this we will use
         the Pivot table plug-in. The plug-in is written in Javascript and depends on the Ext JS
-        library only. A complete working example can be found at <ulink
-          url="http://play.dhis2.org/portal/table.html"/>. Open the page in a web browser and view
+        library only. A complete working example can be found at <link
+          xl:href="http://play.dhis2.org/portal/table.html"/>. Open the page in a web browser and view
         the source to see how it is set up.</para>
       <para>We start by having a look at what the complete html file could look like. This setup
         puts two tables in our web page. The first one is referring to an existing table. The second
@@ -5537,8 +5545,8 @@ Ext.onReady( function() {
         </tgroup>
       </table>
       <para>We continue by adding one pre-defined and one dynamic pivot table to our HTML document.
-        You can browse the list of available pivot tables using the Web API here: <ulink
-          url="http://play.dhis2.org/demo/api/reportTables"/>.</para>
+        You can browse the list of available pivot tables using the Web API here: <link
+          xl:href="http://play.dhis2.org/demo/api/reportTables"/>.</para>
       <screen>function setLinks() {
   DHIS.getTable({ url: base, el: &quot;table1&quot;, id: &quot;R0DVGvXDUNP&quot; });
 
@@ -5570,16 +5578,16 @@ Ext.onReady( function() {
         Javascript.</para>
       <screen>&lt;div id=&quot;table1&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;table2&quot;&gt;&lt;/div&gt;</screen>
-      <para>To see a complete working example please visit <ulink
-          url="http://play.dhis2.org/portal/table.html"/>.</para>
+      <para>To see a complete working example please visit <link
+          xl:href="http://play.dhis2.org/portal/table.html"/>.</para>
     </section>
     <section>
       <title>Embedding charts with the Visualizer chart plug-in</title>
-      <para>In this example we will see how we can embed good-looking Ext JS charts (<ulink
-          url="http://www.sencha.com/products/extjs"/>) with data served from a DHIS back-end into a
+      <para>In this example we will see how we can embed good-looking Ext JS charts (<link
+          xl:href="http://www.sencha.com/products/extjs"/>) with data served from a DHIS back-end into a
         Web page. To accomplish this we will use the DHIS Visualizer plug-in. The plug-in is written
         in Javascript and depends on the Ext JS library only. A complete working example can be
-        found at <ulink url="http://play.dhis2.org/portal/chart.html"/>. Open the page in a web
+        found at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/portal/chart.html"/>. Open the page in a web
         browser and view the source to see how it is set up.</para>
       <para>We start by having a look at what the complete html file could look like. This setup
         puts two charts in our web page. The first one is referring to an existing chart. The second
@@ -5855,8 +5863,8 @@ Ext.onReady( function() {
         </tgroup>
       </table>
       <para>We continue by including two pre-defined charts and to dynamic charts to our HTML
-        document. You can browse the list of available charts using the Web API here: <ulink
-          url="http://play.dhis2.org/demo/api/charts"/>.</para>
+        document. You can browse the list of available charts using the Web API here: <link
+          xl:href="http://play.dhis2.org/demo/api/charts"/>.</para>
       <screen>function setLinks() {
   DHIS.getChart({ url: base, el: &quot;chart1&quot;, id: &quot;R0DVGvXDUNP&quot; });
 
@@ -5890,15 +5898,15 @@ Ext.onReady( function() {
       <screen>&lt;div id=&quot;chart1&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;chart2&quot;&gt;&lt;/div&gt;
 </screen>
-      <para>To see a complete working example please visit <ulink
-          url="http://play.dhis2.org/portal/chart.html"/>.</para>
+      <para>To see a complete working example please visit <link
+          xl:href="http://play.dhis2.org/portal/chart.html"/>.</para>
     </section>
     <section>
       <title>Embedding maps with the GIS map plug-in</title>
       <para>In this example we will see how we can embed maps with data served from a DHIS back-end
         into a Web page. To accomplish this we will use the GIS map plug-in. The plug-in is written
         in Javascript and depends on the Ext JS library only. A complete working example can be
-        found at <ulink url="http://play.dhis2.org/portal/map.html"/>. Open the page in a web
+        found at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://play.dhis2.org/portal/map.html"/>. Open the page in a web
         browser and view the source to see how it is set up.</para>
       <para>We start by having a look at what the complete html file could look like. This setup
         puts two maps in our web page. The first one is referring to an existing map. The second is
@@ -5956,7 +5964,7 @@ Ext.onReady( function() {
       <para>Four files and Google Maps are included in the header section of the HTML document. The
         first two files are the Ext JS javascript library (we use the DHIS 2 content delivery
         network in this case) and its stylesheet. The third file is the OpenLayers javascript
-        mapping framework (<ulink url="http://openlayers.org"/>) and finally we include the GIS map
+        mapping framework (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://openlayers.org"/>) and finally we include the GIS map
         plug-in. Make sure the path is pointing to your DHIS server installation.</para>
       <screen>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://dhis2-cdn.org/v215/ext/resources/css/ext-plugin-gray.css&quot; /&gt;
 &lt;script src=&quot;http://dhis2-cdn.org/v215/ext/ext-all.js&quot;&gt;&lt;/script&gt;
@@ -6189,8 +6197,8 @@ Ext.onReady( function() {
         </tgroup>
       </table>
       <para>We continue by adding one pre-defined and one dynamically configured map to our HTML
-        document. You can browse the list of available maps using the Web API here: <ulink
-          url="http://play.dhis2.org/demo/api/maps"/>.</para>
+        document. You can browse the list of available maps using the Web API here: <link
+          xl:href="http://play.dhis2.org/demo/api/maps"/>.</para>
       <screen>function setLinks() {
   DHIS.getMap({ url: base, el: &quot;map1&quot;, id: &quot;ytkZY3ChM6J&quot; });
 
@@ -6222,8 +6230,8 @@ Ext.onReady( function() {
       <screen>&lt;div id=&quot;map1&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;map2&quot;&gt;&lt;/div&gt;
 </screen>
-      <para>To see a complete working example please visit <ulink
-          url="http://play.dhis2.org/portal/map.html"/>.</para>
+      <para>To see a complete working example please visit <link
+          xl:href="http://play.dhis2.org/portal/map.html"/>.</para>
     </section>
     <section>
       <title>Creating a chart carousel with the carousel plug-in</title>
@@ -6272,8 +6280,8 @@ new Ext.ux.carousel.Carousel( &apos;chartCarousel&apos;, {
 &lt;div id=&quot;chartA2&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;chartA3&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;chartA4&quot;&gt;&lt;/div&gt;</screen>
-      <para>To see a complete working example please visit <ulink
-          url="http://play.dhis2.org/portal/carousel.html"/>.</para>
+      <para>To see a complete working example please visit <link
+          xl:href="http://play.dhis2.org/portal/carousel.html"/>.</para>
     </section>
   </section>
   <section>
@@ -11858,8 +11866,8 @@ interval=WEEK" -u admin:district</screen></para>
     <para>DHIS 2 from version 2.11 implements support for the current draft of the FRED API version
       1.0. The project defines itself as <quote>open standard for sharing and updating health
         facility data</quote>. The full specification, including representation format and basic
-      usage, can be found at <ulink url="http://facilityregistry.org/"
-        >http://facilityregistry.org/</ulink>.</para>
+      usage, can be found at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://facilityregistry.org/"
+        >http://facilityregistry.org/</link>.</para>
     <para>Since version 1.0 is not finalized there are parts of the current specification that has
       not been implemented as we found it not to be in a stable enough state. Most notably we do not
       currently support sorting (we do however sort on name by default) and filtering of

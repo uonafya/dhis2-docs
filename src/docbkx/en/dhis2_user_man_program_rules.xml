@@ -1,6 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<chapter>
+<chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
   <title>Program rules</title>
   <para>This chapter covers how to configure and use program rules. Program rules provide a means to
     control dynamic behavior of the user interface in tracker and event capture. Program rules are
@@ -31,7 +40,7 @@
       to open the context menu and click &quot;Remove&quot;. Click &quot;OK&quot; in the
       confirmation dialog to remove the rule. </para>
     <screenshot>
-      <screeninfo>Program rule list with context menu</screeninfo>
+      <title>Program rule list with context menu</title>
       <mediaobject>
         <imageobject>
           <imagedata width="80%" fileref="resources/images/program_rules/program-rule-list.png"
@@ -58,7 +67,7 @@
       /> for details). The source fields represent attribute and data element values which will be
       evaluated as part of the expression. </para>
     <screenshot>
-      <screeninfo>Edit program rule user interface</screeninfo>
+      <title>Edit program rule user interface</title>
       <mediaobject>
         <imageobject>
           <imagedata width="80%" fileref="resources/images/program_rules/program-rule-edit.png"
@@ -68,7 +77,7 @@
     </screenshot>
   </section>
   <section>
-    <title id="program_dules_adding_source_fields"> Adding source fields </title>
+    <title xml:id="program_dules_adding_source_fields"> Adding source fields </title>
     <para> Source fields represent a uniform way to include data values and attribute values in
       expressions. The source fields is defined as needed when creating expressions . When creating
       your first expression, you will typically have to define one or more source fields first, as
@@ -78,7 +87,7 @@
     <para> To add a source field, click the &quot;+ Add source field&quot; button under the source
       fields list. This will open the following dialog: </para>
     <screenshot>
-      <screeninfo>Add source field dialog</screeninfo>
+      <title>Add source field dialog</title>
       <mediaobject>
         <imageobject>
           <imagedata width="50%"
@@ -180,7 +189,7 @@
       </itemizedlist>
     </para>
   </section>
-  <section id="program_rules_expressions">
+  <section xml:id="program_rules_expressions">
     <title> Defining expressions </title>
     <para> Each program rule has a single expression that determines whether rules action should be
       triggered, if the expression evaluates to true. If the expression is true the program rule is
@@ -192,7 +201,7 @@
       at the cursors position. To insert source fields, click the source field name within the list
       at the left. </para>
     <screenshot>
-      <screeninfo>Expression text box</screeninfo>
+      <title>Expression text box</title>
       <mediaobject>
         <imageobject>
           <imagedata width="50%"
@@ -508,7 +517,7 @@
     </tip>
   </section>
   <section>
-    <title id="program_rules_defining_actions"> Defining actions </title>
+    <title xml:id="program_rules_defining_actions"> Defining actions </title>
     <para> Each program rule has one or more actions attached. These are the behaviors that is
       triggered in the user interface when the expression(see previous chapter) is true. Actions
       will be applied at once if the expression is true, and will be reverted if the expression is
@@ -517,7 +526,7 @@
       program rule page. Once actionshas been added, they can be removed again by clicking the -
       button at the right side of the actions row. </para>
     <screenshot>
-      <screeninfo>Expression text box</screeninfo>
+      <title>Expression text box</title>
       <mediaobject>
         <imageobject>
           <imagedata width="80%"
@@ -532,7 +541,7 @@
       <para> A <emphasis role="bold">hide field action</emphasis> is defined by selecting &quot;Hide
         field&quot; in the first column of the action row. </para>
       <screenshot>
-        <screeninfo>Hide field action</screeninfo>
+        <title>Hide field action</title>
         <mediaobject>
           <imageobject>
             <imagedata width="80%"
@@ -555,7 +564,7 @@
       <para> A hide field action is defined by selecting &quot;Hide section&quot; in the first
         column of the action row. </para>
       <screenshot>
-        <screeninfo>Expression text box</screeninfo>
+        <title>Expression text box</title>
         <mediaobject>
           <imageobject>
             <imagedata width="80%"
@@ -581,7 +590,7 @@
         data entered, while at the same time allowing the user to consciously disregard it and save
         a value that is outside preset expectations. </para>
       <screenshot>
-        <screeninfo>Show warning action</screeninfo>
+        <title>Show warning action</title>
         <mediaobject>
           <imageobject>
             <imagedata width="80%"
@@ -606,7 +615,7 @@
         whenever it is certain that the evaluated expression is never true unless the user has made
         a mistake in data entry. </para>
       <screenshot>
-        <screeninfo>Show error action</screeninfo>
+        <title>Show error action</title>
         <mediaobject>
           <imageobject>
             <imagedata width="80%"

@@ -16,7 +16,7 @@
                 xmlns="http://www.w3.org/TR/xhtml1/transitional"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format"
 				xmlns:xlink="http://www.w3.org/1999/xlink"
-				xmlns:db="http://docbook.org/ns/docbook"
+				xmlns:d="http://docbook.org/ns/docbook"
                 exclude-result-prefixes="#default">
                 
 <xsl:import href="urn:docbkx:stylesheet"/>
@@ -66,7 +66,7 @@
 					<fo:table-row >
 						<fo:table-cell text-align="center">
 							<fo:block text-align="center" font-size="22pt" font-weight="bold" padding-before="70mm">
-								<xsl:value-of select="db:title" />
+							    <xsl:value-of select="d:title" />
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
@@ -80,7 +80,7 @@
 					<fo:table-row >
 						<fo:table-cell text-align="center">
 							<fo:block text-align="center" font-size="14pt" font-weight="bold" padding-before="10mm">
-								<xsl:value-of select="db:bookinfo/db:releaseinfo" />
+							    <xsl:value-of select="d:info/d:releaseinfo" />
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
@@ -91,59 +91,67 @@
 
     <!-- Prevent blank pages in output -->    
  
-	<xsl:template name="book.titlepage.verso">
-	        <fo:block padding-before="50mm">
+	 <xsl:template name="book.titlepage.verso">
+	      <fo:block padding-before="50mm">
             <fo:table table-layout="fixed" width="175mm">
                 <fo:table-column column-width="175mm"/>
                 <fo:table-body>
 					<fo:table-row >
 						<fo:table-cell text-align="left">
 							<fo:block text-align="left" font-size="12pt">
-								 <xsl:text>&copyright; </xsl:text><xsl:value-of select="db:bookinfo/db:copyright/db:year" />
+								 <xsl:text>&copyright; </xsl:text>
+							    <xsl:value-of select="d:info/d:copyright/d:year" />
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
 				    <fo:table-row >
 						<fo:table-cell text-align="left">
 							<fo:block text-align="left" font-size="12pt">
-								 <xsl:value-of select="db:bookinfo/db:authorgroup" />
+								 <xsl:value-of select="d:info/d:copyright/d:holder" />
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
 					<fo:table-row >
 						<fo:table-cell text-align="left">
 							<fo:block text-align="left" font-size="12pt" padding-before="15mm">
-								 <xsl:value-of select="db:bookinfo/db:revhistory/db:revision/db:revnumber" />
+								 <xsl:value-of select="d:info/d:revhistory/d:revision/d:revnumber" />
+							</fo:block>
+						</fo:table-cell>
+					</fo:table-row>
+					<fo:table-row >
+						<fo:table-cell text-align="left">
+							<fo:block text-align="left" font-size="12pt" padding-before="15mm">
+								 <xsl:value-of select="d:info/d:revhistory/d:revision/d:date" />
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
 					<fo:table-row >
 						<fo:table-cell text-align="left">
 							<fo:block text-align="left" font-size="12pt">
-								 <xsl:value-of select="db:bookinfo/db:revhistory/db:revision/db:revremark" />
+								 <xsl:value-of select="d:info/d:revhistory/d:revision/d:revremark" />
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
+					
 					<fo:table-row >
 						<fo:table-cell text-align="left" padding-before="15mm">
 							<fo:block text-align="left" font-size="12pt" >
-								 <xsl:value-of select="db:bookinfo/db:legalnotice/db:formalpara[@id='warranty']" />
+								 <xsl:value-of select="d:info/d:legalnotice/d:formalpara[@xml:id='warranty']" />
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
-									<fo:table-row >
+						<fo:table-row >
 						<fo:table-cell text-align="left" padding-before="15mm">
 							<fo:block text-align="left" font-size="12pt" >
-								 <xsl:value-of select="db:bookinfo/db:legalnotice/db:formalpara[@id='license']" />
+								 <xsl:value-of select="d:info/d:legalnotice/d:formalpara[@xml:id='license']" />
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
 	             </fo:table-body>
             </fo:table>
-        </fo:block>	
-	</xsl:template>
-
-	
+        </fo:block>	-->
+	</xsl:template> 
+    
 		
 <!--###################################################
                       Header
@@ -282,8 +290,8 @@
 		<xsl:param name="position" select="''" />
 		<xsl:param name="gentext-key" select="''" />
 		<xsl:variable name="Version">
-			<xsl:if test="db:bookinfo/db:releaseinfo">
-				<xsl:value-of select="db:bookinfo/db:title" /><xsl:text> (</xsl:text><xsl:value-of select="db:bookinfo/db:releaseinfo" /><xsl:text>)</xsl:text>
+			<xsl:if test="d:bookinfo/d:releaseinfo">
+				<xsl:value-of select="d:bookinfo/d:title" /><xsl:text> (</xsl:text><xsl:value-of select="d:bookinfo/d:releaseinfo" /><xsl:text>)</xsl:text>
 			</xsl:if>
 		</xsl:variable>
 

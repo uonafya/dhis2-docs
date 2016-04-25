@@ -1,6 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<chapter>
+<chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
   <title>Organisation units</title>
   <para>In this section you will learn how to:</para>
   <para><itemizedlist>
@@ -14,7 +23,7 @@
         <para>How to make changes to the organisational unit hierarchy</para>
       </listitem>
     </itemizedlist></para>
-  <section id="ou_hierarchy">
+  <section xml:id="ou_hierarchy">
     <title>The organisational hierarchy</title>
     <para>The organisational hierarchy defines the organisation structure of the DHIS2 instance, such as how  the health facilities, administrative areas and other geographical areas are arranged with respect to each other. It is essentially the &quot;where&quot; dimension of DHIS2, similar to how periods represent the &quot;when&quot; or time dimension. DHIS2 is structured so that the organisational unit hierarchy is a geographical hierarchy, and the GIS module depends on this. Non-geographical hierarchies are discouraged, and would better to be represented through the use of organisational unit groups. This dimension to the data is defined as a hierarchy with one root unit (e.g. Ministry of Health or a country) and any number of levels and nodes below. Each node in this hierarchy is called an organisational unit in DHIS2. </para>
     <para>The design of this hierarchy will determine the  geographical units of analysis available to the users  as data is collected and aggregated in this structure. There can only be one organisational hierarchy at the same time so its structure needs careful consideration. </para>
@@ -27,11 +36,11 @@
   </section>
   <section>
     <title>Organisation unit maintenance</title>
-    <section id="orgunit">
+    <section xml:id="orgunit">
       <title>Organisation units</title>
-      <para>This is where you can create organisation units (from now on referred to as orgunits) and build up the orgunit hierarchy. Orgunits are added one by one as either root unit or a child of a selected unit. The left side menu represents the current organisational hierarchy and if you select a unit there you will see its children listed in the main list of orgunits in the middle of the screen. When an orgunit is selected in the left side menu you can also add new child units to it. To locate an orgunit in the hierarchy you can either navigate through the tree by expanding the branches (click on the + symbol), or search for it by opening the search field (click the green symbol above the root of the hierarchy). In search you can either search for the orgunit name or its code, both will only show exact matches (case-insensitive). To add a new orgunit first select its parent and then click on the Add new button in the top right corner of the list of orgunits. To add a new root orgunit make sure no orgunit is selected in the menu and click on &quot;Add new&quot;. The details of adding a new orgunit are explained in <xref linkend="editOrganisationalUnits"/>. </para>
-      <section id="ou_edit">
-        <title id="editOrganisationalUnits">Editing organisation units</title>
+      <para>This is where you can create organisation units (from now on referred to as orgunits) and build up the orgunit hierarchy. Orgunits are added one by one as either root unit or a child of a selected unit. The left side menu represents the current organisational hierarchy and if you select a unit there you will see its children listed in the main list of orgunits in the middle of the screen. When an orgunit is selected in the left side menu you can also add new child units to it. To locate an orgunit in the hierarchy you can either navigate through the tree by expanding the branches (click on the + symbol), or search for it by opening the search field (click the green symbol above the root of the hierarchy). In search you can either search for the orgunit name or its code, both will only show exact matches (case-insensitive). To add a new orgunit first select its parent and then click on the Add new button in the top right corner of the list of orgunits. To add a new root orgunit make sure no orgunit is selected in the menu and click on &quot;Add new&quot;. The details of adding a new orgunit are explained in <link linkend="editOrganisationalUnits"/>. </para>
+      <section xml:id="ou_edit">
+        <title xml:id="editOrganisationalUnits">Editing organisation units</title>
         <para>To edit the properties of an existing orgunit first select its parent (if any) in the left side menu, then locate the orgunit in the listed orgunits, and  click on  the  name of the orgunit that you want to modify. A context menu will appear, and you should select &quot;Edit&quot;. Refer to the screen-shot below to see how it works. </para>
         <screenshot>
           <mediaobject>
@@ -82,8 +91,8 @@
         <para>In addition to all of the options listed above, if you have added any attributes to organisation units, your custom attributes may also appear there. Please refer to the section on &quot;Attributes&quot; for more information about how attributes can be used.</para>
       </section>
     </section>
-    <section id="ou_groupsets">
-      <title id="orgunitGroupSets">Organisation unit group sets</title>
+    <section xml:id="ou_groupsets">
+      <title xml:id="orgunitGroupSets">Organisation unit group sets</title>
       <para>Group sets can be understood as a flexible tool to add more categorisation to orgunits. Any number of group sets can be added, but as a default start all databases will have the two group sets &quot;Type&quot; and &quot;Ownership&quot;. Using these  group sets will simplify how reporting is done, and facilitate analysis through the use of tools such as Excel PivotTables.</para>
       <para>While a group set like &quot;Type&quot; describes a measure dimension, the actual
         categories are represented by the groups, and the categorisation of an orgunit through the
@@ -113,8 +122,8 @@
         </listitem>
       </orderedlist>
       <para>It is important to keep in mind when using the &quot;Organisational unit group&quot; set function, that unless great care is taken, organisational units can be assigned to multiple groups of a group set. This can be checked through the &quot;Data Integrity&quot; module, which will report which organisational units are not members of a compulsory organisational unit group set, and which organisational units have been assigned to more than one member of a group set. </para>
-      <section id="ou_groupsets_edit">
-        <title id="editOrgunitGroupSets">Editing organisation unit group sets</title>
+      <section xml:id="ou_groupsets_edit">
+        <title xml:id="editOrgunitGroupSets">Editing organisation unit group sets</title>
         <para>Click on the name of the organisation unit group set you wish to modify, followed by &quot;Edit&quot; from the context menu which will appear.  The following properties can be defined in the Edit (or Create new) window:</para>
         <itemizedlist>
           <listitem>
@@ -132,11 +141,11 @@
         </itemizedlist>
       </section>
     </section>
-    <section id="ou_groups">
-      <title id="orgunitGroups">Organisation unit groups</title>
+    <section xml:id="ou_groups">
+      <title xml:id="orgunitGroups">Organisation unit groups</title>
       <para>This function will allow you to  add new and manage existing organisation groups and their memberships. It can be accessed by choosing Maintenance-&gt;Organisation units-&gt;Organisation Unit group from the main menu. To add a new orgunit group click on the &quot;Add new&quot; button in the top right corner of the list of  groups. </para>
-      <section id="ou_groups_edit">
-        <title id="editOrgunitGroups">Editing organisation unit groups</title>
+      <section xml:id="ou_groups_edit">
+        <title xml:id="editOrgunitGroups">Editing organisation unit groups</title>
         <para>Click on   name of the orgunit group that you want to modify and then select &quot;Edit&quot; from the context menu which will appear.  The following properties can be defined in the Edit (or Create new) window:</para>
         <itemizedlist>
           <listitem>
@@ -157,12 +166,12 @@
         </itemizedlist>
       </section>
     </section>
-    <section id="ou_level">
-      <title id="orgUnitGroupLevels">Organisation unit level</title>
+    <section xml:id="ou_level">
+      <title xml:id="orgUnitGroupLevels">Organisation unit level</title>
       <para>Here you specify a contextual name for each level in the hierarchy, e.g. &quot;Country&quot;, &quot;Province&quot;, &quot;District&quot;, &quot;Health Facility&quot;, and these names will be used all over the application where levels are referred to. This page will take some time to load if the orgunit hierarchy is very big.</para>
     </section>
-    <section id="hierarchy_operations">
-      <title id="hierarchyOperations">Hierarchy operations</title>
+    <section xml:id="hierarchy_operations">
+      <title xml:id="hierarchyOperations">Hierarchy operations</title>
       <para>Here you can move orgunits around in the hierarchy by changing the parent of a selected orgunit. This process is done in three steps:</para>
       <para>1. Select the orgunit you want to move (in the hierarchy in the left side menu) and click &quot;Confirm&quot; under the &quot;Select an organisation unit to move&quot; label.</para>
       <para>2. Select the new parent orgunit (again by using the hierarchy in the left side menu). If no parent is selected then the orgunit will be moved up to root level (top of the hierarchy). Click on the &quot;Confirm&quot; button under the &quot;Select the new parent organisation unit for the one to move&quot; label.</para>

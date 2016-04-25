@@ -1,6 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<chapter>
+     <chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
   <title>Infrastructure</title>
   <para></para>
   <section>
@@ -10,7 +19,8 @@
           <para>In order to tag  the source source code with new release. First temporarily add a dependency to
             dhis-web in the root pom.xml:<screen>&lt;module>dhis-web&lt;/module></screen>Use the mvn
             version plugin with:</para>
-          <screen>mvn versions:set</screen>
+          <screen>mvn versions:set
+mvn versions:commit</screen>
           <para>This will prompt you to enter the version. Remove the dhis-web dependency. Update
             application cache manifests in the various apps to new version. Commit the changes to
             trunk.</para>
@@ -20,19 +30,23 @@
           <screen>bzr push lp:~dhis2-devs-core/dhis2/2.19</screen>
         </listitem>
         <listitem>
-          <para>Tag source code with SNAPSHOT release.</para>
+          <para>Tag source code with SNAPSHOT release. Remember to add the temporary dhis-web
+            dependency in the root pom.xml. Commit the changes to trunk.</para>
         </listitem>
         <listitem>
           <para>Enable email notifications for release branch.</para>
         </listitem>
         <listitem>
-          <para>Create Jenkins for build for the release WAR file.</para>
+          <para>Create Jenkins build for the release WAR file.</para>
         </listitem>
         <listitem>
-          <para>Create automatic copy job from Jenkins to dhis2.org.</para>
+          <para>Create Jenkins build for the release Javadocs.</para>
         </listitem>
         <listitem>
-          <para>Create automatic update of play.dhis2.org/demo and play.dhis2.org/dev
+          <para>Create automatic copy job for WAR file from Jenkins to dhis2.org.</para>
+        </listitem>
+        <listitem>
+          <para>Create automatic WAR file update of play.dhis2.org/demo and play.dhis2.org/dev
             systems.</para>
         </listitem>
         <listitem>
@@ -51,18 +65,19 @@ tar zcvf db.tar.gz db.pgdump</screen></para>
             archive and move to /download/live directory.</para>
         </listitem>
         <listitem>
-          <para>Create Javadoc with:</para>
-          <screen>mvn javadoc:aggregate</screen>
-          <para>The doc will be put in target folder. Zip it, upload to dhis2.org, unzip and place
-            it in download directory.</para>
-        </listitem>
-        <listitem>
           <para>Upload sample database to dhis2.org and place it in download/resources
             directory.</para>
         </listitem>
         <listitem>
           <para>Update download page at www.dhis2.org/downloads with links to new Live package, WAR
             file, source code branch page and sample data including version.</para>
+        </listitem>
+        <listitem>
+          <para>Add stable WAR file download link in nginx.conf on dhis2.org.</para>
+        </listitem>
+        <listitem>
+          <para>Create a documentation branch and update documentation page at
+            www.dhis2.org/documentation with links to documentation and Javadocs.</para>
         </listitem>
         <listitem>
           <para>Write and send release email.</para>
