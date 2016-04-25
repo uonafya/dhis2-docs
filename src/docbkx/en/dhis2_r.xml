@@ -13,14 +13,14 @@
   <title>DHIS2 and R integration</title>
   <section xml:id="dhis2_r_intro">
     <title>Introduction</title>
-    <para>R is freely available, open source statistical computing environment. R refers to  both the computer programming language, as well as the software which can be used to create and run R scripts. There are <link xl::href="http://cran.r-project.org/">numerous sources on the web</link> which describe the extensive set of features of R. </para>
+    <para>R is freely available, open source statistical computing environment. R refers to  both the computer programming language, as well as the software which can be used to create and run R scripts. There are <link xl:href="http://cran.r-project.org/">numerous sources on the web</link> which describe the extensive set of features of R. </para>
     <para>R is a natural extension to DHIS2, as it provides  powerful statistical routines, data manipulation functions, and visualization tools. This chapter will describe how to setup R and DHIS2 on the same server, and will provide a simple example of how to retrieve data from the DHIS2 database into an R data frame and perform some basic calculations.</para>
   </section>
   <section xml:id="r_install">
     <title>Installing R</title>
     <para>If you are installing R on the same server as DHIS, you should consider using the Comprehensive R Archive Network (CRAN) to get the latest distribution of R. All you need to do is to add the following like to you <filename>/etc/apt/source.list</filename> file. </para>
     <para><emphasis role="bold">deb &lt;your R mirror&gt;/bin/linux/ubuntu &lt;your Ubuntu distribution&gt;</emphasis></para>
-    <para>You will need to replace <emphasis role="bold">&lt;your R mirror&gt;</emphasis> with one from the list available <link xl::href="http://cran.r-project.org/mirrors.html">here.</link> You will also need to replace <emphasis role="bold">&lt;your Ubuntu distribution&gt;</emphasis> with the name of the distribution you are using. </para>
+    <para>You will need to replace <emphasis role="bold">&lt;your R mirror&gt;</emphasis> with one from the list available <link xl:href="http://cran.r-project.org/mirrors.html">here.</link> You will also need to replace <emphasis role="bold">&lt;your Ubuntu distribution&gt;</emphasis> with the name of the distribution you are using. </para>
     <para>Once you have done this, invoke the following commands</para>
     <para><screen>sudo apt-get update
 gpg --keyserver pgp.mit.edu --recv-keys 51716619E084DAB9
@@ -57,7 +57,7 @@ Type &apos;q()&apos; to quit R.
       slower than other methods and it does raise some security concerns by providing a system-wide
       connector to all users. However, it is a convenient method to provide a connection to multiple
       users. The use of the R package RODBC will be used in this case. Other alternatives would be
-      the use of the <link xl::href="http://dirk.eddelbuettel.com/code/rpostgresql.html"
+      the use of the <link xl:href="http://dirk.eddelbuettel.com/code/rpostgresql.html"
         >RPostgreSQL</link> package, which can interface directly through the PostgreSQL driver
       described in the next section.</para>
     <para>Assuming you have already installed R from the procedure in the previous section. Invoke the following command to add the required libraries for this example.</para>
@@ -167,7 +167,7 @@ OPD.ct.summary$OPDUnder5Male/
   </section>
   <section xml:id="dhis2_r_mydatamart">
     <title>Using R with MyDatamart</title>
-    <para>MyDatamart provides  useful interface to the DHIS2 database by making a local copy of the database available on a users desktop. This means that the user does not need direct access to the database and the data can be worked with offline on the users local machine. In this example, we will have used the <link xl::href="http://apps.dhis2.org/demo">demo database</link>. Data was downloaded at the district level for Jan 2011-Dec 201l. Consult the MyDatamart section in this manual for more detailed information. </para>
+    <para>MyDatamart provides  useful interface to the DHIS2 database by making a local copy of the database available on a users desktop. This means that the user does not need direct access to the database and the data can be worked with offline on the users local machine. In this example, we will have used the <link xl:href="http://apps.dhis2.org/demo">demo database</link>. Data was downloaded at the district level for Jan 2011-Dec 201l. Consult the MyDatamart section in this manual for more detailed information. </para>
     <para>First, lets load some required R packages. If you do not have these packages already installed in your version of R, you will need to do so before proceeding with the example.</para>
     <screen>library(&quot;DBI&quot;)
 library(&quot;RSQLite&quot;)
@@ -246,7 +246,7 @@ dfFromSQL&lt;-function (con,sql){
 dhisGetFacilityCoordinates&lt;- function(con,levelLimit=4) {
 sqlCoords&lt;-paste(&quot;SELECT ou.organisationunitid, ou.name,
 substring(ou.coordinates from E&apos;(?=,?)-[0-9]+\\.[0-9]+&apos;)::double precision as latitude,
-substring(ou.coordinates from E&apos;[0-9\\.]+&apos;)::double precision as
+substring(ou.coordinates from E&apos;[0-9\\.]+&apos;):double precision as
  longitude FROM organisationunit ou where ou.organisationunitid
  in (SELECT DISTINCT idlevel&quot;,levelLimit, &quot; from _orgunitstructure)
  and ou.featuretype = &apos;Point&apos;
@@ -352,7 +352,7 @@ plotIndicator(con,MyIndicatorName,MyStartDate,MyPeriodType,MyLevel,gadm)</progra
   </section>
   <section xml:id="dhis2_r_google_vis">
     <title>Using R, DHIS2 and the Google Visualization API</title>
-    <para>Google&apos;s Visualization API provides a very rich set of tools for the visualization of multi-dimensional data. In this simple example, we will show how to create a simple motion chart with the Google Visualization API using the &quot;googleVis&quot; R package. Full information on the package can be found <link xl::href="http://code.google.com/p/google-motion-charts-with-r/">here.</link>. The basic principle, as with the other examples, is to get some data from the DHIS2 database, and bring it into R, perform some minor alterations on the data to make it easier to work with, and then create the chart. In this case, we will compare ANC1,2,3 data over time and see how they are related with a motion chart.</para>
+    <para>Google&apos;s Visualization API provides a very rich set of tools for the visualization of multi-dimensional data. In this simple example, we will show how to create a simple motion chart with the Google Visualization API using the &quot;googleVis&quot; R package. Full information on the package can be found <link xl:href="http://code.google.com/p/google-motion-charts-with-r/">here.</link>. The basic principle, as with the other examples, is to get some data from the DHIS2 database, and bring it into R, perform some minor alterations on the data to make it easier to work with, and then create the chart. In this case, we will compare ANC1,2,3 data over time and see how they are related with a motion chart.</para>
     <screen>#Load some libraries
 library(RPostgreSQL)
 library(googleVis)
@@ -407,12 +407,12 @@ plot(M)</screen>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>Using packages like <link xl::href="http://cran.r-project.org/package=brew">brew</link> or <link xl::href="http://rapache.net">Rapache</link>, these types of graphs could be easily integrated into external web sites. A fully functional version of the chart shown above can be accessed <link xl::href="http://dhis2.net/R/google-motion-chart.html">here.</link></para>
+    <para>Using packages like <link xl:href="http://cran.r-project.org/package=brew">brew</link> or <link xl:href="http://rapache.net">Rapache</link>, these types of graphs could be easily integrated into external web sites. A fully functional version of the chart shown above can be accessed <link xl:href="http://dhis2.net/R/google-motion-chart.html">here.</link></para>
   </section>
   <section xml:id="dhis2_r_plr">
     <title>Using PL/R with DHIS2</title>
     <para>The procedural language for R is an extension to the core of PostgreSQL which allows data to be passed from the database to R, where calculations in R can be performed. The data can then be passed back to the database for further processing.. In this example, we will create a function to calculate some summary statistics which do not exist by default in SQL by using R. We will then create an SQL View in DHIS2 to display the results. The advantage of utilizing R in this context is that we do not need to write any significant amount of code to return these summary statistics, but simply utilize the built-in functions of R to do the work for us. </para>
-    <para> First, you will need to install <link xl::href="http://www.joeconway.com/plr/">PL/R</link>, which is described in detail <link xl::href="http://www.joeconway.com/plr/doc/plr-install.html">here.</link>. Following the example from the PL/R site, we will create some custom aggregate functions as detailed <link xl::href="http://www.joeconway.com/plr/doc/plr-aggregate-funcs.html">here.</link>  We will create two functions, to return the median and the skewness of a range of values.</para>
+    <para> First, you will need to install <link xl:href="http://www.joeconway.com/plr/">PL/R</link>, which is described in detail <link xl:href="http://www.joeconway.com/plr/doc/plr-install.html">here.</link>. Following the example from the PL/R site, we will create some custom aggregate functions as detailed <link xl:href="http://www.joeconway.com/plr/doc/plr-aggregate-funcs.html">here.</link>  We will create two functions, to return the median and the skewness of a range of values.</para>
     <para><screen>CREATE OR REPLACE FUNCTION r_median(_float8) returns float as &apos;
   median(arg1)
 &apos; language &apos;plr&apos;;
