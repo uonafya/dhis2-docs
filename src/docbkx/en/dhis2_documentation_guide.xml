@@ -9,7 +9,7 @@
          xmlns:xhtml="http://www.w3.org/1999/xhtml"
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
-         xmlns:db="http://docbook.org/ns/docbook" id="doc_guide_chapter">
+         xmlns:db="http://docbook.org/ns/docbook" xml:id="doc_guide_chapter">
   <title>DHIS2 Documentation Guide</title>
   <section xml:id="docs_1">
     <title>DHIS 2 Documentation System Overview</title>
@@ -18,15 +18,31 @@
   <section xml:id="docs_2">
     <title>Introduction</title>
     <para>One of the main advantages of DocBook is that there is complete separation between the
-content and presentation. DocBook is a pure XML format, and is well documented. It is believed that only a very small subset of its features will be required in order to achieve much higher quality documentation for DHIS. There are some 400 separate mark-up elements that cater to almost any level of technical documentation needs, but in reality, only a few dozen of these element will probably need to be employed to achieve high-quality documentation for DHIS 2, both for printed as well as on-line formats such as HTML or integrated help systems within the application itself. Therefore, there are wide range of possibilities in terms of which editor can be used for the creation of DocBook files. A fairly complete list of possibilities is located <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://wiki.docbook.org/topic/DocBookAuthoringTools">here</link>. It is currently recommended to use  WYSIWYG  <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://syntext-serna-free.software.informer.com/download/">Syntext Serna Free</link>   editor for editing DocBook source files. In principle, any text editing program or XML editor can be used to author DocBook files.</para>
-    <note>
-      <para>It is not recommended to use the editor XMLmind XML Editor Personal Edition (also known as XXE Personal), as the editor &quot;silently&quot; places unneeded whitespace and other ornamentation to the DocBook source which makes collaborative editing of documents very difficult. </para>
-    </note>
+      content and presentation. DocBook is a pure XML format, and is well documented. It is believed
+      that only a very small subset of its features will be required in order to achieve much higher
+      quality documentation for DHIS. There are hundreds of separate mark-up elements that cater to
+      almost any level of technical documentation needs, but in reality, only a few dozen of these
+      element will probably need to be employed to achieve high-quality documentation for DHIS 2,
+      both for printed as well as on-line formats such as HTML or integrated help systems within the
+      application itself. </para>
+<para>There exist a wide range of text editors which can be used for the creation of DocBook files.
+      A fairly complete list of possibilities is located <link
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink:href="http://wiki.docbook.org/topic/DocBookAuthoringTools">here</link>. It is
+      currently recommended to use the <link xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink:href="https://www.oxygenxml.com"><trademark class="registered">
+          &lt;oXygen/&gt;</trademark> XML editor</link> for editing DocBook source files. In
+      principle, any text editing program or XML editor can be used to author DocBook files. Other
+      good possibilities are excellent and freely available text editor<link
+        xl:href="http://jedit.org/">jEdit</link> with the XML plugin installed, or the <link
+        xl:href="https://www.gnu.org/software/emacs/">cross-platform Emacs</link> text editor. Both
+      of these programs support editing DocBook XML. </para>
+
     <para>One of the key concepts to keep in mind when authoring documentation in DocBook, or other
 presentation neutral formats, is that the <emphasis role="bold">content </emphasis>of the document should be considered in the first instance. The <emphasis role="bold">presentation </emphasis>of the document will take place in a separate step, where it will be rendered into
 different formats, such as HTML and PDF. It is therefore important that the document is will organised and structured, with appropriate DocBook tags and structural elements being considered.</para>
     <para>It is good practice to break your document in to various sections using the
-&quot;sect&quot;, or section element. Section elements can also be nested within each other, such as &quot;Section 1&quot; and &quot;Section 2&quot;. This concept is essentially the same as <productname>Microsoft Word</productname> or other word processing programs. DocBook will automatically take care of numbering the sections for you when the document is produced. Two other important elements are the &quot;itemizedlist&quot; and &quot;numberedlist&quot;. These are quite similar, but an itemised list corresponds to a bulleted list, which a numbered list will be rendered with each element being numbered sequentially. Other key elements are &quot;screenshot&quot; and &quot;table&quot; which should be self-explanatory.</para>
+&quot;sect&quot;, or section element. Section elements can also be nested within each other, such as &quot;Section 1&quot; and &quot;Section 2&quot;. This concept is essentially the same as <trademark class='registered'>Microsoft Word</trademark> or other word processing programs. DocBook will automatically take care of numbering the sections for you when the document is produced. Two other important elements are the &quot;itemizedlist&quot; and &quot;numberedlist&quot;. These are quite similar, but an itemised list corresponds to a bulleted list, which a numbered list will be rendered with each element being numbered sequentially. Other key elements are &quot;screenshot&quot; and &quot;table&quot; which should be self-explanatory.</para>
   </section>
   <section xml:id="docs_3">
     <title>Getting started with GitHub</title>
@@ -38,7 +54,19 @@ checkout of the source code. If you do not already have a GitHub account, you wi
   <section xml:id="docs_4">
     <title>Getting the document source</title>
     <para>In order to edit the documentation, you will need to download the source pages of the
-documentation to your computer. GitHub uses a version control system known as git . There are different methods for getting Git working on your system, depending on which operating system you are using. A good step-by-step guide for <productname>Microsoft</productname> operating systems can be viewed <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://help.github.com/articles/getting-started-with-github-for-windows">here</link>.  Alternatively, if you are comfortable using the command line, you can download git from <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://git-scm.com/download/win">this page</link>If you are using Linux, you will need to install git on your system through your package manager, or from source code. A very thorough reference for how git is used is available in a number of different formats <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://git-scm.com/book">here</link>.</para>
+      documentation to your computer. GitHub uses a version control system known as git . There are
+      different methods for getting Git working on your system, depending on which operating system
+      you are using. A good step-by-step guide for <trademark class="registered"
+        >Microsoft</trademark> operating systems can be viewed <link
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink:href="https://help.github.com/articles/getting-started-with-github-for-windows"
+        >here</link>. Alternatively, if you are comfortable using the command line, you can download
+      git from <link xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink:href="http://git-scm.com/download/win">this page</link>If you are using Linux, you
+      will need to install git on your system through your package manager, or from source code. A
+      very thorough reference for how git is used is available in a number of different formats
+        <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://git-scm.com/book"
+        >here</link>.</para>
     <para>Once you have installed git on your system, you will need to download the document source.
 Just follow this procedure:</para>
     <orderedlist>
@@ -46,15 +74,23 @@ Just follow this procedure:</para>
         <para>Make sure you have git installed.</para>
       </listitem>
       <listitem>
-        <para> On Windows systems, visit <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/dhis2/dhis2docs">https://github.com/dhis2/dhis2docs</link> and press &quot;Clone in Desktop&quot;. If you are using the command line, just type <command>git clone git@github.com:dhis2/dhis2docs.git</command>
-   </para>
+        <para> On <trademark class="registered">Windows</trademark> systems, visit <link
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xlink:href="https://github.com/dhis2/dhis2docs"
+            >https://github.com/dhis2/dhis2docs</link> and press &quot;Clone in Desktop&quot;. If
+          you are using the command line, just type <command>git clone
+            git@github.com:dhis2/dhis2docs.git</command>
+        </para>
       </listitem>
       <listitem>
         <para>The download process should start and all the documentation source files will be
 downloaded to the folder that you specified.</para>
       </listitem>
       <listitem>
-        <para>The DHIS2 documents depend on other branches for their documentation. Be sure to keep these these up to date as well. When you build the documentation, the necessary submodules will be downloaded automatically as part of the build process ,if you have not already done so. </para>
+        <para>The DHIS 2 documents depend on other branches for their documentation. Be sure to keep
+          these these up to date as well. When you build the documentation, the necessary submodules
+          will be downloaded automatically as part of the build process ,if you have not already
+          done so. </para>
       </listitem>
     </orderedlist>
   </section>
@@ -65,7 +101,15 @@ dhis2docs directory. All documents should be placed in the <filename>dhis2docs/s
   </section>
   <section>
     <title>DHIS2 Bibliography</title>
-    <para>DHIS2 has a rich set of academic literature which can serve as invaluable resources during implementations, project proposals and more detailed reading than what is appropriate for a general user manual. A specialized bibliography has been added to the source code of the application. <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.bibtex.org">BibTeX</link> is a specialized language which is widely used in the academic world to handle bibliographic databases. A large number of free and open source tools are capable of working with BibTeX. Currently, the recommended tool of choice for manipulating the DHIS2 bibliography is <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://jabref.sourceforge.net/">JabRef</link>. </para>
+    <para>DHIS2 has a rich set of academic literature which can serve as useful resources during
+      implementations, project proposals and more detailed reading than what is appropriate for a
+      general user manual. A specialized bibliography has been added to the source code of the
+      application. <link xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink:href="http://www.bibtex.org">BibTeX</link> is a specialized language which is widely
+      used in the academic world to handle bibliographic databases. A large number of free and open
+      source tools are capable of working with BibTeX. Currently, the recommended tool of choice for
+      manipulating the DHIS2 bibliography is <link xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink:href="http://jabref.sourceforge.net/">JabRef</link>. </para>
     <para>To get started with the bibliography, download a copy of JabRef and open the <filename>/src/bibliography/dhis2_bibliography.bib file</filename>. . Add some new references, then export the bibliography back to the <filename>/src/docbkx/en/dhis2_bibliography.xml</filename> file, using the DocBook 4.4 export format. The updated bibliography will automatically be included in the documentation after you commit your changes.</para>
   </section>
   <section xml:id="docs_6">
@@ -130,14 +174,15 @@ documents into HMTL,PDF and RTF. Once the process has completed (be patient the 
     <section>
       <title>Building with xmlto</title>
       <para><command>xmlto</command> is a useful utility available on Linux platforms for
-transforming DocBook documents into many different formats. More information on the package can be found <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://cyberelk.net/tim/software/xmlto/">here</link>. If you do not want to use Apache Maven for some reason, you can install <command>xmlto</command> through your package manager. Once you have installed <command>xmlto</command> you can just execute <command>xmlto <parameter>html</parameter><parameter>file_to_transform</parameter></command> where the <parameter>file_to_transform</parameter> parameter is the name of the file you wish to transform. There are many other formats available, such as PDF, PS, JavaHelp and others. </para>
+transforming DocBook documents into many different formats. More information on the package can be found <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://cyberelk.net/tim/software/xmlto/">here</link>. If you do not want to use Apache Maven for some reason, you can install <command>xmlto</command> through your package manager. Once you have installed <command>xmlto</command> you can just execute 
+<cmdsynopsis><command>xmlto</command><arg>htmlfile_to_transform</arg></cmdsynopsis> where the <replaceable>file_to_transform</replaceable> parameter is the name of the file you wish to transform. There are many other formats available, such as PDF, PS, JavaHelp and others. </para>
     </section>
   </section>
   <section xml:id="docs_10">
     <title>Committing your changes back to GitHub</title>
     <para>Once you have finished editing your document, you will need to commit your changes back to
 GitHub. Open up a command prompt on Windows or a shell on Linux, and navigate to the folder where you have placed your documentation. If you have added any new files or folders to your local repository, you will need to add them to the source tree with the <command>git add </command> command, followed by the folder or file name(s) that you have added. After that you need to commit your changes. Be sure to include a descriptive comment with your commit. 
-<command>git commit </command><command>-m &quot;Created Amharic translation of documentation&quot;</command> Finally, you should push the changes back to the repository with <command>git push origin master</command>
+<cmdsynopsis><command>git commit </command><arg>-m</arg> <arg>&quot;Created Amharic translation of documentation&quot;</arg></cmdsynopsis> Finally, you should push the changes back to the repository with <command>git push origin master</command>
       </para>
     <para>If you have any questions, or cannot find that you can get started, just send an email
 with your problem to <email>dhis2-documenters@lists.launchpad.net</email>.</para>
