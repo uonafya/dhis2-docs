@@ -93,7 +93,7 @@ sudo locale-gen nb_NO.UTF-8</screen>
     <section>
       <title>PostgreSQL installation</title>
       <para>Install PostgreSQL 9.3 by invoking:</para>
-      <screen>sudo apt-get install postgresql-9.3</screen>
+      <screen>sudo apt-get install postgresql-9.4</screen>
       <para>Switch to the postgres user by invoking:</para>
       <screen>sudo su postgres</screen>
       <para>Create a non-privileged user called <emphasis role="italic">dhis</emphasis> by
@@ -104,6 +104,13 @@ sudo locale-gen nb_NO.UTF-8</screen>
       <para>Return to your session by invoking <code>exit</code> You now have a PostgreSQL user
         called <emphasis role="italic">dhis</emphasis> and a database called <emphasis role="italic"
           >dhis2</emphasis>.</para>
+    </section>
+    <section>
+      <title>PostGIS installation (optional)</title>
+      <para>In order to take advantage of the clustering functionality of the GIS (mapping) app in
+        DHIS 2 you will have to install PostGIS. The PostGIS extension will be installed
+        automatically when DHIS 2 is started.</para>
+      <screen>sudo apt-get install postgresql-9.4 postgresql-9.4-postgis-2.2 postgresql-contrib-9.4</screen>
     </section>
     <section>
       <title>PostgreSQL performance tuning</title>
