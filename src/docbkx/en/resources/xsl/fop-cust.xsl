@@ -107,7 +107,7 @@
 				    <fo:table-row >
 						<fo:table-cell text-align="left">
 							<fo:block text-align="left" font-size="12pt">
-								 <xsl:value-of select="d:info/d:authorgroup/d:author/d:orgname" />
+								 <xsl:value-of select="d:info/d:copyright/d:holder" />
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
@@ -120,11 +120,19 @@
 					</fo:table-row>
 					<fo:table-row >
 						<fo:table-cell text-align="left">
+							<fo:block text-align="left" font-size="12pt" padding-before="15mm">
+								 <xsl:value-of select="d:info/d:revhistory/d:revision/d:date" />
+							</fo:block>
+						</fo:table-cell>
+					</fo:table-row>
+					<fo:table-row >
+						<fo:table-cell text-align="left">
 							<fo:block text-align="left" font-size="12pt">
 								 <xsl:value-of select="d:info/d:revhistory/d:revision/d:revremark" />
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
+					
 					<fo:table-row >
 						<fo:table-cell text-align="left" padding-before="15mm">
 							<fo:block text-align="left" font-size="12pt" >
