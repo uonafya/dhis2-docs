@@ -36,7 +36,7 @@
         <para> Créer, modifier, consulter et supprimer les catégories d'éléments de données. </para> 
       </listitem> 
     </itemizedlist> 
-    <section id="dataElement">  
+    <section xml:id="dataElement">  
       <title> Éléments de données </title> 
       <para> éléments de données constituent la base de DHIS2. Les éléments de données de définir ce qui est réellement enregistré dans le système, par exemple, nombre de vaccinations ou le nombre de cas de paludisme. La création effective et la définition des éléments de données eux-mêmes sont bien au-delà de la portée de ce manuel pour décrire, mais il est supposé que l'administrateur sera fourni avec une liste d'éléments de données normalisés pour l'inclusion dans le système DHIS2. </para> 
       <para> Pour accéder au module de maintenance de l'élément de données, choisissez Maintenance-> Data-éléments> Élément de donnée. </para> 
@@ -150,10 +150,10 @@
           </listitem> 
           <listitem> 
             <para>Code du pays </para> 
-            Désigne <para> à la norme ISO 3166-1-alpha-2 code. Une liste complète est disponible <ulink url="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm"> ici </ ulink>. </para> 
+            Désigne <para> à la norme ISO 3166-1-alpha-2 code. Une liste complète est disponible <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm"> ici </ ulink>. </para> 
           </listitem> 
         </itemizedlist> 
-        <para> La combinaison de ces deux codes ensemble, forme un "locale" du code, qui est composé de la combinaison de l'emplacement et la langue. Une discussion très complète de la norme technique (RFC 3066) est disponible <ulink url="http://www.ietf.org/rfc/rfc3066.txt"> ici </ ulink>. Cette <ulink url="http://www.i18nguy.com/unicode/language-identifiers.html"> page </ ulink> fournit une liste très complète des codes de paramètres régionaux reconnus. </para> 
+        <para> La combinaison de ces deux codes ensemble, forme un "locale" du code, qui est composé de la combinaison de l'emplacement et la langue. Une discussion très complète de la norme technique (RFC 3066) est disponible <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.ietf.org/rfc/rfc3066.txt"> ici </ ulink>. Cette <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.i18nguy.com/unicode/language-identifiers.html"> page </ ulink> fournit une liste très complète des codes de paramètres régionaux reconnus. </para> 
       </section>
       <section> 
         <title> Suppression d'un élément de données</title> 
@@ -191,7 +191,7 @@
         </screenshot> </para> 
       <para> Remplissez le champ "Nom" puis sélectionnez tous les éléments de données qui doit appartenir au groupe à partir du panneau de gauche. Cliquez sur "Déplacer sélection" fileref="resources/images/dhis2_images/move_right.png" <inlinegraphic align="center"/> bouton pour ajouter les éléments de données sélectionnés dans le groupe des éléments de données. Cliquez sur le bouton Supprimer la sélection pour supprimer tous les éléments de données du groupe qui ont été sélectionnés dans le panneau de droite. Enfin, cliquez sur le bouton "Ajouter" pour enregistrer les modifications, ou le bouton "Annuler" pour annuler les modifications. </para> 
     </section> 
-    <section id="dataElementGroupEditor"> 
+    <section xml:id="dataElementGroupEditor"> 
       <title> Élément de données du groupe éditeur</title> 
       <para> L'éditeur de groupe de données élément fournit des fonctionnalités avancées à l'administrateur pour permettre à plusieurs éléments de données à être ajoutés ou supprimés à partir d'un groupe. Il est également possible de créer de nouveaux groupes d'éléments de données, renommer des groupes existants, et des groupes de supprimer entièrement. Pour accéder à l'éditeur de groupe d'éléments de données, appuyez sur <guimenu> "soutiens-> Les éléments de données et des indicateurs-> Éditeur de données d'éléments du groupe" <> guimenu / à partir du menu principal DHIS2. L'écran suivant apparaît. <screenshot> 
           <mediaobject> 
@@ -209,7 +209,7 @@
         </mediaobject> 
       </screenshot> 
     </section> 
-    <section id="dataElementGroupSet"> 
+    <section xml:id="dataElementGroupSet"> 
       <title>Groupe élément ensembles de données </title> 
       <para> ensembles de données d'éléments du groupe permettent de multiples groupes d'éléments de données regroupées en un ensemble. Les ensembles de données d'éléments du groupe sont utilisés lors de l'analyse et les rapports de combiner les groupes de données similaires élément dans un thème commun. Pour accéder à l'élément du groupe de données mis en module de maintenance, choisissez «Entretien-> Les éléments de données et des indicateurs-> Ensemble de données d'éléments du groupe". Similaire aux autres modules d'éléments de données de maintenance, de nouveaux ensembles de données d'éléments du groupe peuvent être ajoutés en appuyant sur le "bouton Ajouter de nouvelles". D'autres opérations comprennent éditer, traduire, Supprimer et de l'information, à l'instar des autres modules de cette section. </para> 
       <screenshot> 
@@ -384,7 +384,7 @@
         </listitem> 
       </> Orderedlist 
     </section> 
-    <section id="indicatorType"> 
+    <section xml:id="indicatorType"> 
       <title> Indicateur types </title> 
       <para> types d'indicateurs tout simplement définir un facteur qui seront appliquées lors de l'agrégation. Les valeurs des indicateurs qui sont calculer à l'exportation au cours d'un data mart ou processus de génération de rapport de tableau s'affiche correctement mis en forme, et ne sera donc pas besoin d'un multiplicateur supplémentaire (par exemple 100 dans le cas des pourcentages) pour les valeurs s'affichent correctement formaté. </para> 
       <para> Le panneau indicateur de maintenance type a tous les mêmes fonctions (Ajouter nouvelle, éditer, traduire, Supprimer, et de l'information) que la section de maintenance d'indicateur. </para> 
@@ -398,15 +398,15 @@
       </screenshot> 
       <para/> 
     </section> 
-    <section id="indicatorGroup">  
+    <section xml:id="indicatorGroup">  
       <title> Indicateur groupes </title> 
       <para> groupes d'indicateurs de la fonction essentiellement les mêmes que les groupes d'éléments de données. indicateurs multiples peuvent être assignés à un groupe pour faciliter le filtrage et l'analyse. Pour attribuer à des groupes d'indicateurs, simples d'entretien de presse> Les éléments de données et des indicateurs-> groupes d'indicateurs. Voir la section sur les groupes d'éléments de données pour obtenir des instructions détaillées d'utilisation de ce module. </para> 
     </section> 
-    <section id="indicatorGroupEditor">  
+    <section xml:id="indicatorGroupEditor">  
       <title> Indicateur Sous la direction de groupe</title> 
       <para> Les fonctions du module indicateur groupe éditeur essentiellement le même que le module de l'élément de données éditeur de groupe, sauf sur les indicateurs. Vous pouvez facilement réorganiser les groupes qui appartiennent à des indicateurs de ce module. Pour y accéder, choisir d'affecter à des groupes d'indicateurs, simples d'entretien de presse-> Éléments de données et des indicateurs de l'éditeur-> Groupe Indicateur partir du menu principal. Voir la section sur l'éditeur de données d'éléments du groupe pour d'autres instructions. </para> 
     </section> 
-    <section id="indicatorGroupSet">  
+    <section xml:id="indicatorGroupSet">  
       <title> Indicateur groupe ensembles </title> 
       <para> semblables à des ensembles de données d'éléments du groupe, jeux de groupe témoin servent à créer des groupes combinés d'indicateurs similaires. Par exemple, vous pourriez avoir un groupe d'indicateurs appelé «paludisme» et «La leishmaniose. Ces deux groupes pourraient être combinés en un groupe ensemble appelé «maladies à transmission vectorielle". groupes de séries d'indicateurs sont utilisés lors de l'analyse des données de combiner les thèmes d'indicateurs similaires. Pour accéder à ce module de choisir d'entretien-> Les éléments de données et des indicateurs-> Indicateur groupe définit à partir du menu principal. Le dialogue suivant apparaît. </para> 
       <screenshot> 
@@ -419,7 +419,7 @@
       <para> Indiquez un nom pour le groupe ensemble d'indicateurs, puis déplacez les membres souhaités par les groupes "indicateur disponible" pour les membres "Groupe". Cliquez sur "Ajouter" pour enregistrer vos modifications et "Annuler" pour annuler les modifications. </para> 
     </section> 
   </section> 
-  <section id="dataDictionary">  
+  <section xml:id="dataDictionary">  
     <title> Dictionnaires de données </title> 
     <para> dictionnaires de données sont utilisés pour regrouper les données des éléments et des indicateurs au cours des opérations de filtrage. Ils sont utiles pour combiner les autres groupes d'éléments de données et des indicateurs en fonction des programmes auxquels ils appartiennent. Par exemple, un dictionnaire de données appelée «MCH» pourraient être créés, et tous maternelle et infantile et de données sur la santé des éléments indicateurs pourrait être ajouté au dictionnaire. Le dictionnaire de données peut être l'accès en choisissant d'entretien-> Les éléments de données et des indicateurs-> Dictionnaire de données. L'écran suivant s'affiche dans le navigateur. </para> 
     <screenshot> 
@@ -431,7 +431,7 @@
     </screenshot> 
     <para> Donner un nom pour le dictionnaire de données dans le champ "Nom" et une description de son contenu. Les éléments de données et indicateurs peuvent être ajoutés ou supprimés à partir du dictionnaire. Cliquez sur "Enregistrer" si vous créez un nouveau dictionnaire de données ou "Ajouter" si vous modifiez le contenu d'un dictionnaire de données existantes. </para> 
   </section> 
-  <section id="translation"> 
+  <section xml:id="translation"> 
     <title>Traductions</title> 
     <para> DHIS 2 fournit la fonctionnalité de traduction de l'élément de données, le groupe des éléments de données, des indicateurs, le groupe témoin, et les noms de catégorie de données élément. Ces éléments peuvent être convertis en un nombre d'endroits. Une locale représente un secteur géographique, la région politique ou culturelle. </ Para>
     <para> Pour ajouter une traduction, cliquez sur l'icône Traduire côté de l'élément que vous souhaitez traduire. Commencez par sélectionner la locale souhaitée de la zone de sélection de paramètres régionaux. Si vos paramètres régionaux ne sont pas dans la liste, vous devez l'ajouter en premier. Remplissez la langue locale et le code du pays locale. La langue locale est minuscule, à deux lettres ISO Langue Code valide. Les paramètres régionaux de pays est une majuscule, deux lettres valables Code ISO du pays. Puis dans la section Traduire, sélectionnez vos paramètres régionaux, puis entrez les valeurs des propriétés des éléments disponibles. Vous pouvez sélectionner les paramètres régionaux de référence, c'est la localisation de l'élément courant est affiché dans, à partir de la zone de sélection vers la droite. Les traductions peuvent être activés en sélectionnant les paramètres régionaux souhaités dans la base de données linguistiques en vertu des paramètres utilisateur dans les paramètres du module. </para>

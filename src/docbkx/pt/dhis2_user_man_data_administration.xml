@@ -3,7 +3,7 @@
 <chapter>
   <title>Administração de dados</title>
   <para>O módulo de gestão de dados fornece um conjunto de funções para assegurar que os dados armazenados na base de dados DHIS2 está integrada e que o desempenho da base de dados é optimizado. Estas funções devem ser executadas regularmente por um administrador de dados para assegurar que a qualidade dos dados armazenados é ideal. </para>
-  <section id="dataBrowser">
+  <section xml:id="dataBrowser">
     <title>Navegador de dados</title>
     <para>A manutenção do navegador de dados e módulo de análise permite ao usuário produzir um resumo dos dados contidos na base de dados DHIS2. A visualização sumária fornece uma contagem de elementos de dados que foram inseridos na unidade de organização seleccionada, bem como seus descendentes. Os dados brutos para todos os elementos de dados para uma série de períodos de tempo e uma determinada unidade organizacional pode ser pesquisado e exportados em formatos Excel, CSV ou PDF. Existem quatro modos de navegador de dados, que determinam como os dados são resumidos</para>
     <itemizedlist>
@@ -80,7 +80,7 @@
       </listitem>
     </itemizedlist>
   </section>
-  <section id="dataIntegrity">
+  <section xml:id="dataIntegrity">
     <title>A integridade dos Dados</title>
     <para>DHIS2 pode executar uma grande variedade de verificação de integridade de dados contidos na base de dados. Identificar e corrigir problemas de integridade de dados é extremamente importante para garantir que os dados utilizados para fins de análise é válido. Cada uma das verificações de integridade de dados que são executadas pelo sistema irá ser descrito, juntamente com os procedimentos gerais que podem ser realizadas para resolver estes problemas. </para>
     <section>
@@ -164,7 +164,7 @@
       <para>Existe um erro no lado esquerdo da definição da regra de validação. Selecione <command>Serviços-&gt;Qualidade de dados-&gt;Regra de validação</command> e clica no &quot;Edit&quot; Ícone na regra não respeitada. Clica &quot;Editar lado direito&quot; e fazer as correções necessárias.</para>
     </section>
   </section>
-  <section id="maintenance">
+  <section xml:id="maintenance">
     <title>Manutenção</title>
     <para>O módulo de manutenção de dados tem cinco opções, cada descritas abaixo. </para>
     <itemizedlist>
@@ -198,7 +198,7 @@
       </listitem>
     </itemizedlist>
   </section>
-  <section id="resourceTables">
+  <section xml:id="resourceTables">
     <title>Tabelas de recursos</title>
     <para>Tabelas de recursos apoiam tabelas que são utilizadas durante a análise dos dados. alguém poderia
         tipicamente juntar os conteúdos dessas tabelas com a tabela de valor de dados ao fazer consultas a partir de
@@ -255,7 +255,7 @@
     </screenshot>
     <para>Um local é composto por uma língua e um País. Selecione o valor desejado e clica &quot;Adicionar&quot;. Esse local customizado estará agora disponível no sistema como um dos pontos de tradução. </para>
   </section>
-  <section id="sqlView">
+  <section xml:id="sqlView">
     <title>Visualização SQL</title>
     <para>A funcionalidade de visualização de SQL de DHIS2 irá armazenar a definição da exibição SQL internamente, e depois materializar a visão quando solicitado. </para>
     <para>Administradores da base de dados deve ter cuidado com criar modos de exibição base de dados diretamente na base de dados DHIS2. Por exemplo, quando as tabelas de recursos são gerados, todos eles, em primeiro lugar ser suprimido e depois re-criada. Se os pontos de vista SQL dependem dessas tabelas, uma exceção na violação de integridade será lançada e o processo será abortado.</para>
@@ -278,19 +278,19 @@
       <para>Para usar a visualização SQL clique &quot;Executar query&quot; botão <inlinegraphic fileref="resources/images/dhis2_images/start_process.png"/> a partir do &quot;página de gerenciamento da visualização de SQL. Assim que o processo for concluído, será informado que a tabela foi criada. O nome da tabela que vai ser fornecido, e é composto a partir da &quot;descrição&quot; atributo fornecido na definição de exibição SQL. Uma vez que o ponto de vista foi materializada, clique no &quot;Exibir&quot; botão <inlinegraphic fileref="resources/images/dhis2_images/view_sections.png"/>.</para>
     </section>
   </section>
-  <section id="organisationUnitMerge">
+  <section xml:id="organisationUnitMerge">
     <title>Combinação de Unidades orgânicas</title>
     <para>Essa função é útil quando duas Unidades orgânicas necessitam de ser combinadas, p.ex. foi decidido que uma unidade sanitária vai ser fechada e que os serviços passaram a ser fornecidos pela unidade sanitária mais próxima.</para>
     <para>Comece por selecionar a Unidade orgânica a ser eliminada da árvore e clica <emphasis role="italic">confirma</emphasis>.  Depois selecione a Unidade orgânica a ser mantida e clica <emphasis role="italic">confirma</emphasis> outra vez. Finalmente, verifique a seleção e clica <emphasis role="italic">combinar</emphasis>.  </para>
     <para>Em casos onde já exista dados para a unidade orgânica a ser eliminada e não exista dados na unidade orgânica a ser mantida, os dados serão movidos para a unidade orgânica a ser mantida. No caso de houver dados nas duas unidades orgânicas, os dados seram resumidos e movidos para a unidade orgânica a ser mantida. No caso de dados existirem somente na unidade orgânica a ser mantida nenhuma acção será efectuada. a Unidade orgânica a ser eliminada será eventualmente apagada.</para>
   </section>
-  <section id="duplicateDataElimination">
+  <section xml:id="duplicateDataElimination">
     <title>Eliminação de dados duplicados</title>
     <para>Esta função é útil quando os dados foram digitados por engano por dois elementos de dados que representa o mesmo fenômeno.</para>
     <para>Comece selecionando o elemento de dados para eliminar da lista e clique em confirmar. Em seguida, selecione o elemento de dados para manter e clique em confirmar novamente. Finalmente, verificar a seleção e clique em combinar.</para>
     <para>Na caso em que existe dados para o elemento de dados para eliminar e não para o elemento de dado a manter, os dados serão transferidos para o manter. Quando existem dados para ambos os elementos de dados, os dados que foi atualizado pela última vez será usado. Quando os dados só existe para o único a manter, será tomada nenhuma acção. O elemento de dados para eliminar acabará por ser excluído, excepto quando for um elemento de dados multidimensional e tem outros dados registrados.</para>
   </section>
-  <section id="dataStatistics">
+  <section xml:id="dataStatistics">
     <title>Estatísticas de dados</title>
     <para>O módulo de estatísticas de dados fornece uma visão geral de número de objectos guardados na base de dados do DHIS2. </para>
     <screenshot>
@@ -302,7 +302,7 @@
     </screenshot>
     <para>O número total de cada tipo de objecto é apresentada numa tabela, assim como um gráfico. </para>
   </section>
-  <section id="lockException">
+  <section xml:id="lockException">
     <title>Bloquear excepções </title>
     <para>Bloquear exceções fornecer controle refinado sobre a isenção de um conjunto de dados bloqueado. Após o termo do conjunto de dados, entrada de dados será negado por padrão, a menos que uma exceção foi concedida através da interface exceção Lock. Para habilitar uma exceção de bloqueio, selecione as unidades desejadas organização, conjuntos de dados e período de tempo e pressione &quot;Adicionar&quot;. Ao conceder uma exceção de bloqueio, a entrada de dados será ativado mesmo após o período de validade do conjunto de dados já passou. </para>
     <screenshot>
@@ -314,7 +314,7 @@
     </screenshot>
     <para>No exemplo acima, a exceção de fechamento de dados seria criado para &quot;Organização ab Vida Abundante&quot; e &quot;ab Hospital do Sétimo Dia&quot; para o conjunto de dados &quot;Cuidados e Apoio&quot; para &quot;, fevereiro de 2012&quot;. </para>
   </section>
-  <section id="zeroValueStorage">
+  <section xml:id="zeroValueStorage">
     <title>Armazenamento de valores zero</title>
     <para>A função de armazenamento de valor igual a zero faz com que seja possível definir para quais elementos de dados do sistema deve armazenar os valores zero. Na maioria dos casos, os zeros são significativos apenas por um subconjunto de elementos de dados na base de dados. Quaisquer zeros inseridos durante a entrada de dados será ignorada por padrão, exceto para os elementos de dados, onde o armazenamento de valor zero, foi ativado. </para>
   </section>
@@ -322,7 +322,7 @@
     <title>Remover de Unidades Organizacionais</title>
     <para>Se você precisa de remover os ramos da hierarquia da unidade organizacional, você pode usar a função de remover unidade organizacional. Tenha em mente que a organização só selecionado (e seus filhos) serão mantidos. Todas as outras orgunits (e todos os dados associados a eles) serão excluídos do banco de dados. </para>
   </section>
-  <section id="minMaxValueGeneration">
+  <section xml:id="minMaxValueGeneration">
     <title>Geração de valores Min-Max </title>
     <para>Esta função administrativa pode ser usado para gerar valores de min-max, que são utilizados como parte da qualidade de dados e processo de validação para unidades organizacionais específicas e conjuntos de dados. Basta selecionar o conjunto de dados a partir do quadro à esquerda, e selecione as orgunits necessários para gerar os valores mín-máx para o seletor de unidades organizacionais à direita. Pressione o botão &quot;Gerar&quot; para gerar ou regenerar todos os valores mín-máx. Pressione o botão &quot;Remover&quot; para remover todos os valores mínimo-max que estão armazenados no banco de dados. </para>
     <para><screenshot>
@@ -333,7 +333,7 @@
         </mediaobject>
       </screenshot></para>
   </section>
-  <section id="constant">
+  <section xml:id="constant">
     <title>Constante</title>
     <para>Constantes são valores estáticos que podem ser colocados à disposição dos usuários para uso em elementos e indicadores de dados. Alguns indicadores, como &quot;taxa de proteção ano Casal&quot; dependem de constantes que normalmente não mudam ao longo do tempo. Basta pressionar &quot;Adicionar&quot; e fornecer um nome no campo &quot;Nome&quot; e definir o seu valor no campo &quot;Valor&quot;. Pressione o botão &quot;Adicionar&quot;. A constante de agora estará disponível aos usuários para uso em suas expressões..</para>
     <screenshot>
@@ -344,7 +344,7 @@
       </mediaobject>
     </screenshot>
   </section>
-  <section id="optionSet">
+  <section xml:id="optionSet">
     <title>Conjunto de opções</title>
     <para> Conjuntos de opções pode ser associada a elementos de dados na interface do elemento de dados add / update para elementos de dados baseados em nomes. Você pode definir qualquer tipo de opções, por exemplo, um conjunto de opções
 chamado de &quot;Tipo de entrega&quot;, onde &quot;Normal&quot;, &quot;Breach&quot;, &quot;cesariana&quot; e
@@ -354,11 +354,11 @@ registros em nome do módulo os elementos aparecerão em forma
 como listas drop-down com suporte auto-realização.
 </para>
   </section>
-  <section id="cacheStatistics">
+  <section xml:id="cacheStatistics">
     <title>Estatísticas de cahe </title>
     <para>Esta opção é para os administradores do sistema apenas para usar. As estatísticas de cache mostra o status do cache de nível de aplicação. O cache de nível de aplicação refere-se aos objetos e os resultados da consulta que o aplicativo está em cache, a fim de acelerar o desempenho. Se o banco de dados foi modificado diretamente o cache de aplicativo precisa ser limpo para que ela tenha .</para>
   </section>
-  <section id="attribute">
+  <section xml:id="attribute">
     <title>Atributos dinâmicos</title>
     <para>Atributos dinâmicos podem ser usados ​​para adicionar informações adicionais para determinados objetos (ou seja, elementos de dados, indicadores, unidades organizacionais e usuários). Além dos atributos padrão cada um destes objectos têm, pode ser necessário em certas instalações de ter os atributos adicionais, tais como o número de fax, o que está associado com uma unidade de organização. Para adicionar um novo atributo dinâmico de um objeto, selecione &quot;Manutenção-&gt; Administração de dados&quot; a partir do menu principal, em seguida, &quot;Atributo&quot; a partir do painel do lado esquerdo, e pressione o botão &quot;Adicionar novo&quot;.</para>
     <screenshot>
@@ -371,7 +371,7 @@ como listas drop-down com suporte auto-realização.
     <para>Para criar um novo atributo, atribuir-lhe um nome. Cada atributo deve ter um nome único. Verifique tick-box &quot;Obrigatório&quot; se o objeto deve ter sempre o atributo dinâmico. Em seguida, selecione qual objeto (ou objetos), o atributo deve ser atribuído. Por fim, selecione o tipo de valor. Você pode escolher entre &quot;texto&quot;, &quot;Yes / No&quot;, &quot;Data&quot;, &quot;Número&quot;, &quot;inteiro&quot;, &quot;inteiro positivo&quot; e &quot;negativo inteiro&quot;. Se o valor fornecido para o atributo não corresponde ao tipo de valor, ocorrerá um erro. Por fim, clique em &quot;Salvar&quot; para salvar o atributo. </para>
     <para>O atributo dinâmico agora estará presente no objeto que você atribuiu a no respectivo &quot;Editar&quot; tela de cada objeto.</para>
   </section>
-  <section id="scheduling">
+  <section xml:id="scheduling">
     <title>Agendamento</title>
     <para>Data Mart pode ser programado para ser executado automaticamente em intervalos regulares. Basta selecionar o tipo de período de agregação, nível de agregação set organização do grupo da unidade, e estratégia para configurar a forma como o trabalho agendado deve ser executado. Pressionando &quot;Start&quot; vai permitir o trabalho agendado para ser executado em um tempo pré-determinado ou pode ser executado imediatamente pressionando &quot;Executar agora&quot;</para>
     <screenshot>

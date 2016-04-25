@@ -1,6 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<section id="mobile_j2me_gprs_3g">
+<section version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook" xml:id="mobile_j2me_gprs_3g">
   <title>J2ME GPRS/3G Client</title>
   <para>The DHIS2 GPRS/3G mobile module provides a mechanism for remote clients using mobile phones to enter data directly into the DHIS2 system. There are two functions of the client, namely:</para>
   <para>The solution relies on the mobile phone having a data connection available (i.e.
@@ -30,7 +39,7 @@
       all entered data locally, so it can work fine with only temporary access to a data connection
       on a regular basis. </para>
   </section>
-  <section id="mobile_j2me_gprs_3g_facility_reporting">
+  <section xml:id="mobile_j2me_gprs_3g_facility_reporting">
     <title>J2ME GPRS 3G facility reporting client</title>
     <para>The server side component of the web based solution  is included in the general build of DHIS2.</para>
     <para>In order to configure the DHIS2 web-based mobile reporting, you should follow the following steps. </para>
@@ -144,7 +153,11 @@
       <title>Language support</title>
       <para>Multi-language support is available.</para>
       <para>DataSet and DataElement are translated through web-based function. Default language on server is used on mobile in cases requested language from mobile is not available.</para>
-      <para><graphic fileref="resources/images/dhis_mobile/translateDataSet.jpg" width="80%" align="center"/></para>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="resources/images/dhis_mobile/translateDataSet.jpg" width="80%" align="center"/>
+          </imageobject>
+        </mediaobject>
     </section>
   </section>
   <section>
@@ -153,7 +166,7 @@
       <title>Installation and initialization</title>
       <section>
         <title>Installation</title>
-        <para>Download the jar packages from the DHIS 2 homepage: <ulink url="www.dhis2.org/downloads">www.dhis2.org/downloads</ulink></para>
+        <para>Download the jar packages from the DHIS 2 homepage: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="www.dhis2.org/downloads">www.dhis2.org/downloads</link></para>
       </section>
       <section>
         <title>Initialization</title>
@@ -367,9 +380,21 @@
             <para>This function help user to choose language of mobile&apos;s GUI (graphical user interface) and content&apos;s language (Forms).</para>
             <para>The forms must be translated on server, otherwise, default language is used.</para>
             <para>Default language of first login is English. Change language in Setting menu will affect both interface and content.</para>
-            <para><graphic fileref="resources/images/dhis_mobile/settingCmd.jpg" align="center"/></para>
-            <para><graphic fileref="resources/images/dhis_mobile/settingScreen.jpg" align="center"/></para>
-            <para><graphic fileref="resources/images/dhis_mobile/supportedLanguageList.jpg" align="center"/></para>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="resources/images/dhis_mobile/settingCmd.jpg" align="center" width="40%" />
+                </imageobject>
+              </mediaobject>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="resources/images/dhis_mobile/settingScreen.jpg" align="center" width="40%"/>
+                </imageobject>
+              </mediaobject>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="resources/images/dhis_mobile/supportedLanguageList.jpg" align="center" width="40%"/>
+                </imageobject>
+              </mediaobject>
             <para>Multi-Language Interface: In Setting menu, there are list of  supported language (downloaded from server). Language of GUI is only changed after restart application.</para>
             <para>Multi-Language Content (forms): Form&apos;s language is change after click &quot;Save&quot;. In case there are many forms, it take several minutes to save setting.</para>
           </listitem>

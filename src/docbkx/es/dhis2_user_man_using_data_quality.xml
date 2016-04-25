@@ -39,7 +39,7 @@
       </listitem>
     </orderedlist>
   </section>
-  <section id="validationRuleAnalysis">
+  <section xml:id="validationRuleAnalysis">
     <title>Lanzando un análisis de reglas de validación</title>
     <para>Podemos acceder al Análisis de Reglas de Validación en el menú Servicios -&gt; Calidad de Datos.</para>
     <para>Las reglas de validación se basan en una expresión que define la relación entre varios elementos de datos. Esta expresión tiene una parte izquierda y una parte derecha, y también un operador en medio que define si la primera debe ser menor que, igual que o mayor que la segunda. La expresión formula una condición que garantiza el cumplimiento de determinados criterios lógicos. Por ejemplo, una regla de validación puede estipular que el número total de vacunas recibidas por niños y niñas debe ser menor o igual al número total de niños y niña.
@@ -52,7 +52,7 @@
     <para> Cuarto, seleccionamos la unidad organizativa.</para>
     <para> Para terminar, pinchamos en el botón <emphasis role="italic">Validar</emphasis>.</para>
     <screenshot>
-      <screeninfo>Selección para lanzar reglas de validación</screeninfo>
+      <title>Selección para lanzar reglas de validación</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/dhis2UserManual/run_validation_rules_selection.png" format="PNG"/>
@@ -65,7 +65,7 @@
     <para>Pulsando el icono de detalle podemos obtener más información sobre el fallo de validación. Al pulsarlo se abrirá una pantalla emergente que proporcione información sobre los elementos de datos incluidos en las reglas de validación y sus correspondientes valores. Esta información podremos utilizarla para corregir datos erróneos.</para>
     <para>También podremos exportar los fallos de validación a un documento PDF, pinchando en el botón de <emphasis role="italic">Descargar PDF</emphasis>, o a un documento de Microsoft Excel, pinchando el botón de <emphasis role="italic">Descargar MS Excel</emphasis>.</para>
     <screenshot>
-      <screeninfo>Resultados de lanzar reglas de validación</screeninfo>
+      <title>Resultados de lanzar reglas de validación</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/dhis2UserManual/validation_rule_result.png" format="PNG"/>
@@ -73,7 +73,7 @@
       </mediaobject>
     </screenshot>
   </section>
-  <section id="stddevoutlierAnalysis">
+  <section xml:id="stddevoutlierAnalysis">
     <title>Análisis de outliers (valores atípicos)</title>
     <para>Podemos acceder al análisis de outliers (de desviación típica) en el menú Servicios -&gt; Calidad de Datos</para>
     <para>El análisis de outliers basado en la desviación típica ofrece un mecanismo para conocer qué valores están numéricamente distantes del resto de los datos. Los outliers pueden aparecer por casualidad, pero a menudo representan un error de medida o una distribución fuertemente prolongada (derivando en números grandes). En el primer caso generalmente descartaremos estos outliers mientras en el segundo caso deberemos ser cautos al utilizar herramientas estadísticas o interpretaciones que asuman una distribución normal. El análisis está basado en una distrubución normal estándar.</para>
@@ -96,7 +96,7 @@
       </listitem>
     </orderedlist>
     <screenshot>
-      <screeninfo>Selección de reglas de análisis de outliers</screeninfo>
+      <title>Selección de reglas de análisis de outliers</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/dhis2UserManual/outlier_analysis_selection.png" format="PNG"/>
@@ -108,15 +108,15 @@
     <para>Podremos modidificar cada outlier directamente en la página de resultados de análisis. El valor puede modificarse pinchando dentro del campo correspondiente en la columna de valores, introduciendo un valor y saliendo a continuación de ese campo de datos (por ejemplo pulsando la tecla Tab) o pinchando simplemente fuera del campo. El sistema lanzará una alerta si, después de modificarlo, el valor sigue fuera de los valores máximo y mínimo, aunque el valor quedará guardado en cualquier caso. Si el valor que queda introducido está fuera de rango, veremos un fondo rojo en el campo de datos. Si el valor está dentro el fondo quedará verde.</para>
     <para>Pinchando en el icono de estrella, podemos también marcar cada outlier para posterior seguimiento.</para>
   </section>
-  <section id="minmaxoutlierAnalysis">
+  <section xml:id="minmaxoutlierAnalysis">
     <title>Análisis de outliers en rangos Max-Min</title>
     <para>El análisis de outliers basado en valores máximo y mínimo ofrece un mecanismo para detectar valores que quedan fuera de límites máximo y mínimo previamente definidos. Estos valores límite pueden ser definidos por el usuario o asignados automáticamente por el sistema en el módulo de administración de datos. Para más detalles revisa la sección sobre Análisis de Outliers Std Dev.</para>
   </section>
-  <section id="gapAnalysis">
+  <section xml:id="gapAnalysis">
     <title>Análisis de Huecos</title>
     <para>El análsis de huecos proporciona un mecanismo para detectar huecos en los datos. Hay huecos para elementos de datos y unidades organizativas concretas. Un huevo es un periodo sin datos registrados, que es precedido y seguido de periodos que sí tienen datos registrados. Este tipo de huecos indican generalmente errores en la captura u omisión, y pueden ser investigados con posterioridad. Para más detalles revisa la sección sobre Análisis de Outliers Std Dev.</para>
   </section>
-  <section id="followupAnalysis">
+  <section xml:id="followupAnalysis">
     <title>Análisis de Seguimiento</title>
     <para>La función de análisis de seguimiento lista todos los valores de datos marcados para seguimiento. Los valores de datos se pueden marcar para seguimiento en el módulo de entrada de datos y en los otros tipos de análisis disponibles en este módulo.</para>
   </section>

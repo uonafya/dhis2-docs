@@ -37,7 +37,7 @@
         <para>Créer, modifier, afficher et supprimer des catégories d'éléments de données.</para>
       </listitem>
     </itemizedlist>
-    <section id="dataElement">
+    <section xml:id="dataElement">
       <title>Eléments de données</title>
       <para>
         <?inline true?>Les éléments de données constituent la base de DHIS2. Les éléments de données définissent ce qui est effectivement enregistré dans le système, comme par exemple le nombre de vaccinations ou le nombre de cas de paludisme. La création concrète et la définition des éléments de données sont bien au-delà de la portée de ce manuel; il est donc supposé que l'administrateur reçoit une liste d'éléments de données standardisés pour les inclure dans le système DHIS2.</para>
@@ -162,14 +162,14 @@
         <itemizedlist>
           <listitem>
             <para>Code de langue</para>
-            <para>Se réfère à la norme ISO 639-1 (code à deux lettres) du code de la langue. Reportez-vous à cette <ulink url="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">page web</ulink> pour une liste détaillée des codes de langue.</para>
+            <para>Se réfère à la norme ISO 639-1 (code à deux lettres) du code de la langue. Reportez-vous à cette <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">page web</link> pour une liste détaillée des codes de langue.</para>
           </listitem>
           <listitem>
             <para>Code du pays</para>
-            <para>Correspond au code ISO 3166-1-alpha-2. Une liste complète est disponible <ulink url="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ici</ulink>. </para>
+            <para>Correspond au code ISO 3166-1-alpha-2. Une liste complète est disponible <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ici</link>. </para>
           </listitem>
         </itemizedlist>
-        <para>La combinaison de ces deux codes forme un code de "localisation", qui est composé de la combinaison de l'emplacement et de la langue. Une discussion très complète de la norme technique (RFC 3066) est disponible <ulink url="http://www.ietf.org/rfc/rfc3066.txt">ici</ulink>.  Cette <ulink url="http://www.i18nguy.com/unicode/language-identifiers.html">page</ulink> fournit une liste très complète des codes de paramètres régionaux reconnus.</para>
+        <para>La combinaison de ces deux codes forme un code de "localisation", qui est composé de la combinaison de l'emplacement et de la langue. Une discussion très complète de la norme technique (RFC 3066) est disponible <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.ietf.org/rfc/rfc3066.txt">ici</link>.  Cette <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.i18nguy.com/unicode/language-identifiers.html">page</link> fournit une liste très complète des codes de paramètres régionaux reconnus.</para>
       </section>
       <section>
         <title>Suppression d’un élément de donnée</title>
@@ -180,7 +180,7 @@
         <para>Cette opération affiche une boîte contextuelle dans le navigateur qui affiche toutes les métadonnées d'un élément de données. Appuyez sur le bouton d'accès à l'information <inlinegraphic fileref="resources/images/dhis2_images/information.png" align="center" />pour accéder à cette vue.</para>
       </section>
     </section>
-    <section id="dataElementGroup">
+    <section xml:id="dataElementGroup">
       <title>Groupes d'éléments de données</title>
       <para>Les groupes d'éléments de données fournissent un mécanisme de regroupement d'éléments de données ayant une relation dans un thème commun. Par exemple, les deux éléments de données "Vaccination contre la rougeole" et "Vaccination BCG" pourraient être regroupés dans un groupe d'éléments de données "Vaccination des enfants". Pour accéder à la page de gestion de groupe d'éléments de données, cliquez sur Administration -&gt; Eléments de données et indicateurs -&gt; Groupe d'Eléments de Données.</para>
       <para>Comme pour la page d'administration des "éléments de données", les groupes d'éléments de données peuvent être recherchés en saisissant une chaîne de recherche dans le champ "Filtrer par nom".</para>
@@ -194,12 +194,12 @@
       </screenshot>
       <para>Remplissez le champ "Nom", puis sélectionnez tous les éléments de données qui doivent appartenir au groupe à partir du panneau gauche. Cliquez sur le bouton "Déplacer les éléments choisis" <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center" /> pour ajouter les éléments de données sélectionnés au groupe d'éléments de données. Cliquez sur le bouton "Supprimer la sélection" pour supprimer tous les éléments de données dans le groupe qui a été sélectionné dans le panneau de droite. Enfin, cliquez sur le bouton "Ajouter" pour enregistrer les modifications, ou sur le bouton "Annuler" pour annuler les modifications.</para>
     </section>
-    <section id="dataElementGroupEditor">
+    <section xml:id="dataElementGroupEditor">
       <title>Éditeur de groupe d'éléments de données</title>
       <para>L'éditeur de groupe d'éléments de données fournit des fonctionnalités avancées à l'administrateur afin de permettre que des éléments de données multiples puissent être ajoutés ou retirés d'un groupe. Il est également possible de créer de nouveaux groupes d'éléments de données, de renommer des groupes existants et de supprimer tous les groupes. Pour accéder à l'éditeur de groupe d'éléments de données, allez à <guimenu moreinfo="none">"Administration -&gt; Eléments de données et indicateurs -&gt; Editeur de Groupes d'Eléments de Données"</guimenu>. L'écran suivant s’affiche.<screenshot><mediaobject><imageobject><imagedata width="100%" fileref="resources/images/maintainence/data_element_group_editor_start.png" format="PNG" /></imageobject></mediaobject></screenshot></para>
       <para>Les Groupes d'éléments de données sont listés par ordre alphabétique dans le panneau de gauche. En cliquant sur un groupe d'éléments de données, les membres actuels de ce groupe (éléments de données) sont répertoriés dans le panneau central. Les éléments de données disponibles qui peuvent être ajoutés au groupe d'éléments de données sont listés par ordre alphabétique dans le panneau de droite. Pour supprimer un élément de données existant dans le groupe, cliquez sur le nom de l'élément de données dans le panneau central, puis appuyez sur le bouton "Déplacer vers la droite" <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center" />. Pour ajouter des éléments de données dans le groupe, sélectionnez-les dans le volet de gauche, puis cliquez sur le bouton "Déplacer vers la gauche" <inlinegraphic fileref="resources/images/dhis2_images/move_left.png" align="center" />. Appuyez sur le bouton  <guibutton moreinfo="none">"Mettre à jour le membre du groupe d'éléments de données"</guibutton> pour enregistrer vos modifications.</para>
     </section>
-    <section id="dataElementGroupSet">
+    <section xml:id="dataElementGroupSet">
       <title>Ensembles de groups d’éléments de données</title>
       <para>Les ensembles de groupes d'éléments de données permettent à de multiples groupes d'éléments de données d'être classés au sein d'un ensemble. Les ensembles de groupes d'éléments de données sont utilisés lors de l'analyse et du reporting pour combiner des groupes d'éléments de données similaires dans un thème commun. Pour accéder aux groupes d'éléments de données, choisissez "Administration -&gt; Eléments de données et indicateurs -&gt; Ensembles de Groupes d'Eléments de Données". Comme pour les autres modules d'administration des éléments de données, de nouveaux ensembles de groupes d'éléments de données peuvent être ajoutés en appuyant sur le bouton "Ajouter nouveau". Les autres actions possibles sont éditer, traduire, Supprimer et afficher les informations, similaires aux autres modules de cette section.</para>
       <para>Les membres actuels de l'ensemble du groupe d'éléments de données peuvent être modifiés en cliquant sur le bouton "Modifier" <inlinegraphic fileref="resources/images/dhis2_images/edit.png" align="center" /> de l'ensemble de groupe d'élément de données souhaité comme indiqué ci-dessous.</para>
@@ -210,7 +210,7 @@
       </mediaobject>
       <para>Les groupes d'éléments de données disponibles sont affichées dans le panneau de gauche. Ils peuvent être déplacés dans l'ensemble de groupe d'éléments de données sélectionné en appuyant sur le bouton "Déplacer vers la droite" <inlinegraphic fileref="resources/images/dhis2_images/move_right.png" align="center" />. Les groupes d'éléments de données qui sont actuellement membres de l'ensemble du groupe d'éléments de données sont affichées dans le panneau de droite. Ils peuvent être retirés de l'ensemble du groupe d'élément de données en cliquant sur le groupe d'éléments de données souhaité et en appuyant sur le bouton "Déplacer vers la gauche"<inlinegraphic fileref="resources/images/dhis2_images/move_left.png" align="center" />. L'ordre des groupes d'éléments de données peut être ajusté à l'aide des flèches "Monter"<inlinegraphic fileref="resources/images/dhis2_images/move_up.png" align="center" /> et "Descendre"<inlinegraphic fileref="resources/images/dhis2_images/move_down.png" align="center" />. Cet agencement sera utilisé dans l'entrepôt de données et dans la génération des rapports des groupes d'éléments de données. Appuyez sur le bouton "Mettre à jour" <guibutton moreinfo="none">"Update"</guibutton> pour enregistrer les modifications ou sur le bouton "Annuler" <guibutton moreinfo="none">"Cancel"</guibutton> pour annuler toutes les modifications.</para>
     </section>
-    <section id="dataElementCategory">
+    <section xml:id="dataElementCategory">
       <title>Catégories d'éléments de données</title>
       <para>Les catégories d'éléments de données peuvent être utilisés pour subdiviser les éléments de données en composants atomiques individuels. Les catégories d'éléments de données sont généralement un concept, comme le sexe, l'âge ou le statut sanitaire. Les éléments de données tels que "Nombre de cas de paludisme confirmés" sont souvent divisés en plus petits éléments pour déterminer, par exemple, le nombre de cas confirmés de paludisme de certains groupes d'âge. A titre d'exemple, trois catégories d'éléments de données pourraient être créées : Moins de 1 an, Entre 1 et 5 ans, et plus de 5 ans. Elles pourraient être attribuées en tant que catégories aux élément de données, ce qui permettrait alors de créer sur les écrans de saisie de données trois champs distincts pour cet élément de données à savoir :</para>
       <itemizedlist>
@@ -259,7 +259,7 @@
       </screenshot>
       <para>Les Options de Catégorie peuvent être ajoutées en déplaçant les options de la catégorie du volet de gauche (options de catégorie disponibles) vers le volet de droite (options de catégorie choisies). Les options de catégorie peuvent être réorganisées en utilisant les boutons "Monter" <inlinegraphic fileref="resources/images/dhis2_images/move_up.png" align="center" /> et "Descendre" <inlinegraphic fileref="resources/images/dhis2_images/move_down.png" align="center" />. Les options de catégories peuvent être supprimées en sélectionnant l'option de catégorie d'élément de données et en appuyant sur le bouton "Supprimer" <inlinegraphic fileref="resources/images/dhis2_images/delete.png" align="center" />. Une fois toutes les options de catégories d'éléments de données ajoutées à la catégorie d'élément de données, appuyez sur le bouton  <guibutton moreinfo="none">"Ajouter"</guibutton> pour enregistrer les modifications ou sur le bouton <guibutton moreinfo="none">"Annuler"</guibutton> pour annuler les modifications.</para>
     </section>
-    <section id="dataElementCategoryCombo">
+    <section xml:id="dataElementCategoryCombo">
       <title>Combinaisons de categories d’éléments de données</title>
       <para>Les combinaisons de catégorie d'éléments de données permettent à plusieurs catégories d'éléments de données d'être regroupées au sein d'un ensemble commun. Par exemple, un élément de données "Nombre de nouvelles infections au VIH" pourrait être subdivisé selon les catégories suivantes:</para>
       <itemizedlist>
@@ -283,7 +283,7 @@
       <para>Tapez le nom de la combinaison de catégorie dans le champ "Nom", puis sélectionner les catégories souhaitées dans le panneau de gauche. Appuyez sur le bouton "Déplacer vers la droite" pour ajouter les catégories sélectionnées dans la combinaison de catégorie. Appuyez sur "Déplacer vers la gauche" pour supprimer les catégories qui ne devraient pas faire partie de la combinaison de catégorie.</para>
       <para>Les catégories ne peuvent être ajoutées à une combinaison de la catégorie qu'à cette étape. Les catégories peuvent être retirés des combinaisons de catégorie plus tard en éditant la combinaison de catégorie, cependant, il n'est pas permis d'ajouter des catégories supplémentaires une fois que la combinaison a été créée. Veiller à ce que la définition de la combinaison de catégorie et de ses catégories respectives soit définitive avant de procéder à la création de la combinaison de catégorie et à son attribution à un élément de données.</para>
     </section>
-    <section id="dataDictionary">
+    <section xml:id="dataDictionary">
       <title>Dictionnaires de données</title>
       <para>Les dictionnaires de données sont utilisés pour regrouper des éléments de données et des indicateurs au cours des opérations de filtrage. Ils sont utiles pour combiner des groupes communs d'éléments de données et d'indicateurs en fonction des programmes auxquels ils appartiennent. Par exemple, un dictionnaire de données appelé "MCH" pourrait être créé, et tous les éléments de données ainsi que les indicateurs sur la maternité et la santé des enfants pourraient être ajoutés à ce dictionnaire. Le dictionnaire de données peut être accéder en choisissant Administration -&gt; Eléments de données et indicateurs -&gt; Dictionnaire de données. L'écran suivant sera affiché dans le navigateur.</para>
       <screenshot>
@@ -295,7 +295,7 @@
       </screenshot>
       <para>Indiquez un nom pour le dictionnaire de données dans le champ "Nom" et une description de son contenu. Les éléments de données et indicateurs peuvent être ajoutés ou supprimés à partir du dictionnaire. Cliquez sur "Enregistrer" si vous créez un nouveau dictionnaire de données ou "Ajouter" si vous modifiez le contenu d'un dictionnaire de données existant.</para>
     </section>
-    <section id="translation">
+    <section xml:id="translation">
       <title>Traductions</title>
       <para>DHIS 2 fournit des fonctionnalités pour les traductions de contenu de base de données comme les éléments de données, les groupes d'éléments de données, les indicateurs, les groupes d'indicateurs, les règles de validation, etc. Ces éléments peuvent être convertis en un certain nombre de localisations. Une localisaton représente une région géographique spécifique, politique ou culturel.</para>
       <para>Pour ajouter une traduction cliquez sur l'icône Traduire à côté de l'élément que vous souhaitez traduire. Commencez par sélectionner la langue souhaitée à partir de la boîte de sélection des paramètres régionaux. Dans l'écran Traduire, sélectionnez votre région et entrez les valeurs des propriétés des éléments disponibles. Les valeurs des propriétés de référence sont affichées sur la droite. Ces valeurs sont les valeurs qui ont été saisies dans l'interface utilisateur d'ajout ou de mise à jour de l'objet courant.</para>

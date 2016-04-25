@@ -52,7 +52,7 @@
       <para>É possível gerar o valor min-max, por cada elemento, usando o DHIS2. Nesse caso, você só precisa clicar no botão "Gerar-min max" perto do canto superior direito. Em caso de tela de entrada de dados padrão, os valores mínimo e máximo, quando gerados, vão aparecer no lado esquerdo e direito da caixa de entrada de dados. Se você desmarcar a tela de entrada de dados padrão, os valores gerados aparecerão no topo direito da tela.</para>
     </section>
   </section>
-  <section id="validationRule">
+  <section xml:id="validationRule">
     <title>Regra de Validação</title>
     <para>Este módulo permite a gestão das regras de validação. Uma regra de validação é baseada em uma expressão que define a relação entre um certo número de elementos de dados. A expressão tem um lado esquerdo e um lado direito e um operador que define se o primeiro deve ser menor do que, igual a ou maior do que o último. A expressão constitui uma condição que deve afirmar que certos critérios lógicos sejam atendidos. Por exemplo, uma regra de validação pode afirmar que o número total de vacinas dadas às crianças é inferior ou igual ao número total de lactentes.</para>
     <para>Para adicionar uma regra de validação, basta seguir estes passos:</para>
@@ -122,7 +122,7 @@
     <para>Uma regra de vigilância pode conter elementos de dados por períodos mais longos do que o período determinado pela regra. Isso é útil, por exemplo, se você quiser dividir o valor dum elemento de dados para a contagem da população, e a contagem da população é introduzida anualmente. Os dados para o tipo de período mais longo (por exemplo, contagem de população) devem ser introduzidos por um período que se sobrepõe com o início do período em avaliação. Por exemplo, se o período a ser avaliado é a semana a partir 06 de janeiro de 2014, a população anual deve ser inserida para o ano que contém 06 de janeiro de 2014. Se o elemento de dados é de um tipo de período mais longo do que o tipo de período de regra, ele deve ter um operador de agregação de média, não soma. Em outras palavras, somente os elementos de dados que não somam ao longo do tempo (como contagem de população) podem ser usados por períodos mais longos do que o período de regra.</para>
     <para>Para regras de vigilância, a opção <emphasis role="italic">saltar os valores em falta</emphasis> tem um significado adicional quando os dados estão sendo coletados e agregados a partir dos níveis mais baixos da hierarquia das unidades organicas. Quando essa opção é selecionada e os dados estão presentes em algunas unidades em um nível inferior, mas nem todas as unidades deste nível, a regra é ignorada.</para>
   </section>
-  <section id="validationRuleGroup">
+  <section xml:id="validationRuleGroup">
     <title>Grupo de Regras de Validação</title>
     <para>Um grupo de regras de validação fornece um mecanismo de classificação de regras de validação relacionadas. Uma outra vantagem de usar grupos de regras de validação é que mais tarde podem ser executadas separadamente, em vez de executar todas as regras de validação.</para>
     <para>Um grupo de regras de validação pode também ser usado para configurar o modo como os usuários recebem notificações de alertas das execuções de validação programadas. Para fazer isso, deve-se identificar um conjunto de regras de validação que se deseja avaliar regularmente, e um conjunto de usuários que devem receber notificações das eventuais excepções a estas regras. Depois:</para>

@@ -1,6 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"[]>
-<chapter>
+ <chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
   <title>Installation</title>
   <para>The installation chapter provides information on how to install DHIS 2 in various contexts, including online central server, offline local network, standalone application and self-contained package called DHIS 2 Live.</para>
   <section>
@@ -302,7 +311,7 @@ export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
     </itemizedlist>
     <section>
       <title>Basic setup for nginx</title>
-      <para>We recommend using <ulink url="http://www.nginx.org">nginx</ulink>  as reverse proxy due to its low memory
+      <para>We recommend using <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.nginx.org">nginx</link>  as reverse proxy due to its low memory
         footprint and ease of use. To install invoke the following:</para>
       <screen>sudo apt-get install nginx</screen>
       <para>nginx can now be started, reloaded and stopped with the following commands:</para>
@@ -368,7 +377,7 @@ sudo /etc/init.d/nginx stop</screen></para>
         using a trusted certificate. This can be achieved through SSL which is an cryptographic
         communication protocol running on top of TCP/IP. First, install the required <emphasis role="italic">openssl</emphasis> library:</para>
       <screen>sudo apt-get install openssl</screen>
-      <para>To configure nginx to use SSL you will need a proper SSL certificate from an SSL provider. The cost of a certificate varies a lot depending on encryption strength. An affordable certificate from <ulink url="http://www.rapidsslonline.com">Rapid SSL Online</ulink> should serve most purposes. To generate the CSR (certificate signing request) you can invoke the  command below. When you are prompted for the <emphasis role="italic">Common Name</emphasis>, enter the fully qualified domain name for the site you are securing.</para>
+      <para>To configure nginx to use SSL you will need a proper SSL certificate from an SSL provider. The cost of a certificate varies a lot depending on encryption strength. An affordable certificate from <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.rapidsslonline.com">Rapid SSL Online</link> should serve most purposes. To generate the CSR (certificate signing request) you can invoke the  command below. When you are prompted for the <emphasis role="italic">Common Name</emphasis>, enter the fully qualified domain name for the site you are securing.</para>
       <screen>openssl req -new -newkey rsa:2048 -nodes -keyout server.key -out server.csr</screen>
       <para>When you have received your certificate files (.pem or .crt) you will need to place it
         together with the generated server.key file in a location which is reachable by nginx. A
@@ -759,8 +768,8 @@ ldap.search.filter = (cn={0})</screen>
             of Java from the Oracle Web site. Scroll down to the "Java Cryptography Extension (JCE)
             Unlimited Strength Jurisdiction Policy Files" section. It is important that the version
             of the files match the version of Java on your server.</para>
-          <para><ulink url="http://www.oracle.com/technetwork/java/javase/downloads/index.htm"
-              >http://www.oracle.com/technetwork/java/javase/downloads/index.html</ulink></para>
+          <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oracle.com/technetwork/java/javase/downloads/index.htm"
+              >http://www.oracle.com/technetwork/java/javase/downloads/index.html</link></para>
         </listitem>
         <listitem>
           <para>Extract the downloaded ZIP archive. It contains two JAR files: <emphasis

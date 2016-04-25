@@ -1,9 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
-<chapter>
+ <chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
   <title>Pivot Tables and the MyDataMart tool</title>
   <para>Excel Pivot Table (see screenshot below) is a powerful and dynamic data analysis tool that can be automatically linked to the DHIS 2 data. While most reporting tools in DHIS 2 are limited in how much data they can present at the same time, the pivot tables are designed to give nice overviews with multiple data elements or indicators, and organisation units and periods (see example below). Furthermore, the dynamic features in pivoting and drill-down are very different from static spreadsheets or many web reports, and his makes it a useful tool for information users that want to do more in-depth analysis and to manipulate the views on the data more dynamically. This combined with the well-known charting capabilities of Excel, the Pivot Table tool has made it a popular analysis tool among the more advanced DHIS users for a long time. </para>
-  <graphic width="100%" format="PNG" fileref="resources/images/implementation_guide/pivot_table.png" align="center"/>
+  <mediaobject>
+    <imageobject>
+      <imagedata width="80%" format="PNG" fileref="resources/images/implementation_guide/pivot_table.png" align="center"></imagedata>
+    </imageobject>
+  </mediaobject>
   <para>With the recent shift towards online deployments, the offline pivot tables in Excel also provide a useful alternative to the online reporting tools as they allow for local data analysis without Internet connectivity, which can be an advantage on unstable or expensive connections. Internet is only needed to download new data from the online server, and as soon as the data exists locally, working with the pivot tables require no connectivity. The MyDatamart tool, which is explained in detail further down, helps the users to maintain a local data mart file (small database) which is updated over the Internet against the online server, and then used as an offline data source that feeds the pivot tables with data. </para>
   <section>
     <title>Pivot table design</title>
@@ -20,40 +33,5 @@
     <title>Dealing with large amounts of data</title>
     <para>The amount of data in a DHIS 2 database can easily go beyond the capabilities of Excel. A table with around 1 million values (rows of data) tend to become less responsive to updates (refresh) and pivoting operations, and on some computers Excel will give out of memory errors when dealing with tables of this size. Typically, the more powerful the computer, the more data can be handled, but the top limit seems to be around 1 million rows even on the high-end computers.</para>
     <para>To deal with this problem the standard DHIS pivot table setup is to split the data over several pivot tables. There are different ways of splitting the data; by organisation unit aggregation level (how deep), by organisation unit coverage/boundary area (how wide), by period (e.g. one year of data at a time), or by data element or indicator groups (e.g. by health programs or themes). Aggregating away the lowest level in the organisation unit hierarchy is the most effective approach as it reduces the amount of data by a factor of the number of health facilities in a country. Typically there is no need to look at all the health facilities in a country at the same time, but instead only for a limited area (e.g. district or province). And when there is a need for data for the whole country that can be provided with district level aggregates or similar. At a district or province office the users will typically have facility level data only for their own area, and then for the neighboring areas the data will be aggregated up one or two levels to reduce the size of data, but still allow for comparison, split into e.g. the two tables Facility Data and Data District Data, and similar for indicator values. Splitting data by period or by data element/indicator groups work more or less in the same way, and can be done either in combination with the organisation unit splitting or instead of it. E.g. if a health program wants to analyse a few data elements at facility level for the whole country that can be possible. The splitting is controlled by the pivot views in the database where one specifies which data values to fetch.</para>
-  </section>
-  <section>
-    <title>The MyDatamart tool</title>
-    <para>With online deployments and the use of one single central server (and database) the local use of pivot tables becomes more difficult as Excel connects to the database directly to fetch the data. This means that Excel (and every local computer using DHIS2) would need connection details and access to the database on the server, which is not always wanted. Furthermore,
-the refresh (update the pivot table) operation in Excel completely empties the table before reloading all the data again (new and old), which leads to big and duplicated data downloads over the Internet when connecting to an online server. The solution to these problems has been to build up and maintain an updated  &quot;copy&quot; of the central database in each local office where they use Excel pivot tables. These local databases are called data marts and are built specifically for serving as data sources for data analysis tools like Excel. The MyDatamart tool is a newly developed (May 2011) tool that creates a datamart file on a local computer and helps the users to update this against a central server. The pivot tables in Excel connect only to the local datamart and do not need to know about the central server at all.</para>
-    <para>The use of MyDatamart dramatically reduces the download size when routinely updating the local Excel files against the central server compared to a direct connection from Excel. It also brings comfort to the local level users to have a copy of their data on their local computer and not to rely on a Internet connection or server up-time to access it. The figure below explains how the linking between the central online server (in the clouds) and the local offices works.</para>
-    <graphic width="100%" format="PNG" fileref="resources/images/implementation_guide/mydatamart.png" align="center"/>
-  </section>
-  <section>
-    <title>Using Excel pivot tables and MyDatamart - a work-flow example</title>
-    <para>The details of using the MyDatamart tool are explained in a separate user manual and this section only tries to explain the typical work-flow involved in using the tool together with the pivot tables.</para>
-    <section>
-      <title>Download and run the MyDatamart tool for the first time</title>
-      <para>MyDatamart is a small tool that is easy to download and run immediately. Download mydatamart.exe  to the Desktop and run it by double-clicking on the file. The first thing you need to do is to create a new datamart file, and then you type in the login details needed to access the central server (url, username. password). The tool will connect to the server (Internet connection needed at this point) and verify your credentials. The next step is to download all the meta-data from the server meaning all the organisation units, data elements, indicators, groups etc. This might take some time depending on your computer&apos;s specifications and the speed of the connection, but is a step that is rarely needed after this first download.  Once the tool knows the organisation unit hierarchy you can specify which organisation unit you &quot;belong&quot; to and the analysis level you are interested in. These are settings that limit which organisation units you will download data for. The next thing is to download the data from the server, and then you must specify which periods to download.        
- </para>
-    </section>
-    <section>
-      <title>Setup and distribute the pivot tables</title>
-      <para>The first thing needed is to download and install an ODBC driver for SQLite, which is the database server running the local datamart. The database connections in the pivot tables depend on this driver and will fail without installed.</para>
-      <para>The next thing is to set up the pivot tables themselves. This is a one-off job since the file can be reused as a template in all other locations connecting to the same central database. The MyDatamart tool can produce a skeleton Excel file for you with all the necessary database connections already defined. This will help the process considerably and most of the work is to select which fields to use in each table and give them proper names. 
-The user manual has all the detailed instructions on how to set up a pivot table using the MyDatamart connections.</para>
-      <para>Once the template Excel file is available it is a matter of distributing it to all local offices that will use pivot tables and to make sure the connections are still valid on the local computers. The connection details in Excel depend on the odbc driver being available and on the name and location of the datamart file. Either you can streamline all local datamart files (by name and location, e.g. &quot;C:\dhis2\dhis2.dmart&quot;, or you can use the MyDatamart tool to update the connection details in an existing Excel file to match the location of the local datamart file.</para>
-    </section>
-    <section>
-      <title>Update MyDatamart</title>
-      <para>Whenever there is new data available on the central server, e.g. every month, the users will have to open the MyDatamart tool, log on to the server, and then pick the months to download. Once the download has finished the data is available locally in the datamart file.</para>
-    </section>
-    <section>
-      <title>Update the Pivot tables</title>
-      <para>Once the local datamart file has been update the users can update the pivot tables by using the Refresh function, once per table. It is important to remember to save the Excel file after refreshing all the tables.</para>
-    </section>
-    <section>
-      <title>Repeat step 3 and 4 when new data is available on the central server</title>
-      <para>Whenever there is new data on the server repeat step number 3 and 4 (the two previous steps) in order to update the pivot tables and get access to the latest data.</para>
-    </section>
   </section>
 </chapter>
