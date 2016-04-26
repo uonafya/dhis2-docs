@@ -441,8 +441,13 @@
               <entry>d2:validatePattern</entry>
               <entry>(text, regex-pattern)</entry>
               <entry>Evaluates to true if the input text is an exact match with the supplied regular
-                expression pattern. The regular expression needs to be escaped.<para> Example:
-                  <screen>d2:validatePattern(A{nrc},'\\d{6}\/\\d{2}\/\\d')</screen></para></entry>
+                expression pattern. The regular expression needs to be escaped.<para> Example,
+                  validating that a number is on the pattern 9999/99/9:
+                  <screen>d2:validatePattern(A{nrc},'\\d{6}\/\\d{2}\/\\d')</screen></para>
+                <para> Example, validating that an address is consisting of letters or whitespaces,
+                  then a whitespace, then a number:
+                  <screen>d2:validatePattern(A{registrationAddress},'[\\w ]+ \\d+')</screen></para>
+              </entry>
             </row>
             <row>
               <entry>d2:left</entry>
