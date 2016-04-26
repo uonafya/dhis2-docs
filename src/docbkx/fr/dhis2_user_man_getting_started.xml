@@ -26,14 +26,14 @@
     </itemizedlist>
     <section>
       <title>Prérequis</title>
-      <para>Vous devez vous assurer qu&apos;une version récente de l&apos;environnement Java (JRE) est installée sur votre ordinateur. Il existe différentes façons d&apos;installer Java, selon votre système d&apos;exploitation. Le lecteur est renvoyé vers ce <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://java.sun.com/javase/downloads/index.jsp">site web</link> pour des informations détaillées sur la manière d&apos;installer Java.</para>
+      <para>Vous devez vous assurer qu&apos;une version récente de l&apos;environnement Java (JRE) est installée sur votre ordinateur. Il existe différentes façons d&apos;installer Java, selon votre système d&apos;exploitation. Le lecteur est renvoyé vers ce <link xl:href="http://java.sun.com/javase/downloads/index.jsp">site web</link> pour des informations détaillées sur la manière d&apos;installer Java.</para>
     </section>
     <section>
       <title>Démarrage de l&apos;application DHIS2 Live</title>
-      <para>L&apos;application DHIS2 Live est la meilleure façon de débuter avec DHIS2. Elle est bien indiquée pour une installation indépendante ou pour des besoins de démonstrations. Il suffit de télécharger l&apos;application à partir de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.dhis2.org/downloads"> ce lien </link>. Une fois le fichier téléchargé, vous pouvez simplement double-cliquer sur le fichier téléchargé pour commencer à utiliser DHIS 2.</para>
+      <para>L&apos;application DHIS2 Live est la meilleure façon de débuter avec DHIS2. Elle est bien indiquée pour une installation indépendante ou pour des besoins de démonstrations. Il suffit de télécharger l&apos;application à partir de <link xl:href="http://www.dhis2.org/downloads"> ce lien </link>. Une fois le fichier téléchargé, vous pouvez simplement double-cliquer sur le fichier téléchargé pour commencer à utiliser DHIS 2.</para>
       <section>
         <title>Commencer avec une base de données vierge</title>
-        <para>L&apos;application Live est livrée avec une base de données de démonstration identique à celle que vous avez sur le <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://apps.dhis2.org/demo/">site de démonstration en ligne </link> (laquelle est basée sur le SNIS de la Sierra Leone). De ce fait, si vous voulez commencer avec un nouveau système et une base de données vierge et construire votre propre système, vous devez faire ce qui suit :</para>
+        <para>L&apos;application Live est livrée avec une base de données de démonstration identique à celle que vous avez sur le <link xl:href="http://apps.dhis2.org/demo/">site de démonstration en ligne </link> (laquelle est basée sur le SNIS de la Sierra Leone). De ce fait, si vous voulez commencer avec un nouveau système et une base de données vierge et construire votre propre système, vous devez faire ce qui suit :</para>
         <para>1) Arrêtez l&apos;application DHIS2 Live si elle est en cours d&apos;exécution. Faites un clic droit sur l&apos;icône présente sur la barre de tâches et sélectionnez Quitter. L&apos;icône de la barre de tâche est celui qui a le symbole vert en bas à droite de votre écran (sous Windows) et qui affiche &quot;Serveur DHIS 2 en cours d&apos;exécution&quot; si vous passez le pointeur de la souris dessus.</para>
         <para>2) Ouvrez le dossier d&apos;installation de DHIS2 Live et repérez le dossier &quot;conf&quot;.</para>
         <para>3) Dans le dossier conf/ ouvrez le fichier appelé &quot;hibernate&quot; dans un éditeur de texte (notepad ou similaire) et effectuez la modification suivante: recherchez la chaîne &quot;jdbc:h2:./database/dhis2&quot; et remplacez la partie &quot;dhis2&quot; par le nom que vous voulez donner à votre base de données (par exemple dhis2_test).</para>
@@ -45,8 +45,8 @@
     </section>
     <section>
       <title>Travailler directement avec la base de données H2</title>
-      <para>DHIS 2 Live utilise une base de données <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="www.h2database.com/">H2</link>intégrée. Ce qui présente de nombreux avantages - il n&apos;est pas nécessaire d&apos;installer un moteur de base de données distinct comme PostgreSQL ou MySQL, et la sauvegarde peut être faite en copiant simplement le fichier. L&apos;ensemble de la base réside en  mémoire, ce qui signifie un gain en performance. L&apos;inconvénient est le besoin de RAM. Elle n&apos;est en plus pas indiquée pour des installations en mode serveur et multi-utilisateurs.</para>
-      <para>En général, il est recommandé de travailler avec la base de données à travers l&apos;interface utilisateur de DHIS2, mais dans certaines situations, il peut être nécessaire de manipuler directement les données. Si la base de données H2 a été téléchargée séparément, elle est livrée avec une interface web. Elle peut aussi être manipulée en utilisant <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://openoffice.org">OpenOffice.org</link>, en utilisant la procédure suivante. Ceci suppose que dhis2-live se trouve dans le dossier racine de l&apos;utilisateur Linux actuel (représenté par le symbole ~). Veuillez remplacer le chemin absolu par celui de votre installation de dhis2-live.
+      <para>DHIS 2 Live utilise une base de données <link xl:href="www.h2database.com/">H2</link>intégrée. Ce qui présente de nombreux avantages - il n&apos;est pas nécessaire d&apos;installer un moteur de base de données distinct comme PostgreSQL ou MySQL, et la sauvegarde peut être faite en copiant simplement le fichier. L&apos;ensemble de la base réside en  mémoire, ce qui signifie un gain en performance. L&apos;inconvénient est le besoin de RAM. Elle n&apos;est en plus pas indiquée pour des installations en mode serveur et multi-utilisateurs.</para>
+      <para>En général, il est recommandé de travailler avec la base de données à travers l&apos;interface utilisateur de DHIS2, mais dans certaines situations, il peut être nécessaire de manipuler directement les données. Si la base de données H2 a été téléchargée séparément, elle est livrée avec une interface web. Elle peut aussi être manipulée en utilisant <link xl:href="http://openoffice.org">OpenOffice.org</link>, en utilisant la procédure suivante. Ceci suppose que dhis2-live se trouve dans le dossier racine de l&apos;utilisateur Linux actuel (représenté par le symbole ~). Veuillez remplacer le chemin absolu par celui de votre installation de dhis2-live.
         <itemizedlist>
           <listitem>
             <para>Démarrez l&apos;application de traitement de texte OpenOffice et sélectionnez Outils - Options, puis Java - Class Path ... et cliquez sur Ajouter Archive ...</para>
@@ -63,17 +63,17 @@
           <listitem>
             <para>Le nom d&apos;utilisateur est sa, le mot de passe n&apos;est pas nécessaire. Enfin, sélectionner un nom et un dossier pour le fichier .odb.</para>
           </listitem>
-        </itemizedlist><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oooforum.org/forum/viewtopic.phtml?t=97522">Plus d&apos;astuces</link></para>
+        </itemizedlist><link xl:href="http://www.oooforum.org/forum/viewtopic.phtml?t=97522">Plus d&apos;astuces</link></para>
     </section>
     <section>
       <title>Télécharger et installer la version serveur</title>
-      <para>La dernière version stable du serveur peut être téléchargée à partir de ce <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://stable.dhis2.org/">site web</link>. Pour plus d&apos;informations sur la façon de l&apos;installer veuillez consulter le chapitre d&apos;installation présent dans le manuel de mise en oeuvre.</para>
+      <para>La dernière version stable du serveur peut être téléchargée à partir de ce <link xl:href="http://stable.dhis2.org/">site web</link>. Pour plus d&apos;informations sur la façon de l&apos;installer veuillez consulter le chapitre d&apos;installation présent dans le manuel de mise en oeuvre.</para>
     </section>
   </section>
   <section xml:id="mod2_2">
     <title>Connexion à DHIS 2</title>
     <para>Que vous ayiez installé la version serveur ou la version Live, vous devrez utiliser un navigateur Web pour vous connecter à l&apos;application. DHIS2 devrait être compatible avec la plupart des navigateurs web modernes, mais vous devrez tout de même vous assurer que Java Script y est bien activé.</para>
-    <para>Pour vous connecter à l&apos;application, veuillez saisir <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</link> si vous utilisez l&apos;application DHIS2 Live, ou remplacer localhost par le nom ou l&apos;adresse IP du serveur sur lequel la version du serveur est installée.</para>
+    <para>Pour vous connecter à l&apos;application, veuillez saisir <link xl:href="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</link> si vous utilisez l&apos;application DHIS2 Live, ou remplacer localhost par le nom ou l&apos;adresse IP du serveur sur lequel la version du serveur est installée.</para>
     <para>Une fois que vous avez démarré DHIS2, en ligne ou hors ligne, la page qui s&apos;affiche vous demande de saisir les &apos;nom d&apos;utilisateur&apos; et &apos;mot de passe&apos; que vous avez créés. Après avoir saisi ces informations requises, cliquez sur le bouton d&apos;ouverture de session pour vous connecter à l&apos;application. Notez que le nom d&apos;utilisateur et le mot de passe par défaut sont &quot;admin&quot; et  &quot;district&quot;. Ils doivent être changés dès votre première connexion au système.</para>
   </section>
   <section xml:id="users">

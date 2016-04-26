@@ -92,8 +92,8 @@ sudo locale-gen nb_NO.UTF-8</screen>
     </section>
     <section>
       <title>PostgreSQL installation</title>
-      <para>Install PostgreSQL 9.3 by invoking:</para>
-      <screen>sudo apt-get install postgresql-9.3</screen>
+      <para>Install PostgreSQL 9.4 (or later) by invoking:</para>
+      <screen>sudo apt-get install postgresql-9.4</screen>
       <para>Switch to the postgres user by invoking:</para>
       <screen>sudo su postgres</screen>
       <para>Create a non-privileged user called <emphasis role="italic">dhis</emphasis> by
@@ -104,6 +104,13 @@ sudo locale-gen nb_NO.UTF-8</screen>
       <para>Return to your session by invoking <code>exit</code> You now have a PostgreSQL user
         called <emphasis role="italic">dhis</emphasis> and a database called <emphasis role="italic"
           >dhis2</emphasis>.</para>
+    </section>
+    <section>
+      <title>PostGIS installation</title>
+      <para>In order to take advantage of the GIS clustering functionality introduced in DHIS 2.23
+        you must install the PostGIS extender on the server. After installing the extender, PostGIS
+        will be installed in the database automatically when DHIS 2 is started.</para>
+      <screen>sudo apt-get install postgresql-9.4 postgresql-9.4-postgis-2.2 postgresql-contrib-9.4</screen>
     </section>
     <section>
       <title>PostgreSQL performance tuning</title>
@@ -311,7 +318,7 @@ export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
     </itemizedlist>
     <section>
       <title>Basic setup for nginx</title>
-      <para>We recommend using <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.nginx.org">nginx</link>  as reverse proxy due to its low memory
+      <para>We recommend using <link xl:href="http://www.nginx.org">nginx</link>  as reverse proxy due to its low memory
         footprint and ease of use. To install invoke the following:</para>
       <screen>sudo apt-get install nginx</screen>
       <para>nginx can now be started, reloaded and stopped with the following commands:</para>
@@ -377,7 +384,7 @@ sudo /etc/init.d/nginx stop</screen></para>
         using a trusted certificate. This can be achieved through SSL which is an cryptographic
         communication protocol running on top of TCP/IP. First, install the required <emphasis role="italic">openssl</emphasis> library:</para>
       <screen>sudo apt-get install openssl</screen>
-      <para>To configure nginx to use SSL you will need a proper SSL certificate from an SSL provider. The cost of a certificate varies a lot depending on encryption strength. An affordable certificate from <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.rapidsslonline.com">Rapid SSL Online</link> should serve most purposes. To generate the CSR (certificate signing request) you can invoke the  command below. When you are prompted for the <emphasis role="italic">Common Name</emphasis>, enter the fully qualified domain name for the site you are securing.</para>
+      <para>To configure nginx to use SSL you will need a proper SSL certificate from an SSL provider. The cost of a certificate varies a lot depending on encryption strength. An affordable certificate from <link xl:href="http://www.rapidsslonline.com">Rapid SSL Online</link> should serve most purposes. To generate the CSR (certificate signing request) you can invoke the  command below. When you are prompted for the <emphasis role="italic">Common Name</emphasis>, enter the fully qualified domain name for the site you are securing.</para>
       <screen>openssl req -new -newkey rsa:2048 -nodes -keyout server.key -out server.csr</screen>
       <para>When you have received your certificate files (.pem or .crt) you will need to place it
         together with the generated server.key file in a location which is reachable by nginx. A
@@ -768,7 +775,7 @@ ldap.search.filter = (cn={0})</screen>
             of Java from the Oracle Web site. Scroll down to the "Java Cryptography Extension (JCE)
             Unlimited Strength Jurisdiction Policy Files" section. It is important that the version
             of the files match the version of Java on your server.</para>
-          <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oracle.com/technetwork/java/javase/downloads/index.htm"
+          <para><link xl:href="http://www.oracle.com/technetwork/java/javase/downloads/index.htm"
               >http://www.oracle.com/technetwork/java/javase/downloads/index.html</link></para>
         </listitem>
         <listitem>

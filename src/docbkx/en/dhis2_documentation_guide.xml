@@ -13,7 +13,7 @@
   <title>DHIS2 Documentation Guide</title>
   <section xml:id="docs_1">
     <title>DHIS 2 Documentation System Overview</title>
-    <para remap="">DHIS 2 is a web-based aggregate information management system under very active development. Given the modular nature of the system, its wide user base and distributed, global nature of development, a comprehensive documentation system is required. An in-depth discussion of the need for documentation of DHIS 2 has been considered previously.<citation>Store2007</citation>  <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.docbook.org">DocBook</link> is a comprehensive XML based system for creation of books, papers and other technical documents maintained by <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href=" http://www.oasis-open.org/">OASIS</link> . </para>
+    <para remap="">DHIS 2 is a web-based aggregate information management system under very active development. Given the modular nature of the system, its wide user base and distributed, global nature of development, a comprehensive documentation system is required. An in-depth discussion of the need for documentation of DHIS 2 has been considered previously.<citation>Store2007</citation>  <link xl:href="http://www.docbook.org">DocBook</link> is a comprehensive XML based system for creation of books, papers and other technical documents maintained by <link xl:href=" http://www.oasis-open.org/">OASIS</link> . </para>
   </section>
   <section xml:id="docs_2">
     <title>Introduction</title>
@@ -46,10 +46,10 @@ different formats, such as HTML and PDF. It is therefore important that the docu
   </section>
   <section xml:id="docs_3">
     <title>Getting started with GitHub</title>
-    <para>Currently, the documentation system is part of the source code housed at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/dhis2/dhis2-docbook-docs">GitHub</link>. GitHub is a collaborative platform that enables multiple people to work on software projects collaboratively. In order for this to be possible, a version control system is necessary in order to manage all the changes that multiple users may make. GitHub uses the <emphasis>git</emphasis> source control system. While it is beyond the scope of this document to describe the functionality of <emphasis>git</emphasis>, users who wish to create documentation will need to gain at
+    <para>Currently, the documentation system is part of the source code housed at <link xl:href="https://github.com/dhis2/dhis2-docbook-docs">GitHub</link>. GitHub is a collaborative platform that enables multiple people to work on software projects collaboratively. In order for this to be possible, a version control system is necessary in order to manage all the changes that multiple users may make. GitHub uses the <emphasis>git</emphasis> source control system. While it is beyond the scope of this document to describe the functionality of <emphasis>git</emphasis>, users who wish to create documentation will need to gain at
 least a basic understanding of how the system works. A basic guide is provided in the next section. </para>
     <para> In order to start adding or editing the documentation, you should first perform a
-checkout of the source code. If you do not already have a GitHub account, you will need to get one. This can be done <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/">here</link>. Once you register with GitHub, you will need to request access to the<emphasis> dhis2-documenters</emphasis> group. Login to GitHub, and then file an issue  <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/dhis2/dhis2docs/issues/new">here</link>. Your request will need to be approved by the group administrators. Once you have been granted access to the group, you can commit changes to the documentation branch and send and receive notifications if you wish. </para>
+checkout of the source code. If you do not already have a GitHub account, you will need to get one. This can be done <link xl:href="https://github.com/">here</link>. Once you register with GitHub, you will need to request access to the<emphasis> dhis2-documenters</emphasis> group. Login to GitHub, and then file an issue  <link xl:href="https://github.com/dhis2/dhis2docs/issues/new">here</link>. Your request will need to be approved by the group administrators. Once you have been granted access to the group, you can commit changes to the documentation branch and send and receive notifications if you wish. </para>
   </section>
   <section xml:id="docs_4">
     <title>Getting the document source</title>
@@ -65,7 +65,7 @@ checkout of the source code. If you do not already have a GitHub account, you wi
         xlink:href="http://git-scm.com/download/win">this page</link>If you are using Linux, you
       will need to install git on your system through your package manager, or from source code. A
       very thorough reference for how git is used is available in a number of different formats
-        <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://git-scm.com/book"
+        <link xl:href="http://git-scm.com/book"
         >here</link>.</para>
     <para>Once you have installed git on your system, you will need to download the document source.
 Just follow this procedure:</para>
@@ -157,24 +157,24 @@ only want to include a portion of the chapter. If you want to use a section of t
   <section xml:id="docs_8">
     <title>Handling multilingual documentation</title>
     <para>The directory structure of the documentation has been created in order to facilitate the
-creation of documents in any language. If you want to create a new set of documents in a given language, simply create a new directory in the <filename>dhis2-docbook-docs/src/docbkx/</filename> directory. Be sure to use the ISO 639-1 code for the language you are going to create documents in. A complete list of these codes can be found <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://en.wikipedia.org/wiki/ISO_639-1">here</link>. Add a new folder for
+creation of documents in any language. If you want to create a new set of documents in a given language, simply create a new directory in the <filename>dhis2-docbook-docs/src/docbkx/</filename> directory. Be sure to use the ISO 639-1 code for the language you are going to create documents in. A complete list of these codes can be found <link xl:href="http://en.wikipedia.org/wiki/ISO_639-1">here</link>. Add a new folder for
 images in a sub-directory , replacing XX with the actual ISO 639-1 code for the language you will create documents in. You will also need to edit the <filename>pom.xml </filename>file in the main dhis2docs directory. If you are unsure of what changes need to be made to this file, ask on the mailing list first, as this file controls the generation of all the documentation. </para>
   </section>
   <section xml:id="docs_9">
     <title>Building the documentation</title>
     <para>One of the key advantages of the DocBook format is that the source documentation can be
 transformed into a wide variety of formats, including HTML, chunked HTML, XHTML, PDF, and a number of other formats. There are a wide variety of tools that are capable of performing this task. Basically the XML source of the document is transformed using the standard DocBook XSL style sheets into the desired format. The complete list of tools capable of transforming DocBook will not be listed here, but a few examples are provided below. </para>
-    <para>Latest builds of the documentation are available from the <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.dhis2.org/documentation">DHIS2 website</link>. The latest snapshot builds are available through the continuous integration server located <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://apps.dhis2.org/ci/job/dhis-documentation/lastSuccessfulBuild/artifact/*zip*/archive.zip">here</link>.</para>
+    <para>Latest builds of the documentation are available from the <link xl:href="http://www.dhis2.org/documentation">DHIS2 website</link>. The latest snapshot builds are available through the continuous integration server located <link xl:href="http://apps.dhis2.org/ci/job/dhis-documentation/lastSuccessfulBuild/artifact/*zip*/archive.zip">here</link>.</para>
     <section>
       <title>Building the documentation with Apache maven</title>
       <para>In order to transform the documentation source files to different formats, such as HTML
-or PDF, you will need to install the Apache Maven program. You can get a copy <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://maven.apache.org/download.html">here</link> or by installing it through your package manager if you are using Linux. Just execute the command <command>mvn clean package</command> on Windows or on Linux from the <filename>/dhis2-docbook-docs </filename>directory. Maven will start to download the necessary components to transform the
+or PDF, you will need to install the Apache Maven program. You can get a copy <link xl:href="http://maven.apache.org/download.html">here</link> or by installing it through your package manager if you are using Linux. Just execute the command <command>mvn clean package</command> on Windows or on Linux from the <filename>/dhis2-docbook-docs </filename>directory. Maven will start to download the necessary components to transform the
 documents into HMTL,PDF and RTF. Once the process has completed (be patient the first time, as there are a number of components that must be downloaded), all of the target document types will be generated in the /<filename>dhis2docs/target/docbkx</filename> directory in respective sub-directories.</para>
     </section>
     <section>
       <title>Building with xmlto</title>
       <para><command>xmlto</command> is a useful utility available on Linux platforms for
-transforming DocBook documents into many different formats. More information on the package can be found <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://cyberelk.net/tim/software/xmlto/">here</link>. If you do not want to use Apache Maven for some reason, you can install <command>xmlto</command> through your package manager. Once you have installed <command>xmlto</command> you can just execute 
+transforming DocBook documents into many different formats. More information on the package can be found <link xl:href="http://cyberelk.net/tim/software/xmlto/">here</link>. If you do not want to use Apache Maven for some reason, you can install <command>xmlto</command> through your package manager. Once you have installed <command>xmlto</command> you can just execute 
 <cmdsynopsis><command>xmlto</command><arg>htmlfile_to_transform</arg></cmdsynopsis> where the <replaceable>file_to_transform</replaceable> parameter is the name of the file you wish to transform. There are many other formats available, such as PDF, PS, JavaHelp and others. </para>
     </section>
   </section>
