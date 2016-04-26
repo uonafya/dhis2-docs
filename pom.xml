@@ -39,6 +39,29 @@
 	</properties>
 	<build>
 		<plugins>
+		      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.1.1</version>
+        <executions>
+          <execution>
+            <id>enforce</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>[3.3.1,)</version>
+                </requireMavenVersion>
+                <requireJavaVersion>
+                  <version>[1.6,)</version>
+                </requireJavaVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+        </plugin>
 			<!--This section dynamically builds the build.properties which is replaced inside the document preface -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
