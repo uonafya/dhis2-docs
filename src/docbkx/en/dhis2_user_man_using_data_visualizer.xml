@@ -10,14 +10,16 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>Using Data Visualizer</title>
+  <title>Using the Data
+    <?oxy_comment_start author="CPersson" timestamp="20160421T142956+0200" comment="Review all graphics before commit to master"?>Visualizer<?oxy_comment_end?>
+    app</title>
   <section xml:id="dvIntro">
     <title>Data Visualizer overview</title>
     <screenshot>
-      <title>Data visualizer module displaying a column chart.</title>
+      <info><title>Data visualizer module displaying a column chart.</title></info>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" align="center"
+          <imagedata width="100%" align="center"
             fileref="resources/images/visualizer/column_chart.png" format="PNG"/>
         </imageobject>
       </mediaobject>
@@ -31,9 +33,8 @@
       Internet connections and generates charts in the web browser. Little data is transferred over
       the Internet.</para>
   </section>
-  <section xml:id="dvChartTypes">
+  <section>
     <title>Create a chart</title>
-    <para>The visualizer module provides nine different chart types, each with different characteristics. You can select the type of your chart by clicking on one of the icons  in  top left bar titled &quot;Chart type&quot;.</para>
     <orderedlist>
       <listitem>
         <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Data
@@ -64,7 +65,7 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
       </listitem>
     </orderedlist>
   </section>
-  <section xml:id="dvChartTypes_mod">
+  <section xml:id="dvChartTypes">
     <title>Select a chart type</title>
     <para>The <emphasis role="bold">Data Visualizer</emphasis> app has nine different chart types,
       each with different characteristics. To select a chart type:</para>
@@ -205,8 +206,7 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
     <para><screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata width="40%" align="center" scale="100"
-              fileref="resources/images/visualizer/chart_layout.png"/>
+            <imagedata width="80%" align="center" scale="100" fileref="resources/images/visualizer/chart_layout.png"/>
           </imageobject>
         </mediaobject>
       </screenshot></para>
@@ -225,11 +225,10 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
     </orderedlist>
     <para>The visualization module lets you use these dimensions completely flexible in terms of appearing as series, categories and filter. Understanding these concepts is most easily done by looking at the screenshot from the opening page below: </para>
     <screenshot>
-      <title>Example chart illustrating the concepts of series, categories and filter.</title>
+      <info><title>Example chart illustrating the concepts of series, categories and filter.</title></info>
       <mediaobject>
         <imageobject>
-          <imagedata width="60%" align="center"
-            fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
+          <imagedata width="80%" align="center" fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -285,8 +284,7 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="50%" align="center" scale="100"
-            fileref="resources/images/visualizer/chart_options.png"/>
+          <imagedata width="80%" align="center" scale="100" fileref="resources/images/visualizer/chart_options.png"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -362,11 +360,9 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
     <para>For advanced users, two additional options are available under &quot;Advanced&quot;. JXRML will produce a template of a Jasper Report which can be further customized based on your exact needs and used as the basis for a standard report in DHIS2. The &quot;Raw data SQL&quot; will provide the actual SQL statement used to generate the data visualization. This could then be used as a data source in a Jasper report, or as the basis for an SQL view</para>
   </section>
   <section xml:id="dvFavorites">
-    <title>Downloading chart as image or PDF</title>
-    <para>After you have rendered a chart you can download it to your local computer as and image or pdf by clicking on &quot;Download&quot; on the top centre menu. The file will be automatically downloaded to your computer - for instance can you now embed the image file into a text document as part of a report. You can also download the data source behind the chart in json, xml, csv or Microsoft Excel format.</para>
-    <para>For advanced users, two additional options are available under &quot;Advanced&quot;. JXRML will produce a template of a Jasper Report which can be further customized based on your exact needs and used as the basis for a standard report in DHIS2. The &quot;Raw data SQL&quot; will provide the actual SQL statement used to generate the data visualization. This could then be used as a data source in a Jasper report, or as the basis for an SQL view</para>
+    <title>Manage chart favorites</title>
     <screenshot>
-      <title>Data visualizer module displaying a column chart.</title>
+      <info><title>Data visualizer module displaying a column chart.</title></info>
       <mediaobject>
         <imageobject>
           <imagedata width="50%" fileref="resources/images/visualizer/chart_favorites.png"
@@ -464,7 +460,7 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
         analysis-related resources in DHIS 2, you can share a data interpretation. An interpretation
         is a link to the relevant resource together with a text expressing some insight about the
         data. </para>
-      <para role="">To create an interpretation of a map and share it with all users of the
+      <para>To create an interpretation of a map and share it with all users of the
         system:</para>
       <orderedlist>
         <listitem>
@@ -591,8 +587,10 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
           <para>Your current chart opens as a pivot table.</para>
         </listitem>
       </orderedlist>
-      <screenshot>        
-      <mediaobject>
+      <screenshot>
+        <info><title>Analysis
+          <?oxy_comment_start author="CPersson" timestamp="20160421T155736+0200" comment="Consider removing screen shot."?>integration<?oxy_comment_end?></title></info>
+        <mediaobject>
           <imageobject>
             <imagedata align="center" scale="100"
               fileref="resources/images/visualizer/chart_integration.png" format="PNG"/>
