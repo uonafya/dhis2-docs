@@ -21,5 +21,13 @@
 
             </formalpara>
         </legalnotice>
-    <xi:include href="../../../build.properties"></xi:include>
+    <xi:include href="../../../build.properties">
+        <!-- This should get built by mvn when building the docs, but inlcuding this in case. -->
+    <xi:fallback>
+        <revhistory><revision>
+            <revnumber>UNKNOWN</revnumber>
+            <date><?dbtimestamp format="Y-m-d H:M:S"?></date>
+            <revremark>UNKNOWN</revremark></revision>
+        </revhistory>
+  </xi:fallback></xi:include>
 </info>
