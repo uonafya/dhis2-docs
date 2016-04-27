@@ -1,125 +1,773 @@
 <?xml version='1.0' encoding='UTF-8'?>
       <chapter version="5.0"
-         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
-          xmlns="http://docbook.org/ns/docbook"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns:xs="http://www.w3.org/2001/XMLSchema"
-         xmlns:xl="http://www.w3.org/1999/xlink"
-         xmlns:xi="http://www.w3.org/2001/XInclude"
-         xmlns:xhtml="http://www.w3.org/1999/xhtml"
-         xmlns:svg="http://www.w3.org/2000/svg"
-         xmlns:mth="http://www.w3.org/1998/Math/MathML"
-         xmlns:db="http://docbook.org/ns/docbook">
+  xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+  xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+  xmlns:db="http://docbook.org/ns/docbook">
   <title>Using Event Visualizer</title>
   <section>
     <title>Event Visualizer overview</title>
-    <para>The event visualizer app enables chart analysis of events.</para>
+    <para>With the Event Visualizer app, you can select events to analyse in a chart.</para>
+  </section>
+  <section>
+    <title>Create a chart</title>
+    <orderedlist>
+      <listitem>
+        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Event
+            Visualizer</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Select a chart type.</para>
+      </listitem>
+      <listitem>
+        <para>In the menu to the left, select the meta data you want to analyse.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Layout</emphasis> and arrange the dimensions.</para>
+        <para>You can keep the default selection if you want.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Select a chart type</title>
+    <para>The <emphasis role="bold">Event Visualizer</emphasis> app has eight different chart types,
+      each with different characteristics. To select a chart type:</para>
+    <orderedlist>
+      <listitem>
+        <para>In <emphasis role="bold">Chart type</emphasis>, click the chart type you need.</para>
+        <table frame="all">
+          <title>Chart types</title>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.03*"/>
+            <thead>
+              <row>
+                <entry>
+                  <para>Chart type</para>
+                </entry>
+                <entry>
+                  <para>Description</para>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>Column chart</para>
+                </entry>
+                <entry>
+                  <para>Displays information as vertical rectangular columns with lengths
+                    proportional to the values they represent.</para>
+                  <para>Useful when you want to, for example, compare performance of different
+                    districts.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Stacked column chart</para>
+                </entry>
+                <entry>
+                  <para>Displays information as vertical rectangular columns, where bars
+                    representing multiple categories are stacked on top of each other.</para>
+                  <para>Useful when you want to, for example, display trends or sums of related data
+                    elements.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Bar chart</para>
+                </entry>
+                <entry>
+                  <para>Same as column chart, only with horizontal bars.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Stacked bar chart</para>
+                </entry>
+                <entry>
+                  <para>Same as stacked column chart, only with horizontal bars.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Line chart</para>
+                </entry>
+                <entry>
+                  <para>Displays information as a series of points connected by straight lines. Also
+                    referred to as time series.</para>
+                  <para>Useful when you want to, for example, visualize trends in indicator data
+                    over multiple time periods.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Area chart</para>
+                </entry>
+                <entry>
+                  <para>Is based on line chart, with the space between the axis and the line filled
+                    with colors and the lines stacked on top of each other.</para>
+                  <para>Useful when you want to compare the trends of related indicators.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Pie chart</para>
+                </entry>
+                <entry>
+                  <para>Circular chart divided into sectors (or slices).</para>
+                  <para>Useful when you want to, for example, visualize the proportion of data for
+                    individual data elements compared to the total sum of all data elements in the
+                    chart.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Radar chart</para>
+                </entry>
+                <entry>
+                  <para>Displays data on axes starting from the same point. Also known as spider
+                    chart.</para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Charts with aggregated
+      values/<?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>Select dimension
+      items<?oxy_custom_end?></title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/event_visualizer/event_visualizer.png" format="PNG"
+            align="center" width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+    <para>An event report is always based on a program. You can do analysis based on a range of
+      dimensions. Each dimension can have a corresponding filter. Dimensions can be selected from
+      the left-side menu and includes the following:</para>
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">Data elements</emphasis>: Start by selecting the program and
+          program stage for the event report. The data elements associated with the selected program
+          will be listed under available items. Each data element acts as a dimension, and can be
+          selected by double-clicking on it. After selecting a data element, it will be visible
+          under "selected data items". Here you can specify a filter for each data element, with
+          operators such as "greater than", "in" or "equal" together with a filter value.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Periods</emphasis>: For the period dimension you have three
+          options: relative periods, fixed periods and start/end dates. Relative periods can e.g. be
+          "last 12 months", and has the advantage that it keeps the data in the report up to date as
+          time goes. Fixed periods can e.g. be "January 2014". You can switch to start/end dates by
+          selecting from the drop-down menu under the periods tab, which lets you specify flexible
+          dates for the time span in the report.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Organisation units</emphasis>: The organisation unit dimension
+          lets you select any org unit from the hierarchy. You can use the org unit mode selector to
+          select org units explicitly, by org unit hierarchy levels and by org unit groups.</para>
+      </listitem>
+    </itemizedlist>
+    <para>Note that data elements of continuous value types (real numbers/decimal numbers) can only
+      be used as filters, and will automatically be positioned as filters in the layout dialog. The
+      reason for this is that continuous number cannot be grouped into sensible ranges and used on
+      columns and rows.</para>
+    <?oxy_custom_end?>
+  </section>
+  <section>
+    <title>Select series, category and filter</title>
+    <para>You can define which dimension of the data you want to appear as series, category and
+      filter. Each data element appears as individual dimensions and can be placed on any of the
+      axes. Series and category panels can only have one dimension at the time.</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Layout</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Drag and drop the dimensions to the appropriate space. Only one dimension can be in
+          each section.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Change the display of your chart</title>
+    <para>You can customize the display of an event
+      report.<?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?> The following
+      options apply
+      t<?oxy_comment_start author="CPersson" timestamp="20160427T155714+0200" comment="Are there any other type?"?>o
+      aggregated values-type reports<?oxy_comment_end?> only:</para>
+    <?oxy_custom_end?>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Options</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Set the options as required.</para>
+        <table frame="all">
+          <title>Chart options</title>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.5*"/>
+            <thead>
+              <row>
+                <entry>Option</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show values</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays values as numbers on top of each series.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show trend lines</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays the trend line which visualizes how your data evolves over time.
+                    For example if performance is improving or deteriorating. Useful when periods
+                    are selected as category.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Hide empty category items</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Hides the category items with no data from the chart.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Hide n/a data</emphasis></para>
+                </entry>
+                <entry>
+                  <?oxy_comment_start author="CPersson" timestamp="20160427T154929+0200" comment="Add description."?>
+                  <?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="5"?>
+                  <para>-</para>
+                  <?oxy_comment_end?>
+                  <?oxy_custom_end mid="5"?>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Include only completed events</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Includes only completed events in the aggregation process. This is useful
+                    when you want for example to exclude partial events in indicator
+                    calculations.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Target value /
+                      <?oxy_comment_start author="CPersson" timestamp="20160422T121457+0200" comment="Suggest to dev to remove &quot;:&quot; in UI."?>title<?oxy_comment_end?>:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays a horizontal line at the given domain value. Useful for example
+                    when you want to compare your performance to the current target.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Base value / title:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays a horizontal line at the given domain value. Useful for example
+                    when you want to visualize how your performance has evolved since the beginning
+                    of a process.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Sort order:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Allows you to sort the values on your chart from either low to high or high
+                    to low.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Output type:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Defines the output type. The output types are  <emphasis role="bold"
+                      >Event</emphasis>, <emphasis role="bold"
+                      ><?oxy_comment_start author="CPersson" timestamp="20160427T163926+0200" comment="In GUI: &quot;Enrollment&quot;
+
+US or UK spelling? http://grammarist.com/spelling/enrol-enroll/
+"?>Enrollment<?oxy_comment_end?></emphasis>
+                      and<emphasis role="bold">Tracked entity instance</emphasis>.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Range axis min/max:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Defines the maximum and minimum value which will be visible on the range
+                    axis.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Range axis tick steps:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Defines the number of ticks which will be visible on the range axis.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Range axis decimals:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Defines the number of decimals which will be used for range axis
+                    values.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Range axis title:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Type a title here to display a label next to the range axis (also referred
+                    to as the Y axis). Useful when you want to give context information to the
+                    chart, for example about the unit of measure.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Domain axis title:</emphasis></para>
+                </entry>
+                <entry>
+                  <para> Type a title here to display a label below the domain axis (also referred
+                    to as the X axis). Useful when you want to give context information to the
+                    chart, for example about the period type.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Hide chart legend</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Hides the legend and leaves more room for the chart itself.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Hide chart title</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Hides the title of your chart.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Chart title:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Type any title here to display it above the chart.</para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Download a chart as an image or a PDF</title>
+    <para>After you have created a chart you can download it to your local computer as an image or
+      PDF file.</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Download</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Under <emphasis role="bold">Graphics</emphasis>, click <emphasis role="bold">PNG
+            (.png)</emphasis> or <emphasis role="bold">PDF (.pdf)</emphasis>.</para>
+        <para>The file is automatically downloaded to your computer. Now you can for example embed
+          the image file into a text document as part of a report.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Download chart data source</title>
+    <para>You can download the data source behind a chart in HTML, JSON, XML, Microsoft Excel or CSV
+      <?oxy_comment_start author="CPersson" timestamp="20160427T160423+0200" comment="At next revision, check if download feature has changed to be the same as in Data Visualizer.
+If so, add &quot; with different identification schemes (ID, Code, and Name)&quot;."?>formats<?oxy_comment_end?>.
+      The data document uses identifiers of the dimension items and opens in a new browser window to
+      display the URL of the request to the Web API in the address bar. This is useful for
+      developers of apps and other client modules based on the DHIS 2 Web API or for those who
+      require a plan data source, for instance for import into statistical packages.</para>
+    <para>To download plain data source formats:</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Download</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Under <emphasis role="bold">Plain data source</emphasis>, click the format you want to
+          download.</para>
+        <para>
+          <table frame="all">
+            <title>Available formats</title>
+            <tgroup cols="3">
+              <colspec colname="newCol1" colnum="1" colwidth="1*"/>
+              <colspec colname="c1" colnum="2" colwidth="1.83*"/>
+              <colspec colname="c2" colnum="3" colwidth="2.6*"/>
+              <thead>
+                <row>
+                  <entry>
+                    <para>Format</para>
+                  </entry>
+                  <entry>
+                    <para>Action</para>
+                  </entry>
+                  <entry>
+                    <para>Description</para>
+                  </entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>
+                    <para>HTML</para>
+                  </entry>
+                  <entry>
+                    <para>Click <emphasis role="bold">HTML</emphasis></para>
+                  </entry>
+                  <entry>
+                    <?oxy_comment_start author="CPersson" timestamp="20160427T160529+0200" comment="Add description."?>
+                    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="10"?>
+                    <para>-</para>
+                    <?oxy_comment_end?>
+                    <?oxy_custom_end mid="10"?>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>JSON</para>
+                  </entry>
+                  <entry>
+                    <para>Click <emphasis role="bold">JSON</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Downloads JSON format based on ID property. </para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>XML</para>
+                  </entry>
+                  <entry>
+                    <para>Click <emphasis role="bold">XML</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Downloads XML format based on ID property.</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>Microsoft Excel</para>
+                  </entry>
+                  <entry>
+                    <para>Click <emphasis role="bold">Microsoft Excel</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Downloads Microsoft Excel format based on ID property.</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>CSV</para>
+                  </entry>
+                  <entry>Click <emphasis role="bold">CSV</emphasis></entry>
+                  <entry>
+                    <para>Downloads CSV format based on ID property.</para>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Manage chart favorites</title>
+    <para>Saving your charts as favorites makes it easy to restore them later. It also gives you the
+      opportunity to share them with other users as an interpretation or display them on the
+      dashboard. </para>
     <section>
-      <title>Charts with aggregated values</title>
-      <para>An event report is always based on a program. You can do analysis based on a range of
-        dimensions. Each dimension can have a corresponding filter. Dimensions can be selected from
-        the left-side menu and includes the following:</para>
-      <itemizedlist>
+      <title>Save a chart as a favorite </title>
+      <orderedlist>
         <listitem>
-          <para><emphasis role="bold">Data elements</emphasis>: Start by selecting the program and
-            program stage for the event report. The data elements associated with the selected
-            program will be listed under available items. Each data element acts as a dimension, and
-            can be selected by double-clicking on it. After selecting a data element, it will be
-            visible under "selected data items". Here you can specify a filter for each data
-            element, with operators such as "greater than", "in" or "equal" together with a filter
-            value.</para>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Periods</emphasis>: For the period dimension you have three
-            options: relative periods, fixed periods and start/end dates. Relative periods can e.g.
-            be "last 12 months", and has the advantage that it keeps the data in the report up to
-            date as time goes. Fixed periods can e.g. be "January 2014". You can swith to start/end
-            dates by selecting from the drop-down menu under the periods tab, which lets you specify
-            flexible dates for the time span in the report.</para>
+          <para>Click <emphasis role="bold">Add new</emphasis>.</para>
+          <para>The <emphasis role="bold">Create new favorite</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Organisation units</emphasis>: The organisation unit dimension
-            lets you select any org unit from the hierarchy. You can use the org unit mode selector
-            to select org units explicitly, by org unit hierarchy levels and by org unit
-            groups.</para>
+          <para>In the text box, type the name you want to give your chart.</para>
         </listitem>
-      </itemizedlist>
-      <screenshot>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="resources/images/event_visualizer/event_visualizer.png" format="PNG"
-              align="center" width="80%"/>
-          </imageobject>
-        </mediaobject>
-      </screenshot>
-      <para>By clicking <emphasis role="bold">Layout</emphasis> from the top menu you can control
-        which dimensions should appear as columns, rows and filters in the pivot table. Each data element
-        appears as individual dimensions and can be placed on any of the axes. Note that the series and
-        category panels can only have one dimension at the time.</para>
-      <para>Note that data elements of continuous value types (real numbers/decimal numbers) can only
-        be used as filters, and will automatically be positioned as filters in the layout dialog.
-        The reason for this is that continuous number cannot be grouped into sensible ranges and
-        used on columns and rows.</para>
-      <para>Event charts can be saved as favorites by clicking on "Favorites" in the top menu.
-        Favorites can later be restored by clicking on them in the list of favorites.</para>
-      <para>Event charts can be downloaded in various popular formats by clicking on the "Download"
-        button on the top menu.</para>
+        <listitem>
+          <para>Click <emphasis role="bold">Create</emphasis>.</para>
+        </listitem>
+      </orderedlist>
     </section>
     <section>
-      <title>Options</title>
-      <para>An event report can be customized using a range of options, which can be accessed by
-        clicking on "Options" in the top menu. The following options apply to aggregated values-type
-        reports only:</para>
-      <itemizedlist>
+      <title>Open a favorite</title>
+      <orderedlist>
         <listitem>
-          <para>Show values: Show values as numbers on top of each series.</para>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
         </listitem>
         <listitem>
-        <para>Hide empty category items: Hides category items with no data from the chart.</para>
+          <para>Find the favorite you want to open. You can either use <emphasis role="bold"
+              >Prev</emphasis> and <emphasis role="bold">Next</emphasis> or the search field to find
+            a saved favorite. The list is filtered on every character that you enter.</para>
         </listitem>
         <listitem>
-        <para>Show trend lines: The trend line will visualize how your data evolves over time - e.g.
-          is performance improving or deteriorating. Makes sense when periods are selected as
-          category. </para>
-      </listitem>
-      <listitem>
-        <para>Target line value/title: Displays a horizontal line at the given domain value. Useful e.g. when you want to compare your performance to the current target.</para>
-      </listitem>
-      <listitem>
-        <para>Base line value/title: Displays a horizontal line at the given domain value. Useful e.g. when you want to visualize how your performance has evolved since the beginning of a process.</para>
-      </listitem>
-      <listitem>
-        <para>Range axis max/min: Defines the maximum and minium value which will be visible on the
-          range axis.</para>
-      </listitem>
-      <listitem>
-        <para>Range axis tick steps: Defines the number of ticks which will be visible on the range
-          axis.</para>
-      </listitem>
-      <listitem>
-        <para>Range axis decimals: Defines the number of decimals which will be used for range axis
-          values.</para>
-      </listitem>
-      <listitem>
-        <para>Range axis title: Displays a label next to the range axis (also referred to as the Y
-          axis). Can give context information to the chart, e.g. the unit of measure being
-          used.</para>
-      </listitem>
-      <listitem>
-        <para>Domain axis title: Displays a label below the domain axis (also referred to as the X
-          axis). Can give context information to the chart, e.g. the type of periods being
-          listed.</para>
-      </listitem>
-      <listitem>
-        <para>Hide chart legend: Hides the legend and leaves more room for the chart itself.</para>
-      </listitem>
-      <listitem>
-        <para>Hide chart title: Hides the title of your chart.</para>
-      </listitem>
-      <listitem>
-        <para>Chart title: Type any title you like and it will appear above the chart.</para>
-      </listitem>
-      </itemizedlist>
+          <para>Click the name.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Rename a favorite</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to rename.</para>
+          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+              >Next</emphasis> or the search field to find a saved favorite. </para>
+        </listitem>
+        <listitem>
+          <para>Click the grey rename icon next to the favorite's name.</para>
+          <para>The <emphasis role="bold">Rename favorite</emphasis> dialog box favorite
+            opens.</para>
+        </listitem>
+        <listitem>
+          <para>Type the new name and click <emphasis role="bold">Update</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title><?oxy_comment_start author="Home" timestamp="20160412T140454+0200" comment="Revise title."?>Overwrite<?oxy_comment_end?>
+        a favorite</title>
+      <para>To save the current chart to an existing favorite (overwrite):</para>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to overwrite.</para>
+          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+              >Next</emphasis> or the search field to find a saved favorite. </para>
+        </listitem>
+        <listitem>
+          <para>Click the green overwrite icon next to the favorite's name.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to overwrite the
+            favorite.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>
+    <section xml:id="dvInterpretations">
+      <?oxy_custom_end?>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+      <title>Share a chart
+        <?oxy_comment_start author="CPersson" timestamp="20160427T161216+0200" comment="Feature not available in Event Visualizer, a bug?"?>interpretation<?oxy_comment_end?></title>
+      <?oxy_custom_end?>
+      <?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>
+      <para role="">For
+        <?oxy_custom_end?><?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>certain<?oxy_custom_end?><?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>
+        analysis-related resources in DHIS 2, you<?oxy_custom_end?>
+        <?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>can share a data
+        interpretation. An interpretation is a link to the relevant resource together with a text
+        expressing some insight about the data. </para>
+      <para role="">To create an interpretation of a chart and share it with all users of the
+        system:</para>
+      <orderedlist>
+        <listitem>
+          <para>Open or create a favorite chart.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Share</emphasis> > <emphasis role="bold">Write
+              interpretation</emphasis>.</para>
+          <para>The <emphasis role="bold">Write interpretation</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>In the text field, type a comment, question or interpretation.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Share</emphasis>.</para>
+          <para>The dialog box closes automatically. You can see the interpretation on the <emphasis
+              role="bold">Dashboard</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <?oxy_custom_end?>
+    <section>
+      <title>Modify sharing settings for a favorite</title>
+      <para>After you have created a chart and saved it as a favorite, you can share the favorite
+        with everyone or a user group. To modify the sharing settings:</para>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Find the favorite you want to share.</para>
+            <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+                >Next</emphasis> or the search field to find a saved favorite.</para>
+          </listitem>
+          <listitem>
+            <para> Click the blue share icon next to the favorite's name.</para>
+          </listitem>
+          <listitem>
+            <para>In the text box, enter the name of the user group you want to share your favorite
+              with and click the <emphasis role="bold">+</emphasis> icon.</para>
+            <para>The chosen user group is added to the list of recipients. </para>
+            <para>Repeat the step to add more user groups.</para>
+          </listitem>
+          <listitem>
+            <para>If you want to allow external access, select the corresponding box.</para>
+          </listitem>
+          <listitem>
+            <para>For each user group, choose an
+              <?oxy_comment_start author="Home" timestamp="20160407T150433+0200" comment="Correct term?"?>access
+              setting<?oxy_comment_end?>. The options are:</para>
+            <itemizedlist>
+              <listitem>
+                <para><?oxy_comment_start author="Home" timestamp="20160407T150510+0200" comment="Why is this option only available for Public access?"?>None<?oxy_comment_end?></para>
+              </listitem>
+              <listitem>
+                <para>Can view</para>
+              </listitem>
+              <listitem>
+                <para>Can edit and view</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>Click <emphasis role="bold">Save</emphasis>.</para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section>
+      <title>Delete a favorite</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to delete.</para>
+          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+              >Next</emphasis> or the search field to find a saved favorite. </para>
+        </listitem>
+        <listitem>
+          <para>Click the red delete icon next to the favorite's name.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to delete the
+            favorite.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+  </section>
+  <section>
+    <?oxy_comment_start author="CPersson" timestamp="20160427T161516+0200" comment="Not available in Event Visualizer? Check with Jan.
+
+What about the Share function?
+Favorite link
+API link"?>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="22"?>
+    <title>Embed charts in any web page</title>
+    <?oxy_comment_end?>
+    <?oxy_custom_end mid="22"?>
+    <para>Certain analysis-related resources in DHIS 2, like pivot tables, charts and maps, can be
+      embedded in any web page by using a plug-in. You will find more information about the plug-ins
+      in the Web API chapter in the <emphasis>DHIS2 Developer Manual</emphasis>.</para>
+    <para>To generate a HTML fragment that you can use to display the chart in an external web
+      page:</para>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Share</emphasis> > <emphasis role="bold">Embed in web
+              page</emphasis>.</para>
+          <para>The <emphasis role="bold">Embed in web page</emphasis> window opens.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Select</emphasis> to highlight the HTML fragment.</para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </section>
+  <section>
+    <title>Visualize a chart as a pivot table or a map</title>
+    <para>When you have made a chart you can switch between pivot table, chart and map visualization
+      of your data.</para>
+    <section>
+      <title>Open a chart as a pivot table</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart
+              as table</emphasis>.</para>
+          <para>Your current chart opens as a pivot table.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+      <title><?oxy_comment_start author="CPersson" timestamp="20160427T161758+0200" comment="So you can&apos;t open an event chart as a map? 
+Function not in GUI."?>Open
+        a chart as a map<?oxy_comment_end?></title>
+      <?oxy_custom_end?>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart
+              as map</emphasis>.</para>
+          <para>Your current chart opens as a map.</para>
+        </listitem>
+      </orderedlist>
     </section>
   </section>
 </chapter>

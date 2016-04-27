@@ -6,9 +6,7 @@
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
   xmlns:db="http://docbook.org/ns/docbook">
-  <title>Using the Data
-    <?oxy_comment_start author="CPersson" timestamp="20160421T142956+0200" comment="Review all graphics before commit to master"?>Visualizer<?oxy_comment_end?>
-    app</title>
+  <title>Using the Data Visualizer app</title>
   <section xml:id="dvIntro">
     <title>Data Visualizer
       <?oxy_comment_start author="CPersson" timestamp="20160422T124514+0200" comment="Same concept information as in Pivot table app doc?"?>overview<?oxy_comment_end?></title>
@@ -35,7 +33,7 @@
           chart.</para>
       </listitem>
       <listitem>
-        <para>you can click on the triple left-arrow button on the top centre menu. This collapses
+        <para>You can click on the triple left-arrow button on the top centre menu. This collapses
           the left side menu and gives more space for the chart. You can get the menu back by
           clicking on the same button again.</para>
       </listitem>
@@ -310,9 +308,8 @@ Also standardize which section it belongs in."?>A
           <itemizedlist>
             <listitem>
               <para>Fixed periods: In the <emphasis role="bold">Select period type</emphasis> box,
-                select a
-                <?oxy_comment_start author="CPersson" timestamp="20160426T135003+0200" comment="Clarification needed. Are the drop-down menu for fixed periods and the boxes for relative periods?"?>period<?oxy_comment_end?>
-                type. You can select any number of fixed periods from any period type.</para>
+                select a period type. You can select any number of fixed periods from any period
+                type.</para>
             </listitem>
           </itemizedlist>
           <itemizedlist>
@@ -336,127 +333,151 @@ Also standardize which section it belongs in."?>A
           <para>Click <emphasis role="bold">Organisation units</emphasis>.</para>
         </listitem>
         <listitem>
-          <para>Click the gearbox icon and select a <emphasis role="bold">Selection mode</emphasis>
-            to choose an organisation unit.</para>
+          <para>Click the gearbox icon.</para>
+        </listitem>
+        <listitem>
+          <para>Select a <emphasis role="bold">Selection mode</emphasis> and an organisation
+            unit.</para>
           <para>There are three different selection modes:</para>
-          <itemizedlist>
-            <listitem>
-              <para><emphasis role="bold">Select organisation units</emphasis> (default)</para>
-              <para>This mode lets you select the organisation units you want to appear in the chart
-                from the tree. This mode has three check boxes. Selecting <emphasis role="bold">User
-                  org unit</emphasis>&quot; disables the organisation unit tree and gives you the
-                organisation unit that is related to the current/logged in user instead. This is
-                also useful for administrators as they can create a meaningful &quot;system&quot;
-                favorite with this option checked and all users will find their respective
-                organisation unit when they open it. The the
-                <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>s<?oxy_comment_start author="CPersson" timestamp="20160426T141158+0200" comment="Same concept? What does that mean in this context?"?>ame concept<?oxy_comment_end?>
-                <?oxy_custom_end?>goes for <emphasis role="bold">User sub-units</emphasis> and
-                  <emphasis role="bold">User sub-x2-units</emphasis>. </para>
-            </listitem>
-          </itemizedlist>
-          <itemizedlist>
-            <listitem>
-              <para><emphasis role="bold">Select levels</emphasis></para>
-              <para>This mode lets you select all organisation units at one or more levels. At the
-                same time you also have the option to select parent organisation units in the tree,
-                which makes it easy to select for example, all facilities inside one or more
-                districts.</para>
-            </listitem>
-          </itemizedlist>
-          <itemizedlist>
-            <listitem>
-              <para><emphasis role="bold">Select groups</emphasis></para>
-              <para>This mode lets you select all organisation units inside one or more groups and
-                parent organisation units at the same time.</para>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-        <listitem>
-          <para>C<?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>lick <emphasis
-              role="bold"
-              ><?oxy_comment_start author="CPersson" timestamp="20160426T141515+0200" comment="Do you need to click update to save the changes?
-If not, what is the last step when you select organisation units?"?>Update<?oxy_comment_end?></emphasis><?oxy_custom_end?>.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title><?oxy_comment_start author="CPersson" timestamp="20160426T141726+0200" comment="Do these selctions belong in the org unit section?
-Which ones are they in the GUI?"?>S<?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="14"?>elect<?oxy_comment_end?>
-        organisation unit group s<?oxy_custom_end mid="14"?>ets and data element group sets</title>
-      <para>Dimension tabs listed below &quot;Organisation units&quot; are organisation unit group
-        sets and data element group sets. You are free to add groups from any of these group sets to
-        your chart. Remember to add the group set in either the series, category or filters combo
-        box.</para>
-    </section>
-    <section>
-      <title><?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>S<?oxy_comment_start author="CPersson" timestamp="20160426T142007+0200" comment="Which ones are they?" mid="16"?>elect
-        additional data dimension<?oxy_custom_end?>s<?oxy_comment_end mid="16"?></title>
-      <para>Following the organisation unit group sets and data element group sets additional data
-        dimensions which have been configured to be used in analysis are displayed. Here you can add
-        dimensions such as age, sex, etc. without having to add them in as detailed data element
-        selections. This is useful when you want to separate these categories in your
-        analysis.</para>
-    </section>
-    <section xml:id="dvSeriesCategoryFilter">
-      <title>Select series, category and filter</title>
-      <para>
-        <screenshot>
-          <mediaobject>
-            <imageobject>
-              <imagedata width="60%" align="center" scale="100"
-                fileref="resources/images/visualizer/chart_layout.png"/>
-            </imageobject>
-          </mediaobject>
-        </screenshot>
-      </para>
-      <para>You can define which dimension of the data you want to appear as series, category and
-        filter.</para>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Layout</emphasis>.</para>
-        </listitem>
-        <listitem>
-          <para>Drag and drop the dimensions to the appropriate space. Only one dimension can be in
-            each section.</para>
+          <table frame="all">
+            <title>Selection modes</title>
+            <tgroup cols="2">
+              <colspec colname="c1" colnum="1" colwidth="1.1*"/>
+              <colspec colname="c2" colnum="2" colwidth="1.74*"/>
+              <thead>
+                <row>
+                  <entry>
+                    <para>Selection mode</para>
+                  </entry>
+                  <entry>
+                    <para>Description</para>
+                  </entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>
+                    <para><emphasis role="bold">Select organisation units</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Lets you select the organisation units you want to appear in the chart
+                      from the organization tree.</para>
+                    <para>Select <emphasis role="bold">User org unit</emphasis> to disable the
+                      organisation unit tree and only select the organisation unit that is related
+                      to your profile.</para>
+                    <para>Select <emphasis role="bold">User sub-units</emphasis> to disable the
+                      organisation unit tree and only select the sub-units of the organisation unit
+                      that is related to your profile.</para>
+                    <para>Select <emphasis role="bold">User sub-x2-units</emphasis> to disable the
+                      organisation unit tree and only select organisation units two levels down from
+                      the organisation unit that is related to your profile.</para>
+                    <para>This functionality is useful for administrators to create a meaningful
+                      &quot;system&quot; favorite. With this option checked  all users find their
+                      respective organisation unit when they open the favorite.</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para><emphasis role="bold">Select levels</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Lets you select all organisation units at one or more levels, for example
+                      national or district level.</para>
+                    <para>You can also select the parent organisation unit in the tree, which makes
+                      it easy to select for example, all facilities inside one or more
+                      districts.</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para><emphasis role="bold">Select groups</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Lets you select all organisation units inside one or several groups and
+                      parent organisation units at the same time, for example hospitals or
+                      chiefdoms.</para>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Update</emphasis>.</para>
         </listitem>
       </orderedlist>
-      <example>
-        <title>Chart illustrating the concepts of series, categories and
-          <?oxy_comment_start author="CPersson" timestamp="20160426T111125+0200" comment="Verify in output that titles render correctly"?>filter<?oxy_comment_end?></title>
-        <screenshot>
-          <info>
-            <title>Example chart illustrating the concepts of series, categories
-              <?oxy_comment_start author="CPersson" timestamp="20160426T150730+0200" comment="At next revision, replace graph with a better quality one."?>and<?oxy_comment_end?>
-              filter</title>
-          </info>
-          <mediaobject>
-            <imageobject>
-              <imagedata width="100%" align="center"
-                fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
-            </imageobject>
-          </mediaobject>
-        </screenshot>
-        <itemizedlist>
-          <listitem>
-            <para>Series: A series is a set of continuous, related elements (for example periods or
-              data elements) which you want to visualize in order to emphasize trends or relations
-              in its data.</para>
-          </listitem>
-          <listitem>
-            <para>Categories: A category is a set of elements (for example indicators or
-              organisation units) for which you want to compare its data.</para>
-          </listitem>
-          <listitem>
-            <para><?oxy_comment_start author="CPersson" timestamp="20160426T111211+0200" comment="Which filter is used in the example?"?>Filter<?oxy_comment_end?>:
-              Since most charts are two-dimensional, a filter must be used on the third dimension in
-              order to use only a single element for the chart to become meaningful.</para>
-          </listitem>
-        </itemizedlist>
-      </example>
     </section>
+    <section>
+      <title>Select additional dimension items</title>
+      <para>Depending on the settings for your organisation unit group sets and data element group
+        sets, you can select additional dimension items from the left menu. </para>
+      <para>Here you can add dimension items such as age, sex, etc. without having to add them as
+        detailed data element selections. This is useful when you want to separate these categories
+        in your analysis.</para>
+      <para>The additional dimension items you select are available in <emphasis role="bold">Chart
+          layout</emphasis> as dimensions.</para>
+    </section>
+  </section>
+  <section xml:id="dvSeriesCategoryFilter">
+    <title>Select series, category and
+      <?oxy_comment_start author="CPersson" timestamp="20160427T102646+0200" comment="At next revision, revise title."?>filter<?oxy_comment_end?></title>
+    <para>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="60%" align="center" scale="100"
+              fileref="resources/images/visualizer/chart_layout.png"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </para>
+    <para>You can define which dimension of the data you want to appear as series, category and
+      filter.</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Layout</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Drag and drop the dimensions to the appropriate space. Only one dimension can be in
+          each section.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+    <example>
+      <title>Chart illustrating the concepts of series, categories and
+        <?oxy_comment_start author="CPersson" timestamp="20160426T111125+0200" comment="Verify in output that titles render correctly"?>filter<?oxy_comment_end?></title>
+      <screenshot>
+        <info>
+          <title>Example chart illustrating the concepts of series, categories
+            <?oxy_comment_start author="CPersson" timestamp="20160426T150730+0200" comment="At next revision, replace graph with a better quality one."?>and<?oxy_comment_end?>
+            filter</title>
+        </info>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="100%" align="center"
+              fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <itemizedlist>
+        <listitem>
+          <para>Series: A series is a set of continuous, related elements (for example periods or
+            data elements) which you want to visualize in order to emphasize trends or relations in
+            its data.</para>
+        </listitem>
+        <listitem>
+          <para>Categories: A category is a set of elements (for example indicators or organisation
+            units) for which you want to compare its data.</para>
+        </listitem>
+        <listitem>
+          <para><?oxy_comment_start author="CPersson" timestamp="20160426T111211+0200" comment="Which filter is used in the example?"?>Filter<?oxy_comment_end?>:
+            Since most charts are two-dimensional, a filter must be used on the third dimension in
+            order to use only a single element for the chart to become meaningful.</para>
+        </listitem>
+      </itemizedlist>
+    </example>
   </section>
   <section>
     <title>Change the display of your chart</title>
@@ -629,7 +650,7 @@ Which ones are they in the GUI?"?>S<?oxy_custom_start type="oxy_content_highligh
                   <para><emphasis role="bold">Chart title:</emphasis></para>
                 </entry>
                 <entry>
-                  <para>Type any title here to display a it above the chart.</para>
+                  <para>Type any title here to display it above the chart.</para>
                 </entry>
               </row>
             </tbody>
@@ -728,7 +749,7 @@ Which ones are they in the GUI?"?>S<?oxy_custom_start type="oxy_content_highligh
                     <para>Click <emphasis role="bold">Microsoft Excel</emphasis></para>
                   </entry>
                   <entry>
-                    <para>Downloads XML format based on ID property.</para>
+                    <para>Downloads Microsoft Excel format based on ID property.</para>
                     <para>You can also download Microsoft Excel format based on <emphasis
                         role="bold">Code</emphasis> or <emphasis role="bold">Name</emphasis>
                       property.</para>
@@ -794,7 +815,8 @@ Which ones are they in the GUI?"?>S<?oxy_custom_start type="oxy_content_highligh
       </mediaobject>
     </screenshot>
     <para>Saving your charts as favorites makes it easy to restore them later. It also gives you the
-      opportunity to share them with other users as an interpretation or put it on the dashboard. </para>
+      opportunity to share them with other users as an interpretation or display them on the
+      dashboard. </para>
     <section>
       <title>Save a chart as a favorite </title>
       <orderedlist>
@@ -883,7 +905,7 @@ Which ones are they in the GUI?"?>S<?oxy_custom_start type="oxy_content_highligh
         analysis-related resources in DHIS 2, you can share a data interpretation. An interpretation
         is a link to the relevant resource together with a text expressing some insight about the
         data. </para>
-      <para role="">To create an interpretation of a map and share it with all users of the
+      <para role="">To create an interpretation of a chart and share it with all users of the
         system:</para>
       <orderedlist>
         <listitem>
@@ -925,7 +947,7 @@ Which ones are they in the GUI?"?>S<?oxy_custom_start type="oxy_content_highligh
             <para>In the text box, enter the name of the user group you want to share your favorite
               with and click the <emphasis role="bold">+</emphasis> icon.</para>
             <para>The chosen user group is added to the list of recipients. </para>
-            <para>Repeat the step to add more user groups. </para>
+            <para>Repeat the step to add more user groups.</para>
           </listitem>
           <listitem>
             <para>If you want to allow external access, select the corresponding box.</para>
@@ -997,10 +1019,7 @@ Which ones are they in the GUI?"?>S<?oxy_custom_start type="oxy_content_highligh
   <section>
     <title>Visualize a chart as a pivot table or a map</title>
     <para>When you have made a chart you can switch between pivot table, chart and map visualization
-      of your data.
-      <?oxy_comment_start author="CPersson" timestamp="20160421T155413+0200" comment="Verify with Jan."?>T<?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="26"?>he
-      function is inactive if the data the chart is based on cannot render as a pivot table or
-      map.<?oxy_comment_end?><?oxy_custom_end mid="26"?></para>
+      of your data.</para>
     <section>
       <title>Open a chart as a pivot table</title>
       <orderedlist>
