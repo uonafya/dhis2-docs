@@ -7966,11 +7966,15 @@ ORDER BY oul.level, par.name, ou.name</screen>
   <section>
     <title>Data usage analytics</title>
     <para>The usage analytics API lets you access information about how people are using DHIS 2, in
-      particular related to data analysis. This resource lets you retrieve aggregated snapshots of
-      usage analytics based on intervals in time. The resource will capture user views (e.g the
-      number of times a chart or pivot table has been viewed by some user) and saved analysis
-      favorites (e.g. favorite charts and pivot tables). When enabled, DHIS 2 will capture nightly
-      snapshots which are then aggregated at request.<screen>/api/dataStatistics</screen></para>
+      particular related to data analysis. When users access favorites, an event will be recorded
+      consisting of their username, the UID of the favorite,  when the event took place, and the type of event. The different
+      types of events are provided in the  <xref xmlns:xlink="http://www.w3.org/1999/xlink"
+        linkend="dataUsage_eventTypes_table"/>  table below. This resource lets you retrieve
+      aggregated snapshots of usage analytics based on intervals in time. The resource will capture
+      user views (e.g the number of times a chart or pivot table has been viewed by some user) and
+      saved analysis favorites (e.g. favorite charts and pivot tables). When enabled, DHIS 2 will
+      capture nightly snapshots which are then aggregated at
+      request.<screen>/api/dataStatistics</screen></para>
     <section>
       <title>Request query parameter</title>
       <para>The usage analytics (data statistics) API supports two operations: POST to create a view
@@ -7978,12 +7982,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <section>
         <title>Creating view events (POST)</title>
         <para>The usage analytics API lets you create event views. The dataStatisticsEventType
-          parameter describes what type of item was viewed. As an example, the following URL can be
-          used to create a new event view for charts:
-          <screen>POST /api/dataStatistics?eventType=CHART_VIEW</screen></para>
+          parameter describes what type of item was viewed. The favorite parameter indicates the
+          identifier of the relevant favorite. As an example, the following URL can be used to
+          create a new event view for charts:
+          <screen>POST /api/dataStatistics?eventType=CHART_VIEW&amp;favorite=LW0O27b7TdD</screen></para>
         <para>A successful save operation returns HTTP status code 201. The table below shows the
           supported types of events.</para>
-        <table frame="all">
+        <table frame="all" xml:id="dataUsage_eventTypes_table">
           <title>Event types</title>
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*"/>
@@ -8171,9 +8176,9 @@ interval=WEEK" -u admin:district</screen></para>
     </section>
   </section>
   <section>
-    <title>Geo features</title>
+    <title>Geospatial features</title>
     <para>The <emphasis role="italic">geoFeatures</emphasis> resource lets you retrieve geospatial
-      information from DHIS 2. Geo features are stored together with organisation units, and the
+      information from DHIS 2. Geospatial features are stored together with organisation units. The
       syntax for retrieving features is identical to the syntax used for the organisation unit
       dimension for the analytics resource. It is recommended to read up on the analytics api
       resource before continuing reading this section. You must use the GET request type, and only
@@ -8245,10 +8250,9 @@ interval=WEEK" -u admin:district</screen></para>
     </table>
     <section>
       <title>GeoJSON</title>
-      <para>Support for GeoJSON output was added in 2.17, to export GeoJSON, you can simple add
-          <emphasis role="italic">.geosjon</emphasis> as an extension to the endpoint <emphasis
-          role="italic">/api/organisationUnits</emphasis>, or you can use the <emphasis
-          role="italic">Accept</emphasis> header <emphasis role="italic"
+      <para>To export GeoJSON, you can simple add <emphasis role="italic">.geosjon</emphasis> as an
+        extension to the endpoint <emphasis role="italic">/api/organisationUnits</emphasis>, or you
+        can use the <emphasis role="italic">Accept</emphasis> header <emphasis role="italic"
           >application/json+geojson</emphasis>.</para>
       <para>Two parameters are supported <emphasis role="bold">level</emphasis> (defaults to 1) and
           <emphasis role="bold">parent</emphasis> (defaults to root organisation units), both can be
@@ -8901,12 +8905,12 @@ interval=WEEK" -u admin:district</screen></para>
     </section>
     <section>
       <title>Inbound SMS service</title>
-      <para>The Web API supports collecting incoming sms using the POST method. Incoming messages
-        routed towards the DHIS 2 Web API can be received using this api. The API collects inbound
-        SMSs and provides it to  listeners for parsing, based on the SMS content (SMS Command). An
-        example payload in JSON format is given below. Text, originator, received date and sent date
-        are mandatory parameters. The rest are optional but the system will use the default value
-        for these parameters.</para>
+      <para xml:id="para_ob1_y4h_5v">The Web API supports collecting incoming SMS messages using the
+        POST method. Incoming messages routed towards the DHIS 2 Web API can be received using this
+        API. The API collects inbound SMS messages and provides it to  listeners for parsing, based
+        on the SMS content (SMS Command). An example payload in JSON format is given below. Text,
+        originator, received date and sent date are mandatory parameters. The rest are optional but
+        the system will use the default value for these parameters.</para>
       <screen>/api/sms/inbound</screen>
       <screen>{
   &quot;text&quot;: &quot;sample text&quot;,
