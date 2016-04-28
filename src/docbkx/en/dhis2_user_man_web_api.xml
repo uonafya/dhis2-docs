@@ -8097,51 +8097,62 @@ ORDER BY oul.level, par.name, ou.name</screen>
         <screen>curl "play.dhis2.org/demo/api/dataStatistics?startDate=2016-02-01&amp;endDate=2016-02-14&amp;
 interval=WEEK" -u admin:district</screen></para>
       <para>The JSON response will look like this:
-        <screen>[ 
+          <screen>[
   {
     "year": 2016,
     "week": 5,
-    "activeUsers": 99,
-    "mapViews": 2180,
+    "mapViews": 2181,
     "chartViews": 2227,
-    "reportTableViews": 5632,
-    "eventReportViews": 5632,
-    "eventChartViews": 9859,
-    "dashboardViews": 10081,
-    "totalViews": 1819,
-    "averageViews": 6620,
-    "savedMaps": 1804,
+    "reportTableViews": 5633,
+    "eventReportViews": 6757,
+    "eventChartViews": 9860,
+    "dashboardViews": 10082,
+    "totalViews": 46346,
+    "averageViews": 468,
+    "averageMapViews": 22,
+    "averageChartViews": 22,
+    "averageReportTableViews": 56,
+    "averageEventReportViews": 68,
+    "averageEventChartViews": 99,
+    "averageDashboardViews": 101,
+    "savedMaps": 1805,
     "savedCharts": 2205,
     "savedReportTables": 1995,
-    "savedEventReports": 1678,
+    "savedEventReports": 1679,
     "savedEventCharts": 1613,
-    "savedDashboards": 1922,
+    "savedDashboards": 0,
     "savedIndicators": 1831,
+    "activeUsers": 99,
     "users": 969
-}, 
-{     
+  },
+  {
     "year": 2016,
     "week": 6,
-    "activeUsers": 96,
-    "mapViews": 2017,
-    "chartViews": 2266,
-    "reportTablesViews": 4714,
-    "eventReportViews": 4714,
-    "eventChartViews": 9510,
+    "mapViews": 2018,
+    "chartViews": 2267,
+    "reportTableViews": 4714,
+    "eventReportViews": 6697,
+    "eventChartViews": 9511,
     "dashboardViews": 12181,
-    "indicatorsViews": 10357,
-    "totalViews": 2029,
-    "averageViews": 6820,
-    "savedMaps": 1642,
-    "savedCharts": 1934,
+    "totalViews": 47746,
+    "averageViews": 497,
+    "averageMapViews": 21,
+    "averageChartViews": 23,
+    "averageReportTableViews": 49,
+    "averageEventReportViews": 69,
+    "averageEventChartViews": 99,
+    "averageDashboardViews": 126,
+    "savedMaps": 1643,
+    "savedCharts": 1935,
     "savedReportTables": 1867,
-    "savedEventReports": 1976,
-    "savedEventCharts": 1713,
-    "savedDashboards": 1736,
+    "savedEventReports": 1977,
+    "savedEventCharts": 1714,
+    "savedDashboards": 0,
     "savedIndicators": 1646,
+    "activeUsers": 96,
     "users": 953
-  } 
-] </screen></para>
+  }
+]</screen></para>
       <para>The response represents a list of aggregated data over two weekly intervals.</para>
       <itemizedlist>
         <listitem><para>The <emphasis>year</emphasis> and <emphasis>week</emphasis> properties show when the

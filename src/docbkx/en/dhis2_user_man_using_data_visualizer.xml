@@ -10,14 +10,17 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>Using Data Visualizer</title>
+  <title>Using the Data
+    <?oxy_comment_start author="CPersson" timestamp="20160421T142956+0200" comment="Review all graphics before commit to master"?>Visualizer<?oxy_comment_end?>
+    app</title>
   <section xml:id="dvIntro">
-    <title>Data Visualizer overview</title>
+    <title>Data Visualizer
+      <?oxy_comment_start author="CPersson" timestamp="20160422T124514+0200" comment="Same concept information as in Pivot table app doc?"?>overview<?oxy_comment_end?></title>
     <screenshot>
-      <title>Data visualizer module displaying a column chart.</title>
+      <info><title>Data visualizer module displaying a column chart.</title></info>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" align="center"
+          <imagedata width="100%" align="center"
             fileref="resources/images/visualizer/column_chart.png" format="PNG"/>
         </imageobject>
       </mediaobject>
@@ -31,9 +34,8 @@
       Internet connections and generates charts in the web browser. Little data is transferred over
       the Internet.</para>
   </section>
-  <section xml:id="dvChartTypes">
+  <section>
     <title>Create a chart</title>
-    <para>The visualizer module provides nine different chart types, each with different characteristics. You can select the type of your chart by clicking on one of the icons  in  top left bar titled &quot;Chart type&quot;.</para>
     <orderedlist>
       <listitem>
         <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Data
@@ -55,7 +57,7 @@
           the
           <?oxy_comment_start author="CPersson" timestamp="20160421T142829+0200" comment="Correct term = data dimension item?
 Or data dimension?
-Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
+Or dimension?" mid="7"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="7"?>
           .</para>
         <para>You can keep the default selection if you want.</para>
       </listitem>
@@ -63,8 +65,20 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
         <para>Click <emphasis role="bold">Update</emphasis>.</para>
       </listitem>
     </orderedlist>
+    <para><?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>You can display a chart
+      based on your selections simply by clicking the &quot;Update&quot; button on the top centre
+      menu. This requires that you have selected one or more elements from all of the three
+      dimensions - data (indicators, data elements, reporting rates), periods (relative, fixed) and
+      organisation units (units or groups). Note that &quot;Last 12 Months&quot; from the period
+      dimension and the root organisation unit are selected by default.</para>
+    <para>Notice that you can hide and show individual data series in the chart by clicking directly
+      on the series label in the chart - they appear either at the top or to the right of the
+      chart.</para>
+    <para>If you want to give the chart more space on your screen you can click on the triple
+      left-arrow button on the top centre menu. This will collapse the left side menu. You can get
+      this menu back by clicking on the same button again.<?oxy_custom_end?></para>
   </section>
-  <section xml:id="dvChartTypes_mod">
+  <section xml:id="dvChartTypes">
     <title>Select a chart type</title>
     <para>The <emphasis role="bold">Data Visualizer</emphasis> app has nine different chart types,
       each with different characteristics. To select a chart type:</para>
@@ -94,9 +108,7 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
                 <entry>
                   <para>Displays information as vertical rectangular columns with lengths
                     proportional to the values they represent.</para>
-                  <para>Useful
-                    <?oxy_comment_start author="CPersson" timestamp="20160421T141718+0200" comment="Revise wording."?>for
-                    for example<?oxy_comment_end?> comparing performance of different
+                  <para>Useful when you want to, for example, compare performance of different
                     districts.</para>
                 </entry>
               </row>
@@ -107,9 +119,7 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
                 <entry>
                   <para>Displays information as vertical rectangular columns, where bars
                     representing multiple categories are stacked on top of each other.</para>
-                  <para>Useful
-                    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>for for
-                    example <?oxy_custom_end?>displaying trends or sums of related data
+                  <para>Useful when you want to, for example, display trends or sums of related data
                     elements.</para>
                 </entry>
               </row>
@@ -136,9 +146,8 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
                 <entry>
                   <para>Displays information as a series of points connected by straight lines. Also
                     referred to as time series.</para>
-                  <para>Useful
-                    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>e.g<?oxy_custom_end?>.
-                    to visualize trends in indicator data over multiple time periods.</para>
+                  <para>Useful when you want to, for example, visualize trends in indicator data
+                    over multiple time periods.</para>
                 </entry>
               </row>
               <row>
@@ -148,7 +157,7 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
                 <entry>
                   <para>Is based on line chart, with the space between the axis and the line filled
                     with colors and the lines stacked on top of each other.</para>
-                  <para>Useful for comparing the trends of related indicators.</para>
+                  <para>Useful when you want to compare the trends of related indicators.</para>
                 </entry>
               </row>
               <row>
@@ -157,10 +166,9 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
                 </entry>
                 <entry>
                   <para>Circular chart divided into sectors (or slices).</para>
-                  <para>Useful
-                    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>e.g.<?oxy_custom_end?>
-                    to visualize the proportion of data for individual data elements compared to the
-                    total sum of all data elements in the chart.</para>
+                  <para>Useful when you want to, for example, visualize the proportion of data for
+                    individual data elements compared to the total sum of all data elements in the
+                    chart.</para>
                 </entry>
               </row>
               <row>
@@ -193,95 +201,152 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
   </section>
   <section>
     <title>Select dimension items</title>
-    <para/>
-  </section>
-  <section>
-    <title>Modify chart layout</title>
-    <para/>
-  </section>
-  <section xml:id="dvSeriesCategoryFilter">
-    <title>Select series, category and filter</title>
-    <para>The series, category and filter can be defined by selecting the &quot;Layout&quot; option in the data visualizer app. </para>
-    <para><screenshot>
+    <section xml:id="dvSeriesCategoryFilter">
+      <?oxy_comment_start author="CPersson" timestamp="20160422T124651+0200" comment="Don&apos;t you have to select dimensions first before you can do this?
+
+Compare to pivot tables."?>
+      <title>Select series, category and filter</title>
+      <?oxy_comment_end?>
+      <para>The series, category and filter can be defined by selecting the &quot;Layout&quot;
+        option in the data visualizer app. </para>
+      <para>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="80%" align="center" scale="100"
+                fileref="resources/images/visualizer/chart_layout.png"/>
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </para>
+      <para>This section lets you define which dimension of the data you want to appear as series,
+        category and filter by dragging and dropping these options to the appropriate space. Only
+        one dimension can be in each section. </para>
+      <para>This asks for a closer explanation. Dimension in this regard refers to the elements
+        which describe the data values in the system. We have three main dimensions in the
+        system:</para>
+      <orderedlist>
+        <listitem>
+          <para>Data: Includes data elements, indicators and datasets (reporting rates), describing
+            the phenomena or event of the data.</para>
+        </listitem>
+        <listitem>
+          <para>Periods: Describes when the event took place.</para>
+        </listitem>
+        <listitem>
+          <para>Organisation units: Describes where the event took place.</para>
+        </listitem>
+      </orderedlist>
+      <para>The visualization module lets you use these dimensions completely flexible in terms of
+        appearing as series, categories and filter. Understanding these concepts is most easily done
+        by looking at the screenshot from the opening page below: </para>
+      <screenshot>
+        <info><title>Example chart illustrating the concepts of series, categories and
+          filter.</title></info>
         <mediaobject>
           <imageobject>
-            <imagedata width="40%" align="center" scale="100"
-              fileref="resources/images/visualizer/chart_layout.png"/>
+            <imagedata width="80%" align="center"
+              fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
           </imageobject>
         </mediaobject>
-      </screenshot></para>
-    <para>This section lets you define which dimension of the data you want to appear as series, category and filter by dragging and dropping these options to the appropriate space. Only one dimension can be in each section. </para>
-    <para>This asks for a closer explanation. Dimension in this regard refers to the elements which describe the data values in the system. We have three main dimensions in the system:</para>
-    <orderedlist>
-      <listitem>
-        <para>Data: Includes data elements, indicators and datasets (reporting rates), describing the phenomena or event of the data.</para>
-      </listitem>
-      <listitem>
-        <para>Periods: Describes when the event took place.</para>
-      </listitem>
-      <listitem>
-        <para>Organisation units: Describes where the event took place.</para>
-      </listitem>
-    </orderedlist>
-    <para>The visualization module lets you use these dimensions completely flexible in terms of appearing as series, categories and filter. Understanding these concepts is most easily done by looking at the screenshot from the opening page below: </para>
-    <screenshot>
-      <title>Example chart illustrating the concepts of series, categories and filter.</title>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="60%" align="center"
-            fileref="resources/images/visualizer/series_category_filter.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para>More formally this can be described as following:</para>
-    <orderedlist>
-      <listitem>
-        <para>Series: A series is a set of continuous, related elements (for example periods or data
-          elements) which you want to visualize in order to emphasize trends or relations in its
-          data.</para>
-      </listitem>
-      <listitem>
-        <para>Categories: A category is a set of elements (for example indicators or organisation
-          units) for which you want to compare its data.</para>
-      </listitem>
-      <listitem>
-        <para>Filter: Since most charts are two-dimensional, a filter must be used on the third dimension  in order to use only a single element for the chart to become meaningful.</para>
-      </listitem>
-    </orderedlist>
+      </screenshot>
+      <para>More formally this can be described as following:</para>
+      <orderedlist>
+        <listitem>
+          <para>Series: A series is a set of continuous, related elements (for example periods or
+            data elements) which you want to visualize in order to emphasize trends or relations in
+            its data.</para>
+        </listitem>
+        <listitem>
+          <para>Categories: A category is a set of elements (for example indicators or organisation
+            units) for which you want to compare its data.</para>
+        </listitem>
+        <listitem>
+          <para>Filter: Since most charts are two-dimensional, a filter must be used on the third
+            dimension in order to use only a single element for the chart to become
+            meaningful.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Select indicators and data elements</title>
+      <para>The Data Visualizer app can display any number of indicators and data elements in a
+        chart and data table. </para>
+      <para>You can select both indicators and data elements to appear together in the same chart,
+        with their order of appearance the same as the order in which they are selected. </para>
+      <para>You can select indicators by choosing Indicators from the &quot;Data&quot; header and
+        selecting an indicator group from the list of groups below it. This will make the indicators
+        in the selected group appear in the list under &quot;Available indicators&quot; to the left.
+        From that list you can double click on any indicator in order to select it, this will move
+        it to the list under &quot;Selected indicators&quot;. Alternatively you can mark one or more
+        indicators and click the single-arrow button. To select all indicators you simply click on
+        the double-arrow button. To deselect indicators you can do correspondingly in the
+        &quot;Selected indicators&quot; list.</para>
+      <para>To select data elements choose Data Elements from the &quot;Data&quot; header. The same
+        principle for selecting and deselecting indicators applies for data elements.</para>
+    </section>
+    <section>
+      <title>Select reporting rates</title>
+      <para>The visualizer can display reporting rates in a chart, by itself or together with
+        indicators and data elements. Reporting rates can be selected by choosing Reporting Rates
+        from the &quot;Data&quot; header. Reporting rates are defined by data sets. It can be
+        selected by double-clicking in the list of available data sets to the left.</para>
+    </section>
+    <section>
+      <title>Select fixed and relative periods</title>
+      <para>Click on the &quot;Periods&quot; header. For fixed periods, select a period type from
+        the combo box. You can select any number of fixed periods from any period type. Below the
+        fixed period you will find the relative period checkboxes and you may select as many as you
+        like. The names should be fairly self-descriptive and they are relative to the current date,
+        meaning that if the current month is March and you select &quot;Last month&quot;, the month
+        of February will be included in the chart. You are also free to combine fixed periods and
+        relative periods in the same chart. Overlapping periods will be filtered so that they only
+        appear once.</para>
+    </section>
+    <section>
+      <title>Select organisation units</title>
+      <para>You can select which organisation units to include in the chart by clicking the
+        &quot;Organisation units&quot; header. </para>
+      <para>This section features three ways of selecting organisation units, which can be selected
+        by clicking on the gear icon directly below the organisation units header. </para>
+      <para>The default mode is called &quot;Organisation units&quot; and lets you select the
+        organisation units you want to appear in the chart from the tree. This mode also features
+        three checkboxes. Checking &quot;User org unit&quot; will disable the organisation unit tree
+        and give you the organisation unit that is related to the current/logged in user instead.
+        This is also useful for administrators as they can create a meaningful &quot;system&quot;
+        favorite with this option checked and all users will find their respective organisation unit
+        when they open it. The the same concept goes for &quot;User sub-units&quot; and &quot;User
+        sub-x2-units&quot;. </para>
+      <para>The second mode is called &quot;Select levels&quot;. Here you can select all
+        organisation units at one or more levels. However, at the same time you also have the option
+        to select parent organisation units in the tree, which makes it easy to select e.g. all
+        facilities inside one or more districts. </para>
+      <para>The same thing goes for the third mode called &quot;Select groups&quot;. Here you can
+        select all organisation units inside one or more groups and parent organisation units at the
+        same time.</para>
+    </section>
+    <section>
+      <title>Select organisation unit group sets and data element group sets</title>
+      <para>Dimension tabs listed below &quot;Organisation units&quot; are organisation unit group
+        sets and data element group sets. You are free to add groups from any of these group sets to
+        your chart. Remember to add the group set in either the series, category or filters
+        combobox.</para>
+    </section>
+    <section>
+      <title>Select additional data dimensions</title>
+      <para>Following the organisation unit group sets and data element group sets additional data
+        dimensions which have been configured to be used in analysis are found. Here you can add
+        dimensions such as age, sex, etc. without having to add them in as detailed data element
+        selections. This is useful when you want to separate these categories in your analysis.
+      </para>
+    </section>
+  </section>
+  <section>
+    <title>Modify chart layout/Arrange dimensions</title>
+    <para/>
   </section>
   <section>
     <title>Change the display of your chart</title>
-    <para><emphasis role="bold">Options</emphasis></para>
-  </section>
-  <section>
-    <title>Select indicators and data elements</title>
-    <para>The visualizer module can display any number of indicators and data elements in a chart and data table. Both indicators and data elements can be selected and appear together in the same chart, with their order of appearance the same as the order in which they are selected. You can select indicators by choosing Indicators from the &quot;Data&quot; header  and selecting an indicator group from the list of groups below it. This will make the indicators in the selected group appear in the list under &quot;Available indicators&quot; to the left. From that list you can double click on any indicator in order to select it, this will move it to the list under &quot;Selected indicators&quot;. Alternatively you can mark one or more indicators and click the single-arrow button. To select all indicators you simply click on the double-arrow button. To deselect indicators you can do correspondingly in the &quot;Selected indicators&quot; list.</para>
-    <para>To select data elements choose Data Elements from the &quot;Data&quot; header. The same principle for selecting and deselecting indicators applies for data elements.</para>
-  </section>
-  <section>
-    <title>Select reporting rates</title>
-    <para>The visualizer can display reporting rates in a chart, by itself or together with indicators and data elements. Reporting rates can be selected by choosing Reporting Rates from the &quot;Data&quot; header. Reporting rates are defined by data sets. It can be selected by double-clicking in the list of available data sets to the left.</para>
-  </section>
-  <section>
-    <title>Select fixed and relative periods</title>
-    <para>Click on the &quot;Periods&quot; header. For fixed periods, select a period type from the combo box. You can select any number of fixed periods from any period type. Below the fixed period you will find the relative period checkboxes and you may select as many as you like. The names should be fairly self-descriptive and they are relative to the current date, meaning that if the current month is March and you select &quot;Last month&quot;, the month of February will be included in the chart. You are also free to combine fixed periods and relative periods in the same chart. Overlapping periods will be filtered so that they only appear once.</para>
-  </section>
-  <section>
-    <title>Select organisation units</title>
-    <para>You can select which organisation units to include in the chart by clicking the
-      &quot;Organisation units&quot; header. This section features three ways of selecting organisation units, which can be selected by clicking on the gear icon directly below the organisation units header. The default mode is called &quot;Organisation units&quot; and lets you select the organisation units you want to appear in the chart from the tree. This mode also features three checkboxes. Checking &quot;User org unit&quot; will disable the organisation unit tree and give you the organisation unit that is related to the current/logged in user instead. This is also useful for administrators as they can create a meaningful &quot;system&quot; favorite with this option checked and all users will find their respective organisation unit when they open it. The the same concept goes for &quot;User sub-units&quot; and &quot;User sub-x2-units&quot;. The second mode is called &quot;Select levels&quot;. Here you can select all organisation units at one or more levels. However, at the same time you also have the option to select parent organisation units in the tree, which makes it easy to select e.g. all facilities inside one or more districts. The same thing goes for the third mode called &quot;Select groups&quot;. Here you can select all organisation units inside one or more groups and parent organisation units at the same time.</para>
-  </section>
-  <section>
-    <title>Select organisation unit group sets and data element group sets</title>
-    <para>Dimension tabs listed below &quot;Organisation units&quot; are organisation unit group sets and data element group sets. You are free to add groups from any of these group sets to your chart. Remember to add the group set in either the series, category or filters combobox.</para>
-  </section>
-  <section>
-    <title>Select additional data dimensions</title>
-    <para>Following the organisation unit group sets and data element group sets additional data dimensions which have been configured to be used in analysis are found. Here you can add dimensions such as age, sex, etc. without having to add them in as detailed data element selections. This is useful when you want to separate these categories in your analysis.  </para>
-  </section>
-  <section>
-    <title>Select chart options</title>
-    <para>You can set various chart options by clicking on the &quot;Options&quot; button the chart toolbar.</para>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -290,83 +355,338 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <itemizedlist>
+    <orderedlist>
       <listitem>
-        <para>Show values: Shows the values above the series in the chart.</para>
+        <para>Click <emphasis role="bold">Options</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Hide empty category items: Hides category items with no data from the chart.</para>
+        <para>Set the options as required.</para>
+        <table frame="all">
+          <title>Chart options</title>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.5*"/>
+            <thead>
+              <row>
+                <entry>Option</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show values</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Shows the values above the series in the chart.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Hide empty category items</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Hides the category items with no data from the chart.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show trend lines</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays the trend line which visualizes how your data evolves over time.
+                    For example if performance is improving or deteriorating. Useful when periods
+                    are selected as category. </para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Target value /
+                      <?oxy_comment_start author="CPersson" timestamp="20160422T121457+0200" comment="Suggest to dev to remove &quot;:&quot; in UI."?>title<?oxy_comment_end?>:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays a horizontal line at the given domain value. Useful for example
+                    when you want to compare your performance to the current target.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Base value / title:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays a horizontal line at the given domain value. Useful for example
+                    when you want to visualize how your performance has evolved since the beginning
+                    of a process.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Sort order:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Allows you to sort the values on your chart from either low to high or high
+                    to low. </para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Aggregation type:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Defines how the data elements or indicators will be aggregated within the
+                    chart. Some of the aggregation types are <emphasis role="bold">By data
+                      element</emphasis>, <emphasis role="bold">Count</emphasis>, <emphasis
+                      role="bold">Min</emphasis> and <emphasis role="bold">Max</emphasis>.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Include only completed events</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Includes only completed events in the aggregation process. This is useful
+                    when you want for example to exclude partial events in indicator
+                    calculations.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Range axis min/max:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Defines the maximum and minium value which will be visible on the range
+                    axis.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Range axis tick steps:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Defines the number of ticks which will be visible on the range axis.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Range axis decimals:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Defines the number of decimals which will be used for range axis
+                    values.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Range axis title:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Type a title here to display a label next to the range axis (also referred
+                    to as the Y axis). Useful when you want to give context information to the
+                    chart, for example about the unit of measure.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Domain axis title:</emphasis></para>
+                </entry>
+                <entry>
+                  <para> Type a title here to display a label below the domain axis (also referred
+                    to as the X axis). Useful when you want to give context information to the
+                    chart, for example about the period type.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Hide chart legend</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Hides the legend and leaves more room for the chart itself.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Hide chart title</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Hides the title of your chart.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Chart title:</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Type any title here to display a it above the chart.</para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
       </listitem>
       <listitem>
-        <para>Show trend lines: The trend line will visualize how your data evolves over time - e.g.
-          is performance improving or deteriorating. Makes sense when periods are selected as
-          category. </para>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
       </listitem>
-      <listitem>
-        <para>Target line value/title: Displays a horizontal line at the given domain value. Useful e.g. when you want to compare your performance to the current target.</para>
-      </listitem>
-      <listitem>
-        <para>Base line value/title: Displays a horizontal line at the given domain value. Useful e.g. when you want to visualize how your performance has evolved since the beginning of a process.</para>
-      </listitem>
-      <listitem>
-        <para>Sort order: Allows you to sort the values on your chart from either low to high or high to low. </para>
-      </listitem>
-      <listitem>
-        <para>Aggregation Type: Defines how the data elements or indicators will be aggregated within the chart.</para>
-      </listitem>
-      <listitem>
-        <para>Include only completed events: All analysis apps provides an option for only including completed events in the aggregation process. This is useful e.g. to exclude partial events in indicator calculations</para>
-      </listitem>
-      <listitem>
-        <para>Range axis max/min: Defines the maximum and minium value which will be visible on the
-          range axis.</para>
-      </listitem>
-      <listitem>
-        <para>Range axis tick steps: Defines the number of ticks which will be visible on the range
-          axis.</para>
-      </listitem>
-      <listitem>
-        <para>Range axis decimals: Defines the number of decimals which will be used for range axis
-          values.</para>
-      </listitem>
-      <listitem>
-        <para>Range axis title: Displays a label next to the range axis (also referred to as the Y
-          axis). Can give context information to the chart, e.g. the unit of measure being
-          used.</para>
-      </listitem>
-      <listitem>
-        <para>Domain axis title: Displays a label below the domain axis (also referred to as the X
-          axis). Can give context information to the chart, e.g. the type of periods being
-          listed.</para>
-      </listitem>
-      <listitem>
-        <para>Hide chart legend: Hides the legend and leaves more room for the chart itself.</para>
-      </listitem>
-      <listitem>
-        <para>Hide chart title: Hides the title of your chart.</para>
-      </listitem>
-      <listitem>
-        <para>Chart title: Type any title you like and it will appear above the chart.</para>
-      </listitem>
-    </itemizedlist>
+    </orderedlist>
   </section>
   <section xml:id="dvDisplayChart">
     <title>Display a chart</title>
-    <para>You can display a chart based on your selections simply by clicking the &quot;Update&quot; button on the top centre menu. This requires that you have selected one or more elements from all of the three dimensions - data (indicators, data elements, reporting rates), periods (relative, fixed) and organisation units (units or groups). Note that &quot;Last 12 Months&quot; from the period dimension and the root organisation unit are selected by default.</para>
-    <para>Notice that you can hide and show individual data series in the chart by clicking directly on the series label in the chart - they appear either at the top or to the right of the chart.</para>
-    <para>If you want to give the chart more space on your screen you can click on the triple left-arrow button on the top centre menu. This will collapse the left side menu. You can get this menu back by clicking on the same button again.</para>
+    <?oxy_custom_start type="oxy_content_highlight" color="166,89,220"?>
+    <para>You can display a chart based on your selections simply by clicking the &quot;Update&quot;
+      button on the top centre menu. This requires that you have selected one or more elements from
+      all of the three dimensions - data (indicators, data elements, reporting rates), periods
+      (relative, fixed) and organisation units (units or groups). Note that &quot;Last 12
+      Months&quot; from the period dimension and the root organisation unit are selected by
+      default.</para>
+    <para>Notice that you can hide and show individual data series in the chart by clicking directly
+      on the series label in the chart - they appear either at the top or to the right of the
+      chart.</para>
+    <para>If you want to give the chart more space on your screen you can click on the triple
+      left-arrow button on the top centre menu. This will collapse the left side menu. You can get
+      this menu back by clicking on the same button again.<?oxy_custom_end?></para>
   </section>
   <section xml:id="dvSaveChart">
-    <title>Download chart as image or PDF</title>
-    <para>After you have rendered a chart you can download it to your local computer as and image or pdf by clicking on &quot;Download&quot; on the top centre menu. The file will be automatically downloaded to your computer - for instance can you now embed the image file into a text document as part of a report. You can also download the data source behind the chart in json, xml, csv or Microsoft Excel format.</para>
-    <para>For advanced users, two additional options are available under &quot;Advanced&quot;. JXRML will produce a template of a Jasper Report which can be further customized based on your exact needs and used as the basis for a standard report in DHIS2. The &quot;Raw data SQL&quot; will provide the actual SQL statement used to generate the data visualization. This could then be used as a data source in a Jasper report, or as the basis for an SQL view</para>
+    <title>Download a chart as an image or a PDF</title>
+    <para>After you have created a chart you can download it to your local computer as an image or
+      PDF file.</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Download</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Under <emphasis role="bold">Graphics</emphasis>, click <emphasis role="bold">Image
+            (.png)</emphasis> or <emphasis role="bold">PDF (.pdf)</emphasis>.</para>
+        <para>The file is automatically downloaded to your computer. Now you can for example embed
+          the image file into a text document as part of a report. </para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Download chart data source</title>
+    <para>You can download the data source behind a chart in JSON, XML, Excel, CSV, JXRML or Raw
+      data SQL formats with different identification schemes (ID, Code, and Name). The data document
+      uses identifiers of the dimension items and opens in a new browser window to display the URL
+      of the request to the Web API in the address bar. This is useful for developers of apps and
+      other client modules based on the DHIS 2 Web API or for those who require a plan data source,
+      for instance for import into statistical packages.</para>
+    <para>To download plain data source formats:</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Download</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Under <emphasis role="bold">Plain data source</emphasis>, click the format you want to
+          download.</para>
+        <para>
+          <table frame="all">
+            <title>Available formats</title>
+            <tgroup cols="3">
+              <colspec colname="newCol1" colnum="1" colwidth="1*"/>
+              <colspec colname="c1" colnum="2" colwidth="1.83*"/>
+              <colspec colname="c2" colnum="3" colwidth="2.6*"/>
+              <thead>
+                <row>
+                  <entry>
+                    <para>Format</para>
+                  </entry>
+                  <entry>
+                    <para>Action</para>
+                  </entry>
+                  <entry>
+                    <para>Description</para>
+                  </entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>
+                    <para>JSON</para>
+                  </entry>
+                  <entry>
+                    <para>Click <emphasis role="bold">JSON</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Downloads JSON format based on ID property. </para>
+                    <para>You can also download JSON format based on <emphasis role="bold"
+                        >Code</emphasis> or <emphasis role="bold">Name</emphasis> property. </para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>XML</para>
+                  </entry>
+                  <entry>
+                    <para>Click <emphasis role="bold">XML</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Downloads XML format based on ID property.</para>
+                    <para>You can also download XML format based on <emphasis role="bold"
+                        >Code</emphasis> or <emphasis role="bold">Name</emphasis> property. </para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>Microsoft Excel</para>
+                  </entry>
+                  <entry>
+                    <para>Click <emphasis role="bold">Microsoft Excel</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Downloads XML format based on ID property.</para>
+                    <para>You can also download Microsoft Excel format based on <emphasis
+                        role="bold">Code</emphasis> or <emphasis role="bold">Name</emphasis>
+                      property.</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>CSV</para>
+                  </entry>
+                  <entry>Click <emphasis role="bold">CSV</emphasis></entry>
+                  <entry>
+                    <para>Downloads CSV format based on ID property.</para>
+                    <para>You can also download CSV format based on <emphasis role="bold"
+                        >Code</emphasis> or <emphasis role="bold">Name</emphasis> property.</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>JRXML</para>
+                  </entry>
+                  <entry>
+                    <para>Put the cursor on <emphasis role="bold">Advanced</emphasis> and click
+                        <emphasis role="bold">JRXML</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Produces a template of a Jasper Report which can be further customized
+                      based on your exact needs and used as the basis for a standard report in DHIS
+                      2.</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>Raw data SQL</para>
+                  </entry>
+                  <entry>
+                    <para>Put the cursor on <emphasis role="bold">Advanced</emphasis> and click
+                        <emphasis role="bold">Raw data SQL</emphasis></para>
+                  </entry>
+                  <entry>
+                    <para>Provides the actual SQL statement used to generate the data visualization.
+                      You can use it as a data source in a Jasper report, or as the basis for a SQL
+                      view.</para>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </para>
+      </listitem>
+    </orderedlist>
   </section>
   <section xml:id="dvFavorites">
-    <title>Downloading chart as image or PDF</title>
-    <para>After you have rendered a chart you can download it to your local computer as and image or pdf by clicking on &quot;Download&quot; on the top centre menu. The file will be automatically downloaded to your computer - for instance can you now embed the image file into a text document as part of a report. You can also download the data source behind the chart in json, xml, csv or Microsoft Excel format.</para>
-    <para>For advanced users, two additional options are available under &quot;Advanced&quot;. JXRML will produce a template of a Jasper Report which can be further customized based on your exact needs and used as the basis for a standard report in DHIS2. The &quot;Raw data SQL&quot; will provide the actual SQL statement used to generate the data visualization. This could then be used as a data source in a Jasper report, or as the basis for an SQL view</para>
+    <title>Manage chart favorites</title>
     <screenshot>
-      <title>Data visualizer module displaying a column chart.</title>
+      <info><title>Data visualizer module displaying a column chart.</title></info>
       <mediaobject>
         <imageobject>
           <imagedata width="50%" fileref="resources/images/visualizer/chart_favorites.png"
@@ -591,8 +911,11 @@ Or dimension?" mid="6"?>dimensions<?oxy_comment_end?><?oxy_comment_end mid="6"?>
           <para>Your current chart opens as a pivot table.</para>
         </listitem>
       </orderedlist>
-      <screenshot>        
-      <mediaobject>
+      <screenshot>
+        <info><title>Analysis
+          <?oxy_comment_start author="CPersson" timestamp="20160421T155736+0200" comment="Consider removing screen shot.
+If not, update it with new screenshot."?>integration<?oxy_comment_end?></title></info>
+        <mediaobject>
           <imageobject>
             <imagedata align="center" scale="100"
               fileref="resources/images/visualizer/chart_integration.png" format="PNG"/>
