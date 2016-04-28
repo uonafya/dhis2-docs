@@ -6,23 +6,37 @@
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
     xmlns:db="http://docbook.org/ns/docbook">
-    <title><?oxy_comment_start author="CPersson" timestamp="20160427T135216+0200" comment="Review content from Web API section, see if anything can be reused here."?>Using
-        the Usage Analytics
-        <?oxy_comment_end?><?oxy_comment_start author="CPersson" timestamp="20160427T085356+0200" comment="Verify with Lars that build of user manual works.
-Refer to sceen shot."?>app<?oxy_comment_end?></title>
+    <title>Using the Usage Analytics
+        <?oxy_comment_start author="CPersson" timestamp="20160428T162631+0200" comment="Who would be using this app?
+Admin?"?>app<?oxy_comment_end?></title>
     <section>
-        <para>The Usage Analytics app creates statistics reports of data analytics usage within the
-            DHIS 2 system. Data is collected from Pivot Table, GIS, Event Visualizer, Data
-            Visualizer and Event Reports apps.</para>
-        <?oxy_comment_start author="CPersson" timestamp="20160427T135337+0200" comment="Info from release notes."?>
-        <para>Usage analytics: A new app called Usage Analytics is available and lets you visualize
-            statistics on how people (end-users) are utilizing the analytical features of DHIS 2.
-            This includes how many times people have loaded charts, pivots, dashboards; how many
-            favorites of various kinds people have created and how many people are logging in versus
-            total number of users. The system will capture and store daily snapshots of usage
-            statistics automatically which can be visualized through this app. </para>
-        <?oxy_comment_end?>
-        <para>Add info about clicking to hide a series.</para>
+        <screenshot>
+            <title>Usage Analytics</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata align="center" format="png" width="95%"
+                        fileref="resources/images/usage_analytics/usage_analytics_interface.png"/>
+                </imageobject>
+            </mediaobject>
+        </screenshot>
+        <para>The Usage Analytics app lets you visualize statistics on how users are
+            <?oxy_comment_start author="CPersson" timestamp="20160428T165719+0200" comment="Reword.
+A lot of &quot;use&quot; in one sentence"?>utilizing<?oxy_comment_end?>
+            the<?oxy_comment_start author="CPersson" timestamp="20160428T165849+0200" comment="Verify with Lars which apps."?>
+            Pivot Table, GIS, Event Visualizer, Data Visualizer and Event Reports apps within DHIS
+            2.<?oxy_comment_end?> This includes:</para>
+        <itemizedlist>
+            <listitem>
+                <para>How many times people have loaded charts, pivots tables and dashboards.</para>
+            </listitem>
+            <listitem>
+                <para>How many favorites users have created .</para>
+            </listitem>
+            <listitem>
+                <para>How many users that are logging in versus total number of users.</para>
+            </listitem>
+        </itemizedlist>
+        <para>To create an usage analytics graph:</para>
         <orderedlist>
             <listitem>
                 <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold"
@@ -39,27 +53,67 @@ Refer to sceen shot."?>app<?oxy_comment_end?></title>
             </listitem>
             <listitem>
                 <para>Select a category.</para>
-                <itemizedlist>
-                    <listitem>
-                        <para><emphasis role="bold">FAVORITE
-                                <?oxy_comment_start author="CPersson" timestamp="20160427T134118+0200" comment="Add info about toogle options."?>VIEWS<?oxy_comment_end?></emphasis>:
-                            Number of times users have looked at favorites. </para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">FAVORITES</emphasis>: Number of
-                            <?oxy_comment_start author="CPersson" timestamp="20160426T165827+0200" comment="Must define in which apps.
+                <table frame="all">
+                    <title>Category types</title>
+                    <tgroup cols="2">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.9*"/>
+                        <thead>
+                            <row>
+                                <entry>
+                                    <para>Category type</para>
+                                </entry>
+                                <entry>
+                                    <para>Description</para>
+                                </entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Favorite views</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Number of times users have looked at favorites.</para>
+                                    <para>You can switch between <emphasis role="bold">All favorite
+                                            views</emphasis>, <emphasis role="bold">Total
+                                            views</emphasis>, <emphasis role="bold">All favorite
+                                            average views per user</emphasis> and <emphasis
+                                            role="bold">Total view per user</emphasis>. The table
+                                        updates automatically with the corresponding values.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Favorites</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Number of
+                                        <?oxy_comment_start author="CPersson" timestamp="20160426T165827+0200" comment="Must define in which apps.
 
 Consider rewording to &quot;... a saved favorite in the xx, yy ... and zz apps."?>analysis<?oxy_comment_end?>
-                            favorites users have created during the selected interval.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">USERS</emphasis>: Number of users in the system
-                            during the selected interval.</para>
-                    </listitem>
-                </itemizedlist>
+                                        favorites users have created during the selected
+                                        interval.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Users</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Number of users in the system during the selected
+                                        interval.</para>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
             </listitem>
             <listitem>
-                <para>Click <emphasis role="bold">UPDATE</emphasis>.</para>
+                <para>Click <emphasis role="bold">Update</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>(Optional) Click a series label to hide the corresponding graph.</para>
             </listitem>
         </orderedlist>
     </section>

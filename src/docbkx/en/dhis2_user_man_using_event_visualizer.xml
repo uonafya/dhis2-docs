@@ -8,8 +8,17 @@
   xmlns:db="http://docbook.org/ns/docbook">
   <title>Using Event Visualizer</title>
   <section>
-    <title>Event Visualizer overview</title>
-    <para>With the Event Visualizer app, you can select events to analyse in a chart.</para>
+    <title>Event Visualizer
+      <?oxy_comment_start author="CPersson" timestamp="20160428T092619+0200" comment="At next revision, develop overview concept content."?>overview<?oxy_comment_end?></title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/event_visualizer/event_visualizer.png" format="PNG"
+            align="center" width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>With the Event Visualizer app, you can create charts based on event data.</para>
   </section>
   <section>
     <title>Create a chart</title>
@@ -145,55 +154,166 @@
     </orderedlist>
   </section>
   <section>
-    <title>Charts with aggregated
-      values/<?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>Select dimension
-      items<?oxy_custom_end?></title>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="resources/images/event_visualizer/event_visualizer.png" format="PNG"
-            align="center" width="100%"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+    <title>Select dimension items</title>
     <para>An event report is always based on a program. You can do analysis based on a range of
-      dimensions. Each dimension can have a corresponding filter. Dimensions can be selected from
-      the left-side menu and includes the following:</para>
-    <itemizedlist>
+      dimensions. Each dimension item can have a corresponding filter. Dimension items can be
+      selected from the left-side menu and includes the following:</para>
+    <orderedlist>
       <listitem>
-        <para><emphasis role="bold">Data elements</emphasis>: Start by selecting the program and
-          program stage for the event report. The data elements associated with the selected program
-          will be listed under available items. Each data element acts as a dimension, and can be
-          selected by double-clicking on it. After selecting a data element, it will be visible
-          under "selected data items". Here you can specify a filter for each data element, with
-          operators such as "greater than", "in" or "equal" together with a filter value.</para>
+        <para>Select data elements:</para>
+        <orderedlist>
+          <listitem>
+            <para>Click <emphasis role="bold">Data</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Select a program and a program stage.</para>
+            <para>The data elements associated with the selected program are listed under <emphasis
+                role="bold">Available</emphasis>. Each data element acts as a dimension.</para>
+          </listitem>
+          <listitem>
+            <para>Select the data elements you need by double-clicking their names.</para>
+            <para>After selecting a data element, it is visible under <emphasis role="bold">Selected
+                data items</emphasis>. </para>
+          </listitem>
+          <listitem>
+            <para>(Optional) For each data element, specify a filter with operators such as "greater
+              than", "in" or "equal" together with a filter value.</para>
+          </listitem>
+        </orderedlist>
       </listitem>
       <listitem>
-        <para><emphasis role="bold">Periods</emphasis>: For the period dimension you have three
-          options: relative periods, fixed periods and start/end dates. Relative periods can e.g. be
-          "last 12 months", and has the advantage that it keeps the data in the report up to date as
-          time goes. Fixed periods can e.g. be "January 2014". You can switch to start/end dates by
-          selecting from the drop-down menu under the periods tab, which lets you specify flexible
-          dates for the time span in the report.</para>
+        <para><?oxy_comment_start author="CPersson" timestamp="20160428T095959+0200" comment="At next revision, standardize org unit selection across analyse apps."?>Select
+          periods<?oxy_comment_end?>.</para>
+        <orderedlist>
+          <listitem>
+            <para>Click <emphasis role="bold">Periods</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Select one or several periods.</para>
+            <para>You have three period options: relative periods, fixed periods and start/end
+              dates. You can combine fixed periods and relative periods in the same chart. You
+              cannot combine fixed periods and relative periods with start/end dates in the same
+              chart. Overlapping periods are filtered so that they only appear once.</para>
+            <itemizedlist>
+              <listitem>
+                <para>Fixed periods: In the <emphasis role="bold">Select period type</emphasis> box,
+                  select a period type. You can select any number of fixed periods from any period
+                  type. Fixed periods can for example be "January 2014".</para>
+              </listitem>
+              <listitem>
+                <para>Relative periods: In the lower part of the <emphasis role="bold"
+                    >Periods</emphasis> section, select as many relative periods as you like. The
+                  names are relative to the current date. This means that if the current month is
+                  March and you select <emphasis role="bold">Last month</emphasis>, the month of
+                  February is included in the chart. Relative periods has the advantage that it
+                  keeps the data in the report up to date as time goes.</para>
+              </listitem>
+              <listitem>
+                <para>Start/end dates: In the list under the <emphasis role="bold"
+                    >Periods</emphasis> tab, select <emphasis role="bold">Start/end
+                  dates</emphasis>. This period type lets you specify flexible dates for the time
+                  span in the report.</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </orderedlist>
       </listitem>
       <listitem>
-        <para><emphasis role="bold">Organisation units</emphasis>: The organisation unit dimension
-          lets you select any org unit from the hierarchy. You can use the org unit mode selector to
-          select org units explicitly, by org unit hierarchy levels and by org unit groups.</para>
+        <para>Select organisation units.</para>
+        <orderedlist>
+          <listitem>
+            <para>Click <emphasis role="bold">Organisation units</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Click the gearbox icon.</para>
+          </listitem>
+          <listitem>
+            <para>Select a <emphasis role="bold">Selection mode</emphasis> and an organisation
+              unit.</para>
+            <para>There are three different selection modes:</para>
+            <table frame="all">
+              <title>Selection modes</title>
+              <tgroup cols="2">
+                <colspec colname="c1" colnum="1" colwidth="1.1*"/>
+                <colspec colname="c2" colnum="2" colwidth="1.74*"/>
+                <thead>
+                  <row>
+                    <entry>
+                      <para>Selection mode</para>
+                    </entry>
+                    <entry>
+                      <para>Description</para>
+                    </entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>
+                      <para><emphasis role="bold">Select organisation units</emphasis></para>
+                    </entry>
+                    <entry>
+                      <para>Lets you select the organisation units you want to appear in the chart
+                        from the organization tree.</para>
+                      <para>Select <emphasis role="bold">User org unit</emphasis> to disable the
+                        organisation unit tree and only select the organisation unit that is related
+                        to your profile.</para>
+                      <para>Select <emphasis role="bold">User sub-units</emphasis> to disable the
+                        organisation unit tree and only select the sub-units of the organisation
+                        unit that is related to your profile.</para>
+                      <para>Select <emphasis role="bold">User sub-x2-units</emphasis> to disable the
+                        organisation unit tree and only select organisation units two levels down
+                        from the organisation unit that is related to your profile.</para>
+                      <para>This functionality is useful for administrators to create a meaningful
+                        &quot;system&quot; favorite. With this option checked  all users find their
+                        respective organisation unit when they open the favorite.</para>
+                    </entry>
+                  </row>
+                  <row>
+                    <entry>
+                      <para><emphasis role="bold">Select levels</emphasis></para>
+                    </entry>
+                    <entry>
+                      <para>Lets you select all organisation units at one or more levels, for
+                        example national or district level.</para>
+                      <para>You can also select the parent organisation unit in the tree, which
+                        makes it easy to select for example, all facilities inside one or more
+                        districts.</para>
+                    </entry>
+                  </row>
+                  <row>
+                    <entry>
+                      <para><emphasis role="bold">Select groups</emphasis></para>
+                    </entry>
+                    <entry>
+                      <para>Lets you select all organisation units inside one or several groups and
+                        parent organisation units at the same time, for example hospitals or
+                        chiefdoms.</para>
+                    </entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </listitem>
+        </orderedlist>
       </listitem>
-    </itemizedlist>
-    <para>Note that data elements of continuous value types (real numbers/decimal numbers) can only
-      be used as filters, and will automatically be positioned as filters in the layout dialog. The
-      reason for this is that continuous number cannot be grouped into sensible ranges and used on
-      columns and rows.</para>
-    <?oxy_custom_end?>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
     <title>Select series, category and filter</title>
-    <para>You can define which dimension of the data you want to appear as series, category and
-      filter. Each data element appears as individual dimensions and can be placed on any of the
-      axes. Series and category panels can only have one dimension at the time.</para>
+    <para>You can define which data dimension you want to appear as series, category and filter.
+      Each data element appears as individual dimensions and can be placed on any of the axes.
+      Series and category panels can only have one dimension at the time.</para>
+    <note>
+      <?oxy_comment_start author="CPersson" timestamp="20160428T092528+0200" comment="At next revision, review wording."?>
+      <para>Data elements of continuous value types (real numbers/decimal numbers) can only be used
+        as filters, and will automatically be positioned as filters in the layout dialog. The reason
+        for this is that continuous number cannot be grouped into sensible ranges and used on
+        columns and rows.</para>
+      <?oxy_comment_end?>
+    </note>
     <orderedlist>
       <listitem>
         <para>Click <emphasis role="bold">Layout</emphasis>.</para>
@@ -209,12 +329,7 @@
   </section>
   <section>
     <title>Change the display of your chart</title>
-    <para>You can customize the display of an event
-      report.<?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?> The following
-      options apply
-      t<?oxy_comment_start author="CPersson" timestamp="20160427T155714+0200" comment="Are there any other type?"?>o
-      aggregated values-type reports<?oxy_comment_end?> only:</para>
-    <?oxy_custom_end?>
+    <para>You can customize the display of an event report. </para>
     <orderedlist>
       <listitem>
         <para>Click <emphasis role="bold">Options</emphasis>.</para>
@@ -264,11 +379,7 @@
                   <para><emphasis role="bold">Hide n/a data</emphasis></para>
                 </entry>
                 <entry>
-                  <?oxy_comment_start author="CPersson" timestamp="20160427T154929+0200" comment="Add description."?>
-                  <?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="5"?>
-                  <para>-</para>
-                  <?oxy_comment_end?>
-                  <?oxy_custom_end mid="5"?>
+                  <para>Hides data tagged as N/A from the chart.</para>
                 </entry>
               </row>
               <row>
@@ -452,7 +563,9 @@ If so, add &quot; with different identification schemes (ID, Code, and Name)&quo
                     <para>Action</para>
                   </entry>
                   <entry>
-                    <para>Description</para>
+                    <para><?oxy_comment_start author="CPersson" timestamp="20160428T152232+0200" comment="At next revision, revise descriptions.
+How do you describe what is created? 
+For exampel: JSON file, table in JSON format?"?>Description<?oxy_comment_end?></para>
                   </entry>
                 </row>
               </thead>
@@ -465,11 +578,7 @@ If so, add &quot; with different identification schemes (ID, Code, and Name)&quo
                     <para>Click <emphasis role="bold">HTML</emphasis></para>
                   </entry>
                   <entry>
-                    <?oxy_comment_start author="CPersson" timestamp="20160427T160529+0200" comment="Add description."?>
-                    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="10"?>
-                    <para>-</para>
-                    <?oxy_comment_end?>
-                    <?oxy_custom_end mid="10"?>
+                    <para>Creates HTML table based on selected meta data</para>
                   </entry>
                 </row>
                 <row>
@@ -480,7 +589,7 @@ If so, add &quot; with different identification schemes (ID, Code, and Name)&quo
                     <para>Click <emphasis role="bold">JSON</emphasis></para>
                   </entry>
                   <entry>
-                    <para>Downloads JSON format based on ID property. </para>
+                    <para>Downloads data values in JSON format based on selected meta data</para>
                   </entry>
                 </row>
                 <row>
@@ -491,7 +600,7 @@ If so, add &quot; with different identification schemes (ID, Code, and Name)&quo
                     <para>Click <emphasis role="bold">XML</emphasis></para>
                   </entry>
                   <entry>
-                    <para>Downloads XML format based on ID property.</para>
+                    <para>Downloads data values in XML format based on selected meta data</para>
                   </entry>
                 </row>
                 <row>
@@ -502,7 +611,8 @@ If so, add &quot; with different identification schemes (ID, Code, and Name)&quo
                     <para>Click <emphasis role="bold">Microsoft Excel</emphasis></para>
                   </entry>
                   <entry>
-                    <para>Downloads Microsoft Excel format based on ID property.</para>
+                    <para>Downloads data values in Microsoft Excel  format based on selected meta
+                      data</para>
                   </entry>
                 </row>
                 <row>
@@ -511,7 +621,7 @@ If so, add &quot; with different identification schemes (ID, Code, and Name)&quo
                   </entry>
                   <entry>Click <emphasis role="bold">CSV</emphasis></entry>
                   <entry>
-                    <para>Downloads CSV format based on ID property.</para>
+                    <para>Downloads data values in CSV format based on selected meta data</para>
                   </entry>
                 </row>
               </tbody>
@@ -607,42 +717,6 @@ If so, add &quot; with different identification schemes (ID, Code, and Name)&quo
         </listitem>
       </orderedlist>
     </section>
-    <?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>
-    <section xml:id="dvInterpretations">
-      <?oxy_custom_end?>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
-      <title>Share a chart
-        <?oxy_comment_start author="CPersson" timestamp="20160427T161216+0200" comment="Feature not available in Event Visualizer, a bug?"?>interpretation<?oxy_comment_end?></title>
-      <?oxy_custom_end?>
-      <?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>
-      <para role="">For
-        <?oxy_custom_end?><?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>certain<?oxy_custom_end?><?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>
-        analysis-related resources in DHIS 2, you<?oxy_custom_end?>
-        <?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>can share a data
-        interpretation. An interpretation is a link to the relevant resource together with a text
-        expressing some insight about the data. </para>
-      <para role="">To create an interpretation of a chart and share it with all users of the
-        system:</para>
-      <orderedlist>
-        <listitem>
-          <para>Open or create a favorite chart.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Share</emphasis> > <emphasis role="bold">Write
-              interpretation</emphasis>.</para>
-          <para>The <emphasis role="bold">Write interpretation</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>In the text field, type a comment, question or interpretation.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Share</emphasis>.</para>
-          <para>The dialog box closes automatically. You can see the interpretation on the <emphasis
-              role="bold">Dashboard</emphasis>.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <?oxy_custom_end?>
     <section>
       <title>Modify sharing settings for a favorite</title>
       <para>After you have created a chart and saved it as a favorite, you can share the favorite
@@ -714,60 +788,41 @@ If so, add &quot; with different identification schemes (ID, Code, and Name)&quo
     </section>
   </section>
   <section>
-    <?oxy_comment_start author="CPersson" timestamp="20160427T161516+0200" comment="Not available in Event Visualizer? Check with Jan.
-
-What about the Share function?
-Favorite link
-API link"?>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="22"?>
-    <title>Embed charts in any web page</title>
-    <?oxy_comment_end?>
-    <?oxy_custom_end mid="22"?>
-    <para>Certain analysis-related resources in DHIS 2, like pivot tables, charts and maps, can be
-      embedded in any web page by using a plug-in. You will find more information about the plug-ins
-      in the Web API chapter in the <emphasis>DHIS2 Developer Manual</emphasis>.</para>
-    <para>To generate a HTML fragment that you can use to display the chart in an external web
-      page:</para>
+    <title>Create a link to a favorite</title>
     <para>
       <orderedlist>
         <listitem>
-          <para>Click <emphasis role="bold">Share</emphasis> > <emphasis role="bold">Embed in web
-              page</emphasis>.</para>
-          <para>The <emphasis role="bold">Embed in web page</emphasis> window opens.</para>
+          <para>Click <emphasis role="bold">Share</emphasis>.</para>
         </listitem>
         <listitem>
-          <para>Click <emphasis role="bold">Select</emphasis> to highlight the HTML fragment.</para>
+          <para>Click the type of link you need.</para>
+          <itemizedlist>
+            <listitem>
+              <para><emphasis role="bold">Favorite link</emphasis>: Provides a URL for the favorite.
+                You can use this link to share the favorite with other users or colleagues via email
+                or chat.</para>
+            </listitem>
+            <listitem>
+              <para><emphasis role="bold">API link</emphasis>:
+                <?oxy_comment_start author="CPersson" timestamp="20160428T153250+0200" comment="Text copied from Pivot table app, correct for Event Visualizer?"?>Provides
+                a URL of the API resource. By default this is a HTML resource, but you can modify
+                the suffix of &quot;.html&quot; to &quot;.json&quot; or &quot;.csv&quot;. Other data
+                types are available. This option is most useful when you need an API link to the
+                pivot table resource. See
+                the<?oxy_comment_start author="rachaelb" timestamp="20160419T125148+0200" comment="dhis2_developer_manual.xml"?>
+                DHIS2 developers g<?oxy_comment_end?>uide for details about the different types
+                which are available.<?oxy_comment_end?></para>
+            </listitem>
+          </itemizedlist>
         </listitem>
       </orderedlist>
     </para>
   </section>
   <section>
-    <title>Visualize a chart as a pivot table or a map</title>
-    <para>When you have made a chart you can switch between pivot table, chart and map visualization
-      of your data.</para>
-    <section>
-      <title>Open a chart as a pivot table</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart
-              as table</emphasis>.</para>
-          <para>Your current chart opens as a pivot table.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
-      <title><?oxy_comment_start author="CPersson" timestamp="20160427T161758+0200" comment="So you can&apos;t open an event chart as a map? 
-Function not in GUI."?>Open
-        a chart as a map<?oxy_comment_end?></title>
-      <?oxy_custom_end?>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart
-              as map</emphasis>.</para>
-          <para>Your current chart opens as a map.</para>
-        </listitem>
-      </orderedlist>
-    </section>
+    <title>Visualize a chart as a pivot
+      <?oxy_comment_start author="CPersson" timestamp="20160428T152352+0200" comment="At next revision, verify if view as map has been developed."?>table<?oxy_comment_end?></title>
+    <para>When you have made a chart you can open it as a pivot table:</para>
+    <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart as
+        table</emphasis>.</para>
   </section>
 </chapter>
