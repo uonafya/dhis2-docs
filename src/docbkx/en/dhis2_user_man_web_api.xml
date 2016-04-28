@@ -7982,9 +7982,10 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <section>
         <title>Creating view events (POST)</title>
         <para>The usage analytics API lets you create event views. The dataStatisticsEventType
-          parameter describes what type of item was viewed. As an example, the following URL can be
-          used to create a new event view for charts:
-          <screen>POST /api/dataStatistics?eventType=CHART_VIEW</screen></para>
+          parameter describes what type of item was viewed. The favorite parameter indicates the
+          identifier of the relevant favorite. As an example, the following URL can be used to
+          create a new event view for charts:
+          <screen>POST /api/dataStatistics?eventType=CHART_VIEW&amp;favorite=LW0O27b7TdD</screen></para>
         <para>A successful save operation returns HTTP status code 201. The table below shows the
           supported types of events.</para>
         <table frame="all" xml:id="dataUsage_eventTypes_table">
