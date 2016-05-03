@@ -9817,6 +9817,16 @@ interval=WEEK" -u admin:district</screen></para>
     </table>
   </section>
   <section>
+    <title>Data sets</title>
+    <para>The <emphasis>dataSets</emphasis> resource follows the standard conventions as other
+      metadata resources in DHIS 2. This resource supports some additional query
+      parameters.<screen>/api/dataSets</screen></para>
+    <para>To retrieve the version of a data set you can issue a GET
+      request:<screen>GET /api/dataSets/&lt;uid>/version</screen></para>
+    <para>To bump (increase by one) the version of a data set you can issue a POST
+      request:<screen>POST /api/dataSets/&lt;uid>/version</screen></para>
+  </section>
+  <section>
     <title>Filled organisation unit levels</title>
     <para>The <emphasis>filledOrganisationUnitLevels</emphasis> resource provides an ordered list of
       organisation unit levels, where generated levels are injected into the list to fill positions
