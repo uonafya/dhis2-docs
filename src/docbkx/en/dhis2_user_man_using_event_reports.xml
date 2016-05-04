@@ -1,126 +1,691 @@
 <?xml version='1.0' encoding='UTF-8'?>
       <chapter version="5.0"
-         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
-          xmlns="http://docbook.org/ns/docbook"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns:xs="http://www.w3.org/2001/XMLSchema"
-         xmlns:xl="http://www.w3.org/1999/xlink"
-         xmlns:xi="http://www.w3.org/2001/XInclude"
-         xmlns:xhtml="http://www.w3.org/1999/xhtml"
-         xmlns:svg="http://www.w3.org/2000/svg"
-         xmlns:mth="http://www.w3.org/1998/Math/MathML"
-         xmlns:db="http://docbook.org/ns/docbook">
-  <title>Using Event Reports</title>
+  xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+  xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+  xmlns:db="http://docbook.org/ns/docbook">
+  <title>Using the Event Reports app</title>
   <section>
-    <title>Event Reports overview</title>
-    <para>The event reports app enables analysis of events in two fashions.</para>
+    <title>Event reports overview</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="90%" fileref="resources/images/event_report/event_report.png"
+            format="PNG" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>With the <emphasis role="bold">Event Report</emphasis>s app you can analyse events in two
+      types of
+      <?oxy_comment_start author="CPersson" timestamp="20160503T144304+0200" comment="At next revision, revise list information."?>reports<?oxy_comment_end?>:</para>
     <itemizedlist>
       <listitem>
-        <para>Pivot table-style analysis with aggregated values of events</para>
+        <para>Aggregated event reports: Pivot table-style analysis with aggregated numbers of
+          events</para>
+        <para>By selecting <emphasis role="bold">Aggregated values</emphasis> from the top-left menu
+          you can use the <emphasis role="bold">Event Reports</emphasis> app to create pivot tables
+          with aggregated numbers of events. An event report is always based on a program. You can
+          do analysis based on a range of dimensions. Each dimension can have a corresponding
+          filter. Dimensions can be selected from the left-side menu.</para>
       </listitem>
       <listitem>
-        <para>Lists of events based on queries / filters</para>
+        <para>Individual event reports: Lists of events</para>
+        <para>By selecting <emphasis role="bold">Events</emphasis> from the top-left menu you can
+          use the <emphasis role="bold">Event Reports</emphasis> app to make searches or queries for
+          events based on a flexible set of criteria. The report will be displayed as a table with
+          one row per event. Each dimension can be used as a column in the table or as a filter.
+          Each dimension can have a criteria (filter). Data elements of type option set allows for
+          &quot;in&quot; criteria, where multiple options can be selected. Numeric values can be
+          compared to filter values using greater than, equal or less than operators.</para>
       </listitem>
     </itemizedlist>
+  </section>
+  <section>
+    <title>Create an event report</title>
+    <orderedlist>
+      <listitem>
+        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Event
+            Reports</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Select <emphasis role="bold">Aggregated values</emphasis> or <emphasis role="bold"
+            >Events</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>In the menu to the left, select the meta data you want to analyse.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Layout</emphasis> and arrange the dimensions.</para>
+        <para>You can keep the default selection if you want.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Select dimension items</title>
+    <orderedlist>
+      <listitem>
+        <para>Select data elements:</para>
+        <orderedlist>
+          <listitem>
+            <para>Click <emphasis role="bold">Data</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Select a program and a program stage.</para>
+            <para>The data elements associated with the selected program are listed under <emphasis
+                role="bold">Available</emphasis>. Each data element acts as a dimension.</para>
+          </listitem>
+          <listitem>
+            <para>Select the data elements you need by double-clicking their names.</para>
+            <para>After selecting a data element, it is visible under <emphasis role="bold">Selected
+                data items</emphasis>. </para>
+          </listitem>
+          <listitem>
+            <para>(Optional) For each data element, specify a filter with operators such as "greater
+              than", "in" or "equal" together with a filter value.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para><?oxy_comment_start author="CPersson" timestamp="20160428T095959+0200" comment="At next revision, standardize org unit selection across analyse apps."?>Select
+          periods<?oxy_comment_end?>.</para>
+        <orderedlist>
+          <listitem>
+            <para>Click <emphasis role="bold">Periods</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Select one or several periods.</para>
+            <para>You have three period options: relative periods, fixed periods and start/end
+              dates. You can combine fixed periods and relative periods in the same chart. You
+              cannot combine fixed periods and relative periods with start/end dates in the same
+              chart. Overlapping periods are filtered so that they only appear once.</para>
+            <itemizedlist>
+              <listitem>
+                <para>Fixed periods: In the <emphasis role="bold">Select period type</emphasis> box,
+                  select a period type. You can select any number of fixed periods from any period
+                  type. Fixed periods can for example be "January 2014".</para>
+              </listitem>
+              <listitem>
+                <para>Relative periods: In the lower part of the <emphasis role="bold"
+                    >Periods</emphasis> section, select as many relative periods as you like. The
+                  names are relative to the current date. This means that if the current month is
+                  March and you select <emphasis role="bold">Last month</emphasis>, the month of
+                  February is included in the chart. Relative periods has the advantage that it
+                  keeps the data in the report up to date as time goes.</para>
+              </listitem>
+              <listitem>
+                <para>Start/end dates: In the list under the <emphasis role="bold"
+                    >Periods</emphasis> tab, select <emphasis role="bold">Start/end
+                  dates</emphasis>. This period type lets you specify flexible dates for the time
+                  span in the report.</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Select organisation units.</para>
+        <orderedlist>
+          <listitem>
+            <para>Click <emphasis role="bold">Organisation units</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Click the gearbox icon.</para>
+          </listitem>
+          <listitem>
+            <para>Select a <emphasis role="bold">Selection mode</emphasis> and an organisation
+              unit.</para>
+            <para>There are three different selection modes:</para>
+            <table frame="all">
+              <title>Selection modes</title>
+              <tgroup cols="2">
+                <colspec colname="c1" colnum="1" colwidth="1.1*"/>
+                <colspec colname="c2" colnum="2" colwidth="1.74*"/>
+                <thead>
+                  <row>
+                    <entry>
+                      <para>Selection mode</para>
+                    </entry>
+                    <entry>
+                      <para>Description</para>
+                    </entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>
+                      <para><emphasis role="bold">Select organisation units</emphasis></para>
+                    </entry>
+                    <entry>
+                      <para>Lets you select the organisation units you want to appear in the chart
+                        from the organization tree.</para>
+                      <para>Select <emphasis role="bold">User org unit</emphasis> to disable the
+                        organisation unit tree and only select the organisation unit that is related
+                        to your profile.</para>
+                      <para>Select <emphasis role="bold">User sub-units</emphasis> to disable the
+                        organisation unit tree and only select the sub-units of the organisation
+                        unit that is related to your profile.</para>
+                      <para>Select <emphasis role="bold">User sub-x2-units</emphasis> to disable the
+                        organisation unit tree and only select organisation units two levels down
+                        from the organisation unit that is related to your profile.</para>
+                      <para>This functionality is useful for administrators to create a meaningful
+                        &quot;system&quot; favorite. With this option checked all users find their
+                        respective organisation unit when they open the favorite.</para>
+                    </entry>
+                  </row>
+                  <row>
+                    <entry>
+                      <para><emphasis role="bold">Select levels</emphasis></para>
+                    </entry>
+                    <entry>
+                      <para>Lets you select all organisation units at one or more levels, for
+                        example national or district level.</para>
+                      <para>You can also select the parent organisation unit in the tree, which
+                        makes it easy to select for example, all facilities inside one or more
+                        districts.</para>
+                    </entry>
+                  </row>
+                  <row>
+                    <entry>
+                      <para><emphasis role="bold">Select groups</emphasis></para>
+                    </entry>
+                    <entry>
+                      <para>Lets you select all organisation units inside one or several groups and
+                        parent organisation units at the same time, for example hospitals or
+                        chiefdoms.</para>
+                    </entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Select series, category and filter</title>
+    <para>You can define which data dimension you want to appear as columns, rows and filters in the
+      pivot table. Each data element appears as individual dimensions and can be placed on any of
+      the axes.</para>
+    <note>
+      <?oxy_comment_start author="CPersson" timestamp="20160428T092528+0200" comment="At next revision, review wording."?>
+      <para>Data elements of continuous value types (real numbers/decimal numbers) can only be used
+        as filters, and will automatically be positioned as filters in the layout dialog. The reason
+        for this is that continuous number cannot be grouped into sensible ranges and used on
+        columns and rows.</para>
+      <?oxy_comment_end?>
+    </note>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Layout</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Drag and drop the dimensions to the appropriate space.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Change the display of your chart</title>
+    <para>You can customize the display of an event report. </para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Options</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Set the options as required. Available options are different between aggregated event
+          reports and individual event reports.</para>
+        <table frame="all">
+          <title>Event reports options </title>
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.5*"/>
+            <colspec colname="newCol3" colnum="3" colwidth="1*"/>
+            <thead>
+              <row>
+                <entry>Option</entry>
+                <entry>Description</entry>
+                <entry>Available for report type</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show column totals</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays totals at the end of each column in the pivot table.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show column sub-totals</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays sub-totals for each column in the pivot table.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show row totals</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays totals at the end of each row in the pivot table.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show row sub-totals</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Displays sub-totals for each row in the pivot table.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show dimension labels</emphasis></para>
+                </entry>
+                <entry>Displays labels for dimensions.</entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Hide empty rows</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Hides empty rows in the pivot table.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Hide n/a data</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Hides data tagged as N/A from the chart.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Include only completed events</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Includes only completed events in the aggregation process. This is useful
+                    when you want for example to exclude partial events in indicator
+                    calculations.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                  <para>Individual event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Limit</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Sets a limit of the maximum number of rows that you can display in the
+                    table, combined with a setting for showing top or bottom values.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Output type</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Defines the output type. The output types are <emphasis role="bold"
+                      >Event</emphasis>, <emphasis role="bold"
+                      ><?oxy_comment_start author="CPersson" timestamp="20160427T163926+0200" comment="In GUI: &quot;Enrollment&quot;
+
+US or UK spelling? http://grammarist.com/spelling/enrol-enroll/
+"?>Enrollment<?oxy_comment_end?></emphasis>
+                      and<emphasis role="bold">Tracked entity instance</emphasis>.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Show hierarchy</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Includes the names of all parents of each organisation unit in
+                    labels.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Display density</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Changes the padding around values inside cells.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                  <para>Individual event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Font size</emphasis></para>
+                </entry>
+                <entry>
+                  <para>Changes the font size of values.</para>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                  <para>Individual event report</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><emphasis role="bold">Digit group separator</emphasis></para>
+                </entry>
+                <entry>
+                  <?oxy_comment_start author="CPersson" timestamp="20160429T115234+0200" comment="At next release, reword."?>
+                  <para>Changes the character to use for splitting digit groups.</para>
+                  <?oxy_comment_end?>
+                </entry>
+                <entry>
+                  <para>Aggregated event report</para>
+                  <para>Individual event report</para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Download chart
+      <?oxy_comment_start author="CPersson" timestamp="20160429T120826+0200" comment="At next revision, standardize concept info."?>data
+      source<?oxy_comment_end?></title>
+    <para>You can download the data source behind an event report in HTML, JSON, XML, Microsoft
+      Excel or CSV
+      <?oxy_comment_start author="CPersson" timestamp="20160427T160423+0200" comment="At next revision, check if download feature has changed to be the same as in Data Visualizer.
+If so, add &quot; with different identification schemes (ID, Code, and Name)&quot;."?>formats<?oxy_comment_end?>. </para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Download</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Under <emphasis role="bold">Plain data source</emphasis>, click the format you want to
+          download.</para>
+        <para>
+          <table frame="all">
+            <title>Available formats</title>
+            <tgroup cols="2">
+              <colspec colname="newCol1" colnum="1" colwidth="1*"/>
+              <colspec colname="c2" colnum="2" colwidth="2.6*"/>
+              <thead>
+                <row>
+                  <entry>
+                    <para>Format</para>
+                  </entry>
+                  <entry>
+                    <para><?oxy_comment_start author="CPersson" timestamp="20160428T152232+0200" comment="At next revision, revise descriptions.
+How do you describe what is created? 
+For exampel: JSON file, table in JSON format?"?>Description<?oxy_comment_end?></para>
+                  </entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>
+                    <para>HTML</para>
+                  </entry>
+                  <entry>
+                    <para>Creates HTML table based on selected meta data</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>JSON</para>
+                  </entry>
+                  <entry>
+                    <para>Downloads data values in JSON format based on selected meta data</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>XML</para>
+                  </entry>
+                  <entry>
+                    <para>Downloads data values in XML format based on selected meta data</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>Microsoft Excel</para>
+                  </entry>
+                  <entry>
+                    <para>Downloads data values in Microsoft Excel format based on selected meta
+                      data</para>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <para>CSV</para>
+                  </entry>
+                  <entry>
+                    <para>Downloads data values in CSV format based on selected meta data</para>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Manage event report favorites</title>
+    <para>Saving your event reports as favorites makes it easy to restore them later. It also gives
+      you the opportunity to display them on the dashboard. </para>
     <section>
-      <title>Pivot tables with aggregated values</title>
-      <para>By selecting &quot;Aggregated values&quot; from the top-left menu you can use the event reports
-        app to create pivot tables with aggregated numbers of events. An event report is always
-        based on a program. You can do analysis based on a range of dimensions. Each dimension can
-        have a corresponding filter. Dimensions can be selected from the left-side menu and includes
-        the following:</para>
-      <itemizedlist>
+      <title>Save a chart as a favorite </title>
+      <orderedlist>
         <listitem>
-          <para><emphasis role="bold">Data elements</emphasis>: Start by selecting the program and
-            program stage for the event report. The data elements associated with the selected
-            program will be listed under available items. Each data element acts as a dimension, and
-            can be selected by double-clicking on it. After selecting a data element, it will be
-            visible under &quot;selected data items&quot;. Here you can specify a filter for each data
-            element, with operators such as &quot;greater than&quot;, &quot;in&quot; or &quot;equal&quot; together with a filter
-            value.</para>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Periods</emphasis>: For the period dimension you have three
-            options: relative periods, fixed periods and start/end dates. Relative periods can e.g.
-            be &quot;last 12 months&quot;, and has the advantage that it keeps the data in the report up to
-            date as time goes. Fixed periods can e.g. be &quot;January 2014&quot;. You can swith to start/end
-            dates by selecting from the drop-down menu under the periods tab, which lets you specify
-            flexible dates for the time span in the report.</para>
+          <para>Click <emphasis role="bold">Add new</emphasis>.</para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">Organisation units</emphasis>: The organisation unit dimension
-            lets you select any org unit from the hierarchy. You can use the org unit mode selector
-            to select org units explicitly, by org unit hierarchy levels and by org unit
-            groups.</para>
+          <para>In the text box, type the name you want to give your chart.</para>
         </listitem>
-      </itemizedlist>
-      <screenshot>
-        <mediaobject>
-          <imageobject>
-            <imagedata width="60%" fileref="resources/images/event_report/event_report.png" format="PNG" align="center"/>
-          </imageobject>
-        </mediaobject>
-      </screenshot>
-      <para>By clicking <emphasis role="bold">Layout</emphasis> from the top menu you can control
-        which dimensions should appear as columns, rows and filters in the pivot table. Note that
-        each data element appears as individual dimensions and can be placed on any of the
-        axes.</para>
-      <para>Note that data elements of continuous value types (real numbers/decimal numbers) can only
-        be used as filters, and will automatically be positioned as filters in the layout dialog.
-        The reason for this is that continuous number cannot be grouped into sensible ranges and
-        used on columns and rows.</para>
-      <para>Event reports can be saved as favorites by clicking on &quot;Favorites&quot; in the top menu.
-        Favorites can later be restored by clicking on them in the list of favorites.</para>
-      <para>Event reports can be downloaded in various popular formats by clicking on the &quot;Download&quot;
-        button on the top menu.</para>
+        <listitem>
+          <para>Click <emphasis role="bold">Create</emphasis>.</para>
+        </listitem>
+      </orderedlist>
     </section>
     <section>
-      <title>Event queries</title>
-      <para>By selecting &quot;Individual cases&quot; from the top-left menu you can use the event reports
-        app to make searches or queries for events based on a flexible set of criteria. The report
-        will be displayed as a table with one row per event. Each dimension can be used as a column
-        in the table or as a filter. Each dimension can have a criteria (filter). Data elements of
-        type option set allows for &quot;in&quot; criteria, where multiple options can be selected. Numeric
-        values can be compared to filter values using greater than, equal or less than
-        operators.</para>
+      <title>Open a favorite</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to open. You can either use <emphasis role="bold"
+              >Prev</emphasis> and <emphasis role="bold">Next</emphasis> or the search field to find
+            a saved favorite. The list is filtered on every character that you enter.</para>
+        </listitem>
+        <listitem>
+          <para>Click the name.</para>
+        </listitem>
+      </orderedlist>
     </section>
     <section>
-      <title>Options</title>
-      <para>An event report can be customized using a range of options, which can be accessed by
-        clicking on &quot;Options&quot; in the top menu. The following options apply to aggregated values-type
-        reports only:</para>
-      <itemizedlist>
+      <title>Rename a favorite</title>
+      <orderedlist>
         <listitem>
-          <para>Show totals: Show totals at the end of each column and row in the pivot
-            table.</para>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
         </listitem>
         <listitem>
-          <para>Show sub-totals: Show sub-totals for each column and row in the pivot table.</para>
+          <para>Find the favorite you want to rename.</para>
+          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+              >Next</emphasis> or the search field to find a saved favorite. </para>
         </listitem>
         <listitem>
-          <para>Hide empty rows: Hide empty rows in the pivot table.</para>
+          <para>Click the grey rename icon next to the favorite's name.</para>
         </listitem>
         <listitem>
-          <para>Limit: Set a limit on the max number of rows to display in the table, combined with
-            a setting for showing top or bottom values.</para>
+          <para>Type the new name and click <emphasis role="bold">Update</emphasis>.</para>
         </listitem>
-        <listitem>
-          <para>Show hierarchy: Include the names of all parents of each organisation unit in
-            labels.</para>
-        </listitem>
-      </itemizedlist>
-      <para>These style-related options apply to both types of reports:</para>
-      <itemizedlist>
-        <listitem>
-          <para>Display density: Control padding around values inside cells.</para>
-        </listitem>
-        <listitem>
-          <para>Font size: Control font size of values.</para>
-        </listitem>
-        <listitem>
-          <para>Digit group separator: Control character to use for splitting digit groups.</para>
-        </listitem>
-      </itemizedlist>
+      </orderedlist>
     </section>
+    <section>
+      <title><?oxy_comment_start author="Home" timestamp="20160412T140454+0200" comment="Revise title."?>Overwrite<?oxy_comment_end?>
+        a favorite</title>
+      <para>To save the current chart to an existing favorite (overwrite):</para>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to overwrite.</para>
+          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+              >Next</emphasis> or the search field to find a saved favorite. </para>
+        </listitem>
+        <listitem>
+          <para>Click the green overwrite icon next to the favorite's name.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to overwrite the
+            favorite.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Modify sharing settings for a favorite</title>
+      <para>After you have created a chart and saved it as a favorite, you can share the favorite
+        with everyone or a user group. To modify the sharing settings:</para>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Find the favorite you want to share.</para>
+            <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+                >Next</emphasis> or the search field to find a saved favorite.</para>
+          </listitem>
+          <listitem>
+            <para> Click the blue share icon next to the favorite's name.</para>
+          </listitem>
+          <listitem>
+            <para>In the text box, enter the name of the user group you want to share your favorite
+              with and click the <emphasis role="bold">+</emphasis> icon.</para>
+            <para>The chosen user group is added to the list of recipients.</para>
+            <para>Repeat the step to add more user groups.</para>
+          </listitem>
+          <listitem>
+            <para>If you want to allow external access, select the corresponding box.</para>
+          </listitem>
+          <listitem>
+            <para>For each user group, choose an
+              <?oxy_comment_start author="Home" timestamp="20160407T150433+0200" comment="Correct term?"?>access
+              setting<?oxy_comment_end?>. The options are:</para>
+            <itemizedlist>
+              <listitem>
+                <para><?oxy_comment_start author="Home" timestamp="20160407T150510+0200" comment="Why is this option only available for Public access?"?>None<?oxy_comment_end?></para>
+              </listitem>
+              <listitem>
+                <para>Can view</para>
+              </listitem>
+              <listitem>
+                <para>Can edit and view</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>Click <emphasis role="bold">Save</emphasis>.</para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section>
+      <title>Delete a favorite</title>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Find the favorite you want to delete.</para>
+          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
+              >Next</emphasis> or the search field to find a saved favorite. </para>
+        </listitem>
+        <listitem>
+          <para>Click the red delete icon next to the favorite's name.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to delete the
+            favorite.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+  </section>
+  <section>
+    <title>Create a link to a favorite</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Share</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Favorite link</emphasis>.</para>
+          <para><?oxy_comment_start author="CPersson" timestamp="20160429T133229+0200" comment="At next revision, revise working."?>This<?oxy_comment_end?>
+            provides a URL for the favorite. You can use this link to share the favorite with other
+            users or colleagues via email or chat.</para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </section>
+  <section>
+    <title>Visualize an event report as a chart</title>
+    <para>When you have made an event report you can open it as a chart:</para>
+    <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart as
+        table</emphasis>.</para>
   </section>
 </chapter>
