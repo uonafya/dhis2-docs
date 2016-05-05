@@ -12011,8 +12011,9 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <para>You can retrieve a Google service account OAuth 2 access token with a GET request to the
         following resource.<screen>GET /api/tokens/google</screen></para>
       <para>The token will be valid for a certain amount of time, after which another token must be
-        requested from this resource. The respone will contain the following properties in JSON
-          format.<table frame="all">
+        requested from this resource. The response contains a cache control header which matches the
+        token expiration. The respone will contain the following properties in JSON format.<table
+          frame="all">
           <title>Token response</title>
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*"/>
