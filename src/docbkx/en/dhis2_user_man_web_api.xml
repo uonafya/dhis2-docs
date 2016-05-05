@@ -12008,11 +12008,11 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <para>The tokens resource provides access tokens to various services.</para>
     <section>
       <title>Google Service Account</title>
-      <para>You can retrieve a Google service account OAuth 2 access token with a GET request to the
-        following resource.<screen>GET /api/tokens/google</screen></para>
+      <para>You can retrieve a Google service account OAuth 2.0 access token with a GET request to
+        the following resource.<screen>GET /api/tokens/google</screen></para>
       <para>The token will be valid for a certain amount of time, after which another token must be
         requested from this resource. The response contains a cache control header which matches the
-        token expiration. The respone will contain the following properties in JSON format.<table
+        token expiration. The response will contain the following properties in JSON format.<table
           frame="all">
           <title>Token response</title>
           <tgroup cols="2">
@@ -12027,7 +12027,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
             <tbody>
               <row>
                 <entry>access_token</entry>
-                <entry>The OAuth 2 access token to be used when authentication against Google
+                <entry>The OAuth 2.0 access token to be used when authentication against Google
                   services.</entry>
               </row>
               <row>
