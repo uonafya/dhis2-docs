@@ -1,15 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
       <chapter version="5.0"
-         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
-          xmlns="http://docbook.org/ns/docbook"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns:xs="http://www.w3.org/2001/XMLSchema"
-         xmlns:xl="http://www.w3.org/1999/xlink"
-         xmlns:xi="http://www.w3.org/2001/XInclude"
-         xmlns:xhtml="http://www.w3.org/1999/xhtml"
-         xmlns:svg="http://www.w3.org/2000/svg"
-         xmlns:mth="http://www.w3.org/1998/Math/MathML"
-         xmlns:db="http://docbook.org/ns/docbook">
+  xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+  xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+  xmlns:db="http://docbook.org/ns/docbook">
   <title>Web API</title>
   <para>The Web API is a component which makes it possible for external systems to access and
     manipulate data stored in an instance of DHIS 2. More precisely, it provides a programmatic
@@ -2061,7 +2057,7 @@ http://server/api/constants/ID</screen></para>
           </row>
           <row>
             <entry>preheatMode</entry>
-            <entry>REFERENCE,  ALL, NONE</entry>
+            <entry>REFERENCE, ALL, NONE</entry>
             <entry>Sets the preheater mode, used to signal if preheating should be done for
                 <emphasis role="bold">ALL</emphasis> (as it was before with <emphasis role="italic"
                 >preheatCache=true</emphasis>) or do a more intelligent scan of the objects to see
@@ -2125,8 +2121,9 @@ http://server/api/constants/ID</screen></para>
     <section>
       <title>Sending data values</title>
       <para>A common use-case for system integration is the need to send a set of data values from a
-        third-party system into DHIS. In this example we will use the DHIS 2 demo on <link xl:href="http://play.dhis2.org/demo"/> as basis and we recommend that you follow the provided
-        links with a web browser while reading (log in with <emphasis role="italic"
+        third-party system into DHIS. In this example we will use the DHIS 2 demo on <link
+          xl:href="http://play.dhis2.org/demo"/> as basis and we recommend that you follow the
+        provided links with a web browser while reading (log in with <emphasis role="italic"
           >admin</emphasis><emphasis role="italic">/district</emphasis> as username/password). We
         assume that we have collected case-based data using a simple software client running on
         mobile phones for the <emphasis role="italic">Mortality &lt;5 years</emphasis> data set in
@@ -2171,9 +2168,9 @@ http://server/api/constants/ID</screen></para>
       <para>To obtain the identifier for the data set we return to the entry point at <link
           xl:href="http://play.dhis2.org/demo/api"/> and follow the embedded link pointing at the
           <emphasis role="italic">dataSets</emphasis> resource located at <link
-          xl:href="http://play.dhis2.org/demo/api/dataSets"/>. From there we find and follow the link to
-        the <emphasis role="italic">Mortality &lt; 5 years</emphasis> data set which leads us to
-          <link xl:href="http://play.dhis2.org/demo/api/dataSets/pBOMPrpg1QX"/>. The resource
+          xl:href="http://play.dhis2.org/demo/api/dataSets"/>. From there we find and follow the
+        link to the <emphasis role="italic">Mortality &lt; 5 years</emphasis> data set which leads
+        us to <link xl:href="http://play.dhis2.org/demo/api/dataSets/pBOMPrpg1QX"/>. The resource
         representation for the <emphasis role="italic">Mortality &lt; 5 years</emphasis> data set
         conveniently advertises links to the data elements which are members of it. From here we can
         follow these links and obtain the identifiers of the data elements. For brevity we will only
@@ -2185,8 +2182,9 @@ http://server/api/constants/ID</screen></para>
           role="italic">dataSet</emphasis> representation conveniently provides link to org units
         which report on it so we search for<emphasis role="italic"> Ngelehun CHC</emphasis> and
         follow the link to the HTML representation at <link
-          xl:href="http://play.dhis2.org/demo/api/organisationUnits/DiszpKrYNg8"/>, which tells us that
-        the identifier of this org unit is <emphasis role="italic">DiszpKrYNg8</emphasis>.</para>
+          xl:href="http://play.dhis2.org/demo/api/organisationUnits/DiszpKrYNg8"/>, which tells us
+        that the identifier of this org unit is <emphasis role="italic"
+        >DiszpKrYNg8</emphasis>.</para>
       <para>From our case-based data we assume that we have 12 cases of measles, 14 cases of
         dysentery and 16 cases of cholera. We have now gathered enough information to be able to put
         together the XML data value set message:</para>
@@ -3210,8 +3208,8 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
               <row>
                 <entry>idScheme</entry>
                 <entry>id | name | code|&#160;attribute:ID</entry>
-                <entry>Property of all objects including data elements, org units and category option
-                  combos, to use to map the data values.</entry>
+                <entry>Property of all objects including data elements, org units and category
+                  option combos, to use to map the data values.</entry>
               </row>
               <row>
                 <entry>dryRun</entry>
@@ -3232,7 +3230,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
             </tbody>
           </tgroup>
         </table>
-      </section>      
+      </section>
     </section>
     <section>
       <title>CSV Import / Export</title>
@@ -3523,12 +3521,11 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                 <entry>order</entry>
                 <entry>string</entry>
                 <entry>false</entry>
-                <entry>The order of which to retreive the events from the API. Usage: 
-                  order=(property):asc/desc - Ascending order is default. Properties: event | 
+                <entry>The order of which to retreive the events from the API. Usage:
+                  order=(property):asc/desc - Ascending order is default. Properties: event |
                   program | programStage | enrollment | enrollmentStatus | orgUnit | orgUnitName |
-                  trackedEntityInstance | eventDate | followup | status | dueDate | storedBy | 
-                  created | lastUpdated | completedBy | completedDate
-                </entry>
+                  trackedEntityInstance | eventDate | followup | status | dueDate | storedBy |
+                  created | lastUpdated | completedBy | completedDate </entry>
               </row>
               <row>
                 <entry>event</entry>
@@ -3550,10 +3547,11 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           sub-hierarchy:<screen>api/events.json?orgUnit=O6uvpzGd5pu&amp;ouMode=DESCENDANTS</screen></para>
         <para>Query for all events with a certain program and organisation unit:
           <screen>api/events.json?orgUnit=DiszpKrYNg8&amp;program=eBAyeGv0exc</screen></para>
-        <para>Query for all events with a certain program and organisation unit, sorting by due date ascending:
+        <para>Query for all events with a certain program and organisation unit, sorting by due date
+          ascending:
           <screen>api/events.json?orgUnit=DiszpKrYNg8&amp;program=eBAyeGv0exc&amp;order=dueDate</screen></para>
-        <para>Query for the 10 events with the newest event date in a certain program and organisation unit -
-          by paging and ordering by due date descending:
+        <para>Query for the 10 events with the newest event date in a certain program and
+          organisation unit - by paging and ordering by due date descending:
           <screen>api/events.json?orgUnit=DiszpKrYNg8&amp;program=eBAyeGv0exc&amp;
 order=eventDate:desc&amp;pageSize=10&amp;page=1</screen></para>
         <para>Query for all events with a certain program and organisation unit for a specific
@@ -3907,27 +3905,26 @@ program=eBAyeGv0exc&amp;trackedEntityInstance=gfVxE3ALA9m</screen></para>
                 <entry>Defines how this variable is populated with data from the enrollment and
                   events. <itemizedlist>
                     <listitem>
-                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE - In tracker capture, gets the 
-                        newest value that exists for a dataelement, within the events of a given 
+                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE - In tracker capture, gets the
+                        newest value that exists for a dataelement, within the events of a given
                         program stage in the current enrollment. In event capture, gets the newest
                         value among the 10 newest events on the organisation unit.</para>
                     </listitem>
                     <listitem>
-                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM - In tracker capture, get the newest 
-                        value that exists for a dataelement across the whole enrollment. 
-                        In event capture, gets the newest value among the 10 newest events on the 
-                        organisation unit.
-                      </para>
+                      <para>DATAELEMENT_NEWEST_EVENT_PROGRAM - In tracker capture, get the newest
+                        value that exists for a dataelement across the whole enrollment. In event
+                        capture, gets the newest value among the 10 newest events on the
+                        organisation unit. </para>
                     </listitem>
                     <listitem>
                       <para>DATAELEMENT_CURRENT_EVENT - Gets the value of the given dataelement in
                         the current event only.</para>
                     </listitem>
                     <listitem>
-                      <para>DATAELEMENT_PREVIOUS_EVENT - In tracker capture, gets the newest value that 
-                        exists among events in the program that precedes the current event. In event 
-                        capture, gets the newvest value among the 10 preceeding events registered
-                        on the organisation unit.</para>
+                      <para>DATAELEMENT_PREVIOUS_EVENT - In tracker capture, gets the newest value
+                        that exists among events in the program that precedes the current event. In
+                        event capture, gets the newvest value among the 10 preceeding events
+                        registered on the organisation unit.</para>
                     </listitem>
                     <listitem>
                       <para>CALCULATED_VALUE - Used to reserve a variable name that will be assigned
@@ -4870,9 +4867,9 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
           role="italic">messageConversations</emphasis> resource. We start by visiting the Web API
         entry point at <link xl:href="http://play.dhis2.org/demo/api"/> where we find and follow the
         link to the <emphasis role="italic">messageConversations</emphasis> resource at <link
-          xl:href="http://play.dhis2.org/demo/api/messageConversations"/>. The description tells us that
-        we can use a POST request to create a new message using the following XML format for sending
-        to multiple users:</para>
+          xl:href="http://play.dhis2.org/demo/api/messageConversations"/>. The description tells us
+        that we can use a POST request to create a new message using the following XML format for
+        sending to multiple users:</para>
       <para>
         <screen>&lt;message xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot;&gt;
   &lt;subject&gt;This is the subject&lt;/subject&gt;
@@ -4911,11 +4908,11 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <para>Since we want to send a message to our friend the mobile user we need to look up her
         identifier. We do so by going to the Web API entry point and follow the link to the
           <emphasis role="italic">users</emphasis> resource at <link
-          xl:href="http://play.dhis2.org/demo/api/users"/>. We continue by following link to the mobile
-        user at <link xl:href="http://play.dhis2.org/demo/api/users/PhzytPW3g2J"/> where we learn that
-        her identifier is <emphasis role="italic">PhzytPW3g2J</emphasis>. We are now ready to put
-        our XML message together to form a message where we want to ask the mobile user whether she
-        has reported data for January 2014:</para>
+          xl:href="http://play.dhis2.org/demo/api/users"/>. We continue by following link to the
+        mobile user at <link xl:href="http://play.dhis2.org/demo/api/users/PhzytPW3g2J"/> where we
+        learn that her identifier is <emphasis role="italic">PhzytPW3g2J</emphasis>. We are now
+        ready to put our XML message together to form a message where we want to ask the mobile user
+        whether she has reported data for January 2014:</para>
       <screen>&lt;message xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot;&gt;
   &lt;subject&gt;Mortality data reporting&lt;/subject&gt;
   &lt;text&gt;Have you reported data for the Mortality data set for January 2014?&lt;/text&gt;
@@ -4976,10 +4973,10 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <para>From the response we are able to read the identifier of the newly sent message which is
           <emphasis role="italic">ZjHHSjyyeJ2</emphasis>. Note that the link to the specific
         resource is embedded and can be followed in order to read the full message. From the
-        description at <link xl:href="http://play.dhis2.org/demo/api/messageConversations"/> we learned
-        that we can reply directly to an existing message conversation once we know the URL by
-        including the message text as the request payload (body). We are now able to construct a URL
-        for sending our reply:</para>
+        description at <link xl:href="http://play.dhis2.org/demo/api/messageConversations"/> we
+        learned that we can reply directly to an existing message conversation once we know the URL
+        by including the message text as the request payload (body). We are now able to construct a
+        URL for sending our reply:</para>
       <screen>curl -d &quot;Yes the Mortality data set has been reported&quot; 
 &quot;https://play.dhis2.org/demo/api/messageConversations/ZjHHSjyyeJ2&quot; 
 -H &quot;Content-Type:text/plain&quot; -u mobile:district -X POST -v</screen>
@@ -5125,9 +5122,9 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <title>Writing interpretations</title>
       <para>We will start by writing an interpretation for the chart with identifier <emphasis
           role="italic">EbRN2VIbPdV</emphasis>. To write chart interpretations we will interact with
-        the <link xl:href="http://play.dhis2.org/demo/api/interpretations/chart/{chartId}"/> resource.
-        The interpretation will be the request body. Based on this we can put together the following
-        request using cURL:</para>
+        the <link xl:href="http://play.dhis2.org/demo/api/interpretations/chart/{chartId}"/>
+        resource. The interpretation will be the request body. Based on this we can put together the
+        following request using cURL:</para>
       <screen>curl -d &quot;This chart shows a significant ANC 1-3 dropout&quot; 
 &quot;https://play.dhis2.org/demo/api/interpretations/chart/EbRN2VIbPdV&quot; \
 -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
@@ -5304,8 +5301,8 @@ api/reports/OeJsA6K1Otx/data.pdf?date=2014-01-01</screen>
         tables with data served from a DHIS back-end into a Web page. To accomplish this we will use
         the Pivot table plug-in. The plug-in is written in Javascript and depends on the Ext JS
         library only. A complete working example can be found at <link
-          xl:href="http://play.dhis2.org/portal/table.html"/>. Open the page in a web browser and view
-        the source to see how it is set up.</para>
+          xl:href="http://play.dhis2.org/portal/table.html"/>. Open the page in a web browser and
+        view the source to see how it is set up.</para>
       <para>We start by having a look at what the complete html file could look like. This setup
         puts two tables in our web page. The first one is referring to an existing table. The second
         is configured inline.
@@ -5584,11 +5581,11 @@ Ext.onReady( function() {
     <section>
       <title>Embedding charts with the Visualizer chart plug-in</title>
       <para>In this example we will see how we can embed good-looking Ext JS charts (<link
-          xl:href="http://www.sencha.com/products/extjs"/>) with data served from a DHIS back-end into a
-        Web page. To accomplish this we will use the DHIS Visualizer plug-in. The plug-in is written
-        in Javascript and depends on the Ext JS library only. A complete working example can be
-        found at <link xl:href="http://play.dhis2.org/portal/chart.html"/>. Open the page in a web
-        browser and view the source to see how it is set up.</para>
+          xl:href="http://www.sencha.com/products/extjs"/>) with data served from a DHIS back-end
+        into a Web page. To accomplish this we will use the DHIS Visualizer plug-in. The plug-in is
+        written in Javascript and depends on the Ext JS library only. A complete working example can
+        be found at <link xl:href="http://play.dhis2.org/portal/chart.html"/>. Open the page in a
+        web browser and view the source to see how it is set up.</para>
       <para>We start by having a look at what the complete html file could look like. This setup
         puts two charts in our web page. The first one is referring to an existing chart. The second
         is configured inline.
@@ -5964,8 +5961,8 @@ Ext.onReady( function() {
       <para>Four files and Google Maps are included in the header section of the HTML document. The
         first two files are the Ext JS javascript library (we use the DHIS 2 content delivery
         network in this case) and its stylesheet. The third file is the OpenLayers javascript
-        mapping framework (<link xl:href="http://openlayers.org"/>) and finally we include the GIS map
-        plug-in. Make sure the path is pointing to your DHIS server installation.</para>
+        mapping framework (<link xl:href="http://openlayers.org"/>) and finally we include the GIS
+        map plug-in. Make sure the path is pointing to your DHIS server installation.</para>
       <screen>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://dhis2-cdn.org/v215/ext/resources/css/ext-plugin-gray.css&quot; /&gt;
 &lt;script src=&quot;http://dhis2-cdn.org/v215/ext/ext-all.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://maps.google.com/maps/api/js?sensor=false&quot;&gt;&lt;/script&gt;
@@ -8926,7 +8923,6 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <para>The Web API also supports a query parameter version, but the parameterized API can only
         be used for sending SMS to a single destination. </para>
       <screen>/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
-      
       <section>
         <title>Gateway response codes</title>
         <para>Gateway may response with following response codes.</para>
@@ -9007,7 +9003,8 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
               <row>
                 <entry>RESULT_CODE_207</entry>
                 <entry>multi-status</entry>
-                <entry>More than  one message was submitted to the API; however, not all messages have the same status</entry>
+                <entry>More than one message was submitted to the API; however, not all messages
+                  have the same status</entry>
               </row>
               <row>
                 <entry>RESULT_CODE_400</entry>
@@ -9017,7 +9014,8 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
               <row>
                 <entry>RESULT_CODE_401</entry>
                 <entry>unauthorized</entry>
-                <entry>Authentication failure. This can also be caused by IP lockdown settings</entry>
+                <entry>Authentication failure. This can also be caused by IP lockdown
+                  settings</entry>
               </row>
               <row>
                 <entry>RESULT_CODE_402</entry>
@@ -9053,7 +9051,6 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
           </tgroup>
         </table>
       </section>
-      
     </section>
     <section>
       <title>Inbound SMS service</title>
@@ -9116,7 +9113,6 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         </tgroup>
       </table>
     </section>
-    
     <section>
       <title>Gateway service administration</title>
       <para>The Web API exposes resources which provide a way to configure and update SMS gateway
@@ -9318,7 +9314,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         filters as the other endpoints.</para>
       <para>Get user credentials where username is
         admin:<screen>/api/userCredentials?filter=username:eq:admin</screen></para>
-      <para>Get username  and code from all user credentials where username starts with <emphasis
+      <para>Get username and code from all user credentials where username starts with <emphasis
           role="italic">adm</emphasis>:</para>
       <screen>/api/userCredentials?fields=username,code&amp;filter=username:^like:adm</screen>
     </section>
@@ -11449,10 +11445,10 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         >sharing</emphasis> resource.<screen>/api/sharing</screen></para>
     <section>
       <title>Get sharing status</title>
-    <para>To request the sharing status for an object use a GET request to:</para>
-    <screen>api/sharing?type=dataElement&amp;id=fbfJHSPpUQD</screen>
-    <para>The response looks like the below.</para>
-    <screen>{
+      <para>To request the sharing status for an object use a GET request to:</para>
+      <screen>api/sharing?type=dataElement&amp;id=fbfJHSPpUQD</screen>
+      <para>The response looks like the below.</para>
+      <screen>{
     &quot;meta&quot;: {
         &quot;allowPublicAccess&quot;: true,
         &quot;allowExternalAccess&quot;: false
@@ -11479,8 +11475,8 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <section>
       <title>Set sharing status</title>
       <para>You can define the sharing status for an object using the same URL with a POST request,
-      where the payload in JSON format looks like this:</para>
-    <screen>{
+        where the payload in JSON format looks like this:</para>
+      <screen>{
     &quot;object&quot;: {
         &quot;publicAccess&quot;: &quot;rw------&quot;,
         &quot;externalAccess&quot;: false,
@@ -11497,12 +11493,12 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         ]
     }
 }</screen>
-    <para>In this example, the payload defines the object to have read-write public access, no
-      external access (without login), read-write access to one user group and read-only access to
-      another user group. You can submit this to the sharing resource using curl:</para>
-    <screen>curl -d @sharing.json &quot;localhost/api/sharing?type=dataElement&amp;id=fbfJHSPpUQD&quot; 
+      <para>In this example, the payload defines the object to have read-write public access, no
+        external access (without login), read-write access to one user group and read-only access to
+        another user group. You can submit this to the sharing resource using curl:</para>
+      <screen>curl -d @sharing.json &quot;localhost/api/sharing?type=dataElement&amp;id=fbfJHSPpUQD&quot; 
 -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
-  </section>
+    </section>
   </section>
   <section>
     <title>Scheduling</title>
@@ -12008,6 +12004,48 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     </section>
   </section>
   <section>
+    <title>Tokens</title>
+    <para>The tokens resource provides access tokens to various services.</para>
+    <section>
+      <title>Google Service Account</title>
+      <para>You can retrieve a Google service account OAuth 2 access token with a GET request to the
+        following resource.<screen>GET /api/tokens/google</screen></para>
+      <para>The token will be valid for a certain amount of time, after which another token must be
+        requested from this resource. The respone will contain the following properties in JSON
+          format.<table frame="all">
+          <title>Token response</title>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.44*"/>
+            <thead>
+              <row>
+                <entry>Property</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>access_token</entry>
+                <entry>The OAuth 2 access token to be used when authentication against Google
+                  services.</entry>
+              </row>
+              <row>
+                <entry>expires_in</entry>
+                <entry>The number of seconds until the access token expires, typically 3600 seconds
+                  (1 hour).</entry>
+              </row>
+              <row>
+                <entry>client_id</entry>
+                <entry>The Google service account client id.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+      <para>This assumes that a Google service account has been set up and configured for DHIS 2.
+        Please consult the installation guide for more info.</para>
+    </section>
+  </section>
+  <section>
     <title>Metadata repository</title>
     <para>DHIS 2 provides a metadata repository containing metadata packages with various content. A
       metadata package is a </para>
@@ -12072,4 +12110,5 @@ curl -u username:password -X POST -d @updated_facility.json
   -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;uuid&gt;.json</screen>
   </section>
 </chapter>
-<?oxy_options track_changes="on"?>
+
+
