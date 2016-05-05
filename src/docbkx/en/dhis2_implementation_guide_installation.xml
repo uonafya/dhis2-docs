@@ -78,6 +78,16 @@
       <screen>sudo passwd -l root</screen>
     </section>
     <section>
+      <title>Creating the configuration directory</title>
+      <para>Start by creating a suitable directory for the DHIS 2 configuration files. This
+        directory will also be used for apps, files and log files. An example directory could
+        be:<screen>/home/dhis/config</screen></para>
+      <para>DHIS 2 will look for an environment variable called <emphasis>DHIS2_HOME</emphasis> to
+        locate the DHIS 2 configuration file. This directory will be referred to as
+          <emphasis>DHIS2_HOME</emphasis> in this installation guide. We will define the environment
+        variable in a later step in the installation process.</para>
+    </section>
+    <section>
       <title>Setting server time zone and locale (optional)</title>
       <para>It may be necessary to reconfigure the time zone of the server to match the time zone of
         the location which the DHIS 2 server will be covering. If you are using a virtual private
@@ -161,9 +171,10 @@ sudo locale-gen nb_NO.UTF-8</screen>
     <section>
       <title>Database configuration</title>
       <para>The database connection information is provided to DHIS 2 through a configuration file
-        called <emphasis role="italic">dhis.conf</emphasis>. Create this file and save it in a
-        convenient location. A configuration file for PostgreSQL corresponding to the above setup
-        has these properties: </para>
+        called <emphasis role="italic">dhis.conf</emphasis>. Create this file and save it in the
+          <emphasis>DHIS2_HOME</emphasis> directory. As an example the location could
+        be:<screen>/home/dhis/config/dhis.conf</screen> A configuration file for PostgreSQL
+        corresponding to the above setup has these properties: </para>
       <para><screen># Hibernate SQL dialect
 connection.dialect = org.hibernate.dialect.PostgreSQLDialect
 
@@ -239,6 +250,34 @@ filestore.secret = xxxx</screen>
           adding support for more providers.</emphasis></para>
     </section>
     <section>
+      <title>Google service account configuration (optional)</title>
+      <para>DHIS 2 can connect to various Google service APIs. For instance, the DHIS 2 GIS
+        component can utilize the Google Earth Engine API to load map layers. In order to provide
+        API access tokens you must set up and configure a Google service account and create a
+        private key.</para>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>Create a Google service account. Please consult the <link
+                xl:href="https://developers.google.com/identity/protocols/OAuth2ServiceAccount#overview"
+              >Google identify platform</link> documentation.</para>
+          </listitem>
+          <listitem>
+            <para>Visit the <link xl:href="https://console.cloud.google.com">Google cloud
+                console</link> and go to Credentials > Create credentials > Service account key.
+              Select your service account and JSON as key type and click Create.</para>
+          </listitem>
+          <listitem>
+            <para>Rename the JSON key to <emphasis>dhis-google-auth.json</emphasis>.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>After downloading the key file, place <emphasis>dhis-google-auth.json</emphasis> file in
+        the DHIS2_HOME directory (the same location as the <emphasis>dhis.conf</emphasis> file). As
+        an example the location could
+        be:<screen>/home/dhis/config/dhis-google-auth.json</screen></para>
+    </section>
+    <section>
       <title>Java installation</title>
       <para>Oracle Java 8 JDK is the recommended Java option as it provides the greates operating
         system support, including Ubuntu LTS 14.04. The webupd8team Java PPA provides the necessary
@@ -285,9 +324,9 @@ export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
   redirectPort="8443"
   URIEncoding="UTF-8" /></screen>
       <para>The next step is to download the DHIS 2 WAR file and place it into the webapps directory
-        of Tomcat. You can download the DHIS version 2.15 WAR release like this (replace 2.15 with
+        of Tomcat. You can download the DHIS version 2.23 WAR release like this (replace 2.23 with
         your preferred version if necessary):</para>
-      <screen>wget https://www.dhis2.org/download/releases/2.21/dhis.war</screen>
+      <screen>wget https://www.dhis2.org/download/releases/2.23/dhis.war</screen>
       <para>Move the WAR file into the Tomcat webapps directory. We want to call the WAR file
         ROOT.war in order to make it available at localhost directly without a context path:</para>
       <screen>mv dhis.war tomcat-dhis/webapps/ROOT.war</screen>
