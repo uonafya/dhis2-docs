@@ -10,7 +10,7 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>Organisation units</title>
+  <title>Manage organisation units</title>
   <para>In this section you will learn how to:</para>
   <para><itemizedlist>
       <listitem>
@@ -24,7 +24,7 @@
       </listitem>
     </itemizedlist></para>
   <section xml:id="ou_hierarchy">
-    <title>The organisational hierarchy</title>
+    <title>Organisation units overview</title>
     <para>The organisational hierarchy defines the organisation structure of the DHIS2 instance, such as how  the health facilities, administrative areas and other geographical areas are arranged with respect to each other. It is essentially the &quot;where&quot; dimension of DHIS2, similar to how periods represent the &quot;when&quot; or time dimension. DHIS2 is structured so that the organisational unit hierarchy is a geographical hierarchy, and the GIS module depends on this. Non-geographical hierarchies are discouraged, and would better to be represented through the use of organisational unit groups. This dimension to the data is defined as a hierarchy with one root unit (e.g. Ministry of Health or a country) and any number of levels and nodes below. Each node in this hierarchy is called an organisational unit in DHIS2. </para>
     <para>The design of this hierarchy will determine the  geographical units of analysis available to the users  as data is collected and aggregated in this structure. There can only be one organisational hierarchy at the same time so its structure needs careful consideration. </para>
     <para>Additional  hierarchies (e.g. parallel administrative boundaries to the health care sector) can be modeled using organisational groups and group sets, but the organisational hierarchy is the main vehicle for data aggregation on the geographical dimension. Typically national organisational hierarchies in public health have 4-6 levels, but any number of levels is supported. </para>
@@ -34,151 +34,332 @@
       <para>Because the most recent information which is contained in the organisational unit hierarchy is always used for aggregation, it is important to keep in mind that changes to it (such as the division of districts into two separate districts) will not be respected over time. As an example, District A may be sub-divided into District B and District C. This is a process which often happens for political reasons. Facilities which belong to District A would need to be reassigned to District B and C. However, any historical data, which was entered before the split actually occurred, would still be registered as belonging to District B and C and not the defunct District A. This temporal representation of the organisational hierarchy across time will be lost. </para>
     </important>
   </section>
-  <section>
-    <title>Organisation unit maintenance</title>
-    <section xml:id="orgunit">
-      <title>Organisation units</title>
-      <para>This is where you can create organisation units (from now on referred to as orgunits) and build up the orgunit hierarchy. Orgunits are added one by one as either root unit or a child of a selected unit. The left side menu represents the current organisational hierarchy and if you select a unit there you will see its children listed in the main list of orgunits in the middle of the screen. When an orgunit is selected in the left side menu you can also add new child units to it. To locate an orgunit in the hierarchy you can either navigate through the tree by expanding the branches (click on the + symbol), or search for it by opening the search field (click the green symbol above the root of the hierarchy). In search you can either search for the orgunit name or its code, both will only show exact matches (case-insensitive). To add a new orgunit first select its parent and then click on the Add new button in the top right corner of the list of orgunits. To add a new root orgunit make sure no orgunit is selected in the menu and click on &quot;Add new&quot;. The details of adding a new orgunit are explained in <link linkend="editOrganisationalUnits"/>. </para>
-      <section xml:id="ou_edit">
-        <title xml:id="editOrganisationalUnits">Editing organisation units</title>
-        <para>To edit the properties of an existing orgunit first select its parent (if any) in the left side menu, then locate the orgunit in the listed orgunits, and  click on  the  name of the orgunit that you want to modify. A context menu will appear, and you should select &quot;Edit&quot;. Refer to the screen-shot below to see how it works. </para>
-        <screenshot>
-          <mediaobject>
-            <imageobject>
-              <imagedata width="80%" align="center" fileref="resources/images/orgunits/editing_orgunits_new.png" format="PNG"/>
-            </imageobject>
-          </mediaobject>
-        </screenshot>
-        <para>   The following properties can be defined in the Edit (or Create new) window:</para>
-        <itemizedlist>
-          <listitem>
-            <para>Name: Define the precise name of the orgunit in this field. Each orgunit must have a unique name. </para>
-          </listitem>
-          <listitem>
-            <para>Short name: Typically, an abbreviation of the full name. This attribute is often used in reports to display the name of the orgunit, where there is limited space available. </para>
-          </listitem>
-          <listitem>
-            <para>Code: In many countries, orgunits are assigned a code. This code can be entered in this field. </para>
-          </listitem>
-          <listitem>
-            <para>Description: A description can be a longer piece of text which can be used to describe the organisationunit. </para>
-          </listitem>
-          <listitem>
-            <para>Opening date: Used to control which orgunits that where existing  at a point in time, e.g. when analysing historical data. This attribute is required. The default date for opening of organisation units is 1900-01-01, but can be set to any date (even dates which occur in the future).</para>
-          </listitem>
-          <listitem>
-            <para>Registers data: This property is used to identify which orgunits that can register data or not. Sometimes administrative orgunits at higher levels in the hierarchy are not supposed to register any data. This can help control the data entry process as only orgunits with this property set to Yes will be available for data entry.  </para>
-          </listitem>
-          <listitem>
-            <para>Comment: Any additional information that you would like to add can be put here. </para>
-          </listitem>
-          <listitem>
-            <para>Coordinates: This field is used to create the maps in the GIS module. Paste in the coordinates of the orgunit in this field, either a polygon (for orgunits that represent an administrative boundary) or a point (for health facilities). Without this information the GIS module will not work. It might be more efficient to import these coordinates later as a batch job for all orgunits using the import module. See the GIS chapter for more details.</para>
-          </listitem>
-          <listitem>
-            <para>URL: You can use this field to insert a URL link to an external web site that has additional information about this specific orgunit.</para>
-          </listitem>
-          <listitem>
-            <para>Contact information: A contact person, address, email, and phone number can be entered in these fields. This information can be vital for facilitating follow-up.</para>
-          </listitem>
-          <listitem>
-            <para>Datasets: Datasets can be assigned to organisational units here. See the chapter on &quot;Data sets&quot; for more detailed information on assigning datasets to organisational units. </para>
-          </listitem>
-          <listitem>
-            <para>Organisation unit groups: Assignments to organisational units group sets can be assigned through the individual drop-down boxes which appear for each group set.</para>
-          </listitem>
-        </itemizedlist>
-        <para>In addition to all of the options listed above, if you have added any attributes to organisation units, your custom attributes may also appear there. Please refer to the section on &quot;Attributes&quot; for more information about how attributes can be used.</para>
-      </section>
-    </section>
-    <section xml:id="ou_groupsets">
-      <title xml:id="orgunitGroupSets">Organisation unit group sets</title>
-      <para>Group sets can be understood as a flexible tool to add more categorisation to orgunits. Any number of group sets can be added, but as a default start all databases will have the two group sets &quot;Type&quot; and &quot;Ownership&quot;. Using these  group sets will simplify how reporting is done, and facilitate analysis through the use of tools such as Excel PivotTables.</para>
-      <para>While a group set like &quot;Type&quot; describes a measure dimension, the actual
-        categories are represented by the groups, and the categorisation of an orgunit through the
-        orgunit&apos;s group memberships. This can be understood as a parallel hierarchy of orgunits
-        with the group set as the root (&quot;Type&quot;), the groups at level 2 (e.g.
-        &quot;Clinic&quot;, &quot;Hospital&quot;, &quot;Dispensary&quot;), and the actual orgunits
-        at level 3. The group set can as such provide additional information and dimensionality to
-        the data analysis as data is easily filtered, organised, or aggregated by groups within a
-        group set. </para>
-      <para>For this aggregation to work without any duplication in the data some rules are necessary. A group set is always exclusive, which means that an orgunit cannot be member of more than one group in a group set. Therefore, when creating a new organisational unit, you will only be allowed to select a single organisational group membership for each group set. Furthermore it is possible to define whether a group set is compulsory or not, which will affect the completeness of the data when analysing data using group sets. Compulsory means that ALL orgunits must be member of a group in that group set. </para>
-      <para>We recommend that you approach the orgunit grouping in the following sequence (and one group set at a time):</para>
-      <orderedlist>
+  <section xml:id="orgunit">
+    <title><?oxy_comment_start author="cecilia" timestamp="20160509T152155+0200" comment="Review title, same as section heading."?>Manage<?oxy_comment_end?>
+      organisation units</title>
+    <para>This is where you can create organisation units (from now on referred to as organisation
+      units) and build up the organisation unit hierarchy. Organisation units are added one by one
+      as either root unit or a child of a selected unit. The left side menu represents the current
+      organisational hierarchy and if you select a unit there you will see its children listed in
+      the main list of organisation units in the middle of the screen. When an organisation unit is
+      selected in the left side menu you can also add new child units to it. To locate an
+      organisation unit in the hierarchy you can either navigate through the tree by expanding the
+      branches (click on the + symbol), or search for it by opening the search field (click the
+      green symbol above the root of the hierarchy). In search you can either search for the
+      organisation unit name or its code, both will only show exact matches (case-insensitive). To
+      add a new organisation unit first select its parent and then click on the Add new button in
+      the top right corner of the list of organisation units. To add a new root organisation unit
+      make sure no organisation unit is selected in the menu and click on &quot;Add new&quot;. The
+      details of adding a new organisation unit are explained in <link
+        linkend="editOrganisationalUnits"/>. </para>
+    <section xml:id="ou_edit">
+      <title xml:id="editOrganisationalUnits">Editing organisation units</title>
+      <para>To edit the properties of an existing organisation unit first select its parent (if any)
+        in the left side menu, then locate the organisation unit in the listed organisation units,
+        and click on the name of the organisation unit that you want to modify. A context menu will
+        appear, and you should select &quot;Edit&quot;. Refer to the screen-shot below to see how it
+        works. </para>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="80%" align="center"
+              fileref="resources/images/orgunits/editing_orgunits_new.png" format="PNG"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <para> The following properties can be defined in the Edit (or Create new) window:</para>
+      <itemizedlist>
         <listitem>
-          <para>Define a new group set, such as &quot;Location&quot;. </para>
+          <para>Name: Define the precise name of the organisation unit in this field. Each
+            organisation unit must have a unique name. </para>
         </listitem>
         <listitem>
-          <para>Add new  groups  (such as &quot;Urban&quot;, &quot;Rural&quot; and &quot;Peri-urban&quot;). Once all groups have been defined, return to the organisational unit group set and assign each of the desired groups to the group set.</para>
+          <para>Short name: Typically, an abbreviation of the full name. This attribute is often
+            used in reports to display the name of the organisation unit, where there is limited
+            space available. </para>
         </listitem>
         <listitem>
-          <para>Go back to each group, one by one, go to edit mode and assign the orgunits that should be member of the group. Should you follow this route, you can place multiple organisation units at a time in a group. However, you must be careful not to place the same organisational units in two groups which itself is a member of an organisation unit group set. This will result in a data integrity violation. If you have organisation unit groups which are not exclusive, they should not be members of a group. </para>
+          <para>Code: In many countries, organisation units are assigned a code. This code can be
+            entered in this field. </para>
         </listitem>
         <listitem>
-          <para>A better way to ensure that you do not mistakenly assign an organisation unit to
-            multiple members of a group set is you can use the edit feature of each organisational
-            unit to assign memberships to each group set. You will only be able to assign a single
-            organisation unit at a time however.</para>
+          <para>Description: A description can be a longer piece of text which can be used to
+            describe the organisationunit. </para>
         </listitem>
-      </orderedlist>
-      <para>It is important to keep in mind when using the &quot;Organisational unit group&quot; set function, that unless great care is taken, organisational units can be assigned to multiple groups of a group set. This can be checked through the &quot;Data Integrity&quot; module, which will report which organisational units are not members of a compulsory organisational unit group set, and which organisational units have been assigned to more than one member of a group set. </para>
-      <section xml:id="ou_groupsets_edit">
-        <title xml:id="editOrgunitGroupSets">Editing organisation unit group sets</title>
-        <para>Click on the name of the organisation unit group set you wish to modify, followed by &quot;Edit&quot; from the context menu which will appear.  The following properties can be defined in the Edit (or Create new) window:</para>
-        <itemizedlist>
-          <listitem>
-            <para>Name: Provide a precise name for the group set.</para>
-          </listitem>
-          <listitem>
-            <para>Description: Describe the phenomena the group set is measuring/capturing.</para>
-          </listitem>
-          <listitem>
-            <para>Compulsory: Indicate whether ALL orgunits need to be member of a group in this group set or not.</para>
-          </listitem>
-          <listitem>
-            <para>Available groups/Selected groups: Here you assign groups to your group set by using the arrow buttons to move  highlighted groups between the two lists (/selected). If no groups appear in the  list then you must go to orgunit groups and create new groups there first. Note that assigning groups that will violate the exclusive rule on group sets is not possible, e.g. adding a group that already has assigned an orgunit that again is already member of a group that has already  been selected by this group set, will not be possible since one orgunit will end up with two group memberships in the same group set. To avoid such situations we recommend first adding groups to group sets, and then orgunits to groups.</para>
-          </listitem>
-        </itemizedlist>
-      </section>
+        <listitem>
+          <para>Opening date: Used to control which organisation units that where existing at a
+            point in time, e.g. when analysing historical data. This attribute is required. The
+            default date for opening of organisation units is 1900-01-01, but can be set to any date
+            (even dates which occur in the future).</para>
+        </listitem>
+        <listitem>
+          <para>Registers data: This property is used to identify which organisation units that can
+            register data or not. Sometimes administrative organisation units at higher levels in
+            the hierarchy are not supposed to register any data. This can help control the data
+            entry process as only organisation units with this property set to Yes will be available
+            for data entry. </para>
+        </listitem>
+        <listitem>
+          <para>Comment: Any additional information that you would like to add can be put here.
+          </para>
+        </listitem>
+        <listitem>
+          <para>Coordinates: This field is used to create the maps in the GIS module. Paste in the
+            coordinates of the organisation unit in this field, either a polygon (for organisation
+            units that represent an administrative boundary) or a point (for health facilities).
+            Without this information the GIS module will not work. It might be more efficient to
+            import these coordinates later as a batch job for all organisation units using the
+            import module. See the GIS chapter for more details.</para>
+        </listitem>
+        <listitem>
+          <para>URL: You can use this field to insert a URL link to an external web site that has
+            additional information about this specific organisation unit.</para>
+        </listitem>
+        <listitem>
+          <para>Contact information: A contact person, address, email, and phone number can be
+            entered in these fields. This information can be vital for facilitating
+            follow-up.</para>
+        </listitem>
+        <listitem>
+          <para>Datasets: Datasets can be assigned to organisational units here. See the chapter on
+            &quot;Data sets&quot; for more detailed information on assigning datasets to
+            organisational units. </para>
+        </listitem>
+        <listitem>
+          <para>Organisation unit groups: Assignments to organisational units group sets can be
+            assigned through the individual drop-down boxes which appear for each group set.</para>
+        </listitem>
+      </itemizedlist>
+      <para>In addition to all of the options listed above, if you have added any attributes to
+        organisation units, your custom attributes may also appear there. Please refer to the
+        section on &quot;Attributes&quot; for more information about how attributes can be
+        used.</para>
     </section>
-    <section xml:id="ou_groups">
-      <title xml:id="orgunitGroups">Organisation unit groups</title>
-      <para>This function will allow you to  add new and manage existing organisation groups and their memberships. It can be accessed by choosing Maintenance-&gt;Organisation units-&gt;Organisation Unit group from the main menu. To add a new orgunit group click on the &quot;Add new&quot; button in the top right corner of the list of  groups. </para>
-      <section xml:id="ou_groups_edit">
-        <title xml:id="editOrgunitGroups">Editing organisation unit groups</title>
-        <para>Click on   name of the orgunit group that you want to modify and then select &quot;Edit&quot; from the context menu which will appear.  The following properties can be defined in the Edit (or Create new) window:</para>
-        <itemizedlist>
-          <listitem>
-            <para>Name: Provide a precise,unique and descriptive name for the orgunit group.</para>
-          </listitem>
-          <listitem>
-            <para>Short name: This name should be less than 25 characters, and will be used in certain places in DHIS2 when the number of characters needs to be restricted due to space constraints.</para>
-          </listitem>
-          <listitem>
-            <para>Symbol: Select a symbol which will be used to display the  organisation unit (points only) when the layer is displayed in the GIS.</para>
-          </listitem>
-          <listitem>
-            <para>Organisation unit tree selection: This is where you assign orgunits to the group. The tree supports multiple selection so select all the orgunits that you want to add (the selected ones appear with orange color) and click on &quot;Save&quot;. Click on &quot;Cancel&quot; to undo your changes and return to the list of orgunit groups. Use the &quot;Select at level&quot; button and dropdown if you want to select all orgunits at a specific level in the hierarchy (e.g. all districts). </para>
-          </listitem>
-          <listitem>
-            <para>Datasets: If you assign a dataset to an organisational unit group, all organisation units which are currently assigned to the dataset will be also present in this organisation unit group. </para>
-          </listitem>
-        </itemizedlist>
-      </section>
+  </section>
+  <section xml:id="ou_groups">
+    <title xml:id="orgunitGroups">Manage organisation unit groups</title>
+    <para>This function will allow you to add new and manage existing organisation groups and their
+      memberships. It can be accessed by choosing Maintenance-&gt;Organisation
+      units-&gt;Organisation Unit group from the main menu. To add a new organisation unit group
+      click on the &quot;Add new&quot; button in the top right corner of the list of groups. </para>
+    <section xml:id="ou_groups_edit">
+      <title xml:id="editOrgunitGroups">Editing organisation unit groups</title>
+      <para>Click on name of the organisation unit group that you want to modify and then select
+        &quot;Edit&quot; from the context menu which will appear. The following properties can be
+        defined in the Edit (or Create new) window:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Name: Provide a precise,unique and descriptive name for the organisation unit
+            group.</para>
+        </listitem>
+        <listitem>
+          <para>Short name: This name should be less than 25 characters, and will be used in certain
+            places in DHIS2 when the number of characters needs to be restricted due to space
+            constraints.</para>
+        </listitem>
+        <listitem>
+          <para>Symbol: Select a symbol which will be used to display the organisation unit (points
+            only) when the layer is displayed in the GIS.</para>
+        </listitem>
+        <listitem>
+          <para>Organisation unit tree selection: This is where you assign organisation units to the
+            group. The tree supports multiple selection so select all the organisation units that
+            you want to add (the selected ones appear with orange color) and click on
+            &quot;Save&quot;. Click on &quot;Cancel&quot; to undo your changes and return to the
+            list of organisation unit groups. Use the &quot;Select at level&quot; button and
+            dropdown if you want to select all organisation units at a specific level in the
+            hierarchy (e.g. all districts). </para>
+        </listitem>
+        <listitem>
+          <para>Datasets: If you assign a dataset to an organisational unit group, all organisation
+            units which are currently assigned to the dataset will be also present in this
+            organisation unit group. </para>
+        </listitem>
+      </itemizedlist>
     </section>
-    <section xml:id="ou_level">
-      <title xml:id="orgUnitGroupLevels">Organisation unit level</title>
-      <para>Here you specify a contextual name for each level in the hierarchy, e.g. &quot;Country&quot;, &quot;Province&quot;, &quot;District&quot;, &quot;Health Facility&quot;, and these names will be used all over the application where levels are referred to. This page will take some time to load if the orgunit hierarchy is very big.</para>
+  </section>
+  <section xml:id="ou_groupsets">
+    <title xml:id="orgunitGroupSets">Manage organisation unit group sets</title>
+    <para>Group sets can be understood as a flexible tool to add more categorisation to organisation
+      units. Any number of group sets can be added, but as a default start all databases will have
+      the two group sets &quot;Type&quot; and &quot;Ownership&quot;. Using these group sets will
+      simplify how reporting is done, and facilitate analysis through the use of tools such as Excel
+      PivotTables.</para>
+    <para>While a group set like &quot;Type&quot; describes a measure dimension, the actual
+      categories are represented by the groups, and the categorisation of an organisation unit
+      through the organisation unit&apos;s group memberships. This can be understood as a parallel
+      hierarchy of organisation units with the group set as the root (&quot;Type&quot;), the groups
+      at level 2 (e.g. &quot;Clinic&quot;, &quot;Hospital&quot;, &quot;Dispensary&quot;), and the
+      actual organisation units at level 3. The group set can as such provide additional information
+      and dimensionality to the data analysis as data is easily filtered, organised, or aggregated
+      by groups within a group set. </para>
+    <para>For this aggregation to work without any duplication in the data some rules are necessary.
+      A group set is always exclusive, which means that an organisation unit cannot be member of
+      more than one group in a group set. Therefore, when creating a new organisational unit, you
+      will only be allowed to select a single organisational group membership for each group set.
+      Furthermore it is possible to define whether a group set is compulsory or not, which will
+      affect the completeness of the data when analysing data using group sets. Compulsory means
+      that ALL organisation units must be member of a group in that group set. </para>
+    <para>We recommend that you approach the organisation unit grouping in the following sequence
+      (and one group set at a time):</para>
+    <orderedlist>
+      <listitem>
+        <para>Define a new group set, such as &quot;Location&quot;. </para>
+      </listitem>
+      <listitem>
+        <para>Add new groups (such as &quot;Urban&quot;, &quot;Rural&quot; and
+          &quot;Peri-urban&quot;). Once all groups have been defined, return to the organisational
+          unit group set and assign each of the desired groups to the group set.</para>
+      </listitem>
+      <listitem>
+        <para>Go back to each group, one by one, go to edit mode and assign the organisation units
+          that should be member of the group. Should you follow this route, you can place multiple
+          organisation units at a time in a group. However, you must be careful not to place the
+          same organisational units in two groups which itself is a member of an organisation unit
+          group set. This will result in a data integrity violation. If you have organisation unit
+          groups which are not exclusive, they should not be members of a group. </para>
+      </listitem>
+      <listitem>
+        <para>A better way to ensure that you do not mistakenly assign an organisation unit to
+          multiple members of a group set is you can use the edit feature of each organisational
+          unit to assign memberships to each group set. You will only be able to assign a single
+          organisation unit at a time however.</para>
+      </listitem>
+    </orderedlist>
+    <para>It is important to keep in mind when using the &quot;Organisational unit group&quot; set
+      function, that unless great care is taken, organisational units can be assigned to multiple
+      groups of a group set. This can be checked through the &quot;Data Integrity&quot; module,
+      which will report which organisational units are not members of a compulsory organisational
+      unit group set, and which organisational units have been assigned to more than one member of a
+      group set. </para>
+    <section>
+      <title>Create an organisation unit group set</title>
+      <para/>
     </section>
-    <section xml:id="hierarchy_operations">
-      <title xml:id="hierarchyOperations">Hierarchy operations</title>
-      <para>Here you can move orgunits around in the hierarchy by changing the parent of a selected orgunit. This process is done in three steps:</para>
-      <para>1. Select the orgunit you want to move (in the hierarchy in the left side menu) and click &quot;Confirm&quot; under the &quot;Select an organisation unit to move&quot; label.</para>
-      <para>2. Select the new parent orgunit (again by using the hierarchy in the left side menu). If no parent is selected then the orgunit will be moved up to root level (top of the hierarchy). Click on the &quot;Confirm&quot; button under the &quot;Select the new parent organisation unit for the one to move&quot; label.</para>
-      <para>3. Click on the &quot;Move&quot; button to apply your changes to the hierarchy.</para>
-      <para>Your changes will be immediately reflected in the left side menu hierarchy. At any time
-        in the process (before hitting the Move button) you can click on the &quot;Reset&quot;
-        button to deselect orgunit to move and the new parent.</para>
+    <section xml:id="ou_groupsets_edit">
+      <title xml:id="editOrgunitGroupSets">Edit an organisation unit group set</title>
+      <para>Click on the name of the organisation unit group set you want to modify, followed by
+        &quot;Edit&quot; from the context menu which will appear. The following properties can be
+        defined in the Edit (or Create new) window:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Name: Provide a precise name for the group set.</para>
+        </listitem>
+        <listitem>
+          <para>Description: Describe the phenomena the group set is measuring/capturing.</para>
+        </listitem>
+        <listitem>
+          <para>Compulsory: Indicate whether ALL organisation units need to be member of a group in
+            this group set or not.</para>
+        </listitem>
+        <listitem>
+          <para>Available groups/Selected groups: Here you assign groups to your group set by using
+            the arrow buttons to move highlighted groups between the two lists (/selected). If no
+            groups appear in the list then you must go to organisation unit groups and create new
+            groups there first. Note that assigning groups that will violate the exclusive rule on
+            group sets is not possible, e.g. adding a group that already has assigned an
+            organisation unit that again is already member of a group that has already been selected
+            by this group set, will not be possible since one organisation unit will end up with two
+            group memberships in the same group set. To avoid such situations we recommend first
+            adding groups to group sets, and then organisation units to groups.</para>
+        </listitem>
+      </itemizedlist>
     </section>
+  </section>
+  <section xml:id="ou_level">
+    <title xml:id="orgUnitGroupLevels"
+      ><?oxy_comment_start author="cecilia" timestamp="20160509T150134+0200" comment="At next revision, review name of section."?>Assign<?oxy_comment_end?>
+      names to organisation unit levels</title>
+    <para>You
+      <?oxy_comment_start author="cecilia" timestamp="20160509T145347+0200" comment="Is this mandatory?
+Who sets it up?
+Admin?
+Implementer?
+"?>can<?oxy_comment_end?>
+      specify a contextual name for each level in the hierarchy, for example &quot;Country&quot;,
+      &quot;Province&quot;, &quot;District" or &quot;Health Facility&quot;. The contextual names are
+      used all over the application where levels are referred to.
+      <?oxy_comment_start author="cecilia" timestamp="20160509T145555+0200" comment="Verify with SME:
+Still correct?"?>This
+      page will take some time to load if the organisation unit hierarchy is very
+      <?oxy_comment_start author="cecilia" timestamp="20160509T145428+0200" comment="Define big?"?>big<?oxy_comment_end?>.<?oxy_comment_end?></para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Organisation units</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Select the organisation units you want to move:</para>
+        <orderedlist>
+          <listitem>
+            <para>In the hierarchy tree to the left, select the organisation unit you want to
+              move.</para>
+          </listitem>
+          <listitem>
+            <para>In the hierarchy tree to the right, select where you want to move the organisation
+              unit
+              <?oxy_comment_start author="cecilia" timestamp="20160509T143632+0200" comment="Verify with SME: is this called a &quot;parent&quot;?"?>to<?oxy_comment_end?>.</para>
+          </listitem>
+          <listitem>
+            <para>Repeat selection for all the organisation units you want to move.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Move x
+            <?oxy_comment_start author="cecilia" timestamp="20160509T143833+0200" comment="Suggest to SME to move selection below the trees."?>organisation<?oxy_comment_end?>
+            units</emphasis>, where x stands for the number of organisation units you have
+          selected.</para>
+        <para>Your changes are immediately reflected in the left side hierarchy tree.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="hierarchy_operations">
+    <title xml:id="hierarchyOperations"
+      ><?oxy_comment_start author="cecilia" timestamp="20160509T144253+0200" comment="Verify with SME:
+Who does this? Admin? Implementer?
+Who sets it up?
+Who does the maintenance?"?>Move
+      organisation unit<?oxy_comment_end?>
+      <?oxy_comment_start author="cecilia" timestamp="20160509T142938+0200" comment="Verify with SME, you move within a hierarchy not from one to another?"?>within<?oxy_comment_end?>
+      a hierarchy</title>
+    <para>You can move organisation units around in the hierarchy by changing the parent of a
+      selected organisation unit.</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Organisation units</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Select the organisation units you want to move:</para>
+        <orderedlist>
+          <listitem>
+            <para>In the hierarchy tree to the left, select the organisation unit you want to
+              move.</para>
+          </listitem>
+          <listitem>
+            <para>In the hierarchy tree to the right, select where you want to move the organisation
+              unit
+              <?oxy_comment_start author="cecilia" timestamp="20160509T143632+0200" comment="Verify with SME: is this called a &quot;parent&quot;?"?>to<?oxy_comment_end?>.</para>
+          </listitem>
+          <listitem>
+            <para>Repeat selection for all the organisation units you want to move.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Move x
+            <?oxy_comment_start author="cecilia" timestamp="20160509T143833+0200" comment="Suggest to SME to move selection below the trees."?>organisation<?oxy_comment_end?>
+            units</emphasis>, where x stands for the number of organisation units you have
+          selected.</para>
+        <para>Your changes are immediately reflected in the left side hierarchy tree.</para>
+      </listitem>
+    </orderedlist>
   </section>
 </chapter>
