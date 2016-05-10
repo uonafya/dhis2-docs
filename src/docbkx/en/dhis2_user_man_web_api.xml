@@ -6603,9 +6603,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
                 program indicators, program data elements, program attributes</entry>
               <entry>dx</entry>
               <entry>Data element, indicator, data set, data element operand, program indicator,
-                program attribute identifiers, keyword DE_GROUP-&lt;group-id&gt;, use
-                &lt;dataelement-id&gt;.&lt;optioncombo-id&gt; for data element operands,
-                &lt;program-id>.&lt;dataelement-id> for program data elements,
+                program attribute identifiers, keyword DE_GROUP-&lt;group-id&gt;,
+                IN_GROUP-&lt;group-id>, use &lt;dataelement-id&gt;.&lt;optioncombo-id&gt; for data
+                element operands, &lt;program-id>.&lt;dataelement-id> for program data elements,
                 &lt;program-id>.&lt;attribute-id> for program attributes.</entry>
             </row>
             <row>
@@ -11386,7 +11386,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   ]
 }</screen></para>
     <screen>curl -X POST -d @data.json -H &quot;Content-Type: application/json&quot;
-  &quot;http://server/api/trackedEntityInstasnces?importStrategy=DELETE&quot;</screen>
+  &quot;http://server/api/trackedEntityInstasnces?strategy=DELETE&quot;</screen>
     <para><emphasis role="italic">Example: Bulk deletion of
       enrollments:</emphasis><screen>{
   &quot;enrollments&quot;: [
@@ -11396,7 +11396,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   ]
 }</screen></para>
     <screen>curl -X POST -d @data.json -H &quot;Content-Type: application/json&quot;
-  &quot;http://server/api/enrollments?importStrategy=DELETE&quot;</screen>
+  &quot;http://server/api/enrollments?strategy=DELETE&quot;</screen>
     <para><emphasis role="italic">Example: Bulk deletion of
       events:</emphasis><screen>{
   &quot;events&quot;: [
@@ -11406,7 +11406,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   ]
 }</screen></para>
     <screen>curl -X POST -d @data.json -H &quot;Content-Type: application/json&quot;
-  &quot;http://server/api/events?importStrategy=DELETE&quot;</screen>
+  &quot;http://server/api/events?strategy=DELETE&quot;</screen>
   </section>
   <section>
     <title>Email</title>
@@ -12005,7 +12005,8 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   </section>
   <section>
     <title>Tokens</title>
-    <para>The tokens resource provides access tokens to various services.</para>
+    <para>The <emphasis>tokens</emphasis> resource provides access tokens to various
+      services.</para>
     <section>
       <title>Google Service Account</title>
       <para>You can retrieve a Google service account OAuth 2.0 access token with a GET request to
