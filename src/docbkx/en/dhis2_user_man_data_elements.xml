@@ -9,7 +9,8 @@
   <title><?oxy_comment_start author="cecilia" timestamp="20160510T091313+0200" comment="Review title, can you replace data elements with something else? A more generic term?
 SInce one of the categories you can edit is called data element..."?>Manage<?oxy_comment_end?>
     data
-    <?oxy_comment_start author="cecilia" timestamp="20160510T090355+0200" comment="Review all screenshots."?>elements<?oxy_comment_end?></title>
+    <?oxy_comment_start author="cecilia" timestamp="20160510T090355+0200" comment="Review all screenshots.
+Indentify which topics that need a screenshot to clarify."?>elements<?oxy_comment_end?></title>
   <section>
     <title>O<?oxy_comment_start author="cecilia" timestamp="20160510T091042+0200" comment="Explain here which types of data elements you can manage in this part of the mtn app.
 
@@ -29,7 +30,7 @@ Revise title, add generic term"?>verview<?oxy_comment_end?></title>
 What is the generic term for what elements you can edit in this section? Types? Objects?
 In which order would a user edit them?
 What is the hierarcy between the elements?"?>Data
-        element objects <?oxy_comment_end?>in Maintenance app</title>
+        element objects <?oxy_comment_end?>in the Maintenance app</title>
       <tgroup cols="2">
         <colspec colname="c1" colnum="1" colwidth="1.0*"/>
         <colspec colname="c2" colnum="2" colwidth="1.0*"/>
@@ -49,7 +50,7 @@ What is the hierarcy between the elements?"?>Data
               <para>Category option</para>
             </entry>
             <entry>
-              <para>Create, modify, view and delete</para>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
             </entry>
           </row>
           <row>
@@ -57,7 +58,7 @@ What is the hierarcy between the elements?"?>Data
               <para>Category</para>
             </entry>
             <entry>
-              <para>Create, modify, view and delete </para>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
             </entry>
           </row>
           <row>
@@ -65,7 +66,7 @@ What is the hierarcy between the elements?"?>Data
               <para>Category combination</para>
             </entry>
             <entry>
-              <para>Create, modify, view and delete </para>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
             </entry>
           </row>
           <row>
@@ -73,7 +74,15 @@ What is the hierarcy between the elements?"?>Data
               <para>Category option combination</para>
             </entry>
             <entry>
-              <para/>
+              <para>Edit and show details</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Category option group</para>
+            </entry>
+            <entry>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
             </entry>
           </row>
           <row>
@@ -81,7 +90,7 @@ What is the hierarcy between the elements?"?>Data
               <para>Category option group set</para>
             </entry>
             <entry>
-              <para/>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
             </entry>
           </row>
           <row>
@@ -89,7 +98,7 @@ What is the hierarcy between the elements?"?>Data
               <para>Data element</para>
             </entry>
             <entry>
-              <para>Create, modify, view and delete</para>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
             </entry>
           </row>
           <row>
@@ -97,7 +106,7 @@ What is the hierarcy between the elements?"?>Data
               <para>Data element group</para>
             </entry>
             <entry>
-              <para>Create, modify, view and delete</para>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
             </entry>
           </row>
           <row>
@@ -105,7 +114,7 @@ What is the hierarcy between the elements?"?>Data
               <para>Data element group set</para>
             </entry>
             <entry>
-              <para>Create, modify, view and delete</para>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
             </entry>
           </row>
         </tbody>
@@ -576,87 +585,112 @@ Item was not in original user doc."?>Classification<?oxy_comment_end?></emphasis
     </orderedlist>
   </section>
   <section xml:id="dataElementGroup">
-    <title>Manage data element groups</title>
-    <para>Data element groups provide a mechanism for classifying related data elements into a
-      common theme. For instance, two data elements &quot;Measles immunisation&quot; and &quot;BCG
-      Immunisation&quot; might be grouped together into a data element group &quot;Childhood
-      immunisation&quot;. To access the data element group maintenance page, click Apps -&gt; Data
-      elements / Indicators -&gt; Data Element Group.</para>
-    <para>Similar to the &quot;Data element&quot; maintenance page, data elements groups can be
-      searched with by entering a search string in the &quot;Search by name&quot; field. </para>
-    <para>To add a new data element group, click the <guibutton>&quot;+&quot;</guibutton> button and
-      the following screen will be displayed:</para>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="80%" align="center"
-            fileref="resources/images/maintainence/data_element_group_add.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para>Fill in the &quot;Name&quot; field and then select all data elements that should belong to
-      the group from the left panel. Click the &quot;-&gt;&quot; button to add the selected data
-      elements to the data element group. Click the &quot;&lt;- Remove all&quot; button to remove
-      all data elements from the group that have been selected in the right panel. Finally, click
-      the &quot;Save&quot; button to save changes, or the &quot;Cancel&quot; button to discard any
-      changes. </para>
-    <section>
-      <title>Create a data element group</title>
-      <para/>
-    </section>
-    <section>
-      <title>Edit a data element group</title>
-      <para/>
-    </section>
-  </section>
-  <section xml:id="dataElementGroupEditor">
-    <title>Data element group editor</title>
-    <para>The data element group editor provides advanced functionality to the administrator to
-      allow multiple data elements to be added or removed from a group. It is also possible to
-      create new data element groups, rename existing groups, and delete groups entirely. To access
-      the data element group editor, go to <guimenu>&quot;Maintenance -&gt; Data elements and
-        Indicators -&gt; Data Element Group Editor&quot;</guimenu>. The following screen will
-      appear.</para>
-    <para>Data element groups area listed alphabetically in the leftmost panel. By clicking on a
-      data element group, the current members of that group (data elements) are listed in the centre
-      panel. Available data elements that can be added to the data element group appear are listed
-      alphabetically in the rightmost panel. To remove an existing data element from the group,
-      click the name of the data element in the centre panel, and then press the &quot;Move
-      right&quot;
-      <inlinemediaobject>
-        <imageobject>
-        <imagedata fileref="resources/images/dhis2_images/move_right.png" />
-      </imageobject>
-      </inlinemediaobject>  button. To add data elements to the group, select them from the leftmost
-      panel, and click the &quot;Move left&quot;  button. Press the
-        <guibutton>&quot;Update data element group member&quot;</guibutton> button to save your
-      changes.</para>
+    <title>Create a data element group</title>
+    <para>Data element groups lets you classify related data elements into a common theme. For
+      instance, two data elements &quot;Measles immunisation&quot; and &quot;BCG Immunisation&quot;
+      might be grouped together into a data element group &quot;Childhood immunisation&quot;.</para>
+    <para>To create a new data element group:</para>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Data Elements</emphasis> > <emphasis
+            role="bold">Data Element Group</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the yellow plus
+          <?oxy_comment_start author="cecilia" timestamp="20160510T112410+0200" comment="Do not refer to the FAB as an icon, according to MS Manual of Style."?>button<?oxy_comment_end?>.</para>
+      </listitem>
+      <listitem>
+        <para>Fill in the form:</para>
+        <orderedlist>
+          <listitem>
+            <para><emphasis role="bold">Name</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Short name</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Code</emphasis></para>
+          </listitem>
+          <?oxy_custom_end?>
+          <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Select data elements and assign them.</para>
+        <?oxy_custom_end?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+    <?oxy_custom_end?>
   </section>
   <section xml:id="dataElementGroupSet">
     <title>Manage data element group sets</title>
-    <para>Data element group sets allow multiple data element groups to be categorised into a set.
+    <?oxy_comment_start author="cecilia" timestamp="20160513T112352+0200" comment="At next revision, rephrase into active voice."?>
+    <para>Data element group sets allows you to categorise multiple data element groups into a set.
       Data element group sets are used during analysis and reporting to combine similar data element
-      groups into a common theme. To access the data element group set maintenance module, choose
-      &quot;Apps -&gt; Data elements / Indicators -&gt; Data Element Group Set&quot;. Similar to the
-      other data element maintenance modules, new data element group sets can be added by pressing
-      the &quot;+&quot;. Other operations include Edit, Clone, Share, Delete and Show details,
-      similar to data elements and data element groups as described in the previous sections.</para>
-    <para>Existing data element group set members can be edited by right-clicking the name and
-      selecting &quot;Edit&quot; from the context menu of the desired data element group set as seen
-      below.</para>
+      groups into a common theme.</para>
+    <?oxy_comment_end?>
+    <?oxy_comment_start author="cecilia" timestamp="20160513T112442+0200" comment="Review graphic, adds value? Up-to-date?"?>
     <mediaobject>
       <imageobject>
         <imagedata width="80%" align="center"
           fileref="resources/images/maintainence/data_element_group_set.png" format="PNG"/>
       </imageobject>
     </mediaobject>
-    <para>Available data element groups are displayed in the left panel. They can be moved into the
-      selected data element group set by pressing the &quot;-&gt;&quot; button. Data element groups
-      that are currently members of the data element group set are displayed in the right hand
-      panel. They can be removed from the data element group set by clicking the desired data
-      element group and pressing the &quot;&lt;-&quot; button. Press the
-        <guibutton>&quot;Save&quot;</guibutton> button to save any changes and the
-        <guibutton>&quot;Cancel&quot;</guibutton> button to discard all changes. </para>
+    <?oxy_comment_end?>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Data Elements</emphasis> > <emphasis
+            role="bold">Data Element Group Set</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the yellow plus
+          <?oxy_comment_start author="cecilia" timestamp="20160510T112410+0200" comment="Do not refer to the FAB as an icon, according to MS Manual of Style."?>button<?oxy_comment_end?>.</para>
+      </listitem>
+      <listitem>
+        <para>Fill in the form:</para>
+        <orderedlist>
+          <listitem>
+            <para><emphasis role="bold">Name</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Code</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Description</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Compulsory</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Data dimension</emphasis></para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Select data element groups and assign them.</para>
+        <?oxy_custom_end?>
+        <?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160513T113037+0200" comment="At next revision, review this para. Is it necessary? Does it add value?" mid="43"?>
+        <para>Available data element groups are displayed in the left panel. Data element groups
+          that are currently members of the data element group set are displayed in the right hand
+          panel.</para>
+        <?oxy_custom_end?>
+        <?oxy_comment_end mid="43"?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+    <?oxy_custom_end?>
   </section>
   <section xml:id="dataElementCategory">
     <title>
@@ -811,7 +845,7 @@ Maybe move it to implementer guide."?>Judicious
   </section>
   <section xml:id="dataElementCategoryCombo">
     <title>Create a category combination</title>
-    <para>Category combinations lets you combine multiple categories into a related set. </para>
+    <para>Category combinations lets you combine multiple categories into a related set.</para>
     <example>
       <title>Category combination</title>
       <para>A data element &quot;Number of new HIV infections&quot; might be disaggregated according
@@ -913,7 +947,7 @@ Where in the maintenance app do you perform this task?"?>
       projects&quot; would be created with these two categories and assigned a dimension type of
       &quot;Attribute&quot;. Finally, we can use this dimension to apply an attribute to the dataset
       &quot;ART monthly summary&quot;, by choosing the &quot;Implementing partners and
-      projects&quot; as the &quot;Combination of categories&quot;. </para>
+      projects&quot; as the &quot;Combination of categories&quot;.</para>
     <?oxy_comment_end?>
     <para>The following screen shot of an example data entry screen illustrates
       <?oxy_comment_start author="cecilia" timestamp="20160512T145821+0200" comment="For SME: Which concepts?"?>all
@@ -937,12 +971,19 @@ Where in the maintenance app do you perform this task?"?>
     <?oxy_comment_end?>
   </section>
   <section>
+    <?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>
     <title><?oxy_comment_start author="cecilia" timestamp="20160512T104714+0200" comment="Ev. replace with Mange"?>Create<?oxy_comment_end?>
       a category option
-      <?oxy_comment_start author="cecilia" timestamp="20160512T104653+0200" comment="In GUI, no Create icon. Why?"?>combination<?oxy_comment_end?></title>
+      <?oxy_comment_start author="cecilia" timestamp="20160512T104653+0200" comment="For SME:In GUI, no Create icon. Why?
+So a category option combination is just a category combination with a code?
+Why can you not assign this code in the create category combination?
+Further explaination needed."?>combination<?oxy_comment_end?></title>
+    <?oxy_custom_end?>
     <para>You can assign a code to category option combinations. This makes data exchange between
       DHIS 2 and external systems easier.</para>
+    <?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>
     <para>Simply select the category option combination from the list, and provide the code. </para>
+    <?oxy_custom_end?>
     <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
     <orderedlist>
       <listitem>
