@@ -6962,27 +6962,45 @@ ORDER BY oul.level, par.name, ou.name</screen>
         the following data types.</para>
       <table frame="all">
         <title>Data dx dimension types</title>
-        <tgroup cols="3">
+        <tgroup cols="4">
           <colspec colname="c1" colnum="1" colwidth="1.09*"/>
           <colspec colname="c2" colnum="2" colwidth="1*"/>
           <colspec colname="c3" colnum="3" colwidth="1.17*"/>
+          <colspec colname="newCol4" colnum="4" colwidth="1*"/>
           <thead>
             <row>
               <entry>Type</entry>
               <entry>Syntax</entry>
               <entry>Description</entry>
+              <entry>Data source</entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>Indicator</entry>
               <entry>&lt;indicator-id></entry>
-              <entry>Indicator identifier. Reads from aggregated data.</entry>
+              <entry>Indicator identifier.</entry>
+              <entry>Aggregated data</entry>
+            </row>
+            <row>
+              <entry>Indicator</entry>
+              <entry>IN_GROUP-&lt;indicatorgroup-id></entry>
+              <entry>Keyword followed by indicator group identifier. Will include all indicators in
+                the group in the response.</entry>
+              <entry>Aggregated data</entry>
             </row>
             <row>
               <entry>Data element</entry>
-              <entry>&lt;dataelement-id></entry>
-              <entry>Data element identifier. Reads from aggregated data.</entry>
+              <entry>&lt;dataelement-id> </entry>
+              <entry>Data element identifier.</entry>
+              <entry>Aggregated data</entry>
+            </row>
+            <row>
+              <entry>Data element</entry>
+              <entry>DE_GROUP-&lt;dataelementgroup-id&gt;</entry>
+              <entry>Keyword followed by data element group identifier. Will include all data
+                elements in the group in the response.</entry>
+              <entry>Aggregated data</entry>
             </row>
             <row>
               <entry>Data set</entry>
@@ -6990,18 +7008,21 @@ ORDER BY oul.level, par.name, ou.name</screen>
               <entry>Data set identifier followed by reporting rate metric. Can be REPORTING_RATE |
                 REPORTING_RATE_ON_TIME | ACTUAL_REPORTS | ACTUAL_REPORTS_ON_TIME |
                 EXPECTED_REPORTS.</entry>
+              <entry>Aggregated data</entry>
             </row>
             <row>
               <entry>Program data element</entry>
               <entry>&lt;program-id>.&lt;dataelement-id></entry>
               <entry>Program identifier followed by data element identifier. Reads from events
                 within the specified program.</entry>
+              <entry>Events from the given program</entry>
             </row>
             <row>
               <entry>Program indicator</entry>
               <entry>&lt;programindicator-id></entry>
               <entry>Program indicator identifier. Reads from events from within the program
                 associated with the program identifier.</entry>
+              <entry>Events from the program of the program indicator</entry>
             </row>
           </tbody>
         </tgroup>
@@ -7011,11 +7032,16 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <screen>/api/analytics.json
 ?dimension=dx:Uvn6LCg7dVU;BfMAe6Itzgt.REPORTING_RATE;BfMAe6Itzgt.ACTUAL_REPORTS;IpHINAT79UW.a3kGcGDCuk6
 &amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
+      <para>The group syntax can be used together with any other item as well. An example looks like
+        this:</para>
+      <screen>/api/analytics.json
+?dimension=dx:DE_GROUP-qfxEYY9xAl6;IN_GROUP-oehv9EO3vP7;BfMAe6Itzgt.REPORTING_RATE
+&amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
       <tip>
         <para>A great way to learn how to use the analytics API is to use the DHIS 2 <emphasis>pivot
-            table</emphasis> app. You can play around with the various dimensions and items, and
-          click Download > Plain data source > JSON to see the resulting analytics API calls in the
-          address bar of your Web browser.</para>
+            table</emphasis> app. You can play around with pivot tables using the various dimensions
+          and items and click Download > Plain data source > JSON to see the resulting analytics API
+          calls in the address bar of your Web browser.</para>
       </tip>
     </section>
     <section>
