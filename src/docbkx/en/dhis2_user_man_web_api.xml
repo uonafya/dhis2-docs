@@ -9206,14 +9206,12 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   &quot;username&quot;: &quot;clickatelluser&quot;,
   &quot;password&quot;: &quot;abc123&quot;,
   &quot;Auth-token&quot;: &quot;XXXXXXXXXXXXXXXXXXXX&quot;,
-  &quot;apiid&quot;: &quot;12121&quot;
 }</screen>
       <para><emphasis role="italic">Bulksms</emphasis></para>
       <screen>{ 
   &quot;name&quot;: &quot;bulkSMS&quot;,
   &quot;username&quot;: &quot;bulkuser&quot;,
   &quot;password&quot;: &quot;abc123&quot;,
-   &quot;urlTemplate&quot;: &quot;http://bulksms.vsms.net/&quot;,
   &quot;region&quot;: &quot;Spain&quot;
 }</screen>
       <para><emphasis role="italic">GenericHttp</emphasis></para>
@@ -9227,14 +9225,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   &quot;parameter2&quot;: &quot;value2&quot;
   }
 }</screen>
-      <para><emphasis role="italic">SMPP</emphasis></para>
-      <screen>{
-  &quot;name&quot; : &quot;smpp&quot;,
-  &quot;username&quot;: &quot;smppUser&quot;,
-  &quot;password&quot;: &quot;abc123&quot;,
-  &quot;address&quot; : &quot;sample.smpp.com&quot;,
-  &quot;port&quot; : &quot;8143&quot;
-}</screen>
+     
       <para>The various gateway configurations can be instantiated using the endpoints listed
         below.</para>
       <table frame="all">
@@ -9265,11 +9256,6 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
               <entry>Generichttp</entry>
               <entry>POST/PUT</entry>
               <entry>/api/sms/gateways/generichttp</entry>
-            </row>
-            <row>
-              <entry>SMPP</entry>
-              <entry>POST/PUT</entry>
-              <entry>/api/sms/gateways/smpp</entry>
             </row>
           </tbody>
         </tgroup>
