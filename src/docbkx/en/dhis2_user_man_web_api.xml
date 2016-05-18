@@ -6576,191 +6576,6 @@ ORDER BY oul.level, par.name, ou.name</screen>
       sets.</para>
     <screen>api/analytics</screen>
     <section>
-      <title>Dimensions and items</title>
-      <para>DHIS 2 features a multi-dimensional data model with several fixed and dynamic data
-        dimensions. The fixed dimensions are the data element, period (time) and organisation unit
-        dimension. You can dynamically add dimensions through categories, data element group sets
-        and organisation unit group sets. The table below displays the available data dimensions in
-        DHIS 2. Each data dimension has a corresponding <emphasis role="italic">dimension
-          identifier</emphasis>, and each dimension can have a set of <emphasis role="italic"
-          >dimension items</emphasis>:</para>
-      <table frame="all">
-        <title>Dimensions and dimension items</title>
-        <tgroup cols="3">
-          <colspec colnum="1" colname="c1" colwidth="3.17*"/>
-          <colspec colnum="2" colname="c2" colwidth="1*"/>
-          <colspec colnum="3" colname="newCol3" colwidth="4.03*"/>
-          <thead>
-            <row>
-              <entry>Dimension</entry>
-              <entry>Dimension id</entry>
-              <entry>Dimension items</entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>Data elements, indicators, data set reporting rates, data element operands,
-                program indicators, program data elements, program attributes</entry>
-              <entry>dx</entry>
-              <entry>Data element, indicator, data set, data element operand, program indicator,
-                program attribute identifiers, keyword DE_GROUP-&lt;group-id&gt;,
-                IN_GROUP-&lt;group-id>, use &lt;dataelement-id&gt;.&lt;optioncombo-id&gt; for data
-                element operands, &lt;program-id>.&lt;dataelement-id> for program data elements,
-                &lt;program-id>.&lt;attribute-id> for program attributes.</entry>
-            </row>
-            <row>
-              <entry>Periods (time)</entry>
-              <entry>pe</entry>
-              <entry>ISO periods and relative periods, see &quot;date and period
-                format&quot;</entry>
-            </row>
-            <row>
-              <entry>Organisation unit hierarchy</entry>
-              <entry>ou</entry>
-              <entry>Organisation unit identifiers, and keywords USER_ORGUNIT,
-                USER_ORGUNIT_CHILDREN, USER_ORGUNIT_GRANDCHILDREN, LEVEL-&lt;level&gt; and
-                OU_GROUP-&lt;group-id&gt;</entry>
-            </row>
-            <row>
-              <entry>Category option combinations</entry>
-              <entry>co</entry>
-              <entry>Category option combo identifers (omit to get all items)</entry>
-            </row>
-            <row>
-              <entry>Attribute option combinations</entry>
-              <entry>ao</entry>
-              <entry>Category option combo identifers (omit to get all items)</entry>
-            </row>
-            <row>
-              <entry>Categories</entry>
-              <entry>&lt;category id&gt;</entry>
-              <entry>Category option identifiers (omit to get all items)</entry>
-            </row>
-            <row>
-              <entry>Data element group sets</entry>
-              <entry>&lt;group set id&gt;</entry>
-              <entry>Data element group identifiers (omit to get all items)</entry>
-            </row>
-            <row>
-              <entry>Organisation unit group sets</entry>
-              <entry>&lt;group set id&gt;</entry>
-              <entry>Organisation unit group identifiers (omit to get all items)</entry>
-            </row>
-            <row>
-              <entry>Category option group sets</entry>
-              <entry>&lt;group set id&gt;</entry>
-              <entry>Category option group identifiers (omit to get all items)</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
-      <para>It is not necessary to be aware of which objects are used for the various dynamic
-        dimensions when designing analytics queries. You can get a complete list of dynamic
-        dimensions by visiting this URL in the Web API:</para>
-      <screen>/api/dimensions</screen>
-      <para>The base URL to the analytics resource is <emphasis role="italic"
-          >api/analytics</emphasis>. To request specific dimensions and dimension items you can use
-        a query string on the following format, where <emphasis role="italic">dim-id</emphasis> and
-          <emphasis role="italic">dim-item</emphasis> should be substituted with real values:</para>
-      <screen>/api/analytics?dimension=dim-id:dim-item;dim-item&amp;dimension=dim-id:dim-item;dim-item</screen>
-      <para>As illustrated above, the dimension identifier is followed by a colon while the
-        dimension items are separated by semi-colons. As an example, a query for two data elements,
-        two periods and two organisation units can be done with the following URL:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
-&amp;dimension=pe:2014Q1;2014Q2&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
-      <para>To query for data broken down by category option combinations instead of data element
-        totals you can include the category dimension in the query string, for instance like
-        this:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
-&amp;dimension=co&amp;dimension=pe:201401&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
-      <para>When selecting data elements you can also select all data elements in a group as items
-        by using the DE_GROUP-&lt;id&gt; syntax:</para>
-      <screen>/api/analytics?dimension=dx:DE_GROUP-h9cuJOkOwY2
-&amp;dimension=pe:201401&amp;dimension=ou:O6uvpzGd5pu</screen>
-      <para>To query for program data elements (of tracker domain type) you can get those by
-        specifying the program for each data element using the &lt;program-id>.&lt;dataelement-id>
-        syntax:</para>
-      <screen>/api/analytics.json?dimension=dx:eBAyeGv0exc.qrur9Dvnyt5;eBAyeGv0exc.GieVkTxp4HH
-&amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
-      <para>To query for program attributes (tracked entity attributes) you can get those by
-        specifying the program for each attribute using the &lt;program.id>.&lt;attribute-id>
-        syntax:</para>
-      <screen>/api/analytics.json?dimension=dx:IpHINAT79UW.a3kGcGDCuk6;IpHINAT79UW.UXz7xuGCEhU
-&amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:ImspTQPwCqd</screen>
-      <para>To query for organisation unit group sets and data elements you can use the following
-        URL - notice how the group set identifier is used as dimension identifier and the groups as
-        dimension items:</para>
-      <screen>/api/analytics?dimension=Bpx0589u8y0:oRVt7g429ZO;MAs88nJc9nL
-&amp;dimension=pe:2014&amp;dimension=ou:ImspTQPwCqd</screen>
-      <para>To query for data elements and categories you can use this URL - use the category
-        identifier as dimension identifier and the category options as dimension items:</para>
-      <screen>/api/analytics?dimension=dx:s46m5MS0hxu;fClA2Erf6IO&amp;dimension=pe:2014
-&amp;dimension=YNZyaJHiHYq:btOyqprQ9e8;GEqzEKCHoGA&amp;filter=ou:ImspTQPwCqd</screen>
-      <para>To query using relative periods and organisation units associated with the current user
-        you can use a URL like this:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
-&amp;dimension=pe:LAST_12_MONTHS&amp;dimension=ou:USER_ORGUNIT</screen>
-      <para>When selecting organisation units for a dimension you can select an entire level
-        optionally constrained by any number of boundary organisation units with the
-        LEVEL-&lt;level&gt; syntax. Boundary refers to a top node in a sub-hierarchy, meaning that
-        all organisation units at the given level below the given boundary organisation unit in the
-        hierarchy will be included in the response, and is provided as regular organisation unit
-        dimension items. A simple query for all org units at level three:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014&amp;dimension=ou:LEVEL-3</screen>
-      <para>A query for level three and four with two boundary org units can be specified like
-        this:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014
-&amp;dimension=ou:LEVEL-3;LEVEL-4;O6uvpzGd5pu;lc3eMKXaEf</screen>
-      <para>When selecting organisation units you can also select all organisation units in an
-        organisation unit group to be included as dimension items using the OU_GROUP-&lt;id&gt;
-        syntax. The organisation units in the groups can optionally be constrained by any number of
-        boundary organisation units. Both the level and the group items can be repeated any number
-        of times:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014
-&amp;dimension=ou:OU_GROUP-w0gFTTmsUcF;OU_GROUP-EYbopBOJWsW;O6uvpzGd5pu;lc3eMKXaEf</screen>
-      <para>A few things to be aware of when using the analytics resource are listed below.</para>
-      <itemizedlist>
-        <listitem>
-          <para>Data elements, indicator and data sets are part of a common data dimension,
-            identified as &quot;dx&quot;. This means that you can use any of data elements,
-            indicators and data set identifiers together with the &quot;dx&quot; dimension
-            identifier in a query.</para>
-        </listitem>
-        <listitem>
-          <para>For the category, data element group set and organisation unit group set dimensions,
-            all dimension items will be used in the query if no dimension items are
-            specified.</para>
-        </listitem>
-        <listitem>
-          <para>For the period dimension, the dimension items are ISO period identifiers and/or
-            relative periods. Please refer to the section above called &quot;Date and period
-            format&quot; for the period format and available relative periods.</para>
-        </listitem>
-        <listitem>
-          <para>For the organisation unit dimension you can specify the items to be the organisation
-            unit or sub-units of the organisation unit associated with the user currently
-            authenticated for the request using they keys USER_ORGUNIT or USER_ORGUNIT_CHILDREN as
-            items, respectively. You can also specify organisation unit identifiers directly, or a
-            combination of both.</para>
-        </listitem>
-        <listitem>
-          <para>For the organisation unit dimension you can specify the organisation hierarchy level
-            and the boundary unit to use for the request on the format
-            LEVEL-&lt;level&gt;-&lt;boundary-id&gt;; as an example LEVEL-3-ImspTQPwCqd implies all
-            organisation units below the given boundary unit at level 3 in the hierarchy.</para>
-        </listitem>
-        <listitem>
-          <para>For the organisation unit dimension the dimension items are the organisation units
-            and their sub-hierarchy - data will be aggregated for all organisation units below the
-            given organisation unit in the hierarchy.</para>
-        </listitem>
-        <listitem>
-          <para>You cannot specify dimension items for the category option combination dimension.
-            Instead the response will contain the items which are linked to the data values.</para>
-        </listitem>
-      </itemizedlist>
-    </section>
-    <section>
       <title>Request query parameters</title>
       <para>The analytics resource lets you specify a range of query parameters:<table frame="all">
           <title>Query parameters</title>
@@ -6781,13 +6596,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
               <row>
                 <entry>dimension</entry>
                 <entry>Yes</entry>
-                <entry>Dimensions to be retrieved, repeated for each.</entry>
+                <entry>Dimensions and dimension items to be retrieved, repeated for each.</entry>
                 <entry>Any dimension</entry>
               </row>
               <row>
                 <entry>filter</entry>
                 <entry>No</entry>
-                <entry>Filters to apply to the query, repeated for each.</entry>
+                <entry>Filters and filter items to apply to the query, repeated for each.</entry>
                 <entry>Any dimension</entry>
               </row>
               <row>
@@ -6953,6 +6768,283 @@ ORDER BY oul.level, par.name, ou.name</screen>
 &amp;dimension=ou:O6uvpzGd5pu&amp;tableLayout=true&amp;columns=dx;ou&amp;rows=pe</screen>
     </section>
     <section>
+      <title>Dimensions and items</title>
+      <para>DHIS 2 features a multi-dimensional data model with several fixed and dynamic data
+        dimensions. The fixed dimensions are the data element, period (time) and organisation unit
+        dimension. You can dynamically add dimensions through categories, data element group sets
+        and organisation unit group sets. The table below displays the available data dimensions in
+        DHIS 2. Each data dimension has a corresponding <emphasis role="italic">dimension
+          identifier</emphasis>, and each dimension can have a set of <emphasis role="italic"
+          >dimension items</emphasis>:</para>
+      <table frame="all">
+        <title>Dimensions and dimension items</title>
+        <tgroup cols="3">
+          <colspec colnum="1" colname="c1" colwidth="3.17*"/>
+          <colspec colnum="2" colname="c2" colwidth="1*"/>
+          <colspec colnum="3" colname="newCol3" colwidth="4.03*"/>
+          <thead>
+            <row>
+              <entry>Dimension</entry>
+              <entry>Dimension id</entry>
+              <entry>Dimension items</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>Data elements, indicators, data set reporting rate metrics, data element
+                operands, program indicators, program data elements, program attributes</entry>
+              <entry>dx</entry>
+              <entry>Data element, indicator, data set reporting rate metrics, data element operand,
+                program indicator, program attribute identifiers, keyword DE_GROUP-&lt;group-id&gt;,
+                IN_GROUP-&lt;group-id>, use &lt;dataelement-id&gt;.&lt;optioncombo-id&gt; for data
+                element operands, &lt;program-id>.&lt;dataelement-id> for program data elements,
+                &lt;program-id>.&lt;attribute-id> for program attributes.</entry>
+            </row>
+            <row>
+              <entry>Periods (time)</entry>
+              <entry>pe</entry>
+              <entry>ISO periods and relative periods, see &quot;date and period
+                format&quot;</entry>
+            </row>
+            <row>
+              <entry>Organisation unit hierarchy</entry>
+              <entry>ou</entry>
+              <entry>Organisation unit identifiers, and keywords USER_ORGUNIT,
+                USER_ORGUNIT_CHILDREN, USER_ORGUNIT_GRANDCHILDREN, LEVEL-&lt;level&gt; and
+                OU_GROUP-&lt;group-id&gt;</entry>
+            </row>
+            <row>
+              <entry>Category option combinations</entry>
+              <entry>co</entry>
+              <entry>Category option combo identifers (omit to get all items)</entry>
+            </row>
+            <row>
+              <entry>Attribute option combinations</entry>
+              <entry>ao</entry>
+              <entry>Category option combo identifers (omit to get all items)</entry>
+            </row>
+            <row>
+              <entry>Categories</entry>
+              <entry>&lt;category id&gt;</entry>
+              <entry>Category option identifiers (omit to get all items)</entry>
+            </row>
+            <row>
+              <entry>Data element group sets</entry>
+              <entry>&lt;group set id&gt;</entry>
+              <entry>Data element group identifiers (omit to get all items)</entry>
+            </row>
+            <row>
+              <entry>Organisation unit group sets</entry>
+              <entry>&lt;group set id&gt;</entry>
+              <entry>Organisation unit group identifiers (omit to get all items)</entry>
+            </row>
+            <row>
+              <entry>Category option group sets</entry>
+              <entry>&lt;group set id&gt;</entry>
+              <entry>Category option group identifiers (omit to get all items)</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>It is not necessary to be aware of which objects are used for the various dynamic
+        dimensions when designing analytics queries. You can get a complete list of dynamic
+        dimensions by visiting this URL in the Web API:</para>
+      <screen>/api/dimensions</screen>
+      <para>The base URL to the analytics resource is <emphasis role="italic"
+          >api/analytics</emphasis>. To request specific dimensions and dimension items you can use
+        a query string on the following format, where <emphasis role="italic">dim-id</emphasis> and
+          <emphasis role="italic">dim-item</emphasis> should be substituted with real values:</para>
+      <screen>/api/analytics?dimension=dim-id:dim-item;dim-item&amp;dimension=dim-id:dim-item;dim-item</screen>
+      <para>As illustrated above, the dimension identifier is followed by a colon while the
+        dimension items are separated by semi-colons. As an example, a query for two data elements,
+        two periods and two organisation units can be done with the following URL:</para>
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+&amp;dimension=pe:2016Q1;2016Q2&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
+      <para>To query for data broken down by category option combinations instead of data element
+        totals you can include the category dimension in the query string, for instance like
+        this:</para>
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+&amp;dimension=co&amp;dimension=pe:201601&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
+      <para>When selecting data elements you can also select all data elements in a group as items
+        by using the DE_GROUP-&lt;id&gt; syntax:</para>
+      <screen>/api/analytics?dimension=dx:DE_GROUP-h9cuJOkOwY2
+&amp;dimension=pe:201601&amp;dimension=ou:O6uvpzGd5pu</screen>
+      <para>When selecting data set reporting rates, the syntax contains of a data set identifier
+        followed by a reporting rate metric:</para>
+      <screen>/api/analytics?dimension=dx:BfMAe6Itzgt.REPORTING_RATE;BfMAe6Itzgt.ACTUAL_REPORTS
+&amp;dimension=pe:201601&amp;dimension=ou:O6uvpzGd5pu</screen>
+      <para>To query for program data elements (of tracker domain type) you can get those by
+        specifying the program for each data element using the &lt;program-id>.&lt;dataelement-id>
+        syntax:</para>
+      <screen>/api/analytics.json?dimension=dx:eBAyeGv0exc.qrur9Dvnyt5;eBAyeGv0exc.GieVkTxp4HH
+&amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
+      <para>To query for program attributes (tracked entity attributes) you can get those by
+        specifying the program for each attribute using the &lt;program.id>.&lt;attribute-id>
+        syntax:</para>
+      <screen>/api/analytics.json?dimension=dx:IpHINAT79UW.a3kGcGDCuk6;IpHINAT79UW.UXz7xuGCEhU
+&amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:ImspTQPwCqd</screen>
+      <para>To query for organisation unit group sets and data elements you can use the following
+        URL - notice how the group set identifier is used as dimension identifier and the groups as
+        dimension items:</para>
+      <screen>/api/analytics?dimension=Bpx0589u8y0:oRVt7g429ZO;MAs88nJc9nL
+&amp;dimension=pe:2016&amp;dimension=ou:ImspTQPwCqd</screen>
+      <para>To query for data elements and categories you can use this URL - use the category
+        identifier as dimension identifier and the category options as dimension items:</para>
+      <screen>/api/analytics?dimension=dx:s46m5MS0hxu;fClA2Erf6IO&amp;dimension=pe:2016
+&amp;dimension=YNZyaJHiHYq:btOyqprQ9e8;GEqzEKCHoGA&amp;filter=ou:ImspTQPwCqd</screen>
+      <para>To query using relative periods and organisation units associated with the current user
+        you can use a URL like this:</para>
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+&amp;dimension=pe:LAST_12_MONTHS&amp;dimension=ou:USER_ORGUNIT</screen>
+      <para>When selecting organisation units for a dimension you can select an entire level
+        optionally constrained by any number of boundary organisation units with the
+        LEVEL-&lt;level&gt; syntax. Boundary refers to a top node in a sub-hierarchy, meaning that
+        all organisation units at the given level below the given boundary organisation unit in the
+        hierarchy will be included in the response, and is provided as regular organisation unit
+        dimension items. A simple query for all org units at level three:</para>
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2016&amp;dimension=ou:LEVEL-3</screen>
+      <para>A query for level three and four with two boundary org units can be specified like
+        this:</para>
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2016
+&amp;dimension=ou:LEVEL-3;LEVEL-4;O6uvpzGd5pu;lc3eMKXaEf</screen>
+      <para>When selecting organisation units you can also select all organisation units in an
+        organisation unit group to be included as dimension items using the OU_GROUP-&lt;id&gt;
+        syntax. The organisation units in the groups can optionally be constrained by any number of
+        boundary organisation units. Both the level and the group items can be repeated any number
+        of times:</para>
+      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2016
+&amp;dimension=ou:OU_GROUP-w0gFTTmsUcF;OU_GROUP-EYbopBOJWsW;O6uvpzGd5pu;lc3eMKXaEf</screen>
+      <para>A few things to be aware of when using the analytics resource are listed below.</para>
+      <itemizedlist>
+        <listitem>
+          <para>Data elements, indicator, data set reporting rates, program data elements and
+            program indicators are part of a common data dimension, identified as &quot;dx&quot;.
+            This means that you can use any of data elements, indicators and data set identifiers
+            together with the &quot;dx&quot; dimension identifier in a query.</para>
+        </listitem>
+        <listitem>
+          <para>For the category, data element group set and organisation unit group set dimensions,
+            all dimension items will be used in the query if no dimension items are
+            specified.</para>
+        </listitem>
+        <listitem>
+          <para>For the period dimension, the dimension items are ISO period identifiers and/or
+            relative periods. Please refer to the section above called &quot;Date and period
+            format&quot; for the period format and available relative periods.</para>
+        </listitem>
+        <listitem>
+          <para>For the organisation unit dimension you can specify the items to be the organisation
+            unit or sub-units of the organisation unit associated with the user currently
+            authenticated for the request using they keys USER_ORGUNIT or USER_ORGUNIT_CHILDREN as
+            items, respectively. You can also specify organisation unit identifiers directly, or a
+            combination of both.</para>
+        </listitem>
+        <listitem>
+          <para>For the organisation unit dimension you can specify the organisation hierarchy level
+            and the boundary unit to use for the request on the format
+            LEVEL-&lt;level&gt;-&lt;boundary-id&gt;; as an example LEVEL-3-ImspTQPwCqd implies all
+            organisation units below the given boundary unit at level 3 in the hierarchy.</para>
+        </listitem>
+        <listitem>
+          <para>For the organisation unit dimension the dimension items are the organisation units
+            and their sub-hierarchy - data will be aggregated for all organisation units below the
+            given organisation unit in the hierarchy.</para>
+        </listitem>
+        <listitem>
+          <para>You cannot specify dimension items for the category option combination dimension.
+            Instead the response will contain the items which are linked to the data values.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>The dx dimension</title>
+      <para>The <emphasis>dx</emphasis> dimension is a special dimension which can contain all of
+        the following data types.</para>
+      <table frame="all">
+        <title>Data dx dimension types</title>
+        <tgroup cols="4">
+          <colspec colname="c1" colnum="1" colwidth="1.09*"/>
+          <colspec colname="c2" colnum="2" colwidth="1*"/>
+          <colspec colname="c3" colnum="3" colwidth="1.17*"/>
+          <colspec colname="newCol4" colnum="4" colwidth="1*"/>
+          <thead>
+            <row>
+              <entry>Type</entry>
+              <entry>Syntax</entry>
+              <entry>Description</entry>
+              <entry>Data source</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>Indicator</entry>
+              <entry>&lt;indicator-id></entry>
+              <entry>Indicator identifier.</entry>
+              <entry>Aggregated data</entry>
+            </row>
+            <row>
+              <entry>Indicator</entry>
+              <entry>IN_GROUP-&lt;indicatorgroup-id></entry>
+              <entry>Keyword followed by indicator group identifier. Will include all indicators in
+                the group in the response.</entry>
+              <entry>Aggregated data</entry>
+            </row>
+            <row>
+              <entry>Data element</entry>
+              <entry>&lt;dataelement-id> </entry>
+              <entry>Data element identifier.</entry>
+              <entry>Aggregated data</entry>
+            </row>
+            <row>
+              <entry>Data element</entry>
+              <entry>DE_GROUP-&lt;dataelementgroup-id&gt;</entry>
+              <entry>Keyword followed by data element group identifier. Will include all data
+                elements in the group in the response.</entry>
+              <entry>Aggregated data</entry>
+            </row>
+            <row>
+              <entry>Data set</entry>
+              <entry>&lt;dataset-id>.&lt;reporting-rate-metric></entry>
+              <entry>Data set identifier followed by reporting rate metric. Can be REPORTING_RATE |
+                REPORTING_RATE_ON_TIME | ACTUAL_REPORTS | ACTUAL_REPORTS_ON_TIME |
+                EXPECTED_REPORTS.</entry>
+              <entry>Aggregated data</entry>
+            </row>
+            <row>
+              <entry>Program data element</entry>
+              <entry>&lt;program-id>.&lt;dataelement-id></entry>
+              <entry>Program identifier followed by data element identifier. Reads from events
+                within the specified program.</entry>
+              <entry>Events from the given program</entry>
+            </row>
+            <row>
+              <entry>Program indicator</entry>
+              <entry>&lt;programindicator-id></entry>
+              <entry>Program indicator identifier. Reads from events from within the program
+                associated with the program identifier.</entry>
+              <entry>Events from the program of the program indicator</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>Items from all of the various <emphasis>dx</emphasis> types can be combined in an
+        analytics request. An example looks like this:</para>
+      <screen>/api/analytics.json
+?dimension=dx:Uvn6LCg7dVU;BfMAe6Itzgt.REPORTING_RATE;BfMAe6Itzgt.ACTUAL_REPORTS;IpHINAT79UW.a3kGcGDCuk6
+&amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
+      <para>The group syntax can be used together with any other item as well. An example looks like
+        this:</para>
+      <screen>/api/analytics.json
+?dimension=dx:DE_GROUP-qfxEYY9xAl6;IN_GROUP-oehv9EO3vP7;BfMAe6Itzgt.REPORTING_RATE
+&amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
+      <tip>
+        <para>A great way to learn how to use the analytics API is to use the DHIS 2 <emphasis>pivot
+            table</emphasis> app. You can play around with pivot tables using the various dimensions
+          and items and click Download > Plain data source > JSON to see the resulting analytics API
+          calls in the address bar of your Web browser.</para>
+      </tip>
+    </section>
+    <section>
       <title>Response formats</title>
       <para>The analytics response containing aggregate data can be returned in various
         representation formats. As usual, you can indicate interest in a specific format by
@@ -6985,14 +7077,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>As an example, to request an analytics response in XML format you can use the following
         URL:</para>
       <screen>/api/analytics.xml?dimension=dx:fbfJHSPpUQD
-&amp;dimension=pe:2014&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
+&amp;dimension=pe:2016&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
       <para>The analytics responses must be retrieved using the HTTP <emphasis role="italic"
           >GET</emphasis> method. This allows for direct linking to analytics responses from Web
         pages as well as other HTTP-enabled clients. To do functional testing we can use the cURL
         library. By executing this command against the demo database you will get an analytics
         response in JSON format:</para>
       <screen>curl &quot;play.dhis2.org/demo/api/analytics.json?dimension=dx:eTDtyyaSA7f;FbKK4ofIv5R
-&amp;dimension=pe:2014Q1;2014Q2&amp;filter=ou:ImspTQPwCqd&quot; -u admin:district</screen>
+&amp;dimension=pe:2016Q1;2016Q2&amp;filter=ou:ImspTQPwCqd&quot; -u admin:district</screen>
       <para>The JSON response will look like this:</para>
       <screen>{
     &quot;headers&quot;: [
@@ -7018,15 +7110,15 @@ ORDER BY oul.level, par.name, ou.name</screen>
     &quot;height&quot;: 4,
     &quot;metaData&quot;: {
         &quot;pe&quot;: [
-            &quot;2014Q1&quot;,
-            &quot;2014Q2&quot;
+            &quot;2016Q1&quot;,
+            &quot;2016Q2&quot;
         ],
         &quot;ou&quot;: [
             &quot;ImspTQPwCqd&quot;
         ],
         &quot;names&quot;: {
-            &quot;2014Q1&quot;: &quot;Jan to Mar 2014&quot;,
-            &quot;2014Q2&quot;: &quot;Apr to Jun 2014&quot;,
+            &quot;2016Q1&quot;: &quot;Jan to Mar 2016&quot;,
+            &quot;2016Q2&quot;: &quot;Apr to Jun 2016&quot;,
             &quot;FbKK4ofIv5R&quot;: &quot;Measles Coverage &lt;1 y&quot;,
             &quot;ImspTQPwCqd&quot;: &quot;Sierra Leone&quot;,
             &quot;eTDtyyaSA7f&quot;: &quot;Fully Immunized Coverage&quot;
@@ -7035,22 +7127,22 @@ ORDER BY oul.level, par.name, ou.name</screen>
     &quot;rows&quot;: [
         [
             &quot;eTDtyyaSA7f&quot;,
-            &quot;2014Q2&quot;,
+            &quot;2016Q2&quot;,
             &quot;81.1&quot;
         ],
         [
             &quot;eTDtyyaSA7f&quot;,
-            &quot;2014Q1&quot;,
+            &quot;2016Q1&quot;,
             &quot;74.7&quot;
         ],
         [
             &quot;FbKK4ofIv5R&quot;,
-            &quot;2014Q2&quot;,
+            &quot;2016Q2&quot;,
             &quot;88.9&quot;
         ],
         [
             &quot;FbKK4ofIv5R&quot;,
-            &quot;2014Q1&quot;,
+            &quot;2016Q1&quot;,
             &quot;84.0&quot;
         ]
     ],
@@ -7132,7 +7224,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         relevant content of the datavalue table. You can produce this SQL by doing a GET request
         with content type &quot;text/html&quot; or &quot;text/plain&quot; like below. The dimension
         and filter syntax is identical to regular analytics queries:</para>
-      <screen>/api/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2014Q1;2014Q2&amp;filter=ou:O6uvpzGd5pu</screen>
+      <screen>/api/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2016Q1;2016Q2&amp;filter=ou:O6uvpzGd5pu</screen>
     </section>
   </section>
   <section>
@@ -7475,27 +7567,27 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <screen>/api/analytics/events/query/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
 &amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
       <para>For example, to retrieve events from the &quot;Inpatient morbidity and mortality&quot;
-        program between January and October 2014, where the &quot;Gender&quot; and &quot;Age&quot;
+        program between January and October 2016, where the &quot;Gender&quot; and &quot;Age&quot;
         data elements are included and the &quot;Age&quot; dimension is filtered on &quot;18&quot;,
         you can use the following query:</para>
-      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
+      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
 &amp;dimension=ou:O6uvpzGd5pu;fdc6uOvgoji&amp;dimension=oZg33kd9taw&amp;dimension=qrur9Dvnyt5:EQ:18</screen>
       <para>To retrieve events for the &quot;Birth&quot; program stage of the &quot;Child
-        programme&quot; program between March and December 2014, where the &quot;Weight&quot; data
+        programme&quot; program between March and December 2016, where the &quot;Weight&quot; data
         element, filtered for values larger than 2000:</para>
-      <screen>/api/analytics/events/query/IpHINAT79UW?stage=A03MvHHogjR&amp;startDate=2014-03-01&amp;endDate=2014-12-31
+      <screen>/api/analytics/events/query/IpHINAT79UW?stage=A03MvHHogjR&amp;startDate=2016-03-01&amp;endDate=2016-12-31
 &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=UXz7xuGCEhU:GT:2000</screen>
       <para>Sorting can be applied to the query for the event date of the event and any dimensions.
         To sort descending on the event date and ascending on the &quot;Age&quot; data element
         dimension you can use:</para>
-      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
+      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
 &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=qrur9Dvnyt5&amp;desc=EVENTDATE&amp;asc=qrur9Dvnyt5</screen>
       <para>Paging can be applied to the query by specifying the page number and the page size
         parameters. If page number is specified but page size is not, a page size of 50 will be
         used. If page size is specified but page number is not, a page number of 1 will be used. To
         get the third page of the response with a page size of 20 you can use a query like
         this:</para>
-      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
+      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
 &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=qrur9Dvnyt5&amp;page=3&amp;pageSize=20</screen>
       <section>
         <title>Filtering</title>
@@ -7577,11 +7669,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </itemizedlist>
         <para>As an example, to get a response in Excel format you can use a file extension in the
           request URL like this:</para>
-        <screen>/api/analytics/events/query/eBAyeGv0exc.xls?startDate=2014-01-01&amp;endDate=2014-10-31
+        <screen>/api/analytics/events/query/eBAyeGv0exc.xls?startDate=2016-01-01&amp;endDate=2016-10-31
 &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=oZg33kd9taw&amp;dimension=qrur9Dvnyt5</screen>
         <para>You can set the hierarchyMeta query parameter to true in order to include names of all
           ancestor organisation units in the meta-section of the response:</para>
-        <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
+        <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
 &amp;dimension=ou:YuQRtpLP10I&amp;dimension=qrur9Dvnyt5:EQ:50&amp;hierarchyMeta=true</screen>
         <para>The default response JSON format will look similar to this:</para>
         <screen>{
@@ -7665,10 +7757,10 @@ ORDER BY oul.level, par.name, ou.name</screen>
     &quot;width&quot;: 8,
     &quot;height&quot;: 4,
     &quot;rows&quot;: [
-        [&quot;yx9IDINf82o&quot;, &quot;Zj7UnCAulEk&quot;, &quot;2014-08-05&quot;, &quot;[5.12, 1.23]&quot;, &quot;Ngelehun&quot;, &quot;OU_559&quot;, &quot;YuQRtpLP10I&quot;, &quot;Female&quot;, &quot;50&quot;],
-        [&quot;IPNa7AsCyFt&quot;, &quot;Zj7UnCAulEk&quot;, &quot;2014-06-12&quot;, &quot;[5.22, 1.43]&quot;, &quot;Ngelehun&quot;, &quot;OU_559&quot;, &quot;YuQRtpLP10I&quot;, &quot;Female&quot;, &quot;50&quot;],
-        [&quot;ZY9JL9dkhD2&quot;, &quot;Zj7UnCAulEk&quot;, &quot;2014-06-15&quot;, &quot;[5.42, 1.33]&quot;, &quot;Ngelehun&quot;, &quot;OU_559&quot;, &quot;YuQRtpLP10I&quot;, &quot;Female&quot;, &quot;50&quot;],
-        [&quot;MYvh4WAUdWt&quot;, &quot;Zj7UnCAulEk&quot;, &quot;2014-06-16&quot;, &quot;[5.32, 1.53]&quot;, &quot;Ngelehun&quot;, &quot;OU_559&quot;, &quot;YuQRtpLP10I&quot;, &quot;Female&quot;, &quot;50&quot;]
+        [&quot;yx9IDINf82o&quot;, &quot;Zj7UnCAulEk&quot;, &quot;2016-08-05&quot;, &quot;[5.12, 1.23]&quot;, &quot;Ngelehun&quot;, &quot;OU_559&quot;, &quot;YuQRtpLP10I&quot;, &quot;Female&quot;, &quot;50&quot;],
+        [&quot;IPNa7AsCyFt&quot;, &quot;Zj7UnCAulEk&quot;, &quot;2016-06-12&quot;, &quot;[5.22, 1.43]&quot;, &quot;Ngelehun&quot;, &quot;OU_559&quot;, &quot;YuQRtpLP10I&quot;, &quot;Female&quot;, &quot;50&quot;],
+        [&quot;ZY9JL9dkhD2&quot;, &quot;Zj7UnCAulEk&quot;, &quot;2016-06-15&quot;, &quot;[5.42, 1.33]&quot;, &quot;Ngelehun&quot;, &quot;OU_559&quot;, &quot;YuQRtpLP10I&quot;, &quot;Female&quot;, &quot;50&quot;],
+        [&quot;MYvh4WAUdWt&quot;, &quot;Zj7UnCAulEk&quot;, &quot;2016-06-16&quot;, &quot;[5.32, 1.53]&quot;, &quot;Ngelehun&quot;, &quot;OU_559&quot;, &quot;YuQRtpLP10I&quot;, &quot;Female&quot;, &quot;50&quot;]
     ]
 }</screen>
         <para>The <emphasis role="italic">headers</emphasis> section of the response describes the
@@ -7704,31 +7796,31 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <screen>/api/analytics/events/aggregate/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
 &amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
       <para>For example, to retrieve aggregate numbers for events from the &quot;Inpatient morbidity
-        and mortality&quot; program between January and October 2014, where the &quot;Gender&quot;
+        and mortality&quot; program between January and October 2016, where the &quot;Gender&quot;
         and &quot;Age&quot; data elements are included, the &quot;Age&quot; dimension item is
         filtered on &quot;18&quot; and the &quot;Gender&quot; item is filtered on
         &quot;Female&quot;, you can use the following query:</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
 &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=oZg33kd9taw:EQ:Female&amp;dimension=qrur9Dvnyt5:GT:50</screen>
       <para>To retrieve data for fixed and relative periods instead of start and end date, in this
-        case May 2014 and last 12 months, and the organisation unit associated with the current
+        case May 2016 and last 12 months, and the organisation unit associated with the current
         user, you can use the following query:</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:201405;LAST_12_MONTHS
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:201605;LAST_12_MONTHS
 &amp;dimension=ou:USER_ORGUNIT;fdc6uOvgo7ji&amp;dimension=oZg33kd9taw</screen>
       <para>In order to specify &quot;Female&quot; as a filter for &quot;Gender&quot; for the data
         response, meaning &quot;Gender&quot; will not be part of the response but will filter the
         aggregate numbers in it, you can use the following syntax:</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:2014;
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:2016;
 &amp;dimension=ou:O6uvpzGd5pu&amp;filter=oZg33kd9taw:EQ:Female</screen>
-      <para>To specify the &quot;Bo&quot; organisation unit and the period &quot;2014&quot; as
+      <para>To specify the &quot;Bo&quot; organisation unit and the period &quot;2016&quot; as
         filters, and the &quot;Mode of discharge&quot; and Gender&quot; as dimensions, where
         &quot;Gender&quot; is filtered on the &quot;Male&quot; item, you can use a query like
         this:</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2014&amp;filter=ou:O6uvpzGd5pu
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2016&amp;filter=ou:O6uvpzGd5pu
 &amp;dimension=fWIAEtYVEGk&amp;dimension=oZg33kd9taw:EQ:Male</screen>
       <para>To create a &quot;Top 3 report&quot; for &quot;Mode of discharge&quot; you can use the
         limit and sortOrder query parameters similar to this:</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2014&amp;filter=ou:O6uvpzGd5pu
+      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2016&amp;filter=ou:O6uvpzGd5pu
 &amp;dimension=fWIAEtYVEGk&amp;limit=3&amp;sortOrder=DESC</screen>
       <para>To specify a value dimension with a corresponding aggregation type you can use the value
         and aggregationType query parameters. Specifying a value dimension will make the analytics
@@ -7797,42 +7889,42 @@ ORDER BY oul.level, par.name, ou.name</screen>
         [
             &quot;Female&quot;,
             &quot;95&quot;,
-            &quot;201405&quot;,
+            &quot;201605&quot;,
             &quot;O6uvpzGd5pu&quot;,
             &quot;2&quot;
         ],
         [
             &quot;Female&quot;,
             &quot;63&quot;,
-            &quot;201405&quot;,
+            &quot;201605&quot;,
             &quot;O6uvpzGd5pu&quot;,
             &quot;2&quot;
         ],
         [
             &quot;Female&quot;,
             &quot;67&quot;,
-            &quot;201405&quot;,
+            &quot;201605&quot;,
             &quot;O6uvpzGd5pu&quot;,
             &quot;1&quot;
         ],
         [
             &quot;Female&quot;,
             &quot;71&quot;,
-            &quot;201405&quot;,
+            &quot;201605&quot;,
             &quot;O6uvpzGd5pu&quot;,
             &quot;1&quot;
         ],
         [
             &quot;Female&quot;,
             &quot;75&quot;,
-            &quot;201405&quot;,
+            &quot;201605&quot;,
             &quot;O6uvpzGd5pu&quot;,
             &quot;14&quot;
         ],
         [
             &quot;Female&quot;,
             &quot;73&quot;,
-            &quot;201405&quot;,
+            &quot;201605&quot;,
             &quot;O6uvpzGd5pu&quot;,
             &quot;5&quot;
         ],
@@ -7847,7 +7939,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Event clustering analytics</title>
       <para>The <emphasis role="italic">analytics/events/cluster</emphasis> resource provides
         clustered geospatial event data. A request looks like this:</para>
-      <screen>/api/analytics/events/cluster/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:LEVEL-2
+      <screen>/api/analytics/events/cluster/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31&amp;dimension=ou:LEVEL-2
 &amp;clusterSize=100000&amp;bbox=-13.2682125,7.3721619,-10.4261178,9.904012&amp;includeClusterPoints=false</screen>
       <para>The cluster response provides the count of underlying points, the centre point and
         extent of each cluster. If the <emphasis role="italic">includeClusterPoints</emphasis> query
@@ -7891,7 +7983,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         geometry-related requests for retrieving the count and extent (bounding box) of events for a
         specific query. The query syntax is equal to the <emphasis role="italic"
           >events/query</emphasis> resource. A request looks like this:</para>
-      <screen>/api/analytics/events/count/eBAyeGv0exc?startDate=2014-01-01&amp;endDate=2014-10-31&amp;dimension=ou:O6uvpzGd5pu</screen>
+      <screen>/api/analytics/events/count/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31&amp;dimension=ou:O6uvpzGd5pu</screen>
       <para> The response will provide the count and extent in JSON format:</para>
       <screen>{
     extent: "BOX(-13.2682125910096 7.38679562779441,-10.4261178860988 9.90401290212795)",
@@ -9140,14 +9232,12 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   &quot;username&quot;: &quot;clickatelluser&quot;,
   &quot;password&quot;: &quot;abc123&quot;,
   &quot;Auth-token&quot;: &quot;XXXXXXXXXXXXXXXXXXXX&quot;,
-  &quot;apiid&quot;: &quot;12121&quot;
 }</screen>
       <para><emphasis role="italic">Bulksms</emphasis></para>
       <screen>{ 
   &quot;name&quot;: &quot;bulkSMS&quot;,
   &quot;username&quot;: &quot;bulkuser&quot;,
   &quot;password&quot;: &quot;abc123&quot;,
-   &quot;urlTemplate&quot;: &quot;http://bulksms.vsms.net/&quot;,
   &quot;region&quot;: &quot;Spain&quot;
 }</screen>
       <para><emphasis role="italic">GenericHttp</emphasis></para>
@@ -9161,14 +9251,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   &quot;parameter2&quot;: &quot;value2&quot;
   }
 }</screen>
-      <para><emphasis role="italic">SMPP</emphasis></para>
-      <screen>{
-  &quot;name&quot; : &quot;smpp&quot;,
-  &quot;username&quot;: &quot;smppUser&quot;,
-  &quot;password&quot;: &quot;abc123&quot;,
-  &quot;address&quot; : &quot;sample.smpp.com&quot;,
-  &quot;port&quot; : &quot;8143&quot;
-}</screen>
+     
       <para>The various gateway configurations can be instantiated using the endpoints listed
         below.</para>
       <table frame="all">
@@ -9199,11 +9282,6 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
               <entry>Generichttp</entry>
               <entry>POST/PUT</entry>
               <entry>/api/sms/gateways/generichttp</entry>
-            </row>
-            <row>
-              <entry>SMPP</entry>
-              <entry>POST/PUT</entry>
-              <entry>/api/sms/gateways/smpp</entry>
             </row>
           </tbody>
         </tgroup>
