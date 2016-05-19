@@ -10,7 +10,7 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>Indicators</title>
+  <title>Manage indicators</title>
   <para>Indicators can be maintained by choosing &quot;Maintenance-&gt;Data elements and indicators&quot; from the main menu. The following screen will appear.</para>
   <screenshot>
     <mediaobject>
@@ -23,7 +23,7 @@
   <para>Indicator, Indicator Type, Indicator Group, Indicator Group Editor, and Indicator Group Set. </para>
   <para>Indicator maintenance functions essentially the same as each of the respective sections in the previous section on data elements. The basic operations will be described in this section, but the reader should  refer to the <olink targetdoc="dhis2_user_man_data_elements" targetptr="dataElement">corresponding sections</olink> above for detailed instructions. </para>
   <section xml:id="indicator">
-    <title>Indicators</title>
+    <title>Indicators overview</title>
     <para>Indicators are composed of multiple data elements, and typically consist of a numerator
         and denominator. Calculated totals do not have a denominator. Indicators are never entered directly in DHIS2 through data entry, but are derived from combinations of
         data elements and factors. Indicators are used to calculate coverage rates, incidence and
@@ -148,6 +148,64 @@
         <para>Constants:  Indicators may make use of constants. Constants are static values which will be applied uniformly to the indicator formula. Constants are applied AFTER data element values have been aggregated.</para>
       </listitem>
     </itemizedlist>
+    <table frame="all">
+      <title>Indicator
+        <?oxy_comment_start author="cecilia" timestamp="20160510T092315+0200" comment="Review with SME: 
+What is the generic term for what elements you can edit in this section? Types? Objects?
+In which order would a user edit them?
+What is the hierarcy between the objects?"?>objects
+        <?oxy_comment_end?>in the Maintenance app</title>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+        <thead>
+          <row>
+            <entry>
+              <para>Object type</para>
+            </entry>
+            <entry>
+              <para>Available functions</para>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              <para>Indicator</para>
+            </entry>
+            <entry>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Indicator type</para>
+            </entry>
+            <entry>
+              <para>Create, edit, clone, delete, show details and translate</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Indicator group</para>
+            </entry>
+            <entry>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Indicator group set</para>
+            </entry>
+            <entry>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+      <?oxy_custom_end?>
+    </table>
   </section>
   <section xml:id="indicatorType">
     <title>Indicator types</title>
