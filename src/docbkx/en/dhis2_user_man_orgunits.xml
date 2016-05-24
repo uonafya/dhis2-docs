@@ -6,9 +6,12 @@
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
   xmlns:db="http://docbook.org/ns/docbook">
-  <title><?oxy_comment_start author="cecilia" timestamp="20160513T122617+0200" comment="For SME: Who peforms the tasks listed in this section? Implementer? Admin? User?"?>Manage<?oxy_comment_end?>
+  <title><?oxy_comment_start author="cecilia" timestamp="20160513T122617+0200" comment="Who peforms the tasks listed in this section? 
+- Admin 
+- District record officers (district levels)
+- Project coordinator" flag="done"?>Manage<?oxy_comment_end?>
     organisation units</title>
-  <?oxy_comment_start author="cecilia" timestamp="20160513T122057+0200" comment="Good list, consider adding similar ones to all sections."?>
+  <?oxy_comment_start author="cecilia" timestamp="20160513T122057+0200" comment="Good list, consider adding similar ones to all sections." flag="done"?>
   <para>In this section you will learn how to:</para>
   <para>
     <itemizedlist>
@@ -27,68 +30,75 @@
   </para>
   <?oxy_comment_end?>
   <section xml:id="ou_hierarchy">
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-    <title>Organisation units
-      <?oxy_comment_start author="cecilia" timestamp="20160513T123737+0200" comment="For SME: How much concept info does the user need to have?"?>overview<?oxy_comment_end?></title>
-    <?oxy_custom_end?>
+    <?oxy_comment_start author="cecilia" timestamp="20160524T140340+0200" comment="At next revision, minimize concept info."?>
+    <title>Organisation units overview</title>
+    <?oxy_comment_end?>
     <para>The organisation unit hierarchy defines the organisation structure of DHIS 2, for example
       how the health facilities, administrative areas and other geographical areas are arranged with
-      respect to each other. It is essentially the &quot;where&quot; dimension of DHIS 2, similar to
-      how periods represent the &quot;when&quot; or time dimension. DHIS 2 is structured so that the
-      organisational unit hierarchy is a geographical hierarchy, and the GIS module depends on this.
-      <?oxy_comment_start author="cecilia" timestamp="20160513T122819+0200" comment="For SME: Still not encouraged?"?>Non-geographical
-      hierarchies are discouraged,<?oxy_comment_end?>. It is recommended to represent them
-      <?oxy_comment_start author="cecilia" timestamp="20160513T122933+0200" comment="For SME: How do you do this?"?>by
-      using organisational unit groups<?oxy_comment_end?>.
-      <?oxy_comment_start author="cecilia" timestamp="20160513T123026+0200" comment="For SME: What does &quot;this dimension&quot; refer to? Org units? Non-geographical hierarchies?"?>This
+      respect to each other. It is the &quot;where&quot; dimension of DHIS 2, similar to how periods
+      represent the &quot;when&quot; dimension. DHIS 2 is structured so that the organisation unit
+      hierarchy is a geographical hierarchy, and the <emphasis role="bold">GIS</emphasis> app
+      depends on this.</para>
+    <para>With organisation groups and organisation group sets you
+      ca<?oxy_comment_start author="cecilia" timestamp="20160513T123708+0200" comment="For SME: A separate task? For implementer?
+
+Typically sets up by implementer, maintained at district level." flag="done"?>n
+      create additional <?oxy_comment_end?>classifiations, for example parallel administrative
+      boundaries to the health care sector.</para>
+    <para>It is recommended to represent non-geographical hierarchies by using organisation unit
+      groups.
+      <?oxy_comment_start author="cecilia" timestamp="20160513T123026+0200" comment="For SME: What does &quot;this dimension&quot; refer to? Org units? Non-geographical hierarchies? Org unit groups?"?>This
       dimension <?oxy_comment_end?>to the data is defined as a hierarchy with one root unit (for
-      example Ministry of Health or a country) and any number of levels and nodes below.
-      <?oxy_comment_start author="cecilia" timestamp="20160513T123133+0200" comment="Good definition."?>Each
-      node in this hierarchy is called an organisational unit in DHIS 2.<?oxy_comment_end?></para>
-    <?oxy_comment_start author="cecilia" timestamp="20160513T123457+0200" comment="For SME: Review wording. Is the rephrasing correct?"?>
-    <para>The design of the organisation unit hierarchy determines the geographical units of
-      analysis available to the users as data is collected and aggregated in this structure. You can
-      only have one organisational hierarchy at the same time so you must carefully plan its
-      structure.</para>
-    <?oxy_comment_end?>
-    <para>You
-      ca<?oxy_comment_start author="cecilia" timestamp="20160513T123708+0200" comment="For SME: A separate task? For implementer?"?>n
-      create additional hierarchies<?oxy_comment_end?> (for example parallel administrative
-      boundaries to the health care sector) by using organisational groups and group sets. The
-      <?oxy_comment_start author="cecilia" timestamp="20160513T123607+0200" comment="For SME: ORganisational hierarchy = organisation unit hierarchy?"?>organisational
-      hierarchy<?oxy_comment_end?> is the main vehicle for data aggregation on the geographical
-      dimension. Typically national organisational hierarchies in public health have four to six
-      levels, but DHIS 2 supports any number of levels.</para>
-    <?oxy_comment_start author="cecilia" timestamp="20160513T124401+0200" comment="Review section, too many &quot;for example&quot;"?>
+      example Ministry of Health or a country) and any number of levels and nodes below.</para>
     <para>The organisation unit hierarchy is built up of parent-child relations. A country might for
       example have eight provinces, and each province might have a number of districts as children.
-      Normally the health facilities (from which data is typically collected) will be located at the
+      Normally the health facilities from which data is typically collected will be located at the
       lowest level, but they can also be located at higher levels, for example national or
-      provincial hospitals. Therefore, skewed organisational trees are supported (for example a
-      <?oxy_comment_start author="cecilia" timestamp="20160513T124256+0200" comment="For SME: define leaf node? 
-Is that a term a user should know?"?>leaf
-      node<?oxy_comment_end?> can be positioned at level 2 while most other leaf nodes are at level
-      5).</para>
+      provincial hospitals. Therefore,
+      s<?oxy_comment_start author="cecilia" timestamp="20160524T141418+0200" comment="At next revision, add graphic to illustrate."?>kewed
+      organisation trees <?oxy_comment_end?>are supported.
+      <?oxy_comment_start author="cecilia" timestamp="20160513T123133+0200" comment="Good definition." flag="done"?>Each
+      node in this hierarchy is called an organisation unit in DHIS 2.<?oxy_comment_end?></para>
+    <?oxy_comment_start author="cecilia" timestamp="20160513T123457+0200" comment="For SME: Review wording. Is the rephrasing correct?"?>
+    <para>The design of the organisation unit hierarchy determines the geographical units of
+      analysis available to the users as data is collected and aggregated in this structure.</para>
     <?oxy_comment_end?>
+    <para>The organisation unit hierarchy is the main vehicle for data aggregation on the
+      geographical dimension.</para>
+    <para><?oxy_comment_start author="cecilia" timestamp="20160524T140654+0200" comment="Maybe call it rules or similar."?>Limitations<?oxy_comment_end?>:</para>
+    <itemizedlist>
+      <listitem>
+        <para>You can only have one organisation hierarchy at the same time.</para>
+      </listitem>
+      <listitem>
+        <para>DHIS 2 supports any number of levels in a hierarchy.</para>
+        <para>Typically national organisation hierarchies in public health have four to six
+          levels.</para>
+      </listitem>
+      <listitem>
+        <para>An organisation unit can only be a member of a single organisation unit group within
+          an organisation unit group set.</para>
+      </listitem>
+    </itemizedlist>
     <important>
-      <?oxy_comment_start author="cecilia" timestamp="20160513T150138+0200" comment="For SME: Isn&apos;t this section the same as the section below? review with SME."?>
+      <?oxy_comment_start author="cecilia" timestamp="20160513T150138+0200" comment="For SME: Isn&apos;t this section the same as the section below? review with SME.
+
+Rewrite, same thing."?>
       <para>It is easy to make changes to the upper levels of the hierarchy. at a later stage, the
-        only problem is changing organisational units that collect data (the leaf nodes), for
-        example splitting or merging health facilities. Aggregation up the hierarchy is done based
-        on the current hierarchy at any time and will always reflect the most recent changes to the
-        organisational structure.</para>
+        only problem is changing organisation units that collect data for example splitting or
+        merging health facilities. Aggregation up the hierarchy is done based on the current
+        hierarchy at any time and will always reflect the most recent changes to the organisation
+        structure.</para>
       <?oxy_comment_end?>
-      <?oxy_comment_start author="cecilia" timestamp="20160513T150227+0200" comment="For SME: Isn&apos;t this section the same as above? Review content with SME."?>
-      <para>Because the most recent information which is contained in the organisational unit
+      <para>Because the most recent information which is contained in the organisation unit
         hierarchy is always used for aggregation, it is important to keep in mind that changes to it
         (such as the division of districts into two separate districts) will not be respected over
-        time. As an example, District A may be sub-divided into District B and District C. This is a
-        process which often happens for political reasons. Facilities which belong to District A
-        would need to be reassigned to District B and C. However, any historical data, which was
-        entered before the split actually occurred, would still be registered as belonging to
-        District B and C and not the defunct District A. This temporal representation of the
-        organisational hierarchy across time will be lost. </para>
-      <?oxy_comment_end?>
+        time. </para>
+      <para>As an example, District A may be sub-divided into District B and District C. Facilities
+        which belong to District A would need to be reassigned to District B and C. However, any
+        historical data, which was entered before the split actually occurred, would still be
+        registered as belonging to District B and C and not the obsolete District A. This temporal
+        representation of the organisation hierarchy across time will be lost. </para>
     </important>
     <para>In the <emphasis role="bold">Organisation units</emphasis> section of the <emphasis
         role="bold">Maintenance</emphasis> app, you can manage the following organisation unit
@@ -160,13 +170,65 @@ What is the hierarcy between the elements?"?>
   </section>
   <section>
     <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-    <title><?oxy_comment_start author="cecilia" timestamp="20160518T093410+0200" comment="Add org unit creation workflow."?>Workflow<?oxy_comment_end?></title>
+    <title><?oxy_comment_start author="cecilia" timestamp="20160518T093410+0200" comment="Add org unit creation workflow.
+
+Where can it be found?"?>Workflow<?oxy_comment_end?></title>
     <?oxy_custom_end?>
     <para>The recommended workflow is</para>
+    <orderedlist>
+      <listitem>
+        <para>Create organsation units.</para>
+      </listitem>
+      <listitem>
+        <para>Create organisation unit groups.</para>
+      </listitem>
+      <listitem>
+        <para>Create orgganisation unit group sets.</para>
+      </listitem>
+    </orderedlist>
     <?oxy_comment_start author="cecilia" timestamp="20160518T151444+0200" comment="Should move recommendation to the beginning of the section, even to the workflow."?>
     <para>To avoid such situations it is recommend to first add groups to group sets, and then
       organisation units to groups.</para>
     <?oxy_comment_end?>
+    <?oxy_comment_start author="cecilia" timestamp="20160518T151444+0200" comment="Should move recommendation to the beginning of the section, even to the workflow."?>
+    <para>To avoid such situations it is recommend to first add groups to group sets, and then
+      organisation units to groups.</para>
+    <?oxy_comment_end?>
+    <?oxy_comment_start author="cecilia" timestamp="20160518T161759+0200" comment="Consider moving this info to workflow section."?>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="17"?>
+    <para>It is recommend that you approach the organisation unit grouping in the following sequence
+      (and one group set at a time):</para>
+    <?oxy_comment_end?>
+    <?oxy_comment_start author="cecilia" timestamp="20160518T152523+0200" comment="For SME: Who does this? Implementer? Admin? User?" mid="18"?>
+    <orderedlist>
+      <listitem>
+        <?oxy_comment_start author="cecilia" timestamp="20160518T161717+0200" comment="For SME: When I tried to create an org unit group set, it wasn&apos;t possible to &quot;define&quot; a group set. 
+Pending feedback from issue #156, mtn app on GitHub."?>
+        <para>Define a new group set, for example &quot;Location&quot;.</para>
+        <?oxy_comment_end?>
+      </listitem>
+      <listitem>
+        <para>Add new groups (such as &quot;Urban&quot;, &quot;Rural&quot; and
+          &quot;Peri-urban&quot;). Once all groups have been defined, return to the organisation
+          unit group set and assign each of the desired groups to the group set.</para>
+      </listitem>
+      <listitem>
+        <para>Go back to each group, one by one, go to edit mode and assign the organisation units
+          that should be member of the group. Should you follow this route, you can place multiple
+          organisation units at a time in a group. However, you must be careful not to place the
+          same organisation units in two groups which itself is a member of an organisation unit
+          group set. This will result in a data integrity violation. If you have organisation unit
+          groups which are not exclusive, they should not be members of a group.</para>
+      </listitem>
+      <listitem>
+        <para>A better way to ensure that you do not mistakenly assign an organisation unit to
+          multiple members of a group set is you can use the edit feature of each organisation unit
+          to assign memberships to each group set. You will only be able to assign a single
+          organisation unit at a time however.</para>
+      </listitem>
+    </orderedlist>
+    <?oxy_custom_end mid="17"?>
+    <?oxy_comment_end mid="18"?>
   </section>
   <section xml:id="orgunit">
     <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
@@ -185,25 +247,21 @@ What is the hierarcy between the elements?"?>
       </mediaobject>
     </screenshot>
     <para>You add organisation units one by one as either a
-      <?oxy_comment_start author="cecilia" timestamp="20160518T102014+0200" comment="For SME: Can you crate a new root? "?>root
-      unit<?oxy_comment_end?> or a child of a selected organisation unit.</para>
-    <para>The organisation unit tree to the left represents the current organisational unit
-      hierarchy. If you select a unit in this tree, you will see its children in the list in the
-      middle of the screen. When you have selected an organisation unit in the left side
-      organisation tree, you can also add new children to it.</para>
+      <?oxy_comment_start author="cecilia" timestamp="20160518T102014+0200" comment="For SME: Can you crate a new root? 
+
+WIP, follow-up with SME."?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="24"?>root
+      unit<?oxy_comment_end?><?oxy_custom_end mid="24"?> or a child of a selected organisation
+      unit.</para>
+    <para>The organisation unit tree to the left represents the current organisation unit hierarchy.
+      If you select a unit in this tree, you will see its children in the list in the middle of the
+      screen. When you have selected an organisation unit in the left side organisation tree, you
+      can also add new children to it.</para>
     <note>
       <?oxy_comment_start author="cecilia" timestamp="20160518T102930+0200" comment="For SME: Case-insensitive is not the correct term here, is it? 
 When testing the search funtion it looks like the names are case inensitive and the codes case sensitive."?>
       <para>The search function displays only exact matches, it is case-insensitive. </para>
       <?oxy_comment_end?>
     </note>
-    <?oxy_comment_start author="cecilia" timestamp="20160518T095119+0200" comment="For SME: Does this work?
-I thought you couldn&apos;t add a root unit...."?>
-    <?oxy_custom_start type="oxy_content_highlight" color="153,255,255" mid="26"?>
-    <para>To add a new root organisation unit make sure no organisation unit is selected in the menu
-      and click on &quot;Add new&quot;.</para>
-    <?oxy_comment_end?>
-    <?oxy_custom_end mid="26"?>
     <para>To create a new organisation unit:</para>
     <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
     <orderedlist>
@@ -294,9 +352,12 @@ Probably dev for a specific use case, not mandatory."?>link<?oxy_comment_end?>
         <para>This information can be vital for facilitating follow-up.</para>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160518T113708+0200" comment="For SME: What is the HR identifier? An attribute? A part of the contact information? "?>
+        <?oxy_comment_start author="cecilia" timestamp="20160518T113708+0200" comment="For SME: What is the HR identifier? An attribute? A part of the contact information? 
+Custom attribute."?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="34"?>
         <para>Enter a <emphasis role="bold">HR identifier</emphasis>.</para>
         <?oxy_comment_end?>
+        <?oxy_custom_end mid="34"?>
       </listitem>
       <listitem>
         <para>If applicable, enter custom attributes values.</para>
@@ -304,24 +365,17 @@ Probably dev for a specific use case, not mandatory."?>link<?oxy_comment_end?>
             role="bold">Create new organisation unit</emphasis> pane. You set these attributes in
             <emphasis role="bold">Data Administration</emphasis> > <emphasis role="bold"
             >Attribute</emphasis>.</para>
-        <para><?oxy_comment_start author="cecilia" timestamp="20160518T114951+0200" comment="At next revsision, add x-ref here."?>For
+        <para><?oxy_comment_start author="cecilia" timestamp="20160518T114951+0200" comment="At next revsision, add x-ref here." flag="done"?>For
           more information about how you can use attributes, refer to the &quot;Attributes&quot;
           section.<?oxy_comment_end?></para>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Save</emphasis>.</para>
       </listitem>
-      <?oxy_comment_start author="cecilia" timestamp="20160518T113217+0200" comment="For SME: No longer applicable in new Mtn app?"?>
-      <?oxy_custom_start type="oxy_content_highlight" color="153,255,255" mid="37"?>
-      <listitem>
-        <para>Registers data: This property is used to identify which organisation units that can
-          register data or not. Sometimes administrative organisation units at higher levels in the
-          hierarchy are not supposed to register any data. This can help control the data entry
-          process as only organisation units with this property set to Yes will be available for
-          data entry.</para>
-      </listitem>
-      <?oxy_comment_end?>
-      <?oxy_comment_start author="cecilia" timestamp="20160518T113226+0200" comment="For SME: No longer applicable in new Mtn app?"?>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
+      <?oxy_comment_start author="cecilia" timestamp="20160524T121553+0200" comment="Will be added, see Iissue on GitHub
+https://github.com/dhis2/maintenance-app/issues/162"?>
+      <?oxy_comment_start author="cecilia" timestamp="20160518T113226+0200" comment="For SME: No longer applicable in new Mtn app?" mid="38"?>
       <listitem>
         <para>Coordinates: This field is used to create the maps in the GIS module. Paste in the
           coordinates of the organisation unit in this field, either a polygon (for organisation
@@ -331,19 +385,24 @@ Probably dev for a specific use case, not mandatory."?>link<?oxy_comment_end?>
           module. See the GIS chapter for more details.</para>
       </listitem>
       <?oxy_comment_end?>
-      <?oxy_comment_start author="cecilia" timestamp="20160518T113233+0200" comment="For SME: No longer applicable in new Mtn app?"?>
+      <?oxy_comment_end mid="38"?>
+      <?oxy_comment_start author="cecilia" timestamp="20160518T113233+0200" comment="For SME: No longer applicable in new Mtn app?
+
+Controlled in Settings&gt;Access
+&quot;Allow assigning object to related objects during add or update&quot;
+"?>
       <listitem>
-        <para>Datasets: Datasets can be assigned to organisational units here. See the chapter on
-          &quot;Data sets&quot; for more detailed information on assigning datasets to
-          organisational units.</para>
+        <para>Datasets: Datasets can be assigned to organisation units here. See the chapter on
+          &quot;Data sets&quot; for more detailed information on assigning datasets to organisation
+          units.</para>
       </listitem>
       <?oxy_comment_end?>
       <?oxy_comment_start author="cecilia" timestamp="20160518T113239+0200" comment="For SME: No longer applicable in new Mtn app?" mid="40"?>
       <listitem>
-        <para>Organisation unit groups: Assignments to organisational units group sets can be
-          assigned through the individual drop-down boxes which appear for each group set.</para>
+        <para>Organisation unit groups: Assignments to organisation units group sets can be assigned
+          through the individual drop-down boxes which appear for each group set.</para>
       </listitem>
-      <?oxy_custom_end mid="37"?>
+      <?oxy_custom_end?>
       <?oxy_comment_end mid="40"?>
       <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
     </orderedlist>
@@ -406,9 +465,11 @@ or
 group"?>group<?oxy_comment_end?>.</para>
         <para>The selected organisation units display in orange.</para>
       </listitem>
-      <?oxy_comment_start author="cecilia" timestamp="20160518T132005+0200" comment="For SME: Feature no longer available in DHIS 2?"?>
+      <?oxy_comment_start author="cecilia" timestamp="20160518T132005+0200" comment="For SME: Feature no longer available in DHIS 2?
+
+Reported, see https://github.com/dhis2/maintenance-app/issues/162"?>
       <listitem>
-        <para>Datasets: If you assign a dataset to an organisational unit group, all organisation
+        <para>Datasets: If you assign a dataset to an organisation unit group, all organisation
           units which are currently assigned to the dataset will be also present in this
           organisation unit group.</para>
       </listitem>
@@ -419,22 +480,14 @@ group"?>group<?oxy_comment_end?>.</para>
     </orderedlist>
   </section>
   <section xml:id="ou_groupsets">
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
     <title xml:id="orgunitGroupSets">Create an organisation unit group set</title>
-    <?oxy_custom_end?>
-    <para>Group sets is a flexible tool to add more
+    <para>Group sets allows you to add more
       <?oxy_comment_start author="cecilia" timestamp="20160518T140434+0200" comment="Is categorisation really a word?
 Would classification be better?
 Maybe it&apos;s the context that is not adapted to this word....
 "?>categorisation<?oxy_comment_end?>
-      to organisation units. You can have any number of group sets in
-      a<?oxy_comment_start author="cecilia" timestamp="20160518T140023+0200" comment="For SME: What do we call the system?
-A DHIS 2 instance?
-A DHIS 2 implementation?
-A DHIS 2 system?
-"?>
-      ?? DHIS instance/project??.<?oxy_comment_end?> By default, all databases have two group
-      sets:</para>
+      to organisation units. In DHIS 2 you can have any number of group sets. By default, all
+      databases have two group sets:</para>
     <itemizedlist>
       <listitem>
         <para>Type</para>
@@ -445,29 +498,35 @@ A DHIS 2 system?
     </itemizedlist>
     <para>The organisation unit group sets makes reporting and analysis easier within DHIS 2.
       <?oxy_custom_start type="oxy_content_highlight" color="153,255,255"?>Using these group sets
-      will simplify how reporting is done, and facilitate analysis through the use of tools as for
-      example
-      <?oxy_comment_start author="cecilia" timestamp="20160518T140206+0200" comment="For SME: The analysis apps?" mid="53"?>Excel
-      PivotTables.<?oxy_custom_end?><?oxy_comment_end mid="53"?></para>
-    <?oxy_comment_start author="cecilia" timestamp="20160518T161902+0200" comment="For SME: rewrite content, not clear."?>
-    <para>While a group set like &quot;Type&quot; describes a measure dimension, the actual
-      categories are represented by the groups, and the categorisation of an organisation unit
-      through the organisation unit&apos;s group memberships. This can be understood as a parallel
-      hierarchy of organisation units with the group set as the root (&quot;Type&quot;), the groups
-      at level 2 (e.g. &quot;Clinic&quot;, &quot;Hospital&quot;, &quot;Dispensary&quot;), and the
-      actual organisation units at level 3. The group set can as such provide additional information
-      and dimensionality to the data analysis as data is easily filtered, organised, or aggregated
-      by groups within a group set.</para>
+      will
+      <?oxy_comment_start author="cecilia" timestamp="20160524T122559+0200" comment="A group set creates a new dimension, lets you or more detailed analysis."?>simplify<?oxy_comment_end?>
+      how reporting is done, and facilitate
+      analysis<?oxy_custom_end?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>.<?oxy_custom_end?></para>
+    <?oxy_comment_start author="cecilia" timestamp="20160518T161902+0200" comment="Rewrite!"?>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
+    <para><?oxy_custom_end?>Group sets lets you to introduce additional classifications of
+      organisation units. These group sets are available as data dimension in the analysis apps...
+      You can have any number of organisation unit groups or group
+      sets..<?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="55"?>While a
+      group set like &quot;Type&quot; describes a measure dimension, the actual classification are
+      represented by the groups, and the categorisation of an organisation unit through the
+      organisation unit&apos;s group memberships. This can be understood as a parallel hierarchy of
+      organisation units with the group set as the root (&quot;Type&quot;), the groups at level 2
+      (e.g. &quot;Clinic&quot;, &quot;Hospital&quot;, &quot;Dispensary&quot;), and the actual
+      organisation units at level 3. The group set can as such provide additional information and
+      dimensionality to the data analysis as data is easily filtered, organised, or aggregated by
+      groups within a group set.</para>
     <?oxy_comment_end?>
+    <?oxy_custom_end mid="55"?>
     <para>For this aggregation to work without any duplication in the data
-      <?oxy_comment_start author="cecilia" timestamp="20160518T152408+0200" comment="For SME: Only two rules?"?>some<?oxy_comment_end?>
+      <?oxy_comment_start author="cecilia" timestamp="20160518T152408+0200" comment="For SME: Only two rules?"?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="57"?>some<?oxy_comment_end?><?oxy_custom_end mid="57"?>
       rules are necessary:</para>
     <itemizedlist>
       <listitem>
         <para>A group set is always exclusive, which means that an organisation unit cannot be
-          member of more than one group in a group set. Therefore, when creating a new
-          organisational unit, you will only be allowed to select a single organisational group
-          membership for each group set.</para>
+          member of more than one group in a group set. Therefore, when creating a new organisation
+          unit, you will only be allowed to select a single organisation group membership for each
+          group set.</para>
       </listitem>
       <listitem>
         <para>It is possible to define whether a group set is compulsory or not, which will affect
@@ -475,48 +534,15 @@ A DHIS 2 system?
           ALL organisation units must be member of a group in that group set.</para>
       </listitem>
     </itemizedlist>
-    <?oxy_comment_start author="cecilia" timestamp="20160518T161759+0200" comment="Consider moving this info to workflow section."?>
-    <para>It is recommend that you approach the organisation unit grouping in the following sequence
-      (and one group set at a time):</para>
-    <?oxy_comment_end?>
-    <?oxy_comment_start author="cecilia" timestamp="20160518T152523+0200" comment="For SME: Who does this? Implementer? Admin? User?"?>
-    <orderedlist>
-      <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160518T161717+0200" comment="For SME: When I tried to create an org unit group set, it wasn&apos;t possible to &quot;define&quot; a group set. 
-Pending feedback from issue #156, mtn app on GitHub."?>
-        <para>Define a new group set, for example &quot;Location&quot;.</para>
-        <?oxy_comment_end?>
-      </listitem>
-      <listitem>
-        <para>Add new groups (such as &quot;Urban&quot;, &quot;Rural&quot; and
-          &quot;Peri-urban&quot;). Once all groups have been defined, return to the organisational
-          unit group set and assign each of the desired groups to the group set.</para>
-      </listitem>
-      <listitem>
-        <para>Go back to each group, one by one, go to edit mode and assign the organisation units
-          that should be member of the group. Should you follow this route, you can place multiple
-          organisation units at a time in a group. However, you must be careful not to place the
-          same organisational units in two groups which itself is a member of an organisation unit
-          group set. This will result in a data integrity violation. If you have organisation unit
-          groups which are not exclusive, they should not be members of a group.</para>
-      </listitem>
-      <listitem>
-        <para>A better way to ensure that you do not mistakenly assign an organisation unit to
-          multiple members of a group set is you can use the edit feature of each organisational
-          unit to assign memberships to each group set. You will only be able to assign a single
-          organisation unit at a time however.</para>
-      </listitem>
-    </orderedlist>
-    <?oxy_comment_end?>
     <?oxy_comment_start author="cecilia" timestamp="20160518T162017+0200" comment="For SME: A separate task? Validate organisation unit groups?
 Or like a quality control that the org unit groups have been created in the best way.
 Would a user do this? Implementer? Admin?"?>
-    <para>It is important to keep in mind when using the &quot;Organisational unit group&quot; set
-      function, that unless great care is taken, organisational units can be assigned to multiple
+    <para>It is important to keep in mind when using the &quot;organisation unit group&quot; set
+      function, that unless great care is taken, organisation units can be assigned to multiple
       groups of a group set. This can be checked through the &quot;Data Integrity&quot; module,
-      which will report which organisational units are not members of a compulsory organisational
-      unit group set, and which organisational units have been assigned to more than one member of a
-      group set.</para>
+      which will report which organisation units are not members of a compulsory organisation unit
+      group set, and which organisation units have been assigned to more than one member of a group
+      set.</para>
     <?oxy_comment_end?>
     <para>To create an organisation unit group set:</para>
     <orderedlist>
@@ -549,13 +575,38 @@ Would a user do this? Implementer? Admin?"?>
       </listitem>
       <listitem>
         <?oxy_comment_start author="cecilia" timestamp="20160518T143302+0200" comment="For SME: Is rephrasing correct?"?>
-        <para>If ALL organisation units must be members of a group in this group set, select
-            <emphasis role="bold"
-            ><?oxy_comment_start author="cecilia" timestamp="20160518T143103+0200" comment="Verify with SME: Is the default selection = cleared box?"?>Compulsory<?oxy_comment_end?></emphasis>.</para>
+        <?oxy_comment_start author="cecilia" timestamp="20160524T123241+0200" comment="Rewrite" mid="63"?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="64"?>
+        <para>If you want that all organisation units are members of a group within this group set,
+          select <emphasis role="bold"
+            ><?oxy_comment_start author="cecilia" timestamp="20160518T143103+0200" comment="Verify with SME: Is the default selection = cleared box?
+
+Yes" flag="done"?>Compulsory<?oxy_comment_end?></emphasis>.</para>
+        <?oxy_comment_end?>
+        <?oxy_comment_end mid="63"?>
+        <?oxy_custom_end mid="64"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160524T161320+0200" comment="Verify how example tag renders, does it work in a list item?"?>
+        <example>
+          <para>To classify facilites by ownership. Create a organisation unit group set called
+            Ownsership. Include the organisation unit groups Private and PublicIf you want to group
+            all facilites </para>
+          <itemizedlist>
+            <listitem>
+              <para>Organisation group set: <emphasis role="bold">Ownership</emphasis></para>
+            </listitem>
+            <listitem>
+              <para>Organisation unit groups: Private and Public.</para>
+            </listitem>
+          </itemizedlist>
+          <para>when you have private and public ownshership. You don't want some organisation units
+            not to be classified.</para>
+        </example>
         <?oxy_comment_end?>
       </listitem>
       <listitem>
-        <para><?oxy_comment_start author="cecilia" timestamp="20160518T142229+0200" comment="For SME: In GUI, an attribute or always in the form?"?>Data
+        <para><?oxy_comment_start author="cecilia" timestamp="20160518T142229+0200" comment="For SME: In GUI, an attribute or always in the form?
+
+Alltid" flag="done"?>Data
           dimension<?oxy_comment_end?></para>
       </listitem>
       <listitem>
@@ -568,17 +619,8 @@ Would a user do this? Implementer? Admin?"?>
         <para>If no groups appear in the list then you must go to <emphasis role="bold">Organisation
             Unit Groups</emphasis> and create new groups first.</para>
         <note>
-          <?oxy_comment_start author="cecilia" timestamp="20160518T151417+0200" comment="For SME: Review this example with SME. Unclear."?>
-          <para>It is not possible to assign groups that violate the exclusive rule on group sets.
-            For example adding a group that already has assigned an organisation unit that again is
-            already member of a group that has already been selected by this group set, will not be
-            possible since one organisation unit will end up with two group memberships in the same
-            group set.</para>
-          <?oxy_comment_end?>
-          <?oxy_comment_start author="cecilia" timestamp="20160518T151444+0200" comment="Should move recommendation to the beginning of the section, even to the workflow."?>
-          <para>To avoid such situations it is recommend to first add groups to group sets, and then
-            organisation units to groups.</para>
-          <?oxy_comment_end?>
+          <para>An organisation unit can only be a member of a single organisation unit group within
+            an organisation unit group set.</para>
         </note>
       </listitem>
       <listitem>
@@ -749,17 +791,13 @@ Change name to Options, instead of actions."?>options<?oxy_comment_end?>
     </orderedlist>
   </section>
   <section>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
     <title>Translate organisation units and other objects</title>
-    <?oxy_custom_end?>
-    <?oxy_comment_start author="cecilia" timestamp="20160513T161732+0200" comment="Copied from data elements, true also for Org units?"?>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="89"?>
-    <para>DHIS 2 provides functionality for translations of database content like data elements,
-      data element groups, indicators, indicator groups, validation rules and more. You can
-      translate these elements to any number of locales. A locale represents a specific
-      geographical, political, or cultural region.</para>
-    <?oxy_comment_end?>
-    <?oxy_custom_end mid="89"?>
+    <para>DHIS 2 provides
+      <?oxy_comment_start author="cecilia" timestamp="20160524T153706+0200" comment="Reword!"?>functionality
+      for translations<?oxy_comment_end?> of database content for example data elements, data
+      element groups, indicators, indicator groups and validation rules. You can translate these
+      elements to any number of locales. A locale represents a specific geographical, political, or
+      cultural region.</para>
     <tip>
       <para>To activate a
         <?oxy_comment_start author="cecilia" timestamp="20160512T110522+0200" comment="At next revision, verify that this task is documentet and add link to correct topic."?>translation<?oxy_comment_end?>,
@@ -792,36 +830,47 @@ Change name to Options, instead of actions."?>options<?oxy_comment_end?>
         <?oxy_comment_start author="cecilia" timestamp="20160510T162858+0200" comment="For SME: Which of the settings are mandatory?"?>
         <para>Enter <emphasis role="bold">Name</emphasis>, <emphasis role="bold">Short
             name</emphasis>, <emphasis role="bold">Description</emphasis> and
-            <?oxy_comment_start author="cecilia" timestamp="20160523T100339+0200" comment="Before publication, verify if GUI has changed, refer to issue on GitHub."?><emphasis
+            <?oxy_comment_start author="cecilia" timestamp="20160523T100339+0200" comment="Before publication, verify if GUI has changed, refer to issue on GitHub.
+
+Note! For Org unit levels, the translate pane is different, only one field."?><emphasis
             role="bold">Form name</emphasis><?oxy_comment_end?>.</para>
         <?oxy_comment_end?>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160510T162749+0200" comment="For SME: Why not a save function?"?>
         <para>Click <emphasis role="bold">Close</emphasis>.</para>
-        <?oxy_comment_end?>
       </listitem>
     </orderedlist>
   </section>
   <section xml:id="ou_level">
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
+    <?oxy_comment_start author="cecilia" timestamp="20160524T153852+0200" comment="Implmenter
+Access rights needed."?>
     <title xml:id="orgUnitGroupLevels"
       ><?oxy_comment_start author="cecilia" timestamp="20160509T150134+0200" comment="At next revision, review name of section."?>Assign<?oxy_comment_end?>
       names to organisation unit levels</title>
-    <?oxy_custom_end?>
-    <para>You
-      <?oxy_comment_start author="cecilia" timestamp="20160509T145347+0200" comment="Is this mandatory?
+    <?oxy_comment_end?>
+    <para>When you add children to an organisation unit, DHIS 2 automatically creates a new
+      organisation unit level if necessary. DHIS 2 also assigns a generic name to this level, for
+      example "level 5". You
+      <?oxy_comment_start author="cecilia" timestamp="20160509T145347+0200" comment="Is this mandatory? Not necessary, will get generic names in GIS if you don@t you get level1, level2 etc.
+
 Who sets it up?
-Admin?
-Implementer?
+Implementer
+
 Can you create new ones? If yes, how do you do that? No &quot;plus&quot; button in GUI.
-"?>can<?oxy_comment_end?>
-      specify a contextual name for each level in the hierarchy, for example &quot;Country&quot;,
-      &quot;Province&quot;, &quot;District" or &quot;Health Facility&quot;. The contextual names are
-      used all over the application where levels are referred to.
+Created automatically when you create more children.
+
+" flag="done"?>can<?oxy_comment_end?>
+      replace the genereic name with a
+      <?oxy_comment_start author="cecilia" timestamp="20160524T155050+0200" comment="At next revision, find a better term."?>contextual<?oxy_comment_end?>
+      name, for example &quot;Country&quot;, &quot;Province&quot;, &quot;District" or &quot;Health
+      Facility&quot;.
+      <?oxy_comment_start author="cecilia" timestamp="20160524T155346+0200" comment="At next revision, rewrite into active voice."?>The
+      contextual names are used in DHIS 2 where levels are
+      <?oxy_comment_start author="cecilia" timestamp="20160524T155439+0200" comment="For SME: Only in GIS?"?>referred<?oxy_comment_end?>
+      to<?oxy_comment_end?>. The list of organisation unit levels
       <?oxy_comment_start author="cecilia" timestamp="20160509T145555+0200" comment="Verify with SME:
-Still correct?"?>This
-      page will take some time to load if the organisation unit hierarchy is very
+Still correct?"?>will
+      take some time to load if the organisation unit hierarchy is very
       <?oxy_comment_start author="cecilia" timestamp="20160509T145428+0200" comment="Define big?"?>big<?oxy_comment_end?>.<?oxy_comment_end?></para>
     <orderedlist>
       <listitem>
@@ -829,14 +878,17 @@ Still correct?"?>This
             >Maintenance</emphasis> > <emphasis role="bold">Organisation units</emphasis> >
             <emphasis role="bold">Organisation unit level</emphasis>.</para>
       </listitem>
-      <?oxy_comment_start author="cecilia" timestamp="20160519T092027+0200" comment="For SME: Add step-by-step instructions."?>
       <listitem>
-        <para>Task 2</para>
+        <para>For the lorganisation unit evels you want to change, type a name.</para>
       </listitem>
       <listitem>
-        <para>Task 3</para>
+        <?oxy_comment_start author="cecilia" timestamp="20160524T154550+0200" comment="For SME: Do you need to select offline levels?"?>
+        <para>Select offline levels.</para>
+        <?oxy_comment_end?>
       </listitem>
-      <?oxy_comment_end?>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
     </orderedlist>
   </section>
   <section xml:id="hierarchy_operations">
@@ -844,10 +896,13 @@ Still correct?"?>This
       ><?oxy_comment_start author="cecilia" timestamp="20160509T144253+0200" comment="Verify with SME:
 Who does this? Admin? Implementer?
 Who sets it up?
-Who does the maintenance?"?>Move
-      organisation unit<?oxy_comment_end?>s
-      <?oxy_comment_start author="cecilia" timestamp="20160509T142938+0200" comment="Verify with SME, you move within a hierarchy not from one to another?"?>within<?oxy_comment_end?>
-      a hierarchy</title>
+Who does the maintenance?
+
+Many can do this. Options are linked to the access rights for the user.
+Maintenance performed 
+Province, national, global adm
+Implementer"?>Move
+      organisation unit<?oxy_comment_end?>s within a hierarchy</title>
     <para>You can move organisation units around in the hierarchy by changing the parent of a
       selected organisation unit.</para>
     <orderedlist>
