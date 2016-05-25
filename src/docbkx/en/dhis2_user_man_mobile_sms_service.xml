@@ -11,7 +11,7 @@
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook" xml:id="mobile_sms_service">
   <title>SMS Service</title>
-  <para>SMS Service is a generic service used for sending/receiving SMS. Any other Dhis2 module can include this service and utilize it to send and receive SMS from users or workers in the field.</para>
+  <para>SMS Service is a generic service used for sending/receiving SMS. Any other DHIS 2 module can include this service and utilize it to send and receive SMS from users or workers in the field.</para>
   <section>
     <title>Setting up SMS service</title>
     <para>There are few pre-requisites in order to make this service functional. There are two ways to complete these steps. One way is to configure gateway from the GUI in Mobile Configuration Module. The other
@@ -29,7 +29,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata width="40%" align="center" fileref="resources/images/dhis2_mobile_sms/gateway_configuration.png"/>
+            <imagedata width="40%" align="center" fileref="resources/images/dhis2_mobile_sms/gateway_configurations.png"/>
           </imageobject>
         </mediaobject>
       </screenshot>
@@ -40,14 +40,14 @@
     <para>Below table shows the parameters required for configuring gateway.</para>
     <table frame="all">
       <title>Gateway Configuration Parameters</title>
-      <tgroup cols="7">
+      <tgroup cols="5">
         <colspec colname="c1" colnum="1" colwidth="5.52*"/>
         <colspec colname="c2" colnum="2" colwidth="5.52*"/>
         <colspec colname="c3" colnum="3" colwidth="5.52*"/>
         <colspec colname="c4" colnum="4" colwidth="5.52*"/>
         <colspec colname="c5" colnum="5" colwidth="5.52*"/>
-        <colspec colname="c6" colnum="6" colwidth="5.52*"/>
-        <colspec colname="c7" colnum="7" colwidth="5.52*"/>
+        
+        
         <thead>
           <row>
             <entry>Parameter</entry>
@@ -98,7 +98,7 @@
             <entry>N/A</entry>
             <entry>N/A</entry>
             <entry>Required</entry>
-            <entry>API URL for sending sms</entry>
+            <entry>Url Tempalte is only required in case of GenericHttpGateway . For example "http://smsgatewa1.com"</entry>
           </row>
 
         </tbody>
