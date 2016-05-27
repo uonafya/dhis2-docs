@@ -255,14 +255,6 @@ Assign an org unit to a group set one by one?"?>
 WIP, follow-up with SME."?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="21"?>root
       unit<?oxy_comment_end?><?oxy_custom_end mid="21"?> or as a child of a selected organisation
       unit.</para>
-    <note>
-      <?oxy_comment_start author="cecilia" timestamp="20160518T102930+0200" comment="For SME: Case-insensitive is not the correct term here, is it? 
-When testing the search function it looks like the names are case inensitive and the codes case sensitive."?>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="23"?>
-      <para>The search function displays only exact matches, it is case-insensitive.</para>
-      <?oxy_comment_end?>
-      <?oxy_custom_end mid="23"?>
-    </note>
     <para>To create a new organisation unit:</para>
     <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
     <orderedlist>
@@ -275,8 +267,12 @@ When testing the search function it looks like the names are case inensitive and
       <listitem>
         <para>In the organisation unit tree to the left, select the organisation unit you want to
           add the new organisation unit to.</para>
-        <para>You can locate a organisation unit in the tree by expanding the branches (click on the
-          arrow symbol), or by searching for it by name or code.</para>
+        <para>You can locate an organisation unit in the tree by expanding the branches (click on
+          the arrow symbol), or by searching for it by name or code.</para>
+        <note>
+          <para>The search is case-insensitive for organisation unit names. For codes you need to
+            type the exact code.</para>
+        </note>
       </listitem>
       <listitem>
         <para>Click the yellow plus button.</para>
@@ -284,7 +280,7 @@ When testing the search function it looks like the names are case inensitive and
       <listitem>
         <para>In the <emphasis role="bold">Name</emphasis> field, define the precise name of the
           organisation unit.</para>
-        <para>Each organisation unit must have a unique name.</para>
+        <para>Each organisation unit must have an unique name.</para>
       </listitem>
       <listitem>
         <para>In the <emphasis role="bold">Short name</emphasis> field, define a short name for the
@@ -305,19 +301,10 @@ When testing the search function it looks like the names are case inensitive and
         <para>Select an <emphasis role="bold">Opening date</emphasis>.</para>
         <para>The opening dates control which organisation units that where existing at a point in
           time, for example when analysing historical data. This attribute is mandatory.</para>
-        <para>The
-          <?oxy_comment_start author="cecilia" timestamp="20160518T112306+0200" comment="For SME: Shouldn&apos;t this be visible then when I create a new org unit? In dev demo, this field is empty. Is the default date assigned if I dont&apos;t select anything?"?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="26"?>default
-          date for opening of organisation units is
-          1900-01-01<?oxy_comment_end?>,<?oxy_custom_end mid="26"?> but you can set it to any date
-          even to a date that occurs in the future.</para>
       </listitem>
-      <?oxy_comment_start author="cecilia" timestamp="20160518T112753+0200" comment="For SME: Step missing in original user doc, info correct?"?>
       <listitem>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
         <para>If applicable, select a <emphasis role="bold">Closed date</emphasis>.</para>
-        <?oxy_custom_end?>
       </listitem>
-      <?oxy_comment_end?>
       <listitem>
         <para>In the <emphasis role="bold">Comment</emphasis> field, enter any additional
           information that you would like to add.</para>
@@ -327,9 +314,7 @@ When testing the search function it looks like the names are case inensitive and
           external web site that has additional information about the organisation unit.</para>
       </listitem>
       <listitem>
-        <para>Enter
-          c<?oxy_comment_start author="cecilia" timestamp="20160518T113336+0200" comment="For SME: Can you set the type of contact information yourself? Or is it always Address, e-mail phone numberetc?"?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="30"?>ontact
-          information:<?oxy_comment_end?><?oxy_custom_end mid="30"?></para>
+        <para>Enter contact information:</para>
         <itemizedlist>
           <listitem>
             <para>Contact person</para>
@@ -346,28 +331,21 @@ When testing the search function it looks like the names are case inensitive and
         </itemizedlist>
         <para>This information can be vital for facilitating follow-up.</para>
       </listitem>
-      <?oxy_comment_start author="cecilia" timestamp="20160526T091854+0200" comment="SME input: Add step about attributes, refer to org unit group and org unit group set.
-Verify with Mark when create form is done."?>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="32"?>
       <listitem>
         <para>If applicable, enter custom attributes values, for example <emphasis role="bold">HR
             identifier</emphasis>.</para>
-        <para>If you have added attributes to organisation units, they are visible in the <emphasis
-            role="bold">Create new organisation unit</emphasis> pane. You set these attributes in
-            <emphasis role="bold">Data Administration</emphasis> > <emphasis role="bold"
-            >Attribute</emphasis>.</para>
-        <para><?oxy_comment_start author="cecilia" timestamp="20160518T114951+0200" comment="At next revsision, add x-ref here." flag="done"?>For
-          more information about how you can use attributes, refer to the &quot;Attributes&quot;
+        <para>You set custom attributes in <emphasis role="bold">Data Administration</emphasis> >
+            <emphasis role="bold">Attribute</emphasis>.
+          <?oxy_comment_start author="cecilia" timestamp="20160518T114951+0200" comment="At next revsision, add x-ref here." flag="done"?>For
+          more information about how to use attributes, refer to the &quot;Attributes&quot;
           section.<?oxy_comment_end?></para>
       </listitem>
-      <?oxy_comment_end?>
-      <?oxy_custom_end mid="32"?>
       <listitem>
         <para>Click <emphasis role="bold">Save</emphasis>.</para>
       </listitem>
       <?oxy_comment_start author="cecilia" timestamp="20160524T121553+0200" comment="Will be added, see Iissue on GitHub
 https://github.com/dhis2/maintenance-app/issues/162"?>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="35"?>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="25"?>
       <listitem>
         <para>Coordinates: This field is used to create the maps in the GIS module. Paste in the
           coordinates of the organisation unit in this field, either a polygon (for organisation
@@ -388,13 +366,13 @@ Controlled in Settings&gt;Access
           units.</para>
       </listitem>
       <?oxy_comment_end?>
-      <?oxy_comment_start author="cecilia" timestamp="20160518T113239+0200" comment="For SME: No longer applicable in new Mtn app?" mid="37"?>
+      <?oxy_comment_start author="cecilia" timestamp="20160518T113239+0200" comment="For SME: No longer applicable in new Mtn app?" mid="27"?>
       <listitem>
         <para>Organisation unit groups: Assignments to organisation units group sets can be assigned
           through the individual drop-down boxes which appear for each group set.</para>
       </listitem>
-      <?oxy_custom_end mid="35"?>
-      <?oxy_comment_end mid="37"?>
+      <?oxy_custom_end mid="25"?>
+      <?oxy_comment_end mid="27"?>
       <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
     </orderedlist>
     <?oxy_custom_end?>
@@ -445,17 +423,18 @@ Controlled in Settings&gt;Access
           <?oxy_comment_start author="cecilia" timestamp="20160526T100438+0200" comment="Issue submitted on GitHub to make it possible to search by code too, jsut like the Create new org unit form." flag="done"?>name<?oxy_comment_end?>.</para>
         <para>The selected organisation units display in orange.</para>
       </listitem>
-      <?oxy_comment_start author="cecilia" timestamp="20160518T132005+0200" comment="For SME: Feature no longer available in DHIS 2?
+      <?oxy_comment_start author="cecilia" timestamp="20160518T132005+0200" comment="Verify with Lars, looks like this goes automatically. E-mail send 27th May 2016
+For SME: Feature no longer available in DHIS 2?
 
 Reported, see https://github.com/dhis2/maintenance-app/issues/162"?>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="41"?>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="31"?>
       <listitem>
         <para>Datasets: If you assign a dataset to an organisation unit group, all organisation
           units which are currently assigned to the dataset will be also present in this
           organisation unit group.</para>
       </listitem>
       <?oxy_comment_end?>
-      <?oxy_custom_end mid="41"?>
+      <?oxy_custom_end mid="31"?>
       <listitem>
         <para>Click <emphasis role="bold">Save</emphasis>.</para>
       </listitem>
@@ -464,11 +443,8 @@ Reported, see https://github.com/dhis2/maintenance-app/issues/162"?>
   <section xml:id="ou_groupsets">
     <title xml:id="orgunitGroupSets">Create an organisation unit group set</title>
     <para>Organisation unit group sets allows you to create additional classifications of
-      organisation units. The group sets create
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>new dimensions in the
-      <?oxy_comment_start author="cecilia" timestamp="20160525T154013+0200" comment="For SME: Do you only use these dimensions in the analysis apps?"?>analysis
-      applications <?oxy_comment_end?>s<?oxy_custom_end?>o that you can make a more detailed data
-      analysis. You an easily filter, organise or aggregate data by groups within a group
+      organisation units. The group sets create new dimensions so that you can make a more detailed
+      data analysis. You an easily filter, organise or aggregate data by groups within a group
       set.</para>
     <itemizedlist>
       <listitem>
@@ -491,22 +467,16 @@ Reported, see https://github.com/dhis2/maintenance-app/issues/162"?>
       </listitem>
     </itemizedlist>
     <note>
+      <?oxy_comment_start author="cecilia" timestamp="20160527T112025+0200" comment="At next revision, add x-ref to Data admin app doc." flag="done"?>
       <title>Data completeness</title>
-      <?oxy_comment_start author="cecilia" timestamp="20160518T162017+0200" comment="For SME: A separate task? Validate organisation unit groups?
-Or like a quality control that the org unit groups have been created in the best way.
-Would a user do this? Implementer? Admin?"?>
-      <?oxy_comment_start author="cecilia" timestamp="20160525T155322+0200" comment="For SME: Can you program this so it can&apos;t happen?" mid="45"?>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="46"?>
-      <para>In the
-        <?oxy_comment_start author="cecilia" timestamp="20160525T155349+0200" comment="For SME: Data Quality app?"?>Data
-        Integrity/<?oxy_comment_start author="cecilia" timestamp="20160525T154839+0200" comment="At next revision, add x-ref here." flag="done"?>Data<?oxy_comment_end?>
-        Quality<?oxy_comment_end?> app, you can verify if you've accidentally assigned the same
-        organisation unit to multiple groups within the same group set. In this app you also find
-        information about organisation units that are not members of a compulsory organisation unit
-        group set.</para>
       <?oxy_comment_end?>
-      <?oxy_comment_end mid="45"?>
-      <?oxy_custom_end mid="46"?>
+      <?oxy_comment_start author="cecilia" timestamp="20160518T162017+0200" comment="Would a user do this? Implementer? Admin?" flag="done"?>
+      <para>In the <emphasis role="bold">Data integrity</emphasis> part of the <emphasis role="bold"
+          >Data administration</emphasis> app you can verify if you've accidentally assigned the
+        same organisation unit to multiple groups within the same group set. In this app you also
+        find information about organisation units that are not members of a compulsory organisation
+        unit group set.</para>
+      <?oxy_comment_end?>
     </note>
     <para>To create an organisation unit group set:</para>
     <orderedlist>
@@ -659,9 +629,7 @@ At the moment, I can only do x-refs to section 1 tags.
     </orderedlist>
   </section>
   <section>
-    <title><?oxy_comment_start author="cecilia" timestamp="20160510T160631+0200" comment="For SME: Where do you set this initially?"?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="56"?>Change<?oxy_comment_end?>
-      <?oxy_comment_start author="cecilia" timestamp="20160519T095448+0200" comment="For SME: Why can&apos;t you do this for organisation units?"?>sharing<?oxy_comment_end?>
-      <?oxy_custom_end mid="56"?>settings for organisation unit groups and group sets</title>
+    <title>Change sharing settings for organisation unit groups and group sets</title>
     <orderedlist>
       <listitem>
         <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
@@ -678,11 +646,29 @@ At the moment, I can only do x-refs to section 1 tags.
         <para>Click the options menu and select <emphasis role="bold">Share</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Modify the
-          <?oxy_comment_start author="cecilia" timestamp="20160510T161804+0200" comment="For SME: More information needed.
-What does Public access mean?
-Which other options do you have?"?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="59"?>options<?oxy_comment_end?><?oxy_custom_end mid="59"?>
-          you want.</para>
+        <para>(Optional) Search for a user group and select it. The user group is added to the
+          list.</para>
+      </listitem>
+      <listitem>
+        <?oxy_comment_start author="cecilia" timestamp="20160527T113739+0200" comment="Before release, verify GUI. Options GUI will change."?>
+        <para>Change the settings for the user
+          group<?oxy_comment_start author="cecilia" timestamp="20160510T161804+0200" comment="For SME: More information needed. What does External access mean?
+Marks: something to do with edit rights, verify with Lars.
+E-mail send 27th May"?>s<?oxy_comment_end?>
+          you want to modify.</para>
+        <?oxy_comment_end?>
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="bold">Can view</emphasis>: Everyone in the user group can view the
+              object</para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Can edit</emphasis>: Everyone in the user group can view and
+              edit the object</para>
+          </listitem>
+        </itemizedlist>
+        <para>The default setting is that everyone (<emphasis role="bold">Public access</emphasis>)
+          can view and edit objects.</para>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Close</emphasis>.</para>
@@ -766,15 +752,9 @@ Which other options do you have?"?><?oxy_custom_start type="oxy_content_highligh
         <para>Select a locale.</para>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160510T162858+0200" comment="For SME: Which of the settings are mandatory?"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="63"?>
-        <para>Enter <emphasis role="bold">Name</emphasis>, <emphasis role="bold">Short
-            name</emphasis>, <emphasis role="bold">Description</emphasis> and
-            <?oxy_comment_start author="cecilia" timestamp="20160523T100339+0200" comment="Before publication, verify if GUI has changed, refer to issue on GitHub.
-Note! For Org unit levels, the translate pane is different, only one field."?><emphasis
-            role="bold">Form name</emphasis><?oxy_comment_end?>.</para>
-        <?oxy_comment_end?>
-        <?oxy_custom_end mid="63"?>
+        <para>Enter the
+          <?oxy_comment_start author="cecilia" timestamp="20160527T122524+0200" comment="The required or required? Verify"?>required<?oxy_comment_end?>
+          information.</para>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Close</emphasis>.</para>
@@ -795,27 +775,26 @@ Note! For Org unit levels, the translate pane is different, only one field."?><e
       &quot;<?oxy_comment_start author="cecilia" timestamp="20160526T110459+0200" comment="At next revision, define if we should use &quot;&quot; around inline examples or not. 
 If so, go trough all topics and update." flag="done"?>Province<?oxy_comment_end?>&quot;,
       &quot;District" or &quot;Health Facility&quot;. DHIS 2 uses the contextual names anywhere
-      levels are referred to, for example in the <emphasis role="bold">GIS</emphasis> app.
-      T<?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>he list of organisation
-      unit levels can
-      <?oxy_comment_start author="cecilia" timestamp="20160509T145555+0200" comment="Verify with SME: Still correct?" mid="70"?>take
-      some time to load if the organisation unit hierarchy is very
-      <?oxy_comment_start author="cecilia" timestamp="20160509T145428+0200" comment="For SME: How big is big?"?>big<?oxy_comment_end?>.<?oxy_custom_end?><?oxy_comment_end mid="70"?></para>
+      levels are referred to, for example in the <emphasis role="bold">GIS</emphasis> app. </para>
     <orderedlist>
       <listitem>
         <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
             >Maintenance</emphasis> > <emphasis role="bold">Organisation units</emphasis> >
             <emphasis role="bold">Organisation unit level</emphasis>.</para>
+        <para>The loading time of the list depends on the depth of the organisation unit hiearchy
+          tree.</para>
       </listitem>
       <listitem>
-        <para>For the organisation unit levels you want to change, type a name.</para>
+        <para>For the organisation unit levels you want to modify, type a name.</para>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160524T154550+0200" comment="For SME: Do you need to select offline levels?"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="73"?>
-        <para>Select offline levels.</para>
+        <?oxy_comment_start author="cecilia" timestamp="20160524T154550+0200" comment="For SME:Do you need to select offline levels? What does Default mean?
+E-mail send to Lars 27th May.
+Number of levels that are loaded offline, depends on the org unit the user is assigned to. Verify with Lars"?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="50"?>
+        <para>Select the number of offline levels.</para>
         <?oxy_comment_end?>
-        <?oxy_custom_end mid="73"?>
+        <?oxy_custom_end mid="50"?>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Save</emphasis>.</para>
