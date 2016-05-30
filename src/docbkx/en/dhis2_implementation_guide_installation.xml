@@ -82,9 +82,9 @@
       <para>Start by creating a suitable directory for the DHIS 2 configuration files. This
         directory will also be used for apps, files and log files. An example directory could
         be:<screen>/home/dhis/config</screen></para>
-      <para>DHIS 2 will look for an environment variable called <emphasis>DHIS2_HOME</emphasis> to
+      <para>DHIS 2 will look for an environment variable called <emphasis>DHIS 2_HOME</emphasis> to
         locate the DHIS 2 configuration directory. This directory will be referred to as
-          <emphasis>DHIS2_HOME</emphasis> in this installation guide. We will define the environment
+          <emphasis>DHIS 2_HOME</emphasis> in this installation guide. We will define the environment
         variable in a later step in the installation process.</para>
     </section>
     <section>
@@ -172,7 +172,7 @@ sudo locale-gen nb_NO.UTF-8</screen>
       <title>Database configuration</title>
       <para>The database connection information is provided to DHIS 2 through a configuration file
         called <emphasis role="italic">dhis.conf</emphasis>. Create this file and save it in the
-          <emphasis>DHIS2_HOME</emphasis> directory. As an example this location could
+          <emphasis>DHIS 2_HOME</emphasis> directory. As an example this location could
         be:<screen>/home/dhis/config/dhis.conf</screen> A configuration file for PostgreSQL
         corresponding to the above setup has these properties: </para>
       <para><screen># Hibernate SQL dialect
@@ -211,7 +211,7 @@ encryption.password = xxxx</screen></para>
       <title>File store configuration (optional)</title>
       <para>DHIS 2 is capable of capturing and storing files. By default files will be stored on the
         file system of the server which runs DHIS 2 in a <emphasis role="italic">files</emphasis>
-        directory under the <emphasis role="italic">DHIS2_HOME</emphasis> external directory
+        directory under the <emphasis role="italic">DHIS 2_HOME</emphasis> external directory
         location.</para>
       <para>You can also configure DHIS 2 to store files on cloud-based storage providers.
         Currently, AWS S3 is the only supported provider. To enable cloud-based storage you must
@@ -272,7 +272,7 @@ filestore.secret = xxxx</screen>
         </itemizedlist>
       </para>
       <para>After downloading the key file, put the <emphasis>dhis-google-auth.json</emphasis> file
-        in the DHIS2_HOME directory (the same location as the <emphasis>dhis.conf</emphasis> file).
+        in the DHIS 2_HOME directory (the same location as the <emphasis>dhis.conf</emphasis> file).
         As an example this location could
         be:<screen>/home/dhis/config/dhis-google-auth.json</screen></para>
     </section>
@@ -311,7 +311,7 @@ sudo apt-get install oracle-java8-installer</screen>
         Note that you should adjust this to your environment:</para>
       <para><screen>export JAVA_HOME=&apos;/usr/lib/jvm/java-8-oracle/&apos;
 export JAVA_OPTS=&apos;-Xmx7500m -Xms4000m&apos;
-export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
+export DHIS 2_HOME=&apos;/home/dhis/config&apos;</screen></para>
       <para>The Tomcat configiration file is located in <emphasis role="italic"
           >tomcat-dhis/conf/server.xml</emphasis>. The element which defines the connection to DHIS
         is the <emphasis role="italic">Connector</emphasis> element with port 8080. You can change
@@ -870,7 +870,7 @@ ldap.search.filter = (cn={0})</screen>
     <para>The following describes the full set of configuration options for the <emphasis
         role="italic">dhis.conf</emphasis> configuration file. The uncommented properties are
       mandatory. The commented properties are optional. The configuration file should be placed in a
-      directory which is pointed to by a <emphasis role="italic">DHIS2_HOME</emphasis> environment
+      directory which is pointed to by a <emphasis role="italic">DHIS 2_HOME</emphasis> environment
       variable. The comment (#) must be removed for a property value to take effect. You can copy
       and paste the following content as a viable starting point for your own configuration
       file.<screen># ----------------------------------------------------------------------
@@ -919,7 +919,7 @@ connection.schema = update
 # File store provider, currently 'filesystem' and 'aws-s3' are supported
 # filestore.provider = filesystem
 
-# Directory / bucket name, refers to folder within DHIS2_HOME on file system, 'bucket' on AWS S3
+# Directory / bucket name, refers to folder within DHIS 2_HOME on file system, 'bucket' on AWS S3
 # filestore.container = files
 
 # Datacenter location (not required)
@@ -956,16 +956,16 @@ connection.schema = update
       output is sent to standard output. The Tomcat servlet container usually outputs standard
       output to a file under "logs":<screen>&lt;tomcat-dir>/logs/catalina.out</screen></para>
     <para>Second, log output is written to a "logs" directory under the DHIS 2 home directory as
-      defined by the the DHIS2_HOME environment variables. There is a main log file for all output,
+      defined by the the DHIS 2_HOME environment variables. There is a main log file for all output,
       and separate log files for various background processes. The main file includes the background
       process logs as well. The log files are capped at 50 Mb and log content is continuously
-      appended.<screen>&lt;DHIS2_HOME>/logs/dhis.log
+      appended.<screen>&lt;DHIS 2_HOME>/logs/dhis.log
 
-&lt;DHIS2_HOME>/logs/dhis-analytics-table.log
+&lt;DHIS 2_HOME>/logs/dhis-analytics-table.log
 
-&lt;DHIS2_HOME>/logs/dhis-data-exchange.log
+&lt;DHIS 2_HOME>/logs/dhis-data-exchange.log
 
-&lt;DHIS2_HOME>/logs/dhis-data-sync.log</screen></para>
+&lt;DHIS 2_HOME>/logs/dhis-data-sync.log</screen></para>
     <para>In order to override the default logging you can specify a Java system property with the
       name <emphasis role="italic">log4j.configuration</emphasis> and a value pointing to the Log4j
       configuration file on the classpath. If you want to point to a file on the file system (i.e.
@@ -974,7 +974,7 @@ connection.schema = update
     <para>Java system properties can be set e.g. through the <emphasis role="italic"
         >JAVA_OPTS</emphasis> environment variable.</para>
     <para>DHIS 2 will eventually phase out logging to standard out / catalina.out and as a result it
-      is recommended to rely on the logs under DHIS2_HOME.</para>
+      is recommended to rely on the logs under DHIS 2_HOME.</para>
   </section>
   <section>
     <title>Working with the PostgreSQL database</title>

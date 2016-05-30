@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter xml:id="doc_guide_chapter">
-  <title>Guía para la Documentación de DHIS2</title>
+  <title>Guía para la Documentación de DHIS 2</title>
   <section xml:id="docs_1">
     <title>Una panorámica del sistema de documentación de DHIS 2</title>
-    <para remap="">DHIS2 es un sistema web de gestión de información agregada que está en continuo desarrollo. Dada la naturaleza modular del sistema, su distribución y foco en los usuarios, su naturaleza global de desarrollo, es presico un sistema de documentación integral. Previamente ya se ha considerado una discusión profunda sobre la necesidad de documentar DHIS2. <citation>Store2007</citation>  <link xl:href="http://www.docbook.org">DocBook</link> es un sistema exhaustivo basado en XML para crear libros, artículos y otros documentos técnicos bajo el soporte de <link xl:href=" http://www.oasis-open.org/">OASIS</link> . </para>
+    <para remap="">DHIS 2 es un sistema web de gestión de información agregada que está en continuo desarrollo. Dada la naturaleza modular del sistema, su distribución y foco en los usuarios, su naturaleza global de desarrollo, es presico un sistema de documentación integral. Previamente ya se ha considerado una discusión profunda sobre la necesidad de documentar DHIS 2. <citation>Store2007</citation>  <link xl:href="http://www.docbook.org">DocBook</link> es un sistema exhaustivo basado en XML para crear libros, artículos y otros documentos técnicos bajo el soporte de <link xl:href=" http://www.oasis-open.org/">OASIS</link> . </para>
   </section>
   <section xml:id="docs_2">
     <title>Introducción</title>
-    <para>Una de las principales ventajas de DocBook es que hay una separación total entre el contenido y la presentación. DocBook es un formato puro XML, y está bastante documentado. En realidad con solo un pequeño conjunto de sus funcionalidades se podría lograr mucho mayor calidad de documentación para DHIS. Hay cerca de 400 elementos de marcado distintos que cubren prácticamente todos los niveles de necesidades en la documentación técnica, pero en realidad, con unas pocas docenas de estos elementos se puede lograr una buena calidad de documentación en DHIS2, tanto para formatos impresos como para formatos digitales como HTML o sistemas integrados de ayuda en la propia aplicación. Entonces, hay un amplio margen de posibilidades en términos de qué editor se puede usar para crear ficheros DocBook. <link xl:href="http://wiki.docbook.org/topic/DocBookAuthoringTools">Aquí</link> hay una lista muy completa de posibilidades. Actualmente recomendamos utilizar <link xl:href="http://www.syntext.com/products/serna-free/ ">Syntext Serna Free</link> para editar los ficheros fuente de DocBook con un editor amigable WYSIWYG. En principio, cualquier programa de edición de texto o XML también es capaz de manejar y crear ficheros para DocBook. </para>
+    <para>Una de las principales ventajas de DocBook es que hay una separación total entre el contenido y la presentación. DocBook es un formato puro XML, y está bastante documentado. En realidad con solo un pequeño conjunto de sus funcionalidades se podría lograr mucho mayor calidad de documentación para DHIS. Hay cerca de 400 elementos de marcado distintos que cubren prácticamente todos los niveles de necesidades en la documentación técnica, pero en realidad, con unas pocas docenas de estos elementos se puede lograr una buena calidad de documentación en DHIS 2, tanto para formatos impresos como para formatos digitales como HTML o sistemas integrados de ayuda en la propia aplicación. Entonces, hay un amplio margen de posibilidades en términos de qué editor se puede usar para crear ficheros DocBook. <link xl:href="http://wiki.docbook.org/topic/DocBookAuthoringTools">Aquí</link> hay una lista muy completa de posibilidades. Actualmente recomendamos utilizar <link xl:href="http://www.syntext.com/products/serna-free/ ">Syntext Serna Free</link> para editar los ficheros fuente de DocBook con un editor amigable WYSIWYG. En principio, cualquier programa de edición de texto o XML también es capaz de manejar y crear ficheros para DocBook. </para>
     <note>
       <para>No recomendamos utilizar el editor XMLmind XML Editor Personal Edition (también conocido como XXE Personal), ya que el editor coloca &quot;imperceptiblemente&quot; espacios en blanco innecesarios y otros adornos en la fuente DocBook que dificultan la edición colaborativa de documentos.</para>
     </note>
@@ -32,7 +32,7 @@
         <para>Arrancamos Bazaar haciendo click con el botón derecho del ratón en una carpeta si estamos manejando <productname>Windows</productname> y seleccionamos <command>Bzr aquí</command>. Si usamos Linux, podemos simplemente crear una carpeta para que contenga los fuentes. Podemos colocar los fuentes de documentación en la carpeta que deseemos.</para>
       </listitem>
       <listitem>
-        <para>Para descargar la última revisión del proyecto de documentación de DHIS2 tipeamos en el terminal de comandos:<command>bzr checkout lp:~dhis2-documenters/dhis2/dhis2-docbook-docs</command> 
+        <para>Para descargar la última revisión del proyecto de documentación de DHIS 2 tipeamos en el terminal de comandos:<command>bzr checkout lp:~dhis2-documenters/dhis2/dhis2-docbook-docs</command> 
         desde Linux o MacOSX, o si usamos <productname>Windows</productname> escribiremos la URL del repositorio de código fuente &quot;<link xl:href="https://bazaar.launchpad.net/%7Edhis2-documenters/dhis2/dhis2-docbook-docs">lp:~dhis2-documenters/dhis2/dhis2-docbook-docs</link>&quot;</para>
       </listitem>
       <listitem>
@@ -45,15 +45,15 @@
     <para>Cuando hayamos descargado los fuentes, deberemos tener un montón de carpetas dentro del directorio <filename>dhis2-docbook-docs</filename>. Todos los documentos fuente deberían estar ubicados en la carpeta<filename>dhis2-docbook-docs/src/docbkx/XX</filename>. Notemos aquí que <filename>XX</filename> representa la pareja de letras de codificación de idioma ISO 639-1. Entonces, para elaborar la documentación en idioma inglés, nos ubicaremos en la carpeta <filename>/dhis2-docbook-docs/src/docbkx/en/</filename>, mientras que para elaborar la documentación en español trabajaremos siempre en la carpeta <filename>/dhis2-docbook-docs/src/docbkx/es/</filename>. Ubicaremos los ficheros imagen deseados para enlazarlos en nuestros documentos en la carpeta <filename>/dhis2-docbook-docs/src/docbkx/XX/resources/images</filename> y los enlazaremos desde el documento DocBoo utilizando un enlace relativo al fichero. Cuando la documentación ya se ha generado, en otra fase, las imágenes se copiarán al directorio correspondiente.</para>
   </section>
   <section>
-    <title>Bibliografía de DHIS2</title>
-    <para>DHIS2 tiene un rico conjunto de literatura académica que puede servir como recursos de valor incalculable durante las implementaciones, propuestas de proyectos y como lectura más detallada que el manual de usuario. Hemos añadido una bibliografía especializada al código fuente de la aplicación. <link xl:href="http://www.bibtex.org">BibTeX</link> es un lenguaje especializado y ampliamente usado en el mundo académico para manejar bases de datos bibliográficas. Gran número de herramientas libres y de código abierto son capaces de trabajar con Bibtex. Actualmente, recomendamos utilizar <link xl:href="http://jabref.sourceforge.net/">JabRef</link> para manejar la bibliografía de DHIS2.</para>
+    <title>Bibliografía de DHIS 2</title>
+    <para>DHIS 2 tiene un rico conjunto de literatura académica que puede servir como recursos de valor incalculable durante las implementaciones, propuestas de proyectos y como lectura más detallada que el manual de usuario. Hemos añadido una bibliografía especializada al código fuente de la aplicación. <link xl:href="http://www.bibtex.org">BibTeX</link> es un lenguaje especializado y ampliamente usado en el mundo académico para manejar bases de datos bibliográficas. Gran número de herramientas libres y de código abierto son capaces de trabajar con Bibtex. Actualmente, recomendamos utilizar <link xl:href="http://jabref.sourceforge.net/">JabRef</link> para manejar la bibliografía de DHIS 2.</para>
     <para>Para comenzar con la bibliografía, descargaremos una copia de JabRef y abriremos el fichero<filename>/src/bibliography/dhis2_bibliography.bib</filename>. Podemos añadir ahí las referencias nuevas, y exportamos de vuelta la bibliografía al fichero<filename>/src/docbkx/en/dhis2_bibliography.xml</filename>, utilizando el formato de exportación DocBook 4.4. La bibliografía actualizada será incluida automáticamente en la documentación tras subir ("commit") nuestros cambios.</para>
   </section>
   <section xml:id="docs_6">
     <title>Manejando imágenes</title>
     <para>Las capturas de pantalla son imágenes muy útiles para dar instrucciones a los usuarios sobre cómo llevar a cabo acciones concretas. DocBook no tiene mecanismos intrínsecos para saber exactamente cómo se debe renderizar una imagen en el documento final. Por eso es necesario dar ese detalle mediante atributos de elementos. El fragmento de código XML muestra cómo podemos especificar que una imagen ocupe el 80% de la anchura de página. Para capturas de pantalla en formato horizontal, esta cantidad parece apropiada. Tal vez queramos experimentar un poco para obtener el ancho más adecuado para nuestras imágenes. Una alternativa es editar la resolución de la imagen, para obtener un tamaño adecuado al renderizar. </para>
     <programlisting>&lt;screenshot&gt;
- &lt;title&gt;DHIS2 Login screen&lt;/title&gt;
+ &lt;title&gt;DHIS 2 Login screen&lt;/title&gt;
   &lt;mediaobject&gt;
    &lt;imageobject&gt; 
     &lt;imagedata fileref=&quot;dhis2_login_screen.jpg&quot; format=&quot;JPG&quot; width=&quot;80%&quot;/&gt;
@@ -68,12 +68,12 @@
     <para>Si queremos enlazar muchos artículos en un libro, DocBook ofrece un mecanismo para asignar un identificador a cada sección. En el ejemplo siguiente, cada sección tiene asignado un identificador ("id"). Este identificador debe ser único en todo el documento. </para>
     <para>
 <programlisting>  &lt;section xml:id=&quot;mod2_1&quot;&gt;
-&lt;title&gt;Getting started with DHIS2&lt;/title&gt; ....</programlisting> </para>
+&lt;title&gt;Getting started with DHIS 2&lt;/title&gt; ....</programlisting> </para>
     <para>In order to include an article into a book, an Xinclude statement must be used. The
 following example shows how. </para>
     <para>
 <programlisting>&lt;chapter&gt;
-&lt;title&gt;Getting started with DHIS2&lt;/title&gt; 
+&lt;title&gt;Getting started with DHIS 2&lt;/title&gt; 
 &lt;xi:include xmlns:xi=&quot;http://www.w3.org/2001/XInclude&quot; href=&quot;dhis2_user_man_mod2.xml&quot;
  xpointer=&quot;mod2_1&quot; encoding=&quot;UTF-8&quot;/&gt;
 ... </programlisting>
@@ -92,7 +92,7 @@ mod1.xml&quot; encoding=&quot;UTF-8&quot;/&gt; </programlisting>
   <section xml:id="docs_9">
     <title>Cómo generar la documentación</title>
     <para>Una de las ventajas cruciales del formato DocBook es que la documentación fuente puede transformarse en gran variedad de formatos como HTML, HTML truncado, XHTML, PDF, y muchos otros. Hay variedad de herramientas capaces de realizar esta transformación. Básicamente las páginas XML fuente se transforman utilizando las páginas de estilo XSL de DocBook en el formato deseado. No hemos incluido aquí la lista completa de herramientas capaces de transformar DocBook, pero a continuación damos algunos ejemplos.</para>
-    <para>Las últimas generaciones de documentación están disponibles en <link xl:href="http://www.dhis2.org/documentation">el sitio web de DHIS2</link>. La últimas versiones están disponibles mediante el servidor de integración continua ubicado <link xl:href="http://apps.dhis2.org/ci/job/dhis-documentation/lastSuccessfulBuild/artifact/*zip*/archive.zip">aquí</link>.</para>
+    <para>Las últimas generaciones de documentación están disponibles en <link xl:href="http://www.dhis2.org/documentation">el sitio web de DHIS 2</link>. La últimas versiones están disponibles mediante el servidor de integración continua ubicado <link xl:href="http://apps.dhis2.org/ci/job/dhis-documentation/lastSuccessfulBuild/artifact/*zip*/archive.zip">aquí</link>.</para>
     <section>
       <title>Generar la documentación con Apache maven</title>
       <para>Para transformar los ficheros de documentación fuente en distintos formatos, como HTML y PDF, necesitaremos instalar el programa de Apache Maven. Podremos obtener una copia <link xl:href="http://maven.apache.org/download.html">aquí</link> o instalándolo mediante el gestor de paquetes en Linux. En el terminal ejecutaremos el comando <command>mvn clean package</command> en Windows, MacOSX o Linux desde el directorio <filename>/dhis2-docbook-docs </filename>. Maven comenzará a descargar los componentes necesarios para convertir los documentos en HTML, PDF y RTF. Cuando el proceso haya terminado (hemos de ser pacientes la primera vez, ya que hay muchos componentes que descargar), podremos generar todo tipo de documentos en el directorio <filename>dhis2-docbook-docs/target/docbkx</filename> y los subdirectorios correspondientes.</para>

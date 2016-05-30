@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
   <title>Integration Engine</title>
-  <para>DHIS2 has a built in component for managing integration scenarios. The functionality is
+  <para>DHIS 2 has a built in component for managing integration scenarios. The functionality is
     provided by <link xl:href="http://camel.apacher.org">Apache Camel</link> which is itself an
     implementation of the Enterprize Integration Patterns (EIP) described in the book <ulink
       url="http://www.eaipatterns.com"/> by Gregor Hohpe and Bobby Woolf. It complements the web-api
@@ -12,10 +12,10 @@
   <section>
     <title>Introduction</title>
     <para>The integration engine is configured by defining <emphasis>routes</emphasis>. A route
-      defines a particular message flow from an external system into DHIS2. Routes may consist of
+      defines a particular message flow from an external system into DHIS 2. Routes may consist of
       timers, http client requests, transformations, message processors, loggers etc. Routes can be
       defined in XML or in Java. XML routes have the advantage that they can be easily configured
-      and loaded into a running DHIS2 instance. More complex routes might require the greater
+      and loaded into a running DHIS 2 instance. More complex routes might require the greater
       expressiveness of the Java language. Routes written in Java need to be made available on the
       classpath of the web application on application startup.</para>
     <para/>
@@ -26,11 +26,11 @@
   </section>
   <section>
     <title>Synchronising orgunits - an XML route</title>
-    <para>One use case which motivated the inclusion of the integration engine into DHIS2 is the
+    <para>One use case which motivated the inclusion of the integration engine into DHIS 2 is the
       need to synchronise orgunits. In this example we present a simple XML route which allows one
-      DHIS2 instance to update it's orgunits from another DHIS2 instance.</para>
-    <para>The unavoidable long lines in the route listing may not render well in the DHIS2 user manual.  This and other
-    sample routes can be found in the resources section of the DHIS2 source code.</para>
+      DHIS 2 instance to update it's orgunits from another DHIS 2 instance.</para>
+    <para>The unavoidable long lines in the route listing may not render well in the DHIS 2 user manual.  This and other
+    sample routes can be found in the resources section of the DHIS 2 source code.</para>
     <para>
       <programlisting><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
@@ -69,22 +69,22 @@
             />. These are consumed by the camel processor and not sent to the server as part oif the
             request.</para></listitem>
       <listitem>
-          <para>The dhis2:metadata endpoint is not part of the camel core. It is a DHIS2 specific
-            component which is available to the author of DHIS2 routes as a destination for
+          <para>The dhis2:metadata endpoint is not part of the camel core. It is a DHIS 2 specific
+            component which is available to the author of DHIS 2 routes as a destination for
             importing DXF2 metadata.</para></listitem>
     </itemizedlist>
     </para>
   </section>
   <section>
     <title>Loading an XML route</title>
-    <para>Routes like the one in the previous section can be loaded into a running DHIS2 instance through the integration configuration screen found under the Import/Export module.
+    <para>Routes like the one in the previous section can be loaded into a running DHIS 2 instance through the integration configuration screen found under the Import/Export module.
     From here routes can be enabled and disabled.  The route definition can be updated by adding a new route with the same route id.</para>
-    <para>DHIS2 also provides a means to automatically load a set of XML routes on application startup.  When the application starts it will look for a directory called "routes" under the
-    DHIS2_HOME directory.  Any XML routes found in that directory will be loaded into the running application.</para>
+    <para>DHIS 2 also provides a means to automatically load a set of XML routes on application startup.  When the application starts it will look for a directory called "routes" under the
+    DHIS 2_HOME directory.  Any XML routes found in that directory will be loaded into the running application.</para>
   </section>
   <section>
     <title>Transforming data - a Java route</title>
-    <para>This route is used internally in the DHIS2 integration module to perform the transformation from SDMX input data to the DHIS2 DXF2 data format.  The listing below is a 
+    <para>This route is used internally in the DHIS 2 integration module to perform the transformation from SDMX input data to the DHIS 2 DXF2 data format.  The listing below is a 
     slighlty simplified illustration.</para>
     <programlisting><![CDATA[
 package org.hisp.dhis.integration.routes;
@@ -112,12 +112,12 @@ public class SDMXDataIn
   }]]></programlisting>
     <para>Some notes on the above:
       <itemizedlist>
-        <listitem><para>The DHIS2 integration is configured to automatically scan and load java routes which are in the package <emphasis>org.hisp.dhis.integration.routes</emphasis>.  So any
+        <listitem><para>The DHIS 2 integration is configured to automatically scan and load java routes which are in the package <emphasis>org.hisp.dhis.integration.routes</emphasis>.  So any
         <emphasis>RouteBuilder</emphasis> classes like this, found in the classpath will be automatically loaded.</para></listitem>
         <listitem><para>This example shows the use of an xslt transform.  The url <emphasis>"xslt:transform/cross2dxf2.xsl"</emphasis> will search for the xsl file amongst the classpath resources.
         It is also possible to use an absolute file reference.</para></listitem>
-        <listitem><para>The dhis2:data endpoint is a DHIS2 specific
-          component which is available to the author of DHIS2 routes as a destination for
+        <listitem><para>The dhis2:data endpoint is a DHIS 2 specific
+          component which is available to the author of DHIS 2 routes as a destination for
           importing DXF2 data.</para></listitem>
       </itemizedlist>
     </para>

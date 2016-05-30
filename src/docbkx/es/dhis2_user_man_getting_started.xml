@@ -7,7 +7,7 @@
     <para>Tras repasar este capítulo habremos podido entender:</para>
     <itemizedlist>
       <listitem>
-        <para>Arrancar DHIS2 desde el escritorio</para>
+        <para>Arrancar DHIS 2 desde el escritorio</para>
       </listitem>
       <listitem>
         <para>Cómo loquearnos desde el escritorio</para>
@@ -20,7 +20,7 @@
     </itemizedlist>
     <itemizedlist>
       <listitem>
-        <para>Qué pasos son necesarios para diseñar una base de datos DHIS2 para nuestra organización</para>
+        <para>Qué pasos son necesarios para diseñar una base de datos DHIS 2 para nuestra organización</para>
       </listitem>
     </itemizedlist>
     <section>
@@ -29,25 +29,25 @@
     </section>
     <section>
       <title>Un comienzo con el paquete DHIS 2 Live</title>
-      <para>El paquete DHIS2 Live es la forma más fácil de comenzar con DHIS2. DHIS2 Live es apropiada para una instalación independiente. Simplemente descargamos la aplicación de <link xl:href="http://www.dhis2.org/downloads">aquí</link>. Una vez el fichero se ha descargado, hacemos doble click en el fichero descargado y comenzarmos a usar DHIS2. </para>
+      <para>El paquete DHIS 2 Live es la forma más fácil de comenzar con DHIS 2. DHIS 2 Live es apropiada para una instalación independiente. Simplemente descargamos la aplicación de <link xl:href="http://www.dhis2.org/downloads">aquí</link>. Una vez el fichero se ha descargado, hacemos doble click en el fichero descargado y comenzarmos a usar DHIS 2. </para>
       <section>
         <title>Empezando con una base de datos vacía</title>
         <para>El paquete Live viene con una base de datos demostrativa como la que vemos en la demo online (basada en el SGIS nacional de Sierra Leona), y si queremos empezar con un sistema/base de datos vacía y construir nuestro propio sistema, entonces tendremos que hacer lo siguiente:</para>
-        <para>1) Parar DHIS2 Live si está todavía corriendo. Hacer click con el botón derecho en el icono de bandeja y seleccionar Salir. El icono de bandeja es el símbolo verde en la esquina inferior derecha de la pantalla (en Windows) que debería decir "Servidor DHIS2 corriendo" cuando colocamos el puntero del mouse sobre él.</para>
-        <para>2) Abrir la carpeta donde se ha instalado el paquete DHIS2 Live y localizar la carpeta llamada "conf".</para>
+        <para>1) Parar DHIS 2 Live si está todavía corriendo. Hacer click con el botón derecho en el icono de bandeja y seleccionar Salir. El icono de bandeja es el símbolo verde en la esquina inferior derecha de la pantalla (en Windows) que debería decir "Servidor DHIS 2 corriendo" cuando colocamos el puntero del mouse sobre él.</para>
+        <para>2) Abrir la carpeta donde se ha instalado el paquete DHIS 2 Live y localizar la carpeta llamada "conf".</para>
         <para>3) En conf/ abrir el fichero llamado &apos;hibernate.properties&apos; en un editor de texto (bloc de notas o similar) y hacer la siguiente modificación:
 encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la parte &apos;dhis2&apos; por el nombre que queremos dar a nuestra base de datos (ej. dhis2_test).</para>
         <para>4) Guardar y cerrar el fichero hibernate.properties file.</para>
         <para>5) Arrancar DHIS 2 Live haciendo doble click en el fichero dhis2-live.exe en la carpeta de instalación de DHIS 2 Live o utilizando el acceso directo de escritorio o el enlace en el menú.</para>
         <para>6) Esperar a que se abra la ventana del navegador web y la pantalla de login, y nos logueamos con nombre de usuario admin y contraseña district.</para>
-        <para>7) Ahora veremos un sistema DHIS2 totalmente vacío y deberemos comenzar a añadir usuarios, jerarquía organizativa, elementos de datos, sets de datos, etc. Para instrucciones detalladas sobre cómo hacer esto, podemos revisar otras secciones de este manual.</para>
+        <para>7) Ahora veremos un sistema DHIS 2 totalmente vacío y deberemos comenzar a añadir usuarios, jerarquía organizativa, elementos de datos, sets de datos, etc. Para instrucciones detalladas sobre cómo hacer esto, podemos revisar otras secciones de este manual.</para>
       </section>
     </section>
     <section>
       <title>Trabajando directamente con la base de datos H2</title>
       <para>DHIS 2 Live utiliza una base de datos <link xl:href="www.h2database.com/">H2</link> embebida. Esto tiene varias ventajas, ya que no hay necesidad entonces de instalar un motor de base de datos separado como PostgresSql o MySql, y es posible hacer una copia de seguridad simplemente copiando el fichero. Toda la base de datos existe en la memoria, lo que da un alto rendimiento. La desventaja viene de la necesidad de RAM. Este formato no es válido para instalaciones de servidor con múltiples usuarios.
       </para>
-      <para>En general, es recomendable trabajar con la base de datos mediante el interfaz de usuario de DHIS2, pero en algunas situaciones podemos necesitar manejar los datos directamente. Si descargamos H2 por separado, veremos que viene con un interfaz web. De modo que puede manejarse utilizando <link xl:href="http://openoffice.org">OpenOffice.org</link>, siguiendo el procedimiento a continuación. Asumimos que dhis2-live está ubicado en el directorio home del usuario Linux (representado por ~). Si no es el caso, sustituiremos aquí la ruta absoluta a nuestra instalación de dhis2-live.
+      <para>En general, es recomendable trabajar con la base de datos mediante el interfaz de usuario de DHIS 2, pero en algunas situaciones podemos necesitar manejar los datos directamente. Si descargamos H2 por separado, veremos que viene con un interfaz web. De modo que puede manejarse utilizando <link xl:href="http://openoffice.org">OpenOffice.org</link>, siguiendo el procedimiento a continuación. Asumimos que dhis2-live está ubicado en el directorio home del usuario Linux (representado por ~). Si no es el caso, sustituiremos aquí la ruta absoluta a nuestra instalación de dhis2-live.
         <itemizedlist>
           <listitem>
             <para>Arrancamos el procesador de textos OpenOffice y seleccionamos Herramientas - Opciones, luego Java - Class Path... y hacemos click en Añadir archivo...</para>
@@ -75,13 +75,13 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
   </section>
   <section xml:id="mod2_2">
     <title>Loguearse en DHIS 2</title>
-    <para>Independientemente de si hemos instalado la versión de servidor o la versión Live de escritorio, podremos utilizar un navegador web para loguearnos en el sistema. DHIS2 debería ser compatible con la mayoría de navegadores web modernos, aunque debemos asegurarnos de que Java Script esté habilitado.</para>
-    <para>Para loguearnos en la aplicación introducimos <link xl:href="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</link> si estamos utilizando el paquete DHIS2 Live, o reemplazamos el localhost con el nombre o dirección IP del servidor donde está instalada la versión de servidor.</para>
-    <para>Una vez hemos arrancado DHIS2, ya sea online o offline, la pantalla nos pedirá ingresar nuestro nombre de usuario registrado y contraseña. Después de introducir la información requerida haremos click en el botón de Entrar para loguearnos en la aplicación. El nombre de usuario y contraseña por defecto son 'admin' y 'district'. Deberemos cambiarlos inmediatamente después de loguearnos en DHIS2 por primera vez.</para>
+    <para>Independientemente de si hemos instalado la versión de servidor o la versión Live de escritorio, podremos utilizar un navegador web para loguearnos en el sistema. DHIS 2 debería ser compatible con la mayoría de navegadores web modernos, aunque debemos asegurarnos de que Java Script esté habilitado.</para>
+    <para>Para loguearnos en la aplicación introducimos <link xl:href="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</link> si estamos utilizando el paquete DHIS 2 Live, o reemplazamos el localhost con el nombre o dirección IP del servidor donde está instalada la versión de servidor.</para>
+    <para>Una vez hemos arrancado DHIS 2, ya sea online o offline, la pantalla nos pedirá ingresar nuestro nombre de usuario registrado y contraseña. Después de introducir la información requerida haremos click en el botón de Entrar para loguearnos en la aplicación. El nombre de usuario y contraseña por defecto son 'admin' y 'district'. Deberemos cambiarlos inmediatamente después de loguearnos en DHIS 2 por primera vez.</para>
   </section>
   <section xml:id="users">
     <title>Creación de nuevos usuarios y roles</title>
-    <para>Esta sección describe cómo añadir nuevos usuarios a la aplicación DHIS2.</para>
+    <para>Esta sección describe cómo añadir nuevos usuarios a la aplicación DHIS 2.</para>
     <section>
       <title>Abrir el menú de usuario</title>
       <para>Para crear o encontrar un usuario empezaremos haciendo click en el módulo 'Usuario' que aparece en el menú desplegable del módulo de Mantenimiento, ubicado en la barra de herramientas principal en la parte superior de la pantalla.</para>
@@ -170,9 +170,9 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
     <para>Para salir de la aplicación simplemente haremos click en el enlace "Salir" en la esquina superior derecha de la pantalla.</para>
   </section>
   <section xml:id="database_design">
-    <title>Una introducción rápida al diseño de una base de datos en DHIS2</title>
-    <para>La aplicación DHIS2 viene con un conjunto de herramientas para la recolección, validación, reporte y análisis de datos, pero los contenidos de la base de datos, por ejemplo, qué recolectar, quién debería registrarlo y en qué formato, dependerá del contexto de uso. Estos metadatos deben ser introducidos en la aplicación antes de que pueda utilizarse, y esto puede hacerse directamente mediante el interfaz de usuario sin necesidad de programación de código o grandes habilidades técnicas sobre software. A este proceso inicial lo llamamos diseño de la base de datos o personalización de la aplicación.</para>
-    <para>Esta sección ofrece una rápida y breve introducción al diseño de la base de datos en DHIS2 y fundamentalmente explica los pasos necesarios para preparar un nuevo sistema DHIS2 para su uso. Cómo realizar cada paso se explica en otros capítulos, y las buenas prácicas en las decisiones de diseño se explican en la Guía de Implementación. A continuación se listan los pasos a seguir:</para>
+    <title>Una introducción rápida al diseño de una base de datos en DHIS 2</title>
+    <para>La aplicación DHIS 2 viene con un conjunto de herramientas para la recolección, validación, reporte y análisis de datos, pero los contenidos de la base de datos, por ejemplo, qué recolectar, quién debería registrarlo y en qué formato, dependerá del contexto de uso. Estos metadatos deben ser introducidos en la aplicación antes de que pueda utilizarse, y esto puede hacerse directamente mediante el interfaz de usuario sin necesidad de programación de código o grandes habilidades técnicas sobre software. A este proceso inicial lo llamamos diseño de la base de datos o personalización de la aplicación.</para>
+    <para>Esta sección ofrece una rápida y breve introducción al diseño de la base de datos en DHIS 2 y fundamentalmente explica los pasos necesarios para preparar un nuevo sistema DHIS 2 para su uso. Cómo realizar cada paso se explica en otros capítulos, y las buenas prácicas en las decisiones de diseño se explican en la Guía de Implementación. A continuación se listan los pasos a seguir:</para>
     <para>1. Montar una jerarquía organizativa</para>
     <para>2. Definir los elementos de datos</para>
     <para>3. Definir los sets de datos y los formularios de entrada de datos</para>
@@ -189,7 +189,7 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
     </section>
     <section>
       <title>Elementos de datos</title>
-      <para>El Elemento de Datos es probablemente el bloque más fundamental de una base de datos en DHIS2. Representa la dimensión <emphasis role="italic">qué</emphasis>, ya que explica qué se está recopilando o analizando. En algunos contextos esto está referido a un indicador, para en DHIS2 llamamos elemento de datos a esta unidad de colección y análisis. El elemento de datos a menudo representa un conteo de algo, y su nombre describe qué es aquello que se está contando, por ejemplo &quot;Dosis entregadas de BCG&quot; o &quot;Casos de Malaria&quot;. Cuando los datos son recopilados, validados, analizados, reportados o presentados, lo que describe el QUÉ de los datos son los elementos de datos o expresiones construidas a partir de elementos de datos. Como tales, los elementos de datos se vuelven importantes para todos los aspectos del sistema y deciden no sólo cómo se recopilan los datos, sino algo más importante: cómo los valores de datos se representan en la base de datos, lo cual de nuevo afecta a cómo los datos son analizados y presentados.</para>
+      <para>El Elemento de Datos es probablemente el bloque más fundamental de una base de datos en DHIS 2. Representa la dimensión <emphasis role="italic">qué</emphasis>, ya que explica qué se está recopilando o analizando. En algunos contextos esto está referido a un indicador, para en DHIS 2 llamamos elemento de datos a esta unidad de colección y análisis. El elemento de datos a menudo representa un conteo de algo, y su nombre describe qué es aquello que se está contando, por ejemplo &quot;Dosis entregadas de BCG&quot; o &quot;Casos de Malaria&quot;. Cuando los datos son recopilados, validados, analizados, reportados o presentados, lo que describe el QUÉ de los datos son los elementos de datos o expresiones construidas a partir de elementos de datos. Como tales, los elementos de datos se vuelven importantes para todos los aspectos del sistema y deciden no sólo cómo se recopilan los datos, sino algo más importante: cómo los valores de datos se representan en la base de datos, lo cual de nuevo afecta a cómo los datos son analizados y presentados.</para>
 
       <para>Es posible añadir más detalles a la dimensión "QUÉ" mediante las categorías de elementos de datos. Algunas categorías comunes son Edad y Género, pero es posible añadir cualquier categoría identificada por el usuario y enlazarla con elementos de datos específicos. La combinación del nombre de un elemento de datos y su categoría asignada define la unidad más pequeña de recolección y análisis disponible en el sistema, y por tanto describe los datos en bruto en la base de datos. Podemos hacer agregados al alejarnos en esta dimensión, pero no es posible acercarnos, descomponerlo más, ya que diseñar elementos de datos y categorías define el detalle de análisis posible en el sistema (en la dimensión QUÉ). Si hacemos cambios posteriores en los elementos de datos y categorías puede complicarse, ya que esto cambiará el significado de los valores de datos ya registrados en la base de datos. De modo que este paso es uno de los más decisivos y cuidadosos en el proceso de diseño de la base de datos.</para>
 
@@ -211,7 +211,7 @@ encontrar la expresión &apos;jdbc:h2:./database/dhis2&apos; y reemplazar la par
         </section>
         <section>
           <title>Formularios personalizados</title>
-          <para>Cuando el formulario que queremos diseñar es demasiado complicado para los formatos por defecto o de sección, esta es nuestar última opción. Nos llevará más tiempo, pero ofrece total flexibilidad en términos de diseño. En DHIS2 hay un editor HTML (Editor FcK) para el diseñador de formularios y podemos diseñar el formulario en el interfaz de usuario o bien pegar nuestro código HTML directamente (utilizando la ventana Fuente del editor). En el formulario personalizado podemos insertar texto estático o campos de datos (vinculados a elementos de datos y categorías) en cualquier posición del formulario y tendremos total libertad para diseñar la apariencia del formulario. Una vez hayamos añadido el formulario personalizado a un set de datos, deberá estar disponible en Entrada de Datos y podremos comenzar a usarlo inmediatamente. Podemos cambiar o regresar a los formularios por defecto o de sección, en la esquina superior derecha de la pantalla de entrada de datos.</para>
+          <para>Cuando el formulario que queremos diseñar es demasiado complicado para los formatos por defecto o de sección, esta es nuestar última opción. Nos llevará más tiempo, pero ofrece total flexibilidad en términos de diseño. En DHIS 2 hay un editor HTML (Editor FcK) para el diseñador de formularios y podemos diseñar el formulario en el interfaz de usuario o bien pegar nuestro código HTML directamente (utilizando la ventana Fuente del editor). En el formulario personalizado podemos insertar texto estático o campos de datos (vinculados a elementos de datos y categorías) en cualquier posición del formulario y tendremos total libertad para diseñar la apariencia del formulario. Una vez hayamos añadido el formulario personalizado a un set de datos, deberá estar disponible en Entrada de Datos y podremos comenzar a usarlo inmediatamente. Podemos cambiar o regresar a los formularios por defecto o de sección, en la esquina superior derecha de la pantalla de entrada de datos.</para>
         </section>
       </section>
     </section>

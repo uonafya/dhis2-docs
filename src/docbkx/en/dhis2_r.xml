@@ -10,11 +10,11 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook" xml:id="dhis2_r">
-  <title>DHIS2 and R integration</title>
+  <title>DHIS 2 and R integration</title>
   <section xml:id="dhis2_r_intro">
     <title>Introduction</title>
     <para>R is freely available, open source statistical computing environment. R refers to  both the computer programming language, as well as the software which can be used to create and run R scripts. There are <link xl:href="http://cran.r-project.org/">numerous sources on the web</link> which describe the extensive set of features of R. </para>
-    <para>R is a natural extension to DHIS2, as it provides  powerful statistical routines, data manipulation functions, and visualization tools. This chapter will describe how to setup R and DHIS2 on the same server, and will provide a simple example of how to retrieve data from the DHIS2 database into an R data frame and perform some basic calculations.</para>
+    <para>R is a natural extension to DHIS 2, as it provides  powerful statistical routines, data manipulation functions, and visualization tools. This chapter will describe how to setup R and DHIS 2 on the same server, and will provide a simple example of how to retrieve data from the DHIS 2 database into an R data frame and perform some basic calculations.</para>
   </section>
   <section xml:id="r_install">
     <title>Installing R</title>
@@ -51,9 +51,9 @@ Type &apos;q()&apos; to quit R.
 </screen></para>
   </section>
   <section xml:id="dhis2_r_odbc">
-    <title>Using ODBC to retrieve data from DHIS2 into R</title>
+    <title>Using ODBC to retrieve data from DHIS 2 into R</title>
     <para>In this example, we will use a system-wide ODBC connector which will be used to retrieve
-      data from the DHIS2 database. There are some disadvantages with this approach, as ODBC is
+      data from the DHIS 2 database. There are some disadvantages with this approach, as ODBC is
       slower than other methods and it does raise some security concerns by providing a system-wide
       connector to all users. However, it is a convenient method to provide a connection to multiple
       users. The use of the R package RODBC will be used in this case. Other alternatives would be
@@ -64,7 +64,7 @@ Type &apos;q()&apos; to quit R.
     <para><command>apt-get install r-cran-rodbc r-cran-lattice odbc-postgresql</command> </para>
     <para>Next, we need to configure the ODBC connection. Edit the file to suit your local situation using the following template as a guide. Lets create and edit a file called odbc.ini</para>
     <para><screen>[dhis2]
-Description         = DHIS2 Database
+Description         = DHIS 2 Database
 Driver              = /usr/lib/odbc/psqlodbcw.so
 Trace               = No
 TraceFile           = /tmp/sql.log
@@ -84,7 +84,7 @@ Debug = 0</screen>
 </para>
     <para>Finally, we need to install the ODBC connection with <command>odbcinst -i -d -f odbc.ini</command></para>
     <para/>
-    <para>From the R prompt, execute the following commands to connect to the DHIS2 database. </para>
+    <para>From the R prompt, execute the following commands to connect to the DHIS 2 database. </para>
     <para><screen>&gt; library(RODBC)
 &gt; channel&lt;-odbcConnect(&quot;dhis2&quot;)#Note that the name must match the ODBC connector name
 &gt; sqlTest&lt;-c(&quot;SELECT dataelementid, name FROM dataelement LIMIT 10;&quot;)
@@ -102,7 +102,7 @@ Debug = 0</screen>
 10 Deaths of malaria case provided with anti-malarial treatment 1 to 5 Years
 &gt;
 </screen></para>
-    <para>It seems R is able to retrieve data from the DHIS2 database. </para>
+    <para>It seems R is able to retrieve data from the DHIS 2 database. </para>
     <para>As an illustrative example, lets say we have been asked to calculate the relative percentage of OPD male and female under 5 attendances for the last twelve months.First, lets create an SQL query which will provide us the basic information which will be required.</para>
     <para><screen>OPD&lt;-sqlQuery(channel,&quot;SELECT p.startdate, de.name as de, sum(dv.value::double precision)
  FROM datavalue dv
@@ -163,11 +163,11 @@ OPD.ct.summary$OPDUnder5Male/
 11 2011-11-01      51.42526    48.57474
 12 2011-12-01      50.68933    49.31067</screen></para>
     <para>We can see that the male and female attendances are very similar for each month of the year, with seemingly higher male attendance relative to female attendance in the month of December.</para>
-    <para>In this example, we showed how to retrieve data from the DHIS2 database and manipulate in with some simple R commands. The basic pattern for using DHIS2 and R together, will be the retrieval of data from the DHIS2 database with an SQL query into an R data frame, followed by whatever routines (statistical analysis, plotting, etc) which may be required.  </para>
+    <para>In this example, we showed how to retrieve data from the DHIS 2 database and manipulate in with some simple R commands. The basic pattern for using DHIS 2 and R together, will be the retrieval of data from the DHIS 2 database with an SQL query into an R data frame, followed by whatever routines (statistical analysis, plotting, etc) which may be required.  </para>
   </section>
   <section xml:id="dhis2_r_mydatamart">
     <title>Using R with MyDatamart</title>
-    <para>MyDatamart provides  useful interface to the DHIS2 database by making a local copy of the database available on a users desktop. This means that the user does not need direct access to the database and the data can be worked with offline on the users local machine. In this example, we will have used the <link xl:href="http://apps.dhis2.org/demo">demo database</link>. Data was downloaded at the district level for Jan 2011-Dec 201l. Consult the MyDatamart section in this manual for more detailed information. </para>
+    <para>MyDatamart provides  useful interface to the DHIS 2 database by making a local copy of the database available on a users desktop. This means that the user does not need direct access to the database and the data can be worked with offline on the users local machine. In this example, we will have used the <link xl:href="http://apps.dhis2.org/demo">demo database</link>. Data was downloaded at the district level for Jan 2011-Dec 201l. Consult the MyDatamart section in this manual for more detailed information. </para>
     <para>First, lets load some required R packages. If you do not have these packages already installed in your version of R, you will need to do so before proceeding with the example.</para>
     <screen>library(&quot;DBI&quot;)
 library(&quot;RSQLite&quot;)
@@ -348,11 +348,11 @@ plotIndicator(con,MyIndicatorName,MyStartDate,MyPeriodType,MyLevel,gadm)</progra
         <imagedata fileref="resources/images/r/OPDAttendance.png"/>
       </imageobject>
     </mediaobject>
-    <para>In this example, we showed how to use the RPostgreSQL library and other helper libraries(Maptools, ColorBrewer) to create a simple map from the DHIS2 data mart. </para>
+    <para>In this example, we showed how to use the RPostgreSQL library and other helper libraries(Maptools, ColorBrewer) to create a simple map from the DHIS 2 data mart. </para>
   </section>
   <section xml:id="dhis2_r_google_vis">
-    <title>Using R, DHIS2 and the Google Visualization API</title>
-    <para>Google&apos;s Visualization API provides a very rich set of tools for the visualization of multi-dimensional data. In this simple example, we will show how to create a simple motion chart with the Google Visualization API using the &quot;googleVis&quot; R package. Full information on the package can be found <link xl:href="http://code.google.com/p/google-motion-charts-with-r/">here.</link>. The basic principle, as with the other examples, is to get some data from the DHIS2 database, and bring it into R, perform some minor alterations on the data to make it easier to work with, and then create the chart. In this case, we will compare ANC1,2,3 data over time and see how they are related with a motion chart.</para>
+    <title>Using R, DHIS 2 and the Google Visualization API</title>
+    <para>Google&apos;s Visualization API provides a very rich set of tools for the visualization of multi-dimensional data. In this simple example, we will show how to create a simple motion chart with the Google Visualization API using the &quot;googleVis&quot; R package. Full information on the package can be found <link xl:href="http://code.google.com/p/google-motion-charts-with-r/">here.</link>. The basic principle, as with the other examples, is to get some data from the DHIS 2 database, and bring it into R, perform some minor alterations on the data to make it easier to work with, and then create the chart. In this case, we will compare ANC1,2,3 data over time and see how they are related with a motion chart.</para>
     <screen>#Load some libraries
 library(RPostgreSQL)
 library(googleVis)
@@ -410,8 +410,8 @@ plot(M)</screen>
     <para>Using packages like <link xl:href="http://cran.r-project.org/package=brew">brew</link> or <link xl:href="http://rapache.net">Rapache</link>, these types of graphs could be easily integrated into external web sites. A fully functional version of the chart shown above can be accessed <link xl:href="http://dhis2.net/R/google-motion-chart.html">here.</link></para>
   </section>
   <section xml:id="dhis2_r_plr">
-    <title>Using PL/R with DHIS2</title>
-    <para>The procedural language for R is an extension to the core of PostgreSQL which allows data to be passed from the database to R, where calculations in R can be performed. The data can then be passed back to the database for further processing.. In this example, we will create a function to calculate some summary statistics which do not exist by default in SQL by using R. We will then create an SQL View in DHIS2 to display the results. The advantage of utilizing R in this context is that we do not need to write any significant amount of code to return these summary statistics, but simply utilize the built-in functions of R to do the work for us. </para>
+    <title>Using PL/R with DHIS 2</title>
+    <para>The procedural language for R is an extension to the core of PostgreSQL which allows data to be passed from the database to R, where calculations in R can be performed. The data can then be passed back to the database for further processing.. In this example, we will create a function to calculate some summary statistics which do not exist by default in SQL by using R. We will then create an SQL View in DHIS 2 to display the results. The advantage of utilizing R in this context is that we do not need to write any significant amount of code to return these summary statistics, but simply utilize the built-in functions of R to do the work for us. </para>
     <para> First, you will need to install <link xl:href="http://www.joeconway.com/plr/">PL/R</link>, which is described in detail <link xl:href="http://www.joeconway.com/plr/doc/plr-install.html">here.</link>. Following the example from the PL/R site, we will create some custom aggregate functions as detailed <link xl:href="http://www.joeconway.com/plr/doc/plr-aggregate-funcs.html">here.</link>  We will create two functions, to return the median and the skewness of a range of values.</para>
     <para><screen>CREATE OR REPLACE FUNCTION r_median(_float8) returns float as &apos;
   median(arg1)
@@ -446,7 +446,7 @@ AND dv.level = 3
 AND dv.periodtypeid = 3
 AND p.startdate &gt;=&apos;2009-01-01&apos;
 GROUP BY ou.shortname;</screen></para>
-    <para>We can then save this query in the form of SQL View in DHIS2. A clipped version of the results are shown below. </para>
+    <para>We can then save this query in the form of SQL View in DHIS 2. A clipped version of the results are shown below. </para>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -454,11 +454,11 @@ GROUP BY ou.shortname;</screen></para>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>In this simple example, we have shown how to use PL/R with the DHIS2 database and web interface to display some summary statistics using R to  perform the calculations. </para>
+    <para>In this simple example, we have shown how to use PL/R with the DHIS 2 database and web interface to display some summary statistics using R to  perform the calculations. </para>
   </section>
   <section xml:id="dhis2_r_web_api">
-    <title>Using this DHIS2 Web API with R</title>
-    <para>DHIS2 has a powerful Web API which can be used to integrate applications together. In this section, we will illustrate a few trivial examples of the use of the Web API, and how we can retrieve data and metadata for use in R. The Web API uses basic HTTP authentication (as described in the Web API section of this document). Using two R packages &quot;RCurl&quot; and &quot;XML&quot;, we will be able to work with the output of the API in R. In the first example, we will get some metadata from the database. </para>
+    <title>Using this DHIS 2 Web API with R</title>
+    <para>DHIS 2 has a powerful Web API which can be used to integrate applications together. In this section, we will illustrate a few trivial examples of the use of the Web API, and how we can retrieve data and metadata for use in R. The Web API uses basic HTTP authentication (as described in the Web API section of this document). Using two R packages &quot;RCurl&quot; and &quot;XML&quot;, we will be able to work with the output of the API in R. In the first example, we will get some metadata from the database. </para>
     <screen>#We are going to need these two libraries
 require(RCurl)
 require(XML)
@@ -477,7 +477,7 @@ data&lt;-noquote(response)
 mydata&lt;-read.table(textConnection(data),sep=&quot;,&quot;,header=T)
 head(mydata)
 </screen>
-    <para>Here, we have shown how to get some aggregate data from the DHIS2 demo database using the DHIS2&apos;s Web API.</para>
+    <para>Here, we have shown how to get some aggregate data from the DHIS 2 demo database using the DHIS 2&apos;s Web API.</para>
     <para>In the next code example, we will retrieve some metadata, namely a list of data elements and their unique identifiers.</para>
     <screen>#Get the list of data elements. Turn off paging and links
 #This site has some issues with its SSL certificate

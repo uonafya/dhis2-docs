@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
-  <title>DHIS2 Implementation Guide</title>
+  <title>DHIS 2 Implementation Guide</title>
   <abstract>
-    <para>DHIS2 é uma plataforma de gestão de informação moderna , robusta e abrangente desenvolvido globalmente sob medida para a recolha de dados estatísticos agregados . Este documento irá fornecer uma visão geral de alto nível dos vários passos que serão necessários para implementar DHIS2 a nível do país .
-O documento é destinado principalmente para os consultores que serão responsáveis ​​para a configuração inicial do DHIS2 para um determinado país ou organização. Embora este documento tenta identificar os pontos mais importantes a considerar quando se planeja uma implementação, há muitas circunstâncias em um país em particular que são impossíveis de antecipar. Com isso em mente , este documento deve ser usado como base para planejar e executar uma implantação DHIS2 , mas deve de modo algum ser considerado como abrangente . Outros fatores ( político, humano ou técnico) que não podem ser incluídos neste documento , mas que pode ser considerada importante pela pessoa (s ) o planejamento da implementação , deve ser sempre considerada , e geralmente são altamente específicos para cada país da situação . . Planejamento significativo , consulta das partes interessadas , e os recursos serão necessários para implementar e manter um tal sistema de informação. Alocação de recursos e planejamento cuidadoso vai ajudar a reduzir o risco de implantação.
+    <para>DHIS 2 é uma plataforma de gestão de informação moderna , robusta e abrangente desenvolvido globalmente sob medida para a recolha de dados estatísticos agregados . Este documento irá fornecer uma visão geral de alto nível dos vários passos que serão necessários para implementar DHIS 2 a nível do país .
+O documento é destinado principalmente para os consultores que serão responsáveis ​​para a configuração inicial do DHIS 2 para um determinado país ou organização. Embora este documento tenta identificar os pontos mais importantes a considerar quando se planeja uma implementação, há muitas circunstâncias em um país em particular que são impossíveis de antecipar. Com isso em mente , este documento deve ser usado como base para planejar e executar uma implantação DHIS 2 , mas deve de modo algum ser considerado como abrangente . Outros fatores ( político, humano ou técnico) que não podem ser incluídos neste documento , mas que pode ser considerada importante pela pessoa (s ) o planejamento da implementação , deve ser sempre considerada , e geralmente são altamente específicos para cada país da situação . . Planejamento significativo , consulta das partes interessadas , e os recursos serão necessários para implementar e manter um tal sistema de informação. Alocação de recursos e planejamento cuidadoso vai ajudar a reduzir o risco de implantação.
 Os estágios iniciais de planejamento e implantação são cruciais , a fim de conseguir um sistema funcional. </para>
   </abstract>
   <section>
     <title>Readiness asessment</title>
     <section>
       <title>Stakeholders forum</title>
-      <para>Há muitos fatores que influenciam o sucesso da criação de um sistema de informação de gestão em saúde: técnicos, políticos e humanos. Compreender os requisitos das principais partes interessadas antes de um trabalho técnico a ser realizado é fundamental para garantir a sustentabilidade do HMIS. DHIS2 muitas vezes tem sido implementado com o apoio de consultores externos, que podem estar presentes em um determinado país por um curto período de tempo. Em muitos casos, eles podem não compreender todas as exigências dos diferentes partidos que fazem parte da HMIS. Assim, é fundamental que um grupo de trabalho HMIS ser estabelecida, e definir claramente os requisitos gerais da HMIS, antes de quaisquer consultas técnicas sendo realizadas. </para>
+      <para>Há muitos fatores que influenciam o sucesso da criação de um sistema de informação de gestão em saúde: técnicos, políticos e humanos. Compreender os requisitos das principais partes interessadas antes de um trabalho técnico a ser realizado é fundamental para garantir a sustentabilidade do HMIS. DHIS 2 muitas vezes tem sido implementado com o apoio de consultores externos, que podem estar presentes em um determinado país por um curto período de tempo. Em muitos casos, eles podem não compreender todas as exigências dos diferentes partidos que fazem parte da HMIS. Assim, é fundamental que um grupo de trabalho HMIS ser estabelecida, e definir claramente os requisitos gerais da HMIS, antes de quaisquer consultas técnicas sendo realizadas. </para>
       <para>Normalmente, o grupo de trabalho HMIS seria composto por diferentes atores que têm interesses diferentes no sistema. <itemizedlist>
           <listitem>
             <para>Ministério da Saúde: Normalmente o cliente chave e motorista do HMIS. Em alguns países, o Minsitry pode ser responsável pela supervisão, em outros países podem ser prestadores de serviços diretos. </para>
@@ -37,9 +37,9 @@ Os estágios iniciais de planejamento e implantação são cruciais , a fim de c
     </section>
   </section>
   <section>
-    <title>Compiling DHIS2</title>
+    <title>Compiling DHIS 2</title>
     <para>Primeiro, crie uma variável de ambiente chamada <envar>JAVA_OPTS</envar>, e defina o valor para: <parameter>-Xms128m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=512m</parameter> . Além dessa variável de ambiente, você vai precisar para assegurar que o Maven é acessível através da sua consola. </para>
-    <para>Um script em lote do Windows é fornecida abaixo. Há duas etapas distintas durante o processo de construção: 1) Construir os módulos principais DHIS2 2) construção dos módulos da Web DHIS2 e portal.</para>
+    <para>Um script em lote do Windows é fornecida abaixo. Há duas etapas distintas durante o processo de construção: 1) Construir os módulos principais DHIS 2 2) construção dos módulos da Web DHIS 2 e portal.</para>
     <para><literallayout><computeroutput>set start_time=%time% echo Building DHIS 2 Core cd trunk\dhis-2\ call mvn clean install -Dtest=skip -DfailIfNoTests=false echo Building DHIS 2 Web cd dhis-web call mvn clean install -Dtest=skip -DfailIfNoTests=false echo start %start_time% echo finish %time%</computeroutput> </literallayout></para>
     <para>Um script de construção amostra Linux é fornecida abaixo. </para>
     <para><literallayout><computeroutput>#!/bin/sh echo &quot;Building DHIS 2 Core...&quot; cd dhis/trunk/dhis-2 mvn clean install -Dtest=skip -DfailIfNoTests=false echo &quot;Building DHIS 2 Web...&quot; cd dhis-web mvn clean install -Dtest=skip -DfailIfNoTests=false </computeroutput></literallayout></para>
@@ -49,26 +49,26 @@ Os estágios iniciais de planejamento e implantação são cruciais , a fim de c
   </section>
   <section>
     <title>Deployment architecture</title>
-    <para>De um modo geral, existem três maneiras de implantar DHIS2: um sistema único, independente, vários sistemas independentes que trocam dados por meio de XML, e um sistema de servidor que atende vários clientes através da Internet. Existem varations em cada um destes três arquitecturas principais. Determinar uma arquitetura de implantação é fundamental para garantir a sustentabilidade a longo prazo da DHIS2 em um determinado enviornment. Tendo uma arquitetura cliente-servidor em um país com infra-estrutura de Internet pobre seria uma escolha inapproriate por exemplo. Vários cenários differnent será discutido aqui, mas vai exigir modificação para cada implantação. </para>
+    <para>De um modo geral, existem três maneiras de implantar DHIS 2: um sistema único, independente, vários sistemas independentes que trocam dados por meio de XML, e um sistema de servidor que atende vários clientes através da Internet. Existem varations em cada um destes três arquitecturas principais. Determinar uma arquitetura de implantação é fundamental para garantir a sustentabilidade a longo prazo da DHIS 2 em um determinado enviornment. Tendo uma arquitetura cliente-servidor em um país com infra-estrutura de Internet pobre seria uma escolha inapproriate por exemplo. Vários cenários differnent será discutido aqui, mas vai exigir modificação para cada implantação. </para>
     <section>
       <title>Determining an architecture</title>
-      <para> DHIS2 é uma aplicação cliente-servidor que é capaz de escalar a partir de uma instalação de ambiente de trabalho único, para uma aplicação em cluster multi-camadas capaz de servir muitos clientes ao mesmo tempo. A arquitetura de implementação de DHIS2 irá determinar como o aplicativo é implementado em uma determinada situação, e como diferentes instâncias do DHIS2 irão interagir uns com os outros. Várias arquiteturas comuns de implantação serão descritos nesta seção. A determinação de uma arquitetura approrpriate é fundamental a fim de atender as necessidades dos usuários finais, e é normalmente limitado pelo nível de recursos técnicos e finanacial disponíveis para uma determinada implementação. Deve notar-se que a arquitectura de implantação pode precisar de evoluir ao longo do decurso de uma execução. É importante considerar outros sistemas que precisam interagir com os HMIS, tais como sistemas de pacientes de discos, sistemas de informação de logística, sistemas de informação de recursos humanos, sistemas de gestão financeira, etc </para>
+      <para> DHIS 2 é uma aplicação cliente-servidor que é capaz de escalar a partir de uma instalação de ambiente de trabalho único, para uma aplicação em cluster multi-camadas capaz de servir muitos clientes ao mesmo tempo. A arquitetura de implementação de DHIS 2 irá determinar como o aplicativo é implementado em uma determinada situação, e como diferentes instâncias do DHIS 2 irão interagir uns com os outros. Várias arquiteturas comuns de implantação serão descritos nesta seção. A determinação de uma arquitetura approrpriate é fundamental a fim de atender as necessidades dos usuários finais, e é normalmente limitado pelo nível de recursos técnicos e finanacial disponíveis para uma determinada implementação. Deve notar-se que a arquitectura de implantação pode precisar de evoluir ao longo do decurso de uma execução. É importante considerar outros sistemas que precisam interagir com os HMIS, tais como sistemas de pacientes de discos, sistemas de informação de logística, sistemas de informação de recursos humanos, sistemas de gestão financeira, etc </para>
     </section>
     <section>
       <title>Internet server for multiple clients</title>
-      <para>Neste cenário, um único servidor será usado por vários clientes que se conectam ao servidor através da Internet. Este cenário de implementação é provavelmente o mais simples de todos para instalação, além da instalação de computador de usuário único. Em um cenário típico, uma máquina de classe de servidor sinlge padrão seria usado. DHIS2 iria correr com o Apache Tomcat com MySQL ou PostgreSQL banco de dados backend. O administrador será responsável pela especificação dos diferentes papéis de usuários, ea prestação de logins para cada usuário, dependendo de seu papel</para>
-      <para>É claro que, dependendo do número real de clientes que estarão acessando simultaneamente a aplicação , vários servidores com balanceamento de carga que acessam um banco de dados clusterizado pode ser mais apropriado . DHIS2 , como muitos aplicativos banco de dados orientado , tendem a ser limitados em termos de entrada / saída. Uma estratégia comum para aliviar esta restrição é a utilização de um banco de dados em cluster. Ambos PostgreSQL e MySQL suportam a cluster de banco de dados . Essencialmente, um cluster de banco de dados funciona para todos os efeitos, como um único banco de dados, mas aparece para o aplicativo acessando o banco de dados como como uma única instância . Há muitos cenários diferentes que são capazes de acheiving um banco de dados clusterizado com MySQL ou PostgreSQL , mas estão fora do escopo deste artigo a considerar. Refira-se que a replicação do banco de dados, embora aparentemente fácil de implementar, requer considerável experiência de administração de banco de dados , e só deve ser considerada quando a alta disponibilidade e grande número de usuários será encontrado.  </para>
-      <para>Para este tipo de arquitetura, uma máquina de classe de servidor rodando alguma distribuição de Linux (Debian, Ubuntu, Suse, etc) é recomendado. Aplicações Java tendem a ter um melhor desempenho em máquinas baseadas Linux. Como DHIS2 é um aplicativo de banco de dados orientado, uma questão fundamental é saber se a executar o banco de dados na mesma máquina que o servidor de aplicativos. Idealmente, os servidores de banco de dados e aplicação seria em máquinas separadas, conectadas através de uma fibra ou SAN. Em muitos mercados-chave DHIS2 no entanto, este tipo de tecnologia é ou não estão disponíveis ou são proibitivamente caros. Normalmente, portanto, o banco de dados (PostgreSQL ou MySQL) e servidor de aplicação (geralmente Apache Tomcat) residiria na mesma máquina</para>
+      <para>Neste cenário, um único servidor será usado por vários clientes que se conectam ao servidor através da Internet. Este cenário de implementação é provavelmente o mais simples de todos para instalação, além da instalação de computador de usuário único. Em um cenário típico, uma máquina de classe de servidor sinlge padrão seria usado. DHIS 2 iria correr com o Apache Tomcat com MySQL ou PostgreSQL banco de dados backend. O administrador será responsável pela especificação dos diferentes papéis de usuários, ea prestação de logins para cada usuário, dependendo de seu papel</para>
+      <para>É claro que, dependendo do número real de clientes que estarão acessando simultaneamente a aplicação , vários servidores com balanceamento de carga que acessam um banco de dados clusterizado pode ser mais apropriado . DHIS 2 , como muitos aplicativos banco de dados orientado , tendem a ser limitados em termos de entrada / saída. Uma estratégia comum para aliviar esta restrição é a utilização de um banco de dados em cluster. Ambos PostgreSQL e MySQL suportam a cluster de banco de dados . Essencialmente, um cluster de banco de dados funciona para todos os efeitos, como um único banco de dados, mas aparece para o aplicativo acessando o banco de dados como como uma única instância . Há muitos cenários diferentes que são capazes de acheiving um banco de dados clusterizado com MySQL ou PostgreSQL , mas estão fora do escopo deste artigo a considerar. Refira-se que a replicação do banco de dados, embora aparentemente fácil de implementar, requer considerável experiência de administração de banco de dados , e só deve ser considerada quando a alta disponibilidade e grande número de usuários será encontrado.  </para>
+      <para>Para este tipo de arquitetura, uma máquina de classe de servidor rodando alguma distribuição de Linux (Debian, Ubuntu, Suse, etc) é recomendado. Aplicações Java tendem a ter um melhor desempenho em máquinas baseadas Linux. Como DHIS 2 é um aplicativo de banco de dados orientado, uma questão fundamental é saber se a executar o banco de dados na mesma máquina que o servidor de aplicativos. Idealmente, os servidores de banco de dados e aplicação seria em máquinas separadas, conectadas através de uma fibra ou SAN. Em muitos mercados-chave DHIS 2 no entanto, este tipo de tecnologia é ou não estão disponíveis ou são proibitivamente caros. Normalmente, portanto, o banco de dados (PostgreSQL ou MySQL) e servidor de aplicação (geralmente Apache Tomcat) residiria na mesma máquina</para>
     </section>
     <section>
       <title>LAN server</title>
-      <para>DHIS2 é um software cliente-servidor assim pode facilmente escalar até um sistema de rede, quando necessário . Por exemplo, um escritório do distrito , com cinco computadores
-pode ter uma rede local com DHIS2 instalado em apenas uma única máquina. Oficiais do Programa , gerencia e personell entrada de dados pode acessá-lo através da rede local. Este cenário de implantação não requer
+      <para>DHIS 2 é um software cliente-servidor assim pode facilmente escalar até um sistema de rede, quando necessário . Por exemplo, um escritório do distrito , com cinco computadores
+pode ter uma rede local com DHIS 2 instalado em apenas uma única máquina. Oficiais do Programa , gerencia e personell entrada de dados pode acessá-lo através da rede local. Este cenário de implantação não requer
 Internet ou , apenas cabos ou um ponto de acesso sem fio. este
 abordagem é usada para os distritos na Tanzânia e Serra Leoa. em
-Adicionalmente, DHIS2 pode ser executado em Linux , para evitar vírus e reduzir
+Adicionalmente, DHIS 2 pode ser executado em Linux , para evitar vírus e reduzir
 manutenção. Os outros computadores no prédio pode executar o Windows e
-acessar o servidor local DHIS2 para inserir dados , validação de correr, relatórios ,
+acessar o servidor local DHIS 2 para inserir dados , validação de correr, relatórios ,
 visualizar mapas , etc em seus navegadores locais (Internet Explorer, Firefox
 etc ) , assim como análise de dados em tabelas dinâmicas do Excel ( ligado ao
 banco de dados no servidor local). Isto significa que a todo o pessoal de saúde em
@@ -80,7 +80,7 @@ arquivos</para>
     </section>
     <section>
       <title>Decentralised architecture</title>
-      <para>A arquitetura descentralizada normalmente consiste em muitas instâncias autônomas do DHIS2, que os dados de intercâmbio através do formato de troca de dados DXF. Em uma implantação típica, uma única instância DHIS2 será instalado aa unidade adminstrativa periférico, como o distrito. Cada distrito irá recolher papel agregados relatórios de dados de uma série de instalações e, em seguida, inserir esses relatórios manualmente no sistema em uma base regular. Os dados serão, em seguida, ser transmitida, via DXF, para separar as instalações nos níveis organizacionais mais altos, como a província e leve nacional</para>
+      <para>A arquitetura descentralizada normalmente consiste em muitas instâncias autônomas do DHIS 2, que os dados de intercâmbio através do formato de troca de dados DXF. Em uma implantação típica, uma única instância DHIS 2 será instalado aa unidade adminstrativa periférico, como o distrito. Cada distrito irá recolher papel agregados relatórios de dados de uma série de instalações e, em seguida, inserir esses relatórios manualmente no sistema em uma base regular. Os dados serão, em seguida, ser transmitida, via DXF, para separar as instalações nos níveis organizacionais mais altos, como a província e leve nacional</para>
     </section>
     <section>
       <title>Which arcitecture should I choose?</title>
@@ -106,7 +106,7 @@ seus dados através de arquivos de exportação. Em resumo, há geralmente há u
     </blockquote>
     <section>
       <title>Introduction</title>
-      <para>DHIS2 é uma aplicação Java baseado em browser, e, portanto, ser executado em praticamente qualquer sistema operacional que suporte Java. A aplicação foi projetada para rodar tanto em computadores portáteis autônomos, bem como servidores destinados enviornments multiusuários discutidos nas seções anteriores. A criação de um único instalador para todos estes tipos de implementações é um grande desafio e deve ser cuidadosamente considerado quando se desenrolando DHIS2 dentro de uma dada organização. Nesta seção, a embalagem de DHIS2 baseado no BitRock InstallBuilder serão consideradas. O código fonte para esses instaladores está incluído no directório <filename>/dhis2/dhis2-live-installer</filename> do código principal. </para>
+      <para>DHIS 2 é uma aplicação Java baseado em browser, e, portanto, ser executado em praticamente qualquer sistema operacional que suporte Java. A aplicação foi projetada para rodar tanto em computadores portáteis autônomos, bem como servidores destinados enviornments multiusuários discutidos nas seções anteriores. A criação de um único instalador para todos estes tipos de implementações é um grande desafio e deve ser cuidadosamente considerado quando se desenrolando DHIS 2 dentro de uma dada organização. Nesta seção, a embalagem de DHIS 2 baseado no BitRock InstallBuilder serão consideradas. O código fonte para esses instaladores está incluído no directório <filename>/dhis2/dhis2-live-installer</filename> do código principal. </para>
     </section>
     <section>
       <title>Building the installer</title>
@@ -116,7 +116,7 @@ seus dados através de arquivos de exportação. Em resumo, há geralmente há u
           <para>Uma versão recente do Java SDK. </para>
         </listitem>
         <listitem>
-          <para>Baixar a cópia <link xl:href="http://installbuilder.bitrock.com/download-step-2.html">BitRock InstallBuilder 6 Multiplatform (Professional).</link>. O construtor de instalação está disponível para vários sistemas operacionais, então escolher o que é adequado para você. O projeto DHIS2 foi concedida uma liscense especial por BitRock para o uso dentro do contexto do projeto. Por favor, envie uma nota à lista de desenvolvedores, se você quiser construir o instalador, e uma cópia da chave necessária para o pedido será enviado a você. </para>
+          <para>Baixar a cópia <link xl:href="http://installbuilder.bitrock.com/download-step-2.html">BitRock InstallBuilder 6 Multiplatform (Professional).</link>. O construtor de instalação está disponível para vários sistemas operacionais, então escolher o que é adequado para você. O projeto DHIS 2 foi concedida uma liscense especial por BitRock para o uso dentro do contexto do projeto. Por favor, envie uma nota à lista de desenvolvedores, se você quiser construir o instalador, e uma cópia da chave necessária para o pedido será enviado a você. </para>
         </listitem>
         <listitem>
           <para>Apache Maven 2</para>
@@ -140,8 +140,8 @@ seus dados através de arquivos de exportação. Em resumo, há geralmente há u
           <para>Este comando irá definir uma variável enviornment que deve apontar para o diretório onde o BitRock Installer Professional foi baixado para. </para>
         </listitem>
         <listitem>
-          <para><command>export <envar>DHIS2_DOCS</envar>=&quot;/home/jason/dhis2/dhis2-docbook-docs/&quot;</command></para>
-          <para>Esta variável de ambiente será usado pelo script de construção para construir automaticamente a documentação DHIS2 e deve apontar para o diretório de origem da documentação. FONTE).</para>
+          <para><command>export <envar>DHIS 2_DOCS</envar>=&quot;/home/jason/dhis2/dhis2-docbook-docs/&quot;</command></para>
+          <para>Esta variável de ambiente será usado pelo script de construção para construir automaticamente a documentação DHIS 2 e deve apontar para o diretório de origem da documentação. FONTE).</para>
         </listitem>
         <listitem/>
         <listitem/>
@@ -176,7 +176,7 @@ seus dados através de arquivos de exportação. Em resumo, há geralmente há u
 &#160;&#160;&#160;2 . Adicionar o nó superior (por exemplo, National MS) para ORGANISATIONUNIT . Certifique-se de ParentID é NULL e ACTIVE = TRUE
 &#160;&#160;&#160;3 . Em seguida, adicione o nível 2 (por exemplo, províncias ) . Todos devem ter ParentID = &lt;TOP_NODE_ID&gt; , um nome ( 230), um nome abreviado (25) (ambos único) e ACTIVE = TRUE . Isso pode ser um grande trabalho para abreviado . Uma maneira de conseguir isso rapidamente é inicialmente apenas usar o ID como nome abreviado , mas colocar os primeiros 20 caracteres do nome na frente . Não é uma boa solução a longo prazo - geralmente o melhor é tomar o núcleo do nome e adicionar um qualificador que a distingue de outras instalações com o mesmo nome do núcleo. No nome abreviado , deixar de fora o tipo OrgUnit (ou seja, não incluem &quot; Dispensiary &quot;, &quot; Clínica Médica &quot; etc no nome abreviado ) .
 &#160;&#160;&#160;4 . Proceda da mesma forma para os níveis 3 e sobre , mas sempre prestar atenção à ParentID
-&#160;&#160;&#160;5 . Criar nomes para cada Unidade de Organização Nível em DHIS2
+&#160;&#160;&#160;5 . Criar nomes para cada Unidade de Organização Nível em DHIS 2
 &#160;&#160;&#160;6 . IMPORTANTE : FONTE e ORGANISATIONUNIT deve sempre ser sincronizados , caso contrário você terá problemas com datamarts (por exemplo, se houver uma identificação extra no SOURCE).</para>
     </section>
     <section>
@@ -185,7 +185,7 @@ seus dados através de arquivos de exportação. Em resumo, há geralmente há u
 
 2 . Cada elemento de dados deve ter um nome ( 230), um nome abreviado (25) e ACTIVE = TRUE . Ambos devem ser exclusivos. Além disso, ele tem um cio VALUETYPE = &quot; int &quot; DomainType = &quot; agregado &quot; , AGGREGATIONTYPE = &quot; montante &quot; e CATEGORYCOMBOID como no passo 1 .
 
-3 . Precisamos agora de pelo menos um CATEGORYOPTIONCOMBOID padrão. Se você tiver dados multidimensionais (por exemplo, desagregados por faixa etária ou sexo ), você precisa criar as categorias correspondentes. Este é o melhor feito na GUI DHIS2
+3 . Precisamos agora de pelo menos um CATEGORYOPTIONCOMBOID padrão. Se você tiver dados multidimensionais (por exemplo, desagregados por faixa etária ou sexo ), você precisa criar as categorias correspondentes. Este é o melhor feito na GUI DHIS 2
 
 4 . Adicionar em DATAELEMENTGROUP - NOME , ID e CODE opcional
 
@@ -195,7 +195,7 @@ seus dados através de arquivos de exportação. Em resumo, há geralmente há u
 
 7 . DATASETMEMBERS - dois IDs
 
-8 . DATASETSOURCE - dois IDs. No entanto , note que seja fácil de atribuir a todos os conjuntos de dados orgunits em um nível dentro DHIS2 . Muitas vezes, se quer um tipo de produto cartesiano, por exemplo, SELECIONE DatasetId , organisationunitid DE dataset, organisationunit ONDE organisationunitid &lt;1000</para>
+8 . DATASETSOURCE - dois IDs. No entanto , note que seja fácil de atribuir a todos os conjuntos de dados orgunits em um nível dentro DHIS 2 . Muitas vezes, se quer um tipo de produto cartesiano, por exemplo, SELECIONE DatasetId , organisationunitid DE dataset, organisationunit ONDE organisationunitid &lt;1000</para>
     </section>
     <section>
       <title>Importing indicators</title>
@@ -221,7 +221,7 @@ Diferentes estados têm diferentes elementos de dados (além de os definidos a n
 
 Documento Versioned para cada estado publicado no portal NHSRC : &quot; definição Elemento de dados e guia para o uso &quot;, contendo nível , frequência, orientar para o uso e definição , bem como grupo. As dimensões não são criados a menos que eles são compartilhados entre vários elementos de dados. Atualmente, desagregações por dimensões não estão incluídos no documento.
 
-Problema com DHIS2 que toda a gente vê todos os elementos de dados definidos por qualquer pessoa - e nenhum conceito de posse de elementos de dados ( ou indicadores) .
+Problema com DHIS 2 que toda a gente vê todos os elementos de dados definidos por qualquer pessoa - e nenhum conceito de posse de elementos de dados ( ou indicadores) .
 
 E se um distrito tem um colapso dimensional diferente?
 
@@ -243,7 +243,7 @@ Diferentes estados têm diferentes elementos de dados (além de os definidos a n
 
 Documento Versioned para cada estado publicado no portal NHSRC : &quot; definição Elemento de dados e guia para o uso &quot;, contendo nível , frequência, orientar para o uso e definição , bem como grupo. As dimensões não são criados a menos que eles são compartilhados entre vários elementos de dados. Atualmente, desagregações por dimensões não estão incluídos no documento.
 
-Problema com DHIS2 que toda a gente vê todos os elementos de dados definidos por qualquer pessoa - e nenhum conceito de posse de elementos de dados ( ou indicadores) .
+Problema com DHIS 2 que toda a gente vê todos os elementos de dados definidos por qualquer pessoa - e nenhum conceito de posse de elementos de dados ( ou indicadores) .
 
 E se um distrito tem um colapso dimensional diferente?
 

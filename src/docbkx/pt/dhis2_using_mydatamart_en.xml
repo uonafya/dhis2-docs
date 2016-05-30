@@ -4,7 +4,7 @@
   <title>usando MyDatamart</title>
   <section xml:id="Application">
     <title>A aplicação Mydatamart</title>
-    <para>O objetivo da aplicação Mydatamart é gerenciar uma loja datamart local que ispopulated baixando pequenos pedaços de dados a partir da aplicação Web central DHIS2. Ele também gerencia os detalhes de parâmetros de conexão ODBC necessárias para vincular planilhas do Excel para os dados.</para>
+    <para>O objetivo da aplicação Mydatamart é gerenciar uma loja datamart local que ispopulated baixando pequenos pedaços de dados a partir da aplicação Web central DHIS 2. Ele também gerencia os detalhes de parâmetros de conexão ODBC necessárias para vincular planilhas do Excel para os dados.</para>
     <para>A maneira mais simples para começar mydatamart.exe é clicar duas vezes no ícone na área de trabalho. A aplicação deve abrir e mostrar uma janela como <xref linkend="first"/>abaixo:</para>
     <figure id="first">
       <title>Mydatamart on first open</title>
@@ -34,7 +34,7 @@
       </section>
       <section>
         <title>Preenchendo o datamart com metadados</title>
-        <para>O datamart local é projetado para armazenar valores de dados agregados de dataelements e indicadores na aplicação DHIS2 online. Mas antes que você pode fazer isso, você deve primeiro preencher o datamart local com metadados do dhis2 remoto.</para>
+        <para>O datamart local é projetado para armazenar valores de dados agregados de dataelements e indicadores na aplicação DHIS 2 online. Mas antes que você pode fazer isso, você deve primeiro preencher o datamart local com metadados do dhis2 remoto.</para>
         <para>Metadados refere-se às partes da base de dados que dão os valores de dados que significa. Isto inclui: <itemizedlist>
             <listitem>
               <para>Unidades de Organização e hierarquia;</para>
@@ -49,11 +49,11 @@
               <para>Vários grupos e conjuntos de grupos.</para>
             </listitem>
           </itemizedlist> Esta informação é necessária para trabalhar com tabelas dinâmicas e para selecionar os parâmetros importantes relacionados com a sua unidade de organização. </para>
-        <para>Felizmente preencher com metadados é um simples, se demorado, operação. o mais fácil way to metadados carga de DHIS2 é pressionar o botão da barra de ferramentas a imagem <inlinegraphic fileref="resources/images/mydatamart/hierarchy.png" width="0.5cm"/> </para>
+        <para>Felizmente preencher com metadados é um simples, se demorado, operação. o mais fácil way to metadados carga de DHIS 2 é pressionar o botão da barra de ferramentas a imagem <inlinegraphic fileref="resources/images/mydatamart/hierarchy.png" width="0.5cm"/> </para>
         <para>image.
                     It can also be done via the &quot;Datamart-&gt;Load metadata from dhis&quot; menu
                     option.</para>
-        <para>The Mydatamart application will then contact the remote DHIS2 server and
+        <para>The Mydatamart application will then contact the remote DHIS 2 server and
                     download, transform and save the metadata into the local database.</para>
         <note>
           <para>Atualmente, a parte de transformar a operação é bastante lento. Espere-o para levar até dez minutos. Durante esse tempo, você não pode trabalhar com o aplicativo que você tem que ser paciente. A razão para o longo tempo é que ela tem de processar todos os orgunits na hierarquia dhis, o que para muitos países pode ser bastante grande. Em futuras edições Mydatamart vamos melhorar isso reduzindo o número de orgunits para ser processado.</para>

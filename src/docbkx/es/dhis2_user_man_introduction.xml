@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <chapter>
-  <title>¿Qué es DHIS2?</title>
+  <title>¿Qué es DHIS 2?</title>
   <highlights>
     <para>Después de leer este capítulo habremos comprendido:</para>
     <itemizedlist>
       <listitem>
-        <para>Qué es DHIS2 y qué finalidad tiene en el marco de los Sistemas de Información de Salud (SIS)</para>
+        <para>Qué es DHIS 2 y qué finalidad tiene en el marco de los Sistemas de Información de Salud (SIS)</para>
       </listitem>
       <listitem>
-        <para>Cuáles son las principales consideraciones tecnológicas que deberemos tener en cuenta para desplegar un sistema basado en DHIS2, y qué opciones existen para ampliar el aplicativo DHIS2 con nuevos módulos</para>
+        <para>Cuáles son las principales consideraciones tecnológicas que deberemos tener en cuenta para desplegar un sistema basado en DHIS 2, y qué opciones existen para ampliar el aplicativo DHIS 2 con nuevos módulos</para>
       </listitem>
       <listitem>
         <para>Qué diferencias hay entre datos agregados y datos de paciente</para>
@@ -20,23 +20,23 @@
     </itemizedlist>
   </highlights>
   <section xml:id="mod1_1">
-    <title>Antecedentes de DHIS2</title>
-    <para>DHIS2 es una herramienta para la recolección, validación, análisis y presentación de datos estadísticos agregados, hecho a medida de (pero no limitado a) actividades de gestión integral de información de salud. Es más una herramienta genérica que una aplicación de base de datos preconfigurada, con un modelo de metadatos abierto y una interfaz de usuario flexible que permite al usuario diseñar los contenidos de un sistema específico de información sin necesidad de códigos de programación. DHIS2 y sus extensiones son un paquete software web y modular elaborado con entornos de código libre y abierto Java.</para>
-    <para>DHIS2 es software de código abierto publicado bajo la licencia BSD y puede utilizarse sin coste alguno. Funciona en cualquier plataforma que tenga instalado JRE 6 (o una versión superior). Simplemente se descarga (de dhis2.org), se desempaqueta, se lanza el fichero ejecutable y estamos listos para comenzar.</para>
-    <para>DHIS2 ha sido desarrollado por el Health Information Systems Programme (HISP) en un proceso abierto y distribuido globalmente con desarrolladores que actualmente están en India, Vietnam, Tanzania, Irlanda y Noruega. El desarrollo está coordinado desde la Universidad de Oslo con un soporte principal de Norad.</para>
-    <para>En Octubre de 2012, el software DHIS2 se utiliza en los sistemas de salud de más de 30 países en África, Asia y Latinoamérica, y entre los países que han adoptado DHIS2 como software de SIS nacional están KEnia, Tanzania, Uganda, Ruanda, Ghana, Liberia y Bangladesh. Un número creciente de países y organizaciones esán comenzando nuevos despliegues con DHIS2.</para>
-    <para>La documentación ofrecida aquí trata de ofrecer una panorámica global de la aplicación. Dada la naturaleza abstracta de la aplicación, este manual no sirve como una guía paso a paso detallada de cómo utilizar la aplicación en cada circunstancia, sino más bien ofrece ilustraciones y ejemplos de cómo DHIS2 puede implementarse en varias situaciones mediante ejemplos generalizados.</para>
-    <para>Antes de implementar DHIS2 en un nuevo despliegue, recomendamos fuertemente la lectura de la Guía de Implementación de DHIS2 (un manual distinto de este), también disponible en dhis2.org.</para>
+    <title>Antecedentes de DHIS 2</title>
+    <para>DHIS 2 es una herramienta para la recolección, validación, análisis y presentación de datos estadísticos agregados, hecho a medida de (pero no limitado a) actividades de gestión integral de información de salud. Es más una herramienta genérica que una aplicación de base de datos preconfigurada, con un modelo de metadatos abierto y una interfaz de usuario flexible que permite al usuario diseñar los contenidos de un sistema específico de información sin necesidad de códigos de programación. DHIS 2 y sus extensiones son un paquete software web y modular elaborado con entornos de código libre y abierto Java.</para>
+    <para>DHIS 2 es software de código abierto publicado bajo la licencia BSD y puede utilizarse sin coste alguno. Funciona en cualquier plataforma que tenga instalado JRE 6 (o una versión superior). Simplemente se descarga (de dhis2.org), se desempaqueta, se lanza el fichero ejecutable y estamos listos para comenzar.</para>
+    <para>DHIS 2 ha sido desarrollado por el Health Information Systems Programme (HISP) en un proceso abierto y distribuido globalmente con desarrolladores que actualmente están en India, Vietnam, Tanzania, Irlanda y Noruega. El desarrollo está coordinado desde la Universidad de Oslo con un soporte principal de Norad.</para>
+    <para>En Octubre de 2012, el software DHIS 2 se utiliza en los sistemas de salud de más de 30 países en África, Asia y Latinoamérica, y entre los países que han adoptado DHIS 2 como software de SIS nacional están KEnia, Tanzania, Uganda, Ruanda, Ghana, Liberia y Bangladesh. Un número creciente de países y organizaciones esán comenzando nuevos despliegues con DHIS 2.</para>
+    <para>La documentación ofrecida aquí trata de ofrecer una panorámica global de la aplicación. Dada la naturaleza abstracta de la aplicación, este manual no sirve como una guía paso a paso detallada de cómo utilizar la aplicación en cada circunstancia, sino más bien ofrece ilustraciones y ejemplos de cómo DHIS 2 puede implementarse en varias situaciones mediante ejemplos generalizados.</para>
+    <para>Antes de implementar DHIS 2 en un nuevo despliegue, recomendamos fuertemente la lectura de la Guía de Implementación de DHIS 2 (un manual distinto de este), también disponible en dhis2.org.</para>
   </section>
   <section>
     <title>Las características clave y el propósito de DHIS 2</title>
-    <para>Las características clave y el propósito de DHIS2 pueden resumirse como sigue:</para>
+    <para>Las características clave y el propósito de DHIS 2 pueden resumirse como sigue:</para>
     <itemizedlist>
       <listitem>
         <para>Ofrecer una solución SIS exhaustiva focalizada en principios de almacenamiento de datos y en una estructura modular que puede personalizarse fácilmente para las distintas necesidades de los sistemas de salud - y sostiene la idea de un SIS integrado a todos los niveles de la jerarquía de salud.</para>
       </listitem>
       <listitem>
-        <para>Capacidad para personalizar y adaptar localmente mediante el interfaz de usuario. No es preciso programar código para empezar a utilizar DHIS2 en un nuevo despliegue (país, región, distrito, etc.).</para>
+        <para>Capacidad para personalizar y adaptar localmente mediante el interfaz de usuario. No es preciso programar código para empezar a utilizar DHIS 2 en un nuevo despliegue (país, región, distrito, etc.).</para>
       </listitem>
       <listitem>
         <para>Ofrecer herramientas de entrada de datos que pueden ser del tipo de listas o tablas estándar, o que pueden ser personaliadas para replicar los formularios en papel.</para>
@@ -73,16 +73,16 @@
         <para>Funcionalidades de exportación-importación de datos y metadatos, apoyando la sincronización de las instalaciones offline así como la interoperabilidad con otras aplicaciones.</para>
       </listitem>
       <listitem>
-        <para>Integración con otros sistemas software - utilizando el API-Web de DHIS2 y el Motor de Integración.</para>
+        <para>Integración con otros sistemas software - utilizando el API-Web de DHIS 2 y el Motor de Integración.</para>
       </listitem>
       <listitem>
-        <para>Existe la posibilidad de desarrollar e integrar nuevos módulos para dar respuesta a necesidades específicas de los usuarios, ya sea como parte del interfaz de usuario del portal de DHIS2 o como una aplicación externa acoplada que interactúe a través del API-Web de DHIS2.</para>
+        <para>Existe la posibilidad de desarrollar e integrar nuevos módulos para dar respuesta a necesidades específicas de los usuarios, ya sea como parte del interfaz de usuario del portal de DHIS 2 o como una aplicación externa acoplada que interactúe a través del API-Web de DHIS 2.</para>
       </listitem>
     </itemizedlist>
-    <para>En resumen, DHIS2 facilita una solución integral de SIS para las necesidades de reporte y análisis de los usuarios de información de salud a cualquier nivel.</para>
+    <para>En resumen, DHIS 2 facilita una solución integral de SIS para las necesidades de reporte y análisis de los usuarios de información de salud a cualquier nivel.</para>
   </section>
   <section>
-    <title>Utilización de DHIS2 en el SIS: registro, procesado, interpretación y análisis de los datos</title>
+    <title>Utilización de DHIS 2 en el SIS: registro, procesado, interpretación y análisis de los datos</title>
     <para>El contexto amplio de un SIS puede entenderse integralmente mediante el ciclo de la información presentado en la Figura 1.1. El ciclo vida de la información plasma gráficamente los distintos componentes, etapas y procesos por los cuales los datos se recogen, comprueban según calidad, procesan, analizan y utilizan.</para>
     <figure>
       <title>El ciclo de vida de la información en salud</title>
@@ -92,7 +92,7 @@
         </imageobject>
       </mediaobject>
     </figure>
-    <para>DHIS2 participa en las diferentes facetas del ciclo de vida de la información, donde se incluyen:
+    <para>DHIS 2 participa en las diferentes facetas del ciclo de vida de la información, donde se incluyen:
       <itemizedlist>
         <listitem>
           <para>Recogida de datos.</para>
@@ -118,16 +118,16 @@
         </listitem>
       </itemizedlist>
   </para>
-    <para>En un primer paso, DHIS2 sirve como herramienta para la recogida, registro y compilación de datos, y todos los datos (ya sea en forma de números o texto) pueden introducirse en la aplicación. La entrada de datos puede hacerse en listas de elementos de datos o mediante formularios definidos por los usuarios, que pueden elaborarse a imagen y semejanza de los formularios en papel para facilitar a los usuarios el proceso de registro de datos.</para>
-    <para>En un segungo paso, DHIS2 puede utilizarse para aumentar la calidad de los datos. Por un lado, en los puntos de entrada de datos puede realizarse un chequeo para verificar si los datos cuadran en rangos aceptables entre valores máximos y mínimos para cada elemento de datos particular. Este chequeo puede ayudar, por ejemplo, a identificar errores producidos al momento de meter los datos. Por otro lado, los usuarios pueden definir reglas de validación, y DHIs2 puede lanzar comprobaciones de estas reglas de validación sobre los datos para detectar infracciones.</para>
-    <para>Luego, cuando ya se han introducido y verificado los datos, DHIS2 puede ayudar a realizar diferentes tipos de reportes. El primer tipo de reporte es el rutinario que necesita ser predefinido, de modo que todos los reportes que sean generados en rutina puedan obtenerse con un click. Adrmás, DHIS2 puede ayudar en la generación de reportes analíticos mediante por ejemplo comparaciones de indicadores en distintos establecimientos de salud o a lo largo del tiempo. Algunas de las salidas de análisis que puede producir DHIS2 son gráficas, mapas, reportes y perfiles de salud. Todos ellos deberían ser producidos, analizados y servir de base para intervenciones de salud por parte de los gestores de salud.</para>
+    <para>En un primer paso, DHIS 2 sirve como herramienta para la recogida, registro y compilación de datos, y todos los datos (ya sea en forma de números o texto) pueden introducirse en la aplicación. La entrada de datos puede hacerse en listas de elementos de datos o mediante formularios definidos por los usuarios, que pueden elaborarse a imagen y semejanza de los formularios en papel para facilitar a los usuarios el proceso de registro de datos.</para>
+    <para>En un segungo paso, DHIS 2 puede utilizarse para aumentar la calidad de los datos. Por un lado, en los puntos de entrada de datos puede realizarse un chequeo para verificar si los datos cuadran en rangos aceptables entre valores máximos y mínimos para cada elemento de datos particular. Este chequeo puede ayudar, por ejemplo, a identificar errores producidos al momento de meter los datos. Por otro lado, los usuarios pueden definir reglas de validación, y DHIs2 puede lanzar comprobaciones de estas reglas de validación sobre los datos para detectar infracciones.</para>
+    <para>Luego, cuando ya se han introducido y verificado los datos, DHIS 2 puede ayudar a realizar diferentes tipos de reportes. El primer tipo de reporte es el rutinario que necesita ser predefinido, de modo que todos los reportes que sean generados en rutina puedan obtenerse con un click. Adrmás, DHIS 2 puede ayudar en la generación de reportes analíticos mediante por ejemplo comparaciones de indicadores en distintos establecimientos de salud o a lo largo del tiempo. Algunas de las salidas de análisis que puede producir DHIS 2 son gráficas, mapas, reportes y perfiles de salud. Todos ellos deberían ser producidos, analizados y servir de base para intervenciones de salud por parte de los gestores de salud.</para>
   </section>
   <section>
     <title>Antecedentes tecnológicos</title>
     <section>
-      <title>DHIS2 como plataforma</title>
-      <para>DHIS2 puede entenderse como una plataforma con muchos niveles. Primero, la base de datos de la aplicación está diseñada de abajo a arriba con un enfoque de flexibilidad. Las estructuras de datos como son los elementos de datos, las unidades organizativas, los formularios y los roles de los usuarios pueden definirse de forma totalmente libre desde el interfaz de usuario de la aplicación. Esto posibilita que el sistema pueda adaptarse a múltiples contextos locales y casos de uso. Hemos visto que DHIS2 soporta los requisitos más importantes para la captura y el análisis rutinarios de datos necesarios en implementaciones nacionales. Esto hace que DHIS2 pueda servir también como sistema de gestión para dominios específicos como logística, laboratorios y contabilidad.</para>
-      <para>En segundo lugar, gracias a su diseño modular DHIS2 puede extenderse con módulos software adicionales. Estos módulos software pueden convivir con los módulos centrales de DHIS2, e integrarse en el portal DHIS y en el sistema de menús. Es una caractarística potente que permite extender el sistema con funcionalidad extra cuando se requiera, típicamente para requisitos específicos del país, como se apuntó anteriormente.</para>
+      <title>DHIS 2 como plataforma</title>
+      <para>DHIS 2 puede entenderse como una plataforma con muchos niveles. Primero, la base de datos de la aplicación está diseñada de abajo a arriba con un enfoque de flexibilidad. Las estructuras de datos como son los elementos de datos, las unidades organizativas, los formularios y los roles de los usuarios pueden definirse de forma totalmente libre desde el interfaz de usuario de la aplicación. Esto posibilita que el sistema pueda adaptarse a múltiples contextos locales y casos de uso. Hemos visto que DHIS 2 soporta los requisitos más importantes para la captura y el análisis rutinarios de datos necesarios en implementaciones nacionales. Esto hace que DHIS 2 pueda servir también como sistema de gestión para dominios específicos como logística, laboratorios y contabilidad.</para>
+      <para>En segundo lugar, gracias a su diseño modular DHIS 2 puede extenderse con módulos software adicionales. Estos módulos software pueden convivir con los módulos centrales de DHIS 2, e integrarse en el portal DHIS y en el sistema de menús. Es una caractarística potente que permite extender el sistema con funcionalidad extra cuando se requiera, típicamente para requisitos específicos del país, como se apuntó anteriormente.</para>
       <para>La otra cara del módulo de extensión software es que impone varias limitaciones al proceso de desarrollo. Los desarrolladores que crean funcionalidad extra están limitados a la tecnología DHIS en términos de lenguaje de programación y de entornos software, además de las limitaciones ya mencionadas para el diseño de los módulos para la solución de portal web DHIS. Estos módulos deben incluirse en el software DHIS cuando se compila el software y se despliega en un servidor, no se pueden añadir dinámicamente en tiempo de ejecución.</para>
       <para>Para superar estas limitaciones y lograr un acercamiento entre el nivel de servicio DHIS y otras piezas adicionales de software, el equipo de desarrollo de DHIS decidió crear el API Web. Este API-Web cumple con las normas de estilo arquitectónico REST. Esto implica que:</para>
       <itemizedlist>
@@ -145,13 +145,13 @@
     </section>
     <section>
       <title>Comprendiendo la independencia de plataforma</title>
-      <para>Todas las computadoras tienen un Sistema Operativo (SO) para manejarlas y manejar los programas instalados. El sistema operativo sirve como nivel intermedio entre la aplicación software, como DHIs2, y el hardware, como la CPU o la memoria RAM. DHIS2 funciona en la Máquina Virtual de Java, y por eso puede funcionar en cualquier sistema operativo que soporte Java. La independencia de plataforma significa que la aplicación software puede ejecutarse en cualquier SO: Windows, Linux, Macintosh, etc. DHIS2 es independiente de plataforma, y es extremadamente útil en el contexto de salud pública, donde pueden estar en uso múltiples sistemas operativos distintos.</para>
-      <para>Más allá, DHIS2 es también independiente de plataforma en relación al Sistema de Gestión de Base de Datos. DHIS2 utiliza el entorno de abstracción de bases de datos Hibernate y es compativle con cualquier sistema soportado por Hibernate, como PostgreSQL, MySQL, H2, MS SQL Server, Oracle y muchos otros. PostgreSQL es el sistema de base de datos recomendado para DHIS2.</para>
+      <para>Todas las computadoras tienen un Sistema Operativo (SO) para manejarlas y manejar los programas instalados. El sistema operativo sirve como nivel intermedio entre la aplicación software, como DHIs2, y el hardware, como la CPU o la memoria RAM. DHIS 2 funciona en la Máquina Virtual de Java, y por eso puede funcionar en cualquier sistema operativo que soporte Java. La independencia de plataforma significa que la aplicación software puede ejecutarse en cualquier SO: Windows, Linux, Macintosh, etc. DHIS 2 es independiente de plataforma, y es extremadamente útil en el contexto de salud pública, donde pueden estar en uso múltiples sistemas operativos distintos.</para>
+      <para>Más allá, DHIS 2 es también independiente de plataforma en relación al Sistema de Gestión de Base de Datos. DHIS 2 utiliza el entorno de abstracción de bases de datos Hibernate y es compativle con cualquier sistema soportado por Hibernate, como PostgreSQL, MySQL, H2, MS SQL Server, Oracle y muchos otros. PostgreSQL es el sistema de base de datos recomendado para DHIS 2.</para>
     </section>
 
     <section>
       <title>Estrategias de despliegue - conectado (online) o desconectado (offline) </title>
-      <para>DHIS2 es una aplicación en red y puede ser accedida a través de Internet, en una intranet local y como un sistema instalado localmente. Las alternativas de despliegue de DHIS se definen en este capítulo como (1) despliegue offline (desconectado) (2) despliegue online (conectado) y (3) despliegue híbrido. El significado de cada una y las diferencias entre ellas se detallan en las secciones siguientes.</para>
+      <para>DHIS 2 es una aplicación en red y puede ser accedida a través de Internet, en una intranet local y como un sistema instalado localmente. Las alternativas de despliegue de DHIS se definen en este capítulo como (1) despliegue offline (desconectado) (2) despliegue online (conectado) y (3) despliegue híbrido. El significado de cada una y las diferencias entre ellas se detallan en las secciones siguientes.</para>
     <section>
     <title>Despliegue Offline (Desconectado)</title>
     <para>Un despligue offline implica que instalamos muchas instancias autónomas offline para los usuarios finales, generalmente a nivel de distrito. El sistema lo mantienen principalmente los usuarios, trabajadores de salud en distrito, que introducen los datos y generan reportes utilizando su servidor local. Típicamente hay también un equipo de superusuarios a nivel nacional que mantiene el sistema y realizar visitas regularmente a los despliegues en distritos. Los usuarios envían los datos hacia arriba en la jerarquía produciendo ficheros de intercambio de datos que se envían electrónicamente por email o físicamente por correo convencional o viajes del personal. Notemos que aunque haya una conexión reducida a Intenret para enviar emails, puede no ser suficiente para que el sistema sea online. Esta forma de despliegue tiene el beneficio claro de que funciona cuando no disponemos de una conectividad de Internet apropiada. Por otro lado hay algunos retos significativos en esta forma de desplique, que se describen a continuación.</para>
@@ -198,7 +198,7 @@
   </section>
   <section>
     <title>Alojamiento del servidor</title>
-    <para>El enfoque de despliegue online plantea la cuestión de dónde y cómo alojar el servidor que ejecutará la aplicación DHIS2. Típicamente hay varias opciones posibles:</para>
+    <para>El enfoque de despliegue online plantea la cuestión de dónde y cómo alojar el servidor que ejecutará la aplicación DHIS 2. Típicamente hay varias opciones posibles:</para>
     <orderedlist>
       <listitem>
         <para>Alojamiento interno en el Ministerio de Salud</para>
@@ -250,7 +250,7 @@
     <para>Los <emphasis>datos de paciente</emphasis> son datos relativos a un paciente individual, como son su diagnóstico, nombre, edad, historial médico previo, etc. Estos datos generalmente se basan en la interacción individual entre el paciente y el trabajador de salud. Por ejemplo, cuando un paciente visita un centro de salud pueden registrarse gran variedad de detalles, como la temperatura del paciente, su peso, y diversos tests sanguíneaos. Si este paciente obtiene un diagnóstico de "Anemia deficiente Vitamina B12, no especificado" correspondiente al código CIE-10 D51.9, esta interacción concreta puede registrarse como una instancia de "Anemia" en un sistema de información agregada. Los datos de paciente son importantes cuando queremos hacer un seguimiento longitudinal del progreso de un paciente en el tiempo. Por ejemplo, si queremos seguir cómo un paciente se adhiere y responde a un proceso de tratamiento de TB (que generalmente tiene una duración de 6-9 meses), necesitaremos información de datos de paciente.</para>
     <para> Los 
    <emphasis>datos agregados</emphasis> son la consolidación de datos relativos a múltiples pacientes, y por tanto no se puede rastrear el origen de los datos de un paciente concreto. Se trata generalmente de conteos, como la incidencia de Malaria, TB y otras enfermedades. Típicamente, los datos rutinarios con los que trabaja un establecimiento de salud so este tipo de estadísticas agregadas, y se utilizan para la generación de reportes e indicadores rutinarios, y lo que es más importante, para la planificación estratégica en el sistema de salud. Los datos agregados no pueden proporcionar el tipo de información detallada que dan los datos de nivel de paciente, pero es crucial para la planificación y orientación del funcionamiento de los sistemas de salud.</para>
-    <para>Digamos que entre unos y otros se encuentran los datos relativos a casos, o datos anónimos "de paciente". Es posible recoger numerosos detalles sobre el evento específico de salud sin necesidad de identificar al paciente involucrado. Las visitas de pacientes externos o internos, un nuevo caso de cólera, mortalidad materna, etc. son casos de uso comunes cuando queremos recopilar muchos más detalles que el mero conteo del número total de casos o visitas. Estos datos normalmente se registran en formularios en forma de listado, o en formularios de auditoría más detallados. Y estos datos de casos son diferentes de los datos agregados en el sentido de que contienen muchos detalles sobre un evento concreto, mientras que los datos agregados simplemente contarían cuántos eventos se producen de un cierto tipo, por ejemplo, cuántas visitas externas con diagnóstico principal "Malaria", o cuántas muertes maternas donde la fallecida no siguió el protocolo ANC, o cuántos brotes de cólera en niños menores de 5 años. En DHIS2 estos datos son recogidos mediante programas de tipo "evento único sin registro".</para>
+    <para>Digamos que entre unos y otros se encuentran los datos relativos a casos, o datos anónimos "de paciente". Es posible recoger numerosos detalles sobre el evento específico de salud sin necesidad de identificar al paciente involucrado. Las visitas de pacientes externos o internos, un nuevo caso de cólera, mortalidad materna, etc. son casos de uso comunes cuando queremos recopilar muchos más detalles que el mero conteo del número total de casos o visitas. Estos datos normalmente se registran en formularios en forma de listado, o en formularios de auditoría más detallados. Y estos datos de casos son diferentes de los datos agregados en el sentido de que contienen muchos detalles sobre un evento concreto, mientras que los datos agregados simplemente contarían cuántos eventos se producen de un cierto tipo, por ejemplo, cuántas visitas externas con diagnóstico principal "Malaria", o cuántas muertes maternas donde la fallecida no siguió el protocolo ANC, o cuántos brotes de cólera en niños menores de 5 años. En DHIS 2 estos datos son recogidos mediante programas de tipo "evento único sin registro".</para>
     <para>Los datos de paciente son muy confidenciales y por tanto deben ser protegidos para que ninguna persona no autorizada pueda obtenerlos. Cuando están en papel, deben ser archivados en un lugar seguro. En computadoras, los datos de paciente necesitan sistemas seguros con contraseñas, acceso restringido y logs de seguimiento.</para>
     <para>La preocupación por la seguridad de datos agregados no es tan crucial como lo es para los datos de paciente, ya que generalmente es imposible identificar una persona en particular con una estadística agregada. Sin embargo, los datos también pueden ser mal usados o malinterpretados por otros, y no deberían distribuirse sin unas políticas de difusión de datos adecuadas.
      </para>
@@ -271,7 +271,7 @@
         <para>Acceso a código fuente para favorecer la integración e interoperabilidad. La interoperabilidad entre diferentes aplicaciones software en el sector salud está tomando importancia creciente, lo que significa permitir que dos o más sistemas compartan datos y metadatos. Este trabajo es mucho más fácil, y a veces dependiente del código fuente que se disponibiliza a los desarrolladores que hacen la integración. Esta disponibilidad frecuentemente no es posible en el caso del software propietario. Y cuando lo es, supone costes enormes y obligaciones contractuales.</para>
       </listitem>
       <listitem>
-        <para>Las aplicaciones FOSS como DHIS2 típicamente están mantenidas por una red global de desarrolladores, y por tanto tiene acceso a conocimiento puntero en investigación y desarrollo (I+D).</para>
+        <para>Las aplicaciones FOSS como DHIS 2 típicamente están mantenidas por una red global de desarrolladores, y por tanto tiene acceso a conocimiento puntero en investigación y desarrollo (I+D).</para>
       </listitem>
     </itemizedlist>
   </section>

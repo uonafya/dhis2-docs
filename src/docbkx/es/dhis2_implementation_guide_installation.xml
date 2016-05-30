@@ -70,7 +70,7 @@ hibernate.hbm2ddl.auto = update</screen></para>
     <para>Abrimos el fichero <emphasis role="italic">bin/setclasspath.sh</emphasis> y añadimos las líneas que siguen. Lo primero será fijar la ubicación de nuestro Java Runtime Environment, lo segundo será dedicar memoria a Tomcat y lo tercero será fijar la ubicación en la que DHIS 2 buscará el fichero de configuración <emphasis role="italic">hibernate.properties</emphasis>. Es importante aquí que chequeemos que la ruta a la ubicación del JDK es correcta. Notemos que deberemos ajustar esto a nuestro entorno:</para>
     <para><screen>export JAVA_HOME=&apos;/usr/lib/jvm/java-7-openjdk&apos;
 export JAVA_OPTS=&apos;-Xmx6000m -Xms3000m -XX:MaxPermSize=800m -XX:PermSize=400m&apos;
-export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
+export DHIS 2_HOME=&apos;/home/dhis/config&apos;</screen></para>
     <para>Si necesitamos cambiar el <emphasis role="italic">puerto</emphasis> en el que Tomcat escucha las peticiones, podemos abrir el fichero de configuración de Tomcat <emphasis role="italic">/conf/server.xml</emphasis>, encontrar el elemento <emphasis role="italic">&lt;Connector&gt;</emphasis> que no está comentado y cambiar el valor de su atributo <emphasis role="italic">puerto</emphasis> por el número de puerto deseado.</para>
     <para>El log será nuestra primera fuente de información cuando queramos monitorear el comportamiento de Tomcat. Podemos ver fácilmente el log invocando <code>tail -f logs/catalina.out</code></para>
     <para><emphasis role="bold">Ejecutar DHIS 2</emphasis></para>
@@ -257,9 +257,9 @@ sudo /usr/sbin/update-rc.d -f tomcat defaults 81</screen>
       <title>Configuración básica de proxy inverso con Apache</title>
       <para>El servidor Apache HTTP es el más común. </para>
       <important>
-        <para>Utilizar nginx es la opción preferida de proxy inverso con DHIS2 y no deberíamos tratar de instalar nginx y Apache en el mismo servidor. Si hemos instalado nginx deberemos ignorar esta sección.</para>
+        <para>Utilizar nginx es la opción preferida de proxy inverso con DHIS 2 y no deberíamos tratar de instalar nginx y Apache en el mismo servidor. Si hemos instalado nginx deberemos ignorar esta sección.</para>
       </important>
-      <para>El servidor Apache HTTP es el tipo de servidor HTTP más utilizado en la actualidad. Dependiendo de la naturaleza exacta de nuestro despliegue, puede que necesitemos usar Apache como proxy inverso en nuestro servidor DHIS2. En esta sección describiremos cómo implementar una configuración sencilla de proxy inverso con Apache.</para>
+      <para>El servidor Apache HTTP es el tipo de servidor HTTP más utilizado en la actualidad. Dependiendo de la naturaleza exacta de nuestro despliegue, puede que necesitemos usar Apache como proxy inverso en nuestro servidor DHIS 2. En esta sección describiremos cómo implementar una configuración sencilla de proxy inverso con Apache.</para>
       <para>Primero necesitamos instalar unos pocos módulos de programas para Apache y habilitarlos.</para>
       <para><screen>sudo apt-get install apache2 libapache2-mod-proxy-html libapache2-mod-jk
 a2enmod proxy proxy_ajp proxy_connect</screen></para>
@@ -278,12 +278,12 @@ ProxyPassReverse /dhis  ajp://localhost:8009/dhis
 &lt;/Location&gt;     
 &lt;/IfModule&gt;
 </screen></para>
-      <para>ahora podemos reiniciar Tomcat y el servidor Apache HTTP, y entonces nuestra instancia DHIS2 está accesible en http://<emphasis>miservidor</emphasis>/dhis donde <emphasis>miservidor</emphasis> es el nombre de dominio de nuestro servidor. </para>
+      <para>ahora podemos reiniciar Tomcat y el servidor Apache HTTP, y entonces nuestra instancia DHIS 2 está accesible en http://<emphasis>miservidor</emphasis>/dhis donde <emphasis>miservidor</emphasis> es el nombre de dominio de nuestro servidor. </para>
     </section>
     <section>
       <title>Balanceo de carga básico con Apache y Tomcat</title>
       <para>El balanceo de carga puede emplearse para distribuir la carga del sistema de forma más equilibrada entre las múltiples instancias de Tomcat, en situaciones en las que el tráfico de los usuarios es demasiado grande para ser cubierta por una sola instancia de servidor. En este ejemplo, crearemos una arquitectura sencilla balanceada utilizando &quot;sticky sessions&quot; para distribuir a los usuarios entre dos instancias de Tomcat. </para>
-      <para>En primer lugar, necesitamos al menos dos instancias de Tomcat ejecutando DHIS2, que estén conectadas a la misma base de datos. Hay varias arquitecturas posibles, como ejecutar los servidores de aplicación (Tomcat) en máquinas separadas (virtuales) conectadas a un único servidor de bases de datos, o como ejecutar múltiples instancias de Tomcat y una base de datos en una máquina de gran capacidad en situaciones en las que no hay problemas de entrada/sailda, pero cuando el uso de CPU de una instancia de Tomcat limita el rendimiento total del sistema. En este escenario, configuraremos para conectar dos instancias Tomcat funcionando en la misma máquina con una única base de datos mediante un proxy inverso balanceado. Apache se ocupará de los detalles de definir qué instancia de Tomcat responde a cada cliente particular.</para>
+      <para>En primer lugar, necesitamos al menos dos instancias de Tomcat ejecutando DHIS 2, que estén conectadas a la misma base de datos. Hay varias arquitecturas posibles, como ejecutar los servidores de aplicación (Tomcat) en máquinas separadas (virtuales) conectadas a un único servidor de bases de datos, o como ejecutar múltiples instancias de Tomcat y una base de datos en una máquina de gran capacidad en situaciones en las que no hay problemas de entrada/sailda, pero cuando el uso de CPU de una instancia de Tomcat limita el rendimiento total del sistema. En este escenario, configuraremos para conectar dos instancias Tomcat funcionando en la misma máquina con una única base de datos mediante un proxy inverso balanceado. Apache se ocupará de los detalles de definir qué instancia de Tomcat responde a cada cliente particular.</para>
       <para>El primer paso es configurar nuestras instancias Tomcat. Las secciones previas han detallado cómo podemos hacer esto. Es importante recordar que ambas instancias Tomcat deberían estar configuradas para utilizar el mismo servidor de base de datos. Algunas modificaciones necesitan hacerse en el fichero server.xml para cada instancia de Tomcat, que se utilizará para identificar de forma única cada instancia. Deberíamos extraer dos copias de Tomcat en el directorio que escojamos. Modificaremos el fichero server.xml de modo que las líneas siguientes sean únicas para cada instancia: </para>
       <para><screen>&lt;Server port=&quot;<emphasis>800<emphasis>5</emphasis></emphasis>&quot; shutdown=&quot;SHUTDOWN&quot;&gt;
 ...
@@ -291,7 +291,7 @@ ProxyPassReverse /dhis  ajp://localhost:8009/dhis
 ...
 
 &lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;localhost&quot; jvmRoute=&quot;<emphasis>jvm1</emphasis>&quot;&gt;</screen></para>
-      <para>Aquí los parámetros importantes son el puerto de servidor, el puerto de conector AJP, y el identificador <parameter>jvmRoute</parameter>. El identificador <parameter>jvmRoute</parameter> se adjuntará al JSESSIONID de manera que Apache sabrá qué instancia de Tomcat debe ser enrutada a una sesión concreta. Los parámetros deben ser únicos para cada instancia de Tomcat. Después de configurar Tomcat, montaremos DHIS2 de acuerdo al procedimiento normal explicado en otras secciones de este manual.</para>
+      <para>Aquí los parámetros importantes son el puerto de servidor, el puerto de conector AJP, y el identificador <parameter>jvmRoute</parameter>. El identificador <parameter>jvmRoute</parameter> se adjuntará al JSESSIONID de manera que Apache sabrá qué instancia de Tomcat debe ser enrutada a una sesión concreta. Los parámetros deben ser únicos para cada instancia de Tomcat. Después de configurar Tomcat, montaremos DHIS 2 de acuerdo al procedimiento normal explicado en otras secciones de este manual.</para>
 
       <para>A continuación, configuraremos el servidor Apache HTTP para realizar balanceo de carga. Las peticiones entrantes de clientes se asignarán a una de las instancias con una sticky session. Modificamos el fichero <filename>/etc/apache2/apache2.conf </filename> (u otro fichero apropiado dependiendo de nuestra configuración exacta) para difinir un proxy balanceador de carga y una ruta de proxy y de proxy inverso. Notemos que los números de puerto y los parámetros de <parameter>route</parameter> deben coincidir con el puerto Tomcat y los parámetros <parameter>jvmRoute</parameter> que definimos anteriormente en la configuración de Tomcat.</para>
       <screen>&lt;Proxy balancer://dhiscluster&gt;

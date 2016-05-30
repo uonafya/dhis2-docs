@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "docbookV4.4/docbookx.dtd" []>
 <chapter>
-  <title>Data dimensions in DHIS2</title>
+  <title>Data dimensions in DHIS 2</title>
   <section>
     <title>The core building blocks describing the data</title>
-    <para>A data value in DHIS2 (core module for aggregated data) is at minimum described by three dimensions, 1) data element, 2) organisation unit, and 3) period, which also forms the core building blocks of the data model. E.g. if you want to know how many children that were immunised for measles in Gerehun CHC in December 2009, the three dimensions to that value are the Data Element &quot;Measles doses given&quot;, the Organisation Unit &quot;Gerehun CHC&quot;, and the Period &quot;Dec-09&quot;. All data values have at least these three dimensions describing What, Where and When.</para>
+    <para>A data value in DHIS 2 (core module for aggregated data) is at minimum described by three dimensions, 1) data element, 2) organisation unit, and 3) period, which also forms the core building blocks of the data model. E.g. if you want to know how many children that were immunised for measles in Gerehun CHC in December 2009, the three dimensions to that value are the Data Element &quot;Measles doses given&quot;, the Organisation Unit &quot;Gerehun CHC&quot;, and the Period &quot;Dec-09&quot;. All data values have at least these three dimensions describing What, Where and When.</para>
     <para><table frame="all">
         <title/>
         <tgroup cols="4">
@@ -202,10 +202,10 @@
   </section>
   <section>
     <title>The organisation unit dimension</title>
-    <para>Organisation units in DHIS2 can be either any type of health facility like Community Health Centres or referral hospitals, or an administrative unit like &quot;MoHS Sierra Leone&quot;, &quot;Bo District&quot; or &quot;Baoma Chiefdom&quot;. Orgunits are represented in a default hierarchy following the health system at large, and are therefore assigned an organisational level. E.g. Sierra Leone has 4 levels; National, District, Chiefdom, and PHU, and all orgunits are linked to one of these levels. An orgunit hierarchy in DHIS can have any number of levels. Normally data is collected at the lowest level, at the PHUs, and then data values are linked to individual PHUs.  When designing reports at higher levels with data aggregated by chiefdom or district, the DHIS will use the hierarchy structure to sum up all the health facilities&apos; data for any given unit at any level. The orgunit level capturing the data always represents the lowest level of detail that is possible to use in data analysis, and the organisational levels define the available levels of aggregation along a geographical dimension.</para>
+    <para>Organisation units in DHIS 2 can be either any type of health facility like Community Health Centres or referral hospitals, or an administrative unit like &quot;MoHS Sierra Leone&quot;, &quot;Bo District&quot; or &quot;Baoma Chiefdom&quot;. Orgunits are represented in a default hierarchy following the health system at large, and are therefore assigned an organisational level. E.g. Sierra Leone has 4 levels; National, District, Chiefdom, and PHU, and all orgunits are linked to one of these levels. An orgunit hierarchy in DHIS can have any number of levels. Normally data is collected at the lowest level, at the PHUs, and then data values are linked to individual PHUs.  When designing reports at higher levels with data aggregated by chiefdom or district, the DHIS will use the hierarchy structure to sum up all the health facilities&apos; data for any given unit at any level. The orgunit level capturing the data always represents the lowest level of detail that is possible to use in data analysis, and the organisational levels define the available levels of aggregation along a geographical dimension.</para>
     <section>
       <title>Organisation unit group sets and groups</title>
-      <para>While PHU is the lowest geographical level for disaggregation in DHIS2 there are ways to flexibly group organisation units into any number of dimensions by using the group sets and groups functionality. E.g. if all PHUs are given an official type like CHC, CHP, MCHP etc. it is possible to create an orgunit group set called &quot;Orgunit type&quot; and add groups with the names of the  types mentioned above. Then you can link your orgunits to their corresponding groups (orgunit types). Other common orgunit dimensions are Rural/Urban (Rural, Urbal, Peri-urban), and Ownership (Public, Private. NGO etc.). When analysing data from the PHU level it then becomes possible to aggregate data by these dimensions, e.g. look at Measles immunisation in BO district by the type of PHU in stead of the PHUs themselves.</para>
+      <para>While PHU is the lowest geographical level for disaggregation in DHIS 2 there are ways to flexibly group organisation units into any number of dimensions by using the group sets and groups functionality. E.g. if all PHUs are given an official type like CHC, CHP, MCHP etc. it is possible to create an orgunit group set called &quot;Orgunit type&quot; and add groups with the names of the  types mentioned above. Then you can link your orgunits to their corresponding groups (orgunit types). Other common orgunit dimensions are Rural/Urban (Rural, Urbal, Peri-urban), and Ownership (Public, Private. NGO etc.). When analysing data from the PHU level it then becomes possible to aggregate data by these dimensions, e.g. look at Measles immunisation in BO district by the type of PHU in stead of the PHUs themselves.</para>
       <section>
         <title>Alternative orgunit hierarchies - advanced use of group sets and groups</title>
         <para>A more advanced use of orgunit group sets and groups is to create alternative hierarchies e.g. use administrative borders from other ministries. In Sierra Leone that could mean an alternative hierarchy of 1:MoHS, 2:Districts, and 3: Local councils,  instead of the 4 level hierarchy with  chiefdoms and PHUs. E.g. if all PHUs where linked to a specific local council it would be possible to look at data aggregated by local council instead of chiefdom. Then you would first need to create a group set called &quot;Local council&quot; and then create one orgunit group for every local council, and finally link all PHUs to their corresponding local council group.</para>
@@ -279,7 +279,7 @@
       <para>Groups that are not members of group sets are more or less useless for analysis (should we allow this at all?). With all the groups you get by e.g. including all different diagnoses as groups the full list of groups does not makes sense in any pivot table, and you easily get duplicates in your pivot tables since data elements or indicators are members of multiple groups. This can be controlled by the use of group sets. So the recommodation is to assign all your groups to a group set, and then you pull the group sets you need into your reports and analysis. </para>
       <para>It is also recommended to have one group set that is used for the major organising of all data in e.g. a pivot table, e.g use health programs or other larger themes for data elements or indiactors that together cover all the data. That will provide a nicely organised overview of all your raw data or indicator data.</para>
       <para>The resource table gives all groupsets as columns with groups as rows, and 1 DE per row.
-This means that all groupsets are joined in when e.g. creating a view to a pivot table. Resource tables have to be generated from the Mainteance-&gt;Data Administration-&gt;Resource Table window, and more information on this is available in a later chapter called Data Administration in DHIS2 or from the inline help text in that window. 
+This means that all groupsets are joined in when e.g. creating a view to a pivot table. Resource tables have to be generated from the Mainteance-&gt;Data Administration-&gt;Resource Table window, and more information on this is available in a later chapter called Data Administration in DHIS 2 or from the inline help text in that window. 
 </para>
     </section>
   </section>
@@ -288,11 +288,11 @@ This means that all groupsets are joined in when e.g. creating a view to a pivot
     <para>The period dimension becomes an important factor when analysing data over time e.g. when looking at cumulative data, when creating quarterly or annual aggregated reports, or when doing analysis that combines data with different characteristics like monthly routine data, annual census/population data or six-monthly staff data.</para>
     <section>
       <title>Period Types</title>
-      <para>In DHIS2 the periods are organised according to a set of fixed period types: 1) Daily, 2) Weekly, 3) Monthly, 4) Quarterly, 5) Six-monthly, 6) Yearly, 7) Two-yearly, and 8) a special period type called Relative.
+      <para>In DHIS 2 the periods are organised according to a set of fixed period types: 1) Daily, 2) Weekly, 3) Monthly, 4) Quarterly, 5) Six-monthly, 6) Yearly, 7) Two-yearly, and 8) a special period type called Relative.
 
 </para>
       <para>As a rule of thumb all organisation units should collect the same data using the same frequency or periodicity, so first of all the periods play an important role in standardising data collection across the country. A data entry form therefore needs to know its period type to make sure data is always collected according to the correct and same periodicity across the country. </para>
-      <para>It is possible however to collect the same data elements using different period types by assigning the same data elements to multiple data sets with different period types, however then it becomes crucial to make sure no orgunit is collecting data using both data sets/period types as that would create overlap and duplication of data values. If set up correctly the aggregation service in DHIS2 (through datamart and report tables) will aggregate the data together, e.g. the monthly data from one part of the country woth quarterly data from another part of the country into a national quarterly report. For simplicicty and to avoid data duplication we stronly advice to use the same period type for all orgunits for the same data elements when possible. </para>
+      <para>It is possible however to collect the same data elements using different period types by assigning the same data elements to multiple data sets with different period types, however then it becomes crucial to make sure no orgunit is collecting data using both data sets/period types as that would create overlap and duplication of data values. If set up correctly the aggregation service in DHIS 2 (through datamart and report tables) will aggregate the data together, e.g. the monthly data from one part of the country woth quarterly data from another part of the country into a national quarterly report. For simplicicty and to avoid data duplication we stronly advice to use the same period type for all orgunits for the same data elements when possible. </para>
     </section>
     <section>
       <title>Relative periods</title>
@@ -339,7 +339,7 @@ This means that all groupsets are joined in when e.g. creating a view to a pivot
       <para>While data needs to be collected on a given frequency to standardise data collection and management, this does not put limitations on the period types that can be used in data analysis and reports. Just like data gets aggregated up the organisational hierarchy, data is also aggregated according to a period hierarchy, so you can create quarterly and annual reports based on data that is being collected on a Monthly basis. The defined period type for a data entry form (data set) defines the lowest level of period detail possible in a report.</para>
       <section>
         <title>Sum and average aggregation along the period dimension</title>
-        <para>When aggregating data on the period dimension there are two options for how the calculation is done; 1) sum and 2) average, which is specified per data element in the DHIS2 through the use of the &apos;aggregation operator&apos; attribute in the Add/Edit Data Elements window.
+        <para>When aggregating data on the period dimension there are two options for how the calculation is done; 1) sum and 2) average, which is specified per data element in the DHIS 2 through the use of the &apos;aggregation operator&apos; attribute in the Add/Edit Data Elements window.
 
 </para>
         <para>Most of the data collected on a routinely basis should be aggregated by summing up the months or weeks, e.g. you create a quarterly report on Measles immunisation by summing up the three monthly values for &quot;Measles doses given&quot;. 
@@ -392,7 +392,7 @@ This means that all groupsets are joined in when e.g. creating a view to a pivot
     <para>This output table combines the two data element categories HIV_Age and Gender with the data element group set ART Group. The group enables subtotals for staging and entry points summing up the data elements in that group. Subtotals for either age groups and gender would be other possible columns to easily include  here.</para>
     <para>
 <screenshot>
-        <title>DHIS2 Login screen</title>
+        <title>DHIS 2 Login screen</title>
         <mediaobject>
           <imageobject>
             <imagedata width="60%" fileref="resources/images/data_dimensions/Ex_table2.jpg" format="JPG"/>
@@ -422,7 +422,7 @@ This means that all groupsets are joined in when e.g. creating a view to a pivot
     <para>As we have seen, this is not a very useful representation, as Morbidity is organized into new cases, follow-ups, referrals, and then again in age groups. Also, we do not see the various diagnoses. The first step is to include the diagnoses field (which is a group set), which is done by dragging the &quot;diagnosis&quot; field down to be a row field, as shown in the figure below, and to add the group set called &quot;morbiditymortality&quot; in the column field to display new cases, follow-up, and referrals.</para>
     <para>
 <screenshot>
-        <title>DHIS2 Login screen</title>
+        <title>DHIS 2 Login screen</title>
         <mediaobject>
           <imageobject>
             <imagedata width="60" align="center" fileref="resources/images/data_dimensions/pivot_diagnoses.jpg" format="JPG"/>
@@ -452,7 +452,7 @@ This means that all groupsets are joined in when e.g. creating a view to a pivot
     <para>The idea of using group sets is that you can combine, in any set, different data elements. Thus, if we add the mortality data (by checking it from the drop-down menu of the main_de_groups field, and moving this field out of the table) we can see also the deaths, since the mortality data elements have been included as a &quot;death&quot; group in the &quot;morbiditymortality&quot; group set. The result is shown below.</para>
     <para>
 <screenshot>
-        <title>DHIS2 Login screen</title>
+        <title>DHIS 2 Login screen</title>
         <mediaobject>
           <imageobject>
             <imagedata width="60%" align="center" fileref="resources/images/data_dimensions/pivot_diagnoses_all.jpg" format="JPG"/>
