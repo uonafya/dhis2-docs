@@ -10438,6 +10438,29 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <para>To change the parameter, please use the strategy
         parameter:<screen>POST /api/trackedEntityInstances?strategy=CREATE_AND_UPDATE</screen></para>
     </section>
+    <section>
+      <title>Create and enroll tracked entity instances</title>
+      <para>It is also possible to both create (and update) a tracked entity instance and at the same time enroll into a program.</para>
+      <screen>{
+    "trackedEntity": "tracked-entity-id",
+    "orgUnit": "org-unit-id",
+    "attributes": [ {
+        "attribute": "attribute-id",
+        "value": "attribute-value"
+    } ],
+    "enrollments": [ {
+        "orgUnit": "org-unit-id",
+        "program": "program-id",
+        "dateOfEnrollment": "2013-09-17",
+        "dateOfIncident": "2013-09-17"
+     }, {
+        "orgUnit": "org-unit-id",
+        "program": "program-id",
+        "dateOfEnrollment": "2013-09-17",
+        "dateOfIncident": "2013-09-17"
+     } ]
+}</screen>
+    </section>
   </section>
   <section>
     <title>Tracked entity instance query</title>
