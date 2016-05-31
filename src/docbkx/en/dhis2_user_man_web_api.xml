@@ -1190,15 +1190,16 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
         continue our example from the last section and use a <emphasis role="italic"
           >constant</emphasis>. Let&apos;s assume that the id is <emphasis role="italic"
           >abc123</emphasis>, then all you need to do is the send the DELETE request to the endpoint
-        + id:<screen>curl -X DELETE -u user:password
-http://server/api/constants/ID</screen></para>
+        +
+        id:<screen>curl -X DELETE -u user:password
+http://server/api/24/constants/ID</screen></para>
       <para>A successful delete should return HTTP status 204 (no content).</para>
     </section>
     <section>
       <title>Adding and removing objects to/from collections</title>
       <para>In order to add or remove objects to or from a collection of objects you can use the
         following
-        pattern:<screen>/api/{collection-object}/{collection-object-id}/{collection-name}/{object-id}</screen></para>
+        pattern:<screen>/api/24/{collection-object}/{collection-object-id}/{collection-name}/{object-id}</screen></para>
       <para>You should use the POST method to add, and the DELETE method to remove an object. The
         components of the pattern are:</para>
       <itemizedlist>
@@ -1220,9 +1221,9 @@ http://server/api/constants/ID</screen></para>
       </itemizedlist>
       <para>As an example, in order to remove a data element with identifier IDB from a data element
         group with identifier IDA you can do a DELETE
-        request:<screen>DELETE /api/dataElementGroups/IDA/dataElements/IDB</screen></para>
+        request:<screen>DELETE /api/24/dataElementGroups/IDA/dataElements/IDB</screen></para>
       <para>To add a category option with identifier IDB to a category with identifier IDA you can
-        do a POST request:<screen>POST /api/categories/IDA/categoryOptions/IDB</screen></para>
+        do a POST request:<screen>POST /api/24/categories/IDA/categoryOptions/IDB</screen></para>
     </section>
     <section>
       <title>Validating payloads</title>
@@ -1266,7 +1267,7 @@ http://server/api/constants/ID</screen></para>
       <para>The format for updating a single property is the same as when you are updating a
         complete object, just with only 1 property in the JSON/XML file,
         i.e.:<screen>curl -X PATCH -d &quot;{\&quot;name\&quot;: \&quot;New Name\&quot;}&quot; -H &quot;Content-Type: application/json&quot; 
--u admin:district https://play.dhis2.org/dev/api/dataElements/fbfJHSPpUQD/name</screen></para>
+-u admin:district https://play.dhis2.org/dev/api/24/dataElements/fbfJHSPpUQD/name</screen></para>
       <para>Please note that we are including the property name two times, one time in the payload,
         and one time in the endpoint, the generic endpoint for this is <emphasis role="italic"
           >/api/type/id/property-name</emphasis>, and the <emphasis role="italic"
@@ -1278,7 +1279,7 @@ http://server/api/constants/ID</screen></para>
   &quot;name&quot;: &quot;Updated Name&quot;,
   &quot;zeroIsSignificant&quot;: true
 }</screen><screen>curl -X PATCH -d @file.json -H &quot;Content-Type: application/json&quot; 
--u admin:district https://play.dhis2.org/dev/api/dataElements/fbfJHSPpUQD</screen></para>
+-u admin:district https://play.dhis2.org/dev/api/24/dataElements/fbfJHSPpUQD</screen></para>
     </section>
   </section>
   <section>
@@ -1872,12 +1873,12 @@ http://server/api/constants/ID</screen></para>
       contents from a database-external file store. The <emphasis role="italic"
         >FileResource</emphasis> object is stored in the database like any other but the content
       (file) is stored elsewhere and is retrievable using the contained reference <emphasis
-        role="italic">(storageKey)</emphasis>.<screen>/api/fileResources</screen></para>
+        role="italic">(storageKey)</emphasis>.<screen>/api/24/fileResources</screen></para>
     <para>The contents of a file resources is not directly accessible but is referenced from other
       objects (such as data values) to store binary content of virtually unlimited size.</para>
     <para>Creation of the file resource itself is done through the <emphasis role="italic"
         >api/fileResources</emphasis> endpoint as a multipart upload
-      POST-request:<screen>curl -X POST -v -F &quot;file=@/Path/to/file;filename=name-of-file.png&quot; https://server/api/fileResources</screen></para>
+      POST-request:<screen>curl -X POST -v -F &quot;file=@/Path/to/file;filename=name-of-file.png&quot; https://server/api/24/fileResources</screen></para>
     <para>The only form parameter required is the <emphasis role="italic">file</emphasis> which is
       the file to upload. The filename and content-type should also be included in the request (this
       is handled for you by any Web browser) but will be replaced by defaults when not
@@ -1919,7 +1920,7 @@ http://server/api/constants/ID</screen></para>
       we need to check the updated <emphasis role="italic">storageStatus</emphasis> or otherwise
       retrieve the meta-data of the file, the <emphasis role="italic">fileResources</emphasis>
       endpoint can be
-      queried.<screen>curl -v https://server/api/fileResources/xm4JwRwke0i -H &quot;Accept: application/json&quot;</screen></para>
+      queried.<screen>curl -v https://server/api/24/fileResources/xm4JwRwke0i -H &quot;Accept: application/json&quot;</screen></para>
     <para>This request will return the <emphasis role="italic">FileResource</emphasis> object as
       seen in the response of the above example.</para>
     <section>
@@ -2013,7 +2014,7 @@ http://server/api/constants/ID</screen></para>
       <title>Data set and program export with dependencies</title>
       <para>When you want to move a whole set of data set or program metadata from one server to
         another (possibly empty) server, we have two special endpoints for just that
-        purpose:<screen>/api/dataSets/ID/metadata.json</screen><screen>/api/programs/ID/metadata.json</screen></para>
+        purpose:<screen>/api/24/dataSets/ID/metadata.json</screen><screen>/api/24/programs/ID/metadata.json</screen></para>
       <para>These exports can be imported both using the old importer at <emphasis role="italic"
           >/api/metadata</emphasis> and the new importer at <emphasis role="italic"
           >/api/23/metadata</emphasis>.</para>
@@ -2135,7 +2136,7 @@ http://server/api/constants/ID</screen></para>
           <emphasis role="italic">dataValueSets</emphasis> resource. A data value set represents a
         set of data values which have a logical relationship, usually from being captured off the
         same data entry form. We follow the link to the HTML representation which will take us to
-          <link xl:href="http://play.dhis2.org/demo/api/dataValueSets"/>. The format looks like
+          <link xl:href="http://play.dhis2.org/demo/api/24/dataValueSets"/>. The format looks like
         this:</para>
       <screen language="xml">&lt;dataValueSet xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot; dataSet=&quot;dataSetID&quot;
   completeDate=&quot;date&quot; period=&quot;period&quot; orgUnit=&quot;orgUnitID&quot; attributeOptionCombo=&quot;aocID&quot;&gt;
@@ -2166,11 +2167,11 @@ http://server/api/constants/ID</screen></para>
       <para>From the example we can see that we need to identify the period, the data set, the org
         unit (facility) and the data elements for which to report.</para>
       <para>To obtain the identifier for the data set we return to the entry point at <link
-          xl:href="http://play.dhis2.org/demo/api"/> and follow the embedded link pointing at the
+          xl:href="http://play.dhis2.org/demo/api/24"/> and follow the embedded link pointing at the
           <emphasis role="italic">dataSets</emphasis> resource located at <link
-          xl:href="http://play.dhis2.org/demo/api/dataSets"/>. From there we find and follow the
+          xl:href="http://play.dhis2.org/demo/api/24/dataSets"/>. From there we find and follow the
         link to the <emphasis role="italic">Mortality &lt; 5 years</emphasis> data set which leads
-        us to <link xl:href="http://play.dhis2.org/demo/api/dataSets/pBOMPrpg1QX"/>. The resource
+        us to <link xl:href="http://play.dhis2.org/demo/api/24/dataSets/pBOMPrpg1QX"/>. The resource
         representation for the <emphasis role="italic">Mortality &lt; 5 years</emphasis> data set
         conveniently advertises links to the data elements which are members of it. From here we can
         follow these links and obtain the identifiers of the data elements. For brevity we will only
@@ -2182,8 +2183,8 @@ http://server/api/constants/ID</screen></para>
           role="italic">dataSet</emphasis> representation conveniently provides link to org units
         which report on it so we search for<emphasis role="italic"> Ngelehun CHC</emphasis> and
         follow the link to the HTML representation at <link
-          xl:href="http://play.dhis2.org/demo/api/organisationUnits/DiszpKrYNg8"/>, which tells us
-        that the identifier of this org unit is <emphasis role="italic"
+          xl:href="http://play.dhis2.org/demo/api/24/organisationUnits/DiszpKrYNg8"/>, which tells
+        us that the identifier of this org unit is <emphasis role="italic"
         >DiszpKrYNg8</emphasis>.</para>
       <para>From our case-based data we assume that we have 12 cases of measles, 14 cases of
         dysentery and 16 cases of cholera. We have now gathered enough information to be able to put
@@ -2210,11 +2211,11 @@ http://server/api/constants/ID</screen></para>
         transferring data using HTTP. First we save the data value set XML content in a file called
           <emphasis role="italic">datavalueset.xml</emphasis> . From the directory where this file
         resides we invoke the following from the command line:</para>
-      <screen>curl -d @datavalueset.xml &quot;https://play.dhis2.org/demo/api/dataValueSets&quot; 
--H &quot;Content-Type:application/xml&quot; -u admin:district -v</screen>
+      <screen>curl -d @datavalueset.xml &quot;https://play.dhis2.org/demo/api/24/dataValueSets&quot; 
+  -H &quot;Content-Type:application/xml&quot; -u admin:district -v</screen>
       <para>For sending JSON content you must set the content-type header
-        accordingly:<screen>curl -d @datavalueset.json &quot;https://play.dhis2.org/demo/api/dataValueSets&quot; 
--H &quot;Content-Type:application/json&quot; -u admin:district -v</screen></para>
+        accordingly:<screen>curl -d @datavalueset.json &quot;https://play.dhis2.org/demo/api/24/dataValueSets&quot; 
+  -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen></para>
       <para>The command will dispatch a request to the demo Web API, set <emphasis role="italic"
           >application/xml</emphasis> as the content-type and authenticate using admin/district as
         username/password. If all goes well this will return a <emphasis role="italic">200
@@ -2235,8 +2236,8 @@ http://server/api/constants/ID</screen></para>
         period and organisation unit. This example will show us how to send large bulks of data
         values which don&apos;t necessarily are logically related.</para>
       <para>Again we will interact with the with <link
-          xl:href="http://play.dhis2.org/demo/api/dataValueSets"/> resource. This time we will not
-        specify the dataSet and completeDate attributes. Also, we will specify the period and
+          xl:href="http://play.dhis2.org/demo/api/24/dataValueSets"/> resource. This time we will
+        not specify the dataSet and completeDate attributes. Also, we will specify the period and
         orgUnit attributes on the individual data value elements instead of on the outer data value
         set element. This will enable us to send data values for various periods and org
         units:</para>
@@ -2261,11 +2262,11 @@ http://server/api/constants/ID</screen></para>
 &quot;Ix2HsbDMLea&quot;,&quot;201401&quot;,&quot;DiszpKrYNg8&quot;,&quot;bRowv6yZOF2&quot;,&quot;bRowv6yZOF2&quot;,&quot;2&quot;
 &quot;eY5ehpbEsB7&quot;,&quot;201401&quot;,&quot;DiszpKrYNg8&quot;,&quot;bRowv6yZOF2&quot;,&quot;bRowv6yZOF2&quot;,&quot;3&quot;</screen></para>
       <para>We test by using cURL to send the data values in XML format:</para>
-      <screen>curl -d @datavalueset.xml &quot;https://play.dhis2.org/demo/api/dataValueSets&quot; 
+      <screen>curl -d @datavalueset.xml &quot;https://play.dhis2.org/demo/api/24/dataValueSets&quot; 
 -H &quot;Content-Type:application/xml&quot; -u admin:district -v</screen>
       <para>Note that when using CSV format you must use the binary data option to preserve the
         line-breaks in the CSV
-        file:<screen>curl --data-binary @datavalueset.csv &quot;https://play.dhis2.org/demo/api/dataValueSets&quot; 
+        file:<screen>curl --data-binary @datavalueset.csv &quot;https://play.dhis2.org/demo/24/api/dataValueSets&quot; 
 -H &quot;Content-Type:application/csv&quot; -u admin:district -v</screen></para>
       <para>The data value set resource provides an XML response which is useful when you want to
         verify the impact your request had. The first time we send the data value set request above
@@ -2349,7 +2350,7 @@ http://server/api/constants/ID</screen></para>
       </table>
       <para>All parameters are optional and can be supplied as query parameters in the request URL
         like this:</para>
-      <screen>api/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=name&amp;dryRun=true&amp;importStrategy=CREATE</screen>
+      <screen>/api/24/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=name&amp;dryRun=true&amp;importStrategy=CREATE</screen>
       <para>They can also be supplied as XML attributes on the data value set element like below.
         XML attributes will override query string parameters.</para>
       <screen>&lt;dataValueSet xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot; dataElementIdScheme=&quot;code&quot;
@@ -2491,7 +2492,7 @@ http://server/api/constants/ID</screen></para>
       <para>To generate a data value set template for a certain data set you can use the <emphasis
           role="italic">/api/dataSets/&lt;id&gt;/dataValueSet</emphasis> resource. XML and JSON
         response formats are supported. Example:</para>
-      <screen>api/dataSets/BfMAe6Itzgt/dataValueSet.json</screen>
+      <screen>/api/24/dataSets/BfMAe6Itzgt/dataValueSet.json</screen>
       <para>The parameters you can use to further adjust the output are described below:</para>
       <table frame="all">
         <title>Data values query parameters</title>
@@ -2542,7 +2543,7 @@ http://server/api/constants/ID</screen></para>
       <para>This example will show how to send individual data values to be saved in a request. This
         can be achieved by sending a <emphasis role="italic">POST</emphasis> request to the
           <emphasis role="italic">dataValues</emphasis> resource:</para>
-      <screen>https://play.dhis2.org/demo/api/dataValues</screen>
+      <screen>https://play.dhis2.org/demo/api/24/dataValues</screen>
       <para>The following query parameters are supported for this resource:</para>
       <table frame="all">
         <title>Data values query parameters</title>
@@ -2611,18 +2612,18 @@ http://server/api/constants/ID</screen></para>
           Conflict</emphasis> status code and descriptive text message. If the operation lead to a
         saved or updated value, <emphasis role="italic">200 OK</emphasis> will be returned. An
         example of a request looks like this:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&amp;value=12&quot;
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&amp;value=12&quot;
 -X POST -u admin:district -v</screen>
       <para>This resource also allows a special syntax for associating the value to an attribute
         option combination. This can be done by sending the identifier of the attribute combination,
         together with the identifier(s) of the attribute option(s) which the value represents within
         the combination. An example looks like this:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/dataValues?de=s46m5MS0hxu&amp;ou=DiszpKrYNg8&amp;pe=201308&amp;cc=dzjKKQq0cSO&amp;cp=wbrDrL2aYEc;btOyqprQ9e8&amp;value=26&quot;
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;ou=DiszpKrYNg8&amp;pe=201308&amp;cc=dzjKKQq0cSO&amp;cp=wbrDrL2aYEc;btOyqprQ9e8&amp;value=26&quot;
 -X POST -u admin:district -v</screen>
       <para>You can retrieve a data value with a request using the <emphasis role="italic"
           >GET</emphasis> method. The value, comment and followUp params are not applicable in this
         regard:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&quot;
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&quot;
 -X GET -u admin:district -v</screen>
       <para>You can delete a data value with a request using the <emphasis role="italic"
           >DELETE</emphasis> method. </para>
