@@ -12208,22 +12208,22 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       currently support sorting (we do however sort on name by default) and filtering of
       facilities.</para>
     <para>The entry point for the implementation can be found at http://&lt;server-url&gt;/api-fred
-      and the current version is located at http://&lt;server-url&gt;/api-fred/v1.</para>
+      and the current version is located at http://&lt;server-url>/ohie/fred/v1</para>
     <para>This section will give some simple examples of using the API.</para>
     <para>Get all facilities:</para>
-    <screen>curl -u username:password -X GET http://&lt;server-url&gt;/api-fred/v1/facilities.json</screen>
+    <screen>curl -u username:password -X GET http://&lt;server-url&gt;/ohie/fred/v1/facilities.json</screen>
     <para>Get a specific facility based on either identifier or UUID:</para>
-    <screen>curl -u username:password -X GET http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;id&gt;.json
-curl -u username:password -X GET http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;uuid&gt;.json</screen>
+    <screen>curl -u username:password -X GET http://&lt;server-url&gt;/ohie/fred/v1/facilities/&lt;id&gt;.json
+curl -u username:password -X GET http://&lt;server-url&gt;/ohie/fred/v1/facilities/&lt;uuid&gt;.json</screen>
     <para>Create a new facility:</para>
     <screen>curl -u username:password -X POST -d @new_facility.json
-  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities.json</screen>
+  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/ohie/fred/v1/facilities.json</screen>
     <para>Update a facility:</para>
     <screen>curl -u username:password -X POST -d @updated_facility.json
-  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;id&gt;.json
+  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/ohie/fred/v1/facilities/&lt;id&gt;.json
 
 curl -u username:password -X POST -d @updated_facility.json
-  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/api-fred/v1/facilities/&lt;uuid&gt;.json</screen>
+  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/ohie/fred/v1/facilities/&lt;uuid&gt;.json</screen>
   </section>
 </chapter>
 
