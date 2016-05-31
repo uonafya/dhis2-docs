@@ -4034,7 +4034,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     <para>To retrieve validation rules which are relevant for a specific data set, meaning
       validation rules with formulas where all data elements are part of the specific data set, you
       can make a GET request to to <emphasis role="italic">validationRules</emphasis> resource like
-      this:<screen>api/validationRules?dataSet=&lt;dataset-id&gt;</screen></para>
+      this:<screen>/api/24/validationRules?dataSet=&lt;dataset-id&gt;</screen></para>
     <para>The validation rules have a left side and a right side, which is compared for validity
       according to an operator. The valid operator values are found in the table below.</para>
     <para>
@@ -4128,7 +4128,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         task. It is therefore run as an asynchronous process and only when explicitly requested.
         Starting the task is done by forming an empty POST request to the <emphasis role="italic"
           >dataIntegrity</emphasis> endpoint like so (demonstrated in curl
-        syntax):<screen>curl -X POST https://dhis.domain/api/dataIntegrity</screen></para>
+        syntax):<screen>curl -X POST https://dhis.domain/api/24/dataIntegrity</screen></para>
       <para>If successful the request will return HTTP 202 immediately. The location header of the
         response points to the resource used to check the status of the request. Forming a GET
         request to the given location yields an empty JSON response if the task has not yet
@@ -4139,7 +4139,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       <title>Fetching the result</title>
       <para>Once data integrity is finished running the result can be fetched from the <emphasis
           role="italic">system/taskSummaries</emphasis> resource like
-        so:<screen>curl -X GET https://dhis.domain/api/system/taskSummaries/DATAINTEGRITY</screen></para>
+        so:<screen>curl -X GET https://dhis.domain/api/24/system/taskSummaries/DATAINTEGRITY</screen></para>
       <para>The returned object contains a summary for each point of analysis, listing the names of
         the relevant integrity violations. As stated in the leading paragraph for this section the
         details of the analysis (and the resulting data) can be found in the user manual chapter on
@@ -4152,7 +4152,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     <section>
       <title>Aggregate indicators</title>
       <para>To retrieve indicators you can make a GET request to the indicators resource like
-        this:<screen>/api/indicators</screen></para>
+        this:<screen>/api/24/indicators</screen></para>
       <para>Indicators represent expressions which can be calculated and presented as a result. The
         indicator expressions are split into a numerator and denominator. The numerators and
         denominators are mathematical expressions which can contain references to data elements,
@@ -4233,7 +4233,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     <section>
       <title>Program indicators</title>
       <para>To retrieve program indicators you can make a GET request to the program indicators
-        resource like this:<screen>api/programIndicators</screen></para>
+        resource like this:<screen>/api/24/programIndicators</screen></para>
       <para>Program indicators can contain information collected in a program. Indicators have an
         expression which can contain references to data elements, attributes, constants and program
         variables. Variables which are allowed in expressions are described in the following
@@ -4281,7 +4281,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       <para>Expressions are mathematical formulas which can contain references to data elements,
         constants and organisation unit groups. To validate and get the textual description of an
         expression you can make a GET request to the expressions
-        resource:<screen>api/expressions/description?expression=&lt;expression-string&gt;</screen></para>
+        resource:<screen>/api/24/expressions/description?expression=&lt;expression-string&gt;</screen></para>
       <para>The response follows the standard JSON web message format. The <emphasis role="italic"
           >status</emphasis> property indicates the outcome of the validation and will be
         &quot;OK&quot; if successful and &quot;ERROR&quot; if failed. The <emphasis role="italic"
@@ -4306,7 +4306,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       <para>This section explains how you can register and un-register a data set as complete. To
         complete or un-complete a data set you will interact with the completeDataSetRegistrations
         resource:</para>
-      <screen>/api/completeDataSetRegistrations</screen>
+      <screen>/api/24/completeDataSetRegistrations</screen>
       <para>This resource supports the methods <emphasis role="italic">POST</emphasis> for
         registration and <emphasis role="italic">DELETE</emphasis> for un-registration. The
         following query parameters are supported:</para>
@@ -4406,9 +4406,9 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       </table>
       <para>The dataSet and orgUnit parameters can be repeated in order to include multiple data
         sets and organisation units. An example request looks like
-        this:<screen>curl &quot;https://play.dhis2.org/demo/api/completeDataSetRegistrations?
-dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate=2014-01-31
-&amp;orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; -H &quot;Accept:application/xml&quot; -u admin:district -v</screen></para>
+        this:<screen>curl &quot;https://play.dhis2.org/demo/api/24/completeDataSetRegistrations?dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX
+  &amp;startDate=2014-01-01&amp;endDate=2014-01-31&amp;orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot;
+  -H &quot;Accept:application/xml&quot; -u admin:district -v</screen></para>
       <para>You can get the response in <emphasis role="italic">xml</emphasis> and <emphasis
           role="italic">json</emphasis> format. You can indicate which response format you prefer
         through the <emphasis role="italic">Accept</emphasis> HTTP header like in the example above.
@@ -4421,7 +4421,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
     <para>This section explains how to approve, unapprove and check approval status using the
         <emphasis role="italic">dataApprovals</emphasis> resource. Approval is done per data set,
       period, organisation unit and attribute option
-      combo.<screen>/api/dataApprovals</screen></para>
+      combo.<screen>/api/24/dataApprovals</screen></para>
     <section>
       <title>Get approval status</title>
       <para>To get approval information for a data set you can issue a GET request similar to
@@ -4595,12 +4595,12 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
           <emphasis role="italic">dataApprovals</emphasis> resource. To un-approve data you can
         issue a <emphasis role="italic">DELETE</emphasis> request to the dataApprovals
         resource.</para>
-      <screen>POST DELETE api/dataApprovals</screen>
+      <screen>POST DELETE /api/24/dataApprovals</screen>
       <para>To accept data you can issue a <emphasis role="italic">POST</emphasis> request to the
           <emphasis role="italic">dataApprovals/acceptances</emphasis> resource. To un-accept data
         you can issue a <emphasis role="italic">DELETE</emphasis> request to the <emphasis
           role="italic">dataApprovals/acceptances</emphasis> resource.</para>
-      <screen>POST DELETE dataApprovals/acceptances</screen>
+      <screen>POST DELETE /api/24/dataApprovals/acceptances</screen>
       <para>These requests contain the following parameters:</para>
       <table frame="all">
         <title>Data approval action parameters</title>
@@ -4653,16 +4653,16 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <title>Bulk approve data</title>
       <para>You can approve a bulk of data records by posting to the<emphasis role="italic">
           api/dataApprovals/approvals</emphasis>
-        resource.<screen>POST api/dataApprovals/approvals</screen></para>
+        resource.<screen>POST /api/24/dataApprovals/approvals</screen></para>
       <para>You can unapprove a bulk of data records by posting to the <emphasis role="italic"
           >api/dataApprovals/unapprovals</emphasis>
-        resource.<screen>POST api/dataApprovals/unapprovals</screen></para>
+        resource.<screen>POST /api/24/dataApprovals/unapprovals</screen></para>
       <para>You can accept a bulk of records by posting to the <emphasis role="italic"
           >api/dataAcceptances/acceptances</emphasis>
-        resource.<screen>POST api/dataAcceptances/acceptances</screen></para>
+        resource.<screen>POST /api/24/dataAcceptances/acceptances</screen></para>
       <para>You can unaccept a bulk of records by posting to the <emphasis role="italic"
           >api/dataAcceptances/unacceptances</emphasis>
-        resource.<screen>POST api/dataAcceptances/unacceptances</screen></para>
+        resource.<screen>POST /api/24/dataAcceptances/unacceptances</screen></para>
       <para>The approval payload is supported as JSON and looks like
         this:<screen>{
   &quot;ds&quot;: [
@@ -4746,7 +4746,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         </table>
       </para>
       <para>Get all audits for data set with ID
-        &quot;lyLU2wR22tC&quot;:<screen>/api/audits/dataValue?ds=lyLU2wR22tC</screen></para>
+        &quot;lyLU2wR22tC&quot;:<screen>/api/24/audits/dataValue?ds=lyLU2wR22tC</screen></para>
     </section>
     <section>
       <title>Tracked entity data value audits</title>
@@ -4796,7 +4796,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         </tgroup>
       </table>
       <para>Get all audits which have data element ID eMyVanycQSC or
-        qrur9Dvnyt5:<screen>/api/audits/trackedEntityDataValue?de=eMyVanycQSC&amp;de=qrur9Dvnyt5</screen></para>
+        qrur9Dvnyt5:<screen>/api/24/audits/trackedEntityDataValue?de=eMyVanycQSC&amp;de=qrur9Dvnyt5</screen></para>
     </section>
     <section>
       <title>Tracked entity attribute value audits</title>
@@ -4846,7 +4846,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         </tgroup>
       </table>
       <para>Get all audits which have attribute with ID
-        VqEFza8wbwA:<screen>/api/audits/trackedEntityAttributeValue?tea=VqEFza8wbwA</screen></para>
+        VqEFza8wbwA:<screen>/api/24/audits/trackedEntityAttributeValue?tea=VqEFza8wbwA</screen></para>
     </section>
   </section>
   <section>
@@ -4855,7 +4855,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       notifications and general information to users. Messages are grouped into conversations. To
       interact with message conversations you can send POST and GET request to the <emphasis
         role="italic">messageConversations</emphasis>
-      resource.<screen>/api/messageConversations</screen>Messages are delivered to the DHIS 2
+      resource.<screen>/api/24/messageConversations</screen>Messages are delivered to the DHIS 2
       message inbox but can also be sent to the user&apos;s email addresses and mobile phones as
       SMS. In this example we will see how we can utilize the Web API to send, read and manage
       messages. We will pretend to be the <emphasis role="italic">DHIS Administrator</emphasis> user
@@ -4909,9 +4909,9 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <para>Since we want to send a message to our friend the mobile user we need to look up her
         identifier. We do so by going to the Web API entry point and follow the link to the
           <emphasis role="italic">users</emphasis> resource at <link
-          xl:href="http://play.dhis2.org/demo/api/users"/>. We continue by following link to the
-        mobile user at <link xl:href="http://play.dhis2.org/demo/api/users/PhzytPW3g2J"/> where we
-        learn that her identifier is <emphasis role="italic">PhzytPW3g2J</emphasis>. We are now
+          xl:href="http://play.dhis2.org/demo/api/24/users"/>. We continue by following link to the
+        mobile user at <link xl:href="http://play.dhis2.org/demo/api/24/users/PhzytPW3g2J"/> where
+        we learn that her identifier is <emphasis role="italic">PhzytPW3g2J</emphasis>. We are now
         ready to put our XML message together to form a message where we want to ask the mobile user
         whether she has reported data for January 2014:</para>
       <screen>&lt;message xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot;&gt;
@@ -4925,8 +4925,8 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
           >message.xml</emphasis>. We use cURL to dispatch the message the the DHIS 2 demo instance
         where we indicate that the content-type is XML and authenticate as the <emphasis
           role="italic">admin</emphasis> user:</para>
-      <screen>curl -d @message.xml &quot;https://play.dhis2.org/demo/api/messageConversations&quot; 
--H &quot;Content-Type:application/xml&quot; -u admin:district -X POST -v</screen>
+      <screen>curl -d @message.xml &quot;https://play.dhis2.org/demo/api/24/messageConversations&quot; 
+  -H &quot;Content-Type:application/xml&quot; -u admin:district -X POST -v</screen>
       <para>A corresponding payload in JSON and POST command look like this:</para>
       <screen>{
   &quot;subject&quot;: &quot;Hey&quot;,
@@ -4950,7 +4950,8 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
     }
   ]
 }      </screen>
-      <screen>curl -d @message.json &quot;https://play.dhis2.org/demo/api/messageConversations&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -X POST -v</screen>
+      <screen>curl -d @message.json &quot;https://play.dhis2.org/demo/api/24/messageConversations&quot;
+  -H &quot;Content-Type:application/json&quot; -u admin:district -X POST -v</screen>
       <para>If all is well we receive a <emphasis role="italic">201 Created</emphasis> HTTP status
         code. Also note that we receive a <emphasis role="italic">Location </emphasis>HTTP header
         which value informs us of the URL of the newly created message conversation resource - this
@@ -4961,8 +4962,8 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
           role="italic">application/xml</emphasis> as the value to indicate that we are interested
         in the XML resource representation and we authenticate as the <emphasis role="italic"
           >mobile</emphasis> user:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/messageConversations&quot; 
--H &quot;Accept:application/xml&quot; -u mobile:district -X GET -v</screen>
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/messageConversations&quot; 
+  -H &quot;Accept:application/xml&quot; -u mobile:district -X GET -v</screen>
       <para>In response we get the following XML:</para>
       <screen>&lt;messageConversations xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot;
   link=&quot;https://play.dhis2.org/demo/api/messageConversations&quot;&gt;
@@ -4974,13 +4975,13 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
       <para>From the response we are able to read the identifier of the newly sent message which is
           <emphasis role="italic">ZjHHSjyyeJ2</emphasis>. Note that the link to the specific
         resource is embedded and can be followed in order to read the full message. From the
-        description at <link xl:href="http://play.dhis2.org/demo/api/messageConversations"/> we
+        description at <link xl:href="http://play.dhis2.org/demo/api/24/messageConversations"/> we
         learned that we can reply directly to an existing message conversation once we know the URL
         by including the message text as the request payload (body). We are now able to construct a
         URL for sending our reply:</para>
       <screen>curl -d &quot;Yes the Mortality data set has been reported&quot; 
-&quot;https://play.dhis2.org/demo/api/messageConversations/ZjHHSjyyeJ2&quot; 
--H &quot;Content-Type:text/plain&quot; -u mobile:district -X POST -v</screen>
+  &quot;https://play.dhis2.org/demo/api/24/messageConversations/ZjHHSjyyeJ2&quot; 
+  -H &quot;Content-Type:text/plain&quot; -u mobile:district -X POST -v</screen>
       <para>If all went according to plan you will receive a <emphasis role="italic">200
           OK</emphasis> status code.</para>
     </section>
@@ -5004,7 +5005,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         message conversation and the participating user. For example, to remove the user with id
           <emphasis role="italic">xE7jOejl9FI</emphasis> from the conversation with id <emphasis
           role="italic"
-        >jMe43trzrdi</emphasis>:<screen>curl https://play.dhis2.org/demo/api/messageConversations/jMe43</screen></para>
+        >jMe43trzrdi</emphasis>:<screen>curl https://play.dhis2.org/demo/api/24/messageConversations/jMe43</screen></para>
       <para>If the request was successful the server will reply with a <emphasis role="italic">200
           OK</emphasis>. The response body contains an XML or JSON object (according to the accept
         header of the request) containing the id of the removed
@@ -5017,12 +5018,12 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
           role="italic">messageConversations</emphasis> resource but follows slightly different
         semantics. For batch operations the conversation ids are given as query string parameters.
         The following example removes two separate message conversations for the current
-        user:<screen>curl &quot;https://play.dhis2.org/demo/api/messageConversations?mc=WzMRrCosqc0&amp;mc=lxCjiigqrJm&quot; 
--X DELETE -u admin:district -v</screen></para>
+        user:<screen>curl &quot;https://play.dhis2.org/demo/api/24/messageConversations?mc=WzMRrCosqc0&amp;mc=lxCjiigqrJm&quot; 
+  -X DELETE -u admin:district</screen></para>
       <para>If you have sufficient permissions, conversations can be removed on behalf of another
         user by giving an optional user id
-        parameter.<screen>curl &quot;https://play.dhis2.org/demo/api/messageConversations?mc=WzMRrCosqc0&amp;mc=lxCjiigqrJm&amp;user=PhzytPW3g2J&quot; 
--X DELETE -u admin:district -v</screen></para>
+        parameter.<screen>curl &quot;https://play.dhis2.org/demo/api/24/messageConversations?mc=WzMRrCosqc0&amp;mc=lxCjiigqrJm&amp;user=PhzytPW3g2J&quot; 
+  -X DELETE -u admin:district</screen></para>
       <para>As indicated, batch removals will return the same message format as for single
         operations. The list of removed objects will reflect successful removals performed.
         Partially errorenous requests (i.e. non-existing id) will therefore not cancel the entire
@@ -5056,8 +5057,8 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
     <section>
       <title>Reading interpretations</title>
       <para>To read interpretations we will interact with the <emphasis role="italic"
-          >api/interpretations</emphasis> resource. The output in JSON response format could look
-        like below (use e.g. api/interpretations.json):</para>
+          >/api/24/interpretations</emphasis> resource. The output in JSON response format could
+        look like below (use e.g. api/interpretations.json):</para>
       <screen>{
     &quot;interpretations&quot;: [{
         &quot;created&quot;: &quot;2013-10-07T11:37:19.273+0000&quot;,
@@ -5105,7 +5106,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         &quot;id&quot;: &quot;iB4Etq8yTE6&quot;
     }],
     &quot;type&quot;: &quot;map&quot;,
-    &quot;href&quot;: &quot;https://play.dhis2.org/demo/api/interpretations/d3BukolfFZI&quot;,
+    &quot;href&quot;: &quot;https://play.dhis2.org/demo/api/24/interpretations/d3BukolfFZI&quot;,
     &quot;id&quot;: &quot;d3BukolfFZI&quot;
 }</screen>
       <para>The map interpretation contains identifier and type information in the &quot;id&quot;
@@ -5117,7 +5118,7 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         to the URL to retrieve the data associated with the resource, as apposed to the metadata. As
         an example, by following the map link and appending /data one can retrieve a PNG (image)
         representation of the thematic map through the following URL:</para>
-      <screen>https://play.dhis2.org/demo/api/maps/bhmHJ4ZCdCd/data</screen>
+      <screen>https://play.dhis2.org/demo/api/24/maps/bhmHJ4ZCdCd/data</screen>
     </section>
     <section>
       <title>Writing interpretations</title>
@@ -5127,8 +5128,8 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         resource. The interpretation will be the request body. Based on this we can put together the
         following request using cURL:</para>
       <screen>curl -d &quot;This chart shows a significant ANC 1-3 dropout&quot; 
-&quot;https://play.dhis2.org/demo/api/interpretations/chart/EbRN2VIbPdV&quot; \
--H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
+  &quot;https://play.dhis2.org/demo/api/24/interpretations/chart/EbRN2VIbPdV&quot; \
+  -H &quot;Content-Type:text/plain&quot; -u admin:district</screen>
       <para>Second we will write a comment on the interpretation we just wrote. By looking at the
         interpretation response you will see that a <emphasis role="italic">Location</emphasis>
         header is returned. This header tells us the URL of the newly created interpretation and
@@ -5138,8 +5139,8 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
           xl:href="http://play.dhis2.org/demo/api/interpretations/{interpretationId}/comment"/> like
         this:</para>
       <screen>curl -d &quot;An intervention is needed&quot; 
-&quot;https://play.dhis2.org/demo/api/interpretations/j8sjHLkK8uY/comment&quot;
--H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
+  &quot;https://play.dhis2.org/demo/api/24/interpretations/j8sjHLkK8uY/comment&quot;
+  -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
       <para>You can also write interpretations for report tables in a similar way by interacting
         with the <link
           xl:href="http://app.dhis2.org/demo/api/interpretations/reportTable/{reportTableId}"/>. For
@@ -5147,17 +5148,17 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
         parameter to supply an organisation unit identifier in the case where the report table has
         an organisation unit report parameter:</para>
       <screen>curl -d &quot;This table reveals poor data quality&quot; 
-&quot;https://play.dhis2.org/demo/api/interpretations/reportTable/xIWpSo5jjT1?ou=O6uvpzGd5pu&quot;
--H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
+  &quot;https://play.dhis2.org/demo/api/24/interpretations/reportTable/xIWpSo5jjT1?ou=O6uvpzGd5pu&quot;
+  -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
     </section>
     <section>
       <title>Creating, updating and removing interpretation comments</title>
       <para> Creating comments to existing interpretations:
-        <screen>POST &quot;plain-text comment&quot; to /api/interpretations/ID/comments</screen></para>
+        <screen>POST &quot;plain-text comment&quot; to /api/24/interpretations/ID/comments</screen></para>
       <para> Updating comments in existing interpretations:
-        <screen>PUT &quot;plain-text comment&quot; to /api/interpretations/ID/comments/ID</screen></para>
+        <screen>PUT &quot;plain-text comment&quot; to /api/24/interpretations/ID/comments/ID</screen></para>
       <para> Removing comments in existing interpretations:
-        <screen>DELETE /api/interpretations/ID/comments/ID</screen></para>
+        <screen>DELETE /api/24/interpretations/ID/comments/ID</screen></para>
     </section>
   </section>
   <section>
@@ -5278,19 +5279,19 @@ dataSet=pBOMPrpg1QX&amp;dataSet=pBOMPrpg1QX&amp;startDate=2014-01-01&amp;endDate
     </table>
     <para>Some examples of valid URLs for retrieving various analytical representations are listed
       below.</para>
-    <screen>api/charts/R0DVGvXDUNP/data
-api/charts/R0DVGvXDUNP/data?date=2013-06-01
+    <screen>/api/24/charts/R0DVGvXDUNP/data
+/api/24/charts/R0DVGvXDUNP/data?date=2013-06-01
 
-api/reportTables/jIISuEWxmoI/data.html
-api/reportTables/jIISuEWxmoI/data.html?date=2013-01-01
-api/reportTables/FPmvWs7bn2P/data.xls
-api/reportTables/FPmvWs7bn2P/data.pdf
+/api/24/reportTables/jIISuEWxmoI/data.html
+/api/24/reportTables/jIISuEWxmoI/data.html?date=2013-01-01
+/api/24/reportTables/FPmvWs7bn2P/data.xls
+/api/24/reportTables/FPmvWs7bn2P/data.pdf
 
-api/maps/DHE98Gsynpr/data
-api/maps/DHE98Gsynpr/data?date=2013-07-01
+/api/24/maps/DHE98Gsynpr/data
+/api/24/maps/DHE98Gsynpr/data?date=2013-07-01
 
-api/reports/OeJsA6K1Otx/data.pdf
-api/reports/OeJsA6K1Otx/data.pdf?date=2014-01-01</screen>
+/api/24/reports/OeJsA6K1Otx/data.pdf
+/api/24/reports/OeJsA6K1Otx/data.pdf?date=2014-01-01</screen>
   </section>
   <section>
     <title>Plugins</title>
@@ -5544,7 +5545,7 @@ Ext.onReady( function() {
       </table>
       <para>We continue by adding one pre-defined and one dynamic pivot table to our HTML document.
         You can browse the list of available pivot tables using the Web API here: <link
-          xl:href="http://play.dhis2.org/demo/api/reportTables"/>.</para>
+          xl:href="http://play.dhis2.org/demo/api/24/reportTables"/>.</para>
       <screen>function setLinks() {
   DHIS.getTable({ url: base, el: &quot;table1&quot;, id: &quot;R0DVGvXDUNP&quot; });
 
@@ -5862,7 +5863,7 @@ Ext.onReady( function() {
       </table>
       <para>We continue by including two pre-defined charts and to dynamic charts to our HTML
         document. You can browse the list of available charts using the Web API here: <link
-          xl:href="http://play.dhis2.org/demo/api/charts"/>.</para>
+          xl:href="http://play.dhis2.org/demo/api/24/charts"/>.</para>
       <screen>function setLinks() {
   DHIS.getChart({ url: base, el: &quot;chart1&quot;, id: &quot;R0DVGvXDUNP&quot; });
 
@@ -6196,7 +6197,7 @@ Ext.onReady( function() {
       </table>
       <para>We continue by adding one pre-defined and one dynamically configured map to our HTML
         document. You can browse the list of available maps using the Web API here: <link
-          xl:href="http://play.dhis2.org/demo/api/maps"/>.</para>
+          xl:href="http://play.dhis2.org/demo/api/24/maps"/>.</para>
       <screen>function setLinks() {
   DHIS.getMap({ url: base, el: &quot;map1&quot;, id: &quot;ytkZY3ChM6J&quot; });
 
@@ -6226,8 +6227,7 @@ Ext.onReady( function() {
         section of the HTML document with the identifiers referred to in the plug-in
         Javascript.</para>
       <screen>&lt;div id=&quot;map1&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;map2&quot;&gt;&lt;/div&gt;
-</screen>
+&lt;div id=&quot;map2&quot;&gt;&lt;/div&gt;</screen>
       <para>To see a complete working example please visit <link
           xl:href="http://play.dhis2.org/portal/map.html"/>.</para>
     </section>
@@ -6286,7 +6286,7 @@ new Ext.ux.carousel.Carousel( &apos;chartCarousel&apos;, {
     <title>SQL views</title>
     <para>The SQL views resource allows you to create and retrieve the result set of SQL views. The
       SQL views can be executed directly against the database and render the result set through the
-      Web API resource.<screen>/api/sqlViews</screen></para>
+      Web API resource.<screen>/api/24/sqlViews</screen></para>
     <para>SQL views are useful for creating data views which may be more easily constructed with SQL
       compared combining the multiple objects of the Web API. As an example, lets assume we have
       been asked to provide a view of all organization units with their names, parent names,
@@ -6303,17 +6303,17 @@ ORDER BY oul.level, par.name, ou.name</screen>
       recent data available through the SQL view when it is retrieved from the server. You can first
       look up the SQL view from the api/sqlViews resource, then POST using the following
       command:</para>
-    <screen>curl &quot;https://play.dhis2.org/demo/api/sqlViews/dI68mLkP1wN/execute&quot; -X POST -u admin:district -v</screen>
+    <screen>curl &quot;https://play.dhis2.org/demo/api/24/sqlViews/dI68mLkP1wN/execute&quot; -X POST -u admin:district -v</screen>
     <para>The next step in the process is the retrieval of the data.The basic structure of the URL
       is as follows</para>
-    <screen>http://{server}/api/sqlViews/{id}/data(.csv)</screen>
+    <screen>http://{server}/api/24/sqlViews/{id}/data(.csv)</screen>
     <para>The <parameter>{server}</parameter> parameter should be replaced with your own server. The
       next part of the URL <parameter>/api/sqlViews/</parameter> should be appended with the
       specific SQL view identifier. Append either <parameter>data</parameter> for XML data or
         <parameter>data.csv</parameter> for comma delimited values. Support response formats are
       json, xml, csv, xls, html and html+css. As an example, the following command would retrieve
       XML data for the SQL view defined
-      above.<screen>curl &quot;https://play.dhis2.org/demo/api/sqlViews/dI68mLkP1wN/data.csv&quot; -u admin:district -v</screen></para>
+      above.<screen>curl &quot;https://play.dhis2.org/demo/api/24/sqlViews/dI68mLkP1wN/data.csv&quot; -u admin:district -v</screen></para>
     <para>There are three types of SQL views:<itemizedlist>
         <listitem>
           <para><emphasis role="italic">SQL view:</emphasis> Standard SQL views.</para>
@@ -6333,10 +6333,10 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>You can do simple filtering on the columns in the result set by appending <emphasis
           role="italic">criteria</emphasis> query parameters to the URL, using the column names and
         filter values separated by columns as parameter values, on the following format:</para>
-      <screen>/api/sqlViews/{id}/data?criteria=col1:value1&amp;criteria=col2:value2</screen>
+      <screen>/api/24/sqlViews/{id}/data?criteria=col1:value1&amp;criteria=col2:value2</screen>
       <para>As an example, to filter the SQL view result set above to only return organisation units
         at level 4 you can use the following URL:</para>
-      <screen>https://play.dhis2.org/demo/api/sqlViews/dI68mLkP1wN/data.csv?criteria=level:4</screen>
+      <screen>https://play.dhis2.org/demo/api/24/sqlViews/dI68mLkP1wN/data.csv?criteria=level:4</screen>
     </section>
     <section>
       <title>Variables</title>
@@ -6353,7 +6353,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         the following
         format:<screen>/api/sqlViews/{id}/data?var=key1:value1&amp;var=key2:value2</screen></para>
       <para>An example query corresponding to the example above can look like
-        this:<screen>/api/sqlViews/dI68mLkP1wN/data.json?var=valueType:int</screen></para>
+        this:<screen>/api/24/sqlViews/dI68mLkP1wN/data.json?var=valueType:int</screen></para>
       <para>The <emphasis role="italic">valueType</emphasis> variable will be subsituted with the
           <emphasis role="italic">int</emphasis> value, and the query will return data elements with
         int value type.</para>
@@ -6377,12 +6377,12 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>To get a list of your dashboards with basic information including identifier, name and
         link in JSON format you can make a <emphasis role="italic">GET</emphasis> request to the
         following URL:</para>
-      <screen>/api/dashboards.json</screen>
+      <screen>/api/24/dashboards.json</screen>
       <para>The dashboards resource will provide a list of dashboards. Remember that the dashboard
         object is shared so the list will be affected by the currently authenticated user. You can
         retrieve more information about a specific dashboard by following its link, similar to
         this:</para>
-      <screen>/api/dashboards/vQFhmLJU5sK.json</screen>
+      <screen>/api/24/dashboards/vQFhmLJU5sK.json</screen>
       <para>A dashboard contains information like name and creation date and an array of dashboard
         items. The response in JSON format will look similar to this response (certain information
         has been removed for the sake of
@@ -6426,7 +6426,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>A more tailored response can be obtained by specifying specific fields in the request.
         An example is provided below, which would return more detailed information about each object
         on a users dashboard.</para>
-      <screen>/api/dashboards/vQFhmLJU5sK/?fields=:all,dashboardItems[:all]</screen>
+      <screen>/api/24/dashboards/vQFhmLJU5sK/?fields=:all,dashboardItems[:all]</screen>
     </section>
     <section>
       <title>Searching dashboards</title>
@@ -6437,7 +6437,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         resources. You can do a search by making a <emphasis role="italic">GET</emphasis> request on
         the following resource URL pattern, where my-query should be replaced by the preferred
         search query:</para>
-      <screen>api/dashboards/q/my-query.json</screen>
+      <screen>/api/24/dashboards/q/my-query.json</screen>
       <para>JSON and XML response formats are supported. The response in JSON format will contain
         references to matching resources and counts of how many matches were found in total and for
         each type of resource. It will look similar to this:</para>
@@ -6496,7 +6496,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         resource.</para>
       <para>To remove a dashboard, you can make a <emphasis role="italic">DELETE</emphasis> request
         to the specific dashboard resource similar to this:</para>
-      <screen>/api/dashboards/vQFhmLJU5sK</screen>
+      <screen>/api/24/dashboards/vQFhmLJU5sK</screen>
     </section>
     <section>
       <title>Adding, moving and removing dashboard items and content</title>
@@ -6536,7 +6536,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>A <emphasis role="italic">POST</emphasis> request URL for adding a chart to a specific
         dashboard could look like this, where the last id query parameter value is the chart
         resource identifier:</para>
-      <screen>/api/dashboards/vQFhmLJU5sK/items/content?type=chart&amp;id=LW0O27b7TdD</screen>
+      <screen>/api/24/dashboards/vQFhmLJU5sK/items/content?type=chart&amp;id=LW0O27b7TdD</screen>
       <para>When adding resource of type map, chart, report table and app, the API will create and
         add a new item to the dashboard. When adding a resource of type users, reports, report
         tables and resources, the API will try to add the resource to an existing dashboard item of
@@ -6549,21 +6549,21 @@ ORDER BY oul.level, par.name, ou.name</screen>
         the dashboard, &lt;item-id&gt; should be replaced by the identifier of the dashboard item
         and &lt;index&gt; should be replaced by the new position of the item in the dashboard, where
         the index is
-        zero-based:<screen>/api/dashboards/&lt;dashboard-id&gt;/items/&lt;item-id&gt;/position/&lt;index&gt;</screen></para>
+        zero-based:<screen>/api/24/dashboards/&lt;dashboard-id&gt;/items/&lt;item-id&gt;/position/&lt;index&gt;</screen></para>
       <para>To remove a dashboard item completely from a specific dashboard a consumer can make a
           <emphasis role="italic">DELETE</emphasis> request to the below resource URL, where
         &lt;dashboard-id&gt; should be replaced by the identifier of the dashboard and
         &lt;item-id&gt; should be replaced by the identifier of the dashboard item. The dashboard
         item identifiers can be retrieved through a GET request to the dashboard resource
         URL.</para>
-      <screen>/api/dashboards/&lt;dashboard-id&gt;/items/&lt;item-id&gt;</screen>
+      <screen>/api/24/dashboards/&lt;dashboard-id&gt;/items/&lt;item-id&gt;</screen>
       <para>To remove a specific content resource within a dashboard item a consumer can make a
           <emphasis role="italic">DELETE</emphasis> request to the below resource URL, where
         &lt;content-resource-id&gt; should be replaced by the identifier of a resource associated
         with the dasboard item; e.g. the identifier of a report or a user. For instance, this can be
         used to remove a single report from a dashboard item of type reports, as opposed to removing
         the dashboard item completely:</para>
-      <screen>/api/dashboards/&lt;dashboard-id&gt;/items/&lt;item-id&gt;/content/&lt;content-resource-id&gt;</screen>
+      <screen>/api/24/dashboards/&lt;dashboard-id&gt;/items/&lt;item-id&gt;/content/&lt;content-resource-id&gt;</screen>
     </section>
   </section>
   <section>
@@ -6575,7 +6575,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       elements, periods and organisation units. Also, you can retrieve the aggregated data for a
       combination of any number of dimensions based on data elements and organisation unit group
       sets.</para>
-    <screen>api/analytics</screen>
+    <screen>/api/24/analytics</screen>
     <section>
       <title>Request query parameters</title>
       <para>The analytics resource lets you specify a range of query parameters:<table frame="all">
@@ -6736,7 +6736,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         dimensions, but the filters will not be included as dimensions in the actual response. As an
         example, to query for certain data elements filtered by the periods and organisation units
         you can use the following URL:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2014Q1;2014Q2&amp;filter=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
+      <screen>/api/24/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2014Q1;2014Q2&amp;filter=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
       <para>The <emphasis role="italic">aggregationType</emphasis> query parameter lets you define
         which aggregation operator should be used for the query. By default the aggregation operator
         defined for data elements included in the query will be used. If your query does not contain
@@ -6745,18 +6745,18 @@ ORDER BY oul.level, par.name, ou.name</screen>
         undefined. This query parameter allows you to override the default and specify a specific
         aggregation operator. As an example you can set the aggregation operator to
         &quot;count&quot; with the following URL:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014Q1&amp;dimension=ou:O6uvpzGd5pu&amp;aggregationType=COUNT</screen>
+      <screen>/api/24/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2014Q1&amp;dimension=ou:O6uvpzGd5pu&amp;aggregationType=COUNT</screen>
       <para>The <emphasis role="italic">measureCriteria</emphasis> query parameter lets you filter
         out ranges of data records to return. You can instruct the system to return only records
         where the aggregated data value is equal, greater than, greater or equal, less than or less
         or equal to certain values. You can specify any number of criteria on the following format,
         where <emphasis role="italic">critieria</emphasis> and <emphasis role="italic"
           >value</emphasis> should be substituted with real values:</para>
-      <screen>/api/analytics?measureCriteria=criteria:value;criteria:value</screen>
+      <screen>/api/24/analytics?measureCriteria=criteria:value;criteria:value</screen>
       <para>As an example, the following query will return only records where the data value is
         greater or equal to 6500 and less than 33000:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;dimension=pe:2014
-&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw&amp;measureCriteria=GE:6500;LT:33000</screen>
+      <screen>/api/24/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;dimension=pe:2014
+  &amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw&amp;measureCriteria=GE:6500;LT:33000</screen>
       <para>In order to have the analytics resource generate the data in the shape of a ready-made
         table, you can provide the <emphasis role="italic">tableLayout</emphasis> parameter with
         true as value. Instead of generating a plain, normalized data source, the analytics resource
@@ -6765,8 +6765,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
         identifiers separated by semi-colons as values to indicate which ones to use as table
         columns and rows. The column and rows dimensions must be present as a data dimension in the
         query (not a filter). Such a request can look like this:</para>
-      <screen>/api/analytics.html?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;dimension=pe:2014Q1;2014Q2
-&amp;dimension=ou:O6uvpzGd5pu&amp;tableLayout=true&amp;columns=dx;ou&amp;rows=pe</screen>
+      <screen>/api/24/analytics.html?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;dimension=pe:2014Q1;2014Q2
+  &amp;dimension=ou:O6uvpzGd5pu&amp;tableLayout=true&amp;columns=dx;ou&amp;rows=pe</screen>
     </section>
     <section>
       <title>Dimensions and items</title>
@@ -6850,71 +6850,71 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>It is not necessary to be aware of which objects are used for the various dynamic
         dimensions when designing analytics queries. You can get a complete list of dynamic
         dimensions by visiting this URL in the Web API:</para>
-      <screen>/api/dimensions</screen>
+      <screen>/api/24/dimensions</screen>
       <para>The base URL to the analytics resource is <emphasis role="italic"
           >api/analytics</emphasis>. To request specific dimensions and dimension items you can use
         a query string on the following format, where <emphasis role="italic">dim-id</emphasis> and
           <emphasis role="italic">dim-item</emphasis> should be substituted with real values:</para>
-      <screen>/api/analytics?dimension=dim-id:dim-item;dim-item&amp;dimension=dim-id:dim-item;dim-item</screen>
+      <screen>/api/24/analytics?dimension=dim-id:dim-item;dim-item&amp;dimension=dim-id:dim-item;dim-item</screen>
       <para>As illustrated above, the dimension identifier is followed by a colon while the
         dimension items are separated by semi-colons. As an example, a query for two data elements,
         two periods and two organisation units can be done with the following URL:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
-&amp;dimension=pe:2016Q1;2016Q2&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
+      <screen>/api/24/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+  &amp;dimension=pe:2016Q1;2016Q2&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
       <para>To query for data broken down by category option combinations instead of data element
         totals you can include the category dimension in the query string, for instance like
         this:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
-&amp;dimension=co&amp;dimension=pe:201601&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
+      <screen>/api/24/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+  &amp;dimension=co&amp;dimension=pe:201601&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
       <para>When selecting data elements you can also select all data elements in a group as items
         by using the DE_GROUP-&lt;id&gt; syntax:</para>
-      <screen>/api/analytics?dimension=dx:DE_GROUP-h9cuJOkOwY2
-&amp;dimension=pe:201601&amp;dimension=ou:O6uvpzGd5pu</screen>
+      <screen>/api/24/analytics?dimension=dx:DE_GROUP-h9cuJOkOwY2
+  &amp;dimension=pe:201601&amp;dimension=ou:O6uvpzGd5pu</screen>
       <para>When selecting data set reporting rates, the syntax contains of a data set identifier
         followed by a reporting rate metric:</para>
-      <screen>/api/analytics?dimension=dx:BfMAe6Itzgt.REPORTING_RATE;BfMAe6Itzgt.ACTUAL_REPORTS
-&amp;dimension=pe:201601&amp;dimension=ou:O6uvpzGd5pu</screen>
+      <screen>/api/24/analytics?dimension=dx:BfMAe6Itzgt.REPORTING_RATE;BfMAe6Itzgt.ACTUAL_REPORTS
+  &amp;dimension=pe:201601&amp;dimension=ou:O6uvpzGd5pu</screen>
       <para>To query for program data elements (of tracker domain type) you can get those by
         specifying the program for each data element using the &lt;program-id>.&lt;dataelement-id>
         syntax:</para>
-      <screen>/api/analytics.json?dimension=dx:eBAyeGv0exc.qrur9Dvnyt5;eBAyeGv0exc.GieVkTxp4HH
-&amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
+      <screen>/api/24/analytics.json?dimension=dx:eBAyeGv0exc.qrur9Dvnyt5;eBAyeGv0exc.GieVkTxp4HH
+  &amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
       <para>To query for program attributes (tracked entity attributes) you can get those by
         specifying the program for each attribute using the &lt;program.id>.&lt;attribute-id>
         syntax:</para>
-      <screen>/api/analytics.json?dimension=dx:IpHINAT79UW.a3kGcGDCuk6;IpHINAT79UW.UXz7xuGCEhU
-&amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:ImspTQPwCqd</screen>
+      <screen>/api/24/analytics.json?dimension=dx:IpHINAT79UW.a3kGcGDCuk6;IpHINAT79UW.UXz7xuGCEhU
+  &amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:ImspTQPwCqd</screen>
       <para>To query for organisation unit group sets and data elements you can use the following
         URL - notice how the group set identifier is used as dimension identifier and the groups as
         dimension items:</para>
-      <screen>/api/analytics?dimension=Bpx0589u8y0:oRVt7g429ZO;MAs88nJc9nL
-&amp;dimension=pe:2016&amp;dimension=ou:ImspTQPwCqd</screen>
+      <screen>/api/24/analytics?dimension=Bpx0589u8y0:oRVt7g429ZO;MAs88nJc9nL
+  &amp;dimension=pe:2016&amp;dimension=ou:ImspTQPwCqd</screen>
       <para>To query for data elements and categories you can use this URL - use the category
         identifier as dimension identifier and the category options as dimension items:</para>
-      <screen>/api/analytics?dimension=dx:s46m5MS0hxu;fClA2Erf6IO&amp;dimension=pe:2016
-&amp;dimension=YNZyaJHiHYq:btOyqprQ9e8;GEqzEKCHoGA&amp;filter=ou:ImspTQPwCqd</screen>
+      <screen>/api/24/analytics?dimension=dx:s46m5MS0hxu;fClA2Erf6IO&amp;dimension=pe:2016
+  &amp;dimension=YNZyaJHiHYq:btOyqprQ9e8;GEqzEKCHoGA&amp;filter=ou:ImspTQPwCqd</screen>
       <para>To query using relative periods and organisation units associated with the current user
         you can use a URL like this:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
-&amp;dimension=pe:LAST_12_MONTHS&amp;dimension=ou:USER_ORGUNIT</screen>
+      <screen>/api/24/analytics?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+  &amp;dimension=pe:LAST_12_MONTHS&amp;dimension=ou:USER_ORGUNIT</screen>
       <para>When selecting organisation units for a dimension you can select an entire level
         optionally constrained by any number of boundary organisation units with the
         LEVEL-&lt;level&gt; syntax. Boundary refers to a top node in a sub-hierarchy, meaning that
         all organisation units at the given level below the given boundary organisation unit in the
         hierarchy will be included in the response, and is provided as regular organisation unit
         dimension items. A simple query for all org units at level three:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2016&amp;dimension=ou:LEVEL-3</screen>
+      <screen>/api/24/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2016&amp;dimension=ou:LEVEL-3</screen>
       <para>A query for level three and four with two boundary org units can be specified like
         this:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2016
-&amp;dimension=ou:LEVEL-3;LEVEL-4;O6uvpzGd5pu;lc3eMKXaEf</screen>
+      <screen>/api/24/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2016
+  &amp;dimension=ou:LEVEL-3;LEVEL-4;O6uvpzGd5pu;lc3eMKXaEf</screen>
       <para>When selecting organisation units you can also select all organisation units in an
         organisation unit group to be included as dimension items using the OU_GROUP-&lt;id&gt;
         syntax. The organisation units in the groups can optionally be constrained by any number of
         boundary organisation units. Both the level and the group items can be repeated any number
         of times:</para>
-      <screen>/api/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2016
-&amp;dimension=ou:OU_GROUP-w0gFTTmsUcF;OU_GROUP-EYbopBOJWsW;O6uvpzGd5pu;lc3eMKXaEf</screen>
+      <screen>/api/24/analytics?dimension=dx:fbfJHSPpUQD&amp;dimension=pe:2016
+  &amp;dimension=ou:OU_GROUP-w0gFTTmsUcF;OU_GROUP-EYbopBOJWsW;O6uvpzGd5pu;lc3eMKXaEf</screen>
       <para>A few things to be aware of when using the analytics resource are listed below.</para>
       <itemizedlist>
         <listitem>
@@ -7030,14 +7030,14 @@ ORDER BY oul.level, par.name, ou.name</screen>
       </table>
       <para>Items from all of the various <emphasis>dx</emphasis> types can be combined in an
         analytics request. An example looks like this:</para>
-      <screen>/api/analytics.json
-?dimension=dx:Uvn6LCg7dVU;BfMAe6Itzgt.REPORTING_RATE;BfMAe6Itzgt.ACTUAL_REPORTS;IpHINAT79UW.a3kGcGDCuk6
-&amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
+      <screen>/api/24/analytics.json
+  ?dimension=dx:Uvn6LCg7dVU;BfMAe6Itzgt.REPORTING_RATE;BfMAe6Itzgt.ACTUAL_REPORTS;IpHINAT79UW.a3kGcGDCuk6
+  &amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
       <para>The group syntax can be used together with any other item as well. An example looks like
         this:</para>
-      <screen>/api/analytics.json
-?dimension=dx:DE_GROUP-qfxEYY9xAl6;IN_GROUP-oehv9EO3vP7;BfMAe6Itzgt.REPORTING_RATE
-&amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
+      <screen>/api/24/analytics.json
+  ?dimension=dx:DE_GROUP-qfxEYY9xAl6;IN_GROUP-oehv9EO3vP7;BfMAe6Itzgt.REPORTING_RATE
+  &amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
       <tip>
         <para>A great way to learn how to use the analytics API is to use the DHIS 2 <emphasis>pivot
             table</emphasis> app. You can play around with pivot tables using the various dimensions
@@ -7077,15 +7077,15 @@ ORDER BY oul.level, par.name, ou.name</screen>
       </itemizedlist>
       <para>As an example, to request an analytics response in XML format you can use the following
         URL:</para>
-      <screen>/api/analytics.xml?dimension=dx:fbfJHSPpUQD
-&amp;dimension=pe:2016&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
+      <screen>/api/24/analytics.xml?dimension=dx:fbfJHSPpUQD
+  &amp;dimension=pe:2016&amp;dimension=ou:O6uvpzGd5pu;lc3eMKXaEfw</screen>
       <para>The analytics responses must be retrieved using the HTTP <emphasis role="italic"
           >GET</emphasis> method. This allows for direct linking to analytics responses from Web
         pages as well as other HTTP-enabled clients. To do functional testing we can use the cURL
         library. By executing this command against the demo database you will get an analytics
         response in JSON format:</para>
-      <screen>curl &quot;play.dhis2.org/demo/api/analytics.json?dimension=dx:eTDtyyaSA7f;FbKK4ofIv5R
-&amp;dimension=pe:2016Q1;2016Q2&amp;filter=ou:ImspTQPwCqd&quot; -u admin:district</screen>
+      <screen>curl &quot;play.dhis2.org/demo/api/24/analytics.json?dimension=dx:eTDtyyaSA7f;FbKK4ofIv5R
+  &amp;dimension=pe:2016Q1;2016Q2&amp;filter=ou:ImspTQPwCqd&quot; -u admin:district</screen>
       <para>The JSON response will look like this:</para>
       <screen>{
     &quot;headers&quot;: [
@@ -12185,8 +12185,8 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       resource:<screen>POST /api/synchronization/metadataPull</screen></para>
     <para>An example curl command looks like
       this:<screen>curl &quot;localhost:8080/api/synchronization/metadataPull&quot; -X POST
--d &quot;https://dhis2.org/metadata-repo/221/trainingland-org-units/metadata.json&quot;
--H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen></para>
+  -d &quot;https://dhis2.org/metadata-repo/221/trainingland-org-units/metadata.json&quot;
+  -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen></para>
   </section>
   <section>
     <title>FRED API</title>
