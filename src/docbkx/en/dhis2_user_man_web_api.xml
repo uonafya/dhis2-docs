@@ -67,7 +67,7 @@
     <para>The DHIS 2 Web API supports two protocols for authentication, Basic Authentication and
       OAuth 2. You can verify and get information about the currently authenticated user by making a
       GET request to the following URL:</para>
-    <screen>/api/me</screen>
+    <screen>/api/24/me</screen>
     <section>
       <title>Basic Authentication</title>
       <para>The DHIS 2 Web API supports <emphasis role="italic">Basic authentication</emphasis>.
@@ -1951,11 +1951,11 @@ http://server/api/constants/ID</screen></para>
     </section>
   </section>
   <section>
-    <title>Metadata Export API 23</title>
-    <para>Currently in <emphasis role="italic">beta</emphasis> this section explain the new metadata
-      exporter available from DHIS 2.23, the metatada API is available at <emphasis role="italic"
-        >/api/23/metadata</emphasis> endpoint, it should be noted that only JSON is currently
-      supported in this exporter.</para>
+    <title>Metadata Export API 23/24</title>
+    <para>This section explain the new metadata exporter available from DHIS 2.23, the metatada API
+      is available at <emphasis role="italic">/api/23/metadata</emphasis> and <emphasis
+        role="italic">/api/24/metadata</emphasis>endpoints, both XML and JSON is supported in this
+      exporter.</para>
     <para>The most common parameters are described down below in the "Export Paramter" table, but
       you can also apply this to all available types by using <emphasis role="italic"
         >type:fields=&lt;filter></emphasis> and <emphasis role="italic"
@@ -2001,13 +2001,13 @@ http://server/api/constants/ID</screen></para>
     <section>
       <title>Export Examples</title>
       <para>Export all
-        metadata:<screen>curl -u user:pass http://server/api/23/metadata</screen></para>
+        metadata:<screen>curl -u user:pass http://server/api/24/metadata</screen></para>
       <para>Export all metadata ordered by lastUpdated
-        descending:<screen>curl -u user:pass http://server/api/23/metadata?defaultOrder=lastUpdated:desc</screen></para>
+        descending:<screen>curl -u user:pass http://server/api/24/metadata?defaultOrder=lastUpdated:desc</screen></para>
       <para>Export id and displayName for all data elements, ordered by
-        displayName:<screen>curl -u user:pass http://server/api/23/metadata?dataElements:fields=id,name&amp;dataElements:order=displayName:desc</screen></para>
+        displayName:<screen>curl -u user:pass http://server/api/24/metadata?dataElements:fields=id,name&amp;dataElements:order=displayName:desc</screen></para>
       <para>Export data elements and indicators where name starts with
-        'ANC':<screen>curl -u user:pass http://server/api/23/metadata?defaultFilter=name:^like:ANC&amp;dataElements=true&amp;indicators=true</screen></para>
+        'ANC':<screen>curl -u user:pass http://server/api/24/metadata?defaultFilter=name:^like:ANC&amp;dataElements=true&amp;indicators=true</screen></para>
     </section>
     <section>
       <title>Data set and program export with dependencies</title>
@@ -2020,11 +2020,11 @@ http://server/api/constants/ID</screen></para>
     </section>
   </section>
   <section>
-    <title>Metadata Import API 23</title>
-    <para>Currently in <emphasis role="italic">beta</emphasis> this section explain the new metadata
-      importer available from DHIS 2.23, the metatada API is available at <emphasis role="italic"
-        >/api/23/metadata</emphasis> endpoint, it should be noted that only JSON is currently
-      supported in this importer.</para>
+    <title>Metadata Import API 23/24</title>
+    <para>This section explain the new metadata importer available from DHIS 2.23, the metatada API
+      is available at <emphasis role="italic">/api/23/metadata</emphasis> and <emphasis
+        role="italic">/api/24/metadata</emphasis>endpoints, both XML and JSON is supported in this
+      importer.</para>
     <para>The importer allows you to import metadata exported with the new exporter, the different
       parameters are listed down below.</para>
     <table frame="all">
