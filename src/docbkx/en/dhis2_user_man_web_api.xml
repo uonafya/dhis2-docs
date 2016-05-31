@@ -7225,7 +7225,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         relevant content of the datavalue table. You can produce this SQL by doing a GET request
         with content type &quot;text/html&quot; or &quot;text/plain&quot; like below. The dimension
         and filter syntax is identical to regular analytics queries:</para>
-      <screen>/api/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2016Q1;2016Q2&amp;filter=ou:O6uvpzGd5pu</screen>
+      <screen>/api/24/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2016Q1;2016Q2&amp;filter=ou:O6uvpzGd5pu</screen>
     </section>
   </section>
   <section>
@@ -7559,37 +7559,37 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>The <emphasis role="italic">analytics/events/query</emphasis> resource lets you query
         for captured events. This resource does not perform any aggregation, rather it lets you
         query and filter for information about events.</para>
-      <screen>/api/analytics/events/query</screen>
+      <screen>/api/24/analytics/events/query</screen>
       <para> You can specify any number of dimensions and any number of filters in a query.
         Dimension item identifiers can refer to any of data elements, person attributes, person
         identifiers, fixed and relative periods and organisation units. Dimensions can optionally
         have a query operator and a filter. Event queries should be on the format described
         below.</para>
-      <screen>/api/analytics/events/query/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
-&amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
+      <screen>/api/24/analytics/events/query/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
+  &amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
       <para>For example, to retrieve events from the &quot;Inpatient morbidity and mortality&quot;
         program between January and October 2016, where the &quot;Gender&quot; and &quot;Age&quot;
         data elements are included and the &quot;Age&quot; dimension is filtered on &quot;18&quot;,
         you can use the following query:</para>
-      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
-&amp;dimension=ou:O6uvpzGd5pu;fdc6uOvgoji&amp;dimension=oZg33kd9taw&amp;dimension=qrur9Dvnyt5:EQ:18</screen>
+      <screen>/api/24/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
+  &amp;dimension=ou:O6uvpzGd5pu;fdc6uOvgoji&amp;dimension=oZg33kd9taw&amp;dimension=qrur9Dvnyt5:EQ:18</screen>
       <para>To retrieve events for the &quot;Birth&quot; program stage of the &quot;Child
         programme&quot; program between March and December 2016, where the &quot;Weight&quot; data
         element, filtered for values larger than 2000:</para>
-      <screen>/api/analytics/events/query/IpHINAT79UW?stage=A03MvHHogjR&amp;startDate=2016-03-01&amp;endDate=2016-12-31
-&amp;dimension=ou:O6uvpzGd5pu&amp;dimension=UXz7xuGCEhU:GT:2000</screen>
+      <screen>/api/24/analytics/events/query/IpHINAT79UW?stage=A03MvHHogjR&amp;startDate=2016-03-01&amp;endDate=2016-12-31
+  &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=UXz7xuGCEhU:GT:2000</screen>
       <para>Sorting can be applied to the query for the event date of the event and any dimensions.
         To sort descending on the event date and ascending on the &quot;Age&quot; data element
         dimension you can use:</para>
-      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
-&amp;dimension=ou:O6uvpzGd5pu&amp;dimension=qrur9Dvnyt5&amp;desc=EVENTDATE&amp;asc=qrur9Dvnyt5</screen>
+      <screen>/api/24/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
+  &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=qrur9Dvnyt5&amp;desc=EVENTDATE&amp;asc=qrur9Dvnyt5</screen>
       <para>Paging can be applied to the query by specifying the page number and the page size
         parameters. If page number is specified but page size is not, a page size of 50 will be
         used. If page size is specified but page number is not, a page number of 1 will be used. To
         get the third page of the response with a page size of 20 you can use a query like
         this:</para>
-      <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
-&amp;dimension=ou:O6uvpzGd5pu&amp;dimension=qrur9Dvnyt5&amp;page=3&amp;pageSize=20</screen>
+      <screen>/api/24/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
+  &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=qrur9Dvnyt5&amp;page=3&amp;pageSize=20</screen>
       <section>
         <title>Filtering</title>
         <para>Filters can be applied to data elements, person attributes and person identifiers. The
@@ -7670,12 +7670,12 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </itemizedlist>
         <para>As an example, to get a response in Excel format you can use a file extension in the
           request URL like this:</para>
-        <screen>/api/analytics/events/query/eBAyeGv0exc.xls?startDate=2016-01-01&amp;endDate=2016-10-31
-&amp;dimension=ou:O6uvpzGd5pu&amp;dimension=oZg33kd9taw&amp;dimension=qrur9Dvnyt5</screen>
+        <screen>/api/24/analytics/events/query/eBAyeGv0exc.xls?startDate=2016-01-01&amp;endDate=2016-10-31
+  &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=oZg33kd9taw&amp;dimension=qrur9Dvnyt5</screen>
         <para>You can set the hierarchyMeta query parameter to true in order to include names of all
           ancestor organisation units in the meta-section of the response:</para>
-        <screen>/api/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
-&amp;dimension=ou:YuQRtpLP10I&amp;dimension=qrur9Dvnyt5:EQ:50&amp;hierarchyMeta=true</screen>
+        <screen>/api/24/analytics/events/query/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
+  &amp;dimension=ou:YuQRtpLP10I&amp;dimension=qrur9Dvnyt5:EQ:50&amp;hierarchyMeta=true</screen>
         <para>The default response JSON format will look similar to this:</para>
         <screen>{
     &quot;headers&quot;: [
@@ -7789,46 +7789,46 @@ ORDER BY oul.level, par.name, ou.name</screen>
         retrieve <emphasis role="italic">aggregated numbers</emphasis> of events captured in DHIS 2.
         This resource lets you retrieve aggregate data based on a program and optionally a program
         stage, and lets you filter on any event dimension.</para>
-      <screen>/api/analytics/events/aggregate</screen>
+      <screen>/api/24/analytics/events/aggregate</screen>
       <para>The events aggregate resource does not return the event information itself, rather the
         aggregate numbers of events matching the request query. Event dimensions include data
         elements, person attributes, person identifiers, periods and organisation units. Aggregate
         event queries should be on the format described below.</para>
-      <screen>/api/analytics/events/aggregate/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
-&amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
+      <screen>/api/24/analytics/events/aggregate/&lt;program-id&gt;?startDate=yyyy-MM-dd&amp;endDate=yyyy-MM-dd
+  &amp;dimension=ou:&lt;ou-id&gt;;&lt;ou-id&gt;&amp;dimension=&lt;item-id&gt;&amp;dimension=&lt;item-id&gt;:&lt;operator&gt;:&lt;filter&gt;</screen>
       <para>For example, to retrieve aggregate numbers for events from the &quot;Inpatient morbidity
         and mortality&quot; program between January and October 2016, where the &quot;Gender&quot;
         and &quot;Age&quot; data elements are included, the &quot;Age&quot; dimension item is
         filtered on &quot;18&quot; and the &quot;Gender&quot; item is filtered on
         &quot;Female&quot;, you can use the following query:</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
-&amp;dimension=ou:O6uvpzGd5pu&amp;dimension=oZg33kd9taw:EQ:Female&amp;dimension=qrur9Dvnyt5:GT:50</screen>
+      <screen>/api/24/analytics/events/aggregate/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31
+  &amp;dimension=ou:O6uvpzGd5pu&amp;dimension=oZg33kd9taw:EQ:Female&amp;dimension=qrur9Dvnyt5:GT:50</screen>
       <para>To retrieve data for fixed and relative periods instead of start and end date, in this
         case May 2016 and last 12 months, and the organisation unit associated with the current
         user, you can use the following query:</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:201605;LAST_12_MONTHS
-&amp;dimension=ou:USER_ORGUNIT;fdc6uOvgo7ji&amp;dimension=oZg33kd9taw</screen>
+      <screen>/api/24/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:201605;LAST_12_MONTHS
+  &amp;dimension=ou:USER_ORGUNIT;fdc6uOvgo7ji&amp;dimension=oZg33kd9taw</screen>
       <para>In order to specify &quot;Female&quot; as a filter for &quot;Gender&quot; for the data
         response, meaning &quot;Gender&quot; will not be part of the response but will filter the
         aggregate numbers in it, you can use the following syntax:</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:2016;
-&amp;dimension=ou:O6uvpzGd5pu&amp;filter=oZg33kd9taw:EQ:Female</screen>
+      <screen>/api/24/analytics/events/aggregate/eBAyeGv0exc?dimension=pe:2016;
+  &amp;dimension=ou:O6uvpzGd5pu&amp;filter=oZg33kd9taw:EQ:Female</screen>
       <para>To specify the &quot;Bo&quot; organisation unit and the period &quot;2016&quot; as
         filters, and the &quot;Mode of discharge&quot; and Gender&quot; as dimensions, where
         &quot;Gender&quot; is filtered on the &quot;Male&quot; item, you can use a query like
         this:</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2016&amp;filter=ou:O6uvpzGd5pu
-&amp;dimension=fWIAEtYVEGk&amp;dimension=oZg33kd9taw:EQ:Male</screen>
+      <screen>/api/24/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2016&amp;filter=ou:O6uvpzGd5pu
+  &amp;dimension=fWIAEtYVEGk&amp;dimension=oZg33kd9taw:EQ:Male</screen>
       <para>To create a &quot;Top 3 report&quot; for &quot;Mode of discharge&quot; you can use the
         limit and sortOrder query parameters similar to this:</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2016&amp;filter=ou:O6uvpzGd5pu
-&amp;dimension=fWIAEtYVEGk&amp;limit=3&amp;sortOrder=DESC</screen>
+      <screen>/api/24/analytics/events/aggregate/eBAyeGv0exc?filter=pe:2016&amp;filter=ou:O6uvpzGd5pu
+  &amp;dimension=fWIAEtYVEGk&amp;limit=3&amp;sortOrder=DESC</screen>
       <para>To specify a value dimension with a corresponding aggregation type you can use the value
         and aggregationType query parameters. Specifying a value dimension will make the analytics
         engine return aggregate values for the values of that dimension in the response as opposed
         to counts of events.</para>
-      <screen>/api/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=ou:ImspTQPwCqd
-&amp;dimension=pe:LAST_12_MONTHS&amp;dimension=fWIAEtYVEGk&amp;value=qrur9Dvnyt5&amp;aggregationType=AVERAGE</screen>
+      <screen>/api/24/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=ou:ImspTQPwCqd
+  &amp;dimension=pe:LAST_12_MONTHS&amp;dimension=fWIAEtYVEGk&amp;value=qrur9Dvnyt5&amp;aggregationType=AVERAGE</screen>
       <section>
         <title>Ranges / legend sets</title>
         <para>For aggregate queries you can specify a range / legend set for numeric data element
@@ -7838,8 +7838,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
           attribute must be associated with the legend set. The format is described below:</para>
         <screen>?dimension=&lt;item-id&gt;-&lt;legend-set-id&gt;</screen>
         <para>An example looks like this:</para>
-        <screen>/api/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=qrur9Dvnyt5-Yf6UHoPkdS6
-&amp;dimension=ou:ImspTQPwCqd&amp;dimension=pe:LAST_12_MONTHS</screen>
+        <screen>/api/24/analytics/events/aggregate/eBAyeGv0exc.json?stage=Zj7UnCAulEk&amp;dimension=qrur9Dvnyt5-Yf6UHoPkdS6
+  &amp;dimension=ou:ImspTQPwCqd&amp;dimension=pe:LAST_12_MONTHS</screen>
       </section>
       <section>
         <title>Response formats</title>
@@ -7940,8 +7940,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <title>Event clustering analytics</title>
       <para>The <emphasis role="italic">analytics/events/cluster</emphasis> resource provides
         clustered geospatial event data. A request looks like this:</para>
-      <screen>/api/analytics/events/cluster/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31&amp;dimension=ou:LEVEL-2
-&amp;clusterSize=100000&amp;bbox=-13.2682125,7.3721619,-10.4261178,9.904012&amp;includeClusterPoints=false</screen>
+      <screen>/api/24/analytics/events/cluster/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31&amp;dimension=ou:LEVEL-2
+  &amp;clusterSize=100000&amp;bbox=-13.2682125,7.3721619,-10.4261178,9.904012&amp;includeClusterPoints=false</screen>
       <para>The cluster response provides the count of underlying points, the centre point and
         extent of each cluster. If the <emphasis role="italic">includeClusterPoints</emphasis> query
         parameter is set to true, a comma-separated string with the identifiers of the underlying
@@ -7984,7 +7984,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         geometry-related requests for retrieving the count and extent (bounding box) of events for a
         specific query. The query syntax is equal to the <emphasis role="italic"
           >events/query</emphasis> resource. A request looks like this:</para>
-      <screen>/api/analytics/events/count/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31&amp;dimension=ou:O6uvpzGd5pu</screen>
+      <screen>/api/24/analytics/events/count/eBAyeGv0exc?startDate=2016-01-01&amp;endDate=2016-10-31&amp;dimension=ou:O6uvpzGd5pu</screen>
       <para> The response will provide the count and extent in JSON format:</para>
       <screen>{
     extent: "BOX(-13.2682125910096 7.38679562779441,-10.4261178860988 9.90401290212795)",
@@ -8427,10 +8427,10 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       JSON response format is supported.</para>
     <para>As an example, to retrieve geo features for all organisation units at level 3 in the
       organisation unit hierarchy you can use a GET request with the following URL:</para>
-    <screen>api/geoFeatures.json?ou=ou:LEVEL-3</screen>
+    <screen>/api/24/geoFeatures.json?ou=ou:LEVEL-3</screen>
     <para>To retrieve geo features for organisation units at level within the boundary of an
       organisation unit (e.g. at level 2) you can use this URL:</para>
-    <screen>api/geoFeatures.json?ou=ou:LEVEL-4;O6uvpzGd5pu</screen>
+    <screen>/api/24/geoFeatures.json?ou=ou:LEVEL-4;O6uvpzGd5pu</screen>
     <para>The semantics of the response properties are described in the following table.</para>
     <table frame="all">
       <title>Geo features response</title>
@@ -8500,9 +8500,9 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
           <emphasis role="bold">parent</emphasis> (defaults to root organisation units), both can be
         added multiple times, some examples follow.</para>
       <para>Get all features at level 2 and 4:
-        <screen>api/organisationUnits.geojson?level=2&amp;level=4</screen></para>
+        <screen>/api/24/organisationUnits.geojson?level=2&amp;level=4</screen></para>
       <para>Get all features at level 3 with a boundary organisation
-        unit:<screen>api/organisationUnits.geojson?parent=fdc6uOvgoji&amp;level=3</screen></para>
+        unit:<screen>/api/24/organisationUnits.geojson?parent=fdc6uOvgoji&amp;level=3</screen></para>
     </section>
   </section>
   <section>
@@ -8515,11 +8515,11 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <para>The resource tables are used internally by the DHIS 2 application for various analysis
       functions. These tables are also valuable for users writing advanced SQL reports. They can be
       generated with a POST or PUT request to the following URL:</para>
-    <screen>/api/resourceTables</screen>
+    <screen>/api/24/resourceTables</screen>
     <para>The analytics tables are optimized for data aggregation and used currently in DHIS 2 for
       the pivot table module. The analytics tables can be generated with a POST or PUT request
       to:</para>
-    <screen>/api/resourceTables/analytics</screen>
+    <screen>/api/24/resourceTables/analytics</screen>
     <table frame="all">
       <title>Analytics tables optional query parameters</title>
       <tgroup cols="3">
@@ -8566,39 +8566,40 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         <emphasis role="italic">PUT</emphasis> as method for requests. The following requests are
       available. </para>
     <para>Analytics tables clear will drop all analytics tables:</para>
-    <screen>/api/maintenance/analyticsTablesClear</screen>
+    <screen>/api/24/maintenance/analyticsTablesClear</screen>
     <para>Expired invitations clear will remove all user account invitations which have
       expired:</para>
-    <screen>/api/maintenance/expiredInvitationsClear</screen>
+    <screen>/api/24/maintenance/expiredInvitationsClear</screen>
     <para>Period pruning will remove periods which are not linked to any data values:</para>
-    <screen>/api/maintenance/periodPruning</screen>
+    <screen>/api/24/maintenance/periodPruning</screen>
     <para>Zero data value removal will delete zero data values linked to data elements where zero
       data is defined as not significant:</para>
-    <screen>/api/maintenance/zeroDataValueRemoval</screen>
+    <screen>/api/24/maintenance/zeroDataValueRemoval</screen>
     <para>Drop SQL views will drop all SQL views in the database. Note that it will not delete the
       DHIS 2 SQL views.</para>
-    <screen>/api/maintenance/sqlViewsDrop</screen>
+    <screen>/api/24/maintenance/sqlViewsDrop</screen>
     <para>Create SQL views will recreate all SQL views in the database.</para>
-    <screen>/api/maintenance/sqlViewsCreate</screen>
+    <screen>/api/24/maintenance/sqlViewsCreate</screen>
     <para>Category option combo update will remove obsolete and generate missing category option
       combos for all category combinations:</para>
-    <screen>/api/maintenance/categoryOptionComboUpdate</screen>
+    <screen>/api/24/maintenance/categoryOptionComboUpdate</screen>
     <para>Cache clearing will clear the application Hibernate cache and the analytics partition
       caches:</para>
-    <screen>/api/maintenance/cacheClear</screen>
+    <screen>/api/24/maintenance/cacheClear</screen>
     <para>Re-generate organisation unit path property (can be useful if you imported org units with
       SQL):</para>
-    <screen>/api/maintenance/ouPathsUpdate</screen>
+    <screen>/api/24/maintenance/ouPathsUpdate</screen>
     <para>Data pruning will remove complete data set registrations, data approvals, data value
       audits and data values, in this case for an organisation unit.</para>
-    <screen>/api/maintenance/dataPruning/organisationUnits/&lt;org-unit-id&gt;</screen>
+    <screen>/api/24/maintenance/dataPruning/organisationUnits/&lt;org-unit-id&gt;</screen>
     <para>Metadata validation will apply all metadata validation rules and return the result of the
       operation:</para>
-    <screen>/api/metadataValidation</screen>
+    <screen>/api/24/metadataValidation</screen>
     <para>Maintenance operations are supported in a batch style with a POST request to the
       api/maintenance resource where the operations are supplied as query parameters:</para>
-    <screen>/api/maintenance?analyticsTablesClear=true&amp;expiredInvitationsClear=true&amp;periodPruning=true&amp;zeroDataValueRemoval=true
-&amp;sqlViewsDrop=true&amp;sqlViewsCreate=true&amp;categoryOptionComboUpdate=true&amp;cacheClear=true&amp;ouPathsUpdate=true</screen>
+    <screen>/api/24/maintenance?analyticsTablesClear=true&amp;expiredInvitationsClear=true&amp;periodPruning=true
+  &amp;zeroDataValueRemoval=true&amp;sqlViewsDrop=true&amp;sqlViewsCreate=true&amp;categoryOptionComboUpdate=true
+  &amp;cacheClear=true&amp;ouPathsUpdate=true</screen>
   </section>
   <section>
     <title>System resource</title>
@@ -8608,7 +8609,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <title>Generate identifiers</title>
       <para>To generate valid, random DHIS 2 identifiers you can do a GET request to this
         resource:</para>
-      <screen>api/system/id?limit=3</screen>
+      <screen>/api/24/system/id?limit=3</screen>
       <para>The <emphasis role="italic">limit</emphasis> query parameter is optional and indicates
         how many identifiers you want to be returned with the response. The default is to return one
         identifier. The response will contain a JSON object with a array named codes, similar to
@@ -8637,7 +8638,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <section>
       <title>View system information</title>
       <para>To get information about the current system you can do a GET request to this URL:</para>
-      <screen>api/system/info</screen>
+      <screen>/api/24/system/info</screen>
       <para>JSON and JSONP response formats are supported. The system info response currently
         includes the below properties. Note that if the user who is requesting this resourec does
         not have full authority in the system then only the first seven properties will be included,
@@ -8670,14 +8671,14 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <para>To get information about the system context (<emphasis role="italic"
           >contextPath</emphasis> and <emphasis role="italic">userAgent</emphasis>) only you can do
         a GET request to the below URL. JSON and JSONP response formats are supported:
-        <screen>api/system/context</screen></para>
+        <screen>/api/24/system/context</screen></para>
     </section>
     <section>
       <title>Check if username and password combination is correct</title>
       <para>To check if some user credentials (a username and password combination) is correct you
         can make a <emphasis role="italic">GET</emphasis> request to the following resource using
           <emphasis role="italic">basic authentication</emphasis>:</para>
-      <screen>api/system/ping</screen>
+      <screen>/api/24/system/ping</screen>
       <para>You can detect the outcome of the authentication by inspecting the <emphasis
           role="italic">HTTP status code</emphasis> of the response header. The meaning of the
         possible status codes are listed below. Note that this applies to Web API requests in
@@ -8770,9 +8771,9 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         </table>
       </para>
       <para>You can poll tasks through a GET request to the system tasks
-        resource:<screen>api/system/tasks/{task-category-id}</screen></para>
+        resource:<screen>/api/24/system/tasks/{task-category-id}</screen></para>
       <para>A request to poll for the status of a data value import task looks like
-        this:<screen>api/system/tasks/DATAVALUE_IMPORT</screen></para>
+        this:<screen>/api/24/system/tasks/DATAVALUE_IMPORT</screen></para>
       <para>The response will provide information about the status, such as the notification level,
         category, time and status. The completed property indicates whether the process is
         considered to be
@@ -8790,9 +8791,9 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <section>
       <title>Get appearance information</title>
       <para>You can retrieve the available flag icons in JSON format with a GET
-        request:<screen>/api/system/flags</screen></para>
+        request:<screen>/api/24/system/flags</screen></para>
       <para>You can retrieve the available UI styles in JSON format with a GET
-        request:<screen>/api/system/styles</screen></para>
+        request:<screen>/api/24/system/styles</screen></para>
     </section>
   </section>
   <section>
@@ -8802,13 +8803,13 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <title>UI locales</title>
       <para>You can retrieve the available locales for the user interface through the following
         resource with a GET request. XML and JSON resource representations are
-        supported.<screen>/api/locales/ui</screen></para>
+        supported.<screen>/api/24/locales/ui</screen></para>
     </section>
     <section>
       <title>Database content locales</title>
       <para>You can retrieve and create locales for database content with GET and POST requests
         through the following resource. XML and JSON resource representations are
-        supported.<screen>/api/locales/db</screen></para>
+        supported.<screen>/api/24/locales/db</screen></para>
     </section>
   </section>
   <section>
@@ -8824,7 +8825,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   &quot;locale&quot;: &quot;es&quot;,
   &quot;property&quot;: &quot;name&quot;,
   &quot;value&quot;: &quot;Casos de fiebre amarilla&quot;
-}</screen><screen>POST /api/translations</screen></para>
+}</screen><screen>POST /api/24/translations</screen></para>
       <para>The properties which support translations are listed in the table below.</para>
       <table frame="all">
         <title>Property names</title>
@@ -8973,12 +8974,12 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <section>
       <title>Get translations</title>
       <para>You can browse all translations through the translations
-        resource:<screen>GET /api/translations</screen></para>
+        resource:<screen>GET /api/24/translations</screen></para>
       <para>You can use the standard filtering technique to fetch translations of interest. E.g. to
         get all translations for data elements in the Spanish locale you can use this
-        request:<screen>/api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:es</screen></para>
+        request:<screen>/api/24/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:es</screen></para>
       <para>To get translations for a specific object for all
-        properties:<screen>/api/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:fr&amp;filter=objectId:eq:fbfJHSPpUQD</screen></para>
+        properties:<screen>/api/24/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:fr&amp;filter=objectId:eq:fbfJHSPpUQD</screen></para>
     </section>
   </section>
   <section>
@@ -8990,7 +8991,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         single or multiple destinations. One or more gateways need to be configured before using the
         service. An SMS will not be sent if there is no gateway configured.  It needs a set of
         recipients and message text in JSON format as shown below. </para>
-      <screen>/api/sms/outbound</screen>
+      <screen>/api/24/sms/outbound</screen>
       <screen>{ 
   &quot;message&quot;:&quot;Sms Text&quot;,  
   &quot;recipients&quot;: [
@@ -8998,7 +8999,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     &quot;47XXXXXX2&quot;
   ] 
 }</screen>
-      <screen>/api/sms/outbound/batch</screen>
+      <screen>/api/24/sms/outbound/batch</screen>
       <screen>{ 
   &quot;smsBatch&quot;:[{
   &quot;message&quot;:&quot;Sms Text&quot;,  
@@ -9015,7 +9016,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
 }</screen>
       <para>The Web API also supports a query parameter version, but the parameterized API can only
         be used for sending SMS to a single destination. </para>
-      <screen>/api/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
+      <screen>/api/24/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
       <section>
         <title>Gateway response codes</title>
         <para>Gateway may response with following response codes.</para>
@@ -9153,7 +9154,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         on the SMS content (SMS Command). An example payload in JSON format is given below. Text,
         originator, received date and sent date are mandatory parameters. The rest are optional but
         the system will use the default value for these parameters.</para>
-      <screen>/api/sms/inbound</screen>
+      <screen>/api/24/sms/inbound</screen>
       <screen>{
   &quot;text&quot;: &quot;sample text&quot;,
   &quot;originator&quot;: &quot;47XXXXXXXX&quot;,
@@ -9164,7 +9165,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   &quot;smsstatus&quot;:&quot;1&quot;          
 }</screen>
       <para>The Web API also supports a query parameter-based version.</para>
-      <screen>/api/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
+      <screen>/api/24/sms/inbound?message=text&amp;originator=47XXXXXX&amp;gateway=clickatel</screen>
       <table frame="all">
         <title>User query parameters</title>
         <tgroup cols="3">
@@ -9211,16 +9212,16 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <para>The Web API exposes resources which provide a way to configure and update SMS gateway
         configurations.</para>
       <para>The list of different gateways configured can be retrieved using a GET method.</para>
-      <screen>GET /api/sms/gateways</screen>
+      <screen>GET /api/24/sms/gateways</screen>
       <para>Configurations can also be retrieved for a specific gateway type using GET
         method.</para>
-      <screen>GET /api/sms/gateways/{uid}</screen>
+      <screen>GET /api/24/sms/gateways/{uid}</screen>
       <para>Configurations can be removed for specific gateway type using DELETE method.</para>
-      <screen>DELETE /api/sms/gateways/{uid}</screen>
+      <screen>DELETE /api/24/sms/gateways/{uid}</screen>
       <para>Default gateway can be retrieved with the GET method.</para>
-      <screen>GET /api/sms/gateways/default</screen>
+      <screen>GET /api/24/sms/gateways/default</screen>
       <para>Default gateway can be set using the PUT method.</para>
-      <screen>PUT /api/sms/gateways/default/{uid}</screen>
+      <screen>PUT /api/24/sms/gateways/default/{uid}</screen>
     </section>
     <section>
       <title>Gateway configuration</title>
@@ -9291,7 +9292,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   </section>
   <section>
     <title>Users</title>
-    <para>This section covers the user resource methods.<screen>/api/users</screen></para>
+    <para>This section covers the user resource methods.<screen>/api/24/users</screen></para>
     <section>
       <title>User query</title>
       <para>The <emphasis role="italic">users</emphasis> resource offers additional query parameters
@@ -9383,7 +9384,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       </para>
       <para>A query for max 10 users with &quot;konan&quot; as first name or surname (case
         in-sensitive) who have a subset of authorities compared to the current user:</para>
-      <screen>/api/users?query=konan&amp;authSubset=true&amp;pageSize=10</screen>
+      <screen>/api/24/users?query=konan&amp;authSubset=true&amp;pageSize=10</screen>
     </section>
     <section>
       <title>UserCredentials query</title>
@@ -9392,10 +9393,10 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
           >/api/userCredentials</emphasis> endpoint, it supports all regular field and object
         filters as the other endpoints.</para>
       <para>Get user credentials where username is
-        admin:<screen>/api/userCredentials?filter=username:eq:admin</screen></para>
+        admin:<screen>/api/24/userCredentials?filter=username:eq:admin</screen></para>
       <para>Get username and code from all user credentials where username starts with <emphasis
           role="italic">adm</emphasis>:</para>
-      <screen>/api/userCredentials?fields=username,code&amp;filter=username:^like:adm</screen>
+      <screen>/api/24/userCredentials?fields=username,code&amp;filter=username:^like:adm</screen>
     </section>
     <section>
       <title>User account create and update</title>
@@ -9421,13 +9422,13 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     &quot;id&quot;: &quot;vAvEltyXGbD&quot;
   } ]
 }</screen></para>
-      <screen>curl -X POST -u user:pass -d @u.json -H &quot;Content-Type: application/json&quot; http://server/api/users</screen>
+      <screen>curl -X POST -u user:pass -d @u.json -H &quot;Content-Type: application/json&quot; http://server/api/24/users</screen>
       <para>After the user is created, a <emphasis role="italic">Location</emphasis> header is sent
         back with the newly generated ID (you can also provide your own using /api/system/id
         endpoint). The same payload can then be used to do updates, but remember to then use
           <emphasis role="bold">PUT</emphasis> instead of <emphasis role="bold">POST</emphasis> and
         the endpoint is now <emphasis role="italic"
-        >/api/users/ID</emphasis>.<screen>curl -X PUT -u user:pass -d @u.json -H &quot;Content-Type: application/json&quot; http://server/api/users/ID</screen></para>
+        >/api/users/ID</emphasis>.<screen>curl -X PUT -u user:pass -d @u.json -H &quot;Content-Type: application/json&quot; http://server/api/24/users/ID</screen></para>
       <para>For more info about the full payload available, please see <emphasis role="italic"
           >/api/schemas/user</emphasis></para>
     </section>
@@ -9460,7 +9461,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   } ]
 }</screen>
       <para>The user invite entity can be posted like this:</para>
-      <screen>curl -d @invite.json &quot;localhost/api/users/invite&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <screen>curl -d @invite.json &quot;localhost/api/24/users/invite&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
       <para>To send out invites for multiple users at the same time you must use a slightly
         different format. For
         JSON:<screen>{
@@ -9494,7 +9495,8 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
 }</screen></para>
       <para>To create multiple invites you can post the payload to the api/users/invites resource
         like this:</para>
-      <screen>curl -d @invites.json &quot;localhost/api/users/invites&quot; -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <screen>curl -d @invites.json &quot;localhost/api/24/users/invites&quot; -H &quot;Content-Type:application/json&quot;
+  -u admin:district</screen>
       <para>There are certain requirements for user account invitations to be sent out:<itemizedlist>
           <listitem>
             <para>Email SMTP server must be configured properly on the server.</para>
@@ -9544,10 +9546,10 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
 }</screen>
       <para>This payload can be posted to the replica resource, where you provide the identifier of
         the user to replicate in the URL:</para>
-      <screen>/api/users/&lt;uid&gt;/replica</screen>
+      <screen>/api/24/users/&lt;uid&gt;/replica</screen>
       <para>An example of replicating a user using curl looks like this:</para>
-      <screen>curl -d @replica.json &quot;localhost/api/users/N3PZBUlN8vq/replica&quot; 
--H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <screen>curl -d @replica.json &quot;localhost/api/24/users/N3PZBUlN8vq/replica&quot; 
+  -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
     </section>
   </section>
   <section>
@@ -9595,11 +9597,11 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         >systemSettings</emphasis> resource. A system setting is a simple key-value pair, where both
       the key and the value are plain text strings. To save or update a system setting you can make
       a <emphasis role="italic">POST</emphasis> request to the following URL:</para>
-    <screen>/api/systemSettings/my-key?value=my-val</screen>
+    <screen>/api/24/systemSettings/my-key?value=my-val</screen>
     <para>Alternatively, you can submit the setting value as the request body, where content type is
       set to &quot;text/plain&quot;. As an example, you can use curl like this:</para>
-    <screen>curl &quot;play.dhis2.org/demo/api/systemSettings/my-key&quot; -d &quot;My long value&quot; 
--H &quot;Content-Type: text/plain&quot; -u admin:district -v</screen>
+    <screen>curl &quot;play.dhis2.org/demo/api/24/systemSettings/my-key&quot; -d &quot;My long value&quot; 
+  -H &quot;Content-Type: text/plain&quot; -u admin:district -v</screen>
     <para>To set system settings in bulk you can send a JSON object with a property and value for
       each system setting key-value pair using a POST request:</para>
     <screen>{
@@ -9610,15 +9612,15 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <para>You should replace my-key with your real key and my-val with your real value. To retrieve
       the value for a given key in plain text you can make a <emphasis role="italic">GET</emphasis>
       request to the following URL:</para>
-    <screen>/api/systemSettings/my-key</screen>
+    <screen>/api/24/systemSettings/my-key</screen>
     <para>Alternatively, you can specify the key as a query parameter:</para>
-    <screen>/api/systemSettings?key=my-key</screen>
+    <screen>/api/24/systemSettings?key=my-key</screen>
     <para>You can retrieve specific system settings as JSON by repeating the key query
       parameter:</para>
-    <screen>curl &quot;play.dhis2.org/demo/api/systemSettings?key=keyApplicationNotification&amp;key=keyApplicationIntro&quot; 
--H &quot;Content-Type: application/json&quot; -u admin:district -v</screen>
+    <screen>curl &quot;play.dhis2.org/demo/api/24/systemSettings?key=keyApplicationNotification&amp;key=keyApplicationIntro&quot; 
+  -H &quot;Content-Type: application/json&quot; -u admin:district -v</screen>
     <para>You can retrieve all system settings with a GET request:</para>
-    <screen>/api/systemSettings</screen>
+    <screen>/api/24/systemSettings</screen>
     <para>To delete a system setting, you can make a <emphasis role="italic">DELETE</emphasis>
       request to the URL similar to the one used above for retrieval.</para>
     <para>The available system settings are listed below.<table frame="all">
@@ -9908,27 +9910,27 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       authenticated for the Web API request. To return a list of all user settings, you can send a
         <emphasis>GET</emphasis> request to the following URL:</para>
     <para>
-      <screen>/api/userSettings</screen>
+      <screen>/api/24/userSettings</screen>
     </para>
     <para>User settings not set by the user, will fall back to the equvalent system setting. To only
       return the values set explicitly by the user, you can append ?useFallback=false to the above
-      URL, like this:<screen>/api/userSettings?useFallback=false</screen></para>
+      URL, like this:<screen>/api/24/userSettings?useFallback=false</screen></para>
     <para> To save or update a setting for the currently authenticated user you can make a <emphasis
         role="italic">POST</emphasis> request to the following URL:</para>
-    <screen>/api/userSettings/my-key?value=my-val</screen>
+    <screen>/api/24/userSettings/my-key?value=my-val</screen>
     <para>You can specify the user for which to save the setting explicitly with this syntax:</para>
-    <screen>/api/userSettings/my-key?user=username&amp;value=my-val</screen>
+    <screen>/api/24/userSettings/my-key?user=username&amp;value=my-val</screen>
     <para>Alternatively, you can submit the setting value as the request body, where content type is
       set to &quot;text/plain&quot;. As an example, you can use curl like this:</para>
-    <screen>curl &quot;https://play.dhis2.org/demo/api/userSettings/my-key&quot; -d &quot;My long value&quot; 
--H &quot;Content-Type: text/plain&quot; -u admin:district -v</screen>
+    <screen>curl &quot;https://play.dhis2.org/demo/api/24/userSettings/my-key&quot; -d &quot;My long value&quot; 
+  -H &quot;Content-Type: text/plain&quot; -u admin:district -v</screen>
     <para>As an example, to set the UI locale of the current user to French you can use the
       following command.</para>
-    <screen>curl &quot;https://play.dhis2.org/demo/api/userSettings/keyUiLocale?value=fr&quot; -X POST -u admin:district -v</screen>
+    <screen>curl &quot;https://play.dhis2.org/demo/api/24/userSettings/keyUiLocale?value=fr&quot; -X POST -u admin:district -v</screen>
     <para>You should replace my-key with your real key and my-val with your real value. To retrieve
       the value for a given key in plain text you can make a <emphasis role="italic">GET</emphasis>
       request to the following URL:</para>
-    <screen>/api/userSettings/my-key</screen>
+    <screen>/api/24/userSettings/my-key</screen>
     <para>To delete a user setting, you can make a <emphasis role="italic">DELETE</emphasis> request
       to the URL similar to the one used above for retrieval.</para>
     <para>The available system settings are listed below.<table frame="all">
@@ -10008,7 +10010,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <title>Organisation units</title>
     <para>The <emphasis>organisationUnits</emphasis> resource follows the standard conventions as
       other metadata resources in DHIS 2. This resource supports some additional query
-      parameters.<screen>/api/organisationUnits</screen></para>
+      parameters.<screen>/api/24/organisationUnits</screen></para>
     <table frame="all">
       <title>Organisation units query parameters</title>
       <tgroup cols="2">
@@ -10051,11 +10053,11 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <title>Data sets</title>
     <para>The <emphasis>dataSets</emphasis> resource follows the standard conventions as other
       metadata resources in DHIS 2. This resource supports some additional query
-      parameters.<screen>/api/dataSets</screen></para>
+      parameters.<screen>/api/24/dataSets</screen></para>
     <para>To retrieve the version of a data set you can issue a GET
-      request:<screen>GET /api/dataSets/&lt;uid>/version</screen></para>
+      request:<screen>GET /api/24/dataSets/&lt;uid>/version</screen></para>
     <para>To bump (increase by one) the version of a data set you can issue a POST
-      request:<screen>POST /api/dataSets/&lt;uid>/version</screen></para>
+      request:<screen>POST /api/24/dataSets/&lt;uid>/version</screen></para>
   </section>
   <section>
     <title>Filled organisation unit levels</title>
@@ -10063,7 +10065,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       organisation unit levels, where generated levels are injected into the list to fill positions
       for which it does not exist a persisted level.</para>
     <para>
-      <screen>GET /api/filledOrganisationUnitLevels</screen>
+      <screen>GET /api/24/filledOrganisationUnitLevels</screen>
     </para>
     <para>To set the organisation unit levels you can issue a POST request with a JSON payload
       looking like
@@ -10084,8 +10086,8 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   }]
 }</screen></para>
     <para>To do functional testing with curl you can issue the following command.
-      <screen>curl "http://localhost/api/filledOrganisationUnitLevels" -H "Content-Type:application/json"
--d @levels.json -u admin:district -v</screen></para>
+      <screen>curl "http://localhost/api/24/filledOrganisationUnitLevels" -H "Content-Type:application/json"
+  -d @levels.json -u admin:district -v</screen></para>
   </section>
   <section>
     <title>Static content</title>
@@ -10093,7 +10095,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       logos used in DHIS2. The resource lets the user upload a file with an associated key, which
       can later be retrieved using the key. Only PNG files are supported and can only be uploaded to
       the &quot;logo_banner&quot; and &quot;logo_front&quot;
-      keys.<screen>/api/staticContent</screen></para>
+      keys.<screen>/api/24/staticContent</screen></para>
     <table frame="all">
       <title>Static content keys</title>
       <tgroup cols="2">
@@ -10118,16 +10120,16 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       </tgroup>
     </table>
     <para> To upload a file, send the file with a <emphasis>POST</emphasis> request
-      to:<screen>POST /api/staticContent/&lt;key&gt;</screen></para>
+      to:<screen>POST /api/24/staticContent/&lt;key&gt;</screen></para>
     <para>Example request to upload logo.png to the logo_front
-      key:<screen>curl -F &quot;file=@logo.png;type=image/png&quot; &quot;https://play.dhis2.org/demo/api/staticContent/logo_front&quot;
--X POST -H &quot;Content-Type: multipart/form-data&quot; -u admin:district -v</screen></para>
+      key:<screen>curl -F &quot;file=@logo.png;type=image/png&quot; &quot;https://play.dhis2.org/demo/api/24/staticContent/logo_front&quot;
+  -X POST -H &quot;Content-Type: multipart/form-data&quot; -u admin:district -v</screen></para>
     <para>Uploading multiple files with the same key will overwrite the existing file. This way,
       retrieving a file for any given key will only return the latest file uploaded.</para>
     <para>To retrieve a logo, you can <emphasis>GET</emphasis> the
-      following:<screen>GET /api/staticContent/&lt;key&gt;</screen></para>
+      following:<screen>GET /api/24/staticContent/&lt;key&gt;</screen></para>
     <para>Example request to retrieve the file stored for
-      logo_front:<screen>curl &quot;aps.dhis2.org/demo/api/staticContent/logo_front&quot; -L -X GET -u admin:district -v</screen></para>
+      logo_front:<screen>curl &quot;https://apps.dhis2.org/demo/api/24/staticContent/logo_front&quot; -L -X GET -u admin:district -v</screen></para>
     <para>To use custom logos, you need to enable the corresponding system settings by setting it to
         <emphasis>true</emphasis>. If the corresponding setting is false, the default logo will be
       served.</para>
@@ -10138,21 +10140,21 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         >configuration</emphasis> resource. You can get XML and JSON responses through the <emphasis
         role="italic">Accept</emphasis> header or by using the .json or .xml extensions. You can
         <emphasis role="italic">GET</emphasis> all properties of the configuration from:</para>
-    <screen>/api/configuration</screen>
+    <screen>/api/24/configuration</screen>
     <para>You can send <emphasis role="italic">GET</emphasis> and <emphasis role="italic"
         >POST</emphasis> requests to the following specific resources:</para>
-    <screen>GET /api/configuration/systemId</screen>
-    <screen>GET POST DELETE /api/configuration/feedbackRecipients</screen>
-    <screen>GET POST DELETE /api/configuration/offlineOrganisationUnitLevel</screen>
-    <screen>GET POST /api/configuration/infrastructuralDataElements</screen>
-    <screen>GET POST /api/configuration/infrastructuralIndicators</screen>
-    <screen>GET POST /api/configuration/infrastructuralPeriodType</screen>
-    <screen>GET POST DELETE /api/configuration/selfRegistrationRole</screen>
-    <screen>GET POST DELETE /api/configuration/selfRegistrationOrgUnit</screen>
+    <screen>GET /api/24/configuration/systemId</screen>
+    <screen>GET POST DELETE /api/24/configuration/feedbackRecipients</screen>
+    <screen>GET POST DELETE /api/24/configuration/offlineOrganisationUnitLevel</screen>
+    <screen>GET POST /api/24/configuration/infrastructuralDataElements</screen>
+    <screen>GET POST /api/24/configuration/infrastructuralIndicators</screen>
+    <screen>GET POST /api/24/configuration/infrastructuralPeriodType</screen>
+    <screen>GET POST DELETE /api/24/configuration/selfRegistrationRole</screen>
+    <screen>GET POST DELETE /api/24/configuration/selfRegistrationOrgUnit</screen>
     <para>For the CORS whitelist configuration you can make a POST request with an array of URLs to
       whitelist as payload using &quot;application/json&quot; as content-type, for instance:</para>
     <screen>[&quot;www.google.com&quot;, &quot;www.dhis2.org&quot;, &quot;www.who.int&quot;]</screen>
-    <screen>GET POST /api/configuration/corsWhitelist</screen>
+    <screen>GET POST /api/24/configuration/corsWhitelist</screen>
     <para>For POST requests, the configuration value should be sent as the request payload as text.
       The following table shows appropriate configuration values for each property.</para>
     <table frame="all">
@@ -10219,14 +10221,14 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       </tgroup>
     </table>
     <para>As an example, to set the feedback recipients user group you can invoke the following curl
-      command:<screen>curl &quot;localhost/api/configuration/feedbackRecipients&quot; -d &quot;wl5cDMuUhmF&quot; 
--H &quot;Content-Type:text/plain&quot;-u admin:district -v</screen></para>
+      command:<screen>curl &quot;localhost/api/24/configuration/feedbackRecipients&quot; -d &quot;wl5cDMuUhmF&quot; 
+  -H &quot;Content-Type:text/plain&quot;-u admin:district -v</screen></para>
   </section>
   <section>
     <title>Internationalization</title>
     <para>In order to retrieve key-value pairs for translated strings you can use the <emphasis
-        role="italic">i18n</emphasis> resource.<screen>/api/i18n</screen> The endpoint is located at
-        <emphasis role="italic">api/i18n</emphasis> and the request format is a simple array of the
+        role="italic">i18n</emphasis> resource.<screen>/api/24/i18n</screen> The endpoint is located
+      at <emphasis role="italic">api/i18n</emphasis> and the request format is a simple array of the
       key-value pairs:</para>
     <screen>[
   &quot;access_denied&quot;,
@@ -10235,8 +10237,8 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <para>The request must be of type <emphasis role="italic">POST</emphasis> and use <emphasis
         role="italic">application/json</emphasis> as content-type. An example using curl, assuming
       the request data is saved as a file keys.json:</para>
-    <screen>curl -d @keys.json &quot;play.dhis2.org/demo/api/i18n&quot; -X POST 
--H &quot;Content-Type: application/json&quot; -u admin:district -v</screen>
+    <screen>curl -d @keys.json &quot;play.dhis2.org/demo/api/24/i18n&quot; -X POST 
+  -H &quot;Content-Type: application/json&quot; -u admin:district -v</screen>
     <para>The result will look like this:</para>
     <screen>{
   &quot;access_denied&quot;:&quot;Access denied&quot;,
@@ -10876,7 +10878,8 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         role="italic">attribute</emphasis> parameters are defined, and one where <emphasis
         role="italic">attribute</emphasis> and <emphasis role="italic">filter</emphasis> parameters
       are defined. This endpoint uses a more compact &quot;grid&quot; format, and is an alternative
-      to the query in the previous section.<screen>api/trackedEntityInstances/query</screen></para>
+      to the query in the previous
+      section.<screen>api/24/trackedEntityInstances/query</screen></para>
     <section>
       <title>Request syntax</title>
       <table frame="all">
@@ -11102,49 +11105,49 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       </itemizedlist>
       <para>A query for all instances associated with a specific organisation unit can look like
         this:</para>
-      <screen>api/trackedEntityInstances/query.json?ou=DiszpKrYNg8</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?ou=DiszpKrYNg8</screen>
       <para>A query on all attributes for a specific value and organisation unit, using an exact
         word match:</para>
-      <screen>api/trackedEntityInstances/query.json?query=scott&amp;ou=DiszpKrYNg8</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?query=scott&amp;ou=DiszpKrYNg8</screen>
       <para>A query on all attributes for a specific value, using a partial word match:</para>
-      <screen>api/trackedEntityInstances/query.json?query=LIKE:scott&amp;ou=DiszpKrYNg8</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?query=LIKE:scott&amp;ou=DiszpKrYNg8</screen>
       <para>You can query on multiple words separated by the the URL character for space which is
         %20, will use a logical AND query for each word:</para>
-      <screen>api/trackedEntityInstances/query.json?query=isabel%20may&amp;ou=DiszpKrYNg8</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?query=isabel%20may&amp;ou=DiszpKrYNg8</screen>
       <para>A query where the attributes to include in the response are specified:</para>
-      <screen>api/trackedEntityInstances/query.json?query=isabel&amp;attribute=dv3nChNSIxy&amp;attribute=AMpUYgxuCaE&amp;ou=DiszpKrYNg8</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?query=isabel&amp;attribute=dv3nChNSIxy&amp;attribute=AMpUYgxuCaE&amp;ou=DiszpKrYNg8</screen>
       <para>To query for instances using one attribute with a filter and one attribute without a
         filter, with one organisation unit using the descendants organisation unit query
         mode:</para>
-      <screen>api/trackedEntityInstances/query.json?attribute=zHXD5Ve1Efw:EQ:A
-&amp;attribute=AMpUYgxuCaE&amp;ou=DiszpKrYNg8;yMCshbaVExv</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?attribute=zHXD5Ve1Efw:EQ:A
+  &amp;attribute=AMpUYgxuCaE&amp;ou=DiszpKrYNg8;yMCshbaVExv</screen>
       <para>A query for instances where one attribute is included in the response and one attribute
         us used as a filter:</para>
-      <screen>api/trackedEntityInstances/query.json?attribute=zHXD5Ve1Efw:EQ:A&amp;filter=AMpUYgxuCaE:LIKE:Road&amp;ou=DiszpKrYNg8</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?attribute=zHXD5Ve1Efw:EQ:A&amp;filter=AMpUYgxuCaE:LIKE:Road&amp;ou=DiszpKrYNg8</screen>
       <para>A query where multiple operand and filters are specified for a filter item:</para>
-      <screen>api/trackedEntityInstances/query.json?ou=DiszpKrYNg8&amp;program=ur1Edk5Oe2n&amp;filter=lw1SqmMlnfh:GT:150:LT:190</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?ou=DiszpKrYNg8&amp;program=ur1Edk5Oe2n&amp;filter=lw1SqmMlnfh:GT:150:LT:190</screen>
       <para>To query on an attribute using multiple values in an IN filter:</para>
-      <screen>api/trackedEntityInstances/query.json?ou=DiszpKrYNg8&amp;attribute=dv3nChNSIxy:IN:Scott;Jimmy;Santiago</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?ou=DiszpKrYNg8&amp;attribute=dv3nChNSIxy:IN:Scott;Jimmy;Santiago</screen>
       <para>To constrain the response to instances which are part of a specific program you can
         include a program query parameter:</para>
-      <screen>api/trackedEntityInstances/query.json?filter=zHXD5Ve1Efw:EQ:A
-&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;program=ur1Edk5Oe2n</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?filter=zHXD5Ve1Efw:EQ:A
+  &amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;program=ur1Edk5Oe2n</screen>
       <para>To specify program enrollment dates as part of the query:</para>
-      <screen>api/trackedEntityInstances/query.json?filter=zHXD5Ve1Efw:EQ:A
-&amp;ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n&amp;programStartDate=2013-01-01&amp;programEndDate=2013-09-01</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?filter=zHXD5Ve1Efw:EQ:A
+  &amp;ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n&amp;programStartDate=2013-01-01&amp;programEndDate=2013-09-01</screen>
       <para>To constrain the response to instances of a specific tracked entity you can include a
         tracked entity query parameter:</para>
-      <screen>api/trackedEntityInstances/query.json?attribute=zHXD5Ve1Efw:EQ:A
-&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;trackedEntity=cyl5vuJ5ETQ</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?attribute=zHXD5Ve1Efw:EQ:A
+  &amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;trackedEntity=cyl5vuJ5ETQ</screen>
       <para>By default the instances are returned in pages of size 50, to change this you can use
         the page and pageSize query parameters:</para>
-      <screen>api/trackedEntityInstances/query.json?attribute=zHXD5Ve1Efw:EQ:A
-&amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;page=2&amp;pageSize=3</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?attribute=zHXD5Ve1Efw:EQ:A
+  &amp;ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;page=2&amp;pageSize=3</screen>
       <para>To query for instances which have events of a given status within a given time
         span:</para>
-      <screen>api/trackedEntityInstances/query.json?ou=O6uvpzGd5pu
-&amp;program=ur1Edk5Oe2n&amp;eventStatus=LATE_VISIT
-&amp;eventStartDate=2014-01-01&amp;eventEndDate=2014-09-01</screen>
+      <screen>/api/24/trackedEntityInstances/query.json?ou=O6uvpzGd5pu
+  &amp;program=ur1Edk5Oe2n&amp;eventStatus=LATE_VISIT
+  &amp;eventStartDate=2014-01-01&amp;eventEndDate=2014-09-01</screen>
       <para>You can use a range of operators for the filtering:</para>
       <table frame="all">
         <title>Filter operators</title>
@@ -11425,22 +11428,22 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       </itemizedlist>
       <para>A query for all instances associated with a specific organisation unit can look like
         this:</para>
-      <screen>api/enrollments.json?ou=DiszpKrYNg8</screen>
+      <screen>/api/24/enrollments.json?ou=DiszpKrYNg8</screen>
       <para>To constrain the response to instances which are part of a specific program you can
         include a program query parameter:</para>
-      <screen>api/enrollments.json?ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;program=ur1Edk5Oe2n</screen>
+      <screen>/api/24/enrollments.json?ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;program=ur1Edk5Oe2n</screen>
       <para>To specify program enrollment dates as part of the query:</para>
-      <screen>api/enrollments.json?&amp;ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n&amp;programStartDate=2013-01-01&amp;programEndDate=2013-09-01</screen>
+      <screen>/api/24/enrollments.json?&amp;ou=O6uvpzGd5pu&amp;program=ur1Edk5Oe2n&amp;programStartDate=2013-01-01&amp;programEndDate=2013-09-01</screen>
       <para>To constrain the response to instances of a specific tracked entity you can include a
         tracked entity query parameter:</para>
-      <screen>api/enrollments.json?ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;trackedEntity=cyl5vuJ5ETQ</screen>
+      <screen>/api/24/enrollments.json?ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;trackedEntity=cyl5vuJ5ETQ</screen>
       <para>To constrain the response to instances of a specific tracked entity instance you can
         include a tracked entity instance query parameter, in this case we are restricted it to
         available enrollments viewable for current
-        user:<screen>api/enrollments.json?ouMode=ACCESSIBLE&amp;trackedEntityInstance=tphfdyIiVL6</screen></para>
+        user:<screen>/api/24/enrollments.json?ouMode=ACCESSIBLE&amp;trackedEntityInstance=tphfdyIiVL6</screen></para>
       <para>By default the instances are returned in pages of size 50, to change this you can use
         the page and pageSize query parameters:</para>
-      <screen>api/enrollments.json?ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;page=2&amp;pageSize=3</screen>
+      <screen>/api/24/enrollments.json?ou=O6uvpzGd5pu&amp;ouMode=DESCENDANTS&amp;page=2&amp;pageSize=3</screen>
     </section>
     <section>
       <title>Response format</title>
@@ -11492,7 +11495,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   ]
 }</screen></para>
     <screen>curl -X POST -d @data.json -H &quot;Content-Type: application/json&quot;
-  &quot;http://server/api/trackedEntityInstasnces?strategy=DELETE&quot;</screen>
+  &quot;http://server/api/24/trackedEntityInstasnces?strategy=DELETE&quot;</screen>
     <para><emphasis role="italic">Example: Bulk deletion of
       enrollments:</emphasis><screen>{
   &quot;enrollments&quot;: [
@@ -11502,7 +11505,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   ]
 }</screen></para>
     <screen>curl -X POST -d @data.json -H &quot;Content-Type: application/json&quot;
-  &quot;http://server/api/enrollments?strategy=DELETE&quot;</screen>
+  &quot;http://server/api/24/enrollments?strategy=DELETE&quot;</screen>
     <para><emphasis role="italic">Example: Bulk deletion of
       events:</emphasis><screen>{
   &quot;events&quot;: [
@@ -11512,7 +11515,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   ]
 }</screen></para>
     <screen>curl -X POST -d @data.json -H &quot;Content-Type: application/json&quot;
-  &quot;http://server/api/events?strategy=DELETE&quot;</screen>
+  &quot;http://server/api/24/events?strategy=DELETE&quot;</screen>
   </section>
   <section>
     <title>Email</title>
@@ -11532,7 +11535,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
 }</screen>
       <para>You can send a system email notification by posting to the notification resource like
         this:</para>
-      <screen>curl -d @email.json &quot;localhost/api/email/notification&quot; -X POST -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <screen>curl -d @email.json &quot;localhost/api/24/email/notification&quot; -X POST -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
     </section>
     <section>
       <title>Test message</title>
@@ -11540,7 +11543,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         interact with the <emphasis role="italic">test</emphasis> resource. To send test emails it
         is required that your DHIS 2 user account has a valid email address associated with it. You
         can send a test email like this:</para>
-      <screen>curl &quot;localhost/api/email/test&quot; -X POST -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <screen>curl &quot;localhost/api/24/email/test&quot; -X POST -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
     </section>
   </section>
   <section>
@@ -11548,11 +11551,11 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <para>The sharing solution allows you to share most objects in the system with specific user
       groups and to define whether objects should be publicly accessible or private. To get and set
       sharing status for objects you can interact with the <emphasis role="italic"
-        >sharing</emphasis> resource.<screen>/api/sharing</screen></para>
+        >sharing</emphasis> resource.<screen>/api/24/sharing</screen></para>
     <section>
       <title>Get sharing status</title>
       <para>To request the sharing status for an object use a GET request to:</para>
-      <screen>api/sharing?type=dataElement&amp;id=fbfJHSPpUQD</screen>
+      <screen>/api/24/sharing?type=dataElement&amp;id=fbfJHSPpUQD</screen>
       <para>The response looks like the below.</para>
       <screen>{
     &quot;meta&quot;: {
@@ -11602,15 +11605,15 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <para>In this example, the payload defines the object to have read-write public access, no
         external access (without login), read-write access to one user group and read-only access to
         another user group. You can submit this to the sharing resource using curl:</para>
-      <screen>curl -d @sharing.json &quot;localhost/api/sharing?type=dataElement&amp;id=fbfJHSPpUQD&quot; 
--H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
+      <screen>curl -d @sharing.json &quot;localhost/api/24/sharing?type=dataElement&amp;id=fbfJHSPpUQD&quot; 
+  -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
     </section>
   </section>
   <section>
     <title>Scheduling</title>
     <para>To schedule tasks to run at fixed intervals you can interact with the scheduling resource.
       To configure tasks you can do a POST request to the following
-      resource:<screen>/api/scheduling</screen></para>
+      resource:<screen>/api/24/scheduling</screen></para>
     <para>The payload in JSON format is described
       below.<screen>{
     &quot;resourceTableStrategy&quot;: &quot;allDaily&quot;,
@@ -11619,8 +11622,8 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     &quot;dataSynchStrategy&quot;: &quot;enabled&quot;
 }</screen></para>
     <para>An example using
-      curl:<screen>curl &quot;localhost/dhis/api/scheduling&quot; -d @scheduling.json -X POST 
--H &quot;Content-Type:application/json&quot; -u admin:district -v</screen></para>
+      curl:<screen>curl &quot;localhost/dhis/api/24/scheduling&quot; -d @scheduling.json -X POST 
+  -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen></para>
     <para>The table below lists available task strategies.<table frame="all">
         <title>Task strategies</title>
         <tgroup cols="2">
@@ -11688,11 +11691,11 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <para>To insert Javascript from a file called <emphasis role="italic">script.js</emphasis> you
         can interact with the <emphasis role="italic">files/script</emphasis> resource with a
         POST-request:</para>
-      <screen>curl --data-binary @script.js &quot;localhost/api/files/script&quot; 
--H &quot;Content-Type:application/javascript&quot; -u admin:district -v</screen>
+      <screen>curl --data-binary @script.js &quot;localhost/api/24/files/script&quot; 
+  -H &quot;Content-Type:application/javascript&quot; -u admin:district -v</screen>
       <para>Note that we use the --data-binary option to preserve formatting of the file content.
         You can fetch the Javascript content with a GET-request:</para>
-      <screen>api/files/script</screen>
+      <screen>/api/24/files/script</screen>
       <para>To remove the Javascript content you can use a DELETE-request.</para>
     </section>
     <section>
@@ -11700,10 +11703,10 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <para>To insert CSS from a file called <emphasis role="italic">style.css</emphasis> you can
         interact with the <emphasis role="italic">files/style</emphasis> resource with a
         POST-request:</para>
-      <screen>curl --data-binary @style.css &quot;localhost/api/files/style&quot; 
--H &quot;Content-Type:text/css&quot; -u admin:district -v</screen>
+      <screen>curl --data-binary @style.css &quot;localhost/api/24/files/style&quot; 
+  -H &quot;Content-Type:text/css&quot; -u admin:district -v</screen>
       <para>You can fetch the CSS content with a GET-request:</para>
-      <screen>api/files/style</screen>
+      <screen>/api/24/files/style</screen>
       <para>To remove the Javascript content you can use a DELETE-e "request.</para>
     </section>
   </section>
@@ -11714,37 +11717,38 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <title>Data push</title>
       <para>To initiate a data push to a remote server one must first configure the URL and
         credentials for the relevant server from System settings &gt; Synchronization, then make a
-        POST request to the following resource:<screen>api/synchronization/dataPush</screen></para>
+        POST request to the following
+        resource:<screen>/api/24/synchronization/dataPush</screen></para>
     </section>
     <section>
       <title>Metadata pull</title>
       <para>To initiate a metadata pull from a remote JSON document you can make a POST request with
         a <emphasis role="italic">url</emphasis> as request payload to the following
-        resource:<screen>api/synchronization/metadataPull</screen></para>
+        resource:<screen>/api/24/synchronization/metadataPull</screen></para>
     </section>
     <section>
       <title>Availability check</title>
       <para>To check the availability of the remote data server and verify user credentials you can
         make a GET request to the following
-        resource:<screen>api/synchronization/availability</screen></para>
+        resource:<screen>/api/24/synchronization/availability</screen></para>
     </section>
   </section>
   <section>
     <title>Apps</title>
     <para> The <emphasis role="italic">/api/apps</emphasis> endpoint can be used for installing,
       deleting and listing apps. The app key is derived from the name of the ZIP archive, exluding
-      the file extension.<screen>/api/apps</screen></para>
+      the file extension.<screen>/api/24/apps</screen></para>
     <section>
       <title>Get apps</title>
       <para>You can read the keys for apps by listing all apps from the apps resource and look for
         the <emphasis role="italic">key</emphasis> property. To list all installed apps in
-        JSON:<screen>curl -X GET -u user:pass -H &quot;Accept: application/json&quot; http://server.com/api/apps</screen></para>
+        JSON:<screen>curl -X GET -u user:pass -H &quot;Accept: application/json&quot; http://server.com/api/24/apps</screen></para>
       <para>You can also simply point your web browser to the resource URL:</para>
-      <screen>http://server.com/api/apps</screen>
+      <screen>http://server.com/api/24/apps</screen>
       <para>The apps list can also be filtered by app type and by name, by appending one or more
           <emphasis>filter</emphasis> parameters to the URL:</para>
       <para>
-        <screen>http://server.com/api/apps?filter=appType:eq:DASHBOARD_APP&amp;filter=name:ilike:youtube</screen>
+        <screen>http://server.com/api/24/apps?filter=appType:eq:DASHBOARD_APP&amp;filter=name:ilike:youtube</screen>
       </para>
       <para>App names support the <emphasis>eq</emphasis> and <emphasis>ilike</emphasis> filter
         operators, while <emphasis>appType</emphasis> supports <emphasis>eq</emphasis> only.</para>
@@ -11752,34 +11756,34 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <section>
       <title>Install an app</title>
       <para>To install an app, the following command can be issued:
-        <screen>curl -X POST -u user:pass -F file=@app.zip http://server.com/api/apps</screen></para>
+        <screen>curl -X POST -u user:pass -F file=@app.zip http://server.com/api/24/apps</screen></para>
     </section>
     <section>
       <title>Delete an app</title>
       <para>To delete an app, you can issue the following command:
-        <screen>curl -X DELETE -u user:pass http://server.com/api/apps/&lt;app-key&gt;</screen></para>
+        <screen>curl -X DELETE -u user:pass http://server.com/api/24/apps/&lt;app-key&gt;</screen></para>
     </section>
     <section>
       <title>Reload apps</title>
       <para>To force a reload of currently installed apps, you can issue the following command. This
         is useful if you added a file manually directly to the file system, instead of uploading
         through the DHIS 2 user interface.
-        <screen>curl -X PUT -u user:pass http://server.com/api/apps</screen></para>
+        <screen>curl -X PUT -u user:pass http://server.com/api/24/apps</screen></para>
     </section>
     <section>
       <title>Configure apps</title>
       <para>To let DHIS 2 serve apps from the Web API make sure to set the &quot;App base URL&quot;
-        to point to the apps resource, i.e.:<screen>http://server.com/api/apps</screen></para>
+        to point to the apps resource, i.e.:<screen>http://server.com/api/24/apps</screen></para>
       <para>To set the apps configuration you can make a POST request to the <emphasis role="italic"
           >config</emphasis> resourec with a JSON payload:</para>
       <screen>{
   &quot;appFolderPath&quot;: &quot;/home/dhis/config/apps&quot;,
   &quot;appBaseUrl&quot;: &quot;http://server.com/api/apps&quot;
 }</screen>
-      <screen>curl -X POST -u user:pass -d @config.json http://server.com/api/apps/config</screen>
+      <screen>curl -X POST -u user:pass -d @config.json http://server.com/api/24/apps/config</screen>
       <para>To restore the default app settings you can make a DELETE request to the config
         resource:</para>
-      <screen>curl -X DELETE -u user:pass http://server.com/api/apps/config</screen>
+      <screen>curl -X DELETE -u user:pass http://server.com/api/24/apps/config</screen>
       <para>Note that by default apps will be served through the apps Web API resource, and the file
         system folder will be <emphasis role="italic">DHIS2_HOME/apps</emphasis>. These systems
         should be fine for most situations.</para>
@@ -11791,7 +11795,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       found at the <emphasis role="italic">api/appStore</emphasis> resource.</para>
     <section>
       <title>Get apps</title>
-      <para>You can retrieve apps with a GET request: <screen>GET /api/appStore</screen></para>
+      <para>You can retrieve apps with a GET request: <screen>GET /api/24/appStore</screen></para>
       <para>A sample JSON response is described below.
         <screen>{
   &quot;name&quot;: &quot;DHIS 2 App Store&quot;,
@@ -11822,7 +11826,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         permissions. An app is referred to using the <emphasis role="italic">id</emphasis> property
         of the relevant <emphasis role="italic">version</emphasis> of the <emphasis role="italic"
           >app</emphasis>. An app is installed with a POST request with the version id to the
-        following resource:<screen>POST /api/appStore/{app-version-id}</screen></para>
+        following resource:<screen>POST /api/24/appStore/{app-version-id}</screen></para>
     </section>
   </section>
   <section>
@@ -11830,7 +11834,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <para>Using the <emphasis>dataStore</emphasis> resource, developers can store arbitrary data for
       their apps. Access to a datastore is limited to the user&apos;s access to the corresponding
       app. For example a user with access to the &quot;sampleApp&quot; application will also be able
-      to use the sampleApp namespace in the datastore.<screen>/api/dataStore</screen></para>
+      to use the sampleApp namespace in the datastore.<screen>/api/24/dataStore</screen></para>
     <section>
       <title>Data store structure</title>
       <para>Data store entries consist of a namespace, key and value. The combination of namespace
@@ -11875,9 +11879,9 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     </section>
     <section>
       <title>Get keys and namespaces</title>
-      <para>For a list of all existing namespaces:<screen>GET /api/dataStore</screen></para>
+      <para>For a list of all existing namespaces:<screen>GET /api/24/dataStore</screen></para>
       <para>Example curl request for
-        listing:<screen>curl &quot;play.dhis2.org/demo/api/dataStore&quot; -X GET -u admin:district -v</screen></para>
+        listing:<screen>curl &quot;play.dhis2.org/demo/api/24/dataStore&quot; -X GET -u admin:district -v</screen></para>
       <para>Example response:</para>
       <para>
         <screen>[
@@ -11886,26 +11890,26 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
 ]</screen>
       </para>
       <para>For a list of all keys in a
-        namespace:<screen>GET /api/dataStore/&lt;namespace&gt;</screen></para>
+        namespace:<screen>GET /api/24/dataStore/&lt;namespace&gt;</screen></para>
       <para>Example curl request for
-        listing:<screen>curl &quot;play.dhis2.org/demo/api/dataStore/foo&quot; -X GET -u admin:district -v</screen></para>
+        listing:<screen>curl &quot;play.dhis2.org/demo/api/24/dataStore/foo&quot; -X GET -u admin:district -v</screen></para>
       <para>Example response:</para>
       <screen>[
     &quot;key_1&quot;,
     &quot;key_2&quot;
 ]</screen>
       <para>To retrieve a value for an existing key from a
-        namespace:<screen>GET /api/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
+        namespace:<screen>GET /api/24/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
       <para>Example curl request for
-        retrieval:<screen>curl &quot;play.dhis2.org/demo/api/dataStore/foo/key_1&quot; -X GET -u admin:district -v</screen></para>
+        retrieval:<screen>curl &quot;play.dhis2.org/demo/api/24/dataStore/foo/key_1&quot; -X GET -u admin:district -v</screen></para>
       <para>Example response:</para>
       <screen>{
     &quot;foo&quot;:&quot;bar&quot;
 }</screen>
       <para>To retrieve meta-data for en existing key from a namespace:
-        <screen>GET /api/dataStore/</screen></para>
+        <screen>GET /api/24/dataStore/</screen></para>
       <para>Example curl request for
-        retrieval:<screen>curl &quot;play.dhis2.org/demo/api/dataStore/foo/key_1/metaData&quot; -X GET -u admin:district -v</screen></para>
+        retrieval:<screen>curl &quot;play.dhis2.org/demo/api/24/dataStore/foo/key_1/metaData&quot; -X GET -u admin:district -v</screen></para>
       <para>Example
         response:<screen>{
     &quot;created&quot;: &quot;...&quot;,
@@ -11917,10 +11921,10 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <section>
       <title>Create and update values</title>
       <para>To create a new key and value for a
-        namespace:<screen>POST /api/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
+        namespace:<screen>POST /api/24/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
       <para>Example curl request for create, assuming a valid json
-        payload:<screen>curl &quot;https://play.dhis2.org/demo/api/dataStore/foo/key_1&quot; -X POST 
--H &quot;Content-Type: application/json&quot; -d &quot;{\&quot;foo\&quot;:\&quot;bar\&quot;}&quot; -u admin:district -v</screen></para>
+        payload:<screen>curl &quot;https://play.dhis2.org/demo/api/24/dataStore/foo/key_1&quot; -X POST 
+  -H &quot;Content-Type: application/json&quot; -d &quot;{\&quot;foo\&quot;:\&quot;bar\&quot;}&quot; -u admin:district -v</screen></para>
       <para>Example
         response:<screen>{
     &quot;httpStatus&quot;: &quot;OK&quot;,
@@ -11930,12 +11934,12 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
 }</screen></para>
       <para>If you require the data you store to be encrypted (For example user credentials or
         similar) you can append a query to the url like
-        this:<screen>GET /api/dataStore/&lt;namespace>/&lt;key>?encrypt=true</screen></para>
+        this:<screen>GET /api/24/dataStore/&lt;namespace>/&lt;key>?encrypt=true</screen></para>
       <para>To update a key that exists in a
-        namespace:<screen>PUT /api/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
+        namespace:<screen>PUT /api/24/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
       <para>Example curl request for update, assuming valid JSON
-        payload:<screen>curl &quot;https://play.dhis2.org/demo/api/dataStore/foo/key_1&quot; -X PUT -d &quot;[1, 2, 3]&quot; 
--H &quot;Content-Type: application/json&quot; -u admin:district -v</screen></para>
+        payload:<screen>curl &quot;https://play.dhis2.org/demo/api/24/dataStore/foo/key_1&quot; -X PUT -d &quot;[1, 2, 3]&quot; 
+  -H &quot;Content-Type: application/json&quot; -u admin:district -v</screen></para>
       <para>Example
         response:<screen>{
     &quot;httpStatus&quot;: &quot;OK&quot;,
@@ -11947,9 +11951,9 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <section>
       <title>Delete keys</title>
       <para>To delete an existing key from a
-        namespace:<screen>DELETE /api/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
+        namespace:<screen>DELETE /api/24/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
       <para>Example curl request for
-        delete:<screen>curl &quot;play.dhis2.org/demo/api/dataStore/foo/key_1&quot; -X DELETE -u admin:district -v</screen></para>
+        delete:<screen>curl &quot;play.dhis2.org/demo/api/24/dataStore/foo/key_1&quot; -X DELETE -u admin:district -v</screen></para>
       <para>Example
         response:<screen>{
     &quot;httpStatus&quot;: &quot;OK&quot;,
@@ -11958,9 +11962,9 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     &quot;message&quot;: &quot;Key &apos;key_1&apos; deleted from namespace &apos;foo&apos;.&quot;
 }</screen></para>
       <para>To delete all keys in a
-        namespace:<screen>DELETE /api/dataStore/&lt;namespace&gt;</screen></para>
+        namespace:<screen>DELETE /api/24/dataStore/&lt;namespace&gt;</screen></para>
       <para>Example curl request for
-        delete:<screen>curl &quot;play.dhis2.org/demo/api/dataStore/foo&quot; -X DELETE -u admin:district -v</screen></para>
+        delete:<screen>curl &quot;play.dhis2.org/demo/api/24/dataStore/foo&quot; -X DELETE -u admin:district -v</screen></para>
       <para>Example
         response:<screen>{
     &quot;httpStatus&quot;: &quot;OK&quot;,
@@ -11978,7 +11982,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       can have different data on the same namespace and key combination. All calls against the
         <emphasis>userDataStore</emphasis> will be associated with the logged in user. This means
       one can only see, change, remove and add values associated with the currently logged in
-      user.<screen>/api/userDataStore</screen></para>
+      user.<screen>/api/24/userDataStore</screen></para>
     <section>
       <title>User data store structure</title>
       <para><emphasis>userDataStore</emphasis> consists of a user, a namespace, keys and associated
@@ -12028,9 +12032,9 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <section>
       <title>Get namespaces</title>
       <para>Returns an array of all existing
-        namespaces<screen>GET /api/userDataStore</screen></para>
+        namespaces<screen>GET /api/24/userDataStore</screen></para>
       <para>Example
-        request:<screen>curl -X GET -H "Content-Type: application/json" -u admin:district "play.dhis2.org/api/userDataStore" -v</screen></para>
+        request:<screen>curl -X GET -H "Content-Type: application/json" -u admin:district "play.dhis2.org/api/24/userDataStore" -v</screen></para>
       <para>
         <screen>[
   "foo",
@@ -12044,7 +12048,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         namespace<screen>GET /api/userDataStore/&lt;namespace></screen></para>
       <para>Example request:</para>
       <para>
-        <screen>curl -X GET -H "Content-Type: application/json" -u admin:district "play.dhis2.org/api/userDataStore/foo" -v</screen>
+        <screen>curl -X GET -H "Content-Type: application/json" -u admin:district "play.dhis2.org/api/24/userDataStore/foo" -v</screen>
         <screen>[
   "key_1",
   "key_2"
@@ -12054,18 +12058,19 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     <section>
       <title>Get value</title>
       <para>Returns the value for a given namespace and
-        key<screen>GET /api/userDataStore/&lt;namespace>/&lt;key></screen></para>
+        key<screen>GET /api/24/userDataStore/&lt;namespace>/&lt;key></screen></para>
       <para>Example
-        request:<screen>curl -X GET -H "Content-Type: application/json" -u admin:district "play.dhis2.org/api/userDataStore/foo/bar"</screen><screen>{
+        request:<screen>curl -X GET -H "Content-Type: application/json" -u admin:district "play.dhis2.org/api/24/userDataStore/foo/bar"</screen><screen>{
   "some": "value"
 }</screen></para>
     </section>
     <section>
       <title>Add new value</title>
       <para>Adds a new value to a given key in a given
-        namespace.<screen>POST /api/userDataStore/&lt;namespace>/&lt;key></screen></para>
+        namespace.<screen>POST /api/24/userDataStore/&lt;namespace>/&lt;key></screen></para>
       <para>Example
-        request:<screen>curl -X POST -H "Content-Type: application/json" -u admin:district -d "['some value']" "play.dhis2.org/api/userDataStore/foo/bar"</screen><screen>{
+        request:<screen>curl -X POST -H "Content-Type: application/json" -u admin:district -d "['some value']"
+  "play.dhis2.org/api/24/userDataStore/foo/bar"</screen><screen>{
   "httpStatus": "Created",
   "httpStatusCode": 201,
   "status": "OK",
@@ -12073,14 +12078,15 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
 }</screen></para>
       <para>If you require the value to be encrypted (For example user credetials and such) you can
         append a query to the url like
-        this:<screen>GET /api/userDataStore/&lt;namespace>/&lt;key>?encrypt=true</screen></para>
+        this:<screen>GET /api/24/userDataStore/&lt;namespace>/&lt;key>?encrypt=true</screen></para>
     </section>
     <section>
       <title>Update existing value</title>
       <para>Updates an existing
-        value<screen>PUT /api/userDataStore/&lt;namespace>/&lt;key></screen></para>
+        value<screen>PUT /api/24/userDataStore/&lt;namespace>/&lt;key></screen></para>
       <para>Example
-        request:<screen>curl -X PUT -H "Content-Type: application/json" -u admin:district -d "['new value']" "play.dhis2.org/api/userDataStore/foo/bar"</screen><screen>{
+        request:<screen>curl -X PUT -H "Content-Type: application/json" -u admin:district -d "['new value']"
+  "play.dhis2.org/api/24/userDataStore/foo/bar"</screen><screen>{
   "httpStatus":"Created",
   "httpStatusCode":201,
   "status":"OK",
@@ -12089,24 +12095,26 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     </section>
     <section>
       <title>Delete key</title>
-      <para>Delete a key<screen>DELETE /api/userDataStore/&lt;namespace>/&lt;key></screen></para>
+      <para>Delete a key<screen>DELETE /api/24/userDataStore/&lt;namespace>/&lt;key></screen></para>
       <para>Example
-        request:<screen>curl -X DELETE -u admin:district "play.dhis2.org/api/userDataStore/foo/bar"</screen><screen>{
+        request:<screen>curl -X DELETE -u admin:district "play.dhis2.org/api/24/userDataStore/foo/bar"</screen><screen>{
   "httpStatus":"OK",
   "httpStatusCode":200,
   "status":"OK",
-  "message":"Key 'bar' deleted from the namespace 'foo."}</screen></para>
+  "message":"Key 'bar' deleted from the namespace 'foo."
+}</screen></para>
     </section>
     <section>
       <title>Delete namespace</title>
       <para>Delete all keys in the given
-        namespace<screen>DELETE /api/userDataStore/&lt;namespace></screen></para>
+        namespace<screen>DELETE /api/24/userDataStore/&lt;namespace></screen></para>
       <para>Example
-        request:<screen>curl -X DELETE -u admin:district "play.dhis2.org/api/userDataStore/foo"</screen><screen>{
+        request:<screen>curl -X DELETE -u admin:district "play.dhis2.org/api/24/userDataStore/foo"</screen><screen>{
   "httpStatus":"OK",
   "httpStatusCode":200,
   "status":"OK",
-  "message":"All keys from namespace 'foo' deleted."}</screen></para>
+  "message":"All keys from namespace 'foo' deleted."
+}</screen></para>
     </section>
   </section>
   <section>
