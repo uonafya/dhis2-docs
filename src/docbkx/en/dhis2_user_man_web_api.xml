@@ -140,7 +140,7 @@ curl -X POST -H &quot;Accept: application/json&quot; -u demo:$SECRET $SERVER/uaa
           which is what we will use as our authentication (bearer) token. As an example we will get
           all data elements using our
           token:<screen>SERVER=&quot;https://play.dhis2.org/dev&quot;
-curl -H &quot;Authorization: Bearer 07fc551c-806c-41a4-9a8c-10658bd15435&quot; $SERVER/api/dataElements.json</screen></para>
+curl -H &quot;Authorization: Bearer 07fc551c-806c-41a4-9a8c-10658bd15435&quot; $SERVER/api/24/dataElements.json</screen></para>
       </section>
       <section>
         <title>Grant type refresh_token</title>
@@ -458,14 +458,14 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     </para>
     <para>An example of how these parameters can be used to get a full list of data element groups
       in XML response format is:</para>
-    <screen>/api/dataElementGroups.xml?links=false&amp;paging=false</screen>
+    <screen>/api/24/dataElementGroups.xml?links=false&amp;paging=false</screen>
     <para>You can query for elements on the name property instead of returning full list of elements
       using the <emphasis role="italic">query</emphasis> query variable. In this example we query
       for all data elements with the word &quot;anaemia&quot; in the name:</para>
-    <screen>/api/dataElements?query=anaemia</screen>
+    <screen>/api/24/dataElements?query=anaemia</screen>
     <para>You can find an object based on its ID across all object types through the <emphasis
         role="italic">identifiableObjects</emphasis> resource:</para>
-    <screen>/api/identifiableObjects/&lt;id&gt;</screen>
+    <screen>/api/24/identifiableObjects/&lt;id&gt;</screen>
     <section>
       <title>Translation</title>
       <para>Support for I18n translation in the web-api was added in 2.19 release. It is supported
@@ -910,19 +910,19 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
         role="italic">in</emphasis> filter. The filtering mechanism allows for recursion. See below
       for some examples.</para>
     <para>Get data elements with id property ID1 or
-      ID2:<screen>/api/dataElements?filter=id:eq:ID1&amp;filter=id:eq:ID2</screen></para>
+      ID2:<screen>/api/24/dataElements?filter=id:eq:ID1&amp;filter=id:eq:ID2</screen></para>
     <para>Get all data elements which has the dataSet with id
-      ID1:<screen>/api/dataElements?filter=dataSets.id:eq:ID1</screen></para>
+      ID1:<screen>/api/24/dataElements?filter=dataSets.id:eq:ID1</screen></para>
     <para>Get all data elements with aggregation operator &quot;sum&quot; and value type
-      &quot;int&quot;:<screen>/api/dataElements.json?filter=aggregationOperator:eq:sum&amp;filter=type:eq:int</screen></para>
+      &quot;int&quot;:<screen>/api/24/dataElements.json?filter=aggregationOperator:eq:sum&amp;filter=type:eq:int</screen></para>
     <para>You can do filtering within collections, e.g. to get data elements which are members of
       the &quot;ANC&quot; data element group you can use the following query using the id property
       of the associated data element
-      groups:<screen>/api/dataElements.json?filter=dataElementGroups.id:eq:qfxEYY9xAl6</screen></para>
+      groups:<screen>/api/24/dataElements.json?filter=dataElementGroups.id:eq:qfxEYY9xAl6</screen></para>
     <para>Since all operators are <emphasis role="bold">and</emphasis> by default, you can&apos;t
       find a data element matching more than one id, for that purpose you can use the <emphasis
         role="italic">in</emphasis>
-      operator.<screen>/api/dataElements.json?filter=id:in:[fbfJHSPpUQD,cYeuwXTCPkU]</screen></para>
+      operator.<screen>/api/24/dataElements.json?filter=id:in:[fbfJHSPpUQD,cYeuwXTCPkU]</screen></para>
   </section>
   <section>
     <title>Metadata field filter</title>
@@ -943,11 +943,11 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       supported.</para>
     <para><emphasis role="bold">Example</emphasis>: Get <emphasis role="italic">id</emphasis> and
         <emphasis role="italic">name</emphasis> on the indicators
-      resource:<screen>/api/indicators?fields=id,name</screen></para>
+      resource:<screen>/api/24/indicators?fields=id,name</screen></para>
     <para><emphasis role="bold">Example</emphasis>: Get <emphasis role="italic">id</emphasis> and
         <emphasis role="italic">name</emphasis> from dataElements, and <emphasis role="italic"
         >id</emphasis> and <emphasis role="italic">name</emphasis> from the dataSets on
-      dataElements:<screen>/api/dataElements?fields=id,name,dataSets[id,name]</screen></para>
+      dataElements:<screen>/api/24/dataElements?fields=id,name,dataSets[id,name]</screen></para>
     <para>To exclude a field from the output you can use the exclamation (!) operator. This is
       allowed anywhere in the query and will simply not include that property (as it might have been
       inserted in some of the presets).</para>
@@ -1034,18 +1034,18 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       </tgroup>
     </table>
     <para><emphasis role="bold">Example</emphasis>: Include all fields from dataSets except
-      organisationUnits:<screen>/api/dataSets?fields=:all,!organisationUnits</screen></para>
+      organisationUnits:<screen>/api/24/dataSets?fields=:all,!organisationUnits</screen></para>
     <para><emphasis role="bold">Example</emphasis>: Include only id, name and the collection of
       organisation units from a data set, but exclude the id from organisation
-      units:<screen>/api/dataSets/BfMAe6Itzgt?fields=id,name,organisationUnits[:all,!id]</screen></para>
+      units:<screen>/api/24/dataSets/BfMAe6Itzgt?fields=id,name,organisationUnits[:all,!id]</screen></para>
     <para><emphasis role="bold">Example</emphasis>: Include nameable properties from all
-      indicators:<screen>/api/indicators.json?fields=:nameable</screen></para>
+      indicators:<screen>/api/24/indicators.json?fields=:nameable</screen></para>
     <section>
       <title>Field transformers</title>
       <para>In DHIS 2.17 we introduced field transformers, the idea is to allow further
         customization of the properties on the server side. For 2.17 we only supports one
         transformer called <emphasis role="bold">rename</emphasis>, it can be used like
-        this:<screen>/api/dataElements/ID?fields=id|rename(i),name|rename(n)</screen></para>
+        this:<screen>/api/24/dataElements/ID?fields=id|rename(i),name|rename(n)</screen></para>
       <para>This will rename the <emphasis role="italic">id</emphasis> property to <emphasis
           role="italic">i</emphasis> and <emphasis role="italic">name</emphasis> property to
           <emphasis role="italic">n</emphasis>. <emphasis role="italic">Please note that the format
@@ -1166,10 +1166,10 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       <para>We are now ready create the new <emphasis role="italic">constant</emphasis> by sending a
         POST request to the <emphasis role="italic">constants </emphasis>endpoint with the JSON
         payload using curl:
-        <screen>curl -d @constant.json &quot;http://server/api/constants&quot; -X POST 
+        <screen>curl -d @constant.json &quot;http://server/api/24/constants&quot; -X POST 
 -H &quot;Content-Type: application/json&quot; -u user:password</screen></para>
       <para>A specific example of posting the constant to the demo server:
-        <screen>curl -d @constant.json &quot;https://play.dhis2.org/api/constants&quot; -X POST 
+        <screen>curl -d @constant.json &quot;https://play.dhis2.org/api/24/constants&quot; -X POST 
 -H &quot;Content-Type: application/json&quot; -u admin:district</screen></para>
       <para>If everything went well, you should see an output similar
         to:<screen language="json">{
@@ -1181,7 +1181,7 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
         payload, find out the <emphasis role="italic">ID</emphasis> of the constant, and then send a
         PUT request to the endpoint including
         ID:<screen language="bash">curl -X PUT -d @pi.json -H &quot;Content-Type: application/json&quot; 
--u user:password http://server/api/constants/ID</screen></para>
+-u user:password http://server/api/24/constants/ID</screen></para>
     </section>
     <section>
       <title>Deleting objects</title>
@@ -10462,14 +10462,15 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
 }</screen>
       <para>You would send this to the server as you would normally when creating or updating a new
         tracked entity
-        instane.<screen>curl -X POST -d @tei.json -H "Content-Type: application/json" -u user:pass http://server/api/trackedEntityInstances</screen></para>
+        instane.<screen>curl -X POST -d @tei.json -H "Content-Type: application/json"
+  -u user:pass http://server/api/24/trackedEntityInstances</screen></para>
     </section>
   </section>
   <section>
     <title>Tracked entity instance query</title>
     <para>To query for tracked entity instances you can interact with the <emphasis role="italic"
         >/api/trackedEntityInstances</emphasis>
-      resource.<screen>api/trackedEntityInstances</screen></para>
+      resource.<screen>/api/24/trackedEntityInstances</screen></para>
     <section>
       <title>Request syntax</title>
       <table frame="all">
