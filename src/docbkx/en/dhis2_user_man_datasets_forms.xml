@@ -8,22 +8,131 @@
   xmlns:db="http://docbook.org/ns/docbook">
   <title>Data sets and data entry forms</title>
   <section xml:id="datasets">
-    <title>Data sets</title>
+    <title>Data sets overview</title>
     <para>All data entry in DHIS 2 is organised through the use of data sets. You can add and edit
       data sets by selecting the Data Sets App. A data set is a collection of data elements grouped
       together for data collection and data export between instances of DHIS 2 (e.g. from a district
-      office local installation to a national server). </para>
+      office local installation to a national server).</para>
     <para>A data set has a data collection frequency which can be set through the period type
       property. The frequency can be daily, weekly, monthly, quarterly, six-monthly, or yearly.
       Which data elements to include in the data set and the frequency are set in the Add/Edit Data
       set window. In order to use a data set to collect data for a specific orgunit you must assign
       the orgunit to the data set, and this mechanism controls which org units that can use which
-      data sets. </para>
+      data sets.</para>
     <para>Data sets also are assigned to specific organisation units which will be allowed to enter
       data for all data elements in that data set. You can assign org units to a data set in the
       Data set management by clicking on the blue folder icon, the first icon under Operations, next
       to the data set you would like to modify. Alternatively you can manage orgunit assignments for
-      all data sets together in the Data set Assignment Editor (available in the right-side menu). </para>
+      all data sets together in the Data set Assignment Editor (available in the right-side
+      menu).</para>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+    <table frame="all">
+      <title>Data set objects in the Maintenance app</title>
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+        <thead>
+          <row>
+            <entry>
+              <para>Object type</para>
+            </entry>
+            <entry>
+              <para>Available functions</para>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              <para>Organisation unit</para>
+            </entry>
+            <entry>
+              <para>Create, edit, clone, delete, show details and translate</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Organisation unit group</para>
+            </entry>
+            <entry>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Organisation unit group set</para>
+            </entry>
+            <entry>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Organisation unit level</para>
+            </entry>
+            <entry>
+              <para>Edit and translate</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Hierarchy operations</para>
+            </entry>
+            <entry>
+              <para>Move organisation units</para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <?oxy_custom_end?>
+  </section>
+  <section>
+    <title>Workflow</title>
+    <para/>
+  </section>
+  <section>
+    <title>Create a data set</title>
+    <orderedlist>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Organisation units</emphasis> >
+            <emphasis role="bold">Data set</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the yellow plus
+          <?oxy_comment_start author="cecilia" timestamp="20160510T112410+0200" comment="Do not refer to the FAB as an icon, according to MS Manual of Style."?>button<?oxy_comment_end?>.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Name</emphasis> field, define the precise name of the
+          data element.</para>
+        <para>Each data element must have a unique name.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Short name</emphasis> field, define a short name for the
+          data element.</para>
+        <para>Typically, the short name is an abbreviation of the full data element name. This
+          attribute is often used in reports to display the name of the data element, where space is
+          limited.</para>
+      </listitem>
+      <listitem>
+        <para>(Optional) In the <emphasis role="bold">Code</emphasis> field, assign a code.</para>
+        <para>In many countries data elements are assigned a code.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Description</emphasis> field, type a description of the
+          data element. Be as precise as possible and include complete information about how the
+          data element is measured and what its purpose is.</para>
+      </listitem>
+      <?oxy_custom_end?>
+      <listitem>
+        <para/>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
+    </orderedlist>
     <para>A data set has several properties that must be entered when creating a new one. Name,
       short name, code and description should be used to identify and describe the data set. The
       other properties deserve an explanation:</para>
@@ -140,15 +249,14 @@
           <para>Add new: Adds a new data set. When pressing this button, you can create a new data
             set. You need to provide a name, short name and frequency. The &quot;Code&quot;
             attribute is optional. Data elements can be added to the &quot;Selected data
-            element&quot; list by selecting them individually. and pressing the
-              <inlinemediaobject>
-                <imageobject>
-                  <imagedata fileref="resources/images/dhis2_images/move_right.png"/>
-                </imageobject>
-              </inlinemediaobject> button. Indicators can also
-            be added to data sets and will be available to be placed in custom data entry forms when
-            they need to be shown along with data elements on the same data entry form. Press
-            &quot;Save&quot; to add the new data set. </para>
+            element&quot; list by selecting them individually. and pressing the <inlinemediaobject>
+              <imageobject>
+                <imagedata fileref="resources/images/dhis2_images/move_right.png"/>
+              </imageobject>
+            </inlinemediaobject> button. Indicators can also be added to data sets and will be
+            available to be placed in custom data entry forms when they need to be shown along with
+            data elements on the same data entry form. Press &quot;Save&quot; to add the new data
+            set. </para>
         </listitem>
         <listitem>
           <para> Assign organisation units to data sets: This function will allow you to assign
@@ -235,6 +343,30 @@
         </mediaobject>
       </screenshot>
     </section>
+  </section>
+  <section>
+    <title>Edit a data set and other objects</title>
+    <para/>
+  </section>
+  <section>
+    <title>Clone a data set and other objects</title>
+    <para/>
+  </section>
+  <section>
+    <title>Delete a data set and other objects</title>
+    <para/>
+  </section>
+  <section>
+    <title>Display details</title>
+    <para/>
+  </section>
+  <section>
+    <title>Translate a data set and other objects</title>
+    <para/>
+  </section>
+  <section>
+    <title>Download data set in PDF format</title>
+    <para/>
   </section>
   <section>
     <title>Data Entry Forms</title>
@@ -403,53 +535,107 @@
           </thead>
           <tbody>
             <row>
-              <entry>dhis2.de.event.formLoaded</entry>
-              <entry>Triggered after the data entry form is rendered, but before data values are set
-                in entry fields.</entry>
-              <entry>Event | Data set ID</entry>
+              <entry>
+                <para>dhis2.de.event.formLoaded</para>
+              </entry>
+              <entry>
+                <para>Triggered after the data entry form is rendered, but before data values are
+                  set in entry fields.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
             </row>
             <row>
-              <entry>dhis2.de.event.dataValuesLoaded</entry>
-              <entry>Triggered after data values are set in entry fields.</entry>
-              <entry>Event | Data set ID</entry>
+              <entry>
+                <para>dhis2.de.event.dataValuesLoaded</para>
+              </entry>
+              <entry>
+                <para>Triggered after data values are set in entry fields.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
             </row>
             <row>
-              <entry>dhis2.de.event.formReady</entry>
-              <entry>Triggered when the data entry form is completely rendered and loaded with all
-                elements.</entry>
-              <entry>Event | Data set ID</entry>
+              <entry>
+                <para>dhis2.de.event.formReady</para>
+              </entry>
+              <entry>
+                <para>Triggered when the data entry form is completely rendered and loaded with all
+                  elements.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
             </row>
             <row>
-              <entry>dhis2.de.event.dataValueSaved</entry>
-              <entry>Triggered when a data value is saved successfully.</entry>
-              <entry>Event | Data set ID | Data value object</entry>
+              <entry>
+                <para>dhis2.de.event.dataValueSaved</para>
+              </entry>
+              <entry>
+                <para>Triggered when a data value is saved successfully.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID | Data value object</para>
+              </entry>
             </row>
             <row>
-              <entry>dhis2.de.event.completed</entry>
-              <entry>Triggered when a data set is successfully marked as complete.</entry>
-              <entry>Event | Data set ID | Complete registration object</entry>
+              <entry>
+                <para>dhis2.de.event.completed</para>
+              </entry>
+              <entry>
+                <para>Triggered when a data set is successfully marked as complete.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID | Complete registration object</para>
+              </entry>
             </row>
             <row>
-              <entry>dhis2.de.event.uncompleted</entry>
-              <entry>Triggered when a data set is successfully marked as incomplete.</entry>
-              <entry>Event | Data set ID</entry>
+              <entry>
+                <para>dhis2.de.event.uncompleted</para>
+              </entry>
+              <entry>
+                <para>Triggered when a data set is successfully marked as incomplete.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
             </row>
             <row>
-              <entry>dhis2.de.event.validationSuccess</entry>
-              <entry>Triggered when validation is done and there were no violations.</entry>
-              <entry>Event | Data set ID</entry>
+              <entry>
+                <para>dhis2.de.event.validationSuccess</para>
+              </entry>
+              <entry>
+                <para>Triggered when validation is done and there were no violations.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
             </row>
             <row>
-              <entry>dhis2.de.event.validationError</entry>
-              <entry>Triggered when validation is done and there were one or more
-                violations.</entry>
-              <entry>Event | Data set ID</entry>
+              <entry>
+                <para>dhis2.de.event.validationError</para>
+              </entry>
+              <entry>
+                <para>Triggered when validation is done and there were one or more
+                  violations.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
             </row>
             <row>
-              <entry>dhis2.ou.event.orgUnitSelected</entry>
-              <entry>Triggered when one or more organisation units are selected in the org unit web
-                tree.</entry>
-              <entry>Event | Org unit IDs | Org unit names | Sub org unit IDs</entry>
+              <entry>
+                <para>dhis2.ou.event.orgUnitSelected</para>
+              </entry>
+              <entry>
+                <para>Triggered when one or more organisation units are selected in the org unit web
+                  tree.</para>
+              </entry>
+              <entry>
+                <para>Event | Org unit IDs | Org unit names | Sub org unit IDs</para>
+              </entry>
             </row>
           </tbody>
         </tgroup>
