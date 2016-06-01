@@ -48,7 +48,7 @@
 </section>
 <section>
 <title>Genar os valores min-max</title>
-<para>É possível gerar o valor min-max, por cada elemento, usando o DHIS2. Nesse caso, você só precisa clicar no botão "Gerar-min max" perto do canto superior direito. Em caso de tela de entrada de dados padrão, os valores mínimo e máximo, quando gerados, vão aparecer no lado esquerdo e direito da caixa de entrada de dados. Se você desmarcar a tela de entrada de dados padrão, os valores gerados aparecerão no topo direito da tela.</para>
+<para>É possível gerar o valor min-max, por cada elemento, usando o DHIS 2. Nesse caso, você só precisa clicar no botão "Gerar-min max" perto do canto superior direito. Em caso de tela de entrada de dados padrão, os valores mínimo e máximo, quando gerados, vão aparecer no lado esquerdo e direito da caixa de entrada de dados. Se você desmarcar a tela de entrada de dados padrão, os valores gerados aparecerão no topo direito da tela.</para>
 </section>
 </section>
 <section xml:id="validationRule">
@@ -532,7 +532,7 @@ para o float up.</para>
 </imageobject>
 </mediaobject>
 </screenshot>
-<para>Os quatros painéis temáticos da camada permitem o uso dos seus dados para o mapeamento temático. Tudo que precisas fazer é seleccionar a combinação desejada de indicador/elemento de dados, período e combinação de mapa. Em seguida, o nível e parente da unidade orgânica para definir os limites. Se a sua base de dados contêm as coordenadas e os valores agregados de daos para essas unidades orgânicas, irão aparecer no mapa. Note que o DHIS2 data mart deve ser executado a fim de ter valores agregados disponíveis.</para>
+<para>Os quatros painéis temáticos da camada permitem o uso dos seus dados para o mapeamento temático. Tudo que precisas fazer é seleccionar a combinação desejada de indicador/elemento de dados, período e combinação de mapa. Em seguida, o nível e parente da unidade orgânica para definir os limites. Se a sua base de dados contêm as coordenadas e os valores agregados de daos para essas unidades orgânicas, irão aparecer no mapa. Note que o DHIS 2 data mart deve ser executado a fim de ter valores agregados disponíveis.</para>
 
 <para>Poderá escolher entre tipos de legendas: <guimenuitem>automatica</guimenuitem> e <guimenuitem>prédefinida</guimenuitem>. Automatica significa que a aplicação criará o conjunto de legendas baseado no método, número de classes, cor baixa e cor alta seleccionada. Método faz alusão ao tamanhas das classes das legendas. Definido para<guimenuitem>Intervais iguais</guimenuitem> serão o "maior valor do mapa - menor valor dp mapa / número de classes". Definido para <guimenuitem>Contagem de grupo igual</guimenuitem> o criador da legenda tentará distribuir as unidade orgânicas de forma uniforme. A legenda aparecerá como uma gradação uniforme da cor inicial a cor final. Conjuntos de legendas predefinidas são descritas em <xref linkend="gisLegendSet"/> .</para>
 
@@ -697,7 +697,7 @@ valores. </para>
 <para>O objetivo do data mart é fornecer dados pré- processados ​​para ferramentas de análise de dados e apresentação de relatórios externos. O mercado de dados consiste em duas tabelas , aggregateddatavalues ​​aggregatedindicatorvalues ​​e no banco de dados DHIS 2 . Os valores na data mart são versões agregadas dos dados brutos encontrados na tabela de datavalue , bem como valores dos indicadores calculados. A agregação pode ocorrer ao longo do tempo (por exemplo, a partir de dados mensais para valores trimestrais agregadas ) , ou ao longo dos níveis de hierarquia unidade organizacional (por exemplo, a partir de dados Phu para totais distritais agregados ) . A data mart pode armazenar todos os tipos de tais valores agregados. A data mart é , como tal, apenas processados ​​&apos;copiar&apos; dos valores de dados e pode ser esvaziados e regeneradas , a qualquer momento , e as tabelas são lidas apenas as tabelas . Os metadados nas duas tabelas de data mart são referenciados por identificadores internos, como dataelementid , organisationunitid que consulte as tabelas como dataelement e organisationunit , consulte &quot; Como fazer uso do data mart em ferramentas externas para saber mais sobre este. </para>
 <section>
 <title>O processo de exportação data mart </title>
-<para>O DHIS2 Data Mart trata da agregação de dados através de múltiplas dimensões (hierarquia unidade de organização, OrgUnit hierarquia do grupo, tempo, etc) e pode ser controlado através desta interface. Selecione os níveis de organização da unidade, que deve ser agregados, a data de data de início e fim, e pressione &quot;Iniciar exportação&quot;. O processo de data mart será executado em segundo plano, e um relatório completo do processo de exportação será atualizado regularmente, de modo que você possa determinar o estado do processo. Veja a seção &quot;Programação&quot; no módulo de administração de dados para obter informações sobre como este processo pode ser acionado para executar automaticamente..</para>
+<para>O DHIS 2 Data Mart trata da agregação de dados através de múltiplas dimensões (hierarquia unidade de organização, OrgUnit hierarquia do grupo, tempo, etc) e pode ser controlado através desta interface. Selecione os níveis de organização da unidade, que deve ser agregados, a data de data de início e fim, e pressione &quot;Iniciar exportação&quot;. O processo de data mart será executado em segundo plano, e um relatório completo do processo de exportação será atualizado regularmente, de modo que você possa determinar o estado do processo. Veja a seção &quot;Programação&quot; no módulo de administração de dados para obter informações sobre como este processo pode ser acionado para executar automaticamente..</para>
 <screenshot>
 <mediaobject>
 <imageobject>
@@ -1950,7 +1950,7 @@ resources.</para>
 </itemizedlist></para>
 <section xml:id="ou_hierarchy">
 <title>A hierarquia organizacional</title>
-<para>A hierarquia organizacional define a estrutura de organização da instância DHIS2, por exemplo, como os centros de saúde, áreas administrativas e outras áreas geográficas estão dispostos com relação ao outro. É, essencialmente, o &quot;onde&quot; dimensão de DHIS2, semelhante à forma como os períodos representam o &quot;quando&quot; ou dimensão de tempo. DHIS2 é estruturado de forma que a hierarquia da unidade organizacional é uma hierarquia geográfica, eo módulo GIS depende disso. Hierarquias não geográficos são desencorajadas, e seria melhor ser representado através do uso de grupos de unidades organizacionais. Esta dimensão aos dados é definida como uma hierarquia com uma unidade de raiz (por exemplo, Ministério da Saúde ou um país) e qualquer número de níveis e nós abaixo. Cada nó dessa hierarquia é chamado de uma unidade organizacional em DHIS2. </para>
+<para>A hierarquia organizacional define a estrutura de organização da instância DHIS 2, por exemplo, como os centros de saúde, áreas administrativas e outras áreas geográficas estão dispostos com relação ao outro. É, essencialmente, o &quot;onde&quot; dimensão de DHIS 2, semelhante à forma como os períodos representam o &quot;quando&quot; ou dimensão de tempo. DHIS 2 é estruturado de forma que a hierarquia da unidade organizacional é uma hierarquia geográfica, eo módulo GIS depende disso. Hierarquias não geográficos são desencorajadas, e seria melhor ser representado através do uso de grupos de unidades organizacionais. Esta dimensão aos dados é definida como uma hierarquia com uma unidade de raiz (por exemplo, Ministério da Saúde ou um país) e qualquer número de níveis e nós abaixo. Cada nó dessa hierarquia é chamado de uma unidade organizacional em DHIS 2. </para>
 <para>O design desta hierarquia irá determinar as unidades geográficas de análise disponíveis para os usuários como os dados são coletados e agregados nesta estrutura. Só pode haver uma hierarquia organizacional, ao mesmo tempo que a sua estrutura precisa de uma análise cuidadosa.. </para>
 <para>Hierarquias adicionais (por exemplo, paralelo limites administrativos para o sector dos cuidados de saúde) podem ser modelados usando grupos organizacionais e conjuntos de grupos, mas a hierarquia organizacional é o principal veículo de agregação de dados sobre a dimensão geográfica. Normalmente hierarquias organizacionais nacionais em saúde pública tem 4-6 níveis, mas qualquer número de níveis é suportada. </para>
 <para>A hierarquia é construída das relações entre pais e filhos. Por exemplo, um país pode ter oito províncias e cada província novamente pode ter um número de distritos como seus filhos. Normalmente, as unidades de saúde (a partir do qual os dados são tipicamente recolhidos) será localizada no nível mais baixo, mas que também pode ser localizado em níveis mais elevados, por exemplo, hospitais nacionais ou provinciais, árvores organizacionais tão distorcidas são suportados (por exemplo, um nó folha pode ser posicionado no nível 2, enquanto a maioria dos outros nós folhas estão no nível 5). </para>
@@ -2098,11 +2098,11 @@ sistemas de informação sanitária (SIS)?</para>
 </highlights>
 <section xml:id="mod1_1">
 <title>Visão Geral do DHIS 2</title>
-<para>DHIS 2 é uma ferramenta para a coleta, validação, análise e apresentação de dados estatísticos agregados, sob medida (mas não limitado) para actividades de gestão integrada de informação em saúde. É um instrumento genérico ao invés de um aplicativo de banco de dados pré-configurado, com um modelo de meta-dados aberta e uma interface de usuário flexível, que permite ao usuário projetar o conteúdo de um sistema de informação específico, sem a necessidade de programação. DHIS2 e para cima é um pacote modular de software web-based construído com frameworks Java de código livre e aberto.</para>
-<para>DHIS2 é um software de código aberto lançado sob a licença BSD e pode ser usado sem nenhum custo. Ele roda em qualquer plataforma com um Java Runtime Environment (JRE 6 ou superior) instalado. </para>
+<para>DHIS 2 é uma ferramenta para a coleta, validação, análise e apresentação de dados estatísticos agregados, sob medida (mas não limitado) para actividades de gestão integrada de informação em saúde. É um instrumento genérico ao invés de um aplicativo de banco de dados pré-configurado, com um modelo de meta-dados aberta e uma interface de usuário flexível, que permite ao usuário projetar o conteúdo de um sistema de informação específico, sem a necessidade de programação. DHIS 2 e para cima é um pacote modular de software web-based construído com frameworks Java de código livre e aberto.</para>
+<para>DHIS 2 é um software de código aberto lançado sob a licença BSD e pode ser usado sem nenhum custo. Ele roda em qualquer plataforma com um Java Runtime Environment (JRE 6 ou superior) instalado. </para>
 <para>DHIS 2 é desenvolvido pelo Programa de Sistemas de Informação em Saúde (HISP) como um processo aberto e distribuído globalmente com os desenvolvedores atualmente na Índia, Vietnã, Tanzânia, Irlanda e Noruega. O desenvolvimento é coordenado pela Universidade de Oslo, com o apoio do núcleo de NORAD.</para>
-<para>A documentação fornecida com isto, tentará fornecer uma visão abrangente da aplicação. Dada a natureza abstrata da aplicação, este manual não irá servir como um guia completo passo-a-passo de como usar o aplicativo em cada circunstância, mas procurará fornecer ilustrações e exemplos de como DHIS2 pode ser implementado em uma variedade de situações por meio de exemplos generalizados.</para>
-<para>Antes de implementar DHIS 2 em uma nova configuração, é altamente recomendável a leitura do DHIS 2 Guia de implementação (um manual separado do presente), também disponível no DHIS2 principal <link xl:href="http://dhis2.org/documentation/">website</link>.</para>
+<para>A documentação fornecida com isto, tentará fornecer uma visão abrangente da aplicação. Dada a natureza abstrata da aplicação, este manual não irá servir como um guia completo passo-a-passo de como usar o aplicativo em cada circunstância, mas procurará fornecer ilustrações e exemplos de como DHIS 2 pode ser implementado em uma variedade de situações por meio de exemplos generalizados.</para>
+<para>Antes de implementar DHIS 2 em uma nova configuração, é altamente recomendável a leitura do DHIS 2 Guia de implementação (um manual separado do presente), também disponível no DHIS 2 principal <link xl:href="http://dhis2.org/documentation/">website</link>.</para>
 </section>
 <section>
 <title>Principais características e finalidade de DHIS 2</title>
@@ -2162,7 +2162,7 @@ módulo de senhas, segurança e controle de acesso de granulação fina (funçõ
 desenvolvido e integrado conforme as necessidades do usuário, como parte da interface do usuário DHIS 2 portal ou uma aplicação externa mais fracamente acoplado interagindo através do DHIS 2 Web-API.</para>
 </listitem>
 </itemizedlist>
-<para>Em resumo, DHIS2 fornece uma solução global para a solução SUA
+<para>Em resumo, DHIS 2 fornece uma solução global para a solução SUA
 relatórios e análise necessidades dos usuários de informação em saúde em qualquer nível.</para>
 </section>
 <section>
@@ -2260,8 +2260,8 @@ independência implica que o software pode ser executado em qualquer sistema ope
 Windows, Linux, Macintosh, etc DHIS 2 é independente de plataforma, e é
 extremamente útil no âmbito da saúde pública, em que vários sistemas operativos poderão ser utilizados.</para>
 <para>Além disso, DHIS 2 também é independente de plataforma, quando se trata do Sistema de Gerenciamento de Banco de Dados (SGBD). DHIS 2 usa a estrutura de abstração de banco de dados Hibernate e é compatível com qualquer SGBD suportados pelo Hibernate, como PostgreSQL, MySQL, H2, MS SQL Server, Oracle e muitos mais. O PostgreSQL é o DBMS recomendados para DHIS 2.</para>
-<para>Por último, e talvez mais importante, uma vez que DHIS2 é um aplicativo baseado em navegador, o
-único requisito real para interagir com o sistema é com um navegador da web. DHIS2 suporta mais
+<para>Por último, e talvez mais importante, uma vez que DHIS 2 é um aplicativo baseado em navegador, o
+único requisito real para interagir com o sistema é com um navegador da web. DHIS 2 suporta mais
 navegadores, embora atualmente seja o Google Chrome, Mozilla Firefox ou Opera são
 recomendado.</para>
 </section>
@@ -2305,7 +2305,7 @@ recomendado.</para>
 </listitem>
 </itemizedlist>
 <para>Esta abordagem pode ser problemático nos casos em que a conectividade à Internet é volátil ou
-ausente em longos períodos de tempo. DHIS2 porém tem certas características que exige
+ausente em longos períodos de tempo. DHIS 2 porém tem certas características que exige
 Conectividade de Internet a estar disponíveis apenas parte do tempo para que o sistema funcione
 adequadamente, tais como entrada de dados offline ea ferramenta MyDatamart apresentado em um separado
 capítulo deste guia, que atender ao fluxo de informações em situações em Internet
@@ -2459,7 +2459,7 @@ dos serviços prestados em vários programas de saúde. Isso é fundamental no m
 <emphasis> &quot;alcance&quot;</emphasis> e <emphasis>&quot;disponibilidade&quot;</emphasis> dos serviços de saúde pública, mas não tem a capacidade de
 traçando as pessoas sendo fornecidos com esses serviços e qualidade desses queridos. </para>
 <para>Por exemplo, o relatório agregado mostrará que 300 gestantes cadastradas para ANC e 120 mulheres que receberam comprimidos IFA ou 90 mulheres que receberam injeção de TT. Em um sistema agregado, não é possível determinar que se uma mulher grávida especial registrado para ANC, também foi dado IFA e TT, como dados mostra apenas números agregados. Para entender a qualidade de serviços prestados para cada mulher grávida registrado para ANC, o ciclo de vacinação de cada criança ou o tratamento de cada pessoa lepra, etc, é importante que a informação tratamento de cada pessoa é mantida como um caso individual.</para>
-<para>O módulo rastreador DHIS (também conhecido como Módulo DHIS Comunidade) é um módulo integrado no DHIS2, construído para apoiar os sistemas de saúde da comunidade e facilitar uma integração harmoniosa entre os dados comunitários de saúde e de gestão de dados agregados.</para>
+<para>O módulo rastreador DHIS (também conhecido como Módulo DHIS Comunidade) é um módulo integrado no DHIS 2, construído para apoiar os sistemas de saúde da comunidade e facilitar uma integração harmoniosa entre os dados comunitários de saúde e de gestão de dados agregados.</para>
 <para>O módulo suporta a gestão de programas de saúde da comunidade, como vacinação infantil, saúde materna e, por exemplo permite o acompanhamento de indivíduos inscritos nos diversos programas e planejamento de atividades para agentes comunitários de saúde.</para>
 <para>A seguir estão as coisas importantes:</para>
 <orderedlist>
@@ -3272,13 +3272,13 @@ seleccionado, o sistema irá colocar as pessoas que inscritos no programa.</para
 <title>Telemoveis</title>
 <section>
 <title>Introdução</title>
-<para>DHIS2 oferece uma gama de opções para permitir a entrada de dados a partir de dispositivos móveis, incluindo um cliente dedicado GPRS/3G J2ME, um cliente de SMS com base, e uma versão de DHIS2 que foi otimizado especificamente para navegadores móveis. Cada uma destas soluções irão ser descritos em detalhe nas secções seguintes.</para>
-<para>Recolha de dados no campo pode ser tecnicamente desafiadora e cara. Soluções de telefonia móvel tem o potencial de reduzir significativamente a complexidade da implantação de um sistema de coleta de dados distribuídos. Usando um cliente Java simples instalado em um telefone celular ou um navegador que funciona no telefone móvel, os trabalhadores de campo podem reportar diretamente ao banco de dados DHIS2 através de seu dispositivo móvel.</para>
+<para>DHIS 2 oferece uma gama de opções para permitir a entrada de dados a partir de dispositivos móveis, incluindo um cliente dedicado GPRS/3G J2ME, um cliente de SMS com base, e uma versão de DHIS 2 que foi otimizado especificamente para navegadores móveis. Cada uma destas soluções irão ser descritos em detalhe nas secções seguintes.</para>
+<para>Recolha de dados no campo pode ser tecnicamente desafiadora e cara. Soluções de telefonia móvel tem o potencial de reduzir significativamente a complexidade da implantação de um sistema de coleta de dados distribuídos. Usando um cliente Java simples instalado em um telefone celular ou um navegador que funciona no telefone móvel, os trabalhadores de campo podem reportar diretamente ao banco de dados DHIS 2 através de seu dispositivo móvel.</para>
 <para>Enquanto as soluções de telefonia móvel têm um grande potencial também é uma área que pode ser
 difícil &quot;acertar&quot;. Telefones falta poder de processamento e tem uma pequena tela,
 precisam ser cobrados e muitas vezes faz mais sentido em áreas onde a cobertura de rede móvel é
 fraco e irregular.</para>
-<para>Atualmente, existem três principais soluções móveis para DHIS2, e nós continuamos a evoluir estes, bem como olhar para outras soluções possíveis:</para>
+<para>Atualmente, existem três principais soluções móveis para DHIS 2, e nós continuamos a evoluir estes, bem como olhar para outras soluções possíveis:</para>
 <itemizedlist>
 <listitem>
 <para>Módulo de entrada de dados de um browser optimizado para telemóveis</para>
@@ -3287,13 +3287,13 @@ fraco e irregular.</para>
 <listitem>
 <para>J2ME GPRS/3G client (one client for facility reporting and one for program tracking)</para>
 <para>DHIS-móvel inclui dois clientes J2ME separados de apoio GPRS como transporte. Um clientes suporta facilidade relatórios agregados eo segundo cliente suporta rastreamento programa baseado nome. Esses clientes são divididos em aplicativos separados para tornar a implantação mais fácil. Alguns profissionais de saúde podem ter ambos os aplicativos instalados em seu telefone. Ambos os clientes suportam off-line de armazenamento de dados. <xref linkend="mobile_j2me_gprs_3g"/></para>
-<para>Uma ligação GPRS/3G activa é necessária, a fim de enviar os dados para a base de dados DHIS2, mas os dados podem ser introduzidos desligada e transmitidos quando uma ligação está presente. Este cliente é destinado principalmente para dispositivos low-end que suportam aplicações J2ME, embora os off-suportes acrescenta alguns requisitos de memória, o que limita a seleção aparelho. Enquanto a solução é testada principalmente em telefones Nokia, ele também funciona em vários outros aparelhos capazes de J2ME.</para>
+<para>Uma ligação GPRS/3G activa é necessária, a fim de enviar os dados para a base de dados DHIS 2, mas os dados podem ser introduzidos desligada e transmitidos quando uma ligação está presente. Este cliente é destinado principalmente para dispositivos low-end que suportam aplicações J2ME, embora os off-suportes acrescenta alguns requisitos de memória, o que limita a seleção aparelho. Enquanto a solução é testada principalmente em telefones Nokia, ele também funciona em vários outros aparelhos capazes de J2ME.</para>
 <para>O cliente J2ME comunicação se encontra descrito em <xref linkend="mobile_j2me_gprs_3g_facility_reporting"/></para>
 <para>O programa cliente de rastreamento J2ME baseada em nome é descrito em <xref linkend="mobile_j2me_gprs_3g_activity_reporting"/></para>
 </listitem>
 <listitem>
 <para>Legado cliente J2ME com transporte SMS</para>
-<para>DHIS2 também pode ser usado com uma J2ME-cliente anteriormente que utiliza o SMS como meio de transporte. Este cliente requer alguma configuração manual no lado do servidor, e não é suportado pela versão padrão do DHIS2. O cliente é uma aplicação móvel J2ME personalizado construído. O apoio-de SMS é separado do suporte SMS usado em outras partes do DHIS2. A solução foi principalmente implantado utilizando modems GSM, que não são bons para aplicações de alto volume, mas também pode ser usado como uma base para um SMSC-ligação mais fiável. Usando SMS como meio de transporte seria uma solução adequada onde GPRS/3G não está disponível, mas a cobertura GSM está disponível. Atualização das formas para o cliente não é suportado neste momento no tempo, e novos conjuntos de dados exige um novo pedido de instalação. Esta solução é descrita na <xref linkend="mobile_j2me_sms_transport"/></para>
+<para>DHIS 2 também pode ser usado com uma J2ME-cliente anteriormente que utiliza o SMS como meio de transporte. Este cliente requer alguma configuração manual no lado do servidor, e não é suportado pela versão padrão do DHIS 2. O cliente é uma aplicação móvel J2ME personalizado construído. O apoio-de SMS é separado do suporte SMS usado em outras partes do DHIS 2. A solução foi principalmente implantado utilizando modems GSM, que não são bons para aplicações de alto volume, mas também pode ser usado como uma base para um SMSC-ligação mais fiável. Usando SMS como meio de transporte seria uma solução adequada onde GPRS/3G não está disponível, mas a cobertura GSM está disponível. Atualização das formas para o cliente não é suportado neste momento no tempo, e novos conjuntos de dados exige um novo pedido de instalação. Esta solução é descrita na <xref linkend="mobile_j2me_sms_transport"/></para>
 <para>A equipe DHIS-móvel está trabalhando em uma solução híbrida GPRS e SMS, que é baseado no mais recente J2ME-cliente eo novo suporte SMS dentro da plataforma.</para>
 </listitem>
 <listitem><para>conexão por SMS</para><para>Ao implantar soluções de SMS, a qualidade e estabilidade do vínculo SMS é fundamental para a qualidade do serviço em geral. Para as pequenas demonstrações e testes, pode-se usar modems de telefone para enviar e receber SMS, mas a nossa experiência é que, para qualquer tipo de instalação maior, deve-se ligar para o operador da infra-estrutura móvel SMS (SMSC) através de interfaces mais robustas. Podemos ou ligar diretamente para a operadora de telefonia móvel SMSC (normalmente através de um protocolo chamado SMPP, mas às vezes usando HTTP ou outros protocolos) ou através de um provedor de serviços de chamada de provedor de gateway SMS. 
@@ -3309,7 +3309,7 @@ fraco e irregular.</para>
 <title>Ficha e formulários de entrada de dados</title>
 <section xml:id="datasets">
 <title>Ficha</title>
-<para>Todas entrada de dados no DHIS2 são organizadas através da utilização das fichas. Você pode adicionar e editar as fichas em Manutenção-&gt;Ficha. Uma Ficha é um conjunto de elementos de dados agrupados para recolha de dados e exportação de dados entre instâncias do DHIS2 (por exemplo, a partir de uma instalação local do distrito para um servidor nacional). </para>
+<para>Todas entrada de dados no DHIS 2 são organizadas através da utilização das fichas. Você pode adicionar e editar as fichas em Manutenção-&gt;Ficha. Uma Ficha é um conjunto de elementos de dados agrupados para recolha de dados e exportação de dados entre instâncias do DHIS 2 (por exemplo, a partir de uma instalação local do distrito para um servidor nacional). </para>
 <para>Uma Ficha tem uma freqüência de coleta de dados, que pode ser definida através da propriedade tipo de período. A freqüência pode ser diário, semanal, mensal, trimestral, semestral ou anual. Ambos os elementos de dados para incluir no conjunto de dados e a freqüência é definida na janela Adicionar/ Editar Ficha, juntamente com um nome, nome curto e código. Para usar um conjunto de dados para recolha de dados para uma unidade organizacional específica deve-se atribuir a unidade organizacional ao conjunto de dados, e este mecanismo controla que unidades organizacional estão associados
 as Fichas. </para>
 <para>As fichas também são atribuídos a unidades organizacionais específicas que serão autorizados a entrar dados para todos os elementos de dados dessa ficha. Você pode atribuir unidades organizacionais a uma ficha na gestão de fichas, clicando no ícone de pasta azul, o primeiro ícone no âmbito das operações, ao lado da ficha que você gostaria de modificar. Alternativamente, você pode gerenciar as atribuições para as unidades organizacionais para todas as fichas no Editor de fichas (disponível no menu do lado direito).</para>
@@ -3469,7 +3469,7 @@ combinação de um conjunto de dados, você pode selecioná-lo ao criar ou actua
 </section>
 <section xml:id="customDataEntryForm">
 <title>Formulários personalizados</title>
-<para>Quando o formulário que deseja criar é complicado para os formulários padrão ou de secção, sua última opção é a utilização de um formulário personalizado. Isso leva mais tempo, mas dá-lhe total flexibilidade em termos de desenho. DHIS2 usa um editor embutido HTML (FCK Editor) para o criador do formulário e você pode criar o formulário na interface do usuário ou cole no seu HTML diretamente (usando a janela de origem no editor). A referência completa para uso do editor pode ser encontrado aqui &quot;http://docs.cksource.com/CKEditor_3.x/Users_Guide&quot;&gt; aqui <link xl:href="http://docs.cksource.com/CKEditor_3.x/Users_Guide">here</link>.</para>
+<para>Quando o formulário que deseja criar é complicado para os formulários padrão ou de secção, sua última opção é a utilização de um formulário personalizado. Isso leva mais tempo, mas dá-lhe total flexibilidade em termos de desenho. DHIS 2 usa um editor embutido HTML (FCK Editor) para o criador do formulário e você pode criar o formulário na interface do usuário ou cole no seu HTML diretamente (usando a janela de origem no editor). A referência completa para uso do editor pode ser encontrado aqui &quot;http://docs.cksource.com/CKEditor_3.x/Users_Guide&quot;&gt; aqui <link xl:href="http://docs.cksource.com/CKEditor_3.x/Users_Guide">here</link>.</para>
 <para>Uma das grandes vantagens de formulários personalizados, é que eles podem ser criados para imitar Formulários de agregação de papel existentes. Isso faz com que a entrada de dados seja muito mais fácil para os usuários, e deve reduzir o número de elementos de dados que são inseridos incorretamente, pois eles são mais facilmente identificáveis ao digitar os dados a partir de um formulário de papel. </para>
 <para>Uma vez que um formulário personalizado foi adicionado a um conjunto de dados estará disponível na entrada de dados e automaticamente usado. </para>
 <note>
@@ -3807,7 +3807,7 @@ Note que deve activar a sincronização de dados de administração de dados> ag
 </chapter>
 <chapter>
 <title id="dashboards">Dashboards</title>
-<para>Dashboards são destinados a fornecer acesso rápido aos usuários individuais para os dados que foram armazenados em DHIS2. Dashboards consistem em várias seções, algumas das quais fornecem links para os relatórios ou mapview que já foram definidas. Outras seções do painel de instrumentos permitem aos usuários adicionar gráficos que foram definidos e disponibilizados através do módulo de gráficos. </para>
+<para>Dashboards são destinados a fornecer acesso rápido aos usuários individuais para os dados que foram armazenados em DHIS 2. Dashboards consistem em várias seções, algumas das quais fornecem links para os relatórios ou mapview que já foram definidas. Outras seções do painel de instrumentos permitem aos usuários adicionar gráficos que foram definidos e disponibilizados através do módulo de gráficos. </para>
 <section xml:id="dashboards_setup">
 <title>Configurar dashboard</title>
 <para>O painel é dividido em duas seções principais. O painel do lado direito (denotado como A na imagem abaixo) pode ser usado para conter links para os relatórios, documentos (relatórios estáticos), mesas de relatório, visualizações de mapas, e um feed RSS Health. A zona do lado esquerdo (denotado como B na captura de tela) pode ser utilizado para conter um máximo de seis gráficos separadas que foram previamente criadas no módulo de relatórios gráficos. </para>
@@ -3827,8 +3827,8 @@ Note que deve activar a sincronização de dados de administração de dados> ag
 </section>
 <section>
 <title id="dashboard_messages">Menssagens e feedback</title>
-<para>DHIS2 tem certas funções para facilitar a comunicação entre diferentes usuários e grupos de usuários. Este tipo de comunicação é importante para facilitar o feedback sobre a qualidade dos dados, a oportunidade de submissões, ou simplesmente para responder a uma pergunta que um determinado usuário pode ter. </para>
-<para>As mensagens de retorno são enviados para um determinado grupo de usuários e pode ser enviado por todos os usuários que têm acesso ao módulo de painel. A fim de permitir o recebimento de mensagens de feedback enviados do painel, você deve definir o sistema de criação &quot;destinatários Feedback&quot; que está disponível a partir do diálogo-&gt; Configurações do sistema de manutenção. Certifique-se de definir um grupo de usuários (por exemplo, &quot;destinatários Feedback&quot;) com todos os usuários que devem receber mensagens eedback. Consulte a seção deste manual sobre &quot;Grupos de usuários&quot; para obter mais informações de como fazer isso. Uma vez que o &quot;feedback destinatários&quot; grupo de usuários foi definido, cada vez que uma mensagem de feedback é enviado, ele aparecerá como uma mensagem em cada um dos &quot;beneficiários Feedback&quot; fila de mensagens dentro DHIS2. Note que as mensagens não serão enviadas para os endereços de email de usuários, mas só irá aparecer no aplicativo DHIS2.. </para>
+<para>DHIS 2 tem certas funções para facilitar a comunicação entre diferentes usuários e grupos de usuários. Este tipo de comunicação é importante para facilitar o feedback sobre a qualidade dos dados, a oportunidade de submissões, ou simplesmente para responder a uma pergunta que um determinado usuário pode ter. </para>
+<para>As mensagens de retorno são enviados para um determinado grupo de usuários e pode ser enviado por todos os usuários que têm acesso ao módulo de painel. A fim de permitir o recebimento de mensagens de feedback enviados do painel, você deve definir o sistema de criação &quot;destinatários Feedback&quot; que está disponível a partir do diálogo-&gt; Configurações do sistema de manutenção. Certifique-se de definir um grupo de usuários (por exemplo, &quot;destinatários Feedback&quot;) com todos os usuários que devem receber mensagens eedback. Consulte a seção deste manual sobre &quot;Grupos de usuários&quot; para obter mais informações de como fazer isso. Uma vez que o &quot;feedback destinatários&quot; grupo de usuários foi definido, cada vez que uma mensagem de feedback é enviado, ele aparecerá como uma mensagem em cada um dos &quot;beneficiários Feedback&quot; fila de mensagens dentro DHIS 2. Note que as mensagens não serão enviadas para os endereços de email de usuários, mas só irá aparecer no aplicativo DHIS 2.. </para>
 <para>Para enviar uma nova mensagem feedback, simplesmente selecione &quot;Write retorno&quot; do painel. Fornecer um assunto eo texto nas respectivas caixas de texto. A mensagem aparecerá em todos os usuários da fila de mensagens especificada. </para>
 <para>As mensagens podem ser enviadas para grupos específicos de usuários que foram atribuídos a determinadas unidades organizacionais. Para escrever uma nova mensagem, basta clicar em &quot;Mensagens&quot; da tela do painel e, em seguida, pressione o botão &quot;Escrever mensagem&quot; .. Selecione uma unidade de organização (ou grupo de unidades organizacionais) a partir do &quot;destinatários&quot; árvore unidade organizacional. Fornecer um assunto e texto. Para enviar a mensagem, pressione o botão &quot;Enviar&quot;. Você pode descartar a mensagem, pressionando o botão &quot;Descartar&quot;, como visto na imagem abaixo.</para>
 <screenshot>
@@ -3877,11 +3877,11 @@ Note que deve activar a sincronização de dados de administração de dados> ag
 </section>
 <section>
 <title>Iniciar com um banco de dados em branco</title>
-<para>O pacote DHIS 2 Live é a maneira mais fácil de começar com DHIS2. DHIS2 Live é apropriado para uma instalação e demos autônomo. Basta baixar o aplicativo <link xl:href="http://www.dhis2.org/downloads">aqui</link>. Uma vez que o arquivo é baixado, você pode simplesmente clicar duas vezes no arquivo baixado e começar a usar DHIS 2. </para>
+<para>O pacote DHIS 2 Live é a maneira mais fácil de começar com DHIS 2. DHIS 2 Live é apropriado para uma instalação e demos autônomo. Basta baixar o aplicativo <link xl:href="http://www.dhis2.org/downloads">aqui</link>. Uma vez que o arquivo é baixado, você pode simplesmente clicar duas vezes no arquivo baixado e começar a usar DHIS 2. </para>
 <section>
 <title>Começar com um banco de dados limpos</title>
 <para>O pacote vivo vem com um banco de dados de demonstração apenas como o que você vê na <link xl:href="http://apps.dhis2.org/demo/">online demo</link> (que se baseia nos nacionais Serra Leoa SIGS), e se você quer começar com um sistema / banco de dados em branco e criar o seu próprio sistema, então você precisa fazer o seguinte:</para>
-<para>1) Pare DHIS2 viver, se ele já está em execução. Botão direito do mouse no ícone da bandeja e selecione Sair.
+<para>1) Pare DHIS 2 viver, se ele já está em execução. Botão direito do mouse no ícone da bandeja e selecione Sair.
 O ícone da bandeja é o símbolo verde no canto inferior direito da sua tela (no Windows), o que deveria dizer &apos;DHIS 2 Server rodando&apos; se você mantiver o ponteiro do mouse sobre ele..</para>
 <para>2) Abra a pasta onde o pacote vivo DHIS 2 está instalado e localize a pasta chamada &quot;conf&quot;.
 </para>
@@ -3904,7 +3904,7 @@ tem várias vantagens - não há necessidade de instalar um motor de banco de da
 PostgreSQL ou MySQL, e de backup pode ser feito por apenas copiando o arquivo. Todo o banco de dados
 existe em memória, o que significa alto desempenho. A desvantagem é a necessidade de RAM. E também
 não é adequado para instalações de servidor multi-usuário </para>
-<para>Em geral, recomenda-se a trabalhar com a base de dados através da interface de utilizador DHIS2, mas em algumas situações, pode-se precisar
+<para>Em geral, recomenda-se a trabalhar com a base de dados através da interface de utilizador DHIS 2, mas em algumas situações, pode-se precisar
 manipular os dados directamente. Se alguém faz o download H2 separadamente, ele vem com uma interface web. Ele também pode ser manipulada usando 
 <link xl:href="http://openoffice.org">OpenOffice.org</link>, utilizando o procedimento seguinte. Isso pressupõe que dhis2-live está localizado na
 diretório do usuário Linux em casa (representado por ~). Substitua o Caminho absoluto parágrafo um SUA Instalação dhis2-live.
@@ -3937,10 +3937,10 @@ diretório do usuário Linux em casa (representado por ~). Substitua o Caminho a
 <title>Registro no DHIS 2</title>
 <para>Independentemente de você ter instalado a versão do servidor do
 Versão ao vivo, você vai usar um web-browser para efetuar logon no
-aplicação. DHIS2 deve ser compatível com a maioria dos modernos navegadores da web,
+aplicação. DHIS 2 deve ser compatível com a maioria dos modernos navegadores da web,
 embora você vai precisar para assegurar que o Java Script está habilitado.</para>
-<para>Para efetuar logon no aplicativo basta digitar <link xl:href="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</link> se você estiver usando o pacote vivo DHIS2 ou substituir localhost com o nome ou endereço IP do servidor em que a versão do servidor está instalado.</para>
-<para>Depois de ter iniciado DHIS2, seja on-line ou off-line, a tela exibida irá pedir-lhe para introduzir o registrado &apos;nome de usuário&apos; e &apos;senha&apos;. Depois de digitar as informações necessárias, clique no botão de login para entrar no aplicativo. O nome de usuário ea senha padrão são &quot;admin&quot; e &quot;distrito&quot;. Eles devem ser trocados imediatamente após a exploração madeireira sobre a primeira vez. </para>
+<para>Para efetuar logon no aplicativo basta digitar <link xl:href="http://localhost:8080/dhis" type="">http://localhost:8080/dhis</link> se você estiver usando o pacote vivo DHIS 2 ou substituir localhost com o nome ou endereço IP do servidor em que a versão do servidor está instalado.</para>
+<para>Depois de ter iniciado DHIS 2, seja on-line ou off-line, a tela exibida irá pedir-lhe para introduzir o registrado &apos;nome de usuário&apos; e &apos;senha&apos;. Depois de digitar as informações necessárias, clique no botão de login para entrar no aplicativo. O nome de usuário ea senha padrão são &quot;admin&quot; e &quot;distrito&quot;. Eles devem ser trocados imediatamente após a exploração madeireira sobre a primeira vez. </para>
 </section>
 <section xml:id="users">
 <title>Criar novos usuários e funções</title>
@@ -4172,7 +4172,7 @@ testes . Estas regras devem ser regras absolutas que significa que eles são mat
 </itemizedlist>
 <section xml:id="dataElement">
 <title>Elementos de Dados</title>
-<para><?inline true?>Os elementos de dados formam a base da DHIS2. Os elementos de dados definem o que é realmente gravado no sistema, por exemplo, número de vacinções ou número de casos de malária. A criação e definição dos elementos de dados esta muito além do escopo deste manual para descrever, mas presume-se que um administrador será fornecido com uma lista de elementos de dados padronizados para a inclusão no sistema DHIS2.. </para>
+<para><?inline true?>Os elementos de dados formam a base da DHIS 2. Os elementos de dados definem o que é realmente gravado no sistema, por exemplo, número de vacinções ou número de casos de malária. A criação e definição dos elementos de dados esta muito além do escopo deste manual para descrever, mas presume-se que um administrador será fornecido com uma lista de elementos de dados padronizados para a inclusão no sistema DHIS 2.. </para>
 <para>Para acessar o módulo de manutenção de elemento de dados, escolha Manutenção -&gt; Elementos de dados e Indicadores -&gt; Elemento de dados. </para>
 <para>O campo de pesquisa &apos;Filtrar por nome&apos; permitirá filtrar um intervalo de elementos de dados, se souber o nome completo do elemento de dados, ou apenas uma parte dela. Digite o nome no campo de pesquisa e todos os elementos de dados correspondentes são apresentadas abaixo. Podendo também escolher &apos;Filtrar por grupo / ver todos&apos; para diminuir dados de pesquisa do elemento dentro de um grupo de elementos de dados em particular. No modo padrão, esse
 campo irá mostrar todos os elementos de dados na aplicação. O botão &quot;Obter PDF &apos;pode ser clicado para gerar um arquivo. Pdf de todos os dados
@@ -4235,7 +4235,7 @@ elementos. O botão &apos;Ordenar&apos; pode ser usado para ordenar os elementos
 </itemizedlist>
 </listitem>
 <listitem>
-<para><emphasis role="bold">Tipo Numerico:</emphasis> DHIS2 suporta vários tipos de números diferentes. Durante a entrada de dados, os usuários serão restritos de introduzir apenas os tipos de números definidos. Cada uma das opções disponíveis estão descritos abaixo. </para>
+<para><emphasis role="bold">Tipo Numerico:</emphasis> DHIS 2 suporta vários tipos de números diferentes. Durante a entrada de dados, os usuários serão restritos de introduzir apenas os tipos de números definidos. Cada uma das opções disponíveis estão descritos abaixo. </para>
 <itemizedlist>
 <listitem>
 <para>Número: Este tipo de número suporta qualquer valor real, com um único ponto decimal, um sinal negativo opcional, e não milhares de separadores. </para>
@@ -4299,7 +4299,7 @@ zero.</para>
 </itemizedlist>
 </listitem>
 <listitem>
-<para>Armazenar valor de dado como zero: Por padrão, DHIS2 não armazenará zeros que são inseridos no módulo de entrada de dados. Se zeros precisam ser salvos por um motivo particular, esta opção pode ser definida como &quot;Sim&quot;. </para>
+<para>Armazenar valor de dado como zero: Por padrão, DHIS 2 não armazenará zeros que são inseridos no módulo de entrada de dados. Se zeros precisam ser salvos por um motivo particular, esta opção pode ser definida como &quot;Sim&quot;. </para>
 </listitem>
 <listitem>
 <para><emphasis role="bold">URL:</emphasis> A URL tendo uma descrição detalhada do elemento de dados pode ser inserido no campo &quot;URL&quot;. Isso pode ser, por exemplo, um link para um repositório de metadados ou do registro que contém informações técnicas detalhadas sobre a definição e medição do elemento de dado. </para>
@@ -4389,7 +4389,7 @@ zero.</para>
 <para>Número de casos de malária confirmados (Mais de 5)</para>
 </listitem>
 </itemizedlist>
-<para>O uso eficaz de categorias de elementos de dados simplifica muito o processo de criação do sistema DHIS2, como as categorias de elementos de dados pode ser reutilizado para desagregar muitos elementos de dados diferentes. De outro modo, cada um dos elementos listados acima, que necessitam de ser criada separadamente. O uso criterioso de categorias de elementos de dados irá simplificar muito a implementação DHIS2, e permitirá uma análise avançada subsequente. </para>
+<para>O uso eficaz de categorias de elementos de dados simplifica muito o processo de criação do sistema DHIS 2, como as categorias de elementos de dados pode ser reutilizado para desagregar muitos elementos de dados diferentes. De outro modo, cada um dos elementos listados acima, que necessitam de ser criada separadamente. O uso criterioso de categorias de elementos de dados irá simplificar muito a implementação DHIS 2, e permitirá uma análise avançada subsequente. </para>
 <para>Sempre que possível, opções de categoria de elementos de dados devem ser reciclados.Por exemplo, pode haver duas categorias que podem compartilhar uma opção de categoria particular (por exemplo, &lt;1 ano de idade). Ao criar as categorias de elementos de dados, esta opção de categoria poderia ser reutilizada. Isto é importante que determinadas opções de categoria (ou combinações de opções de categoria) sejam analisados ​​em conjunto. </para>
 <orderedlist>
 <listitem>
@@ -4438,7 +4438,7 @@ zero.</para>
 </listitem>
 </itemizedlist>
 <para> Neste exemplo, não haveria dois níveis de desagregação, que consiste em duas categorias distintas de elementos de dados, consistindo cada uma de várias opções de categoria de elementos de dados. Na maioria dos sistemas de HMIS, diferentes elementos de dados são desagregados de acordo com um conjunto comum de categorias. Ao combinar estas diferentes categorias dentro de uma combinação de categoria de elementos de dados e atribuição dessas combinações de elementos de dados, os níveis de desagregação apropriados podem ser aplicados de forma eficiente e rapidamente a um grande número de elementos de dados. </para>
-<para>Para acessar o módulo de manutenção de combinação categoria de elemento de dados, selecione &quot;Manutenção-&gt;Elementos de Dados e Indicadores-&gt;Combinação de categorias elemento de dado&quot; no menu principal DHIS2. Tal como acontece com outros módulos, pode-se filtrar combinações de categorias listadas inserindo o nome (ou parte do nome) da combinação de categoria. Outras operações, como a &quot;Editar&quot;, &quot;remover&quot; e &quot;Mostrar detalhes&quot; devem ser familiar ao leitor. </para>
+<para>Para acessar o módulo de manutenção de combinação categoria de elemento de dados, selecione &quot;Manutenção-&gt;Elementos de Dados e Indicadores-&gt;Combinação de categorias elemento de dado&quot; no menu principal DHIS 2. Tal como acontece com outros módulos, pode-se filtrar combinações de categorias listadas inserindo o nome (ou parte do nome) da combinação de categoria. Outras operações, como a &quot;Editar&quot;, &quot;remover&quot; e &quot;Mostrar detalhes&quot; devem ser familiar ao leitor. </para>
 <para>Para adicionar uma nova combinação de categoria, clique no botão &quot;Adicionar novo&quot;. A tela a seguir será exibida.</para>
 <screenshot>
 <mediaobject>
@@ -4452,7 +4452,7 @@ zero.</para>
 </section>
 <section>
 <title>Usar categorias como atributos</title>
-<para>Em algumas implantações de DHIS2, informações sobre atributos como &quot;parceiro de implementação&quot; e &quot;Projeto&quot; é importante registrar como um atributo de cada valor de dados. Para dar um exemplo, vamos supor que uma ONG está fornecendo serviços de arte em uma determinada instalação. Eles teriam de informar cada mês na &quot;ART resumo mensal&quot;, que seria relatado mensalmente e conter uma série de elementos de dados. A ONG e o projeto poderia mudar ao longo do tempo. A fim de ser capaz de atribuir eficazmente os dados para um dado projecto de ONG e em qualquer ponto no tempo, esta informação terá de ser gravada, juntamente com cada valor de dados na altura de entrada de dados. </para>
+<para>Em algumas implantações de DHIS 2, informações sobre atributos como &quot;parceiro de implementação&quot; e &quot;Projeto&quot; é importante registrar como um atributo de cada valor de dados. Para dar um exemplo, vamos supor que uma ONG está fornecendo serviços de arte em uma determinada instalação. Eles teriam de informar cada mês na &quot;ART resumo mensal&quot;, que seria relatado mensalmente e conter uma série de elementos de dados. A ONG e o projeto poderia mudar ao longo do tempo. A fim de ser capaz de atribuir eficazmente os dados para um dado projecto de ONG e em qualquer ponto no tempo, esta informação terá de ser gravada, juntamente com cada valor de dados na altura de entrada de dados. </para>
 <para>Quando categorias e combinações categoria tem um tipo de &quot;atributo&quot;, eles podem servir como um meio de aplicação de um conjunto comum de atributos (por exemplo, parceiro de execução e projeto) para um conjunto relacionado de valores de dados contidos em um conjunto de dados. Suponhamos que criamos duas categorias denominadas &quot;parceiro de implementação&quot; e &quot;Projetos&quot;. Cada uma dessas categorias seria criado com um tipo de dimensão de &quot;Atributo&quot;. Finalmente, uma combinação categoria chamada &quot;parceiros de execução e projetos&quot; seria criado com essas duas categorias e atribuído um tipo de dimensão de &quot;Atributo&quot;. Finalmente, podemos usar essa dimensão para aplicar um atributo ao conjunto de dados &quot;ART resumo mensal&quot;, escolhendo os &quot;parceiros de execução e projetos&quot;, como a &quot;combinação de categorias&quot;. </para>
 <para>A tela a seguir mostra um exemplo de tela de entrada de dados que ilustra todos esses conceitos. </para>
 <screenshot>
@@ -4477,7 +4477,7 @@ zero.</para>
 <para>Traduções podem ser ativadas selecionando a localidade desejada sob linguagem de banco de dados em configurações de usuário geral no módulo de configurações.</para>
 <section>
 <title>Tradução de elemento de dado </title>
-<para>DHIS2 fornece funcionalidade para traduzir elementos de dados existentes para outros idiomas. Clique no nome do elemento de dados que você deseja traduzir, e selecione &quot;Traduzir&quot; a partir do menu de contexto que aparece. O diálogo a seguir será exibida.</para>
+<para>DHIS 2 fornece funcionalidade para traduzir elementos de dados existentes para outros idiomas. Clique no nome do elemento de dados que você deseja traduzir, e selecione &quot;Traduzir&quot; a partir do menu de contexto que aparece. O diálogo a seguir será exibida.</para>
 <screenshot>
 <mediaobject>
 <imageobject>
@@ -4494,18 +4494,18 @@ zero.</para>
 <title>Configurar o GIS</title>
 <section>
 <title>Contexto</title>
-<para>Configurando o GIS significa simplesmente armazenar as coordenadas para as unidades organizacionais que você deseja mostrar no mapa no banco de dados. As coordenadas são frequentemente distribuídos em formatos proprietários e terão de ser convertidos para um formato que DHIS2 entende. Shapefiles ESRI são o formato de dados geoespaciais vetoriais mais comum para aplicações desktop. Você pode achar shapefiles para seu país &quot;http://www.diva-gis.org/gdata&quot; aqui ou em muitos outros repositórios de dados geoespaciais na web. Uma certa quantidade de trabalho precisa ser feito, a fim de usar essas coordenadas em DHIS 2 GIS, ou seja, transformar os dados em um formato adequado e garantir o nome que estão contidas no jogo de dados geoespaciais exatamente com os nomes das unidades organizacionais que deveriam ser combinados para. </para>
+<para>Configurando o GIS significa simplesmente armazenar as coordenadas para as unidades organizacionais que você deseja mostrar no mapa no banco de dados. As coordenadas são frequentemente distribuídos em formatos proprietários e terão de ser convertidos para um formato que DHIS 2 entende. Shapefiles ESRI são o formato de dados geoespaciais vetoriais mais comum para aplicações desktop. Você pode achar shapefiles para seu país &quot;http://www.diva-gis.org/gdata&quot; aqui ou em muitos outros repositórios de dados geoespaciais na web. Uma certa quantidade de trabalho precisa ser feito, a fim de usar essas coordenadas em DHIS 2 GIS, ou seja, transformar os dados em um formato adequado e garantir o nome que estão contidas no jogo de dados geoespaciais exatamente com os nomes das unidades organizacionais que deveriam ser combinados para. </para>
 <para>Se você vai para o módulo de unidade de organização e editar uma das unidades, você pode ver um campo de texto chamado Coordenadas. Aqui você pode preencher as suas coordenadas diretamente (formato GeoJSON) que é útil se você quiser apenas para atualizar um par de unidades.</para>
 <para>Coordenar Um exemplo ponto / instalação:</para>
 <para><programlisting><userinput>[29.341,-11.154]</userinput></programlisting></para>
 <para>Um exemplo de polígono / área coordena cadeia</para>
 <para><programlisting><userinput>[[[[29.343,-11.154],[28.329,-11.342],[28.481,-10.239],[29.833,-10.412]]]]</userinput></programlisting></para>
 <para>No entanto, se você estiver indo a, por exemplo Adicionar coordenadas para todas as unidades em um determinado nível que você não quer fazer isso manualmente. Isto é onde a importação automática GML entra em jogo ea seção a seguir explica a forma preferida de usá-lo<important>
-<para>O único sistema de coordenadas de referência suportado por DHIS2 é EPSG: 4326, também conhecido como
+<para>O único sistema de coordenadas de referência suportado por DHIS 2 é EPSG: 4326, também conhecido como
 geográfica longitude / latitude. Coordenadas devem ser armazenadas com a longitude (leste / oeste
 posição) de proceder a latitude (norte / sul posição). Se os dados do vetor está em um
 CRS diferentes do que EPSG 4326, você terá que re-projeto os dados antes de importar
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; em DHIS2. </para>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; em DHIS 2. </para>
 </important></para>
 </section>
 <section xml:id="gisSetup">
@@ -4514,11 +4514,11 @@ CRS diferentes do que EPSG 4326, você terá que re-projeto os dados antes de im
 <para>Os limites em arquivos de dados geográficos são geralmente muito precisas, até demais para o
 necessidades de um GIS baseado na web. Isso geralmente não afeta o desempenho ao usar arquivos de SIG em
 um sistema local, mas, geralmente, é necessário otimizar os dados geográficos para a
-sistema GIS baseado na web de DHIS2. Todos os dados geográfica precisa ser baixado a partir do servidor
-e processado em um navegador, por isso, se os dados são muito complexos, o desempenho do SIG DHIS2
+sistema GIS baseado na web de DHIS 2. Todos os dados geográfica precisa ser baixado a partir do servidor
+e processado em um navegador, por isso, se os dados são muito complexos, o desempenho do SIG DHIS 2
 serão impactados negativamente. Este processo de optimização pode ser descrito como se segue:</para>
 <para><simplelist>
-<member>Coordenadas: O número de dígitos decimais significativos (por exemplo, 23,02937874993774) deve ser reduzido para menos dígitos (por exemplo, 23.03). Embora isso vai resultar em algumas imprecisões no mapa, dada a escala habitual em que mapeia em DHIS2 são produzidas (&gt; 1:50.000), a perda de precisão não deve ser perceptível. Normalmente, não mais do que quatro dígitos significativos depois do ponto decimal deve ser necessário..</member>
+<member>Coordenadas: O número de dígitos decimais significativos (por exemplo, 23,02937874993774) deve ser reduzido para menos dígitos (por exemplo, 23.03). Embora isso vai resultar em algumas imprecisões no mapa, dada a escala habitual em que mapeia em DHIS 2 são produzidas (&gt; 1:50.000), a perda de precisão não deve ser perceptível. Normalmente, não mais do que quatro dígitos significativos depois do ponto decimal deve ser necessário..</member>
 <member>Polígonos: Além de encurtar o número de dígitos significativos, o número real de pontos também deve ser reduzida a um nível ideal. Encontrar esse nível ideal pode demorar um pouco de experimentação. Diminuindo a precisão dos pontos, bem como o número de pontos por meio de generalização, irá conduzir a uma degradação do polígono. No entanto, depois de um pouco de experimentação, um nível ótimo de generalização pode ser encontrado, onde a precisão do polígono é visualmente aceitável, eo desempenho do SIG é o ideal. </member>
 </simplelist></para>
 <para>Para polígonos, é preciso fazer as linhas de contorno menos detalhada, removendo alguns dos pontos de linha. Faça um backup de seus arquivos de forma antes de começar. Um método possível é a utilização de <link xl:href="http://mapshaper.com/test/MapShaper.swf">MapShaper</link> que é uma ferramenta de linha que pode ser utilizado para generalizar dados geográficos. Para usar MapShaper, basta carregar o seu shapefile para o site. Em seguida, na parte inferior central você vê um controle deslizante que começa em 0%. É geralmente aceitável para arrastá-lo até cerca de 80%. No menu à esquerda você pode verificar &quot;mostrar linhas originais&quot; para comparar o resultado e você pode querer dar um método de simplificação diferente uma tentativa. Quando você está feliz com o resultado, clique em &quot;Exportar&quot; no canto superior direito. Em seguida, verifique a primeira das quatro opções chamadas &quot;Shapefile - polígonos&quot;, clique em &quot;Criar&quot; e aguarde os botões de download para aparecer. Agora, baixe os dois arquivos para o seu computador local e substituir os já existentes. Mova-se para a próxima etapa com o seu novo shapefile simplificado..
@@ -4540,7 +4540,7 @@ serão impactados negativamente. Este processo de optimização pode ser descrit
 Vá para Serviços -&gt; Import-Export, selecione &quot;Preview&quot;, selecione o arquivo GML e clique em &quot;Importar&quot;. Procure novas / unidades organizacionais atualizados. Nossa intenção é adicionar coordenadas para unidades organizacionais já existentes no banco de dados, por isso queremos o maior número de atualizações possíveis e 0 novo. Os incluídos como novo será criado como unidades de raiz e estragar as árvores unidade de organização em DHIS 2. Se qualquer listado como novo, clique no número e as unidades organizacionais em questão aparecerá na lista abaixo. Se houver erros ortográficos leves em comparação com os nomes das unidades de organização do banco de dados - corrigi-los e fazer a pré-visualização novamente. Caso contrário, clique no botão &quot;descartar tudo&quot; abaixo da lista e, em seguida, o &quot;Importar todos&quot;button above the list.
 </para>
 <para>
-Se o processo de importação é concluída com êxito, você deve agora ser capaz de utilizar os dados geográficos em SIG DHIS2. Se não, verifique o log para sugestões e procurar erros comuns, tais como: 
+Se o processo de importação é concluída com êxito, você deve agora ser capaz de utilizar os dados geográficos em SIG DHIS 2. Se não, verifique o log para sugestões e procurar erros comuns, tais como: 
 </para>
 <para>- Nome duplicatas no arquivo GML. A coluna nome no banco de dados é único e não aceita duas unidades de organização com o mesmo nome.</para>
 <para>- A coluna &quot;abreviado&quot; na tabela de organisationunit em seu banco de dados tem uma definição varchar muito pequeno. Aumentá-la para 100</para>
@@ -4566,10 +4566,10 @@ equivalentes ou seqüências de escape..</para>
 <section xml:id="indicator">
 <title>Indicadores</title>
 <para>Indicadores são compostos de vários elementos de dados, e normalmente consistem de um numerador
-e denominador. Indicadores nunca são inseridos no DHIS2, mas são derivados de combinações de
+e denominador. Indicadores nunca são inseridos no DHIS 2, mas são derivados de combinações de
 elementos de dados e fatores. Os indicadores são utilizados para calcular as taxas de cobertura, a incidência e
 outros valores são o resultado de valores de elementos de dados que foram inseridos no sistema. </para>
-<para>Para acessar o indicador mantém página, pressione Manutenção -&gt; Element e Indicadores de Dados -&gt; Indicador do menu DHIS2 principal. Semelhante a elementos de dados, você pode adicionar, excluir, modificar e visualizar informações adicionais sobre os indicadores no sistema. </para>
+<para>Para acessar o indicador mantém página, pressione Manutenção -&gt; Element e Indicadores de Dados -&gt; Indicador do menu DHIS 2 principal. Semelhante a elementos de dados, você pode adicionar, excluir, modificar e visualizar informações adicionais sobre os indicadores no sistema. </para>
 <screenshot>
 <mediaobject>
 <imageobject>
@@ -4670,7 +4670,7 @@ outros valores são o resultado de valores de elementos de dados que foram inser
 </mediaobject>
 </screenshot>
 <note>
-<para>A partir da versão 2.4 do DHIS2, o objeto &quot;elemento de dados Calculado&quot; foi substituída. Em vez disso, um elemento de dados calculados podem ser criados através da criação de um tipo de indicador com um fator de &quot;1&quot; e definindo a opção &quot;Número&quot; para &quot;Sim&quot;. O efeito de definir a opção &quot;Número&quot; para &quot;Sim&quot; será que o indicador de eficácia não terá um denominador. Você vai, portanto, só será capaz de definir um numerador, que servirá como a fórmula do elemento de dados calculados.</para>
+<para>A partir da versão 2.4 do DHIS 2, o objeto &quot;elemento de dados Calculado&quot; foi substituída. Em vez disso, um elemento de dados calculados podem ser criados através da criação de um tipo de indicador com um fator de &quot;1&quot; e definindo a opção &quot;Número&quot; para &quot;Sim&quot;. O efeito de definir a opção &quot;Número&quot; para &quot;Sim&quot; será que o indicador de eficácia não terá um denominador. Você vai, portanto, só será capaz de definir um numerador, que servirá como a fórmula do elemento de dados calculados.</para>
 </note>
 </section>
 <section xml:id="indicatorGroup">
@@ -5054,10 +5054,10 @@ e os conflitos potenciais.</para>
 </chapter>
 <chapter>
 <title>Gestão do usuário</title>
-<para>DHIS2 permite que vários usuários acessem o sistema simultaneamente, cada um com um define um conjunto de permissões. Essas permissões podem ser afinado para que determinados usuários só pode inserir dados, enquanto outros podem gerar relatórios. Múltiplas funções de usuário podem ser criadas, cada uma com seu próprio conjunto de permissões, e depois atribuído a usuários que lhes conferem certos privilégios dentro do sistema. Este capítulo descreve como gerenciar usuários e funções de usuário.</para>
+<para>DHIS 2 permite que vários usuários acessem o sistema simultaneamente, cada um com um define um conjunto de permissões. Essas permissões podem ser afinado para que determinados usuários só pode inserir dados, enquanto outros podem gerar relatórios. Múltiplas funções de usuário podem ser criadas, cada uma com seu próprio conjunto de permissões, e depois atribuído a usuários que lhes conferem certos privilégios dentro do sistema. Este capítulo descreve como gerenciar usuários e funções de usuário.</para>
 <section xml:id="creating_new_users">
 <title>Criação de novos usuários e funções</title>
-<para>Esta seção descreve como adicionar novos usuários e gerenciar usuários existentes para a aplicação DHIS2. Você pode criar tantos nomes de usuário que você precisar. Cada usuário pode ser atribuído certos privilégios, e pode ser atribuído a algumas unidades da organização para a qual eles serão habilitados para inserir dados em nome. Para acessar o módulo de usuário, escolha &quot;Maintenance-&gt; Usuários&quot; no menu principal..</para>
+<para>Esta seção descreve como adicionar novos usuários e gerenciar usuários existentes para a aplicação DHIS 2. Você pode criar tantos nomes de usuário que você precisar. Cada usuário pode ser atribuído certos privilégios, e pode ser atribuído a algumas unidades da organização para a qual eles serão habilitados para inserir dados em nome. Para acessar o módulo de usuário, escolha &quot;Maintenance-&gt; Usuários&quot; no menu principal..</para>
 <section xml:id="user_maintenance">
 <title>Manutenção do usuário</title>
 <screenshot>
@@ -5304,10 +5304,10 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
 </chapter>
 <chapter>
 <title>Administração de dados</title>
-<para>O módulo de gestão de dados fornece um conjunto de funções para assegurar que os dados armazenados na base de dados DHIS2 está integrada e que o desempenho da base de dados é optimizado. Estas funções devem ser executadas regularmente por um administrador de dados para assegurar que a qualidade dos dados armazenados é ideal. </para>
+<para>O módulo de gestão de dados fornece um conjunto de funções para assegurar que os dados armazenados na base de dados DHIS 2 está integrada e que o desempenho da base de dados é optimizado. Estas funções devem ser executadas regularmente por um administrador de dados para assegurar que a qualidade dos dados armazenados é ideal. </para>
 <section xml:id="dataBrowser">
 <title>Navegador de dados</title>
-<para>A manutenção do navegador de dados e módulo de análise permite ao usuário produzir um resumo dos dados contidos na base de dados DHIS2. A visualização sumária fornece uma contagem de elementos de dados que foram inseridos na unidade de organização seleccionada, bem como seus descendentes. Os dados brutos para todos os elementos de dados para uma série de períodos de tempo e uma determinada unidade organizacional pode ser pesquisado e exportados em formatos Excel, CSV ou PDF. Existem quatro modos de navegador de dados, que determinam como os dados são resumidos</para>
+<para>A manutenção do navegador de dados e módulo de análise permite ao usuário produzir um resumo dos dados contidos na base de dados DHIS 2. A visualização sumária fornece uma contagem de elementos de dados que foram inseridos na unidade de organização seleccionada, bem como seus descendentes. Os dados brutos para todos os elementos de dados para uma série de períodos de tempo e uma determinada unidade organizacional pode ser pesquisado e exportados em formatos Excel, CSV ou PDF. Existem quatro modos de navegador de dados, que determinam como os dados são resumidos</para>
 <itemizedlist>
 <listitem>
 <para>Conjunto de dados</para>
@@ -5384,7 +5384,7 @@ e adicionar link para outros recursos na Internet através de URLs. Se desejar c
 </section>
 <section xml:id="dataIntegrity">
 <title>A integridade dos Dados</title>
-<para>DHIS2 pode executar uma grande variedade de verificação de integridade de dados contidos na base de dados. Identificar e corrigir problemas de integridade de dados é extremamente importante para garantir que os dados utilizados para fins de análise é válido. Cada uma das verificações de integridade de dados que são executadas pelo sistema irá ser descrito, juntamente com os procedimentos gerais que podem ser realizadas para resolver estes problemas. </para>
+<para>DHIS 2 pode executar uma grande variedade de verificação de integridade de dados contidos na base de dados. Identificar e corrigir problemas de integridade de dados é extremamente importante para garantir que os dados utilizados para fins de análise é válido. Cada uma das verificações de integridade de dados que são executadas pelo sistema irá ser descrito, juntamente com os procedimentos gerais que podem ser realizadas para resolver estes problemas. </para>
 <section>
 <title>Os elementos de dados sem ficha ou formulário de programa</title>
 <para>Cada elemento de dados deve ser atribuído a um formulário ou ficha de programa de saúde. Os valores de elementos de dados não poderão ser inseridos no sistema, se um elemento de dados não é atribuído a uma ficha. Selecione Manutenção-&gt;Ficha-&gt;Edite a partir do menu principal e em seguida adicione o &quot;órfão&quot; elementos de dados para a ficha ou formulário adequado. </para>
@@ -5504,7 +5504,7 @@ Alguns indicadores foram atribuídos a vários grupos de indicadores que são me
 <title>Tabelas de recursos</title>
 <para>Tabelas de recursos apoiam tabelas que são utilizadas durante a análise dos dados. alguém poderia
 tipicamente juntar os conteúdos dessas tabelas com a tabela de valor de dados ao fazer consultas a partir de
-aplicativos de terceiros, como o Microsoft Excel. Eles também são usados extensivamente pelos módulos de análise de DHIS2. Regeneração das tabelas de recursos deve
+aplicativos de terceiros, como o Microsoft Excel. Eles também são usados extensivamente pelos módulos de análise de DHIS 2. Regeneração das tabelas de recursos deve
 ser apenas feito uma vez todos os problemas de integridade de dados são resolvidos. As tabelas de recursos também são gerados automaticamente, toda vez que o processo de análise é executado pelo sistema. </para>
 <itemizedlist>
 <listitem>
@@ -5547,7 +5547,7 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 </section>
 <section>
 <title>Gestão de local</title>
-<para>É possível criar locais customizados em DHIS2. Adicionalmente aos locais já disponíveis no sistema, poderá também adicionar locais cutomizados como &quot;Ingles&quot; e &quot;Zambia&quot; no sistema. Isso permitirá traduzir objectos de meta dados a linguagem local, ou para incluir pequenas variações entre paises que usam uma definição de meta dados comum. </para>
+<para>É possível criar locais customizados em DHIS 2. Adicionalmente aos locais já disponíveis no sistema, poderá também adicionar locais cutomizados como &quot;Ingles&quot; e &quot;Zambia&quot; no sistema. Isso permitirá traduzir objectos de meta dados a linguagem local, ou para incluir pequenas variações entre paises que usam uma definição de meta dados comum. </para>
 <screenshot>
 <mediaobject>
 <imageobject>
@@ -5559,9 +5559,9 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 </section>
 <section xml:id="sqlView">
 <title>Visualização SQL</title>
-<para>A funcionalidade de visualização de SQL de DHIS2 irá armazenar a definição da exibição SQL internamente, e depois materializar a visão quando solicitado. </para>
-<para>Administradores da base de dados deve ter cuidado com criar modos de exibição base de dados diretamente na base de dados DHIS2. Por exemplo, quando as tabelas de recursos são gerados, todos eles, em primeiro lugar ser suprimido e depois re-criada. Se os pontos de vista SQL dependem dessas tabelas, uma exceção na violação de integridade será lançada e o processo será abortado.</para>
-<para>As visualizações de SQL são indicadas em ordem alfabética inversa, com base em seus nomes em DHIS2, e criadas em ordem alfabética regular. Isso permite que tenha dependências entre visualizações SQL, dado que as visualizações só dependem de outras visualizações que vêm no início em ordem alfabética. Por exemplo, &quot;VisualizaçãoB&quot; pode seguramente depender da &quot;VisualizaçãoA&quot;. Porque ter visualizações dependentes de outras visualizações resultará em um erro de violação de integridade.</para>
+<para>A funcionalidade de visualização de SQL de DHIS 2 irá armazenar a definição da exibição SQL internamente, e depois materializar a visão quando solicitado. </para>
+<para>Administradores da base de dados deve ter cuidado com criar modos de exibição base de dados diretamente na base de dados DHIS 2. Por exemplo, quando as tabelas de recursos são gerados, todos eles, em primeiro lugar ser suprimido e depois re-criada. Se os pontos de vista SQL dependem dessas tabelas, uma exceção na violação de integridade será lançada e o processo será abortado.</para>
+<para>As visualizações de SQL são indicadas em ordem alfabética inversa, com base em seus nomes em DHIS 2, e criadas em ordem alfabética regular. Isso permite que tenha dependências entre visualizações SQL, dado que as visualizações só dependem de outras visualizações que vêm no início em ordem alfabética. Por exemplo, &quot;VisualizaçãoB&quot; pode seguramente depender da &quot;VisualizaçãoA&quot;. Porque ter visualizações dependentes de outras visualizações resultará em um erro de violação de integridade.</para>
 <para/>
 <section>
 <title>Criação de uma nova visão SQL</title>
@@ -5573,7 +5573,7 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 </imageobject>
 </mediaobject>
 </screenshot>
-<para>O &quot;Nome&quot; atributo ao modo SQL vai ser utilizado para determinar o nome da tabela que DHIS2 criará quando a vista é materializado pelo utilizador. A &quot;descrição do&quot; atributo permite fornecer algum texto descritivo sobre o que a vista SQL realmente faz. Finalmente, o &quot;comando SQL&quot; deve conter a definição da exibição SQL. Somente SQL &quot;SELEÇÃO&quot; instruções são permitidos e certas tabelas sensíveis (informações do usuário) não são acessíveis Clique &quot;Salver&quot; para armazenar a definição da exibição SQL.</para>
+<para>O &quot;Nome&quot; atributo ao modo SQL vai ser utilizado para determinar o nome da tabela que DHIS 2 criará quando a vista é materializado pelo utilizador. A &quot;descrição do&quot; atributo permite fornecer algum texto descritivo sobre o que a vista SQL realmente faz. Finalmente, o &quot;comando SQL&quot; deve conter a definição da exibição SQL. Somente SQL &quot;SELEÇÃO&quot; instruções são permitidos e certas tabelas sensíveis (informações do usuário) não são acessíveis Clique &quot;Salver&quot; para armazenar a definição da exibição SQL.</para>
 </section>
 <section>
 <title>Gestão da visão SQL</title>
@@ -5594,7 +5594,7 @@ ser apenas feito uma vez todos os problemas de integridade de dados são resolvi
 </section>
 <section xml:id="dataStatistics">
 <title>Estatísticas de dados</title>
-<para>O módulo de estatísticas de dados fornece uma visão geral de número de objectos guardados na base de dados do DHIS2. </para>
+<para>O módulo de estatísticas de dados fornece uma visão geral de número de objectos guardados na base de dados do DHIS 2. </para>
 <screenshot>
 <mediaobject>
 <imageobject>

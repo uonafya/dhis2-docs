@@ -207,14 +207,14 @@ The app can be uploaded by pressing the Browse button and after selecting the zi
         </listitem>
         <listitem>
           <para><filename role="italic">dhis2.translate.js</filename> : Translate script that
-            translates menu text to your current DHIS2 language setting</para>
+            translates menu text to your current DHIS 2 language setting</para>
         </listitem>
       </itemizedlist></para>
-    <para>For a app that will run using the same URL structure as the normal DHIS2 apps, only the
+    <para>For a app that will run using the same URL structure as the normal DHIS 2 apps, only the
       JavaScript files and style-sheets are required. If your app is running using a different URL
       structure than the default one, you will need to specify a <parameter>base URL </parameter>before including the menu scripts. Including the scripts and style-sheets would
       look something like the following:
-      <screen>&lt;!-- DHIS2 Settings initialization for a baseUrl that is used for the menu --&gt;
+      <screen>&lt;!-- DHIS 2 Settings initialization for a baseUrl that is used for the menu --&gt;
 &lt;script&gt;
  window.dhis2 = window.dhis2 || {};
  dhis2.settings = dhis2.settings || {};
@@ -233,7 +233,7 @@ The app can be uploaded by pressing the Browse button and after selecting the zi
 &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;./dhis-web-commons/css/menu.css&quot;&gt;
     </screen></para>
     <para>To clarify, the following part will initialize some variables. If you do not use any other
-      DHIS2 libraries these will not be set and therefore will have to be set by you first. After
+      DHIS 2 libraries these will not be set and therefore will have to be set by you first. After
       that the third line specifies a base URL of where your DHIS 2 instance is running on your web
       server. For example: <emphasis role="italic">dhis</emphasis> in this case means the server is
       running at <emphasis role="italic">http://localhost:8080/dhis/</emphasis>. Note that you will
@@ -276,7 +276,7 @@ var appMenu = angular.module(&apos;appMenu&apos;,
 
         &lt;div id=&quot;dhisDropDownMenu&quot;&gt;&lt;/div&gt;
 
-        &lt;!-- DHIS2 Settings initialization for a baseUrl that is used for the menu --&gt;
+        &lt;!-- DHIS 2 Settings initialization for a baseUrl that is used for the menu --&gt;
         &lt;script&gt;
             window.dhis2 = window.dhis2 || {};
             dhis2.settings = dhis2.settings || {};

@@ -24,12 +24,12 @@ quantidade adequada de RAM, número de núcleos de CPU e um disco rápido. Estas
   </section>
   <section>
     <title>Configuração do servidor</title>
-    <para>Esta seção descreve como configurar uma instância do servidor de DHIS 2 no Ubuntu 12.04 64 bits com o PostgreSQL como o sistema de banco de dados e Tomcat como container Servlet. Este guia não pretende ser um guia passo-a-passo, por si só, mas sim para servir como uma referência à forma como DHIS2 pode ser implantado em um servidor. Há muitas estratégias possíveis de implantação, que serão diferentes, dependendo do sistema operacional e banco de dados que você está usando, e outros fatores. O termo <emphasis role="italic">invocar</emphasis> refere-se a execução de um determinado comando em um terminal. </para>
+    <para>Esta seção descreve como configurar uma instância do servidor de DHIS 2 no Ubuntu 12.04 64 bits com o PostgreSQL como o sistema de banco de dados e Tomcat como container Servlet. Este guia não pretende ser um guia passo-a-passo, por si só, mas sim para servir como uma referência à forma como DHIS 2 pode ser implantado em um servidor. Há muitas estratégias possíveis de implantação, que serão diferentes, dependendo do sistema operacional e banco de dados que você está usando, e outros fatores. O termo <emphasis role="italic">invocar</emphasis> refere-se a execução de um determinado comando em um terminal. </para>
     <para>Para um servidor nacional a configuração recomendada é um processador quad-core de 2 GHz ou superior e 12 Gb de RAM ou superior. Note-se que um sistema operacional de 64 bits é necessário para utilizar mais do que 4 GB de RAM, o Ubuntu 12.04 edição de 64 bits é, portanto, recomendado.</para>
     <para>ara este guia vamos supor que 8 Gb RAM é alocada para PostgreSQL e 8 GB de RAM é alocada para Tomcat / JVM, e que um sistema operacional de 64 bits é usado. <emphasis role="italic">Se você estiver executando uma configuração diferente ajuste os valores sugeridos de acordo!</emphasis> Recomendamos que a memória disponível é dividida mais ou menos igualmente entre o banco de dados e o JVM. Lembre-se de deixar um pouco da memória física para o sistema operacional para o desempenho de suas tarefas, por exemplo, em torno de 2 GB. Os passos marcados como
         <emphasis role="italic">opcional</emphasis>, como a etapa de ajuste de desempenho, pode ser feito em uma fase posterior.</para>
     <section>
-      <title>Criando um usuário para executar DHIS2</title>
+      <title>Criando um usuário para executar DHIS 2</title>
       <para>Deve - se  criar um usuário dedicado para a execução de DHIS - não é recomendado executar como o usuário root. Criar um novo usuário chamado dhis invocando <code>useradd -d /home/dhis -m dhis -s /bin/bash</code> Em seguida, fazer o usuário capaz de executar operações temporariamente como usuário root, invocando <code>usermod -G sudo dhis</code>. Em seguida, invocar <code>passwd dhis</code> para definir a senha de sua conta. Certifique-se de configurar uma senha forte com pelo menos 15 caracteres aleatórios. Você pode querer desabilitar o login remoto para a conta root para melhorar a segurança, invocando <code>sudo passwd -l root</code></para>
     </section>
     <section>
@@ -42,7 +42,7 @@ net.core.wmem_max = 8388608</screen>
     <section>
       <title>Definir o tempo de servidor</title>
       <para>embre-se de definir a data do servidor corretamente de acordo com o fuso horário do que a parte principal dos usuários do sistema estão localizados. Isso vai afetar, por exemplo, quando as tarefas agendadas são executadas. Por exemplo, com o tempo de jogo às 22:45 h, 17 de Outubro de 2012, invocar <command>sudo date 101722452012</command>.</para>
-      <para>Pode ser necessário reconfigurar a zona de tempo do servidor para coincidir com a zona de tempo do local, que o servidor DHIS2 vai cobrir. Se você estiver usando um servidor virtual privado, o fuso horário padrão pode não corresponder com o fuso horário da sua localização DHIS2. Você pode facilmente reconfigurar o fuso horário, invocando <command>sudo dpkg-reconfigure tzdata</command> e seguir as instruções. </para>
+      <para>Pode ser necessário reconfigurar a zona de tempo do servidor para coincidir com a zona de tempo do local, que o servidor DHIS 2 vai cobrir. Se você estiver usando um servidor virtual privado, o fuso horário padrão pode não corresponder com o fuso horário da sua localização DHIS 2. Você pode facilmente reconfigurar o fuso horário, invocando <command>sudo dpkg-reconfigure tzdata</command> e seguir as instruções. </para>
       <para>É fácil manter o seu servidor muito precisos usando o pacote NTP. Você pode instalá-lo, basta invocar <command>sudo apt-get install ntp</command>. NTP irá sincronizar automaticamente o horário do servidor em uma base regular.</para>
     </section>
     <section>
@@ -97,7 +97,7 @@ hibernate.hbm2ddl.auto = update</screen></para>
       <screen>java -version</screen>
     </section>
     <section>
-      <title>Instalar Tomcat e DHIS2</title>
+      <title>Instalar Tomcat e DHIS 2</title>
       <para>Para instalar o servlet container Tomcat vamos utilizar o pacote do usuário Tomcat invocando:</para>
       <screen>sudo apt-get install tomcat7-user</screen>
       <para>Este pacote permite facilmente criar uma nova instância do Tomcat. A instância será criada no diretório atual. Um local adequado é o diretório home do usuário dhis:</para>
@@ -106,7 +106,7 @@ hibernate.hbm2ddl.auto = update</screen></para>
       <para>Em seguida edite o arquivo <emphasis role="italic">tomcat-dhis/bin/setenv.sh</emphasis> e adicione as linhas abaixo. A primeira linha irá definir a localização do seu Java Runtime Environment, o segundo vai dedicar memória para o Tomcat eo terceiro irá definir o local para onde DHIS 2 irá procurar o arquivo de configuração <emphasis role="italic">hibernate.properties</emphasis> . Por favor verifique se o caminho dos binários do Java estão corretas, já que podem variar de sistema para sistema, por exemplo, em sistemas AMD que você pode ver <emphasis role="italic">/java-7-openjdk-amd64</emphasis> Observe que você deve ajustar esta ao seu ambiente:</para>
       <para><screen>export JAVA_HOME=&apos;/usr/lib/jvm/java-7-openjdk&apos;
 export JAVA_OPTS=&apos;-Xmx7500m -Xms4000m -XX:MaxPermSize=500m -XX:PermSize=300m&apos;
-export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
+export DHIS 2_HOME=&apos;/home/dhis/config&apos;</screen></para>
       <para>O arquivo de configuração do Tomcat está localizado na <emphasis role="italic">tomcat-dhis/conf/server.xml</emphasis>. o elemento que define a ligação DHIS
 é o elemento <emphasis role="italic">Connector</emphasis> na porta 8080. Você pode alterar o número da porta no elemento conector a uma porta desejada, se necessário. Se for necessária a codificação UTF-8 de dados pedido, certifique-se de que o atributo <emphasis role="italic">URIEncoding</emphasis>
 está definido como <emphasis role="italic">UTF-8</emphasis>.</para>
@@ -117,7 +117,7 @@ está definido como <emphasis role="italic">UTF-8</emphasis>.</para>
       <para>Para monitorar o comportamento do Tomcat,  o log é a principal fonte de informação. o log  pode ser facilmente visualizado com o comando <command>tail -f tomcat-dhis/logs/catalina.out</command></para>
     </section>
     <section>
-      <title>Executando o DHIS2</title>
+      <title>Executando o DHIS 2</title>
       <para>Faça o executável do script de inicialização, invocando <code>chmod 755 tomcat-dhis/bin/*</code>
 DHIS 2 pode agora ser iniciado invocando <code>tomcat-dhis/bin/startup.sh</code> O log pode ser monitorado, invocando <code>tail -f tomcat-dhis/logs/catalina.out</code> DHIS 2 pode ser interrompido, invocando <code>tomcat-dhis/bin/shutdown.sh</code> Assumindo que o arquivo WAR é chamado ROOT.war, Agora você pode acessar a instância em DHIS <emphasis role="italic">http://localhost:8080</emphasis>.</para>
     </section>
@@ -354,9 +354,9 @@ sudo /usr/sbin/update-rc.d -f tomcat defaults 81</screen>
       <title>Configuração de proxy reverso básico com Apache</title>
       <para>O servidor Apache HTTP é o mais comum</para>
       <important>
-        <para>Usando nginx é a opção preferida como proxy reverso com DHIS2 e você não deve tentar instalar o nginx e Apache no mesmo servidor. Se você instalou o nginx por favor ignore esta seção.</para>
+        <para>Usando nginx é a opção preferida como proxy reverso com DHIS 2 e você não deve tentar instalar o nginx e Apache no mesmo servidor. Se você instalou o nginx por favor ignore esta seção.</para>
       </important>
-      <para>O servidor Apache HTTP é o servidor HTTP mais utilizado atualmente. Depdenign em sua natureza exata de implantação, você pode precisar usar o Apache como um proxy reverso para seu servidor DHIS2. Nesta seção, vamos descrever como implementar uma configuração de proxy reverso simples com Apache. </para>
+      <para>O servidor Apache HTTP é o servidor HTTP mais utilizado atualmente. Depdenign em sua natureza exata de implantação, você pode precisar usar o Apache como um proxy reverso para seu servidor DHIS 2. Nesta seção, vamos descrever como implementar uma configuração de proxy reverso simples com Apache. </para>
       <para>Primeiro precisamos instalar alguns programas alguns módulos necessários para o Apache e permitir que os módulos.</para>
       <para><screen>sudo apt-get install apache2 libapache2-mod-proxy-html libapache2-mod-jk
 a2enmod proxy proxy_ajp proxy_connect</screen></para>
@@ -380,7 +380,7 @@ ProxyPassReverse /dhis  ajp://localhost:8009/dhis
     <section>
       <title>Balanceamento de carga básico com o Apache e o Tomcat</title>
       <para>O balanceamento de carga pode ser empregado para distribuir mais uniformemente a carga do sistema em várias instâncias do Tomcat em situações em que a carga do usuário é muito alta para ser tratado por uma única instância do servidor. Neste exemplo, vamos criar uma arquitetura de balanceamento de carga simples usando &quot;sessões pegajosas&quot; para distribuir os usuários através de duas instâncias do Tomcat. </para>
-      <para>Em primeiro lugar, precisamos de pelo menos duas instâncias do Tomcat executando DHIS2, que são conectados ao mesmo banco de dados. Existem várias arquiteturas, como executar os servidores de aplicação (Tomcat) em máquinas separadas (virtuais) conectados a um único servidor de banco de dados, ou talvez executar várias instâncias do Tomcat e um banco de dados em uma única máquina de alta capacidade em situações com I / O é não é um problema, mas quando o uso da CPU de uma única instância Tomcat limita o desempenho geral do sistema. Neste cenário, vamos configurar conectar duas instâncias do Tomcat em execução na mesma máquina para um único banco de dados através de um proxy reverso com balanceamento de carga. Apache vai cuidar dos detalhes de determinar qual instância Tomcat um determinado cliente é a interface com o </para>
+      <para>Em primeiro lugar, precisamos de pelo menos duas instâncias do Tomcat executando DHIS 2, que são conectados ao mesmo banco de dados. Existem várias arquiteturas, como executar os servidores de aplicação (Tomcat) em máquinas separadas (virtuais) conectados a um único servidor de banco de dados, ou talvez executar várias instâncias do Tomcat e um banco de dados em uma única máquina de alta capacidade em situações com I / O é não é um problema, mas quando o uso da CPU de uma única instância Tomcat limita o desempenho geral do sistema. Neste cenário, vamos configurar conectar duas instâncias do Tomcat em execução na mesma máquina para um único banco de dados através de um proxy reverso com balanceamento de carga. Apache vai cuidar dos detalhes de determinar qual instância Tomcat um determinado cliente é a interface com o </para>
       <para>O primeiro passo é configurar nossas instâncias de Tomcat. As seções anteriores detalhou como isso deve ser feito. É importante ressaltar que as duas instâncias do Tomcat deve ser configurado para usar o mesmo servidor de banco de dados. Algumas modificações precisam ser feitas para o arquivo server.xml de cada instância de Tomcat, que será usado para identificar exclusivamente cada instância. Duas cópias do Tomcat deve ser extraído para um diretório de sua escolha. Modifique o arquivo server.xml para que as seguintes linhas são únicos para cada instância.</para>
       <para><screen>&lt;Server port=&quot;<emphasis>800<emphasis>5</emphasis></emphasis>&quot; shutdown=&quot;SHUTDOWN&quot;&gt;
 ...
@@ -388,7 +388,7 @@ ProxyPassReverse /dhis  ajp://localhost:8009/dhis
 ...
 
 &lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;localhost&quot; jvmRoute=&quot;<emphasis>jvm1</emphasis>&quot;&gt;</screen></para>
-      <para>Os parâmetros importantes aqui são a porta do servidor, a porta do conector AJP, e o identificador <parameter>jvmRoute</parameter>. O  identificador <parameter>jvmRoute</parameter> será anexado ao JSESSIONID para que o Apache vai saber qual instância Tomcat uma sessão especial deve ser encaminhado para. Os parâmetros devem ser exclusivos para cada instância do Tomcat. Depois de configurar o Tomcat, configuração DHIS2 de acordo com os procedimentos normais detalhados em outras secções.</para>
+      <para>Os parâmetros importantes aqui são a porta do servidor, a porta do conector AJP, e o identificador <parameter>jvmRoute</parameter>. O  identificador <parameter>jvmRoute</parameter> será anexado ao JSESSIONID para que o Apache vai saber qual instância Tomcat uma sessão especial deve ser encaminhado para. Os parâmetros devem ser exclusivos para cada instância do Tomcat. Depois de configurar o Tomcat, configuração DHIS 2 de acordo com os procedimentos normais detalhados em outras secções.</para>
       <para>Em seguida, vamos configurar o servidor Apache HTTP para realizar o balanceamento de carga. Solicitações de entrada do cliente serão atribuídas a um dos casos, com uma sessão pegajosa.  Alterar o arquivo  <filename>/etc/apache2/apache2.conf </filename> (ou outro arquivo apropriado dependendo da configuração exata) para definir um balanceador de carga de proxy e proxy e inverter caminho proxy. Note-se que os números de porta e parâmetros <parameter>route</parameter> devem corresponder à porta do Tomcat e parâmetros  <parameter>jvmRoute</parameter> que foram definidos no início da configuração do Tomcat.</para>
       <screen>&lt;Proxy balancer://dhiscluster&gt;
 Order Allow,Deny

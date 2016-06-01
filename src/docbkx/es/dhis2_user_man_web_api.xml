@@ -257,10 +257,10 @@
     <screen><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <CrossSectionalData xmlns="http://www.SDMX.org/resources/SDMXML/schemas/v2_0/message" 
   xmlns:common="http://www.SDMX.org/resources/SDMXML/schemas/v2_0/common"
-  xmlns:ns="urn:sdmx:org.sdmx.infomodel.keyfamily.KeyFamily=DHIS2:KF_DHIS2_SIMPLE:1.0:cross"
+  xmlns:ns="urn:sdmx:org.sdmx.infomodel.keyfamily.KeyFamily=DHIS 2:KF_DHIS 2_SIMPLE:1.0:cross"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xsi:schemaLocation="http://www.SDMX.org/resources/SDMXML/schemas/v2_0/message SDMXMessage.xsd 
-  urn:sdmx:org.sdmx.infomodel.keyfamily.KeyFamily=DHIS2:KF_DHIS2_SIMPLE:1.0:cross file:./KF_HOSP_cross.xsd">
+  urn:sdmx:org.sdmx.infomodel.keyfamily.KeyFamily=DHIS 2:KF_DHIS 2_SIMPLE:1.0:cross file:./KF_HOSP_cross.xsd">
 
   <Header>
     <ID>OpenMRS-Export</ID>
@@ -283,7 +283,7 @@
 </ns:DataSet>
 </CrossSectionalData>]]></screen>
     <para>One thing to note is that the SDMX-HD metadata for dataelements, orgunits and datasets are identified using <emphasis>codes</emphasis> rather than <emphasis>uids</emphasis>.
-    Assuming these coded datasets are present in the DHIS2 server then this can be posted, for example using the curl command below.</para>
+    Assuming these coded datasets are present in the DHIS 2 server then this can be posted, for example using the curl command below.</para>
     <para><code>curl -d @sdmxdatavalueset.xml &quot;http://{server base url}/api/dataValueSets&quot; -H &quot;Content-Type:application/sdmx+xml&quot; -u admin:district -v</code></para>
   </section>
   <section>
@@ -994,7 +994,7 @@ Ext.get(&apos;link1&apos;).set({href: url1});</screen>
   </section>
   <section>
     <title>Example: Working with SQL views</title>
-    <para>Executing SQL Views and returning the results of these views has been made possible in version 2.9 of DHIS2. SQL Views are useful for presenting certain data views externally, which may be more easily constructed with SQL than by combining the multiple objects of the Web API. As an example, lets assume we have been asked to provide a view of all organization units with their names, parent names, organization unit level and name, and the coordinates listed in the database. The view might look something like this:  </para>
+    <para>Executing SQL Views and returning the results of these views has been made possible in version 2.9 of DHIS 2. SQL Views are useful for presenting certain data views externally, which may be more easily constructed with SQL than by combining the multiple objects of the Web API. As an example, lets assume we have been asked to provide a view of all organization units with their names, parent names, organization unit level and name, and the coordinates listed in the database. The view might look something like this:  </para>
     <screen>SELECT ou.name, par.name as parent, ou.coordinates,
  ous.level,oul.name from organisationunit ou  
 INNER JOIN _orgunitstructure  ous 
@@ -1003,7 +1003,7 @@ INNER JOIN organisationunit par on ou.parentid = par.organisationunitid
 INNER JOIN orgunitlevel oul on ous.level = oul.level
 where ou.coordinates IS NOT NULL 
 ORDER BY oul.level,par.name,ou.name</screen>
-    <para>We will use <command>curl</command> to first execute the view on the DHIS2 server. This is essentially a materialization process, and ensures that we have the most recent data available through the SQL View when it is retrieved from the server. </para>
+    <para>We will use <command>curl</command> to first execute the view on the DHIS 2 server. This is essentially a materialization process, and ensures that we have the most recent data available through the SQL View when it is retrieved from the server. </para>
     <screen>curl &quot;http://apps.dhis2.org/dev/
 dhis-web-maintenance-dataadmin/
 executeSqlViewQuery.action?id=1150154&quot; 

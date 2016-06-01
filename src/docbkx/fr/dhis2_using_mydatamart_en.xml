@@ -5,7 +5,7 @@
 
   <section xml:id="Application">
     <title>L'application Mydatamart</title>
-    <para>Le but de l'application Mydatamart est de gérer un entrepôt de données local qui est alimenté en téléchargeant de petites parties de données à partir de l'application DHIS2 centrale. Il gère également les détails des paramètres ODBC de connexion nécessaires pour lier les classeurs Excel à vos données.</para>
+    <para>Le but de l'application Mydatamart est de gérer un entrepôt de données local qui est alimenté en téléchargeant de petites parties de données à partir de l'application DHIS 2 centrale. Il gère également les détails des paramètres ODBC de connexion nécessaires pour lier les classeurs Excel à vos données.</para>
 
     <para>La façon la plus simple pour commencer avec l’application mydatamart.exe est de double-cliquer sur l'icône qui se trouve sur votre bureau. L’application devrait s’ouvrir et afficher une fenêtre comme sur la  <xref linkend="first"/> 
             ci-dessous:</para>
@@ -29,14 +29,14 @@
         </figure>
         <para>La première chose à faire est d'établir une connexion avec votre serveur DHIS 2. Pour ce faire, entrez l'URL complète (en mentionnant également http: //) du serveur dans le champ URL. Ensuite, saisissez votre nom d'utilisateur et votre mot de passe sur DHIS 2. Votre mot de passe ne sera pas enregistré sur votre machine. Pour vous connecter cliquez sur le bouton portant la mention  <emphasis>Se connecter</emphasis>. Si la connexion réussit, vous verrez une icône verte apparaître à côté du bouton de connexion.</para>
         <figure id="loggedin">
-          <title>Connexion au serveur DHIS2</title>
+          <title>Connexion au serveur DHIS 2</title>
           <graphic fileref="resources/images/mydatamart/loggedin.png" width="3in" align="center"/>
         </figure>
       </section>
 	  </section>
 	  </section>
       <section>
-        <title>L’entrepôt local est conçu pour stocker des valeurs de données agrégées obtenues à partir des éléments de données et des indicateurs de l'application DHIS2 centrale. Mais avant que vous soyez en mesure de faire cela, vous devez d'abord remplir l’entrepôt local local avec</title>
+        <title>L’entrepôt local est conçu pour stocker des valeurs de données agrégées obtenues à partir des éléments de données et des indicateurs de l'application DHIS 2 centrale. Mais avant que vous soyez en mesure de faire cela, vous devez d'abord remplir l’entrepôt local local avec</title>
                         <emphasis>les métadonnées</emphasis> de l’instance de DHIS 2.</para>
         <para>Par métadonnées il faut comprendre les parties de la base de données qui donnent du sens aux valeurs des données. Cela comprend: <itemizedlist>
             <listitem>
@@ -53,7 +53,7 @@
             </listitem>
           </itemizedlist> 
 Ces informations sont nécessaires pour travailler avec des tableaux croisés dynamiques et pour sélectionner des paramètres importants relatifs à votre unité d'organisation. </para>
-        <para>Heureusement, alimenter l’entrepôt local avec des métadonnées est une opération simple, ou tout au plus peut demander du temps. La meilleure façon de charger les métadonnées de DHIS2 est d'appuyer sur le bouton de la barre d'outils possédant l’image <inlinegraphic fileref="resources/images/mydatamart/hierarchy.png" width="0.5cm"/>. Cela peut également être fait par l'intermédiaire de l’option de menu "Datamart-> charger les métadonnées à partir de DHIS 2".</para>
+        <para>Heureusement, alimenter l’entrepôt local avec des métadonnées est une opération simple, ou tout au plus peut demander du temps. La meilleure façon de charger les métadonnées de DHIS 2 est d'appuyer sur le bouton de la barre d'outils possédant l’image <inlinegraphic fileref="resources/images/mydatamart/hierarchy.png" width="0.5cm"/>. Cela peut également être fait par l'intermédiaire de l’option de menu "Datamart-> charger les métadonnées à partir de DHIS 2".</para>
 
         <para>L'application Mydatamart se connectera alors au serveur distant et procédera au téléchargement, à la transformation et à l’enregistrement des métadonnées dans la base de données locale.</para>
         <note>
@@ -71,12 +71,12 @@ Ces informations sont nécessaires pour travailler avec des tableaux croisés dy
         </figure>
         <para>Après avoir configuré ces paramètres, ceux-ci seront enregistrés avec votre fichier d’entrepôt de données local. Toutefois, ils pourront être être modifiés à tout moment ; vous pourrez également avoir des fichiers d’entrepôt de données différents ayant des paramètres différents. Dans la plupart des cas, vous aurez très probablement juste à maintenir un fichier datamart unique que vous aurez mis en place, comme dans le cas de Nyeri Nord-dessus.</para>
         <note>
-          <para>Vous aurez remarqué que dans <xref linkend="analysis_level"/> le niveau d'analyse a été converti en nombre. Ainsi, par exemple, au Kenya, l'établissement a le niveau 5, le district a le niveau 4, etc. Ceux-ci correspondent aux niveaux des unités d’organisation de la hiérarchie au sein de DHIS2. Ces chiffres peuvent varier d'une mise en œuvre de pays à l'autre. Dans la plupart des cas, vous n'aurez pas besoin d'être concernés par le numéro du niveau, sauf si vous venez de sélectionner des vues pour l'analyse. Dans ce cas, vous verrez que le nombre du niveau est utilisé dans le cadre de la convention de nommage pour les vues.</para>
+          <para>Vous aurez remarqué que dans <xref linkend="analysis_level"/> le niveau d'analyse a été converti en nombre. Ainsi, par exemple, au Kenya, l'établissement a le niveau 5, le district a le niveau 4, etc. Ceux-ci correspondent aux niveaux des unités d’organisation de la hiérarchie au sein de DHIS 2. Ces chiffres peuvent varier d'une mise en œuvre de pays à l'autre. Dans la plupart des cas, vous n'aurez pas besoin d'être concernés par le numéro du niveau, sauf si vous venez de sélectionner des vues pour l'analyse. Dans ce cas, vous verrez que le nombre du niveau est utilisé dans le cadre de la convention de nommage pour les vues.</para>
         </note>
       </section>
       <section>
         <title>Téléchargement de données</title>
-        <para>Maintenant que vous avez votre entrepôt de données local mis en place, vous pouvez commencer à l’alimenter avec les données de votre serveur DHIS2 central. Alors que vous n'aurez probablement à définir les paramètres que lors de la création d'un nouvel entrepôt de données, vous devrez faire des synchronisations régulières de votre entrepôt local avec le serveur central. Si vous téléchargez des données une fois par mois, la taille du fichier téléchargé sera plus petit (principe de la mise à jour incrémentielle). Vous pouvez accéder à l'écran de téléchargement de données en cliquant sur le bouton<inlinegraphic fileref="resources/images/mydatamart/data_mart_export.png" width="0.5cm"/> ou en passant par le menu "Datamart-> Mise à jour des données agrégées".</para>
+        <para>Maintenant que vous avez votre entrepôt de données local mis en place, vous pouvez commencer à l’alimenter avec les données de votre serveur DHIS 2 central. Alors que vous n'aurez probablement à définir les paramètres que lors de la création d'un nouvel entrepôt de données, vous devrez faire des synchronisations régulières de votre entrepôt local avec le serveur central. Si vous téléchargez des données une fois par mois, la taille du fichier téléchargé sera plus petit (principe de la mise à jour incrémentielle). Vous pouvez accéder à l'écran de téléchargement de données en cliquant sur le bouton<inlinegraphic fileref="resources/images/mydatamart/data_mart_export.png" width="0.5cm"/> ou en passant par le menu "Datamart-> Mise à jour des données agrégées".</para>
         <para><xref linkend="download"/> montre l'écran de mise à jour de l’entrepôt local. Vous pouvez y définir les options détaillées pour vos téléchargements. Il ne devrait pas y avoir beaucoup à faire, étant donné que les valeurs par défaut correspondent généralement à des opérations typiques.</para>
         <figure id="download">
           <title>Téléchargement de données</title>

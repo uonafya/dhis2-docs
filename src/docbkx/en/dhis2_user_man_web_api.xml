@@ -2413,7 +2413,7 @@ http://server/api/24/constants/ID</screen></para>
     </section>
     <section>
       <title>CSV data value format</title>
-      <para>The following section describes the CSV format used in DHIS2. The first row is assumed
+      <para>The following section describes the CSV format used in DHIS 2. The first row is assumed
         to be a header row and will be ignored during import.</para>
       <para>
         <table>
@@ -2887,7 +2887,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         from the online demo database. This example is using codes as identifiers instead of dhis2
         uids. Codes are the preferred form of identifiier when using adx.</para>
       <para>The orgUnit, period and dataSet attributes are mandatory in adx. The group element may
-        contain additional attributes. In our DHIS2 implementation any additional attributes are
+        contain additional attributes. In our DHIS 2 implementation any additional attributes are
         simply passed through to the underlying importer. This means that all attributes which
         currently have meaning in dxf2 (such as completeDate in the example above) can continue be
         used in adx and they will be processed in the same way.</para>
@@ -2895,7 +2895,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         Adx makes strict use of ISO8601 and encodes the reporting period as
         (date|datetime)/(duration). So the period in the example above is a period of 1 month (P1M)
         starting on 2015-06-01. So it is the data for June 2015. The notation is a bit more verbose,
-        but it is very flexible and allows us to support all existing period types in DHIS2</para>
+        but it is very flexible and allows us to support all existing period types in DHIS 2</para>
     </section>
     <section>
       <title>Data values</title>
@@ -2913,13 +2913,13 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         &apos;_&apos; and it may not start with a letter. The example above shows examples of
         &apos;good&apos; category codes (&apos;GENDER&apos; and &apos;HIV_AGE&apos;).</para>
       <para>This restriction on the form of codes applies only to categories. Currently the
-        convention is not enforced by DHIS2 when you are assigning codes, but you will get an
+        convention is not enforced by DHIS 2 when you are assigning codes, but you will get an
         informative error message if you try to import adx data and the category codes are either
         not assigned or not suitable.</para>
       <para>The main benefits of using explicit dimensions of disaggregated data are that <itemizedlist>
           <listitem>
             <para>The system producing the data does not have to be synched with the
-              categoryOptionCombo within DHIS2.</para>
+              categoryOptionCombo within DHIS 2.</para>
           </listitem>
           <listitem>
             <para>The producer and consumer can match their codes to a 3rd party authoritative
@@ -2931,7 +2931,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         </itemizedlist></para>
       <para>Note that this feature may be extremely useful, for example when producing disaggregated
         data from an EMR system, but there may be cases where a
-          <emphasis>categoryOptionCombo</emphasis> mapping is easier or more desirable. The DHIS2
+          <emphasis>categoryOptionCombo</emphasis> mapping is easier or more desirable. The DHIS 2
         implementation of adx will check for the existence of a
           <emphasis>categoryOptionCombo</emphasis> attribute and, if it exists, it will use that it
         preference to exploded dimension attributes. Similarly, an
@@ -2945,9 +2945,9 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     </section>
     <section>
       <title>Importing data - HTTP POST</title>
-      <para>DHIS2 exposes an endpoint for POST adx data at <emphasis>/api/dataValueSets</emphasis>
+      <para>DHIS 2 exposes an endpoint for POST adx data at <emphasis>/api/dataValueSets</emphasis>
         using <emphasis role="italic">application/xml+adx</emphasis> as content type. So, for
-        example, the following curl command can be used to POST the example data above to the DHIS2
+        example, the following curl command can be used to POST the example data above to the DHIS 2
         demo server:
         <screen>curl -u admin:district -X POST -H &quot;Content-Type: application/xml+adx&quot;
 -d @data.xml &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=code&quot;</screen>
@@ -2956,7 +2956,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     </section>
     <section>
       <title>Exporting data - HTTP GET</title>
-      <para>DHIS2 exposes an endpoint to GET adx data sets at
+      <para>DHIS 2 exposes an endpoint to GET adx data sets at
           <emphasis>/api/dataValueSets</emphasis> using <emphasis role="italic"
           >application/xml+adx</emphasis> as the accepted content type. So, for example, the
         following curl command can be used to retrieve the adx data:
@@ -3355,7 +3355,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     </section>
     <section>
       <title>Querying and reading events</title>
-      <para>This section explains how to read out the events that have been stored in the DHIS2
+      <para>This section explains how to read out the events that have been stored in the DHIS 2
         instance. For more advanced uses of the event data, please see the section on event
         analytics. The output format from the <emphasis role="italic">/api/events</emphasis>
         endpoint will match the format that is used to send events to it (which the analytics event
@@ -3583,7 +3583,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         All programRules in a program share the same library of programRuleVariables, and one
         programRuleVariable can be used in several programRules&apos; expressions. </para>
       <screenshot>
-        <title>DHIS2 Login screen</title>
+        <title>DHIS 2 Login screen</title>
         <mediaobject>
           <imageobject>
             <imagedata width="80%" fileref="resources/images/program_rules/program-rule-model.jpg"
@@ -8650,7 +8650,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     revision: &quot;11852&quot;,
     buildTime: &quot;2013-09-01T21:36:21.000+0000&quot;,
     serverDate: &quot;2013-09-02T12:35:54.311+0000&quot;,
-    environmentVariable: &quot;DHIS2_HOME&quot;,
+    environmentVariable: &quot;DHIS 2_HOME&quot;,
     javaVersion: &quot;1.7.0_06&quot;,
     javaVendor: &quot;Oracle Corporation&quot;,
     javaIoTmpDir: &quot;/tmp&quot;,
@@ -10092,7 +10092,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   <section>
     <title>Static content</title>
     <para>The <emphasis>staticContent</emphasis> resource allowes you to upload and retrieve custom
-      logos used in DHIS2. The resource lets the user upload a file with an associated key, which
+      logos used in DHIS 2. The resource lets the user upload a file with an associated key, which
       can later be retrieved using the key. Only PNG files are supported and can only be uploaded to
       the &quot;logo_banner&quot; and &quot;logo_front&quot;
       keys.<screen>/api/24/staticContent</screen></para>
@@ -11528,7 +11528,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <title>System notification</title>
       <para>The <emphasis role="italic">notification</emphasis> resource lets you send system email
         notifications with a given subject and text in JSON or XML. The email will be sent to the
-        notification email address as defined in the DHIS2 general system settings:</para>
+        notification email address as defined in the DHIS 2 general system settings:</para>
       <screen>{
   &quot;subject&quot;: &quot;Integrity check summary&quot;,
   &quot;text&quot;: &quot;All checks ran successfully&quot;
@@ -11785,7 +11785,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         resource:</para>
       <screen>curl -X DELETE -u user:pass http://server.com/api/24/apps/config</screen>
       <para>Note that by default apps will be served through the apps Web API resource, and the file
-        system folder will be <emphasis role="italic">DHIS2_HOME/apps</emphasis>. These systems
+        system folder will be <emphasis role="italic">DHIS 2_HOME/apps</emphasis>. These systems
         should be fine for most situations.</para>
     </section>
   </section>

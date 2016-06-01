@@ -2,10 +2,10 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "docbookV4.5/docbookx.dtd" []>
 <chapter>
   <title>Administração de dados</title>
-  <para>O módulo de gestão de dados fornece um conjunto de funções para assegurar que os dados armazenados na base de dados DHIS2 está integrada e que o desempenho da base de dados é optimizado. Estas funções devem ser executadas regularmente por um administrador de dados para assegurar que a qualidade dos dados armazenados é ideal. </para>
+  <para>O módulo de gestão de dados fornece um conjunto de funções para assegurar que os dados armazenados na base de dados DHIS 2 está integrada e que o desempenho da base de dados é optimizado. Estas funções devem ser executadas regularmente por um administrador de dados para assegurar que a qualidade dos dados armazenados é ideal. </para>
   <section xml:id="dataBrowser">
     <title>Navegador de dados</title>
-    <para>A manutenção do navegador de dados e módulo de análise permite ao usuário produzir um resumo dos dados contidos na base de dados DHIS2. A visualização sumária fornece uma contagem de elementos de dados que foram inseridos na unidade de organização seleccionada, bem como seus descendentes. Os dados brutos para todos os elementos de dados para uma série de períodos de tempo e uma determinada unidade organizacional pode ser pesquisado e exportados em formatos Excel, CSV ou PDF. Existem quatro modos de navegador de dados, que determinam como os dados são resumidos</para>
+    <para>A manutenção do navegador de dados e módulo de análise permite ao usuário produzir um resumo dos dados contidos na base de dados DHIS 2. A visualização sumária fornece uma contagem de elementos de dados que foram inseridos na unidade de organização seleccionada, bem como seus descendentes. Os dados brutos para todos os elementos de dados para uma série de períodos de tempo e uma determinada unidade organizacional pode ser pesquisado e exportados em formatos Excel, CSV ou PDF. Existem quatro modos de navegador de dados, que determinam como os dados são resumidos</para>
     <itemizedlist>
       <listitem>
         <para>Conjunto de dados</para>
@@ -82,7 +82,7 @@
   </section>
   <section xml:id="dataIntegrity">
     <title>A integridade dos Dados</title>
-    <para>DHIS2 pode executar uma grande variedade de verificação de integridade de dados contidos na base de dados. Identificar e corrigir problemas de integridade de dados é extremamente importante para garantir que os dados utilizados para fins de análise é válido. Cada uma das verificações de integridade de dados que são executadas pelo sistema irá ser descrito, juntamente com os procedimentos gerais que podem ser realizadas para resolver estes problemas. </para>
+    <para>DHIS 2 pode executar uma grande variedade de verificação de integridade de dados contidos na base de dados. Identificar e corrigir problemas de integridade de dados é extremamente importante para garantir que os dados utilizados para fins de análise é válido. Cada uma das verificações de integridade de dados que são executadas pelo sistema irá ser descrito, juntamente com os procedimentos gerais que podem ser realizadas para resolver estes problemas. </para>
     <section>
       <title>Os elementos de dados sem ficha ou formulário de programa</title>
       <para>Cada elemento de dados deve ser atribuído a um formulário ou ficha de programa de saúde. Os valores de elementos de dados não poderão ser inseridos no sistema, se um elemento de dados não é atribuído a uma ficha. Selecione Manutenção-&gt;Ficha-&gt;Edite a partir do menu principal e em seguida adicione o &quot;órfão&quot; elementos de dados para a ficha ou formulário adequado. </para>
@@ -202,7 +202,7 @@
     <title>Tabelas de recursos</title>
     <para>Tabelas de recursos apoiam tabelas que são utilizadas durante a análise dos dados. alguém poderia
         tipicamente juntar os conteúdos dessas tabelas com a tabela de valor de dados ao fazer consultas a partir de
-       aplicativos de terceiros, como o Microsoft Excel. Eles também são usados extensivamente pelos módulos de análise de DHIS2. Regeneração das tabelas de recursos deve
+       aplicativos de terceiros, como o Microsoft Excel. Eles também são usados extensivamente pelos módulos de análise de DHIS 2. Regeneração das tabelas de recursos deve
        ser apenas feito uma vez todos os problemas de integridade de dados são resolvidos. As tabelas de recursos também são gerados automaticamente, toda vez que o processo de análise é executado pelo sistema. </para>
     <itemizedlist>
       <listitem>
@@ -245,7 +245,7 @@
   </section>
   <section>
     <title>Gestão de local</title>
-    <para>É possível criar locais customizados em DHIS2. Adicionalmente aos locais já disponíveis no sistema, poderá também adicionar locais cutomizados como &quot;Ingles&quot; e &quot;Zambia&quot; no sistema. Isso permitirá traduzir objectos de meta dados a linguagem local, ou para incluir pequenas variações entre paises que usam uma definição de meta dados comum. </para>
+    <para>É possível criar locais customizados em DHIS 2. Adicionalmente aos locais já disponíveis no sistema, poderá também adicionar locais cutomizados como &quot;Ingles&quot; e &quot;Zambia&quot; no sistema. Isso permitirá traduzir objectos de meta dados a linguagem local, ou para incluir pequenas variações entre paises que usam uma definição de meta dados comum. </para>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -257,9 +257,9 @@
   </section>
   <section xml:id="sqlView">
     <title>Visualização SQL</title>
-    <para>A funcionalidade de visualização de SQL de DHIS2 irá armazenar a definição da exibição SQL internamente, e depois materializar a visão quando solicitado. </para>
-    <para>Administradores da base de dados deve ter cuidado com criar modos de exibição base de dados diretamente na base de dados DHIS2. Por exemplo, quando as tabelas de recursos são gerados, todos eles, em primeiro lugar ser suprimido e depois re-criada. Se os pontos de vista SQL dependem dessas tabelas, uma exceção na violação de integridade será lançada e o processo será abortado.</para>
-    <para>As visualizações de SQL são indicadas em ordem alfabética inversa, com base em seus nomes em DHIS2, e criadas em ordem alfabética regular. Isso permite que tenha dependências entre visualizações SQL, dado que as visualizações só dependem de outras visualizações que vêm no início em ordem alfabética. Por exemplo, &quot;VisualizaçãoB&quot; pode seguramente depender da &quot;VisualizaçãoA&quot;. Porque ter visualizações dependentes de outras visualizações resultará em um erro de violação de integridade.</para>
+    <para>A funcionalidade de visualização de SQL de DHIS 2 irá armazenar a definição da exibição SQL internamente, e depois materializar a visão quando solicitado. </para>
+    <para>Administradores da base de dados deve ter cuidado com criar modos de exibição base de dados diretamente na base de dados DHIS 2. Por exemplo, quando as tabelas de recursos são gerados, todos eles, em primeiro lugar ser suprimido e depois re-criada. Se os pontos de vista SQL dependem dessas tabelas, uma exceção na violação de integridade será lançada e o processo será abortado.</para>
+    <para>As visualizações de SQL são indicadas em ordem alfabética inversa, com base em seus nomes em DHIS 2, e criadas em ordem alfabética regular. Isso permite que tenha dependências entre visualizações SQL, dado que as visualizações só dependem de outras visualizações que vêm no início em ordem alfabética. Por exemplo, &quot;VisualizaçãoB&quot; pode seguramente depender da &quot;VisualizaçãoA&quot;. Porque ter visualizações dependentes de outras visualizações resultará em um erro de violação de integridade.</para>
     <para/>
     <section>
       <title>Criação de uma nova visão SQL</title>
@@ -271,7 +271,7 @@
           </imageobject>
         </mediaobject>
       </screenshot>
-      <para>O &quot;Nome&quot; atributo ao modo SQL vai ser utilizado para determinar o nome da tabela que DHIS2 criará quando a vista é materializado pelo utilizador. A &quot;descrição do&quot; atributo permite fornecer algum texto descritivo sobre o que a vista SQL realmente faz. Finalmente, o &quot;comando SQL&quot; deve conter a definição da exibição SQL. Somente SQL  &quot;SELEÇÃO&quot; instruções são permitidos e certas tabelas sensíveis (informações do usuário) não são acessíveis Clique &quot;Salver&quot; para armazenar a definição da exibição SQL.</para>
+      <para>O &quot;Nome&quot; atributo ao modo SQL vai ser utilizado para determinar o nome da tabela que DHIS 2 criará quando a vista é materializado pelo utilizador. A &quot;descrição do&quot; atributo permite fornecer algum texto descritivo sobre o que a vista SQL realmente faz. Finalmente, o &quot;comando SQL&quot; deve conter a definição da exibição SQL. Somente SQL  &quot;SELEÇÃO&quot; instruções são permitidos e certas tabelas sensíveis (informações do usuário) não são acessíveis Clique &quot;Salver&quot; para armazenar a definição da exibição SQL.</para>
     </section>
     <section>
       <title>Gestão da visão SQL</title>
@@ -292,7 +292,7 @@
   </section>
   <section xml:id="dataStatistics">
     <title>Estatísticas de dados</title>
-    <para>O módulo de estatísticas de dados fornece uma visão geral de número de objectos guardados na base de dados do DHIS2. </para>
+    <para>O módulo de estatísticas de dados fornece uma visão geral de número de objectos guardados na base de dados do DHIS 2. </para>
     <screenshot>
       <mediaobject>
         <imageobject>

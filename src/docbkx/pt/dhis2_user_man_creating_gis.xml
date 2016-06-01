@@ -4,18 +4,18 @@
   <title>Configurar o GIS</title>
   <section>
     <title>Contexto</title>
-    <para>Configurando o GIS significa simplesmente armazenar as coordenadas para as unidades organizacionais que você deseja mostrar no mapa no banco de dados. As coordenadas são frequentemente distribuídos em formatos proprietários e terão de ser convertidos para um formato que DHIS2 entende. Shapefiles ESRI são o formato de dados geoespaciais vetoriais mais comum para aplicações desktop. Você pode achar shapefiles para seu país &quot;http://www.diva-gis.org/gdata&quot; aqui  ou em muitos outros repositórios de dados geoespaciais na web. Uma certa quantidade de trabalho precisa ser feito, a fim de usar essas coordenadas em DHIS 2 GIS, ou seja, transformar os dados em um formato adequado e garantir o nome que estão contidas no jogo de dados geoespaciais exatamente com os nomes das unidades organizacionais que deveriam ser combinados para. </para>
+    <para>Configurando o GIS significa simplesmente armazenar as coordenadas para as unidades organizacionais que você deseja mostrar no mapa no banco de dados. As coordenadas são frequentemente distribuídos em formatos proprietários e terão de ser convertidos para um formato que DHIS 2 entende. Shapefiles ESRI são o formato de dados geoespaciais vetoriais mais comum para aplicações desktop. Você pode achar shapefiles para seu país &quot;http://www.diva-gis.org/gdata&quot; aqui  ou em muitos outros repositórios de dados geoespaciais na web. Uma certa quantidade de trabalho precisa ser feito, a fim de usar essas coordenadas em DHIS 2 GIS, ou seja, transformar os dados em um formato adequado e garantir o nome que estão contidas no jogo de dados geoespaciais exatamente com os nomes das unidades organizacionais que deveriam ser combinados para. </para>
     <para>Se você vai para o módulo de unidade de organização e editar uma das unidades, você pode ver um campo de texto chamado Coordenadas. Aqui você pode preencher as suas coordenadas diretamente (formato GeoJSON) que é útil se você quiser apenas para atualizar um par de unidades.</para>
     <para>Coordenar Um exemplo ponto / instalação:</para>
     <para><programlisting><userinput>[29.341,-11.154]</userinput></programlisting></para>
     <para>Um exemplo de polígono / área coordena cadeia</para>
     <para><programlisting><userinput>[[[[29.343,-11.154],[28.329,-11.342],[28.481,-10.239],[29.833,-10.412]]]]</userinput></programlisting></para>
     <para>No entanto, se você estiver indo a, por exemplo Adicionar coordenadas para todas as unidades em um determinado nível que você não quer fazer isso manualmente. Isto é onde a importação automática GML entra em jogo ea seção a seguir explica a forma preferida de usá-lo<important>
-        <para>O único sistema de coordenadas de referência suportado por DHIS2 é EPSG: 4326, também conhecido como
+        <para>O único sistema de coordenadas de referência suportado por DHIS 2 é EPSG: 4326, também conhecido como
  geográfica longitude / latitude. Coordenadas devem ser armazenadas com a longitude (leste / oeste
  posição) de proceder a latitude (norte / sul posição). Se os dados do vetor está em um
  CRS diferentes do que EPSG 4326, você terá que re-projeto os dados antes de importar
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; em DHIS2. </para>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; em DHIS 2. </para>
       </important></para>
   </section>
   <section xml:id="gisSetup">
@@ -24,11 +24,11 @@
     <para>Os limites em arquivos de dados geográficos são geralmente muito precisas, até demais para o
  necessidades de um GIS baseado na web. Isso geralmente não afeta o desempenho ao usar arquivos de SIG em
  um sistema local, mas, geralmente, é necessário otimizar os dados geográficos para a
- sistema GIS baseado na web de DHIS2. Todos os dados geográfica precisa ser baixado a partir do servidor
- e processado em um navegador, por isso, se os dados são muito complexos, o desempenho do SIG DHIS2
+ sistema GIS baseado na web de DHIS 2. Todos os dados geográfica precisa ser baixado a partir do servidor
+ e processado em um navegador, por isso, se os dados são muito complexos, o desempenho do SIG DHIS 2
  serão impactados negativamente. Este processo de optimização pode ser descrito como se segue:</para>
     <para><simplelist>
-        <member>Coordenadas: O número de dígitos decimais significativos (por exemplo, 23,02937874993774) deve ser reduzido para menos dígitos (por exemplo, 23.03). Embora isso vai resultar em algumas imprecisões no mapa, dada a escala habitual em que mapeia em DHIS2 são produzidas (&gt; 1:50.000), a perda de precisão não deve ser perceptível. Normalmente, não mais do que quatro dígitos significativos depois do ponto decimal deve ser necessário..</member>
+        <member>Coordenadas: O número de dígitos decimais significativos (por exemplo, 23,02937874993774) deve ser reduzido para menos dígitos (por exemplo, 23.03). Embora isso vai resultar em algumas imprecisões no mapa, dada a escala habitual em que mapeia em DHIS 2 são produzidas (&gt; 1:50.000), a perda de precisão não deve ser perceptível. Normalmente, não mais do que quatro dígitos significativos depois do ponto decimal deve ser necessário..</member>
         <member>Polígonos: Além de encurtar o número de dígitos significativos, o número real de pontos também deve ser reduzida a um nível ideal. Encontrar esse nível ideal pode demorar um pouco de experimentação. Diminuindo a precisão dos pontos, bem como o número de pontos por meio de generalização, irá conduzir a uma degradação do polígono. No entanto, depois de um pouco de experimentação, um nível ótimo de generalização pode ser encontrado, onde a precisão do polígono é visualmente aceitável, eo desempenho do SIG é o ideal. </member>
       </simplelist></para>
     <para>Para polígonos, é preciso fazer as linhas de contorno menos detalhada, removendo alguns dos pontos de linha. Faça um backup de seus arquivos de forma antes de começar. Um método possível é a utilização de <link xl:href="http://mapshaper.com/test/MapShaper.swf">MapShaper</link> que é uma ferramenta de linha que pode ser utilizado para generalizar dados geográficos. Para usar MapShaper, basta carregar o seu shapefile para o site. Em seguida, na parte inferior central você vê um controle deslizante que começa em 0%. É geralmente aceitável para arrastá-lo até cerca de 80%. No menu à esquerda você pode verificar &quot;mostrar linhas originais&quot; para comparar o resultado e você pode querer dar um método de simplificação diferente uma tentativa. Quando você está feliz com o resultado, clique em &quot;Exportar&quot; no canto superior direito. Em seguida, verifique a primeira das quatro opções chamadas &quot;Shapefile - polígonos&quot;, clique em &quot;Criar&quot; e aguarde os botões de download para aparecer. Agora, baixe os dois arquivos para o seu computador local e substituir os já existentes. Mova-se para a próxima etapa com o seu novo shapefile simplificado..
@@ -50,7 +50,7 @@
 Vá para Serviços -&gt; Import-Export, selecione &quot;Preview&quot;, selecione o arquivo GML e clique em &quot;Importar&quot;. Procure novas / unidades organizacionais atualizados. Nossa intenção é adicionar coordenadas para unidades organizacionais já existentes no banco de dados, por isso queremos o maior número de atualizações possíveis e 0 novo. Os incluídos como novo será criado como unidades de raiz e estragar as árvores unidade de organização em DHIS 2. Se qualquer listado como novo, clique no número e as unidades organizacionais em questão aparecerá na lista abaixo. Se houver erros ortográficos leves em comparação com os nomes das unidades de organização do banco de dados - corrigi-los e fazer a pré-visualização novamente. Caso contrário, clique no botão &quot;descartar tudo&quot; abaixo da lista e, em seguida, o &quot;Importar todos&quot;button above the list.
     </para>
     <para>
-Se o processo de importação é concluída com êxito, você deve agora ser capaz de utilizar os dados geográficos em SIG DHIS2. Se não, verifique o log para sugestões e procurar erros comuns, tais como:    
+Se o processo de importação é concluída com êxito, você deve agora ser capaz de utilizar os dados geográficos em SIG DHIS 2. Se não, verifique o log para sugestões e procurar erros comuns, tais como:    
     </para>
     <para>- Nome duplicatas no arquivo GML. A coluna nome no banco de dados é único e não aceita duas unidades de organização com o mesmo nome.</para>
     <para>- A coluna &quot;abreviado&quot; na tabela de organisationunit em seu banco de dados tem uma definição varchar muito pequeno. Aumentá-la para 100</para>

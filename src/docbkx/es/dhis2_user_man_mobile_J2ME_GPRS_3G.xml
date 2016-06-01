@@ -2,9 +2,9 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
 <section xml:id="mobile_j2me_gprs_3g">
   <title>J2ME GPRS/3G Client</title>
-  <para>The DHIS2 GPRS/3G mobile module provides a mechanism for remote clients using mobile phones to enter data directly into the DHIS2 system. There are two functions of the client, namely:</para>
+  <para>The DHIS 2 GPRS/3G mobile module provides a mechanism for remote clients using mobile phones to enter data directly into the DHIS 2 system. There are two functions of the client, namely:</para>
   <para>The solution relies on the mobile phone having a data connection available (i.e.
-    GPRS, Edge, 3G), over which it communicates with a DHIS2 instance which must be publicly
+    GPRS, Edge, 3G), over which it communicates with a DHIS 2 instance which must be publicly
     available on the internet, as any other web server. The client application on the phone downloads the data entry forms to the phone from the
     server, and the forms can therefore be updated without installing a new application. This is also a crucial feature 
     for community reporting, which relies on regularly downloading activity plans from the server.
@@ -12,7 +12,7 @@
   <itemizedlist>
     <listitem>
       <para>Facility reporting, for data entry and
-    reporting of regular DHIS2 aggregate data,</para>
+    reporting of regular DHIS 2 aggregate data,</para>
     </listitem>
     <listitem>
       <para>Activity reporting, for supporting individual
@@ -21,8 +21,8 @@
   </itemizedlist>
   <section>
     <title>Data connection availability</title>
-    <para>Data connection availability can be a problem in many of the contexts where DHIS2 mobile
-      reporting would otherwise be a good solution for getting data directly into DHIS2. If that is
+    <para>Data connection availability can be a problem in many of the contexts where DHIS 2 mobile
+      reporting would otherwise be a good solution for getting data directly into DHIS 2. If that is
       the case for you, you might want to consider trying the SMS based solution described in a separate document.
       Keep in mind that even though a data connection is currently required for communication between
       the server and the mobile phone, it is only required when initializing or updating the mobile
@@ -32,8 +32,8 @@
   </section>
   <section xml:id="mobile_j2me_gprs_3g_facility_reporting">
     <title>J2ME GPRS 3G facility reporting client</title>
-    <para>The server side component of the web based solution  is included in the general build of DHIS2.</para>
-    <para>In order to configure the DHIS2 web-based mobile reporting, you should follow the following steps. </para>
+    <para>The server side component of the web based solution  is included in the general build of DHIS 2.</para>
+    <para>In order to configure the DHIS 2 web-based mobile reporting, you should follow the following steps. </para>
     <itemizedlist>
       <listitem>
         <para>
@@ -54,9 +54,9 @@
   </section>
   <section xml:id="mobile_j2me_gprs_3g_activity_reporting">
     <title>J2ME GPRS 3G program reporting client</title>
-    <para>Like facility reporting module, sever side of activity reporting included in DHIS2 war file.</para>
+    <para>Like facility reporting module, sever side of activity reporting included in DHIS 2 war file.</para>
     <para>Basically, server side setup for activity does not require any additional step. The mobile application use the same user name and password as  the web-based application. Make sure that the user is assigned to the correct organization unit.</para>
-    <para>In short, if a user is able to enter data for activity reporting in DHIS2 web-based application, he/she is able to download and enter data in mobile application.</para>
+    <para>In short, if a user is able to enter data for activity reporting in DHIS 2 web-based application, he/she is able to download and enter data in mobile application.</para>
   </section>
   <section>
     <title>Detailed configuration of data sets and reporting forms</title>
@@ -79,7 +79,7 @@
                 <emphasis role="bold">Form design element</emphasis>
               </entry>
               <entry>
-                <emphasis role="bold">DHIS2 Metadata</emphasis>
+                <emphasis role="bold">DHIS 2 Metadata</emphasis>
               </entry>
               <entry>
                 <emphasis role="bold">Metadata element</emphasis>
@@ -111,13 +111,13 @@
     </section>
     <section>
       <title>Sorting of forms</title>
-      <para>By default, data elements will be sorted according to the global sorting assigned in DHIS2. If sections are used, their section specific sorting order  will be used.
+      <para>By default, data elements will be sorted according to the global sorting assigned in DHIS 2. If sections are used, their section specific sorting order  will be used.
       In some cases, when sections are not used, a data element might be used in multiple data sets, and conflict in the way it should be sorted in individual data sets. A work around for this situation is to wrap the whole dataset in one section (note that this will only work if the data elements have the same category option combo)</para>
     </section>
     <section>
       <title>Versioning of data sets</title>
       <para>To make it possible to compare and update the data sets on the mobile phone with the 
-        version on the server, data sets are automatically versioned when you edit the data set structure. Some changes which occur on the DHIS2 server, will cause the mobile client to update its forms with a new version. </para>
+        version on the server, data sets are automatically versioned when you edit the data set structure. Some changes which occur on the DHIS 2 server, will cause the mobile client to update its forms with a new version. </para>
       <itemizedlist>
         <title>Changes that currently trigger a new data set version</title>
         <listitem>
@@ -277,7 +277,7 @@
           </listitem>
           <listitem>
             <para>Save and Complete:</para>
-            <para>After finishing data entry, the user can choose to save the data locally on the phone or to upload the data directly to the DHIS2 server.</para>
+            <para>After finishing data entry, the user can choose to save the data locally on the phone or to upload the data directly to the DHIS 2 server.</para>
             <screenshot>
               <mediaobject>
                 <imageobject>
