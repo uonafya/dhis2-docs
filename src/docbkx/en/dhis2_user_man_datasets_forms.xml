@@ -6,7 +6,9 @@
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
   xmlns:db="http://docbook.org/ns/docbook">
-  <title>Manage data sets and data entry forms</title>
+  <title><?oxy_comment_start author="cecilia" timestamp="20160603T100652+0200" comment="Verify with Lars:
+Do you use data sets somewhere else than in forms? (Custom form and Section form)"?>Manage<?oxy_comment_end?>
+    data sets and data entry forms</title>
   <section xml:id="datasets">
     <title>Data sets overview</title>
     <para>All data entry in DHIS 2 is organised through the use of data sets. You can add and edit
@@ -39,7 +41,9 @@
               <para>Object type</para>
             </entry>
             <entry>
-              <para>Available functions</para>
+              <para>Available
+                <?oxy_comment_start author="cecilia" timestamp="20160603T102204+0200" comment="There will be more functions, as in the old app.
+&quot;View section&quot; = Mange section form"?>functions<?oxy_comment_end?></para>
             </entry>
           </row>
         </thead>
@@ -90,7 +94,9 @@
   </section>
   <section>
     <title>Workflow</title>
-    <para/>
+    <para>Create data set</para>
+    <para>Assign organisation units to the data set</para>
+    <para>In Data entry app, register data.</para>
   </section>
   <section>
     <title>Create a data set</title>
@@ -111,7 +117,8 @@ Does it add information?"?>
       <title>Data set management</title>
       <?oxy_comment_end?>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T144013+0200" comment="For SME: How do you assign an org unit to a data set? There&apos;s not that option in the Create data set form."?>
+        <?oxy_comment_start author="cecilia" timestamp="20160602T144013+0200" comment="For SME: How do you assign an org unit to a data set? There&apos;s not that option in the Create data set form.
+Answer: Function not yet developped, refer to old SW version. Function will be available in options menu."?>
         <para>Assign organisation units to data sets: This function will allow you to assign
           individual organisational units to a data set. Only organisation units which have been
           assigned to a data set will be allowed to enter data into the data set. </para>
@@ -144,11 +151,11 @@ Does it add information?"?>
       </listitem>
       <listitem>
         <para>Click the yellow plus
-          <?oxy_comment_start author="cecilia" timestamp="20160510T112410+0200" comment="Do not refer to the FAB as an icon, according to MS Manual of Style."?>button<?oxy_comment_end?>.</para>
+          <?oxy_comment_start author="cecilia" timestamp="20160510T112410+0200" comment="Do not refer to the FAB as an icon, according to MS Manual of Style." flag="done"?>button<?oxy_comment_end?>.</para>
       </listitem>
       <listitem>
         <para>In the <emphasis role="bold">Name</emphasis>
-          <?oxy_comment_start author="cecilia" timestamp="20160602T113445+0200" comment="Discuss choice of word with tech writer"?>field<?oxy_comment_end?>,
+          <?oxy_comment_start author="cecilia" timestamp="20160602T113445+0200" comment="Discuss choice of word with tech writer" flag="done"?>field<?oxy_comment_end?>,
           define the precise
           <?oxy_comment_start author="cecilia" timestamp="20160602T095815+0200" comment="For SME: Does it have to be an unique name?"?>name<?oxy_comment_end?>
           of the data set.</para>
@@ -200,7 +207,9 @@ Does it add information?"?>
             submission</emphasis> field, type the number of days
           <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>in
           which<?oxy_custom_end?> data can be entered to be considered
-          &quot;<?oxy_comment_start author="cecilia" timestamp="20160602T110453+0200" comment="For SME: Is &quot;timely&quot; a term within DHIS 2?"?>timely<?oxy_comment_end?>.&quot;</para>
+          &quot;<?oxy_comment_start author="cecilia" timestamp="20160602T110453+0200" comment="For SME: Is &quot;timely&quot; a term within DHIS 2?
+
+Check Lars or Ola"?>timely<?oxy_comment_end?>.&quot;</para>
         <?oxy_comment_start author="cecilia" timestamp="20160602T105106+0200" comment="For SME: How do you do this? Where?"?>
         <para>To verify the number of timely reports submitted, go to Reports-&gt;Reporting Rate
           Summary option.</para>
@@ -234,18 +243,20 @@ Does it add information?"?>
       </listitem>
       <listitem>
         <para>If you want data for the data set to be
-          <?oxy_comment_start author="cecilia" timestamp="20160602T115743+0200" comment="For SME: What does &quot;Approved&quot; mean?"?>Approved<?oxy_comment_end?>,
+          <?oxy_comment_start author="cecilia" timestamp="20160602T115743+0200" comment="For SME: What does &quot;Approved&quot; mean?
+Data can be marked as &quot;Complete&quot;, then there&apos;s an approval workflow - verify with Ola."?>Approved<?oxy_comment_end?>,
           select a <emphasis role="bold">Data approval workflow</emphasis>.</para>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T115809+0200" comment="At next revision, add x-ref to data approval section."?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="23"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160602T115809+0200" comment="At next revision, add x-ref to data approval section." flag="done"?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="25"?>
         <para>See the
           <?oxy_comment_start author="cecilia" timestamp="20160602T115831+0200" comment="For SME: What is data approval? Name of app?"?>Data
           approval <?oxy_comment_end?>section.</para>
         <?oxy_comment_end?>
-        <?oxy_custom_end mid="23"?>
+        <?oxy_custom_end mid="25"?>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T122040+0200" comment="For SME: Still applicable?"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160602T122040+0200" comment="For SME: Still applicable?
+Yes, app still exist."?>
         <para>Enable for Java mobile client: Sets whether or not the data set can be used within the
           Java mobile DHIS 2 application.</para>
         <?oxy_comment_end?>
@@ -256,11 +267,11 @@ Does it add information?"?>
           entry<?oxy_custom_end?> if one or more values have been filled, select <emphasis
             role="bold">All fields for data elements required</emphasis>.</para>
         <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T141037+0200" comment="Original text." mid="28"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160602T141037+0200" comment="Original text." mid="30"?>
         <para>Defines whether it is mandatory to fill all values for a data element in data entry if
           one or more values have been filled.</para>
         <?oxy_custom_end?>
-        <?oxy_comment_end mid="28"?>
+        <?oxy_comment_end mid="30"?>
         <para>This means that if the you enter one data value for a data element in an entry field
           (i.e. for a category option combination), then you must enter data for all fields
           belonging to that data element (i.e. all category option combinations).</para>
@@ -276,7 +287,8 @@ Does it add information?"?>
           whether or not any missing values require comment to justify their absence.</para>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T122354+0200" comment="For SME: Mandatory? What does it mean?"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160602T122354+0200" comment="For SME: Mandatory? What does it mean?
+Lars"?>
         <para>Select a <emphasis role="bold">Legend set</emphasis>.</para>
         <?oxy_comment_end?>
       </listitem>
@@ -297,7 +309,9 @@ Does it add information?"?>
           selected quickly without going through the entire form.</para>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T141431+0200" comment="For SME: What does this option mean?"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160602T141431+0200" comment="For SME: What does this option mean?
+
+Only applicable for section forms"?>
         <para>Render vertically</para>
         <?oxy_comment_end?>
       </listitem>
@@ -321,7 +335,9 @@ Does it add information?"?>
       </listitem>
     </orderedlist>
     <itemizedlist>
-      <?oxy_comment_start author="cecilia" timestamp="20160602T134342+0200" comment="For SME: Still applicable? Not in create data set form anymore..."?>
+      <?oxy_comment_start author="cecilia" timestamp="20160602T134342+0200" comment="For SME: Still applicable? Not in create data set form anymore...
+
+Not in GUI, double check with Lars."?>
       <listitem>
         <para>Skip data mart aggregation: Define whether data for this data set should be skipped
           during data mart generation. You should leave this on no, which is the default behavior,
@@ -335,7 +351,9 @@ Does it add information?"?>
       your selected frequency (period type).</para>
     <section>
       <?oxy_comment_start author="cecilia" timestamp="20160602T144628+0200" comment="For SME: Do you create separate Data set categories? Or do you use the ones you&apos;ve created for Data elements? 
-This seciton might belong to workflow section..."?>
+This section might belong to workflow section..
+
+Verify with Lars."?>
       <title>Data set categories</title>
       <?oxy_comment_end?>
       <para>Before reading this section it is recommended to familiarize oneself with the sections
@@ -371,7 +389,9 @@ This seciton might belong to workflow section..."?>
   </section>
   <section>
     <title>Edit data
-      <?oxy_comment_start author="cecilia" timestamp="20160602T143531+0200" comment="For SME: Will more functionality be added to Data set section?"?>sets<?oxy_comment_end?></title>
+      <?oxy_comment_start author="cecilia" timestamp="20160602T143531+0200" comment="For SME: Will more functionality be added to Data set section?
+
+SME: No." flag="done"?>sets<?oxy_comment_end?></title>
     <orderedlist>
       <listitem>
         <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
@@ -487,7 +507,10 @@ At the moment, I can only do x-refs to section 1 tags.
   </section>
   <section>
     <title>Delete
-      d<?oxy_comment_start author="cecilia" timestamp="20160602T143649+0200" comment="For SME: Why is the option called &quot;Delete this form&quot; in the gui? In other parts of the Maintenance app it&apos;s called &quot;Delete&quot;."?>ata
+      d<?oxy_comment_start author="cecilia" timestamp="20160602T143649+0200" comment="For SME: Why is the option called &quot;Delete this form&quot; in the gui? In other parts of the Maintenance app it&apos;s called &quot;Delete&quot;.
+
+SME will check what this function really does.
+Follow-up before release to see if it has changed."?>ata
       set forms<?oxy_comment_end?></title>
     <warning>
       <?oxy_comment_start author="cecilia" timestamp="20160602T151710+0200" comment="Reword, remove passive voice."?>
@@ -594,11 +617,11 @@ At the moment, I can only do x-refs to section 1 tags.
       <?oxy_comment_start author="cecilia" timestamp="20160602T152623+0200" comment="For SME: Exactly what do you download? Data set? A data form? Compare with the original text."?>data
       set/a data<?oxy_comment_end?> form in PDF format for offline data entry.</para>
     <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
-    <?oxy_comment_start author="cecilia" timestamp="20160602T152645+0200" comment="Original text" mid="54"?>
+    <?oxy_comment_start author="cecilia" timestamp="20160602T152645+0200" comment="Original text" mid="56"?>
     <para>Get PDF for Data Entry: Download a PDF file which can be used for offline data
       entry.</para>
     <?oxy_custom_end?>
-    <?oxy_comment_end mid="54"?>
+    <?oxy_comment_end mid="56"?>
     <orderedlist>
       <listitem>
         <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
@@ -622,29 +645,85 @@ At the moment, I can only do x-refs to section 1 tags.
     </orderedlist>
   </section>
   <section>
-    <title>Data entry forms</title>
-    <para>Once you have assigned a data set to an organisation unit that data set will be made
-      available in Data Entry for the organisation units you have assigned it to. A default data
-      entry form will then be shown, which is simply a list of the data elements belonging to the
-      data set together with a column for inputting the values. If your data set contains data
-      elements with a non-default category combination, such as age groups or gender then additional
-      columns will be automatically generated in the default form based on the different
-      options/dimensions. </para>
-    <para>If you use more than one data element category combination you will get multiple columns
-      in the data entry form with different column headings for the options. In addition to the
-      default list-based data entry form there are two more alternatives, the section-based form and
-      the custom form.</para>
-    <section>
-      <title>Section forms</title>
-      <para>Section forms allow for a bit more flexibility when it comes to using tabular forms and
-        are quick and simple to design. Often your data entry form will need multiple tables with
-        subheadings, and sometimes you need to disable (grey out) a few fields in the table, both of
-        these functions are supported in section forms. This function can be accessed by choosing
-        selecting the data set and choosing the &quot;View sections&quot; option from the context
-        menu.</para>
-    </section>
+    <title>Data <?oxy_comment_start author="cecilia" timestamp="20160603T145938+0200" comment="Add screenshots with examples of the different data entry forms."?>entry<?oxy_comment_end?>
+      <?oxy_comment_start author="cecilia" timestamp="20160603T100847+0200" comment="A form = a way to present the data set to the end user. (Visually)
+You can do it in two ways: custom form (design your own data entry form) and section form (automatic)"?>forms<?oxy_comment_end?></title>
+    <para>Once you have assigned a data set to an organisation unit, that data set is available in
+      the <emphasis role="bold">Data Entry</emphasis> app for the organisation units you have
+      assigned it to. There're three types of data entry forms:</para>
+    <table frame="all">
+      <title>Data entry from types</title>
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.44*"/>
+        <thead>
+          <row>
+            <entry>Data entry form type</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              <para>Default form</para>
+            </entry>
+            <entry>
+              <para>A default data entry form will then be shown, which is simply a list of the data
+                elements belonging to the data set together with a column for inputting the values.
+                If your data set contains data elements with a non-default category combination,
+                such as age groups or gender then additional columns will be automatically generated
+                in the default form based on the different options/dimensions.</para>
+              <para>If you use more than one data element category combination you will get multiple
+                columns in the data entry form with different column headings for the
+                options.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Section form</para>
+            </entry>
+            <entry>
+              <para>Section forms allow for a bit more flexibility when it comes to using tabular
+                forms and are quick and simple to design. Often your data entry form will need
+                multiple tables with subheadings, and sometimes you need to disable (grey out) a few
+                fields in the table, both of these functions are supported in section forms.</para>
+              <para>This function can be accessed by choosing selecting the data set and choosing
+                the &quot;View sections&quot; option from the context menu.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Custom (design data entry form) form</para>
+            </entry>
+            <entry>
+              <para>When the form you want to design is to complicated for the default or section
+                forms then your last option is to use a custom form. This takes more time, but gives
+                you full flexibility in term of the design. DHIS 2 uses a built-in HTML editor (FcK
+                Editor) for the form designer and you can either design the form in the UI or paste
+                in your HTML directly (using the Source window in the editor). A complete reference
+                for use of the editor can be found <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://docs.cksource.com/CKEditor_3.x/Users_Guide">here</link>.</para>
+              <para>One of the big advantages of custom forms, is that they can be created to mimic
+                existing paper aggregation forms. This makes data entry much easier for users, and
+                should reduce the number of data elements which are incorrectly entered, as they are
+                more easily identifiable when entering data from a paper form. </para>
+              <para>Once a custom form has been added to a data set it will be available in data
+                entry and used automatically. </para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <note>
+      <para>Custom forms are preferentially displayed over section forms. If a data set has both a
+        section form and a custom form, the custom form will be displayed during data entry. Users
+        will not be able to select which method they wish to input data, so be sure that your custom
+        form contains all data elements which may be required. However, if using a mobile interface,
+        sections forms will display preferentially over custom forms; therefore both can be used to
+        support data collection depending on the method of data entry. </para>
+    </note>
     <section xml:id="dataSetSection">
-      <title>Adding a new section form</title>
+      <title>Create a section form</title>
       <para>Section forms are separated automatically by data element category combinations, which
         produce a spreadsheet like data entry form for each section. </para>
       <para>When designing a section form the procedure is as follows:</para>
@@ -716,28 +795,7 @@ At the moment, I can only do x-refs to section 1 tags.
       </screenshot>
     </section>
     <section xml:id="customDataEntryForm">
-      <title>Custom forms</title>
-      <para>When the form you want to design is to complicated for the default or section forms then
-        your last option is to use a custom form. This takes more time, but gives you full
-        flexibility in term of the design. DHIS 2 uses a built-in HTML editor (FcK Editor) for the
-        form designer and you can either design the form in the UI or paste in your HTML directly
-        (using the Source window in the editor). A complete reference for use of the editor can be
-        found <link xmlns:xlink="http://www.w3.org/1999/xlink"
-          xlink:href="http://docs.cksource.com/CKEditor_3.x/Users_Guide">here</link>.</para>
-      <para>One of the big advantages of custom forms, is that they can be created to mimic existing
-        paper aggregation forms. This makes data entry much easier for users, and should reduce the
-        number of data elements which are incorrectly entered, as they are more easily identifiable
-        when entering data from a paper form. </para>
-      <para>Once a custom form has been added to a data set it will be available in data entry and
-        used automatically. </para>
-      <note>
-        <para>Custom forms are preferentially displayed over section forms. If a data set has both a
-          section form and a custom form, the custom form will be displayed during data entry. Users
-          will not be able to select which method they wish to input data, so be sure that your
-          custom form contains all data elements which may be required. However, if using a mobile
-          interface, sections forms will display preferentially over custom forms; therefore both
-          can be used to support data collection depending on the method of data entry. </para>
-      </note>
+      <title>Create a custom form</title>
       <para>To add a custom form design to a data set then first locate your data set in the Data
         set Management window and click on the Design data entry form from the context menu.</para>
       <para>First provide a Name for the form. There are a few important buttons in the Editor that
@@ -762,7 +820,7 @@ At the moment, I can only do x-refs to section 1 tags.
         </mediaobject>
       </screenshot>
       <para>You can save by clicking on the Save button, and this will not close the window. It is
-        recommended to save often to ensure you do not loose your work. </para>
+        recommended to save often to ensure you do not loose your work.</para>
       <para>When you are done or want to test your form in data entry click on &lt;Save and
         close&gt;.</para>
     </section>
@@ -930,7 +988,10 @@ dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
         loaded.</para>
     </section>
     <section xml:id="dataSetAssignmentEditor">
+      <?oxy_comment_start author="cecilia" timestamp="20160603T101842+0200" comment="According to SME, this function will not be moved from Data set app. 
+Only if users complain."?>
       <title>Data set assignment editor</title>
+      <?oxy_comment_end?>
       <para>The data set assignment editor is a tool for adding and removing many data sets to
         organisation units in batch style. Start by selecting an organisation unit from the
         selection tree. In the area below the tree a grid will be displayed showing all data sets as
