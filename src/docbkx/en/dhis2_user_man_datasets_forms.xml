@@ -382,12 +382,16 @@
     </section>
     <section>
       <title>Scripting in custom forms</title>
-      <para>In custom data entry form you can use javascript to create dynamic behavior and
-        customziations. The DHIS 2 data entry module provides a range of events which you can
-        register for and use to perform actions at certain times. The events are registered on the
-        document element. The jQuery event object and the data set identifier are always the first
-        two arguments provided to the callback functions. The table below provides an overview of
-        the events and when they are triggered.</para>
+      <para>In custom data entry forms you can use Javascript to create dynamic behavior and
+        customizations. As an exmample, you can hide form sections based on specific user input for
+        data elements, or show specific information when a form loads.</para>
+      <section>
+        <title>Events</title>
+      <para>The DHIS 2 data entry module provides a range of events which you can register for and
+        use to perform actions at certain times. The events are registered on the document element.
+        The jQuery event object and the data set identifier are always the first two arguments
+        provided to the callback functions. The table below provides an overview of the events and
+        when they are triggered.</para>
       <table frame="all">
         <title>Data entry events</title>
         <tgroup cols="3">
@@ -488,6 +492,32 @@ dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
         utilize the &quot;files&quot; Web API resource and keep your callback functions in a single
         file, where you let the javascript code take action based on which data set is currently
         loaded.</para>
+    </section>
+      <section>
+        <title>Functions</title>
+        <para>The DHIS 2 data entry module contains Javascript API functions which can be accessed
+          from custom data entry forms.<itemizedlist>
+            <listitem>
+              <para><emphasis role="bold">dhis2.de.api.getSelections</emphasis>: This function
+                returns a Javascript object which contains properties for all dimensions with
+                corresponding values for the identifiers of the selected options. It contains
+                properties for "ds" (data set), "pe" (period), "ou" (organisation unit) and
+                identifiers for all data sete categories.</para>
+              <para>An example response looks like
+                this:<screen>{
+  ds: "lyLU2wR22tC",
+  pe: "201605",
+  ou: "g8upMTyEZGZ",
+  LFsZ8v5v7rq: "CW81uF03hvV",
+  yY2bQYqNt0o: "yMj2MnmNI8L"
+}</screen></para>
+              <para>Example Javascript usage of this
+                function:<screen>var sel = dhis2.de.api.getSelections();
+var orgUnit = sel["ou"];
+var partner = sel["LFsZ8v5v7rq"];</screen></para>
+            </listitem>
+          </itemizedlist></para>
+      </section>
     </section>
     <section xml:id="dataSetAssignmentEditor">
       <title>Data set assignment editor</title>
