@@ -9296,88 +9296,6 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       </table>
     </section>
   </section>
-
-  <section>
-    <title>Program Message Service</title>
-    <para>Program Message holds reminders and alerts data related to specific Program or Program Stage. Web APIs are exposed to handle CRUD operations on Program Messages and we will go through them in the below section.</para>
-    <section>
-      <title>Sending/Posting Program Message</title>
-      <para>Program Message holds alert or reminder data that needs to be sent to concerned person via Delivery channels. Currently we are supporting only two Delivery Channels SMS and EMAIL but more can be added if needed. 
-        In order to use these channels, SMS and EMAIL setting should be in place prior to sending messages using these channels. 
-      There are four different type of recipients which are listed below. In case of TrackedEntityInstance and OrganisationUnit, system will fetch their respective phoneNumber and email based on which Delivery Channel is specified in payload.
-      Raw phoneNumbers and emailAddresses can also be specified to send messages to.
-      <itemizedlist>
-        <listitem>
-          <para> TrackedEntityInstance</para>
-        </listitem>
-        <listitem>
-          <para>OrganisationUnit</para> 
-        </listitem>
-        <listitem>
-          <para>List of PhoneNumbers</para> 
-        </listitem>
-        <listitem>
-          <para>List of EmailAddresses</para>
-        </listitem>
-      </itemizedlist>
-        
-      Below is the sample json payload for sending messages using POST.
-      </para>
-      <screen>/api/24/messages/</screen>
-      <screen>{
-    &quot;recipients&quot;: {
-      &quot;trackedEntityInstanceId&quot;:&quot;UN810PwyVYO&quot;
-    },    
-    &quot;programStageInstance&quot;: {
-    &quot;id&quot;: &quot;pSllsjpfLH2&quot;
-    },
-    &quot;deliveryChannels&quot;: [
-    &quot;SMS&quot;
-    ],
-    &quot;text&quot;: &quot;sms testing&quot;,
-    &quot;subject&quot;: &quot;Alert&quot;,
-    &quot;storeCopy&quot;: false
-  }</screen> 
-    </section>
-
-      <section>
-      <title>API End Points</title> 
-      <para>The list of messages can be retrieved using GET.</para>
-      <screen>GET /api/24/messages</screen>
-      <para>One particular message can also be retreived using GET.</para>
-      <screen>GET /api/24/messages/{uid}</screen>
-      <para>Message can be deleted using DELETE.</para>
-      <screen>DELETE /api/24/messages/{uid}</screen>
-      </section>
-    <section>
-      <title>Query Program Messages</title>
-      <para>API supports program message queries based on request parameters.</para>
-      <para>Messages can be filtered based on below mentioned query parameters.</para>
- 
-          <para>programInstance</para>
-          <screen>GET /api/24/messages?programInstance=6yWDMa0LP7</screen>
-    
-          <para>programStageInstance</para>
-          <screen>GET /api/24/messages?programStageInstance=SllsjpfLH2</screen>
-       
-          <para>trackedEntityInstance</para>
-          <screen>GET /api/24/messages?trackedEntityInstance=xdfejpfLH2</screen>
-    
-          <para>organisationUnit</para>
-          <screen>GET /api/24/messages?ou=Sllsjdhoe3</screen>
-      
-          <para>phoneNumber</para>
-          <screen>GET /api/24/messages?phoneNumber=4740XXXXX</screen>
-      
-          <para>emailAddress</para>
-          <screen>GET /api/24/messages?emailAddress=user@domain.com</screen>
-       
-          <para>processedDate</para>
-          <screen>GET /api/24/messages?processedDate=2016-02-01</screen>
-     
-    </section>
-  </section>
- 
   <section>
     <title>Users</title>
     <para>This section covers the user resource methods.<screen>/api/24/users</screen></para>
@@ -9498,7 +9416,7 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   &quot;email&quot;: &quot;johndoe@mail.com&quot;,
   &quot;userCredentials&quot;: {
     &quot;username&quot;: &quot;johndoe&quot;,
-    &quot;password: &quot;your-password-123&quot;,
+    &quot;password&quot;: &quot;your-password-123&quot;,
     &quot;userRoles&quot;: [ {
       &quot;id&quot;: &quot;Euq3XfEIEbx&quot;
     } ]
