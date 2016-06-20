@@ -16,15 +16,10 @@ after_success:
     - bash ./.utility/deploy.sh
 jdk:
     - openjdk7
-branches:
-  only:
-    - master
-    - /^[0-9]{1}\.[0-9]{2}$/
-    - docinprogress
 notifications:
   email:
   - jason.p.pickering@gmail.com
-  - mark@thedutchies.com
+  - cpersson@dhis2.org 
 env:
     global:
     - GH_REF: github.com/dhis2/dhis2-docs.git
