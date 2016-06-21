@@ -11918,9 +11918,11 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
   <section>
     <title>Data store</title>
     <para>Using the <emphasis>dataStore</emphasis> resource, developers can store arbitrary data for
-      their apps. Access to a datastore is limited to the user&apos;s access to the corresponding
-      app. For example a user with access to the &quot;sampleApp&quot; application will also be able
-      to use the sampleApp namespace in the datastore.<screen>/api/24/dataStore</screen></para>
+      their apps. Access to a datastore's namespace is limited to the user&apos;s access to the
+      corresponding app, if the app has reserved the namespace. For example a user with access to
+      the &quot;sampleApp&quot; application will also be able to use the sampleApp namespace in the
+      datastore. If a namespace is not reserved, no specific access is required to use
+      it.<screen>/api/24/dataStore</screen></para>
     <section>
       <title>Data store structure</title>
       <para>Data store entries consist of a namespace, key and value. The combination of namespace
