@@ -9297,6 +9297,41 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
     </section>
   </section>
   <section>
+    <title>SMSCommand</title>
+    <para>SMSCommands are being used to collect data through SMS. These commands belong to specific Parser Type. Each parser has different functionality.</para>
+    <section>
+      <title>API End Points</title> 
+      <para>The list of commands can be retrieved using GET.</para>
+      <screen>GET /api/24/sms/commands</screen>
+      <para>One particular command can also be retreived using GET. Where parameter <emphasis
+        role="italic">type</emphasis> can be one of the below mentioned parsers</para>
+      <screen>GET /api/24/sms/commands/{commandName}?type=EVENT_REGISTRATION_PARSER</screen>
+      <itemizedlist>
+        <listitem>
+          <para>KEY_VALUE_PARSER</para>
+        </listitem>
+        <listitem>
+          <para>J2ME_PARSER</para> 
+        </listitem>
+        <listitem>
+          <para>ALERT_PARSER</para> 
+        </listitem>
+        <listitem>
+          <para>UNREGISTERED_PARSER</para>
+        </listitem>
+        <listitem>
+          <para>TRACKED_ENTITY_REGISTRATION_PARSER</para>
+        </listitem>
+        <listitem>
+          <para>PROGRAM_STAGE_DATAENTRY_PARSER</para>
+        </listitem>
+        <listitem>
+          <para>EVENT_REGISTRATION_PARSER</para>
+        </listitem>
+      </itemizedlist>
+    </section> 
+  </section>
+  <section>
     <title>Program Message Service</title>
     <para>Program Message holds reminders and alerts data related to specific Program or Program Stage. Web APIs are exposed to handle CRUD operations on Program Messages and we will go through them in the below section.</para>
     <section>
