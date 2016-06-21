@@ -5053,6 +5053,47 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       <para>The response is a <emphasis role="italic">200 OK</emphasis> with the following JSON
         body:<screen>{ &quot;markedRead&quot; : [ &quot;ZrKML5WiyFm&quot;, &quot;Gc03smoTm6q&quot; ] }</screen></para>
     </section>
+    <section>
+      <title>Tickets</title>
+      <para>Tickets are messages created trough the "write feedback" tool. These messages has a
+        status and can also be labeled with a priority. Changing the status or priority of a ticket
+        can be done at the following api
+        endpoints:<screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/status</screen><screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/priority</screen></para>
+      <para>
+        <table frame="all">
+          <title>A list of valid status and priority values</title>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+            <thead>
+              <row>
+                <entry>Status</entry>
+                <entry>Priority</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>OPEN</entry>
+                <entry>LOW</entry>
+              </row>
+              <row>
+                <entry>PENDING</entry>
+                <entry>MEDIUM</entry>
+              </row>
+              <row>
+                <entry>INVALID</entry>
+                <entry>HIGH</entry>
+              </row>
+              <row>
+                <entry>SOLVED</entry>
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </para>
+      <para>todo: add information about internal messages here!</para>
+    </section>
   </section>
   <section>
     <title>Interpretations</title>
