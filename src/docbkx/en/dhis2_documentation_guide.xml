@@ -133,6 +133,11 @@ downloaded to the folder that you specified.</para>
           will be downloaded automatically as part of the build process ,if you have not already
           done so. </para>
       </listitem>
+      <listitem>
+        <para> Once you have the source, be sure to create your own branch for editing. Simply
+            execute<command> git checkout -b mybranch</command> where <emphasis>mybranch</emphasis>
+          is the name of the branch you wish to create. </para>
+      </listitem>
     </orderedlist>
   </section>
   <section xml:id="docs_5">
@@ -225,17 +230,20 @@ transforming DocBook documents into many different formats. More information on 
       GitHub. Open up a command prompt on Windows or a shell on Linux, and navigate to the folder
       where you have placed your documentation. If you have added any new files or folders to your
       local repository, you will need to add them to the source tree with the <command>git add
-      </command> command, followed by the folder or file name(s) that you have added. After that you
-      need to commit your changes. Be sure to include a descriptive comment with your commit. <cmdsynopsis>
+      </command> command, followed by the folder or file name(s) that you have added.  Be sure to
+      include a descriptive comment with your commit. <cmdsynopsis>
         <command>git commit </command>
         <arg>-m</arg>
         <arg>&quot;Improved documentation on organisation unit imports with CSV."</arg>
       </cmdsynopsis>Finally, you should push the changes back to the repository with <command>git
-        push origin master</command> . In order to do this, you will need the necessary permissions
-      to commit to the repository. Otherwise, just commit to your own branch, and submit a pull
-      request. You changes will be reviewed by the core documentation team. As mentioned previously,
-      you can also push your changes to your own GitHub repo and submit a pull request for your
-      changes to be merged.</para>
+        push origin mybranch</command> . In order to do this, you will need the necessary
+      permissions to commit to the repository.When you have committed your changes, <link
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink:href="https://github.com/dhis2/dhis2-docs/pulls">you can issue a pull request</link>
+      to have them merged with the master branch. You changes will be reviewed by the core
+      documentation team and tested to ensure they do not break the build. As mentioned previously,
+      you can also push your changes to your own GitHub repo, if you do not have access to the main
+      repo,  and submit a pull request for your changes to be merged.</para>
     <para>If you have any questions, or cannot find that you can get started, just send an email
 with your problem to <email>dhis2-documenters@lists.launchpad.net</email>.</para>
   </section>
