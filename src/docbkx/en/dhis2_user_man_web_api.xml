@@ -5092,7 +5092,12 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           </tgroup>
         </table>
       </para>
-      <para>todo: add information about internal messages here!</para>
+      <para>Tickets can also contain internal messages, which is visiable only to users with the
+        "Manage tickets" authority. To send a internal message, include the optional parameter
+        "internal" when replying to a message conversation, and set it to
+        "true".<screen>curl -d &quot;This is an internal message&quot; 
+  &quot;https://play.dhis2.org/demo/api/24/messageConversations/ZjHHSjyyeJ2?internal=true&quot; 
+  -H &quot;Content-Type:text/plain&quot; -u admin:district -X POST -v</screen></para>
     </section>
   </section>
   <section>
