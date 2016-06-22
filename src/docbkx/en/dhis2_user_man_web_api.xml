@@ -5053,6 +5053,51 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       <para>The response is a <emphasis role="italic">200 OK</emphasis> with the following JSON
         body:<screen>{ &quot;markedRead&quot; : [ &quot;ZrKML5WiyFm&quot;, &quot;Gc03smoTm6q&quot; ] }</screen></para>
     </section>
+    <section>
+      <title>Tickets</title>
+      <para>You can create tickets using the "write feedback" tool. Tickets are the same as messages. You can give a status or a 
+      priority to a ticket. To do this, use these API
+        endpoints:<screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/status</screen><screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/priority</screen></para>
+      <para>
+        <table frame="all">
+          <title>A list of valid status and priority values</title>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+            <thead>
+              <row>
+                <entry>Status</entry>
+                <entry>Priority</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>OPEN</entry>
+                <entry>LOW</entry>
+              </row>
+              <row>
+                <entry>PENDING</entry>
+                <entry>MEDIUM</entry>
+              </row>
+              <row>
+                <entry>INVALID</entry>
+                <entry>HIGH</entry>
+              </row>
+              <row>
+                <entry>SOLVED</entry>
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </para>
+      <para>Tickets can also contain internal messages, which is visiable only to users with the
+        "Manage tickets" authority. To send a internal message, include the optional parameter
+        "internal" when replying to a message conversation, and set it to
+        "true".<screen>curl -d &quot;This is an internal message&quot; 
+  &quot;https://play.dhis2.org/demo/api/24/messageConversations/ZjHHSjyyeJ2?internal=true&quot; 
+  -H &quot;Content-Type:text/plain&quot; -u admin:district -X POST -v</screen></para>
+    </section>
   </section>
   <section>
     <title>Interpretations</title>
