@@ -5053,6 +5053,51 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       <para>The response is a <emphasis role="italic">200 OK</emphasis> with the following JSON
         body:<screen>{ &quot;markedRead&quot; : [ &quot;ZrKML5WiyFm&quot;, &quot;Gc03smoTm6q&quot; ] }</screen></para>
     </section>
+    <section>
+      <title>Tickets</title>
+      <para>You can create tickets using the "write feedback" tool. Tickets are the same as messages. You can give a status or a 
+      priority to a ticket. To do this, use these API
+        endpoints:<screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/status</screen><screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/priority</screen></para>
+      <para>
+        <table frame="all">
+          <title>A list of valid status and priority values</title>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+            <thead>
+              <row>
+                <entry>Status</entry>
+                <entry>Priority</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>OPEN</entry>
+                <entry>LOW</entry>
+              </row>
+              <row>
+                <entry>PENDING</entry>
+                <entry>MEDIUM</entry>
+              </row>
+              <row>
+                <entry>INVALID</entry>
+                <entry>HIGH</entry>
+              </row>
+              <row>
+                <entry>SOLVED</entry>
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </para>
+      <para>Tickets can also contain internal messages, which is visiable only to users with the
+        "Manage tickets" authority. To send a internal message, include the optional parameter
+        "internal" when replying to a message conversation, and set it to
+        "true".<screen>curl -d &quot;This is an internal message&quot; 
+  &quot;https://play.dhis2.org/demo/api/24/messageConversations/ZjHHSjyyeJ2?internal=true&quot; 
+  -H &quot;Content-Type:text/plain&quot; -u admin:district -X POST -v</screen></para>
+    </section>
   </section>
   <section>
     <title>Interpretations</title>
@@ -8061,42 +8106,29 @@ ORDER BY oul.level, par.name, ou.name</screen>
   </section>
   <section>
     <title>Data usage analytics</title>
-    <para>The usage analytics API lets you access information about how people are using DHIS
-      2<?oxy_delete author="CPersson" timestamp="20160502T102626+0200" content=", in particular related to"?><?oxy_insert_start author="CPersson" timestamp="20160502T102626+0200"?>based
+    <para>The usage analytics API lets you access information about how people are using DHIS 2
+      <?oxy_insert_start author="CPersson" timestamp="20160502T102626+0200"?>based
       on<?oxy_insert_end?> data analysis. When users access favorites, an event
-      <?oxy_delete author="CPersson" timestamp="20160502T102635+0200" content="will be"?><?oxy_insert_start author="CPersson" timestamp="20160502T102635+0200"?>is<?oxy_insert_end?>
-      recorded<?oxy_insert_start author="CPersson" timestamp="20160502T102646+0200"?>. The event consists<?oxy_insert_end?>
-      <?oxy_delete author="CPersson" timestamp="20160502T102654+0200" content="consisting"?> of the<?oxy_delete author="CPersson" timestamp="20160502T102658+0200" content="ir"?>
-      <?oxy_delete author="CPersson" timestamp="20160502T134235+0200" content="username"?><?oxy_insert_start author="CPersson" timestamp="20160502T134235+0200"?>user
+      <?oxy_insert_start author="CPersson" timestamp="20160502T102635+0200"?>is<?oxy_insert_end?>
+      recorded<?oxy_insert_start author="CPersson" timestamp="20160502T102646+0200"?>. The event
+      consists<?oxy_insert_end?> of the
+      <?oxy_insert_start author="CPersson" timestamp="20160502T134235+0200"?>user
       name<?oxy_insert_end?>, the UID of the favorite, when the event took place, and the type of
       event. The different types of events are
-      <?oxy_delete author="CPersson" timestamp="20160502T134752+0200" content="provided"?><?oxy_insert_start author="CPersson" timestamp="20160502T134752+0200"?>listed<?oxy_insert_end?>
+      <?oxy_insert_start author="CPersson" timestamp="20160502T134752+0200"?>listed<?oxy_insert_end?>
       in the <xref xmlns:xlink="http://www.w3.org/1999/xlink" linkend="dataUsage_eventTypes_table"/>
-      table<?oxy_delete author="CPersson" timestamp="20160502T134804+0200" content=" below"?>.<?oxy_delete author="CPersson" timestamp="20160502T102957+0200" content=" "?><?oxy_insert_start author="CPersson" timestamp="20160502T102953+0200" type="split"?></para>
-    <para><?oxy_insert_end?>This
-      <?oxy_comment_start author="CPersson" timestamp="20160502T102728+0200" comment="What does &quot;resource&quot; refer to? 
-The Usage Analytics app?
-The usage analytics API?"?>resource<?oxy_comment_end?>
-      lets you retrieve aggregated snapshots of usage analytics based on
-      <?oxy_insert_start author="CPersson" timestamp="20160502T121750+0200"?>time
-      <?oxy_insert_end?>intervals<?oxy_delete author="CPersson" timestamp="20160502T121753+0200" content=" in time"?>.
-      The
-      <?oxy_comment_start author="CPersson" timestamp="20160502T121806+0200" comment="Replace resource, see previous comment"?>resource<?oxy_comment_end?><?oxy_delete author="CPersson" timestamp="20160502T121809+0200" content=" will"?>
+      table.<?oxy_insert_start author="CPersson" timestamp="20160502T102953+0200" type="split"?></para>
+    <para><?oxy_insert_end?>The usage analytics API lets you retrieve aggregated snapshots of usage
+      analytics based on <?oxy_insert_start author="CPersson" timestamp="20160502T121750+0200"?>time
+      <?oxy_insert_end?>intervals. The API
       capture<?oxy_insert_start author="CPersson" timestamp="20160502T121811+0200"?>s<?oxy_insert_end?>
-      user views
-      (<?oxy_delete author="CPersson" timestamp="20160502T101938+0200" content="e.g"?><?oxy_insert_start author="CPersson" timestamp="20160502T101938+0200"?>for
+      user views (<?oxy_insert_start author="CPersson" timestamp="20160502T101938+0200"?>for
       example<?oxy_insert_end?> the number of times a chart or pivot table has been viewed by
-      <?oxy_delete author="CPersson" timestamp="20160502T134824+0200" content="some"?><?oxy_insert_start author="CPersson" timestamp="20160502T134824+0200"?>a<?oxy_insert_end?>
+      <?oxy_insert_start author="CPersson" timestamp="20160502T134824+0200"?>a<?oxy_insert_end?>
       user) and saved analysis favorites
-      (<?oxy_delete author="CPersson" timestamp="20160502T102319+0200" content="e.g."?><?oxy_insert_start author="CPersson" timestamp="20160502T102319+0200"?>for
-      example<?oxy_insert_end?> favorite charts and pivot tables).
-      <?oxy_comment_start author="CPersson" timestamp="20160502T102859+0200" comment="Isn&apos;t the feature enabled? Or is it something the implmenter or system admin must do?
-
-Suggest to write:
-DHIS 2 captures nightly snapshots which are aggregated by user request."?>When
-      enabled,<?oxy_comment_end?> DHIS 2 will capture nightly snapshots which are then aggregated at
-      request.<?oxy_comment_start author="CPersson" timestamp="20160502T121842+0200" comment="What does this command do?
-Add a phrase to explain what it does or is."?><screen>/api/dataStatistics</screen><?oxy_comment_end?></para>
+      (<?oxy_insert_start author="CPersson" timestamp="20160502T102319+0200"?>for
+      example<?oxy_insert_end?> favorite charts and pivot tables). DHIS 2 will capture nightly
+      snapshots which are then aggregated at request.</para>
     <section>
       <title>Request query parameter</title>
       <para>The usage analytics (data statistics) API supports two
@@ -8104,18 +8136,18 @@ Add a phrase to explain what it does or is."?><screen>/api/dataStatistics</scree
       <itemizedlist>
         <listitem>
           <para>POST<?oxy_insert_start author="CPersson" timestamp="20160502T121856+0200"?>:
-            <?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T121858+0200" content=" to "?>create<?oxy_insert_start author="CPersson" timestamp="20160502T121902+0200"?>s<?oxy_insert_end?>
+            <?oxy_insert_end?>create<?oxy_insert_start author="CPersson" timestamp="20160502T121902+0200"?>s<?oxy_insert_end?>
             a view event</para>
         </listitem>
         <listitem>
           <para>GET<?oxy_insert_start author="CPersson" timestamp="20160502T121908+0200"?>:<?oxy_insert_end?>
-            <?oxy_delete author="CPersson" timestamp="20160502T121909+0200" content="to "?>retrieve<?oxy_insert_start author="CPersson" timestamp="20160502T121912+0200"?>s<?oxy_insert_end?>
+            retrieve<?oxy_insert_start author="CPersson" timestamp="20160502T121912+0200"?>s<?oxy_insert_end?>
             aggregated statistics</para>
         </listitem>
       </itemizedlist>
     </section>
     <section>
-      <title>Creat<?oxy_insert_start author="CPersson" timestamp="20160502T121918+0200"?>e<?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T121917+0200" content="ing"?>
+      <title>Creat<?oxy_insert_start author="CPersson" timestamp="20160502T121918+0200"?>e<?oxy_insert_end?>
         view events (POST)</title>
       <para>The usage analytics API lets you create event views. The dataStatisticsEventType
         parameter describes what type of item was viewed. The favorite parameter indicates the
@@ -8129,12 +8161,11 @@ Add a phrase to explain what it does or is."?><screen>/api/dataStatistics</scree
         </para>
       </example>
       <?oxy_insert_end?>
-      <para><?oxy_delete author="CPersson" timestamp="20160502T103115+0200" content="As an example, the following URL can be used to create a new event view for charts: &lt;screen&gt;POST /api/dataStatistics?eventType=CHART_VIEW&amp;amp;favorite=LW0O27b7TdD&lt;/screen&gt;"?></para>
       <para>A successful save operation returns HTTP status code 201. The table below shows the
         supported types of events.</para>
       <table frame="all" xml:id="dataUsage_eventTypes_table">
         <title><?oxy_insert_start author="CPersson" timestamp="20160502T122004+0200"?>Supported
-          <?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T122006+0200" content="E"?><?oxy_insert_start author="CPersson" timestamp="20160502T122006+0200"?>e<?oxy_insert_end?>vent
+          <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T122006+0200"?>e<?oxy_insert_end?>vent
           types</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
@@ -8148,33 +8179,31 @@ Add a phrase to explain what it does or is."?><screen>/api/dataStatistics</scree
           <tbody>
             <row>
               <entry>REPORT_TABLE_VIEW</entry>
-              <entry>Report table (pivot table)
-                view<?oxy_delete author="CPersson" timestamp="20160502T103200+0200" content="."?></entry>
+              <entry>Report table (pivot table) view</entry>
             </row>
             <row>
               <entry>CHART_VIEW</entry>
-              <entry>Chart
-                view<?oxy_delete author="CPersson" timestamp="20160502T103202+0200" content="."?></entry>
+              <entry>Chart view</entry>
             </row>
             <row>
               <entry>MAP_VIEW</entry>
-              <entry>Map view
-                (GIS)<?oxy_delete author="CPersson" timestamp="20160502T103205+0200" content="."?></entry>
+              <entry>Map view (GIS)</entry>
             </row>
             <row>
               <entry>EVENT_REPORT_VIEW</entry>
-              <entry>Event report
-                view<?oxy_delete author="CPersson" timestamp="20160502T103207+0200" content="."?></entry>
+              <entry>Event report view</entry>
             </row>
             <row>
               <entry>EVENT_CHART_VIEW</entry>
-              <entry>Event chart
-                view<?oxy_delete author="CPersson" timestamp="20160502T103209+0200" content="."?></entry>
+              <entry>Event chart view</entry>
             </row>
             <row>
               <entry>DASHBOARD_VIEW</entry>
-              <entry>Dashboard
-                view<?oxy_delete author="CPersson" timestamp="20160502T103211+0200" content="."?></entry>
+              <entry>Dashboard view</entry>
+            </row>
+            <row>
+              <entry>DATA_SET_REPORT_VIEW</entry>
+              <entry>Data set report view</entry>
             </row>
           </tbody>
         </tgroup>
@@ -8182,7 +8211,7 @@ Add a phrase to explain what it does or is."?><screen>/api/dataStatistics</scree
     </section>
     <section>
       <title><?oxy_insert_start author="CPersson" timestamp="20160502T121926+0200"?>Retrieve
-        <?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T121927+0200" content="A"?><?oxy_insert_start author="CPersson" timestamp="20160502T121928+0200"?>a<?oxy_insert_end?>ggregated
+        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T121928+0200"?>a<?oxy_insert_end?>ggregated
         usage analytics report (GET)</title>
       <para>The usage analytics (data statistics) API lets you specify certain query parameters when
         asking for an aggregated report.<table frame="all">
@@ -8205,7 +8234,7 @@ Add a phrase to explain what it does or is."?><screen>/api/dataStatistics</scree
                 <entry>startDate</entry>
                 <entry>Yes</entry>
                 <entry>Start date for period</entry>
-                <entry>Date in yyyy-MM-dd format</entry>
+                <entry xml:id="entry_ayf_gyy_jw">Date in yyyy-MM-dd format</entry>
               </row>
               <row>
                 <entry>endDate</entry>
@@ -8223,58 +8252,92 @@ Add a phrase to explain what it does or is."?><screen>/api/dataStatistics</scree
           </tgroup>
         </table></para>
       <para>The startDate and endDate parameters
-        <?oxy_delete author="CPersson" timestamp="20160502T103402+0200" content="specifie"?><?oxy_insert_start author="CPersson" timestamp="20160502T134320+0200"?>specify<?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T103402+0200" content="s"?>
-        the period for which <?oxy_delete author="CPersson" timestamp="20160502T134336+0200" content="snaphots"?><?oxy_insert_start author="CPersson" timestamp="20160502T134336+0200"?>snapshots<?oxy_insert_end?>
-        <?oxy_comment_start author="CPersson" timestamp="20160502T103359+0200" comment="&quot;Should&quot; can be ambigious for a reader. 
-Do you mean &quot;are&quot;? "?>should<?oxy_comment_end?>
-        be used in the aggregation.
+        <?oxy_insert_start author="CPersson" timestamp="20160502T134320+0200"?>specify<?oxy_insert_end?>
+        the period for which
+        <?oxy_insert_start author="CPersson" timestamp="20160502T134336+0200"?>snapshots<?oxy_insert_end?>
+        are to be used in the aggregation.
         <?oxy_insert_start author="CPersson" timestamp="20160502T122044+0200"?>You must format
         <?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T122048+0200" content="T"?><?oxy_insert_start author="CPersson" timestamp="20160502T122048+0200"?>t<?oxy_insert_end?>he
-        dates
-        <?oxy_delete author="CPersson" timestamp="20160502T122055+0200" content="must be formatted"?>
-        as shown
-        <?oxy_comment_start author="CPersson" timestamp="20160502T103457+0200" comment="Add link to table."?>above<?oxy_comment_end?>.
-        If <?oxy_insert_start author="CPersson" timestamp="20160502T103511+0200"?>no snapshots are
-        <?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T103517+0200" content="there is no snapshots"?>
-        saved in the specified
+        dates as shown <link xmlns:xlink="http://www.w3.org/1999/xlink" linkend="entry_ayf_gyy_jw"
+          >above</link>. If
+        <?oxy_insert_start author="CPersson" timestamp="20160502T103511+0200"?>no snapshots
+        are<?oxy_insert_end?> saved in the specified
         period<?oxy_insert_start author="CPersson" timestamp="20160502T103525+0200"?>,<?oxy_insert_end?>
         an empty list
-        <?oxy_delete author="CPersson" timestamp="20160502T122106+0200" content="will be"?><?oxy_insert_start author="CPersson" timestamp="20160502T122106+0200"?>is<?oxy_insert_end?>
-        sent back. The interval
-        <?oxy_comment_start author="CPersson" timestamp="20160502T135018+0200" comment="Only one parameter to specify the time?"?>parameter<?oxy_comment_end?>
+        <?oxy_insert_start author="CPersson" timestamp="20160502T122106+0200"?>is<?oxy_insert_end?>
+        sent back. The parameter called interval
         specifie<?oxy_insert_start author="CPersson" timestamp="20160502T134400+0200"?>s<?oxy_insert_end?>
-        what
-        <?oxy_comment_start author="CPersson" timestamp="20160502T122125+0200" comment="Do you mean &quot;type&quot;?"?>kind<?oxy_comment_end?>
-        of aggregation will be
-        done.<?oxy_delete author="CPersson" timestamp="20160502T122112+0200" content=" "?></para>
+        what type of aggregation will be done.</para>
       <?oxy_insert_start author="CPersson" timestamp="20160502T103543+0200"?>
       <example>
-        <title><?oxy_comment_start author="CPersson" timestamp="20160502T135050+0200" comment="Do you call this an &quot;URL&quot;? 
-Or &quot;command&quot;?
-Or &quot;API query&quot;? 
-What is the correct term?
-"?>URL<?oxy_comment_end?>
-          that creates a query for a yearly aggregation</title>
+        <title><?oxy_insert_end?>API query
+          <?oxy_insert_start author="CPersson" timestamp="20160502T103543+0200"?>that creates a
+          query for a yearly aggregation</title>
         <para>
           <screen>GET /api/dataStatistics?startDate=2014-01-02&amp;endDate=2016-01-01&amp;interval=MONTH</screen>
         </para>
       </example>
       <?oxy_insert_end?>
-      <para><?oxy_delete author="CPersson" timestamp="20160502T103542+0200" content="As an example, to query for a yearly aggregation you can use the following URL: &lt;screen&gt;GET /api/dataStatistics?startDate=2014-01-02&amp;amp;endDate=2016-01-01&amp;amp;interval=MONTH&lt;/screen&gt;"?></para>
+    </section>
+    <section>
+      <title>Retrieve top favortites</title>
+      <para>The usage analytics API lets you retrieve the top favorites used in DHIS 2, and by
+          user.<table frame="all">
+          <title>Query parameters for top favorites</title>
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+            <colspec colname="c3" colnum="3" colwidth="1.0*"/>
+            <colspec colname="c4" colnum="4" colwidth="1.0*"/>
+            <thead>
+              <row>
+                <entry>Query parameter</entry>
+                <entry>Required</entry>
+                <entry>Description</entry>
+                <entry>Options</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>eventType</entry>
+                <entry>Yes</entry>
+                <entry>The data statistics event type</entry>
+                <entry>See <link xmlns:xlink="http://www.w3.org/1999/xlink"
+                    linkend="dataUsage_eventTypes_table">above table</link></entry>
+              </row>
+              <row>
+                <entry>pageSize</entry>
+                <entry>No</entry>
+                <entry>Size of the list returned</entry>
+                <entry>For example 5, 10, 25. Default is 25</entry>
+              </row>
+              <row>
+                <entry>sortOrder</entry>
+                <entry>No</entry>
+                <entry>Descending or ascending</entry>
+                <entry>ASC or DESC. Default is DESC.</entry>
+              </row>
+              <row>
+                <entry>username</entry>
+                <entry>No</entry>
+                <entry>If specified, the response will only contain favorites by this user.</entry>
+                <entry>For example 'admin'</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+      <para>The API query can be used without username, and will then find the top favorites of the
+        system. If username is specified, the response will only contain the top favorites of that
+        user.<screen>/api/dataStatistics/favorites?eventType=CHART_VIEW&amp;pageSize=25&amp;sortOrder=ASC</screen><screen>/api/dataStatistics/favorites?eventType=CHART_VIEW&amp;pageSize=25&amp;sortOrder=ASC&amp;username=admin</screen></para>
     </section>
     <section>
       <title>Response format</title>
       <para><?oxy_insert_start author="CPersson" timestamp="20160502T103902+0200"?>You can return
-        <?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T103906+0200" content="T"?><?oxy_insert_start author="CPersson" timestamp="20160502T103906+0200"?>t<?oxy_insert_end?>he
+        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T103906+0200"?>t<?oxy_insert_end?>he
         <?oxy_insert_start author="CPersson" timestamp="20160502T104102+0200"?>aggregated data in a
-        <?oxy_insert_end?>usage analytics response <?oxy_delete author="CPersson" timestamp="20160502T104114+0200" content="containing aggregate data"?>
-        <?oxy_delete author="CPersson" timestamp="20160502T104031+0200" content="can be returned"?>
-        in
-        <?oxy_delete author="CPersson" timestamp="20160502T104033+0200" content="various"?><?oxy_insert_start author="CPersson" timestamp="20160502T104033+0200"?>several<?oxy_insert_end?>
-        representation formats. The default format is JSON. The available formats and
-        content<?oxy_delete author="CPersson" timestamp="20160502T103940+0200" content="-"?> types are<?oxy_insert_start author="CPersson" timestamp="20160502T103949+0200"?>:<?oxy_insert_end?>
-        <?oxy_delete author="CPersson" timestamp="20160502T103946+0200" content="listed below."?>
-        <itemizedlist>
+        <?oxy_insert_end?>usage analytics response in
+        <?oxy_insert_start author="CPersson" timestamp="20160502T104033+0200"?>several<?oxy_insert_end?>
+        representation formats. The default format is JSON. The available formats and content types are<?oxy_insert_start author="CPersson" timestamp="20160502T103949+0200"?>:<?oxy_insert_end?><itemizedlist>
           <listitem>
             <para>json (application/json)</para>
           </listitem>
@@ -8289,31 +8352,24 @@ What is the correct term?
       <example>
         <?oxy_insert_end?>
         <?oxy_insert_start author="CPersson" timestamp="20160502T105130+0200"?>
-        <title><?oxy_comment_start author="CPersson" timestamp="20160502T122411+0200" comment="Do you call this an &quot;URL&quot;? 
-Or &quot;command&quot;?
-Or &quot;API query&quot;? 
-What is the correct term?
-"?>URL<?oxy_comment_end?>
-          that requests an usage analytics response in XML format </title>
+        <title><?oxy_insert_end?>API query
+          <?oxy_insert_start author="CPersson" timestamp="20160502T105130+0200"?>that requests an
+          usage analytics response in XML format </title>
         <?oxy_insert_end?>
         <para>
-          <?oxy_delete author="CPersson" timestamp="20160502T104223+0200" content="As an example, to request an usage analytics response in XML format "?>
-          <?oxy_delete author="CPersson" timestamp="20160502T104250+0200" content="you can use the following URL:"?>
           <screen>/api/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen>
         </para>
       </example>
       <para><?oxy_insert_start author="CPersson" timestamp="20160502T135057+0200"?>You must retrieve
-        <?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T135103+0200" content="T"?><?oxy_insert_start author="CPersson" timestamp="20160502T135103+0200"?>t<?oxy_insert_end?>he
+        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T135103+0200"?>t<?oxy_insert_end?>he
         aggregated usage analytics response
-        <?oxy_delete author="CPersson" timestamp="20160502T135109+0200" content="must be retrieved using"?><?oxy_insert_start author="CPersson" timestamp="20160502T135109+0200"?>with<?oxy_insert_end?>
+        <?oxy_insert_start author="CPersson" timestamp="20160502T135109+0200"?>with<?oxy_insert_end?>
         the HTTP GET method. This allows
         <?oxy_insert_start author="CPersson" timestamp="20160502T104311+0200"?>you to link directly
-        <?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T104335+0200" content="for direct linking"?><?oxy_insert_start author="CPersson" timestamp="20160502T135146+0200"?>from
-        Web pages and other HTTP-enabled clients<?oxy_insert_end?> to usage analytics responses
-        <?oxy_delete author="CPersson" timestamp="20160502T135233+0200" content="from Web pages as well as other HTTP-enabled clients"?>.
-        To do functional testing<?oxy_delete author="CPersson" timestamp="20160502T104423+0200" content=" "?><?oxy_insert_start author="CPersson" timestamp="20160502T104420+0200"?>,<?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T104419+0200" content="we"?>
-        <?oxy_delete author="CPersson" timestamp="20160502T104424+0200" content="can "?>use the
-        <?oxy_delete author="CPersson" timestamp="20160502T110300+0200" content="c"?>URL
+        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T135146+0200"?>from
+        Web pages and other HTTP-enabled clients<?oxy_insert_end?> to usage analytics responses. To
+        do functional testing use the
+        <?oxy_comment_start author="yrjanaff" timestamp="20160623T095607+0200" comment="cURL is a developer testing tool for API queries, so the c in cURL must not be removed."?>cURL<?oxy_comment_end?>
         library.<?oxy_delete author="CPersson" timestamp="20160502T104442+0200" content=" "?></para>
       <?oxy_insert_start author="CPersson" timestamp="20160502T105030+0200"?>
       <example>
@@ -8379,46 +8435,6 @@ interval=WEEK" -u admin:district</screen></para>
     "users": 953
   }
 ]</screen></para>
-        <para>The response represents a
-          <?oxy_comment_start author="CPersson" timestamp="20160502T121330+0200" comment="Is it necessary to explain all the elements in the list?
-If so, add items that are not listed."?>list
-          of aggregated data <?oxy_comment_end?>over two weekly intervals:</para>
-        <itemizedlist>
-          <listitem>
-            <para><emphasis>year</emphasis>: the year the aggregated data is from</para>
-          </listitem>
-          <listitem>
-            <para><emphasis>week</emphasis>: the week
-              <?oxy_comment_start author="CPersson" timestamp="20160502T121154+0200" comment="How do you calculate the week numbers?
-Some systems say it&apos;s the week with the first of January.
-Other systems say it&apos;s the first week of January with a Thursday in it (ISO  8601)."?>number<?oxy_comment_end?>
-              the aggregated data is from</para>
-          </listitem>
-          <listitem>
-            <para><emphasis>averageViews</emphasis>: average number of views during the selected
-              period</para>
-          </listitem>
-          <listitem>
-            <para><emphasis>totalViews</emphasis>: total number of views during the selected
-              period</para>
-          </listitem>
-          <listitem>
-            <para><emphasis>activeUsers</emphasis>: maximum (peak) number of unique users that have
-              made an event view during the selected period</para>
-          </listitem>
-          <listitem>
-            <para><emphasis>users</emphasis>: total maximum (peak) number of users in the database
-              during the selected period</para>
-          </listitem>
-          <listitem>
-            <para>The various views properties show the number of views of each event (for example
-              map, chart) during the selected period.</para>
-          </listitem>
-          <listitem>
-            <para>The various saved favorite properties show how many favorites (for example report
-              tables, dashboards) that have been saved in the selected period.</para>
-          </listitem>
-        </itemizedlist>
       </example>
       <?oxy_insert_end?>
     </section>
@@ -9295,6 +9311,41 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
         </tgroup>
       </table>
     </section>
+  </section>
+  <section>
+    <title>SMSCommand</title>
+    <para>SMSCommands are being used to collect data through SMS. These commands belong to specific Parser Type. Each parser has different functionality.</para>
+    <section>
+      <title>API End Points</title> 
+      <para>The list of commands can be retrieved using GET.</para>
+      <screen>GET /api/24/sms/commands</screen>
+      <para>One particular command can also be retreived using GET. Where parameter <emphasis
+        role="italic">type</emphasis> can be one of the below mentioned parsers</para>
+      <screen>GET /api/24/sms/commands/{commandName}?type=EVENT_REGISTRATION_PARSER</screen>
+      <itemizedlist>
+        <listitem>
+          <para>KEY_VALUE_PARSER</para>
+        </listitem>
+        <listitem>
+          <para>J2ME_PARSER</para> 
+        </listitem>
+        <listitem>
+          <para>ALERT_PARSER</para> 
+        </listitem>
+        <listitem>
+          <para>UNREGISTERED_PARSER</para>
+        </listitem>
+        <listitem>
+          <para>TRACKED_ENTITY_REGISTRATION_PARSER</para>
+        </listitem>
+        <listitem>
+          <para>PROGRAM_STAGE_DATAENTRY_PARSER</para>
+        </listitem>
+        <listitem>
+          <para>EVENT_REGISTRATION_PARSER</para>
+        </listitem>
+      </itemizedlist>
+    </section> 
   </section>
   <section>
     <title>Program Message Service</title>
