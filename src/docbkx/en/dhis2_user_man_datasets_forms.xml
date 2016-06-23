@@ -1023,17 +1023,24 @@ Maintenance" flag="done"?>Maintenance<?oxy_comment_end?></emphasis>
     </orderedlist>
   </section>
   <section>
-    <title><?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?><?oxy_comment_start author="cecilia" timestamp="20160609T164133+0200" comment="Task done by implmenter" flag="done" mid="119"?>Script<?oxy_custom_end?><?oxy_comment_end mid="119"?>
-      custom forms</title>
+    <title><?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?><?oxy_comment_start author="cecilia" timestamp="20160609T164133+0200" comment="Task done by implmenter" flag="done" mid="118"?>Script<?oxy_custom_end?><?oxy_comment_end mid="118"?>ing
+      in custom forms</title>
     <para>In custom data entry form you can use
       <?oxy_comment_start author="cecilia" timestamp="20160614T113801+0200" comment="Note: JavaScript is a trademark owned by Oracle (previously Sun corp.)" flag="done"?>JavaScript<?oxy_comment_end?>
-      to create dynamic behavior and customziations. The DHIS 2 data entry module provides a range
-      of events which you can register for and use to perform actions at certain times. The events
-      are registered on the
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?><?oxy_comment_start author="cecilia" timestamp="20160609T173110+0200" comment="A document element is a term used by developers." flag="done" mid="122"?>document<?oxy_custom_end?>
-      element<?oxy_comment_end mid="122"?>. The jQuery event object and the data set identifier are
-      always the first two arguments provided to the callback functions. The table below provides an
-      overview of the events and when they are triggered.</para>
+      to create dynamic behavior and customziations. As an exmample, you can hide form sections
+      based on specific user input for data elements, or show specific information when a form
+      loads.</para>
+    <section>
+      <title>Events</title>
+      <para>The DHIS 2 data entry module provides a range of events which you can register for and
+        use to perform actions at certain times. The events are registered on the
+        <?oxy_comment_start author="cecilia" timestamp="20160609T173110+0200" comment="A document element is a term used by developers." flag="done"?>document
+        element<?oxy_comment_end?>. The jQuery event object and the data set identifier are always
+        the first two arguments provided to the callback functions. The table below provides an
+        overview of the events and when they are triggered.</para>
+    </section>
+  </section>
+  <section>
     <table frame="all">
       <?oxy_comment_start author="cecilia" timestamp="20160609T172708+0200" comment="Before publication, verify that cell content don&apos;t bleed."?>
       <title>Data entry events</title>
@@ -1191,5 +1198,26 @@ dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
       utilize the &quot;files&quot; Web API resource and keep your callback functions in a single
       file, where you let the JavaScript code take action based on which data set is currently
       loaded.</para>
+    <section>
+      <title>Functions</title>
+      <para>The DHIS 2 data entry module contains Javascript API functions which can be accessed
+        from custom data entry forms.</para>
+      <para><emphasis role="bold">dhis2.de.api.getSelections</emphasis>: This function returns a
+        Javascript object which contains properties for all dimensions with corresponding values for
+        the identifiers of the selected options. It contains properties for "ds" (data set), "pe"
+        (period), "ou" (organisation unit) and identifiers for all data sete categories.</para>
+      <para>An example response looks like
+        this:<screen>{
+ +  ds: "lyLU2wR22tC",
+ +  pe: "201605",
+ +  ou: "g8upMTyEZGZ",
+ +  LFsZ8v5v7rq: "CW81uF03hvV",
+ +  yY2bQYqNt0o: "yMj2MnmNI8L"
+ +}</screen></para>
+      <para>Example Javascript usage of this
+        function:<screen>var sel = dhis2.de.api.getSelections();
+ +var orgUnit = sel["ou"];
+ +var partner = sel["LFsZ8v5v7rq"];</screen></para>
+    </section>
   </section>
 </chapter>
