@@ -10,7 +10,9 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title xml:id="dashboards">Dashboards</title>
+  <title xml:id="dashboards"
+    ><?oxy_comment_start author="cecilia" timestamp="20160623T081519+0200" comment="At next revision:
+Review topic completely. Consider moving message function to separate section." flag="done"?>Dashboards<?oxy_comment_end?></title>
   <para>Dashboards are intended to provide quick access to different analytical objects (maps, charts, reports, tables, etc) to an individual user. Dashboards can also be shared with user groups. For instance, a user or administrator could create a dashboard called &quot;Malaria&quot; which might contain all relevant information on malaria. This dashboard could then be shared with the user group called &quot;Malaria control&quot;, which might consist of all users of the malaria control programme. All users within this group would then be able to view the same dashboard.</para>
   <section xml:id="dashboards_setup">
     <title>Setting up the dashboard</title>
@@ -100,51 +102,197 @@
       </itemizedlist></para>
   </section>
   <section>
-    <title xml:id="dashboard_messages">Messages and feedback</title>
-    <para>DHIS 2 has certain functions to facilitate communication between different users and user groups. This type of communication is important to facilitate feedback regarding data quality,  timeliness of submissions, or to simply answer a question which a particular user may have. </para>
-    <para>Feedback messages are sent to a particular group of users and can be sent by all users who
-      have access to the dashboard module. In order to enable the receipt of feedback messages sent
-      from the dashboard, you must set the system setting &quot;Feedback recipients&quot; which is
-      available from the Maintenance-&gt;System settings dialog. Be sure to define a user group
-      (e.g. &quot;Feedback recipients&quot;) with all of the users who should receive feedback
-      messages. Refer to the section in this manual on &quot;User groups&quot; for more information
-      of how to do this. Once the &quot;Feedback recipients&quot; user group has been defined, each
-      time a feedback message is sent, it will appear as a message in each of the &quot;Feedback
-      recipients&quot; message queue within DHIS 2. Note that messages will not be sent to users
-      email addresses, but will only appear within the DHIS 2 application. </para>
-    <para>To send a new feedback message, simply select &quot;Write feedback&quot; from the dashboard. Provide a subject and text in the respective text boxes. The message will appear in all of the specified users message queue. </para>
-    <para>Messages can be sent to either a specific user, user  group or groups of users who have been assigned to particular organisation units. To write a new message, simply click &quot;Messages&quot; from the dashboard screen and then press the &quot;Write message&quot; button.. Select an organisation unit (or group of organisation units) from the &quot;Recipients&quot; organisational unit tree. In the &quot;To user&quot; box you can select specific users or user groups. Provide a Subject and Text. To send the message, press the &quot;Send&quot; button. You can discard the message by pressing the &quot;Discard&quot; button as seen in the screenshot below.</para>
+    <?oxy_comment_start author="cecilia" timestamp="20160623T082359+0200" comment="Function is set up by system admin or similar role." flag="done"?>
+    <title xml:id="dashboard_messages">Messages and
+      <?oxy_comment_start author="cecilia" timestamp="20160623T083019+0200" comment="For next revision:
+Move section to a chapter called Communication within DHIS or similar
+Even Send message to other users." flag="done"?>feedback<?oxy_comment_end?>
+      messages</title>
+    <?oxy_comment_end?>
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="90%" align="center" scale="70" fileref="resources/images/dashboard/dashboard_message.png"/>
+          <?oxy_comment_start author="cecilia" timestamp="20160623T084850+0200" comment="Will not replace graphic, do not want to show feedback message options to the &quot;normal&quot; user." flag="done"?>
+          <imagedata width="100%" align="center"
+            fileref="resources/images/dashboard/dashboard_messages_queue.png"/>
+          <?oxy_comment_end?>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>To read messages which have been sent to you, select &quot;Messages&quot; from the &quot;Dashboard&quot; . You messages will be displayed as a list. Click the desired message to read all of the messages in this particular conversation. </para>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="100%" align="center" fileref="resources/images/dashboard/dashboard_messages_queue.png"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
+    <para>DHIS 2 has a message function that allows different users and user groups to communicate
+      with each other. With this function you can for example recieve feedback regarding data
+      quality and timeliness of submissions, or answer questions from a particular user.</para>
+    <note>
+      <para>Messages are not sent to users' e-mail addresses, the messages only appear within DHIS
+        2.</para>
+    </note>
+    <itemizedlist>
+      <listitem>
+        <para>You can send messages to either a specific user, user group or groups of users who
+          have been assigned to particular organisation units.</para>
+      </listitem>
+      <listitem>
+        <para>All users that have access to the dashboard can send a feedback message. Feedback
+          messages are routed to a particular group of users.</para>
+      </listitem>
+    </itemizedlist>
+    <note>
+      <para>To configure the feedback message function, you must:</para>
+      <orderedlist>
+        <listitem>
+          <?oxy_comment_start author="cecilia" timestamp="20160623T113416+0200" comment="At next revision:
+Add link to correct section in user guide. 
+
+Removed text for now since it is unclear which section the reference point to:
+Refer to the section in this manual on &quot;User groups&quot; for more information of how to do this." flag="done"?>
+          <para>Create a user group (for example &quot;Feedback recipients&quot;) with all of the
+            users who should receive feedback messages.  </para>
+          <?oxy_comment_end?>
+        </listitem>
+        <listitem>
+          <para>Go to  <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+              >Settings</emphasis> > <emphasis role="bold">General</emphasis> >  <emphasis
+              role="bold">Feedback recipients</emphasis> and select the user group.</para>
+        </listitem>
+      </orderedlist>
+      <para>Each time a feedback message is sent, it will then appear as a message in the inbox of
+        each member of the user group.</para>
+    </note>
     <section>
-      <title>Feedback tickets</title>
-      <para>Some new features have been added to the "write feedback" tool that are unavailable to normal messages such as ticket
-        status, priority and internal replies. Users can use these new features if they have been granted "Manage ticket" authority. 
-      </para>
-      <para>All tickets have the status "open" when first created. To keep better track of the tickets that exist, 
-      you can change the status of tickets to "invalid", "pending" or "solved". Ticket managers can 
-      filter messages in their inbox based on the ticket status. This makes it easier to 
-        switch between tickets and normal messages.</para>
-      <para>Tickets can also be marked with different priorities such as 
-        "none", "low", "medium", "high". By using ticket priorities it's easier for you to keep track of which tickets
-        needs to be resolved first, and which tickets can wait.</para>
-      <para>When working in a team of ticket managers, you can discuss tickets in the same message
-        conversation as the ticket. Use the "Internal reply" button to reply to tickets 
-        that can only be seen by other managers. By doing so, you will keep any sensitive or technical
-        discussions away from the reporting user.</para>
+      <title>Create and read messages</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="80%" align="center" scale="70"
+              fileref="resources/images/dashboard/dashboard_message.png"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <para>To create a message:</para>
+      <orderedlist>
+        <listitem>
+          <para>From the <emphasis role="bold">Dashboard</emphasis>, click <emphasis role="bold"
+              >Messages</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Write message</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Define who you want to receive the message. You can send a message to organisation
+            units, users and user groups.</para>
+          <itemizedlist>
+            <listitem>
+              <para>In the <emphasis role="bold">To org unit</emphasis> field, select the
+                organisation units or group of organisation units you want to send the message
+                to.</para>
+            </listitem>
+            <listitem>
+              <para>In the <emphasis role="bold">To user</emphasis> field, select the users or user
+                groups you want to send the message to.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>Type a subject and a message.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Send</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+      <para>To read a message:</para>
+      <orderedlist>
+        <listitem>
+          <para>From the <emphasis role="bold">Dashboard</emphasis>, click <emphasis role="bold"
+              >Messages</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Click a message.</para>
+          <para>If the message is part of a conversation, you'll see all messages in this
+            conversation.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Create a feedback message</title>
+      <orderedlist>
+        <listitem>
+          <para>From the <emphasis role="bold">Dashboard</emphasis>, click <emphasis role="bold"
+              >Write feedback</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Type a subject and a message.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Send</emphasis>.</para>
+          <para>The message will appear in all of the specified users' message inboxes.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Manage feedback messages</title>
+      <note>
+        <para>You will only see feedback messages and have access to the feedback handling options
+          if you are a member of the user group that is set up to handle feedback messages.</para>
+      </note>
+      <para>You'll receive
+        <?oxy_comment_start author="cecilia" timestamp="20160623T095949+0200" comment="For SME: How do you see what is a feedback message and what is a normal message?"?>feedback<?oxy_comment_end?>
+        messages to your <emphasis role="bold">Messages</emphasis> inbox. For feedback messages you
+        have the following options in addition to the messages options:</para>
+      <table frame="all">
+        <title>Feedback message handling options</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+          <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+          <thead>
+            <row>
+              <entry>Function</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                <para>Set status</para>
+              </entry>
+              <entry>
+                <para>All feedback messages get the status <emphasis role="bold">Open</emphasis>
+                  when created.</para>
+                <para>To keep track of the feedback messages that exist, you can change the status
+                  to <emphasis role="bold">Invalid</emphasis>, <emphasis role="bold"
+                    >Pending</emphasis> or <emphasis role="bold">Solved</emphasis>.</para>
+                <para>You can filter messages in your inbox based on their status. This makes it
+                  easier to switch between feedback messages and normal messages.</para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>Set priority</para>
+              </entry>
+              <entry>
+                <para>You can mark feedback messages with different priorities: <emphasis
+                    role="bold">None</emphasis>, <emphasis role="bold">Low</emphasis>, <emphasis
+                    role="bold">Medium</emphasis> or <emphasis role="bold">High</emphasis>. </para>
+                <para>Setting the priority makes it easier to keep track of which feedback messages
+                  you need resolved first, and which feedback messages that can wait.</para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>Write internal reply</para>
+              </entry>
+              <entry>
+                <para>When you work in a team of feedback message
+                  <?oxy_comment_start author="cecilia" timestamp="20160623T101148+0200" comment="For SME: What&apos;s the correct role name?"?>handling
+                  managers<?oxy_comment_end?>, you might want to discuss the feedback message before
+                  sending an answer to the sender. You can keep this discussion in the same message
+                  conversation as the feedback message itself.</para>
+                <para>To send a reply that can only be seen by other managers, click <emphasis
+                    role="bold">Internal reply</emphasis>.</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
     </section>
   </section>
 </chapter>
