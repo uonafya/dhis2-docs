@@ -9354,8 +9354,8 @@ interval=WEEK" -u admin:district</screen></para>
       <title>Sending/Posting Program Message</title>
       <para>Program Message holds alert or reminder data that needs to be sent to concerned person via Delivery channels. Currently we are supporting only two Delivery Channels SMS and EMAIL but more can be added if needed. 
         In order to use these channels, SMS and EMAIL setting should be in place prior to sending messages using these channels. 
-      There are four different type of recipients which are listed below. In case of TrackedEntityInstance and OrganisationUnit, system will fetch their respective phoneNumber and email based on which Delivery Channel is specified in payload.
-      Raw phoneNumbers and emailAddresses can also be specified to send messages to.
+      There are four different type of recipients which are listed below. In case of TrackedEntityInstance and OrganisationUnit, system will fetch their respective phone Number and email address based on Delivery Channel specified in payload.
+      Raw phone Numbers and email Addresses can also be used as recipients.
       <itemizedlist>
         <listitem>
           <para> TrackedEntityInstance</para>
@@ -9376,7 +9376,9 @@ interval=WEEK" -u admin:district</screen></para>
       <screen>/api/24/messages/</screen>
       <screen>{
     &quot;recipients&quot;: {
-      &quot;trackedEntityInstanceId&quot;:&quot;UN810PwyVYO&quot;
+      &quot;trackedEntityInstanceId&quot;{
+      &quot;id&quot;: &quot;UN810PwyVYO&quot;
+      }
     },    
     &quot;programStageInstance&quot;: {
     &quot;id&quot;: &quot;pSllsjpfLH2&quot;
@@ -9430,14 +9432,6 @@ interval=WEEK" -u admin:district</screen></para>
               <row>
                 <entry>organisationUnit</entry>
                 <entry>GET /api/24/messages?ou=Sllsjdhoe3</entry>
-              </row>
-              <row>
-                <entry>phoneNumber</entry>
-                <entry>GET /api/24/messages?phoneNumber=4740XXXXX</entry>
-              </row>
-              <row>
-                <entry>emailAddress</entry>
-                <entry>GET /api/24/messages?emailAddress=user@domain.com</entry>
               </row>
               <row>
                 <entry>processedDate</entry>
