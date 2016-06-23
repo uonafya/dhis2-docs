@@ -466,7 +466,8 @@ https://www.google.com/permissions/trademark/trademark-list.html
       database has coordinates and aggregated data values for these organisation units they will
       appear on the map. </para>
     <note>
-      <para>The DHIS 2 data mart must be run in order to have aggregated values available.</para>
+      <para>The DHIS 2 analytics tables must be refreshed in order to have aggregated data values
+        available.</para>
     </note>
     <screenshot>
       <title>Thematic mapping</title>
@@ -689,6 +690,52 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </tgroup>
       </table>
     </section>
+  </section>
+  <section>
+    <title>Manage Earth Engine layer</title>
+    <para>The Earth Engine layer lets you display satellite imagery and geospatial datasets from
+      Google's vast catalog. This layer is useful in combination with thematic and event layers to
+      enhance analysis. The following layers are currently supported:<itemizedlist>
+        <listitem>
+          <para>Elevation: Metres above sea level.</para>
+        </listitem>
+        <listitem>
+          <para>Nighttime lights: Lights from cities, towns, and other sites with persistent
+            lighting, including gas flares (from 2013).</para>
+        </listitem>
+        <listitem>
+          <para>Population density: Population in 100 x 100 m grid cells (from 2010).</para>
+        </listitem>
+      </itemizedlist></para>
+      <screenshot>
+      <title>Earth engine population density layer</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="100%" fileref="resources/images/gis/gis_earth_engine_layer_population.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+      </screenshot>
+      <section>
+        <title>Create or modify an Earth Engine layer</title>
+        <orderedlist>
+          <listitem><para>In the top menu, click the Earth Engine layer icon.</para></listitem>
+        <listitem>
+          <para>Select a <emphasis role="bold">dataset</emphasis>, e.g. "Elevation".</para>
+        </listitem>
+        <listitem>
+          <para>Select <emphasis role="bold">min / max values</emphasis>. The meaning of those
+            values depend on which data set you select.</para>
+        </listitem>
+        <listitem>
+          <para>Select a <emphasis role="bold">color scale</emphasis> and the number of <emphasis
+              role="bold">steps</emphasis> (meaning number of distinct colors in the color
+            scale).</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Update</emphasis>. </para>
+        </listitem>
+        </orderedlist>            
+      </section>
   </section>
   <section xml:id="gisFavoriteMapView">
     <title>Manage map favorites</title>
