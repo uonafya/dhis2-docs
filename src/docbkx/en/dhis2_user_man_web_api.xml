@@ -3606,7 +3606,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           <tgroup cols="3">
             <colspec colnum="1" colname="c1" colwidth="1*"/>
             <colspec colnum="2" colname="c2" colwidth="4*"/>
-            <colspec colnum="2" colname="c2" colwidth="1*"/>
+            <colspec colnum="3" colname="c3" colwidth="1*"/>
             <thead>
               <row>
                 <entry>name</entry>
@@ -3668,7 +3668,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           <tgroup cols="3">
             <colspec colnum="1" colname="c1" colwidth="1*"/>
             <colspec colnum="2" colname="c2" colwidth="4*"/>
-            <colspec colnum="2" colname="c2" colwidth="1*"/>
+            <colspec colnum="3" colname="c3" colwidth="1*"/>
             <thead>
               <row>
                 <entry>name</entry>
@@ -3935,7 +3935,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           <tgroup cols="3">
             <colspec colnum="1" colname="c1" colwidth="1*"/>
             <colspec colnum="2" colname="c2" colwidth="4*"/>
-            <colspec colnum="2" colname="c2" colwidth="1*"/>
+            <colspec colnum="3" colname="c3" colwidth="1*"/>
             <thead>
               <row>
                 <entry>name</entry>
@@ -8157,66 +8157,39 @@ ORDER BY oul.level, par.name, ou.name</screen>
   <section>
     <title>Data usage analytics</title>
     <para>The usage analytics API lets you access information about how people are using DHIS 2
-      <?oxy_insert_start author="CPersson" timestamp="20160502T102626+0200"?>based
-      on<?oxy_insert_end?> data analysis. When users access favorites, an event
-      <?oxy_insert_start author="CPersson" timestamp="20160502T102635+0200"?>is<?oxy_insert_end?>
-      recorded<?oxy_insert_start author="CPersson" timestamp="20160502T102646+0200"?>. The event
-      consists<?oxy_insert_end?> of the
-      <?oxy_insert_start author="CPersson" timestamp="20160502T134235+0200"?>user
-      name<?oxy_insert_end?>, the UID of the favorite, when the event took place, and the type of
-      event. The different types of events are
-      <?oxy_insert_start author="CPersson" timestamp="20160502T134752+0200"?>listed<?oxy_insert_end?>
-      in the <xref xmlns:xlink="http://www.w3.org/1999/xlink" linkend="dataUsage_eventTypes_table"/>
-      table.<?oxy_insert_start author="CPersson" timestamp="20160502T102953+0200" type="split"?></para>
-    <para><?oxy_insert_end?>The usage analytics API lets you retrieve aggregated snapshots of usage
-      analytics based on <?oxy_insert_start author="CPersson" timestamp="20160502T121750+0200"?>time
-      <?oxy_insert_end?>intervals. The API
-      capture<?oxy_insert_start author="CPersson" timestamp="20160502T121811+0200"?>s<?oxy_insert_end?>
-      user views (<?oxy_insert_start author="CPersson" timestamp="20160502T101938+0200"?>for
-      example<?oxy_insert_end?> the number of times a chart or pivot table has been viewed by
-      <?oxy_insert_start author="CPersson" timestamp="20160502T134824+0200"?>a<?oxy_insert_end?>
-      user) and saved analysis favorites
-      (<?oxy_insert_start author="CPersson" timestamp="20160502T102319+0200"?>for
-      example<?oxy_insert_end?> favorite charts and pivot tables). DHIS 2 will capture nightly
-      snapshots which are then aggregated at request.</para>
+      based on data analysis. When users access favorites, an event is recorded. The event consists
+      of the user name, the UID of the favorite, when the event took place, and the type of event.
+      The different types of events are listed in the <xref
+        xmlns:xlink="http://www.w3.org/1999/xlink" linkend="dataUsage_eventTypes_table"/>
+      table.</para>
+    <para>The usage analytics API lets you retrieve aggregated snapshots of usage analytics based on
+      time intervals. The API captures user views (for example the number of times a chart or pivot
+      table has been viewed by a user) and saved analysis favorites (for example favorite charts and
+      pivot tables). DHIS 2 will capture nightly snapshots which are then aggregated at
+      request.</para>
     <section>
       <title>Request query parameter</title>
-      <para>The usage analytics (data statistics) API supports two
-        operations:<?oxy_delete author="CPersson" timestamp="20160502T135303+0200" content=" "?></para>
+      <para>The usage analytics (data statistics) API supports two operations:</para>
       <itemizedlist>
         <listitem>
-          <para>POST<?oxy_insert_start author="CPersson" timestamp="20160502T121856+0200"?>:
-            <?oxy_insert_end?>create<?oxy_insert_start author="CPersson" timestamp="20160502T121902+0200"?>s<?oxy_insert_end?>
-            a view event</para>
+          <para>POST: creates a view event</para>
         </listitem>
         <listitem>
-          <para>GET<?oxy_insert_start author="CPersson" timestamp="20160502T121908+0200"?>:<?oxy_insert_end?>
-            retrieve<?oxy_insert_start author="CPersson" timestamp="20160502T121912+0200"?>s<?oxy_insert_end?>
-            aggregated statistics</para>
+          <para>GET: retrieves aggregated statistics</para>
         </listitem>
       </itemizedlist>
     </section>
     <section>
-      <title>Creat<?oxy_insert_start author="CPersson" timestamp="20160502T121918+0200"?>e<?oxy_insert_end?>
-        view events (POST)</title>
+      <title>Create view events (POST)</title>
       <para>The usage analytics API lets you create event views. The dataStatisticsEventType
         parameter describes what type of item was viewed. The favorite parameter indicates the
-        identifier of the relevant
-        favorite.<?oxy_delete author="CPersson" timestamp="20160502T134857+0200" content=" "?></para>
-      <?oxy_insert_start author="CPersson" timestamp="20160502T103115+0200"?>
-      <example>
-        <title>URL that creates a new event view of charts</title>
-        <para>
-          <screen>POST /api/dataStatistics?eventType=CHART_VIEW&amp;favorite=LW0O27b7TdD</screen>
-        </para>
-      </example>
-      <?oxy_insert_end?>
+        identifier of the relevant favorite.</para>
+      <para>URL that creates a new event view of
+        charts:<screen>POST /api/dataStatistics?eventType=CHART_VIEW&amp;favorite=LW0O27b7TdD</screen></para>
       <para>A successful save operation returns HTTP status code 201. The table below shows the
         supported types of events.</para>
       <table frame="all" xml:id="dataUsage_eventTypes_table">
-        <title><?oxy_insert_start author="CPersson" timestamp="20160502T122004+0200"?>Supported
-          <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T122006+0200"?>e<?oxy_insert_end?>vent
-          types</title>
+        <title>Supported event types</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
           <colspec colname="c2" colnum="2" colwidth="1.63*"/>
@@ -8260,9 +8233,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       </table>
     </section>
     <section>
-      <title><?oxy_insert_start author="CPersson" timestamp="20160502T121926+0200"?>Retrieve
-        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T121928+0200"?>a<?oxy_insert_end?>ggregated
-        usage analytics report (GET)</title>
+      <title>Retrieve aggregated usage analytics report (GET)</title>
       <para>The usage analytics (data statistics) API lets you specify certain query parameters when
         asking for an aggregated report.<table frame="all">
           <title>Query parameters for aggregated usage analytics (data statistics)</title>
@@ -8301,36 +8272,16 @@ ORDER BY oul.level, par.name, ou.name</screen>
             </tbody>
           </tgroup>
         </table></para>
-      <para>The startDate and endDate parameters
-        <?oxy_insert_start author="CPersson" timestamp="20160502T134320+0200"?>specify<?oxy_insert_end?>
-        the period for which
-        <?oxy_insert_start author="CPersson" timestamp="20160502T134336+0200"?>snapshots<?oxy_insert_end?>
-        are to be used in the aggregation.
-        <?oxy_insert_start author="CPersson" timestamp="20160502T122044+0200"?>You must format
-        <?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T122048+0200" content="T"?><?oxy_insert_start author="CPersson" timestamp="20160502T122048+0200"?>t<?oxy_insert_end?>he
-        dates as shown <link xmlns:xlink="http://www.w3.org/1999/xlink" linkend="entry_ayf_gyy_jw"
-          >above</link>. If
-        <?oxy_insert_start author="CPersson" timestamp="20160502T103511+0200"?>no snapshots
-        are<?oxy_insert_end?> saved in the specified
-        period<?oxy_insert_start author="CPersson" timestamp="20160502T103525+0200"?>,<?oxy_insert_end?>
-        an empty list
-        <?oxy_insert_start author="CPersson" timestamp="20160502T122106+0200"?>is<?oxy_insert_end?>
-        sent back. The parameter called interval
-        specifie<?oxy_insert_start author="CPersson" timestamp="20160502T134400+0200"?>s<?oxy_insert_end?>
-        what type of aggregation will be done.</para>
-      <?oxy_insert_start author="CPersson" timestamp="20160502T103543+0200"?>
-      <example>
-        <title><?oxy_insert_end?>API query
-          <?oxy_insert_start author="CPersson" timestamp="20160502T103543+0200"?>that creates a
-          query for a yearly aggregation</title>
-        <para>
-          <screen>GET /api/dataStatistics?startDate=2014-01-02&amp;endDate=2016-01-01&amp;interval=MONTH</screen>
-        </para>
-      </example>
-      <?oxy_insert_end?>
+      <para>The startDate and endDate parameters specify the period for which snapshots are to be
+        used in the aggregation. You must format the dates as shown <link
+          xmlns:xlink="http://www.w3.org/1999/xlink" linkend="entry_ayf_gyy_jw">above</link>. If no
+        snapshots are saved in the specified period, an empty list is sent back. The parameter
+        called interval specifies what type of aggregation will be done.</para>
+      <para>API query that creates a query for a yearly
+        aggregation:<screen>GET /api/dataStatistics?startDate=2014-01-02&amp;endDate=2016-01-01&amp;interval=MONTH</screen></para>
     </section>
     <section>
-      <title>Retrieve top favortites</title>
+      <title>Retrieve top favourites</title>
       <para>The usage analytics API lets you retrieve the top favorites used in DHIS 2, and by
           user.<table frame="all">
           <title>Query parameters for top favorites</title>
@@ -8382,12 +8333,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
     <section>
       <title>Response format</title>
-      <para><?oxy_insert_start author="CPersson" timestamp="20160502T103902+0200"?>You can return
-        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T103906+0200"?>t<?oxy_insert_end?>he
-        <?oxy_insert_start author="CPersson" timestamp="20160502T104102+0200"?>aggregated data in a
-        <?oxy_insert_end?>usage analytics response in
-        <?oxy_insert_start author="CPersson" timestamp="20160502T104033+0200"?>several<?oxy_insert_end?>
-        representation formats. The default format is JSON. The available formats and content types are<?oxy_insert_start author="CPersson" timestamp="20160502T103949+0200"?>:<?oxy_insert_end?><itemizedlist>
+      <para>You can return the aggregated data in a usage analytics response in several
+        representation formats. The default format is JSON. The available formats and content types are:<itemizedlist>
           <listitem>
             <para>json (application/json)</para>
           </listitem>
@@ -8398,38 +8345,21 @@ ORDER BY oul.level, par.name, ou.name</screen>
             <para>html (text/html)</para>
           </listitem>
         </itemizedlist></para>
-      <?oxy_insert_start author="CPersson" timestamp="20160502T104215+0200" type="surround"?>
-      <example>
-        <?oxy_insert_end?>
-        <?oxy_insert_start author="CPersson" timestamp="20160502T105130+0200"?>
-        <title><?oxy_insert_end?>API query
-          <?oxy_insert_start author="CPersson" timestamp="20160502T105130+0200"?>that requests an
-          usage analytics response in XML format </title>
-        <?oxy_insert_end?>
-        <para>
-          <screen>/api/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen>
-        </para>
-      </example>
-      <para><?oxy_insert_start author="CPersson" timestamp="20160502T135057+0200"?>You must retrieve
-        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T135103+0200"?>t<?oxy_insert_end?>he
-        aggregated usage analytics response
-        <?oxy_insert_start author="CPersson" timestamp="20160502T135109+0200"?>with<?oxy_insert_end?>
-        the HTTP GET method. This allows
-        <?oxy_insert_start author="CPersson" timestamp="20160502T104311+0200"?>you to link directly
-        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T135146+0200"?>from
-        Web pages and other HTTP-enabled clients<?oxy_insert_end?> to usage analytics responses. To
-        do functional testing use the
-        <?oxy_comment_start author="yrjanaff" timestamp="20160623T095607+0200" comment="cURL is a developer testing tool for API queries, so the c in cURL must not be removed."?>cURL<?oxy_comment_end?>
-        library.<?oxy_delete author="CPersson" timestamp="20160502T104442+0200" content=" "?></para>
-      <?oxy_insert_start author="CPersson" timestamp="20160502T105030+0200"?>
-      <example>
-        <title>Usage analytics response in JSON format</title>
-        <para>Execute this command against the demo database to get an usage analytics response in
-          JSON format:
-          <screen>curl "play.dhis2.org/demo/api/dataStatistics?startDate=2016-02-01&amp;endDate=2016-02-14&amp;
-interval=WEEK" -u admin:district</screen></para>
-        <para>The JSON response looks like this:
-          <screen>[
+      <para>API query that requests an usage analytics response in XML
+        format:<screen>/api/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen></para>
+      <para>You must retrieve the aggregated usage analytics response with the HTTP GET method. This
+        allows you to link directly from Web pages and other HTTP-enabled clients to usage analytics
+        responses. To do functional testing use the
+        <?oxy_comment_start author="yrjanaff" timestamp="20160623T095607+0200" comment="cURL is a developer testing tool for API queries, so the c in cURL must not be removed." flag="done"?>cURL<?oxy_comment_end?>
+        library.</para>
+      <para>Execute this command against the demo database to get an usage analytics response in
+        JSON format: </para>
+      <para>
+        <screen>curl "play.dhis2.org/demo/api/dataStatistics?startDate=2016-02-01&amp;endDate=2016-02-14&amp;
+interval=WEEK" -u admin:district</screen>
+      </para>
+      <para>The JSON response looks like this:
+        <screen>[
   {
     "year": 2016,
     "week": 5,
@@ -8485,8 +8415,6 @@ interval=WEEK" -u admin:district</screen></para>
     "users": 953
   }
 ]</screen></para>
-      </example>
-      <?oxy_insert_end?>
     </section>
   </section>
   <section>
