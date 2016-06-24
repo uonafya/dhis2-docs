@@ -3809,6 +3809,48 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                       <para>*Either dataElement or trackedEntityAttribute must be specified.</para>
                     </listitem>
                     <listitem>
+                      <para><emphasis role="bold">WARNINGONCOMPLETINON</emphasis> - Show a warning
+                        to the user on the "Complete form" dialog, but allowing the user to complete
+                        the event.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">content</emphasis> - if defined, content is
+                            a static part that is displayed at the end of the error message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">data</emphasis> - if defined, data forms an
+                            expression that is evaluated and added to the end of the warning
+                            message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">dataElement</emphasis> - if defined, the
+                            warning message prefixed with the name/formName of the data
+                            element.</para>
+                        </listitem>
+                      </itemizedlist>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">ERRORONCOMPLETION</emphasis> - Show an error to
+                        the user on in a modal window when the user tries to complete the event. The
+                        user is prevented from completing the event.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">content</emphasis> - if defined, content is
+                            a static part that is displayed in the start of the error
+                            message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">data</emphasis> - if defined, data forms an
+                            expression that is evaluated and added to the end of the error
+                            message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">dataElement</emphasis> - if defined, the
+                            error message is linked to this data element.</para>
+                        </listitem>
+                      </itemizedlist>
+                    </listitem>
+                    <listitem>
                       <para><emphasis role="bold">CREATEEVENT</emphasis> - Create an event within
                         the same enrollment.</para>
                       <itemizedlist>
@@ -3843,23 +3885,24 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                 <entry>content</entry>
                 <entry>Used for user messages in the different actions. See the actionType overview
                   for a detailed explanation for how it is used in each of the action types.
-                  Compulsory for SHOWWARNING, SHOWERROR, DISPLAYTEXT and DISPLAYKEYVALUEPAIR.
-                  Optional for HIDEFIELD and ASSIGN.</entry>
+                  Compulsory for SHOWWARNING, SHOWERROR, WARNINGONCOMPLETION, ERRORONCOMPLETION,
+                  DISPLAYTEXT and DISPLAYKEYVALUEPAIR. Optional for HIDEFIELD and ASSIGN.</entry>
                 <entry>See description</entry>
               </row>
               <row>
                 <entry>data</entry>
                 <entry>Used for expressions in the different actions. See the actionType overview
                   for a detailed explanation for how it is used in each of the action types.
-                  Compulsory for ASSIGN. Optional for SHOWWARNING, SHOWERROR, DISPLAYTEXT,
-                  CREATEEVENT and DISPLAYKEYVALUEPAIR</entry>
+                  Compulsory for ASSIGN. Optional for SHOWWARNING, SHOWERROR, WARNINGONCOMPLETION,
+                  ERRORONCOMPLETION, DISPLAYTEXT, CREATEEVENT and DISPLAYKEYVALUEPAIR</entry>
                 <entry>See description</entry>
               </row>
               <row>
                 <entry>dataElement</entry>
                 <entry>Used for linking rule actions to dataElements. See the actionType overview
                   for a detailed explanation for how it is used in each of the action types.
-                  Optional for SHOWWARNING, SHOWERROR, ASSIGN and HIDEFIELD</entry>
+                  Optional for SHOWWARNING, SHOWERROR, WARNINGONCOMPLETION, ERRORONCOMPLETION,
+                  ASSIGN and HIDEFIELD</entry>
                 <entry>See description</entry>
               </row>
               <row>
@@ -3955,6 +3998,13 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                 <entry>Used for linking the programRuleVariable to a trackedEntityAttribute.
                   Compulsory for sourceType TEI_ATTRIBUTE.</entry>
                 <entry>See description</entry>
+              </row>
+              <row>
+                <entry>useCodeFor- OptionSet</entry>
+                <entry>If checked, the variable will be populated with the code - not the name -
+                  from any linked option set. Default is unchecked, meaning that the name of the
+                  option is populated.</entry>
+                <entry/>
               </row>
               <row>
                 <entry>programStage</entry>
@@ -5055,8 +5105,8 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     </section>
     <section>
       <title>Tickets</title>
-      <para>You can create tickets using the "write feedback" tool. Tickets are the same as messages. You can give a status or a 
-      priority to a ticket. To do this, use these API
+      <para>You can create tickets using the "write feedback" tool. Tickets are the same as
+        messages. You can give a status or a priority to a ticket. To do this, use these API
         endpoints:<screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/status</screen><screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/priority</screen></para>
       <para>
         <table frame="all">
@@ -9275,7 +9325,7 @@ interval=WEEK" -u admin:district</screen></para>
   &quot;parameter2&quot;: &quot;value2&quot;
   }
 }</screen>
-     
+
       <para>The various gateway configurations can be instantiated using the endpoints listed
         below.</para>
       <table frame="all">
@@ -9314,23 +9364,24 @@ interval=WEEK" -u admin:district</screen></para>
   </section>
   <section>
     <title>SMSCommand</title>
-    <para>SMSCommands are being used to collect data through SMS. These commands belong to specific Parser Type. Each parser has different functionality.</para>
+    <para>SMSCommands are being used to collect data through SMS. These commands belong to specific
+      Parser Type. Each parser has different functionality.</para>
     <section>
-      <title>API End Points</title> 
+      <title>API End Points</title>
       <para>The list of commands can be retrieved using GET.</para>
       <screen>GET /api/24/sms/commands</screen>
       <para>One particular command can also be retreived using GET. Where parameter <emphasis
-        role="italic">type</emphasis> can be one of the below mentioned parsers</para>
+          role="italic">type</emphasis> can be one of the below mentioned parsers</para>
       <screen>GET /api/24/sms/commands/{commandName}?type=EVENT_REGISTRATION_PARSER</screen>
       <itemizedlist>
         <listitem>
           <para>KEY_VALUE_PARSER</para>
         </listitem>
         <listitem>
-          <para>J2ME_PARSER</para> 
+          <para>J2ME_PARSER</para>
         </listitem>
         <listitem>
-          <para>ALERT_PARSER</para> 
+          <para>ALERT_PARSER</para>
         </listitem>
         <listitem>
           <para>UNREGISTERED_PARSER</para>
@@ -9345,38 +9396,42 @@ interval=WEEK" -u admin:district</screen></para>
           <para>EVENT_REGISTRATION_PARSER</para>
         </listitem>
       </itemizedlist>
-    </section> 
+    </section>
   </section>
   <section>
     <title>Program Message Service</title>
-    <para>Program Message holds reminders and alerts data related to specific Program or Program Stage. Web APIs are exposed to handle CRUD operations on Program Messages and we will go through them in the below section.</para>
+    <para>Program Message holds reminders and alerts data related to specific Program or Program
+      Stage. Web APIs are exposed to handle CRUD operations on Program Messages and we will go
+      through them in the below section.</para>
     <section>
       <title>Sending/Posting Program Message</title>
-      <para>Program Message holds alert or reminder data that needs to be sent to concerned person via Delivery channels. Currently we are supporting only two Delivery Channels SMS and EMAIL but more can be added if needed. 
-        In order to use these channels, SMS and EMAIL setting should be in place prior to sending messages using these channels. 
-      There are four different type of recipients which are listed below. In case of TrackedEntityInstance and OrganisationUnit, system will fetch their respective phoneNumber and email based on which Delivery Channel is specified in payload.
-      Raw phoneNumbers and emailAddresses can also be specified to send messages to.
-      <itemizedlist>
-        <listitem>
-          <para> TrackedEntityInstance</para>
-        </listitem>
-        <listitem>
-          <para>OrganisationUnit</para> 
-        </listitem>
-        <listitem>
-          <para>List of PhoneNumbers</para> 
-        </listitem>
-        <listitem>
-          <para>List of EmailAddresses</para>
-        </listitem>
-      </itemizedlist>
-        
-      Below is the sample json payload for sending messages using POST.
-      </para>
+      <para>Program Message holds alert or reminder data that needs to be sent to concerned person
+        via Delivery channels. Currently we are supporting only two Delivery Channels SMS and EMAIL
+        but more can be added if needed. In order to use these channels, SMS and EMAIL setting
+        should be in place prior to sending messages using these channels. There are four different
+        type of recipients which are listed below. In case of TrackedEntityInstance and
+        OrganisationUnit, system will fetch their respective phone Number and email address based on
+        Delivery Channel specified in payload. Raw phone Numbers and email Addresses can also be
+        used as recipients. <itemizedlist>
+          <listitem>
+            <para> TrackedEntityInstance</para>
+          </listitem>
+          <listitem>
+            <para>OrganisationUnit</para>
+          </listitem>
+          <listitem>
+            <para>List of PhoneNumbers</para>
+          </listitem>
+          <listitem>
+            <para>List of EmailAddresses</para>
+          </listitem>
+        </itemizedlist> Below is the sample json payload for sending messages using POST. </para>
       <screen>/api/24/messages/</screen>
       <screen>{
     &quot;recipients&quot;: {
-      &quot;trackedEntityInstanceId&quot;:&quot;UN810PwyVYO&quot;
+      &quot;trackedEntityInstanceId&quot;{
+      &quot;id&quot;: &quot;UN810PwyVYO&quot;
+      }
     },    
     &quot;programStageInstance&quot;: {
     &quot;id&quot;: &quot;pSllsjpfLH2&quot;
@@ -9387,18 +9442,18 @@ interval=WEEK" -u admin:district</screen></para>
     &quot;text&quot;: &quot;sms testing&quot;,
     &quot;subject&quot;: &quot;Alert&quot;,
     &quot;storeCopy&quot;: false
-  }</screen> 
+  }</screen>
     </section>
 
-      <section>
-      <title>API End Points</title> 
+    <section>
+      <title>API End Points</title>
       <para>The list of messages can be retrieved using GET.</para>
       <screen>GET /api/24/messages</screen>
       <para>One particular message can also be retreived using GET.</para>
       <screen>GET /api/24/messages/{uid}</screen>
       <para>Message can be deleted using DELETE.</para>
       <screen>DELETE /api/24/messages/{uid}</screen>
-      </section>
+    </section>
     <section>
       <title>Query Program Messages</title>
       <para>API supports program message queries based on request parameters.</para>
@@ -9430,14 +9485,6 @@ interval=WEEK" -u admin:district</screen></para>
               <row>
                 <entry>organisationUnit</entry>
                 <entry>GET /api/24/messages?ou=Sllsjdhoe3</entry>
-              </row>
-              <row>
-                <entry>phoneNumber</entry>
-                <entry>GET /api/24/messages?phoneNumber=4740XXXXX</entry>
-              </row>
-              <row>
-                <entry>emailAddress</entry>
-                <entry>GET /api/24/messages?emailAddress=user@domain.com</entry>
               </row>
               <row>
                 <entry>processedDate</entry>
@@ -10601,7 +10648,8 @@ interval=WEEK" -u admin:district</screen></para>
     </section>
     <section>
       <title>Create and enroll tracked entity instances</title>
-      <para>It is also possible to both create (and update) a tracked entity instance and at the same time enroll into a program.</para>
+      <para>It is also possible to both create (and update) a tracked entity instance and at the
+        same time enroll into a program.</para>
       <screen>{
     "trackedEntity": "tracked-entity-id",
     "orgUnit": "org-unit-id",
@@ -12384,5 +12432,3 @@ curl -u username:password -X POST -d @updated_facility.json
   -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/ohie/fred/v1/facilities/&lt;uuid&gt;.json</screen>
   </section>
 </chapter>
-
-

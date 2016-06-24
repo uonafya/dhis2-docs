@@ -34,6 +34,24 @@
         </mediaobject>
       </screenshot>
     </section>
+    
+    
+    <section>
+      <title>Configure GenericHttp Gateway</title>
+      <para>Many DHIS 2 instances are using GenericHttpGateway to connect to their local gateways. These local gateways provides HTTP APIs for sending SMS. In new GenericHttpGateway it is now possible to configure url parameters provided in their APIs. For example
+        <uri>http://gateway.com/sendMessage?username=AA&amp;password=xxxxx&amp;message=testing&amp;msisdn=9999</uri>. In this url username, password, message, msisdn are parameters that are required by external gateways. Now in GenericHttp these parameters are configurable which was not possible in previous releases. 
+      Making is configurable will help DHIS 2 to interact with other gateways which have different url formats.
+      </para>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="40%" align="center" fileref="resources/images/dhis2_mobile_sms/generichttp-configuration.png"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </section>
+    
+    
   </section>
   <section xml:id="gateway.configuration">
     <title>Gateway Configurations</title>
