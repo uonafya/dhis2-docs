@@ -10,7 +10,8 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>Apps</title>
+  <title><?oxy_comment_start author="cecilia" timestamp="20160624T121338+0200" comment="At next release:
+Coordinate this section with web dev section. All content should be reviewed and reorganized." flag="done"?>Apps<?oxy_comment_end?></title>
   <para>A packaged app is an <link xl:href="https://developer.mozilla.org/en-US/docs/Open_Web_apps_and_Web_standards">Open Web
       App</link> that has all of its resources (HTML, CSS, JavaScript, app manifest, and so on)
     contained in a zip file. It can be uploaded to a DHIS 2 installation directly through the user
@@ -54,7 +55,8 @@
         &quot;url&quot;: &quot;http://me.com&quot;
     },
     &quot;default_locale&quot;: &quot;en&quot;,
-    &quot;activities&quot;: {
+    &quot;<?oxy_comment_start author="cecilia" timestamp="20160624T121102+0200" comment="At next release: 
+Explain all properties that are in activities." flag="done"?>activities<?oxy_comment_end?>&quot;: {
         &quot;dhis&quot;: {
             &quot;href&quot;: &quot;*&quot;,
             "namespace": "my-namespace"
@@ -63,36 +65,46 @@
 }</screen>
     </para>
     <para>The <emphasis role="italic">manifest.webapp</emphasis> file must be located at the root of
-      the project. Among the properties, the <emphasis role="italic">icons→48</emphasis> property is
-      used for the icon that is displayed on the list of apps that are installed on a DHIS 2
-      instance. The <emphasis role="italic">activities</emphasis> property is an dhis-specific
-      extension meant to differentiate between a standard Open Web App and an app that can be
-      installed in DHIS 2. The <emphasis role="italic">*</emphasis> value for <emphasis
-        role="italic">href</emphasis> is converted to the appropriate URL when the app is uploaded
-      and installed in DHIS 2. This value can then be used by the application&apos;s JavaScript and
-      HTML files to make calls to the DHIS 2 Web API and identify the correct location of DHIS 2
-      server on which the app has been installed. To clarify, the <emphasis role="italic"
-        >activities</emphasis> part will look similar to this after the app has been
-      installed:</para>
+      the project. Among the properties are:</para>
+    <itemizedlist>
+      <listitem>
+        <para>The <emphasis role="italic">icons→48</emphasis> property is used for the icon that is
+          displayed on the list of apps that are installed on a DHIS 2 instance.</para>
+      </listitem>
+      <listitem>
+        <para>The <emphasis role="italic">activities</emphasis> property is an dhis-specific
+          extension meant to differentiate between a standard Open Web App and an app that can be
+          installed in DHIS 2. </para>
+      </listitem>
+      <listitem>
+        <para>The <emphasis role="italic">*</emphasis> value for <emphasis role="italic"
+            >href</emphasis> is converted to the appropriate URL when the app is uploaded and
+          installed in DHIS 2. This value can then be used by the application&apos;s JavaScript and
+          HTML files to make calls to the DHIS 2 Web API and identify the correct location of DHIS 2
+          server on which the app has been installed. To clarify, the <emphasis role="italic"
+            >activities</emphasis> part will look similar to this after the app has been
+          installed:</para>
+      </listitem>
+    </itemizedlist>
     <screen>&quot;activities&quot;: {
     &quot;dhis&quot;: {
         &quot;href&quot;: &quot;http://apps.dhis2.org/demo&quot;,
         "namespace": "my-namespace"
     }
  }</screen>
-  </section>
-  <section>
     <para>The namespace property can be added if your app is utilizing the dataStore or
       userDataStore api. When adding the namespace property, only users with access to your app are
       allowed to make changes to the namespace. A namespace can only be reserved in this way once.
-      If another app tries to reserve a namespace already in use, the installation of the later app
+      If another app tries to reserve a namespace already in use, the installation of the other app
       will fail.</para>
     <para>If you have a collection of apps that want to share the same namespace, but also wish to
       reserve it, the users of the apps needs to have the authority to use the app that initially
       reserved the namespace.</para>
-    <para><emphasis>Note: Namespaces will not be created until atleast one key-value pair is present
-        in the namespace. Specifying a namespace in the manifest only restricts the access and does
-        not create any data in the namespace.</emphasis></para>
+    <note>
+      <para>Namespaces will not be created until atleast one key-value pair is present in the
+        namespace. Specifying a namespace in the manifest only restricts the access and does not
+        create any data in the namespace.</para>
+    </note>
     <para>The <emphasis>appType</emphasis> property specifies how the app will be displayed by the
       DHIS 2 instance. The possible values for appType and their effects are explained in the
       following table.</para>
@@ -135,22 +147,24 @@
     </para>
     <para>If no <emphasis>appType</emphasis> is specified in the manifest, the system will use "APP"
       by default.</para>
-    <para>To read the JSON structure into Javascript, you can use a regular AJAX request and parse
+    <para>To read the JSON structure into JavaScript, you can use a regular AJAX request and parse
       the JSON into an object. Most Javascript libraries provide some support, for instance with
       jQuery it can be done like this:</para>
     <screen>$.getJSON( &quot;manifest.webapp&quot;, function( json ) {
     var apiBaseUrl = json.activities.dhis.href + &quot;/api&quot;;
 } );</screen>
-    <para>The app can contain HTML, Javascript, CSS, images and other files which may be required to
+    <para>The app can contain HTML, JavaScript, CSS, images and other files which may be required to
       support it . The file structure could look something like this:</para>
     <screen>/
 /manifest.webapp    #manifest file (mandatory)
 /css/               #css stylesheets (optional)
 /img/               #images (optional)
 /js/&#160;               #javascripts (optional)</screen>
-    <para>Note that it is only the <filename>manifest.webapp</filename> file which must be placed in
-      the root. It is up the developer to organize CSS, images and Javascript files inside the app
-      as needed.</para>
+    <note>
+      <para>It is only the <filename>manifest.webapp</filename> file which must be placed in the
+        root. It is up the developer to organize CSS, images and JavaScript files inside the app as
+        needed.</para>
+    </note>
     <para>All the files in the project should be compressed into a standard zip archive. Note that
       the manifest.webapp file must be located on the root of the zip archive (do not include a
       parent directory in the archive). The zip archive can then be installed into DHIS 2 as you
