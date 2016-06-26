@@ -9,11 +9,96 @@
   <title>Manage indicators</title>
   <section xml:id="indicator">
     <title>About indicators</title>
-    <para>Indicators are composed of multiple data elements, and consist typically of a numerator
-      and denominator. Calculated totals do not have a denominator. You never enter indicators
-      directly in DHIS 2, you derive them from combinations of data elements and factors. Indicators
-      are used to calculate coverage rates, incidence and other values are a result of data element
-      values that have been entered into the system.</para>
+    <para>An indicator is a formula that can be composed of multiple data elements, constants,
+      organisation unit group counts and mathematical operators. The indicator consist typically of
+      a numerator and denominator. Calculated totals do not have a denominator. You never enter
+      indicators directly in DHIS 2, you derive them from combinations of data elements and factors.
+      Indicators are used to calculate coverage rates, incidence and other values are a result of
+      data element values that have been entered into the system.</para>
+    <para>The components of an indicator formula are:</para>
+    <table frame="all">
+      <title><?oxy_comment_start author="cecilia" timestamp="20160626T170812+0200" comment="Before release, tabl content must be reviewed by SME."?>Indicator<?oxy_comment_end?>
+        formula components</title>
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+        <thead>
+          <row>
+            <entry>Compontent</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              <para>Data elements</para>
+            </entry>
+            <entry>
+              <para>Data elements are substituted by the data value captured for the data
+                element.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para><?oxy_comment_start author="cecilia" timestamp="20160626T170521+0200" comment="For SME: Two constants, correct?"?>Constants<?oxy_comment_end?></para>
+            </entry>
+            <entry>
+              <para>Constants are numerical values which will remain the same for all indicator
+                calculations. This is useful in order to have a single place to change values that
+                might change over time.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Constants</para>
+            </entry>
+            <entry>
+              <para>Indicators may use of constants. Constants are static values which will be
+                applied uniformly to the indicator formula. Constants are applied AFTER data element
+                values have been aggregated.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para><?oxy_comment_start author="cecilia" timestamp="20160626T170505+0200" comment="For SME: Still valid?"?>Days<?oxy_comment_end?></para>
+            </entry>
+            <entry>
+              <para>A special operator &quot;D&quot; is available in formulas. This operator will
+                always provide the number of days for a given indicator calculation. As an example,
+                if you wish to calculate the &quot;Percentage of time vaccine refrigerator was
+                non-functional&quot;, you could define the numerator as (&quot;D-&quot;Number of
+                days vaccine refrigerator was available&quot;&quot;)/&quot;D&quot;. For example, if
+                the fridge was available 25 days in June, the indicator would be calculated as
+                (30-25/25)*100=17%. If you were however to calculate the total for Quarter 1, the
+                number of days (&quot;D&quot;) would be equal to 31+28+31=90. Thus, the
+                &quot;D&quot; parameter will always be the number of days in the period of
+                interest.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Organisation unit group counts</para>
+            </entry>
+            <entry>
+              <para>Org unit groups can be utilized in formulas and will be substituted by the
+                number of organisation units in the group. During aggregation, the org units in the
+                group will be intersected with the part of the org unit hierarchy being requested.
+                As an example, this lets you use the number of public facilities in a specific
+                district in indicators. This is useful e.g. when creating facility infrastructure
+                surveys and reports.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para><?oxy_comment_start author="cecilia" timestamp="20160626T170452+0200" comment="For SME: add description"?>Program<?oxy_comment_end?></para>
+            </entry>
+            <entry>
+              <para/>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
     <para>In the <emphasis role="bold">Maintenance</emphasis> app, you can manage the following
       indicator objects:</para>
     <table frame="all">
@@ -70,7 +155,69 @@
   </section>
   <section>
     <title><?oxy_comment_start author="cecilia" timestamp="20160624T135947+0200" comment="For SME: Is there a specific workflow to creating indicators?"?>Workflow<?oxy_comment_end?></title>
-    <para/>
+    <orderedlist>
+      <listitem>
+        <para>Create indicator types.</para>
+      </listitem>
+      <listitem>
+        <para>Create indicators.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="indicatorType">
+    <title>Create an indicator
+      <?oxy_comment_start author="cecilia" timestamp="20160626T164252+0200" comment="Before release, replace screenshot."?>type<?oxy_comment_end?></title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%" align="center"
+            fileref="resources/images/maintainence/indicator_type.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>Indicator types define a factor that will be applied during aggregation. Indicator values
+      that are calculate during a data mart export or report table generation process will appear
+      properly formatted, and will therefore not require an additional multiplier (for example 100
+      in the case of percents) for the values to appear correctly formatted.</para>
+    <note>
+      <para>As of version 2.4 of DHIS 2, the &quot;Calculated data element&quot; object has been
+        deprecated. Instead, you can create a calculated data element by creating an indicator type
+        with a factor of &quot;1&quot; and by setting the &quot;Number&quot; option to
+        &quot;Yes&quot;. The effect of setting the &quot;Number&quot; option to &quot;Yes&quot; will
+        be that the indicator will effectively not have a denominator. You will therefore only be
+        able to define a numerator, which will serve as the formula of the calculated data
+        element.</para>
+    </note>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Indicator</emphasis> > <emphasis
+            role="bold">Indicator type</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the yellow plus button.</para>
+      </listitem>
+      <listitem>
+        <para>In the
+            <?oxy_comment_start author="cecilia" timestamp="20160624T160524+0200" comment="At next releaase:
+For SME: Must the name be unique?" flag="done"?><emphasis
+            role="bold">Name</emphasis><?oxy_comment_end?> field, type the name of the indicator
+          type, for example &quot;Per cent", "Per thousand", "Per ten thousand".</para>
+      </listitem>
+      <listitem>
+        <para>Type a <emphasis role="bold">Factor</emphasis>.</para>
+        <para>The factor is the numeric factor that will be multiplied by the indicator formula
+          during the calculation of the indicator.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold"
+          >Number</emphasis><?oxy_comment_start author="cecilia" timestamp="20160626T164905+0200" comment="For SME: What does this option mean?"?></para>
+        <?oxy_comment_end?>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
     <title>Create an
@@ -139,11 +286,9 @@ For SME: Must the name be unique?" flag="done"?><emphasis
       <listitem>
         <para>Select an <emphasis role="bold">Indicator type</emphasis>. </para>
         <para>This field determines a factor that will automatically be applied during the
-          calculation of the indicator. Possible choices are determined by the Indicator Types
-          (<?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>described
-          below).<?oxy_custom_end?> For instance, a &quot;Percent&quot; indicator will automatically
-          be multiplied by a factor of 100 when exported to the data mart, so that it will display
-          as a percentage.</para>
+          calculation of the indicator. Possible choices are determined by the indicator types. For
+          example, a &quot;Percent&quot; indicator will automatically be multiplied by a factor of
+          100 when exported to the data mart, so that it will display as a percentage.</para>
       </listitem>
       <listitem>
         <para>(Optional) Select  a <emphasis role="bold">Legend set</emphasis>.</para>
@@ -165,105 +310,144 @@ Add information about what this classification is." flag="done"?>Classification<
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Edit numerator</emphasis>.</para>
+        <orderedlist>
+          <listitem>
+            <para>Type a clear
+              <?oxy_comment_start author="cecilia" timestamp="20160626T165525+0200" comment="For SME: Mandatory field? No *..."?>description<?oxy_comment_end?>
+              of the numerator.</para>
+          </listitem>
+          <listitem>
+            <para>Define the formula of the indicator by selecting the data elements that should
+              compose the numerator from the &quot;Data elements&quot; field. Simply select the data
+              element, and double click it. It then appears as part of the formula. You formula must
+              be mathematically valid, including the proper use of parentheses when necessary. You
+              can double click on each of the mathematical operator buttons below the indicator
+              formula definition to add them to your formula. </para>
+          </listitem>
+          <listitem>
+            <para>Click <emphasis role="bold">Done</emphasis> to save all changes to the
+              numerator.</para>
+          </listitem>
+        </orderedlist>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Edit denominator</emphasis>.</para>
+        <orderedlist>
+          <listitem>
+            <para>Type a clear
+              <?oxy_comment_start author="cecilia" timestamp="20160626T165525+0200" comment="For SME: Mandatory field? No *..."?>description<?oxy_comment_end?>
+              of the denominator.</para>
+          </listitem>
+          <listitem>
+            <para>Define the formula of the indicator by selecting the data elements that should
+              compose the denominator from the &quot;Data elements&quot; field. Simply select the
+              data element, and double click it. It then appears as part of the formula. You formula
+              must be mathematically valid, including the proper use of parentheses when necessary.
+              You can double click on each of the mathematical operator buttons below the indicator
+              formula definition to add them to your formula. </para>
+          </listitem>
+          <listitem>
+            <para>Click <emphasis role="bold">Done</emphasis> to save all changes to the
+              denominator.</para>
+          </listitem>
+        </orderedlist>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Save</emphasis>.</para>
       </listitem>
     </orderedlist>
-    <para>Essentially, an indicator is a formula that can be composed of multiple data elements,
-      constants, organisation unit group counts and mathematical operators.</para>
-    <para>In order to define a new indicator proceed with the following steps. </para>
+  </section>
+  <section>
+    <title>Create an indicator group</title>
     <orderedlist>
       <listitem>
-        <para>A description of the numerator/denominator must be provided in the &quot;Description
-          field&quot;. This should provide a clear description of the numerator/denominator. This
-          field is required.</para>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Indicator</emphasis> > <emphasis
+            role="bold">Indicator  group</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Define the formula of the indicator by selecting the data elements that should compose
-          the numerator from the &quot;Data elements&quot; field. Simply select the data element,
-          and double click it. It will now appears as part of the formula. You formula must be
-          mathematically valid, including the proper use of parentheses when necessary. You can
-          double click on each of the mathematical operator buttons below the indicator formula
-          definition to add them to your formula. </para>
+        <para>Click the yellow plus button.</para>
       </listitem>
       <listitem>
-        <para>Click the Save button to save all changes to the numerator. Click cancel to discard
-          any changes that you have made. </para>
+        <?oxy_comment_start author="cecilia" timestamp="20160626T172803+0200" comment="For SME:
+Should this form be different and for data element groups?"?>
+        <para>Fill in the form:</para>
+        <?oxy_comment_end?>
+        <orderedlist>
+          <listitem>
+            <para><emphasis role="bold">Name</emphasis></para>
+          </listitem>
+        </orderedlist>
       </listitem>
       <listitem>
-        <para>Follow the same procedure in order to define the denominator. </para>
+        <para>Select indicators and assign them.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
       </listitem>
     </orderedlist>
-    <para>The components of an indicator formula are listed below.</para>
-    <itemizedlist>
-      <listitem>
-        <para>Data elements: Will be substituted by the data value captured for the data
-          element.</para>
-      </listitem>
-      <listitem>
-        <para>Constants: Constants are numerical values which will remain the same for all indicator
-          calculations. This is useful in order to have a single place to change values that might
-          change over time.</para>
-      </listitem>
-      <listitem>
-        <para>Days: A special operator &quot;D&quot; is available in formulas. This operator will
-          always provide the number of days for a given indicator calculation. As an example, if you
-          wish to calculate the &quot;Percentage of time vaccine refrigerator was
-          non-functional&quot;, you could define the numerator as (&quot;D-&quot;Number of days
-          vaccine refrigerator was available&quot;&quot;)/&quot;D&quot;. For example, if the fridge
-          was available 25 days in June, the indicator would be calculated as (30-25/25)*100=17%. If
-          you were however to calculate the total for Quarter 1, the number of days (&quot;D&quot;)
-          would be equal to 31+28+31=90. Thus, the &quot;D&quot; parameter will always be the number
-          of days in the period of interest.</para>
-      </listitem>
-      <listitem>
-        <para>Org unit group counts: Org unit groups can be utilized in formulas and will be
-          substituted by the number of organisation units in the group. During aggregation, the org
-          units in the group will be intersected with the part of the org unit hierarchy being
-          requested. As an example, this lets you use the number of public facilities in a specific
-          district in indicators. This is useful e.g. when creating facility infrastructure surveys
-          and reports.</para>
-      </listitem>
-      <listitem>
-        <para>Constants: Indicators may make use of constants. Constants are static values which
-          will be applied uniformly to the indicator formula. Constants are applied AFTER data
-          element values have been aggregated.</para>
-      </listitem>
-    </itemizedlist>
   </section>
-  <section xml:id="indicatorType">
-    <title>Indicator types</title>
-    <para>Indicator types simply define a factor that will be applied during aggregation. Indicator
-      values that are calculate during a data mart export or report table generation process will
-      appear properly formatted, and will therefore not require an additional multiplier (e.g. 100
-      in the case of percents) for the values to appear correctly formatted. </para>
-    <para>The indicator type maintenance panel has all of the same functions (Add new, Edit,
-      Translate, Delete, and Information) as the Indicator maintenance section. </para>
-    <para>There are only two fields that need to be filled-in to create an indicator type, Name and
-      Factor, as seen below. Name refers to the Indicator type (e.g. Per cent, Per thousand, Per ten
-      thousand, etc). The factor is the numeric factor that will be multiplied to the indicator
-      formula during the calculation of the indicator. </para>
+  <section xml:id="indicatorGroupSet">
+    <title>Create an indicator group set</title>
+    <?oxy_comment_start author="cecilia" timestamp="20160626T170957+0200" comment="Before release: replace screenshot."?>
     <screenshot>
       <mediaobject>
         <imageobject>
           <imagedata width="50%" align="center"
-            fileref="resources/images/maintainence/indicator_type.png" format="PNG"/>
+            fileref="resources/images/maintainence/indicator_group_sets.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
+    <?oxy_comment_end?>
     <note>
-      <para>As of version 2.4 of DHIS2, the &quot;Calculated data element&quot; object has been
-        deprecated. Instead, a calculated data element can be created by creating an indicator type
-        with a factor of &quot;1&quot; and by setting the &quot;Number&quot; option to
-        &quot;Yes&quot;. The effect of setting the &quot;Number&quot; option to &quot;Yes&quot; will
-        be that the indicator will effectively not have a denominator. You will therefore only be
-        able to define a numerator, which will serve as the formula of the calculated data
-        element.</para>
+      <para>Similar to data element and indicator group sets,
+        <?oxy_comment_start author="cecilia" timestamp="20160626T171230+0200" comment="For SME: What do you mean with typically? Is the indicator group set exclusive or not?"?>typically<?oxy_comment_end?>,
+        indicator groups should be exclusive, meaning that one indicator group should not belong to
+        multiple indicator group sets.</para>
     </note>
+    <para>Indicator group sets create combined groups of similar indicators. For example, you might
+      have a group of indicators called &quot;Malaria&quot; and &quot;Leishmaniasis&quot;. Both of
+      these groups could be combined into a group set called &quot;Vector-borne diseases&quot;.
+      Indicator groups sets are used during analysis of data to combine similar themes of
+      indicators.</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Indicators</emphasis> > <emphasis
+            role="bold">Indicator group</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the yellow plus
+          <?oxy_comment_start author="cecilia" timestamp="20160510T112410+0200" comment="Do not refer to the FAB as an icon, according to MS Manual of Style." flag="done"?>button<?oxy_comment_end?>.</para>
+      </listitem>
+      <listitem>
+        <para>Fill in the form:</para>
+        <orderedlist>
+          <listitem>
+            <para><emphasis role="bold">Name</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Description</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold"
+                ><?oxy_comment_start author="cecilia" timestamp="20160626T172625+0200" comment="At next revision: 
+Add description of what this option does.
+Compulsory in the data form?"?>Compulsory<?oxy_comment_end?></emphasis></para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Select indicator groups and assign them.</para>
+        <?oxy_comment_start author="cecilia" timestamp="20160513T113037+0200" comment="At next revision, review this para. Is it necessary? Does it add value?" flag="done"?>
+        <para>Available indicator groups are displayed in the left panel. Indicator groups that are
+          currently members of the indicator group set are displayed in the right hand panel.</para>
+        <?oxy_comment_end?>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
     <title>Edit indicators and other objects</title>
@@ -389,34 +573,9 @@ Mark: something to do with edit rights, verify with Lars." flag="done"?>groups<?
       </listitem>
     </orderedlist>
   </section>
-  <section xml:id="indicatorGroupSet">
-    <title>Indicator group sets</title>
-    <para>Similar to data element group sets, indicator group sets serve to create combined groups
-      of similar indicators. For instance, you might have a group of indicators called
-      &quot;Malaria&quot; and &quot;Leishmaniasis&quot;. Both of these groups could be combined into
-      a group set called &quot;Vector-borne diseases&quot;. Indicator groups sets are used during
-      analysis of data to combine similar themes of indicators. To access this module choose
-      Maintenance-&gt;Data elements and indicators-&gt;Indicator group sets from the main menu and
-      then press &quot;Add new&quot;. The following dialogue will appear. </para>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="50%" align="center"
-            fileref="resources/images/maintainence/indicator_group_sets.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para>Supply a name for the indicator group set, and then move the desired members from the
-      &quot;Available Indicator Groups&quot; to the &quot;Group members&quot;. Click &quot;Add&quot;
-      to save your changes and &quot;Cancel&quot; to discard any changes. </para>
-    <note>
-      <para>Similar to data element and indicator group sets, typically, indicator groups should be
-        exclusive, meaning that one indicator group should not belong to multiple indicator group
-        sets.</para>
-    </note>
-  </section>
   <section xml:id="indicatorGroupEditor">
-    <title>Indicator group editor</title>
+    <title>Indicator group
+      <?oxy_comment_start author="cecilia" timestamp="20160626T173053+0200" comment="The mass meta data editor?"?>editor<?oxy_comment_end?></title>
     <para>The indicator group editor module functions essentially the same as the data element group
       editor module, except on indicators. You can easily rearrange the groups that indicators
       belong to with this module. To access it, choose To assign indicators to groups, simple press
