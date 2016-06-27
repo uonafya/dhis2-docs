@@ -380,62 +380,224 @@
       </screenshot></para>
   </section>
   <section xml:id="constant">
-    <title>Constant</title>
-    <para>Constants are static values which can be made available to users for use in data elements and indicators. Some indicators, such as &quot;Couple year protection rate&quot; depend on constants which usually do not change over time. Simply press &quot;Add&quot; and provide a name in the &quot;Name&quot; field and define it&apos;s value in the &quot;Value&quot; field. Press &quot;Add&quot; . The constant will now be available to users for use in their expressions.</para>
+    <title><?oxy_comment_start author="cecilia" timestamp="20160627T110002+0200" comment="At next release:
+Add information about the other actions you can take, for example clone, edit etc. 
+Also when olinks work, add this section to the Maintenance section." flag="done"?>Constant<?oxy_comment_end?></title>
+    <para>Constants are static values which can be made available to users for use in data elements
+      and indicators. Some indicators, such as &quot;Couple year protection rate&quot; depend on
+      constants which usually do not change over time.</para>
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="40%" align="center" fileref="resources/images/maintainence/add_new_constant.PNG"/>
+          <imagedata width="80%" align="center"
+            fileref="resources/images/maintainence/constant_create.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
+    <para>To create a constant:</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Constant</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the yellow plus button.</para>
+      </listitem>
+      <listitem>
+        <para>In the
+            <?oxy_comment_start author="cecilia" timestamp="20160624T160524+0200" comment="At next releaase:
+For SME: Must the name be unique?" flag="done"?><emphasis
+            role="bold">Name</emphasis><?oxy_comment_end?> field, type the name of the
+          constant.</para>
+      </listitem>
+      <listitem>
+        <para>(Optional) In the <emphasis role="bold">Short name</emphasis> field, type an
+          abbreviated name of the constant.</para>
+      </listitem>
+      <listitem>
+        <para>(Optional) In the <emphasis role="bold">Code</emphasis> field, assign a code.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Description</emphasis> field, type a brief, informative
+          description of the constant.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Value</emphasis> field, define the constant's
+          value.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+        <para>The constant is now available for use.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section xml:id="optionSet">
-    <title>Option sets</title>
-    <para>Option sets provide a pre-defined dropdown (enumerated) list for use in DHIS 2.  You can define any kind of options, for instance an option set
-called &quot;Delivery type&quot; where &quot;Normal&quot;, &quot;Breach&quot;, &quot;Caesarian&quot; and
-&quot;Assisted&quot; would be the options. To define a new option set, simply click &quot;Add new&quot;. Once you have defined the option set itself, you will need to define the options in the set, by clicking the name of the option set and selecting &quot;Option management&quot; from the context menu. </para>
+    <title><?oxy_comment_start author="cecilia" timestamp="20160627T103919+0200" comment="For SME: review needed before release."?>Option<?oxy_comment_end?>
+      <?oxy_comment_start author="cecilia" timestamp="20160627T105845+0200" comment="At next release:
+Add information about the other actions you can take, for example clone, edit etc. 
+Also when olinks work, add this section to the Maintenance section." flag="done"?>sets<?oxy_comment_end?></title>
+    <para>Option sets provide a pre-defined dropdown (enumerated) list for use in DHIS 2. You can
+      define any kind of options, for instance an option set called &quot;Delivery type&quot; where
+      &quot;Normal&quot;, &quot;Breach&quot;, &quot;Caesarian&quot; and &quot;Assisted&quot; would
+      be the options. </para>
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata align="center" fileref="resources/images/maintainence/option_sets.png" width="50%" format="PNG"/>
+          <imagedata align="center" fileref="resources/images/maintainence/option_set_create.png"
+            width="80%" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>Press &quot;Add new&quot; to enter a new option and its code. You can sort the options within the option set by using the &quot;Sort options&quot; dialog button.</para>
     <important>
-      <para>Option sets must have a code as well as a name. Codes of options cannot be changed, while the names can. Both names as well as codes of all options must be unique, even across different option sets.</para>
+      <?oxy_comment_start author="cecilia" timestamp="20160627T102422+0200" comment="For SME: Still correct?"?>
+      <para><?oxy_comment_end?>Option sets must have a code as well as a name. You can change the
+        names but you can't change the codes. Both names and codes of all options must be unique,
+        even across different option sets.</para>
     </important>
+    <para>To create an option set:</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Option set</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the yellow plus button.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Primary details</emphasis> tab, define the option
+          set:</para>
+        <orderedlist>
+          <listitem>
+            <para>In the
+                <?oxy_comment_start author="cecilia" timestamp="20160624T160524+0200" comment="At next releaase:
+For SME: Must the name be unique?" flag="done"?><emphasis
+                role="bold">Name</emphasis><?oxy_comment_end?> field, type the name of the
+              constant.</para>
+          </listitem>
+          <listitem>
+            <para>In the <emphasis role="bold">Code</emphasis> field, assign a code.</para>
+          </listitem>
+          <listitem>
+            <para>Select a <emphasis role="bold">Value type</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Click <emphasis role="bold">Save</emphasis>.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Define the
+          <?oxy_comment_start author="cecilia" timestamp="20160627T105035+0200" comment="For SME: Do you repeat this for all options?
+How do you know how many options you need?"?>options<?oxy_comment_end?>
+          in the option set:</para>
+        <orderedlist>
+          <listitem>
+            <para>Click the <emphasis role="bold">Options</emphasis> tab.</para>
+          </listitem>
+          <listitem>
+            <para>Click the yellow plus button.</para>
+          </listitem>
+          <listitem>
+            <para>Type a <emphasis role="bold">Name</emphasis> and a <emphasis role="bold"
+                >Code</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <?oxy_comment_start author="cecilia" timestamp="20160627T104140+0200" comment="For SME: Is it mandatory to sort the options?"?>
+            <para>Sort the options as you need.</para>
+            <?oxy_comment_end?>
+            <?oxy_comment_start author="cecilia" timestamp="20160627T104100+0200" comment="For SME: Explain sorting options. Once I&apos;ve sorted them, I cannot change the order unless I go out of the dialog and then back to edit mode."?>
+            <para>You can sort the options within the option set by using the &quot;Sort
+              options&quot; dialog button.</para>
+            <?oxy_comment_end?>
+          </listitem>
+          <listitem>
+            <para><?oxy_comment_start author="cecilia" timestamp="20160627T104644+0200" comment="For SME:
+Does this work? My test option failed to saved. Tested several times."?>Click<?oxy_comment_end?>
+              <emphasis role="bold">Save</emphasis>.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+    </orderedlist>
   </section>
   <section xml:id="cacheStatistics">
     <title>Cache Statistics </title>
     <para>This option is for system administrators only to use. The cache statistics shows the status of the application level cache. The application level cache refers to the objects and query results that the application is caching in order to speed up performance. If the database has been modified directly the application cache needs to be cleared for it to take effect.</para>
   </section>
   <section xml:id="attribute">
-    <title>Attributes</title>
-    <para>Dynamic attributes can be used to add additional information to meta-data objects. In
-      addition to the standard attributes for each of these objects it may be useful to store
-      information for additional attributes, such as a collection method for a data element. To add
-      a new dynamic attribute to an object, go to &quot;Maintenance-&gt;Data administration&quot;
-      from the main menu, then &quot;Attribute&quot; from the left side panel, and click the
-      &quot;Add new&quot; button.</para>
+    <title><?oxy_comment_start author="cecilia" timestamp="20160627T110023+0200" comment="At next release:
+Add information about the other actions you can take, for example clone, edit etc. 
+Also when olinks work, add this section to the Maintenance section." flag="done"?>Attributes<?oxy_comment_end?></title>
+    <para>You can use
+      <?oxy_comment_start author="cecilia" timestamp="20160627T112258+0200" comment="For SME: What is the correct name? 
+Attribute or dynamic attribute?"?>dynamic<?oxy_comment_end?>
+      attributes to add additional information to metadata objects. In addition to the standard
+      attributes for each of these objects it may be useful to store information for additional
+      attributes, for example the collection method for a data element.</para>
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="40%" align="center" fileref="resources/images/maintainence/add_new_dynamic_attribute.png"/>
+          <imagedata width="80%" align="center"
+            fileref="resources/images/maintainence/attribute_create.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>To create a new attribute, assign it a name. Each attribute should have a unique name.
-      Check the box &quot;Mandatory&quot; if an object should always have the dynamic attribute.
-      Check the box "Unique" if the system should enfore that values are unique for a specific
-      object type. Next, select which object (or objects) the attribute should be assigned to.
-      Lastly, select the value type. You can choose from &quot;Text&quot;, &quot;Yes/No&quot;,
-      &quot;Date&quot;, &quot;Number&quot;, &quot;Integer&quot;, &quot;Positive integer&quot; and
-      &quot;Negative integer&quot;. If the value supplied for the attribute does not match the value
-      type you will get a warning. Finally, click &quot;Save&quot; to save the attribute. </para>
-    <para>The dynamic attribute will now be available for the objects which you assigned it to in
-      the respective &quot;Edit&quot; screen of each object.</para>
+    <?oxy_comment_start author="cecilia" timestamp="20160627T111201+0200" comment="For SME: Is statement correct?"?>
+    <para>To create a new dynamic attribute and
+      <?oxy_comment_start author="cecilia" timestamp="20160627T111518+0200" comment="For SME: What is the exact action?
+Assign an attribute to an object?
+"?>add<?oxy_comment_end?>
+      it to an object:</para>
+    <?oxy_comment_end?>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Attribute</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the yellow plus button.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Name</emphasis> field, type the name of the
+          attribute.</para>
+        <para>Each attribute must have a unique name</para>
+      </listitem>
+      <listitem>
+        <para>(Optional) In the <emphasis role="bold">Code</emphasis> field, assign a code.</para>
+      </listitem>
+      <listitem>
+        <para>Select a <emphasis role="bold">Value type</emphasis>.</para>
+        <para>If the value supplied for the attribute does not match the value type you will get a
+          warning.</para>
+      </listitem>
+      <listitem>
+        <para><?oxy_comment_start author="cecilia" timestamp="20160627T110559+0200" comment="For SME: Mandatory?"?>Select<?oxy_comment_end?>
+          <?oxy_comment_start author="cecilia" timestamp="20160627T113528+0200" comment="For SME:
+Removed this text:
+Next, select which object (or objects) the attribute should be assigned to.
+Is it correct that this is done via option sets?"?>an<?oxy_comment_end?>
+          <emphasis role="bold">Option set </emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Select the
+          <?oxy_comment_start author="cecilia" timestamp="20160627T111113+0200" comment="At next release:
+Expand explanations to all the possible attributes." flag="done"?><?oxy_comment_start author="cecilia" timestamp="20160627T111346+0200" comment="For SME: What do you select? Options? Objects?" mid="17"?>options<?oxy_comment_end?><?oxy_comment_end mid="17"?>
+          you want, for example:</para>
+        <itemizedlist>
+          <listitem>
+            <para>Select <emphasis role="bold">Mandatory</emphasis> if you want an object to always
+              have the dynamic attribute.</para>
+          </listitem>
+          <listitem>
+            <para>Select <emphasis role="bold">Unique</emphasis> if you want the system to enfore
+              that values are unique for a specific object type.</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+        <para>The dynamic attribute is now available for the objects you assigned it to.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section xml:id="scheduling">
     <title>Scheduling</title>

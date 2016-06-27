@@ -10605,6 +10605,87 @@ interval=WEEK" -u admin:district</screen>
         instane.<screen>curl -X POST -d @tei.json -H "Content-Type: application/json"
   -u user:pass http://server/api/24/trackedEntityInstances</screen></para>
     </section>
+    <section>
+      <title>Generated tracked entity instance attributes</title>
+      <para>Tracked entity instance attributes that is using automatic generation of unique values
+        has two endpoints that is used by apps. One is used to generate values, the other to
+        generate and reserve one or more values for use later.</para>
+      <section>
+        <title>Generate value endpoint</title>
+        <para>Online web apps and other clients that wants to generate a value that will be used
+          right away can use the simple generate endpoint. This endpoint will generate a value that
+          is guaranteed to be unique at the time of generation. The value is also guaranteed not to
+          be reserved by use of the generateAndReseve endpoint.</para>
+        <screen>curl -X GET -H "Content-Type: application/json" -u admin:district 
+          https://play.dhis2.org/dev/api/trackedEntityAttributes/lZGmxYbs97q/generate</screen>
+      </section>
+      <section>
+        <title>Generate and reserve value endpoint</title>
+        <para>The generate and reserve endpoint is used by offline clients that needs to be able to
+          register tracked entities with unique ids. They will reserve a number of unique ids that
+          this device will then use when registering new tracked entity instances. The endpoint is
+          called to retreieve a number of tracked entity instance reserved values. An optional
+          parameter numberToReserve specifies how many ids to generate (default is 1). </para>
+        <screen>curl -X GET -H "Content-Type: application/json" -u admin:district 
+          https://play.dhis2.org/dev/api/trackedEntityAttributes/lZGmxYbs97q/generateAndReserve?numberToReserve=3</screen>
+        <screen>[
+   {
+      "created":"2016-06-25T07:52:26.466+0000",
+      "expiryDate":"2017-06-25T07:52:26.466+0000",
+      "value":"43327401",
+      "trackedEntityAttribute":{  }
+   },
+   {
+      "created":"2016-06-25T07:52:26.468+0000",
+      "expiryDate":"2017-06-25T07:52:26.468+0000",
+      "value":"82676084",
+      "trackedEntityAttribute":{  }
+   },
+   {
+      "created":"2016-06-25T07:52:26.471+0000",
+      "expiryDate":"2017-06-25T07:52:26.471+0000",
+      "value":"91700776",
+      "trackedEntityAttribute":{  }
+   }
+]
+        </screen>
+        <para>The generate and reserve endpoint returns an array of reserved values:</para>
+        <table frame="all">
+          <title>Tracked entity reserved values</title>
+          <tgroup cols="2">
+            <colspec colnum="1" colname="c1" colwidth="1.38*"/>
+            <colspec colnum="2" colname="c3" colwidth="7.25*"/>
+            <thead>
+              <row>
+                <entry>Property</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>created</entry>
+                <entry>The date the reserved value was created.</entry>
+              </row>
+              <row>
+                <entry>expiryDate</entry>
+                <entry>After this date the value can be deleted/unreserved by the server if  no
+                  tracked entity has been registered with the value. The deletion does not happen
+                  automatically at the exact time of the expiration, but can/will be done with
+                  scripts or mechanisms implemneted later.</entry>
+              </row>
+              <row>
+                <entry>value</entry>
+                <entry>The actual generated value that is reserved.</entry>
+              </row>
+              <row>
+                <entry>trackedEntityAttribute</entry>
+                <entry>The tracked entity attribute that the value was generated for.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+    </section>
   </section>
   <section>
     <title>Tracked entity instance query</title>
