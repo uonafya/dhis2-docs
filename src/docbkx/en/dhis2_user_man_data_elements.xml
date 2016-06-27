@@ -47,7 +47,7 @@ The actual creation and definition of the data elements themselves are beyond th
         </listitem>
       </itemizedlist>
     </example>
-    <para><?oxy_comment_start author="cecilia" timestamp="20160512T160436+0200" comment="For SME: Define &quot;effective use&quot;."?>Effective
+    <para><?oxy_comment_start author="cecilia" timestamp="20160512T160436+0200" comment="At next release: rewrtie para and remove &quot;effective use&quot;." flag="done"?>Effective
       use <?oxy_comment_end?>of categories simplifies the process of setting up the DHIS 2 system,
       as the categories can be reused to disaggregate many different data elements. Otherwise, each
       of the data elements listed in example above, would need to be created separately.
@@ -157,12 +157,11 @@ Decided with Lars: object" flag="done"?>Data
     </table>
   </section>
   <section>
-    <title><?oxy_comment_start author="cecilia" timestamp="20160511T111520+0200" comment="For SME: Is workflow correct?
-Consider having a general data flow in mtn section."?>Workflow<?oxy_comment_end?></title>
-    <?oxy_comment_start author="cecilia" timestamp="20160512T160741+0200" comment="For SME: Is this workflow correct?"?>
+    <title>Workflow</title>
+    <?oxy_comment_start author="cecilia" timestamp="20160512T160741+0200" comment="For SME: Is this workflow correct?" flag="done"?>
     <orderedlist>
       <listitem>
-        <para> Create all possible category options.</para>
+        <para>Create all category options.</para>
       </listitem>
       <listitem>
         <para>Create categories composed by the multiple category options you've created. </para>
@@ -171,10 +170,7 @@ Consider having a general data flow in mtn section."?>Workflow<?oxy_comment_end?
         <para>Create category combinations composed by either one or multiple categories.</para>
       </listitem>
       <listitem>
-        <para>Create data elements and
-          <?oxy_comment_start author="cecilia" timestamp="20160622T160953+0200" comment="For SME:
-Do you assign a data element to a category combination or vice versa?"?>assign
-          them <?oxy_comment_end?>to a category combination.</para>
+        <para>Create data elements and assign them to a category combination.</para>
       </listitem>
     </orderedlist>
     <?oxy_comment_end?>
@@ -208,12 +204,12 @@ For SME: A task for admin? Implementer?" flag="done"?>
           </listitem>
           <listitem>
             <para><emphasis role="bold">Data dimension type</emphasis></para>
-            <?oxy_comment_start author="cecilia" timestamp="20160622T161804+0200" comment="Before release, rewrite."?>
+            <?oxy_comment_start author="cecilia" timestamp="20160622T161804+0200" comment="At next release: rewrite para" flag="done"?>
             <para>A category either be of type &quot;Disaggregation&quot; or &quot;Attribute&quot;.
               For disaggregation of data elements, you select <emphasis role="bold"
                 >Disaggregation</emphasis>. The data dimension type &quot;Attribute&quot; allows the
               category to be used to assign a combination of categories to data recorded through a
-              dataset.</para>
+              data set.</para>
             <?oxy_comment_end?>
           </listitem>
           <listitem>
@@ -263,12 +259,12 @@ For SME: Who does this task? Implementer? Admin?" flag="done"?>Create<?oxy_comme
           </listitem>
           <listitem>
             <para><emphasis role="bold">Data dimension type</emphasis></para>
-            <?oxy_comment_start author="cecilia" timestamp="20160622T161804+0200" comment="Before release, rewrite."?>
+            <?oxy_comment_start author="cecilia" timestamp="20160622T161804+0200" comment="At next release: rewrite para." flag="done"?>
             <para>A category either be of type &quot;Disaggregation&quot; or &quot;Attribute&quot;.
               For disaggregation of data elements, you select <emphasis role="bold"
                 >Disaggregation</emphasis>. The data dimension type &quot;Attribute&quot; allows the
               category to be used to assign a combination of categories to data recorded through a
-              dataset.</para>
+              data set.</para>
             <?oxy_comment_end?>
           </listitem>
           <listitem>
@@ -347,14 +343,6 @@ Add explanation about the different options and fields." flag="done"?>
       </listitem>
       <listitem>
         <para>Select categories and assign them.</para>
-        <?oxy_comment_start author="cecilia" timestamp="20160622T143723+0200" comment="For SME:
-Verify that this information is still correct."?>
-        <para>You can only add categories to a category combination at this step. You can remove
-          categories a category combination later by editing the category combination. It is not
-          allowed to add additional categories once the combination has been created. Verify that
-          the category combination and its respective categories is final before you create the
-          category combination and assign it to a data element.</para>
-        <?oxy_comment_end?>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Save</emphasis>.</para>
@@ -383,7 +371,7 @@ Find out who does this? Admin? Implementer? User? " flag="done"?>ata<?oxy_commen
       <listitem>
         <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
             >Maintenance</emphasis> > <emphasis role="bold">Data elements</emphasis> > <emphasis
-            role="bold">Data Element</emphasis>.</para>
+            role="bold">Data element</emphasis>.</para>
       </listitem>
       <listitem>
         <para>Click the yellow plus
@@ -1227,7 +1215,7 @@ The category option combinations are created automtatically from category option
     <?oxy_comment_start author="cecilia" timestamp="20160512T144652+0200" comment="For SME: When do you do this? Can not find the task in the flowchart.
 Admin task? Implementer?
 Where in the maintenance app do you perform this task?"?>
-    <title>Use category combinations as attributes<?oxy_comment_end?></title>
+    <title>Use category combinations for data sets<?oxy_comment_end?></title>
     <para>In some deployments of DHIS 2, information on attributes such as &quot;Implementing
       partner&quot; and &quot;Project&quot; are important to record as an attribute of each data
       value.</para>

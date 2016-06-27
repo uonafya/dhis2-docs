@@ -18,22 +18,67 @@ Added to term list" flag="done"?>data
     <title>About data sets and data entry forms</title>
     <para>All data entry in DHIS 2 is organised in data sets. A data set is a collection of data
       elements grouped together for data entry and data export
-      <?oxy_comment_start author="cecilia" timestamp="20160615T114911+0200" comment="For SME: Is this still applicable?"?>b<?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="3"?>etween
-      instances of DHIS 2, for example from a district office's local installation to a national
-      server<?oxy_comment_end?><?oxy_custom_end mid="3"?>. To use a data set to collect data for a
-      specific organisation unit, you must assign the organisation unit to the data set. Once you
-      have assigned the data set to an organisation unit,
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>t<?oxy_comment_start author="cecilia" timestamp="20160609T110521+0200" comment="For SME: The default form?
-- Yes the default form is created automatically." flag="done" mid="5"?>hat
-      data set<?oxy_custom_end?>
-      <?oxy_comment_end mid="5"?>is available in the <emphasis role="bold">Data entry</emphasis>
+      b<?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>etween instances of DHIS
+      2, for example from a district office's local installation to a national
+      server<?oxy_custom_end?>. To use a data set to collect data for a specific organisation unit,
+      you must assign the organisation unit to the data set. Once you have assigned the data set to
+      an organisation unit,
+      t<?oxy_comment_start author="cecilia" timestamp="20160609T110521+0200" comment="For SME: The default form?
+- Yes the default form is created automatically." flag="done"?>hat
+      data set <?oxy_comment_end?>is available in the <emphasis role="bold">Data entry</emphasis>
       app. Only the organisation units that you have assigned the data set to can use the data set
       for data entry.</para>
+    <?oxy_comment_start author="cecilia" timestamp="20160614T160221+0200" comment="For SME: Do you create separate Data set categories? Or do you use the ones you&apos;ve created for Data elements? 
+This section might belong to workflow section..
+
+Verify with Lars.
+Either applicable for one data element or the whole form.
+
+Data category combinations can link to both data elements and data sets. If used for data sets, teh category combinations are applicable for the whole form.
+Data set categories often used for partners, projects etc.  grants."?>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="5"?>
+    <para>About data set categories</para>
+    <?oxy_comment_end?>
+    <para>A category combination can link to both data elements and data sets. If you use a category
+      combination for a data set, the category combinations is applicable for the whole form. This
+      means that you can use
+      c<?oxy_comment_start author="cecilia" timestamp="20160627T144742+0200" comment="For SME: Is a cat combo mandatory?"?>ategories<?oxy_comment_end?>
+      to capture information which is common to an entire form, for example the name of the a
+      project or grant.</para>
+    <para>When a data set is linked to a category combination, those categories will be displayed as
+      drop-down boxes in the <emphasis role="bold">Data entry</emphasis> app. Data captured in the
+      form will then be linked to the selected category options from those drop-down boxes.</para>
+    <para>For information about how to create categories and category combinations,
+      s<?oxy_comment_start author="cecilia" timestamp="20160627T144103+0200" comment="At next revision, add olink to correct secion." flag="done"?>ee
+      section "Manage data elements and categories"<?oxy_comment_end?>. Make sure that you set the
+      type of categories and category combinations to &quot;Attribute&quot;. </para>
+    <?oxy_custom_end mid="5"?>
+    <example>
+      <title>Categories for data sets</title>
+      <?oxy_comment_start author="cecilia" timestamp="20160627T144543+0200" comment="For SME: Example still correct?"?>
+      <para>An scenario for when categories are useful is when you need to capture a data entry form
+        for a implementing partner organisation and a project. In that case:</para>
+      <orderedlist>
+        <listitem>
+          <para>Create category options and categories for all partner organisations and projects
+            and link them in a new category combination.</para>
+        </listitem>
+        <listitem>
+          <para>Link the category combination to the data set (form) for which you need to capture
+            this information.</para>
+          <para>When opening this data set in data entry module, the partner organisation and
+            project categories will automatically be rendered as drop-down boxes, allowing you to
+            select a specific implementing partner organisation and project before continuing to do
+            data entry.</para>
+        </listitem>
+      </orderedlist>
+      <?oxy_comment_end?>
+    </example>
     <para>You create and edit data sets in the <emphasis role="bold">Maintenance</emphasis> app.
       Here you define, for example, which data elements you want to include in the data set and the
       data collection frequency.</para>
     <para>You enter data in the <emphasis role="bold">Data entry</emphasis> app. The <emphasis
-        role="bold">Data entry</emphasis> app uses data entry forms to diplay the data sets.
+        role="bold">Data entry</emphasis> app uses data entry forms to display the data sets.
       There're three types of data entry forms:</para>
     <table frame="all">
       <title>Data entry form types</title>
@@ -62,7 +107,7 @@ Add screenshots with examples of the different data entry forms." flag="done"?>t
                 created automatically. The default form is then available in the <emphasis
                   role="bold">Data entry</emphasis> app for the organisation units you have assigned
                 it to.</para>
-              <para>A default form consist of  a list of the data elements belonging to the data set
+              <para>A default form consist of a list of the data elements belonging to the data set
                 together with a column
                 f<?oxy_comment_start author="cecilia" timestamp="20160615T144118+0200" comment="Verify in GUI: data entry?"?>or
                 inputting the values.<?oxy_comment_end?> If your data set contains data elements
@@ -153,53 +198,6 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
         </listitem>
       </orderedlist>
     </note>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-    <?oxy_comment_start author="cecilia" timestamp="20160614T160221+0200" comment="For SME: Do you create separate Data set categories? Or do you use the ones you&apos;ve created for Data elements? 
-This section might belong to workflow section..
-
-Verify with Lars.
-Either applicable for one data element or the whole form.
-
-Data category combinations can link to both data elements and data sets. If used for data sets, teh category combinations are applicable for the whole form.
-Data set categories often used for partners, projects etc.  grants." mid="19"?>
-    <para><?oxy_comment_start author="cecilia" timestamp="20160614T121022+0200" comment="Before release: revise title. &quot;About using categories with data sets&quot;?
-
-Also verify if this information is in the data elements section. 
-You can create two types for cat comb(cat (?)."?>About<?oxy_comment_end?>
-      data set categories</para>
-    <?oxy_custom_end?>
-    <?oxy_comment_end mid="19"?>
-    <para>Before reading this section it is recommended to familiarize oneself with the sections on
-      categories in the data element chapter. Whereas data element categories can be used for
-      capturing disaggregations of data elements, data set categories are used to capture
-      information which is common to an entire form.</para>
-    <para>To set up categories for data set, start by creating category options, categories and
-      category combinations as described in the data element chapter. Make sure that you set the
-      type of categories and category combinations to &quot;Attribute&quot;. To assign a category
-      combination to a data set, you can select it while creating or updating the data set from the
-      &quot;Combination of categories&quot; drop-down box.</para>
-    <para>When a data set is linked to a category combination, those categories will be displayed as
-      drop-down boxes in the <emphasis role="bold">Data entry</emphasis> app. Data captured in the
-      form will then be linked to the selected category options from those drop-down boxes.</para>
-    <para>An scenario for when data set categories are useful is when you need to capture a data
-      entry form for a implementing partner organisation and a project. In that case, start by
-      creating category options and categories for all partner organisations and projects, before
-      linking these in a new category combination. Then, link the category combination to the data
-      set (form) for which you need to capture this information. When opening this data set in data
-      entry module, the partner organisation and project categories will automatically be rendered
-      as drop-down boxes, allowing you to select a specific implementing partner organisation and
-      project before continuing to do data entry.</para>
-    <?oxy_comment_start author="cecilia" timestamp="20160615T151530+0200" comment="Before release: update screenshot."?>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="80%" align="center"
-            fileref="resources/images/datasets/dataset-implementing partner-project-categories.png"
-          />
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <?oxy_comment_end?>
     <table frame="all">
       <title>Data set objects in the Maintenance app</title>
       <tgroup cols="2">
@@ -261,11 +259,9 @@ You can create two types for cat comb(cat (?)."?>About<?oxy_comment_end?>
     </table>
   </section>
   <section>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-    <?oxy_comment_start author="cecilia" timestamp="20160608T153906+0200" comment="For SME: Is this workflow correct?" mid="27"?>
+    <?oxy_comment_start author="cecilia" timestamp="20160608T153906+0200" comment="For SME: Is this workflow correct?"?>
     <title>Workflow</title>
-    <?oxy_custom_end?>
-    <?oxy_comment_end mid="27"?>
+    <?oxy_comment_end?>
     <para>You need to have data elements and
       <?oxy_comment_start author="cecilia" timestamp="20160623T173226+0200" comment="For SME: And organisation units?"?>categories<?oxy_comment_end?>
       to create data sets and data entry forms.</para>
@@ -288,10 +284,9 @@ You can create two types for cat comb(cat (?)."?>About<?oxy_comment_end?>
   </section>
   <section>
     <title>Create a
-      <?oxy_comment_start author="cecilia" timestamp="20160615T121043+0200" comment="For SME: Should assignment of org units be a part of the create a data set? Or is it a separate task?"?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="31"?>data<?oxy_comment_end?><?oxy_custom_end mid="31"?>
+      <?oxy_comment_start author="cecilia" timestamp="20160615T121043+0200" comment="For SME: Should assignment of org units be a part of the create a data set? Or is it a separate task?"?>data<?oxy_comment_end?>
       set</title>
-    <?oxy_comment_start author="cecilia" timestamp="20160602T142854+0200" comment="Before release: update screenshot. 
-Does it add information?"?>
+    <?oxy_comment_start author="cecilia" timestamp="20160602T142854+0200" comment="Before release: update screenshot. "?>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -307,15 +302,12 @@ Does it add information?"?>
       <title>Data set management</title>
       <?oxy_comment_end?>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T144013+0200" comment="For SME: How do you assign an org unit to a data set? There&apos;s not that option in the Create data set form.
-Answer: Function not yet developped, refer to old SW version. Function will be available in options menu."?>
         <para>Assign organisation units to data sets: This function will allow you to assign
           individual organisational units to a data set. Only organisation units which have been
           assigned to a data set will be allowed to enter data into the data set. </para>
-        <?oxy_comment_end?>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T150129+0200" comment="For SME: How do you add or remove sections in the new GUI?"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160602T150129+0200" comment="For SME: Not yet in GUI"?>
         <para>View sections: Allows you to add or remove sections to the data set as required. These
           sections do not apply to custom forms.</para>
         <?oxy_comment_end?>
@@ -327,7 +319,7 @@ Answer: Function not yet developped, refer to old SW version. Function will be a
         <?oxy_comment_end?>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T150202+0200" comment="For SME: Where do you do this in the new GUI?"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160602T150202+0200" comment="For SME: A separate task?"?>
         <para> Edit compulsory data elements: This dialog will allow you to add or remove data
           elements which will be marked as compulsory during data entry. </para>
         <?oxy_comment_end?>
@@ -442,7 +434,7 @@ Create this task under Reporting section (QC)" flag="done"?>
 Data can be marked as &quot;Complete&quot;, then there&apos;s an approval workflow - verify with Ola.
 - Reports &gt; Data approval" flag="done"?><?oxy_comment_start author="cecilia" timestamp="20160623T170050+0200" comment="At next revision:
 Add x-ref to Data approval section in UG.
-Removed existing reference because it was unclear." flag="done" mid="48"?>Approved<?oxy_comment_end?><?oxy_comment_end mid="48"?>,
+Removed existing reference because it was unclear." flag="done" mid="44"?>Approved<?oxy_comment_end?><?oxy_comment_end mid="44"?>,
           select a <emphasis role="bold">Data approval workflow</emphasis>.</para>
       </listitem>
       <listitem>
@@ -491,12 +483,12 @@ More data to download, might not want to have this on a slow line.
 " flag="done"?><emphasis
             role="bold">Data element decoration</emphasis><?oxy_comment_end?></para>
         <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-        <?oxy_comment_start author="cecilia" timestamp="20160623T171426+0200" comment="For SME: Correctly phrased?" mid="53"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160623T171426+0200" comment="For SME: Correctly phrased?" mid="49"?>
         <para>If you select this option, descriptions of data elements render in call-outs in
           downloaded data sets in offline mode in the <emphasis role="bold">Data entry</emphasis>
           app.</para>
         <?oxy_custom_end?>
-        <?oxy_comment_end mid="53"?>
+        <?oxy_comment_end mid="49"?>
       </listitem>
       <listitem>
         <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
@@ -510,26 +502,26 @@ More data to download, might not want to have this on a slow line.
         <?oxy_comment_start author="cecilia" timestamp="20160602T141431+0200" comment="For SME: What does this option mean?
 - Only applicable for section forms
 Before release, verify that this works."?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="56"?>
-        <?oxy_comment_start author="cecilia" timestamp="20160613T110721+0200" comment="Send email to lars, doesn&apos;t seem to work" mid="57"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160613T110721+0200" comment="Send email to lars, doesn&apos;t seem to work" mid="52"?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="53"?>
         <para>Render vertically</para>
         <?oxy_comment_end?>
-        <?oxy_custom_end mid="56"?>
-        <?oxy_comment_end mid="57"?>
+        <?oxy_comment_end mid="52"?>
+        <?oxy_custom_end mid="53"?>
       </listitem>
       <listitem>
         <?oxy_comment_start author="cecilia" timestamp="20160602T141437+0200" comment="For SME: What does this option mean?"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="59"?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="55"?>
         <para>Select data elements</para>
         <?oxy_comment_end?>
-        <?oxy_custom_end mid="59"?>
+        <?oxy_custom_end mid="55"?>
       </listitem>
       <listitem>
         <?oxy_comment_start author="cecilia" timestamp="20160602T141441+0200" comment="For SME: What does this option mean?"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="61"?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="57"?>
         <para>Select indicators</para>
         <?oxy_comment_end?>
-        <?oxy_custom_end mid="61"?>
+        <?oxy_custom_end mid="57"?>
         <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
         <para>Indicators can also be added to data sets and will be available to be placed in custom
           data entry forms when they need to be shown along with data elements on the same data
@@ -778,8 +770,8 @@ Reword, remove passive voice." flag="done"?>
 Nothing happens when I click the link, it takes me back to the Maintenance page landing app.
 Issue reported."?>
     <title>Download default data
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?><?oxy_comment_start author="cecilia" timestamp="20160608T152409+0200" comment="For SME: Do you actually download a data set or do you download the associated data form?
-- Lars: Download default data form, can be imported in DHIS 2" flag="done" mid="76"?>forms<?oxy_custom_end?><?oxy_comment_end mid="76"?>
+      <?oxy_comment_start author="cecilia" timestamp="20160608T152409+0200" comment="For SME: Do you actually download a data set or do you download the associated data form?
+- Lars: Download default data form, can be imported in DHIS 2" flag="done"?>forms<?oxy_comment_end?>
       in PDF format</title>
     <?oxy_comment_end?>
     <para>You can download a default data from  in PDF format for offline data entry.</para>
@@ -973,132 +965,130 @@ Maintenance" flag="done"?>Maintenance<?oxy_comment_end?></emphasis>
         element<?oxy_comment_end?>. The jQuery event object and the data set identifier are always
         the first two arguments provided to the callback functions. The table below provides an
         overview of the events and when they are triggered.</para>
-    </section>
-  </section>
-  <section>
-    <table frame="all">
-      <?oxy_comment_start author="cecilia" timestamp="20160609T172708+0200" comment="Before publication, verify that cell content don&apos;t bleed."?>
-      <title>Data entry events</title>
-      <?oxy_comment_end?>
-      <tgroup cols="3">
-        <colspec colnum="1" colname="c1" colwidth="1.18*"/>
-        <colspec colnum="2" colname="c2" colwidth="1.42*"/>
-        <colspec colnum="3" colname="newCol3" colwidth="1*"/>
-        <thead>
-          <row>
-            <entry>Key</entry>
-            <entry>Description</entry>
-            <entry>Arguments</entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry>
-              <para>dhis2.de.event.formLoaded</para>
-            </entry>
-            <entry>
-              <para>Triggered after the data entry form is rendered, but before data values are set
-                in entry fields.</para>
-            </entry>
-            <entry>
-              <para>Event | Data set ID</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>dhis2.de.event.dataValuesLoaded</para>
-            </entry>
-            <entry>
-              <para>Triggered after data values are set in entry fields.</para>
-            </entry>
-            <entry>
-              <para>Event | Data set ID</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>dhis2.de.event.formReady</para>
-            </entry>
-            <entry>
-              <para>Triggered when the data entry form is completely rendered and loaded with all
-                elements.</para>
-            </entry>
-            <entry>
-              <para>Event | Data set ID</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>dhis2.de.event.dataValueSaved</para>
-            </entry>
-            <entry>
-              <para>Triggered when a data value is saved successfully.</para>
-            </entry>
-            <entry>
-              <para>Event | Data set ID | Data value object</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>dhis2.de.event.completed</para>
-            </entry>
-            <entry>
-              <para>Triggered when a data set is successfully marked as complete.</para>
-            </entry>
-            <entry>
-              <para>Event | Data set ID | Complete registration object</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>dhis2.de.event.uncompleted</para>
-            </entry>
-            <entry>
-              <para>Triggered when a data set is successfully marked as incomplete.</para>
-            </entry>
-            <entry>
-              <para>Event | Data set ID</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>dhis2.de.event.validationSuccess</para>
-            </entry>
-            <entry>
-              <para>Triggered when validation is done and there were no violations.</para>
-            </entry>
-            <entry>
-              <para>Event | Data set ID</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>dhis2.de.event.validationError</para>
-            </entry>
-            <entry>
-              <para>Triggered when validation is done and there were one or more violations.</para>
-            </entry>
-            <entry>
-              <para>Event | Data set ID</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>dhis2.ou.event.orgUnitSelected</para>
-            </entry>
-            <entry>
-              <para>Triggered when one or more organisation units are selected in the org unit web
-                tree.</para>
-            </entry>
-            <entry>
-              <para>Event | Org unit IDs | Org unit names | Sub org unit IDs</para>
-            </entry>
-          </row>
-        </tbody>
-      </tgroup>
-    </table>
-    <para>To register for an event:</para>
-    <screen>&lt;script type=&quot;text/javascript&quot;&gt;
+      <table frame="all">
+        <?oxy_comment_start author="cecilia" timestamp="20160609T172708+0200" comment="Before publication, verify that cell content don&apos;t bleed."?>
+        <title>Data entry events</title>
+        <?oxy_comment_end?>
+        <tgroup cols="3">
+          <colspec colnum="1" colname="c1" colwidth="1.18*"/>
+          <colspec colnum="2" colname="c2" colwidth="1.42*"/>
+          <colspec colnum="3" colname="newCol3" colwidth="1*"/>
+          <thead>
+            <row>
+              <entry>Key</entry>
+              <entry>Description</entry>
+              <entry>Arguments</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                <para>dhis2.de.event.formLoaded</para>
+              </entry>
+              <entry>
+                <para>Triggered after the data entry form is rendered, but before data values are
+                  set in entry fields.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>dhis2.de.event.dataValuesLoaded</para>
+              </entry>
+              <entry>
+                <para>Triggered after data values are set in entry fields.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>dhis2.de.event.formReady</para>
+              </entry>
+              <entry>
+                <para>Triggered when the data entry form is completely rendered and loaded with all
+                  elements.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>dhis2.de.event.dataValueSaved</para>
+              </entry>
+              <entry>
+                <para>Triggered when a data value is saved successfully.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID | Data value object</para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>dhis2.de.event.completed</para>
+              </entry>
+              <entry>
+                <para>Triggered when a data set is successfully marked as complete.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID | Complete registration object</para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>dhis2.de.event.uncompleted</para>
+              </entry>
+              <entry>
+                <para>Triggered when a data set is successfully marked as incomplete.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>dhis2.de.event.validationSuccess</para>
+              </entry>
+              <entry>
+                <para>Triggered when validation is done and there were no violations.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>dhis2.de.event.validationError</para>
+              </entry>
+              <entry>
+                <para>Triggered when validation is done and there were one or more
+                  violations.</para>
+              </entry>
+              <entry>
+                <para>Event | Data set ID</para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>dhis2.ou.event.orgUnitSelected</para>
+              </entry>
+              <entry>
+                <para>Triggered when one or more organisation units are selected in the org unit web
+                  tree.</para>
+              </entry>
+              <entry>
+                <para>Event | Org unit IDs | Org unit names | Sub org unit IDs</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>To register for an event:</para>
+      <screen>&lt;script type=&quot;text/javascript&quot;&gt;
 
 dhis2.util.on( &apos;dhis2.de.event.formReady&apos;, function( event, ds ) {
   console.log( &apos;The form with id: &apos; + ds + &apos; is loaded!&apos; );
@@ -1113,26 +1103,27 @@ dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
 } );
 
 &lt;/script&gt;</screen>
-    <note>
-      <para>Be careful to only use &quot;namespaced&quot; events like the ones in the example above
-        and not general ones like &quot;click&quot; as the dhis2.util.on method will unregister the
-        event first.</para>
-    </note>
-    <para>If your function only applies to certain data sets you can use the supplied data set
-      identifier and shortcut your function for unwanted data sets like this:</para>
-    <screen>dhis2.de.on( &apos;dhis2.de.event.validationSuccess&apos;, function( event, ds ) {
+      <note>
+        <para>Be careful to only use &quot;namespaced&quot; events like the ones in the example
+          above and not general ones like &quot;click&quot; as the dhis2.util.on method will
+          unregister the event first.</para>
+      </note>
+      <para>If your function only applies to certain data sets you can use the supplied data set
+        identifier and shortcut your function for unwanted data sets like this:</para>
+      <screen>dhis2.de.on( &apos;dhis2.de.event.validationSuccess&apos;, function( event, ds ) {
   if ( $.inArray( ds, [&apos;utXOiGbEj14&apos;, &apos;Re7qzHEThSC&apos;] ) == -1 ) {
     return false;
   }
   console.log( &apos;Form with id: &apos; + ds + &apos; validated successfully!&apos; );
 } );</screen>
-    <para>The identifiers of the input fields in the data entry form is on the format described
-      below. This format can be used to select the input fields in your script and perform actions
-      on them:<screen>&lt;dataelementid&gt;-&lt;optioncomboid&gt;-val</screen></para>
-    <para>Since the data set identifier is provided for all events a feasible alternative is to
-      utilize the &quot;files&quot; Web API resource and keep your callback functions in a single
-      file, where you let the JavaScript code take action based on which data set is currently
-      loaded.</para>
+      <para>The identifiers of the input fields in the data entry form is on the format described
+        below. This format can be used to select the input fields in your script and perform actions
+        on them:<screen>&lt;dataelementid&gt;-&lt;optioncomboid&gt;-val</screen></para>
+      <para>Since the data set identifier is provided for all events a feasible alternative is to
+        utilize the &quot;files&quot; Web API resource and keep your callback functions in a single
+        file, where you let the JavaScript code take action based on which data set is currently
+        loaded.</para>
+    </section>
     <section>
       <title>Functions</title>
       <para>The DHIS 2 data entry module contains Javascript API functions which can be accessed
