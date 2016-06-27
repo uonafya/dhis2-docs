@@ -165,7 +165,7 @@
         </listitem>
         <listitem>
           <para>
-            <emphasis role="bold"> Source program stage:</emphasis> In case of retrieving data value
+            <emphasis role="bold"> Source program stage</emphasis>: In case of retrieving data value
             from a specific program stage, this field is used to define what program stage to
             retrieve data from. </para>
         </listitem>
@@ -179,6 +179,13 @@
             <emphasis role="bold"> Variable name</emphasis>: Specifying the name that is used for
             the source field when writing expressions. It is encouraged to use a name that makes the
             expressions readable. </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold"> Use code for option sets</emphasis>: Only effective when the data
+            element or tracked entity attribute is connected to an option set. If left unchecked,
+            the the source field will be populated with the options name. If checked, the source
+            field will be populated with the code instead.</para>
         </listitem>
       </itemizedlist>
     </para>
@@ -611,6 +618,31 @@
         you should choose the one that is most likely that the user would need to consider. </para>
     </section>
     <section>
+      <title> Show warning on completion action </title>
+      <para> A <emphasis role="bold">show warning on completing action</emphasis> is defined by
+        selecting the corresponding option in the first column of the action row. A show warning on
+        completion action is used to give the user a warning if trying to complete inconsistent
+        data, but at the same time allowing the user to continue. The warning is shown in a dialog
+        when completing the form.</para>
+      <screenshot>
+        <title>Show warning on completion action</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="80%"
+              fileref="resources/images/program_rules/program-rule-show-warning-on-completion-action.png"
+              format="PNG"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <para> The second column is mandatory, and is used to define the message shown to the user
+        when the expression is true and the action is triggered. </para>
+      <para> The third column specifies which data element to link the warning to, and can be used
+        to tie the error to a specific data element. The default selection in the list is 'None',
+        and this simply means that no single field is specifically linked to the error. When 'None'
+        is selected, make sure to write a comprehensive error message that directs the user to where
+        the error can be fixed. </para>
+    </section>
+    <section>
       <title> Show error action </title>
       <para> A <emphasis role="bold">show error action</emphasis> is defined by selecting &quot;show
         error&quot; in the first column of the action row. A show error action is used whenever
@@ -634,6 +666,32 @@
         meant to be a cue for the user regarding where the cause of the error can be rectified. In
         case several data elements or attributes is involved, choose the one that is most likely
         that the user would need to change. </para>
+    </section>
+    <section>
+      <title> Show error preventing completion action </title>
+      <para> A <emphasis role="bold">show error preventing completion</emphasis> is defined by
+        selecting the corresponding action in the first column of the action row. A show error
+        action is used whenever there are cross-consistencies in the form that must be strictly
+        adhered to. This action prevents the user from continuing until the error is resolved. Id
+        differs from the regular <emphasis role="bold"> show error action</emphasis> in that the
+        error is not shown until the user tries to actually complete the form.</para>
+      <screenshot>
+        <title>Show error preventing completion action</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="80%"
+              fileref="resources/images/program_rules/program-rule-show-error-on-completion-action.png"
+              format="PNG"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+      <para> The second column is mandatory, and is used to define the message shown to the user
+        when the expression is true and the action is triggered. </para>
+      <para> The third column specifies which data element to link the error to, and can be used to
+        tie the error to a specific data element. The default selection in the list is 'None', and
+        this simply means that no single field is specifically linked to the error. When 'None' is
+        selected, make sure to write a comprehensive error message that directs the user to where
+        the error can be fixed.</para>
     </section>
   </section>
 </chapter>
