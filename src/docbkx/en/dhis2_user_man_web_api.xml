@@ -468,8 +468,11 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     <screen>/api/24/identifiableObjects/&lt;id&gt;</screen>
     <section>
       <title>Translation</title>
-      <para>Support for I18n translation in the web-api was added in 2.19 release. It is supported
-        by two parameters:<table frame="all">
+      <para>DHIS 2 supports translations of database content, such as data elements, indicators and
+        programs. All metadata objects in the Web API have properties meant to be used for display /
+        UI purposes, which includes <emphasis>displayName</emphasis>,
+          <emphasis>displayShortName</emphasis> and <emphasis>displayDescription</emphasis>.<table
+          frame="all">
           <title>Translate options</title>
           <tgroup cols="3">
             <colspec colnum="1" colname="c1" colwidth="1.28*"/>
@@ -487,14 +490,14 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
                 <entry>translate</entry>
                 <entry>true | false</entry>
                 <entry>Translate display* properties in metadata output (displayName,
-                  displayShortName, displayDescription, and displayFormName for data
-                  elements)</entry>
+                  displayShortName, displayDescription, and displayFormName for data elements).
+                  Default value is true.</entry>
               </row>
               <row>
                 <entry>locale</entry>
                 <entry>Locale to use</entry>
-                <entry>Translate metadata output using a specified locale (implies
-                  translate=true)</entry>
+                <entry>Translate metadata output using a specified locale (requires
+                  translate=true).</entry>
               </row>
             </tbody>
           </tgroup>
