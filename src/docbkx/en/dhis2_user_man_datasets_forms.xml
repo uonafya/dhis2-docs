@@ -17,42 +17,27 @@ Added to term list" flag="done"?>data
   <section xml:id="datasets">
     <title>About data sets and data entry forms</title>
     <para>All data entry in DHIS 2 is organised in data sets. A data set is a collection of data
-      elements grouped together for data entry and data export
-      b<?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>etween instances of DHIS
-      2, for example from a district office's local installation to a national
-      server<?oxy_custom_end?>. To use a data set to collect data for a specific organisation unit,
-      you must assign the organisation unit to the data set. Once you have assigned the data set to
-      an organisation unit,
+      elements grouped together for data entry and data export between instances of DHIS 2. To use a
+      data set to collect data for a specific organisation unit, you must assign the organisation
+      unit to the data set. Once you have assigned the data set to an organisation unit,
       t<?oxy_comment_start author="cecilia" timestamp="20160609T110521+0200" comment="For SME: The default form?
 - Yes the default form is created automatically." flag="done"?>hat
       data set <?oxy_comment_end?>is available in the <emphasis role="bold">Data entry</emphasis>
       app. Only the organisation units that you have assigned the data set to can use the data set
       for data entry.</para>
-    <?oxy_comment_start author="cecilia" timestamp="20160614T160221+0200" comment="For SME: Do you create separate Data set categories? Or do you use the ones you&apos;ve created for Data elements? 
-This section might belong to workflow section..
-
-Verify with Lars.
-Either applicable for one data element or the whole form.
-
-Data category combinations can link to both data elements and data sets. If used for data sets, teh category combinations are applicable for the whole form.
-Data set categories often used for partners, projects etc.  grants."?>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="5"?>
-    <para>About data set categories</para>
-    <?oxy_comment_end?>
     <para>A category combination can link to both data elements and data sets. If you use a category
       combination for a data set, the category combinations is applicable for the whole form. This
-      means that you can use
-      c<?oxy_comment_start author="cecilia" timestamp="20160627T144742+0200" comment="For SME: Is a cat combo mandatory?"?>ategories<?oxy_comment_end?>
-      to capture information which is common to an entire form, for example the name of the a
-      project or grant.</para>
-    <para>When a data set is linked to a category combination, those categories will be displayed as
-      drop-down boxes in the <emphasis role="bold">Data entry</emphasis> app. Data captured in the
-      form will then be linked to the selected category options from those drop-down boxes.</para>
-    <para>For information about how to create categories and category combinations,
-      s<?oxy_comment_start author="cecilia" timestamp="20160627T144103+0200" comment="At next revision, add olink to correct secion." flag="done"?>ee
+      means that you can use categories to capture information which is common to an entire form,
+      for example the name of the a project or grant. When a data set is linked to a category
+      combination, those categories will be displayed as drop-down boxes in the <emphasis
+        role="bold">Data entry</emphasis> app. Data captured in the form will then be linked to the
+      selected category options from those drop-down boxes. For information about how to create
+      categories and category combinations,
+      s<?oxy_comment_start author="cecilia" timestamp="20160627T144103+0200" comment="At next revision:
+- add olink to correct secion
+- review content, some duplication with Data elements section" flag="done"?>ee
       section "Manage data elements and categories"<?oxy_comment_end?>. Make sure that you set the
       type of categories and category combinations to &quot;Attribute&quot;. </para>
-    <?oxy_custom_end mid="5"?>
     <example>
       <title>Categories for data sets</title>
       <?oxy_comment_start author="cecilia" timestamp="20160627T144543+0200" comment="For SME: Example still correct?"?>
@@ -78,8 +63,8 @@ Data set categories often used for partners, projects etc.  grants."?>
       Here you define, for example, which data elements you want to include in the data set and the
       data collection frequency.</para>
     <para>You enter data in the <emphasis role="bold">Data entry</emphasis> app. The <emphasis
-        role="bold">Data entry</emphasis> app uses data entry forms to display the data sets.
-      There're three types of data entry forms:</para>
+        role="bold">Data entry</emphasis> app uses data entry forms to display the data sets. There
+      are three types of data entry forms:</para>
     <table frame="all">
       <title>Data entry form types</title>
       <tgroup cols="2">
@@ -221,11 +206,14 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
               <para>Data set</para>
             </entry>
             <entry>
-              <para>Create,
-                <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>assign to
-                organisation units<?oxy_custom_end?>, edit, clone, share, delete, show details and
-                translate</para>
+              <para>Create, assign to organisation units, edit, clone, share, delete, show details
+                and translate</para>
               <para>Add and remove multiple data sets to organisation units at once</para>
+              <?oxy_comment_start author="cecilia" timestamp="20160602T150202+0200" comment="Before release:
+A separate task? Can not find it in GUI."?>
+              <para> Edit compulsory data elements: This dialog will allow you to add or remove data
+                elements which will be marked as compulsory during data entry. </para>
+              <?oxy_comment_end?>
             </entry>
           </row>
           <row>
@@ -270,7 +258,8 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
         <para>Create a data set.</para>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160623T173255+0200" comment="For SME: Is it mandatory to assign a data set to an org unit?"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160623T173255+0200" comment="For SME: Is it mandatory to assign a data set to an org unit?
+- More or less. You can not register data unless you do that." flag="done"?>
         <para>Assign the data set to organisation units.</para>
         <?oxy_comment_end?>
         <para>A default form is created automatically.</para>
@@ -283,48 +272,15 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
     </orderedlist>
   </section>
   <section>
-    <title>Create a
-      <?oxy_comment_start author="cecilia" timestamp="20160615T121043+0200" comment="For SME: Should assignment of org units be a part of the create a data set? Or is it a separate task?"?>data<?oxy_comment_end?>
-      set</title>
-    <?oxy_comment_start author="cecilia" timestamp="20160602T142854+0200" comment="Before release: update screenshot. "?>
+    <title>Create a data set</title>
     <screenshot>
       <mediaobject>
         <imageobject>
           <imagedata width="80%" align="center"
-            fileref="resources/images/datasets/dataset-management.png"/>
+            fileref="resources/images/datasets/data_set_create.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <?oxy_comment_end?>
-    <para>A data set has several properties that must be entered when creating a new one.</para>
-    <itemizedlist>
-      <?oxy_comment_start author="cecilia" timestamp="20160602T150107+0200" comment="In original doc, seperate section."?>
-      <title>Data set management</title>
-      <?oxy_comment_end?>
-      <listitem>
-        <para>Assign organisation units to data sets: This function will allow you to assign
-          individual organisational units to a data set. Only organisation units which have been
-          assigned to a data set will be allowed to enter data into the data set. </para>
-      </listitem>
-      <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T150129+0200" comment="For SME: Not yet in GUI"?>
-        <para>View sections: Allows you to add or remove sections to the data set as required. These
-          sections do not apply to custom forms.</para>
-        <?oxy_comment_end?>
-      </listitem>
-      <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T150154+0200" comment="For SME: Where do you do this in the new GUI?"?>
-        <para> Design data entry form. Refer to the section on custom data entry forms for detailed
-          information of how to use this function. </para>
-        <?oxy_comment_end?>
-      </listitem>
-      <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T150202+0200" comment="For SME: A separate task?"?>
-        <para> Edit compulsory data elements: This dialog will allow you to add or remove data
-          elements which will be marked as compulsory during data entry. </para>
-        <?oxy_comment_end?>
-      </listitem>
-    </itemizedlist>
     <orderedlist>
       <listitem>
         <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
@@ -382,21 +338,13 @@ Where do you do this? - Lock Exception Management
         <example>
           <title>Open future periods for data entry</title>
           <para>For a monthly data set a value of 2 allows you to enter data for 2 months in
-            advance. This is useful
-            <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>for example
-            for<?oxy_custom_end?> population, target and planning data.</para>
+            advance. This is useful for, by example, population, target and planning data.</para>
         </example>
       </listitem>
       <listitem>
         <para>In the <emphasis role="bold">Days after period to qualify for timely
-            submission</emphasis> field, type the number of days
-          <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>in
-          which<?oxy_custom_end?> data can be entered to be considered reported on time.
-          &quot;<?oxy_comment_start author="cecilia" timestamp="20160602T110453+0200" comment="For SME: Is &quot;timely&quot; a term within DHIS 2?
-
-Check Lars or Ola
-
-Report data set within the days allocated." flag="done"?>timely<?oxy_comment_end?>.&quot;</para>
+            submission</emphasis> field, type the number of days in which data can be entered to be
+          considered reported on time.</para>
         <?oxy_comment_start author="cecilia" timestamp="20160602T105106+0200" comment="For next release:
 Create this task under Reporting section (QC)" flag="done"?>
         <para>To verify the number of timely reports submitted, go to <emphasis role="bold"
@@ -434,7 +382,7 @@ Create this task under Reporting section (QC)" flag="done"?>
 Data can be marked as &quot;Complete&quot;, then there&apos;s an approval workflow - verify with Ola.
 - Reports &gt; Data approval" flag="done"?><?oxy_comment_start author="cecilia" timestamp="20160623T170050+0200" comment="At next revision:
 Add x-ref to Data approval section in UG.
-Removed existing reference because it was unclear." flag="done" mid="44"?>Approved<?oxy_comment_end?><?oxy_comment_end mid="44"?>,
+Removed existing reference because it was unclear." flag="done" mid="31"?>Approved<?oxy_comment_end?><?oxy_comment_end mid="31"?>,
           select a <emphasis role="bold">Data approval workflow</emphasis>.</para>
       </listitem>
       <listitem>
@@ -459,7 +407,7 @@ Do you mean in the Data entry app? Or just normal data entry?" flag="done"?>
         <para>If you want it to be possible to mark a data entry form as complete only if the
           validation of that form is successful, select <emphasis role="bold">Complete allowed only
             if validation passes</emphasis>.</para>
-        <para>If you select tis option, you can't mark the form as complete if validation
+        <para>If you select this option, you can't mark the form as complete if validation
           fails.</para>
       </listitem>
       <listitem>
@@ -483,12 +431,12 @@ More data to download, might not want to have this on a slow line.
 " flag="done"?><emphasis
             role="bold">Data element decoration</emphasis><?oxy_comment_end?></para>
         <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-        <?oxy_comment_start author="cecilia" timestamp="20160623T171426+0200" comment="For SME: Correctly phrased?" mid="49"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160623T171426+0200" comment="For SME: Correctly phrased?" mid="36"?>
         <para>If you select this option, descriptions of data elements render in call-outs in
           downloaded data sets in offline mode in the <emphasis role="bold">Data entry</emphasis>
           app.</para>
         <?oxy_custom_end?>
-        <?oxy_comment_end mid="49"?>
+        <?oxy_comment_end mid="36"?>
       </listitem>
       <listitem>
         <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
@@ -502,26 +450,26 @@ More data to download, might not want to have this on a slow line.
         <?oxy_comment_start author="cecilia" timestamp="20160602T141431+0200" comment="For SME: What does this option mean?
 - Only applicable for section forms
 Before release, verify that this works."?>
-        <?oxy_comment_start author="cecilia" timestamp="20160613T110721+0200" comment="Send email to lars, doesn&apos;t seem to work" mid="52"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="53"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160613T110721+0200" comment="Send email to lars, doesn&apos;t seem to work" mid="39"?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="40"?>
         <para>Render vertically</para>
         <?oxy_comment_end?>
-        <?oxy_comment_end mid="52"?>
-        <?oxy_custom_end mid="53"?>
+        <?oxy_comment_end mid="39"?>
+        <?oxy_custom_end mid="40"?>
       </listitem>
       <listitem>
         <?oxy_comment_start author="cecilia" timestamp="20160602T141437+0200" comment="For SME: What does this option mean?"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="55"?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="42"?>
         <para>Select data elements</para>
         <?oxy_comment_end?>
-        <?oxy_custom_end mid="55"?>
+        <?oxy_custom_end mid="42"?>
       </listitem>
       <listitem>
         <?oxy_comment_start author="cecilia" timestamp="20160602T141441+0200" comment="For SME: What does this option mean?"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="57"?>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="44"?>
         <para>Select indicators</para>
         <?oxy_comment_end?>
-        <?oxy_custom_end mid="57"?>
+        <?oxy_custom_end mid="44"?>
         <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
         <para>Indicators can also be added to data sets and will be available to be placed in custom
           data entry forms when they need to be shown along with data elements on the same data
@@ -531,7 +479,31 @@ Before release, verify that this works."?>
       <listitem>
         <para>Click <emphasis role="bold">Save</emphasis>.</para>
       </listitem>
+      <listitem>
+        <para><?oxy_comment_start author="cecilia" timestamp="20160628T112043+0200" comment="Infor from previous version:
+Assign organisation units to data sets: This function will allow you to assign individual organisational units to a data set. Only organisation units which have been assigned to a data set will be allowed to enter data into the data set" flag="done"?>Assign<?oxy_comment_end?>
+          the data set to organisation units:</para>
+        <orderedlist>
+          <listitem>
+            <para>In the list, find the data set you want to assign to organisation units.</para>
+          </listitem>
+          <listitem>
+            <para>Click the options menu and select <emphasis role="bold">Assign to organisation
+                units</emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>In the organisation unit tree, select the organisation units you want to assign
+              the data set to. The selected organisation units are marked in yellow.</para>
+          </listitem>
+          <listitem>
+            <para>Click <emphasis role="bold">Close</emphasis>.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
     </orderedlist>
+    <para>Your data set is now ready to be used within the <emphasis role="bold">Data
+        entry</emphasis> app for the organisation units that you have assigned and for periods
+      according to your selected frequency (period type).</para>
     <itemizedlist>
       <?oxy_comment_start author="cecilia" timestamp="20160602T134342+0200" comment="For SME: Still applicable? Not in create data set form anymore...
 
@@ -546,35 +518,6 @@ Not in GUI, double check with Lars."?>
       </listitem>
       <?oxy_comment_end?>
     </itemizedlist>
-  </section>
-  <section>
-    <?oxy_comment_start author="cecilia" timestamp="20160623T174409+0200" comment="For SME: Information correct?"?>
-    <title>Assign a data set to organisation units</title>
-    <?oxy_comment_end?>
-    <orderedlist>
-      <listitem>
-        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-            >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> > <emphasis
-            role="bold">Data set</emphasis>.</para>
-      </listitem>
-      <listitem>
-        <para>In the list, find the data set you want to assign to organisation units.</para>
-      </listitem>
-      <listitem>
-        <para>Click the options menu and select <emphasis role="bold">Assign to organisation
-            units</emphasis>.</para>
-      </listitem>
-      <listitem>
-        <para>In the organisation unit tree, select the organisation units you want to assign the
-          data set to. The selected organisation units are marked in yellow.</para>
-      </listitem>
-      <listitem>
-        <para>Click <emphasis role="bold">Close</emphasis>.</para>
-      </listitem>
-    </orderedlist>
-    <para>Your data set is now ready to be used within the <emphasis role="bold">Data
-        entry</emphasis> app for the organisation units that you have assigned and for periods
-      according to your selected frequency (period type).</para>
   </section>
   <section>
     <title>Edit data
@@ -702,7 +645,7 @@ Reword, remove passive voice." flag="done"?>
             <?oxy_comment_start author="cecilia" timestamp="20160613T091937+0200" comment="For SME: Do you delete the custom form? section form?
 - Data set and all data forms" flag="done"?><emphasis
             role="bold">Delete</emphasis><?oxy_comment_end?>.</para>
-        <para>This deleates the data set and all associated data forms.</para>
+        <para>This deletes the data set and all associated data forms.</para>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">OK</emphasis> to confirm.</para>
@@ -801,6 +744,10 @@ For SME: Change to &quot;Download PDF&quot; as in the analysis apps?
     <?oxy_comment_end?>
     <para>Section forms are separated automatically by data element category combinations, which
       produce a spreadsheet like data entry form for each section.</para>
+    <?oxy_comment_start author="cecilia" timestamp="20160602T150129+0200" comment="For SME: Not yet in GUI"?>
+    <para>View sections: Allows you to add or remove sections to the data set as required. These
+      sections do not apply to custom forms.</para>
+    <?oxy_comment_end?>
     <orderedlist>
       <listitem>
         <para> Set up your data set as described in
@@ -954,8 +901,8 @@ Maintenance" flag="done"?>Maintenance<?oxy_comment_end?></emphasis>
       in custom forms</title>
     <para>In custom data entry form you can use
       <?oxy_comment_start author="cecilia" timestamp="20160614T113801+0200" comment="Note: JavaScript is a trademark owned by Oracle (previously Sun corp.)" flag="done"?>JavaScript<?oxy_comment_end?>
-      to create dynamic behavior and customziations. As an exmample, you can hide form sections
-      based on specific user input for data elements, or show specific information when a form
+      to create dynamic behavior and customizations. As an example, you can hide form sections based
+      on specific user input for data elements, or show specific information when a form
       loads.</para>
     <section>
       <title>Events</title>
@@ -1126,12 +1073,12 @@ dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
     </section>
     <section>
       <title>Functions</title>
-      <para>The DHIS 2 data entry module contains Javascript API functions which can be accessed
+      <para>The DHIS 2 data entry module contains JavaScript API functions which can be accessed
         from custom data entry forms.</para>
       <para><emphasis role="bold">dhis2.de.api.getSelections</emphasis>: This function returns a
-        Javascript object which contains properties for all dimensions with corresponding values for
+        JavaScript object which contains properties for all dimensions with corresponding values for
         the identifiers of the selected options. It contains properties for "ds" (data set), "pe"
-        (period), "ou" (organisation unit) and identifiers for all data sete categories.</para>
+        (period), "ou" (organisation unit) and identifiers for all data set categories.</para>
       <para>An example response looks like
         this:<screen>{
  +  ds: "lyLU2wR22tC",
@@ -1140,7 +1087,7 @@ dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
  +  LFsZ8v5v7rq: "CW81uF03hvV",
  +  yY2bQYqNt0o: "yMj2MnmNI8L"
  +}</screen></para>
-      <para>Example Javascript usage of this
+      <para>Example JavaScript usage of this
         function:<screen>var sel = dhis2.de.api.getSelections();
  +var orgUnit = sel["ou"];
  +var partner = sel["LFsZ8v5v7rq"];</screen></para>
