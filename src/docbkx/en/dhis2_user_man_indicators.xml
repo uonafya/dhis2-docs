@@ -9,49 +9,52 @@
   <title>Manage indicators</title>
   <section xml:id="indicator">
     <title>About indicators</title>
-    <para>An indicator is a formula that can be composed of multiple data elements, constants,
+    <para>An indicator is a formula that can consist of multiple data elements, constants,
       organisation unit group counts and mathematical operators. The indicator consist typically of
-      a numerator and denominator. Calculated totals do not have a denominator. You never enter
-      indicators directly in DHIS 2, you derive them from combinations of data elements and factors.
-      Indicators are used to calculate coverage rates, incidence and other values are a result of
-      data element values that have been entered into the system.</para>
-    <para>The components of an indicator formula are:</para>
+      a numerator and denominator. You use indicators to calculate coverage rates, incidence and
+      other values that are a result of data element values that have been entered into the system.
+      Calculated totals do not have a denominator.</para>
+    <note>
+      <para>You never enter indicators directly in DHIS 2, you calculate them.</para>
+    </note>
+    <para>An indicator formula can consist of mathematical operators, for example plus and minus,
+      and of the following
+      <?oxy_comment_start author="cecilia" timestamp="20160628T144558+0200" comment="At next revision: review table completely and add more examples." flag="done"?>elements<?oxy_comment_end?>:</para>
     <table frame="all">
       <title><?oxy_comment_start author="cecilia" timestamp="20160626T170812+0200" comment="Before release, tabl content must be reviewed by SME."?>Indicator<?oxy_comment_end?>
-        formula components</title>
-      <tgroup cols="2">
-        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
-        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+        formula</title>
+      <tgroup cols="3">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="newCol2" colnum="2" colwidth="1.04*"/>
+        <colspec colname="c2" colnum="3" colwidth="1.02*"/>
         <thead>
           <row>
-            <entry>Component</entry>
+            <entry>Formula element</entry>
+            <entry>Type</entry>
             <entry>Description</entry>
           </row>
         </thead>
         <tbody>
           <row>
             <entry>
-              <para><?oxy_comment_start author="cecilia" timestamp="20160626T170521+0200" comment="For SME: Two constants, correct?"?>Constants<?oxy_comment_end?></para>
+              <para>Constant</para>
             </entry>
             <entry>
-              <para>Constants are numerical values which will remain the same for all indicator
+              <para>Component</para>
+            </entry>
+            <entry>
+              <para>Constants are numerical values which remain the same for all indicator
                 calculations. This is useful in order to have a single place to change values that
                 might change over time.</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>Constants</para>
-            </entry>
-            <entry>
-              <para>Indicators may use of constants. Constants are static values which will be
-                applied uniformly to the indicator formula. Constants are applied AFTER data element
-                values have been aggregated.</para>
+              <para>Constants are applied AFTER data element values have been aggregated.</para>
             </entry>
           </row>
           <row>
             <entry>
               <para>Data elements</para>
+            </entry>
+            <entry>
+              <para>Component</para>
             </entry>
             <entry>
               <para>Data elements are substituted by the data value captured for the data
@@ -60,44 +63,61 @@
           </row>
           <row>
             <entry>
-              <para><?oxy_comment_start author="cecilia" timestamp="20160626T170505+0200" comment="For SME: Still valid? Doesn&apos;t exist i new GUI. Replaced by program?"?>Days<?oxy_comment_end?></para>
+              <para>Days</para>
             </entry>
             <entry>
-              <para>A special operator &quot;D&quot; is available in formulas. This operator will
-                always provide the number of days for a given indicator calculation. As an example,
-                if you wish to calculate the &quot;Percentage of time vaccine refrigerator was
-                non-functional&quot;, you could define the numerator as (&quot;D-&quot;Number of
-                days vaccine refrigerator was available&quot;&quot;)/&quot;D&quot;. For example, if
-                the fridge was available 25 days in June, the indicator would be calculated as
-                (30-25/25)*100=17%. If you were however to calculate the total for Quarter 1, the
-                number of days (&quot;D&quot;) would be equal to 31+28+31=90. Thus, the
-                &quot;D&quot; parameter will always be the number of days in the period of
+              <para>Operator</para>
+            </entry>
+            <entry>
+              <para>"Days" is special operator that always provides the number of days for a given
+                indicator calculation.</para>
+              <para>For example: if you want to calculate the &quot;Percentage of time vaccine
+                refrigerator was non-functional&quot;, you could define the
+                <?oxy_comment_start author="cecilia" timestamp="20160628T143839+0200" comment="For SME: Is numerator really correct? Do you mean indicator?"?>numerator<?oxy_comment_end?>
+                as:</para>
+              <para>(&quot;Days-&quot;Number of days vaccine refrigerator was
+                available&quot;&quot;)/&quot;Days&quot;</para>
+              <para>If the fridge was available 25 days in June, the indicator would be calculated
+                as:</para>
+              <para>(30-25/25)*100 = 17 %</para>
+              <para>If you want to calculate the total for Quarter 1, the number of days
+                (&quot;Days&quot;) would be:</para>
+              <para>31+28+31 = 90</para>
+              <para>The "Days" parameter will always be the number of days in the period of
                 interest.</para>
             </entry>
           </row>
           <row>
             <entry>
-              <para>Organisation unit
-                <?oxy_comment_start author="cecilia" timestamp="20160627T091723+0200" comment="For SME:
-Organisation unit group counts in old GUI
-Organisation unit counts in new GUI
-Which is correct?"?>counts<?oxy_comment_end?></para>
+              <para>Organisation unit counts</para>
             </entry>
             <entry>
-              <para>Organisation unit groups can be utilized in formulas and will be substituted by
-                the number of organisation units in the group. During aggregation, the org units in
-                the group will be intersected with the part of the org unit hierarchy being
-                requested. As an example, this lets you use the number of public facilities in a
-                specific district in indicators. This is useful e.g. when creating facility
-                infrastructure surveys and reports.</para>
+              <para>Component</para>
+            </entry>
+            <entry>
+              <para>You can use organisation unit groups in formulas. They will be replaced by the
+                number of organisation units in the group. During aggregation, the organisation
+                units in the group will be intersected with the part of the organisation unit
+                hierarchy being requested.</para>
+              <para>This lets you use the number of public facilities in a specific district in
+                indicators. This is useful for example when you create facility infrastructure
+                surveys and reports.</para>
             </entry>
           </row>
           <row>
             <entry>
-              <para><?oxy_comment_start author="cecilia" timestamp="20160626T170452+0200" comment="For SME: add description"?>Program<?oxy_comment_end?></para>
+              <para><?oxy_comment_start author="cecilia" timestamp="20160626T170452+0200" comment="For SME: add description"?>Program<?oxy_comment_end?>s</para>
             </entry>
             <entry>
-              <para/>
+              <para>Component</para>
+            </entry>
+            <entry>
+              <para>Click <emphasis role="bold">Programs</emphasis> and select a program to view all
+                data elements, attribtues and indicators related to a specific program.</para>
+              <?oxy_comment_start author="cecilia" timestamp="20160628T145309+0200" comment="Before relese: confirm this is correct."?>
+              <para>The program components you include in your formula will have a program tag
+                assigned to them.</para>
+              <?oxy_comment_end?>
             </entry>
           </row>
         </tbody>
@@ -158,7 +178,7 @@ Which is correct?"?>counts<?oxy_comment_end?></para>
     </table>
   </section>
   <section>
-    <title><?oxy_comment_start author="cecilia" timestamp="20160624T135947+0200" comment="For SME: Is there a specific workflow to creating indicators?"?>Workflow<?oxy_comment_end?></title>
+    <title>Workflow</title>
     <orderedlist>
       <listitem>
         <para>Create indicator types.</para>
@@ -166,21 +186,28 @@ Which is correct?"?>counts<?oxy_comment_end?></para>
       <listitem>
         <para>Create indicators.</para>
       </listitem>
+      <listitem>
+        <para>Create indicator groups.</para>
+      </listitem>
+      <listitem>
+        <para>Create indicator group sets.</para>
+      </listitem>
     </orderedlist>
   </section>
   <section xml:id="indicatorType">
-    <title>Create an indicator
-      <?oxy_comment_start author="cecilia" timestamp="20160626T164252+0200" comment="Before release, replace screenshot." flag="done"?>type<?oxy_comment_end?></title>
+    <title>Create an indicator type</title>
     <screenshot>
       <mediaobject>
         <imageobject>
+          <?oxy_comment_start author="cecilia" timestamp="20160627T151956+0200" comment="Before release, update screenshot. Number box should be removed."?>
           <imagedata width="80%" align="center"
             fileref="resources/images/maintainence/indicator_type_create.png" format="PNG"/>
+          <?oxy_comment_end?>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>Indicator types define a factor that will be applied during aggregation. Indicator values
-      that are calculate during a data mart export or report table generation process will appear
+    <para>Indicator types define a factor that is applied during aggregation. Indicator values that
+      are calculated during a data mart export or report table generation process will appear
       properly formatted, and will therefore not require an additional multiplier (for example 100
       in the case of percents) for the values to appear correctly formatted.</para>
     <note>
@@ -199,7 +226,7 @@ Which is correct?"?>counts<?oxy_comment_end?></para>
             role="bold">Indicator type</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Click the yellow plus button.</para>
+        <para>Click the add button.</para>
       </listitem>
       <listitem>
         <para>In the
@@ -215,7 +242,8 @@ For SME: Must the name be unique?" flag="done"?><emphasis
       </listitem>
       <listitem>
         <para><emphasis role="bold"
-          >Number</emphasis><?oxy_comment_start author="cecilia" timestamp="20160626T164905+0200" comment="For SME: What does this option mean?"?></para>
+          >Number</emphasis><?oxy_comment_start author="cecilia" timestamp="20160626T164905+0200" comment="For SME: What does this option mean?
+- To be removed, send mail to Lars."?></para>
         <?oxy_comment_end?>
       </listitem>
       <listitem>
@@ -243,7 +271,7 @@ For SME: Must the name be unique?" flag="done"?><emphasis
             role="bold">Indicator</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Click the yellow plus button.</para>
+        <para>Click the add button.</para>
       </listitem>
       <listitem>
         <para>In the
@@ -306,16 +334,16 @@ Add information about what this classification is." flag="done"?>Classification<
         <orderedlist>
           <listitem>
             <para>Type a clear
-              <?oxy_comment_start author="cecilia" timestamp="20160626T165525+0200" comment="For SME: Mandatory field? No *..."?>description<?oxy_comment_end?>
+              <?oxy_comment_start author="cecilia" timestamp="20160626T165525+0200" comment="At next release: report bug:
+Mandatory field does not contain a *" flag="done"?>description<?oxy_comment_end?>
               of the numerator.</para>
           </listitem>
           <listitem>
-            <para>Define the formula of the indicator by selecting the data elements that should
-              compose the numerator from the &quot;Data elements&quot; field. Simply select the data
-              element, and double click it. It then appears as part of the formula. You formula must
-              be mathematically valid, including the proper use of parentheses when necessary. You
-              can double click on each of the mathematical operator buttons below the indicator
-              formula definition to add them to your formula. </para>
+            <para>Define the numerator by double-clicking components in the right-hand field. The
+              components then appears as part of the formula in the left-hand field. Add
+              mathematical operators by double-clicking the icons below the left-hand field.</para>
+            <para>You formula must be mathematically valid. This includes correct use of parentheses
+              when necessary.</para>
           </listitem>
           <listitem>
             <para>Click <emphasis role="bold">Done</emphasis> to save all changes to the
@@ -328,16 +356,16 @@ Add information about what this classification is." flag="done"?>Classification<
         <orderedlist>
           <listitem>
             <para>Type a clear
-              <?oxy_comment_start author="cecilia" timestamp="20160626T165525+0200" comment="For SME: Mandatory field? No *..."?>description<?oxy_comment_end?>
+              <?oxy_comment_start author="cecilia" timestamp="20160626T165525+0200" comment="At next release: report bug:
+Mandatory field does not contain a *" flag="done"?>description<?oxy_comment_end?>
               of the denominator.</para>
           </listitem>
           <listitem>
-            <para>Define the formula of the indicator by selecting the data elements that should
-              compose the denominator from the &quot;Data elements&quot; field. Simply select the
-              data element, and double click it. It then appears as part of the formula. You formula
-              must be mathematically valid, including the proper use of parentheses when necessary.
-              You can double click on each of the mathematical operator buttons below the indicator
-              formula definition to add them to your formula. </para>
+            <para>Define the denominator by double-clicking components in the right-hand field. The
+              components then appears as part of the formula in the left-hand field. Add
+              mathematical operators by double-clicking the icons below the left-hand field.</para>
+            <para>You formula must be mathematically valid. This includes correct use of parentheses
+              when necessary.</para>
           </listitem>
           <listitem>
             <para>Click <emphasis role="bold">Done</emphasis> to save all changes to the
@@ -367,18 +395,14 @@ Add information about what this classification is." flag="done"?>Classification<
             role="bold">Indicator  group</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Click the yellow plus button.</para>
+        <para>Click the add
+          <?oxy_comment_start author="cecilia" timestamp="20160628T150914+0200" comment="Before release: verify if fields has been added to create form."?>button<?oxy_comment_end?>.</para>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160626T172803+0200" comment="For SME:
-Should this form be different and for data element groups?"?>
-        <para>Fill in the form:</para>
+        <?oxy_comment_start author="cecilia" timestamp="20160626T172803+0200" comment="Form should be consistent with org unit and data element groups.
+ - E-mail send to Lars." flag="done"?>
+        <para>Type a name.</para>
         <?oxy_comment_end?>
-        <orderedlist>
-          <listitem>
-            <para><emphasis role="bold">Name</emphasis></para>
-          </listitem>
-        </orderedlist>
       </listitem>
       <listitem>
         <para>Select indicators and assign them.</para>
@@ -390,7 +414,6 @@ Should this form be different and for data element groups?"?>
   </section>
   <section xml:id="indicatorGroupSet">
     <title>Create an indicator group set</title>
-    <?oxy_comment_start author="cecilia" timestamp="20160626T170957+0200" comment="Before release: replace screenshot." flag="done"?>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -399,13 +422,6 @@ Should this form be different and for data element groups?"?>
         </imageobject>
       </mediaobject>
     </screenshot>
-    <?oxy_comment_end?>
-    <note>
-      <para>Similar to data element and indicator group sets,
-        <?oxy_comment_start author="cecilia" timestamp="20160626T171230+0200" comment="For SME: What do you mean with typically? Is the indicator group set exclusive or not?"?>typically<?oxy_comment_end?>,
-        indicator groups should be exclusive, meaning that one indicator group should not belong to
-        multiple indicator group sets.</para>
-    </note>
     <para>Indicator group sets create combined groups of similar indicators. For example, you might
       have a group of indicators called &quot;Malaria&quot; and &quot;Leishmaniasis&quot;. Both of
       these groups could be combined into a group set called &quot;Vector-borne diseases&quot;.
@@ -418,7 +434,7 @@ Should this form be different and for data element groups?"?>
             role="bold">Indicator group</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Click the yellow plus button.</para>
+        <para>Click the add button.</para>
       </listitem>
       <listitem>
         <para>Fill in the form:</para>
@@ -433,7 +449,7 @@ Should this form be different and for data element groups?"?>
             <para><emphasis role="bold"
                 ><?oxy_comment_start author="cecilia" timestamp="20160626T172625+0200" comment="At next revision: 
 Add description of what this option does.
-Compulsory in the data form?"?>Compulsory<?oxy_comment_end?></emphasis></para>
+Compulsory in the data form?" flag="done"?>Compulsory<?oxy_comment_end?></emphasis></para>
           </listitem>
         </orderedlist>
       </listitem>
@@ -527,7 +543,8 @@ For details about each option, refer to section Create a data element." flag="do
       </listitem>
       <listitem>
         <para>Change the
-          <?oxy_comment_start author="cecilia" timestamp="20160624T141914+0200" comment="Before release, verify GUI. Options GUI will change."?>settings<?oxy_comment_end?>
+          <?oxy_comment_start author="cecilia" timestamp="20160624T141914+0200" comment="Before release, verify GUI. Options GUI will change.
+-  Will not change in 2.24." flag="done"?>settings<?oxy_comment_end?>
           for the user
           <?oxy_comment_start author="cecilia" timestamp="20160624T141846+0200" comment="At net revision:
 For SME: More information needed. What does External access mean?
@@ -572,14 +589,5 @@ Mark: something to do with edit rights, verify with Lars." flag="done"?>groups<?
         <para>Click <emphasis role="bold">OK</emphasis> to confirm.</para>
       </listitem>
     </orderedlist>
-  </section>
-  <section xml:id="indicatorGroupEditor">
-    <title>Indicator group
-      <?oxy_comment_start author="cecilia" timestamp="20160626T173053+0200" comment="The mass meta data editor?"?>editor<?oxy_comment_end?></title>
-    <para>The indicator group editor module functions essentially the same as the data element group
-      editor module, except on indicators. You can easily rearrange the groups that indicators
-      belong to with this module. To access it, choose To assign indicators to groups, simple press
-      Maintenance-&gt;Data elements and indicators-&gt;Indicator group editor from the main menu.
-      See the section on Data element group editor for further instructions. </para>
   </section>
 </chapter>

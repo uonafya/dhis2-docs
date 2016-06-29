@@ -5071,9 +5071,10 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         user.<screen>{ &quot;removed&quot; : [&quot;xE7jOejl9FI&quot;] }</screen></para>
       <para>On failure the returned object will contain a message payload which describes the
         error.<screen>{ &quot;message&quot; : &quot;No user with uid: dMV6G0tPAEa&quot; }</screen></para>
-      <para>The observant reader will already have noticed that the object returned on success in
-        our example is actually a list of ids (containing a single entry). This is due to the
-        endpoint also supporting batch removals. The request is made to the same <emphasis
+      <para><?oxy_comment_start author="cecilia" timestamp="20160628T110014+0200" comment="At next release: rewrite section and remove expressions like the observant reader." flag="done"?>The
+        observant reader will alread<?oxy_comment_end?>y have noticed that the object returned on
+        success in our example is actually a list of ids (containing a single entry). This is due to
+        the endpoint also supporting batch removals. The request is made to the same <emphasis
           role="italic">messageConversations</emphasis> resource but follows slightly different
         semantics. For batch operations the conversation ids are given as query string parameters.
         The following example removes two separate message conversations for the current
@@ -5091,7 +5092,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         tracking whether a user has seen (opened) a message or not. In a typical application
         scenario (e.g. the DHIS 2 web portal) a message will be marked read as soon as the user
         opens it for the first time. However, users might want to manage the read or unread status
-        of their messages in order to keep track of certains conversations.</para>
+        of their messages in order to keep track of certain conversations.</para>
       <para>Marking messages read or unread follows similar semantics as batch removals, and also
         supports batch operations. To mark messages as read we issue a <emphasis role="italic"
           >POST</emphasis> to the <emphasis role="italic">messageConversations/read</emphasis>
@@ -5108,9 +5109,10 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     </section>
     <section>
       <title>Tickets</title>
-      <para>You can create tickets using the "write feedback" tool. Tickets are the same as
-        messages. You can give a status or a priority to a ticket. To do this, use these API
-        endpoints:<screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/status</screen><screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/priority</screen></para>
+      <para>You can use the "write feedback" tool to create tickets and messages. The only
+        difference between a ticket and a message is that you can give a status and a priority to a
+        ticket. To do this, use these
+        API<screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/status</screen><screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/priority</screen></para>
       <para>
         <table frame="all">
           <title>A list of valid status and priority values</title>
@@ -5144,10 +5146,10 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           </tgroup>
         </table>
       </para>
-      <para>Tickets can also contain internal messages, which is visiable only to users with the
-        "Manage tickets" authority. To send a internal message, include the optional parameter
-        "internal" when replying to a message conversation, and set it to
-        "true".<screen>curl -d &quot;This is an internal message&quot; 
+      <para>You can also add an internal message to a ticket, which can only be seen by users who
+        have "Manage tickets" permissions. To create an internal reply, include the "internal"
+        parameter, and set it
+        to<screen>curl -d &quot;This is an internal message&quot; 
   &quot;https://play.dhis2.org/demo/api/24/messageConversations/ZjHHSjyyeJ2?internal=true&quot; 
   -H &quot;Content-Type:text/plain&quot; -u admin:district -X POST -v</screen></para>
     </section>

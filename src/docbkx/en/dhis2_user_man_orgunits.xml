@@ -202,16 +202,15 @@ Handle org units? Manage org units? Create an org unit group set? Create an org 
     <screenshot>
       <mediaobject>
         <imageobject>
-          <?oxy_comment_start author="cecilia" timestamp="20160518T103002+0200" comment="Update screenshot" flag="done"?>
           <imagedata width="80%" align="center"
             fileref="resources/images/orgunits/create_new_orgunit.png" format="PNG"/>
-          <?oxy_comment_end?>
         </imageobject>
       </mediaobject>
     </screenshot>
     <para>You add organisation units to the hierarchy one by one, either as a
       <?oxy_comment_start author="cecilia" timestamp="20160518T102014+0200" comment="For SME: Can you crate a new root? 
-WIP, follow-up with SME."?>root
+WIP, follow-up with SME.
+Follow-up with mark before release."?>root
       unit<?oxy_comment_end?> or as a child of a selected organisation unit.</para>
     <para>To create a new organisation unit:</para>
     <orderedlist>
@@ -232,7 +231,7 @@ WIP, follow-up with SME."?>root
         </note>
       </listitem>
       <listitem>
-        <para>Click the yellow plus button.</para>
+        <para>Click the add button.</para>
       </listitem>
       <listitem>
         <para>In the <emphasis role="bold">Name</emphasis> field, define the precise name of the
@@ -302,7 +301,7 @@ WIP, follow-up with SME."?>root
       </listitem>
       <?oxy_comment_start author="cecilia" timestamp="20160524T121553+0200" comment="Will be added, see Iissue on GitHub
 https://github.com/dhis2/maintenance-app/issues/162"?>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="17"?>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="16"?>
       <listitem>
         <para>Coordinates: This field is used to create the maps in the GIS module. Paste in the
           coordinates of the organisation unit in this field, either a polygon (for organisation
@@ -316,20 +315,21 @@ https://github.com/dhis2/maintenance-app/issues/162"?>
 
 Controlled in Settings&gt;Access
 &quot;Allow assigning object to related objects during add or update&quot;
-"?>
+
+- Doesn&apos;t seem to wrok..."?>
       <listitem>
         <para>Datasets: Datasets can be assigned to organisation units here. See the chapter on
           &quot;Data sets&quot; for more detailed information on assigning datasets to organisation
           units.</para>
       </listitem>
       <?oxy_comment_end?>
-      <?oxy_comment_start author="cecilia" timestamp="20160518T113239+0200" comment="For SME: No longer applicable in new Mtn app?" mid="19"?>
+      <?oxy_comment_start author="cecilia" timestamp="20160518T113239+0200" comment="For SME: No longer applicable in new Mtn app?" mid="18"?>
       <listitem>
         <para>Organisation unit groups: Assignments to organisation units group sets can be assigned
           through the individual drop-down boxes which appear for each group set.</para>
       </listitem>
-      <?oxy_custom_end mid="17"?>
-      <?oxy_comment_end mid="19"?>
+      <?oxy_custom_end mid="16"?>
+      <?oxy_comment_end mid="18"?>
     </orderedlist>
   </section>
   <section xml:id="ou_groups">
@@ -345,7 +345,7 @@ Controlled in Settings&gt;Access
             <emphasis role="bold">Organisation unit group</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Click the yellow plus button.</para>
+        <para>Click the add button.</para>
       </listitem>
       <listitem>
         <para>Fill in the form:</para>
@@ -429,7 +429,7 @@ Controlled in Settings&gt;Access
             <emphasis role="bold">Organisation unit group set</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Click the yellow plus button.</para>
+        <para>Click the add button.</para>
       </listitem>
       <listitem>
         <para>Fill in the form:</para>
@@ -594,11 +594,13 @@ At the moment, I can only do x-refs to section 1 tags.
           list.</para>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160527T113739+0200" comment="Before release, verify GUI. Options GUI will change."?>
+        <?oxy_comment_start author="cecilia" timestamp="20160527T113739+0200" comment="Before release, verify GUI. Options GUI will change.
+
+Not  for 2.24" flag="done"?>
         <para>Change the settings for the user
           group<?oxy_comment_start author="cecilia" timestamp="20160510T161804+0200" comment="For SME: More information needed. What does External access mean?
 Marks: something to do with edit rights, verify with Lars.
-E-mail send 27th May"?>s<?oxy_comment_end?>
+E-mail send 27th May" flag="done"?>s<?oxy_comment_end?>
           you want to modify.</para>
         <?oxy_comment_end?>
         <itemizedlist>
@@ -732,9 +734,16 @@ If so, go trough all topics and update." flag="done"?>Province<?oxy_comment_end?
       <listitem>
         <?oxy_comment_start author="cecilia" timestamp="20160524T154550+0200" comment="For SME:Do you need to select offline levels? What does Default mean?
 E-mail send to Lars 27th May.
-Number of levels that are loaded offline, depends on the org unit the user is assigned to. Verify with Lars"?>
+Number of levels that are loaded offline, depends on the org unit the user is assigned to. Verify with Lars" flag="done"?>
         <para>Select the number of offline levels.</para>
         <?oxy_comment_end?>
+        <note>
+          <para>You set the default value in the <emphasis role="bold">Settings</emphasis>
+            app:</para>
+          <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+              >Settings</emphasis> > <emphasis role="bold">General</emphasis> and select an item in
+            the <emphasis role="bold">Max offline organisation unit levels</emphasis> list.</para>
+        </note>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Save</emphasis>.</para>
