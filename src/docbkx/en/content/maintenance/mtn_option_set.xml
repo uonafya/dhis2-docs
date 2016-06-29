@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0"
+    xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+    xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+    <title>Manage option sets</title>
+    <para>Option sets provide a pre-defined dropdown (enumerated) list for use in DHIS 2. You can
+        define any kind of options, for instance an option set called &quot;Delivery type&quot;
+        where &quot;Normal&quot;, &quot;Breach&quot;, &quot;Caesarian&quot; and &quot;Assisted&quot;
+        would be the options. </para>
+    <screenshot>
+        <mediaobject>
+            <imageobject>
+                <imagedata align="center"
+                    fileref="../../resources/images/maintainence/option_set_create.png" width="80%"
+                    format="PNG"/>
+            </imageobject>
+        </mediaobject>
+    </screenshot>
+    <important>
+        <?oxy_comment_start author="cecilia" timestamp="20160627T102422+0200" comment="For SME: Still correct?
+- Yes
+- E-mail send to Lars to add a * to UI."?>
+        <para><?oxy_comment_end?>Option sets must have a code as well as a name. You can change the
+            names but you can't change the codes. Both names and codes of all options must be
+            unique, even across different option sets.</para>
+    </important>
+    <para>To create an option set:</para>
+    <orderedlist>
+        <listitem>
+            <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                    >Maintenance</emphasis> > <emphasis role="bold">Option set</emphasis>.</para>
+        </listitem>
+        <listitem>
+            <para>Click the add button.</para>
+        </listitem>
+        <listitem>
+            <para>In the <emphasis role="bold">Primary details</emphasis> tab, define the option
+                set:</para>
+            <orderedlist>
+                <listitem>
+                    <para>In the
+                            <?oxy_comment_start author="cecilia" timestamp="20160624T160524+0200" comment="At next releaase:
+For SME: Must the name be unique?" flag="done"?><emphasis
+                            role="bold">Name</emphasis><?oxy_comment_end?> field, type the name of
+                        the constant.</para>
+                </listitem>
+                <listitem>
+                    <para>In the <emphasis role="bold">Code</emphasis> field, assign a code.</para>
+                </listitem>
+                <listitem>
+                    <para>Select a <emphasis role="bold">Value type</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>Click <emphasis role="bold">Save</emphasis>.</para>
+                </listitem>
+            </orderedlist>
+        </listitem>
+        <listitem>
+            <para>For each option you need, perform the following tasks:</para>
+            <orderedlist>
+                <listitem>
+                    <para>Click the <emphasis role="bold">Options</emphasis> tab.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the add button.</para>
+                </listitem>
+                <listitem>
+                    <para>Type a <emphasis role="bold">Name</emphasis> and a <emphasis role="bold"
+                            >Code</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <?oxy_comment_start author="cecilia" timestamp="20160627T104140+0200" comment="For SME: Is it mandatory to sort the options?"?>
+                    <para><?oxy_comment_start author="cecilia" timestamp="20160627T154510+0200" comment="At next release: 
+Explain sorting options. Once I&apos;ve sorted them, I cannot change the order unless I go out of the dialog and then back to edit mode." flag="done"?>Sort<?oxy_comment_end?>
+                        the options by name, code/value or manually.</para>
+                    <?oxy_comment_end?>
+                </listitem>
+                <listitem>
+                    <para>Click <emphasis role="bold">Save</emphasis>.</para>
+                </listitem>
+            </orderedlist>
+        </listitem>
+    </orderedlist>
+</section>
