@@ -9251,13 +9251,19 @@ Other systems say it&apos;s the first week of January with a Thursday in it (ISO
       <para><emphasis role="italic">GenericHttp</emphasis></para>
       <screen>{
   &quot;name&quot; : &quot;generic&quot;,
-  &quot;username&quot;: &quot;genericUser&quot;,
-  &quot;password&quot;: &quot;abc123&quot;,
+  &quot;messageParameter&quot;: &quot;message&quot;,
+  &quot;recipientParameter&quot;: &quot;msisdn&quot;,
   &quot;urlTemplate&quot;: &quot;http://localhost:template&quot;,
-  &quot;parameters&quot;: {
-  &quot;parameter1&quot;: &quot;value1&quot;,
-  &quot;parameter2&quot;: &quot;value2&quot;
-  }
+  &quot;parameters&quot;: [
+    {
+      &quot;key&quot;: &quot;username&quot;,
+      &quot;value&quot;: &quot;user12&quot;
+    }.
+    {
+     &quot;key&quot;: &quot;password&quot;,
+      &quot;value&quot;: &quot;XXX&quot;
+    }
+  ]
 }</screen>
      
       <para>The various gateway configurations can be instantiated using the endpoints listed
