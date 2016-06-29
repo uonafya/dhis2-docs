@@ -6,7 +6,8 @@
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
   xmlns:db="http://docbook.org/ns/docbook">
-  <title><?oxy_comment_start author="cecilia" timestamp="20160603T100652+0200" comment="Verify with Lars:
+  <title>[review ongoing]
+    <?oxy_comment_start author="cecilia" timestamp="20160603T100652+0200" comment="Verify with Lars:
 Do you use data sets somewhere else than in forms? (Custom form and Section form)
 - Data sets also used in data exchange (import)" flag="done"?>Manage<?oxy_comment_end?>
     data sets and
@@ -40,7 +41,8 @@ Added to term list" flag="done"?>data
       type of categories and category combinations to &quot;Attribute&quot;. </para>
     <example>
       <title>Categories for data sets</title>
-      <?oxy_comment_start author="cecilia" timestamp="20160627T144543+0200" comment="For SME: Example still correct?"?>
+      <?oxy_comment_start author="cecilia" timestamp="20160627T144543+0200" comment="For SME: Example still correct?
+- Verify with Lars."?>
       <para>An scenario for when categories are useful is when you need to capture a data entry form
         for a implementing partner organisation and a project. In that case:</para>
       <orderedlist>
@@ -49,7 +51,7 @@ Added to term list" flag="done"?>data
             and link them in a new category combination.</para>
         </listitem>
         <listitem>
-          <para>Link the category combination to the data set (form) for which you need to capture
+          <para>Assign the category combination to the data set (form) for which you need to capture
             this information.</para>
           <para>When opening this data set in data entry module, the partner organisation and
             project categories will automatically be rendered as drop-down boxes, allowing you to
@@ -213,9 +215,11 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
               <para>Add and remove multiple data sets to organisation units at once</para>
               <?oxy_comment_start author="cecilia" timestamp="20160602T150202+0200" comment="Before release:
 A separate task? Can not find it in GUI."?>
+              <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="16"?>
               <para> Edit compulsory data elements: This dialog will allow you to add or remove data
                 elements which will be marked as compulsory during data entry. </para>
               <?oxy_comment_end?>
+              <?oxy_custom_end mid="16"?>
             </entry>
           </row>
           <row>
@@ -249,12 +253,9 @@ A separate task? Can not find it in GUI."?>
     </table>
   </section>
   <section>
-    <?oxy_comment_start author="cecilia" timestamp="20160608T153906+0200" comment="For SME: Is this workflow correct?"?>
     <title>Workflow</title>
-    <?oxy_comment_end?>
-    <para>You need to have data elements and
-      <?oxy_comment_start author="cecilia" timestamp="20160623T173226+0200" comment="For SME: And organisation units?"?>categories<?oxy_comment_end?>
-      to create data sets and data entry forms.</para>
+    <para>You need to have data elements and categories to create data sets and data entry
+      forms.</para>
     <orderedlist>
       <listitem>
         <para>Create a data set.</para>
@@ -290,12 +291,12 @@ A separate task? Can not find it in GUI."?>
             role="bold">Data set</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Click the yellow plus button.</para>
+        <para>Click the add button.</para>
       </listitem>
       <listitem>
         <para>In the <emphasis role="bold">Name</emphasis>
           <?oxy_comment_start author="cecilia" timestamp="20160602T113445+0200" comment="Discuss choice of word with tech writer" flag="done"?>field<?oxy_comment_end?>,
-          define the precise
+          type the precise
           <?oxy_comment_start author="cecilia" timestamp="20160602T095815+0200" comment="For SME: Does it have to be an unique name? - No" flag="done"?>name<?oxy_comment_end?>
           of the data set.</para>
       </listitem>
@@ -357,8 +358,6 @@ Create this task under Reporting section (QC)" flag="done"?>
         <para>Select a <emphasis role="bold">Period type</emphasis>.</para>
         <para>The period type defines the frequency of reporting for the particular data set. The
           frequency can for example be daily, quarterly or yearly.</para>
-        <para>You can set the data collection frequency for a data set through the period type
-          property.</para>
       </listitem>
       <listitem>
         <para>Select a
@@ -367,8 +366,8 @@ Create this task under Reporting section (QC)" flag="done"?>
           set.</para>
       </listitem>
       <listitem>
-        <para>In <emphasis role="bold">Complete notification recipients</emphasis>, select a user
-          group that should receive a message when the data set is marked as complete in the
+        <para>In the <emphasis role="bold">Complete notification recipients</emphasis> list, select
+          a user group that should receive a message when the data set is marked as complete in the
             <emphasis role="bold">Data entry</emphasis> app.</para>
         <para>The message is delivered through the DHIS 2 messaging system.</para>
       </listitem>
@@ -379,13 +378,13 @@ Create this task under Reporting section (QC)" flag="done"?>
         <para>The message is delivered through the DHIS messaging system.</para>
       </listitem>
       <listitem>
-        <para>If you want data for the data set to be
-          <?oxy_comment_start author="cecilia" timestamp="20160602T115743+0200" comment="For SME: What does &quot;Approved&quot; mean?
+        <para>If applicable,
+          s<?oxy_comment_start author="cecilia" timestamp="20160602T115743+0200" comment="For SME: What does &quot;Approved&quot; mean?
 Data can be marked as &quot;Complete&quot;, then there&apos;s an approval workflow - verify with Ola.
 - Reports &gt; Data approval" flag="done"?><?oxy_comment_start author="cecilia" timestamp="20160623T170050+0200" comment="At next revision:
 Add x-ref to Data approval section in UG.
-Removed existing reference because it was unclear." flag="done" mid="31"?>Approved<?oxy_comment_end?><?oxy_comment_end mid="31"?>,
-          select a <emphasis role="bold">Data approval workflow</emphasis>.</para>
+Removed existing reference because it was unclear." flag="done" mid="30"?>elect<?oxy_comment_end?><?oxy_comment_end mid="30"?>,
+          a <emphasis role="bold">Data approval workflow</emphasis>.</para>
       </listitem>
       <listitem>
         <?oxy_comment_start author="cecilia" timestamp="20160602T122040+0200" comment="For SME: Still applicable?
@@ -421,62 +420,57 @@ Do you mean in the Data entry app? Or just normal data entry?" flag="done"?>
         <para>(Optional) Select a <emphasis role="bold">Legend set</emphasis>.</para>
       </listitem>
       <listitem>
-        <para><emphasis role="bold">Skip offline</emphasis>: Controls whether this data entry form
-          should be downloaded and saved in the user&apos;s web browser. Normally you should leave
-          this on no, which is the default behavior. If you have forms which are rarely used and are
-          very big you can consider setting it to yes to speed up initial loading of the data entry
-          module.</para>
+        <para>If applicable, select <emphasis role="bold">Skip offline</emphasis>. </para>
+        <?oxy_comment_start author="cecilia" timestamp="20160629T115520+0200" comment="At next revision: rewrite para." flag="done"?>
+        <para>This option controls whether this data entry form should be downloaded and saved in
+          the user&apos;s web browser. Normally you shouldn't select <emphasis role="bold">Skip
+            offline</emphasis>. This is the default setting. If you have forms which are rarely used
+          and are very big you can consider selecting this optionto speed up initial loading of the
+          data entry module.</para>
+        <?oxy_comment_end?>
       </listitem>
       <listitem>
-        <para><?oxy_comment_start author="cecilia" timestamp="20160613T110107+0200" comment="Lars: In Data entry app, dowload data sets in offline mode, description of data elements render in call out 
+        <para>If applicable, select
+            <?oxy_comment_start author="cecilia" timestamp="20160613T110107+0200" comment="Lars: In Data entry app, dowload data sets in offline mode, description of data elements render in call out 
 More data to download, might not want to have this on a slow line.
 " flag="done"?><emphasis
             role="bold">Data element decoration</emphasis><?oxy_comment_end?></para>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-        <?oxy_comment_start author="cecilia" timestamp="20160623T171426+0200" comment="For SME: Correctly phrased?" mid="36"?>
+        <?oxy_comment_start author="cecilia" timestamp="20160623T171426+0200" comment="For SME: Correctly phrased?"?>
         <para>If you select this option, descriptions of data elements render in call-outs in
           downloaded data sets in offline mode in the <emphasis role="bold">Data entry</emphasis>
           app.</para>
-        <?oxy_custom_end?>
-        <?oxy_comment_end mid="36"?>
+        <?oxy_comment_end?>
       </listitem>
       <listitem>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-        <para><emphasis role="bold">Render sections as tabs</emphasis>: For section based data
-          forms, this option will allow you to render each section as a tab horizontally above the
-          data set. This is useful for long data sets as it allows appropriate sections to be
-          selected quickly without going through the entire form.</para>
-        <?oxy_custom_end?>
+        <?oxy_comment_start author="cecilia" timestamp="20160629T115742+0200" comment="Before release: verify that this work.
+
+Only for section forms"?>
+        <para>If applicable, select <emphasis role="bold">Render sections as tabs</emphasis>.</para>
+        <?oxy_comment_end?>
+        <?oxy_comment_start author="cecilia" timestamp="20160629T115722+0200" comment="At next release: rewrite para." flag="done"?>
+        <para> For section forms, this option allows you to render each section as a tab
+          horizontally above the data set. This is useful for long data sets as it allows
+          appropriate sections to be selected quickly without going through the entire form.</para>
+        <?oxy_comment_end?>
       </listitem>
       <listitem>
         <?oxy_comment_start author="cecilia" timestamp="20160602T141431+0200" comment="For SME: What does this option mean?
 - Only applicable for section forms
 Before release, verify that this works."?>
         <?oxy_comment_start author="cecilia" timestamp="20160613T110721+0200" comment="Send email to lars, doesn&apos;t seem to work" mid="39"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="40"?>
-        <para>Render vertically</para>
+        <para>If applicable, select <emphasis role="bold">Render vertically</emphasis>.</para>
         <?oxy_comment_end?>
         <?oxy_comment_end mid="39"?>
-        <?oxy_custom_end mid="40"?>
       </listitem>
       <listitem>
         <?oxy_comment_start author="cecilia" timestamp="20160602T141437+0200" comment="For SME: What does this option mean?"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="42"?>
-        <para>Select data elements</para>
+        <para>Select data elements and ssign them.</para>
         <?oxy_comment_end?>
-        <?oxy_custom_end mid="42"?>
       </listitem>
       <listitem>
         <?oxy_comment_start author="cecilia" timestamp="20160602T141441+0200" comment="For SME: What does this option mean?"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="44"?>
-        <para>Select indicators</para>
+        <para>Select indicators and assign them.</para>
         <?oxy_comment_end?>
-        <?oxy_custom_end mid="44"?>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
-        <para>Indicators can also be added to data sets and will be available to be placed in custom
-          data entry forms when they need to be shown along with data elements on the same data
-          entry form.</para>
-        <?oxy_custom_end?>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Save</emphasis>.</para>
@@ -495,7 +489,7 @@ Assign organisation units to data sets: This function will allow you to assign i
           </listitem>
           <listitem>
             <para>In the organisation unit tree, select the organisation units you want to assign
-              the data set to. The selected organisation units are marked in yellow.</para>
+              the data set to. The selected organisation units are marked in orange.</para>
           </listitem>
           <listitem>
             <para>Click <emphasis role="bold">Close</emphasis>.</para>
@@ -503,23 +497,9 @@ Assign organisation units to data sets: This function will allow you to assign i
         </orderedlist>
       </listitem>
     </orderedlist>
-    <para>Your data set is now ready to be used within the <emphasis role="bold">Data
-        entry</emphasis> app for the organisation units that you have assigned and for periods
-      according to your selected frequency (period type).</para>
-    <itemizedlist>
-      <?oxy_comment_start author="cecilia" timestamp="20160602T134342+0200" comment="For SME: Still applicable? Not in create data set form anymore...
-
-Not in GUI, double check with Lars."?>
-      <listitem>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-        <para>Skip data mart aggregation: Define whether data for this data set should be skipped
-          during data mart generation. You should leave this on no, which is the default behavior,
-          in most situations. Can be useful if you have limited server resources and are setting up
-          new experimental data sets.</para>
-        <?oxy_custom_end?>
-      </listitem>
-      <?oxy_comment_end?>
-    </itemizedlist>
+    <para>Your data set is now ready to be used in the <emphasis role="bold">Data entry</emphasis>
+      app for the organisation units that you have assigned and for periods according to your
+      selected frequency (period type).</para>
   </section>
   <section>
     <title>Edit data
@@ -599,9 +579,10 @@ At the moment, I can only do x-refs to section 1 tags.
           list.</para>
       </listitem>
       <listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160527T113739+0200" comment="Before release, verify GUI. Options GUI will change.
+        <?oxy_comment_start author="cecilia" timestamp="20160527T113739+0200" comment="Not for 2.24.
+Before release, verify GUI. Options GUI will change.
 Is External access field new?
-If so, updates are need for all object types."?>
+If so, updates are need for all object types." flag="done"?>
         <para>Change the settings for the user groups you want to modify.</para>
         <?oxy_comment_end?>
         <itemizedlist>
@@ -623,14 +604,14 @@ If so, updates are need for all object types."?>
     </orderedlist>
   </section>
   <section>
-    <title>Delete data set forms</title>
+    <title>Delete data sets and forms</title>
     <warning>
       <?oxy_comment_start author="cecilia" timestamp="20160602T151710+0200" comment="For next release:
 Reword, remove passive voice." flag="done"?>
       <para>Any data set which is deleted from the system is irrevocably lost. All data entry forms,
-        and section forms which may have been developed will also be removed. Ensure that you have
-        made a backup of your database before deleting any data set in case you need to restore it
-        at some point in time.</para>
+        and section forms which may have been developed will also be removed. Make sure that you
+        have made a backup of your database before deleting any data set in case you need to restore
+        it at some point in time.</para>
       <?oxy_comment_end?>
     </warning>
     <orderedlist>
@@ -711,15 +692,11 @@ Reword, remove passive voice." flag="done"?>
     </orderedlist>
   </section>
   <section>
-    <?oxy_comment_start author="cecilia" timestamp="20160623T152503+0200" comment="Before release, verify that function works.
-Nothing happens when I click the link, it takes me back to the Maintenance page landing app.
-Issue reported."?>
     <title>Download default data
       <?oxy_comment_start author="cecilia" timestamp="20160608T152409+0200" comment="For SME: Do you actually download a data set or do you download the associated data form?
 - Lars: Download default data form, can be imported in DHIS 2" flag="done"?>forms<?oxy_comment_end?>
       in PDF format</title>
-    <?oxy_comment_end?>
-    <para>You can download a default data from  in PDF format for offline data entry.</para>
+    <para>You can download a default data from in PDF format for offline data entry.</para>
     <orderedlist>
       <listitem>
         <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
@@ -740,58 +717,98 @@ For SME: Change to &quot;Download PDF&quot; as in the analysis apps?
       </listitem>
     </orderedlist>
   </section>
+  <section>
+    <title>Edit complulsory data
+      <?oxy_comment_start author="cecilia" timestamp="20160629T161018+0200" comment="Before release: add content."?>elements<?oxy_comment_end?></title>
+    <para/>
+  </section>
   <section xml:id="dataSetSection">
-    <?oxy_comment_start author="cecilia" timestamp="20160610T102641+0200" comment="This feature is under development (moving from Data entry app to Mtn app)"?>
-    <title>Create a section data entry form</title>
-    <?oxy_comment_end?>
+    <title>Create a section form</title>
     <para>Section forms are separated automatically by data element category combinations, which
       produce a spreadsheet like data entry form for each section.</para>
+    <para>Create section form (create the sections that together compile the section form</para>
+    <para>Edit section from (edit the sections that together compile the section form)</para>
+    <para>Sort sections within a section form</para>
+    <para>For each section: Edit, delete section, translate and manage grey fields</para>
     <?oxy_comment_start author="cecilia" timestamp="20160602T150129+0200" comment="For SME: Not yet in GUI"?>
     <para>View sections: Allows you to add or remove sections to the data set as required. These
       sections do not apply to custom forms.</para>
     <?oxy_comment_end?>
     <orderedlist>
       <listitem>
-        <para> Set up your data set as described in
-            <?oxy_comment_start author="cecilia" timestamp="20160610T102602+0200" comment="Update link"?><xref
-            linkend="datasets"/><?oxy_comment_end?></para>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> > <emphasis
+            role="bold">Data set</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Open the Data Set Section window by selecting your data set followed by the &quot;View
-          sections&quot; option from the context menu. To add a new section to a section form choose
-          the specific category combo and press &quot;Add new&quot;. You can now add data elements
-          from the &quot;Available data element&quot; list on the left to the &quot;Selected data
-          elements&quot; list on the right. Data elements can be sorted within the section with the
-          use of the &quot;Move up&quot; <inlinemediaobject>
-            <imageobject>
-              <imagedata fileref="resources/images/dhis2_images/move_up.png"/>
-            </imageobject>
-          </inlinemediaobject> and &quot;Move down&quot; <inlinemediaobject>
-            <imageobject>
-              <imagedata fileref="resources/images/dhis2_images/move_down.png"/>
-            </imageobject>
-          </inlinemediaobject> buttons. Be sure to press &quot;Save&quot; once you have finished.<note>
-            <para>You can only use one data element category combination per section. </para>
-          </note></para>
+        <para>In the list, find the data set you want to create a section form for.</para>
       </listitem>
       <listitem>
-        <para> You may need to control how the data element sections are displayed on the final
-          form. In the Data set Section management, leave [All] in the &quot;Select Category
-          Combo&quot; drop-down. Click on &quot;Sort section&quot; to sort the order of appearance
-          of your sections in the data entry form.</para>
+        <para>Click the options menu and select <emphasis role="bold">Manage section
+          form</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>In the <emphasis role="bold">Data entry</emphasis> app you can now start using the
-          Section form (which will appear automatically when sections are available for the selected
-          data set). Data sets which have section forms will automatically display the section
-          form.</para>
+        <para>Add the sections you need:</para>
+        <orderedlist>
+          <listitem>
+            <para>Click the add button.</para>
+          </listitem>
+          <listitem>
+            <para>In the <emphasis role="bold">Name</emphasis>
+              <?oxy_comment_start author="cecilia" timestamp="20160602T113445+0200" comment="Discuss choice of word with tech writer" flag="done"?>field<?oxy_comment_end?>,
+              type the name of the section.</para>
+          </listitem>
+          <listitem>
+            <para>In the <emphasis role="bold">Description</emphasis> field, type a description of
+              the section.</para>
+          </listitem>
+          <listitem>
+            <para>Select a <emphasis role="bold">Category
+                <?oxy_comment_start author="cecilia" timestamp="20160629T150155+0200" comment="For SMe: Only default to choose... What does default mean?
+- Depends on the cat combo, not always default."?>combination<?oxy_comment_end?></emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>Select data elements and assign them.</para>
+            <para>You can sort the data elements
+              <?oxy_comment_start author="cecilia" timestamp="20160629T150604+0200" comment="For SME: What does this mean? How the form looks to the data entry person?"?>within
+              the section<?oxy_comment_end?> by using the up and down arrows to the left of the
+              assigned data elements field.</para>
+          </listitem>
+          <listitem>
+            <para>Click <emphasis role="bold">Save</emphasis>.</para>
+          </listitem>
+        </orderedlist>
       </listitem>
       <listitem>
-        <para>Certain data elements may need to be disabled for data entry. Within Data set section
-          management, choose the section which contains these data elements and select Section grey
-          field management from the context window. Pressing the &quot;Disable&quot; button will
-          prevent data from being entered into this specific data element/category option during
-          data entry. Be sure to press &quot;Done&quot; to save your changes.</para>
+        <para>
+          <note>
+            <?oxy_comment_start author="cecilia" timestamp="20160629T150351+0200" comment="For SME: Still correct?
+ - Yes, for now. "?>
+            <para>You can only use one category combination per section.</para>
+            <?oxy_comment_end?>
+          </note>
+        </para>
+      </listitem>
+      <listitem>
+        <?oxy_comment_start author="cecilia" timestamp="20160629T150819+0200" comment="Reword para."?>
+        <para>(Optional) Edit existing sections: click the options menu and select <emphasis
+            role="bold">Edit</emphasis>.</para>
+        <?oxy_comment_end?>
+      </listitem>
+      <listitem>
+        <para>Sort the sections:</para>
+        <para>You may need to control how the data element sections are displayed on the final form.
+          In the Data set Section management, leave [All] in the &quot;Select Category Combo&quot;
+          drop-down. Click on &quot;Sort section&quot; to sort the order of appearance of your
+          sections in the data entry form.</para>
+      </listitem>
+      <listitem>
+        <para>(Optional) Disabled certain data elements for data entry.</para>
+        <para>Within Data set section management, choose the section which contains these data
+          elements and select Section grey field management from the context window. Pressing the
+          &quot;Disable&quot; button will prevent data from being entered into this specific data
+          element/category option during data entry. Be sure to press &quot;Done&quot; to save your
+          changes.</para>
         <screenshot>
           <mediaobject>
             <imageobject>
@@ -801,25 +818,35 @@ For SME: Change to &quot;Download PDF&quot; as in the analysis apps?
           </mediaobject>
         </screenshot>
       </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Data entry</emphasis> app you can now use the section
+          form (which will appear automatically when sections are available for the selected data
+          set). Data sets which have section forms will automatically display the section
+          form.</para>
+      </listitem>
     </orderedlist>
-    <para>A sample section form is displayed in the next figure. Notice how each data element
-      category has been separated into a separate section, and a data entry table has been
-      automatically generated by the system. Use of section forms in combination with data element
-      categories can drastically reduce the amount of time which is required to create data entry
-      forms for data sets.</para>
-    <screenshot>
+    <example>
+      <?oxy_comment_start author="cecilia" timestamp="20160629T121605+0200" comment="Before release: replace screenshot"?>
       <title>Section form example</title>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="80%" align="center"
-            fileref="resources/images/dhis2UserManual/section_form.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
+      <?oxy_comment_end?>
+      <para>A sample section form is displayed in the next figure. Notice how each data element
+        category has been separated into a separate section, and a data entry table has been
+        automatically generated by the system. Use of section forms in combination with data element
+        categories can drastically reduce the amount of time which is required to create data entry
+        forms for data sets.</para>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="80%" align="center"
+              fileref="resources/images/dhis2UserManual/section_form.png" format="PNG"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </example>
   </section>
   <section xml:id="customDataEntryForm">
     <?oxy_comment_start author="cecilia" timestamp="20160610T102651+0200" comment="This feature is under development (moving from Data entry app to Mtn app)"?>
-    <title>Create a custom data entry form</title>
+    <title>Create a custom form</title>
     <?oxy_comment_end?>
     <para>To add a custom form to a data set:</para>
     <orderedlist>
@@ -833,7 +860,7 @@ Maintenance" flag="done"?>Maintenance<?oxy_comment_end?></emphasis>
         <para>In the list, find the data set you want to add a custom form to.</para>
       </listitem>
       <listitem>
-        <para>Click the options menu and select <emphasis role="bold">Design daa entry
+        <para>Click the options menu and select <emphasis role="bold">Design data entry
             form</emphasis>.</para>
       </listitem>
       <listitem>
@@ -871,10 +898,12 @@ Maintenance" flag="done"?>Maintenance<?oxy_comment_end?></emphasis>
       close&gt;.</para>
   </section>
   <section xml:id="dataSetAssignmentEditor">
+    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
     <title>Edit multiple data sets at
       onc<?oxy_comment_start author="cecilia" timestamp="20160609T135643+0200" comment="Before release:
 Check if feature is included in new release.
 Previous info: Have checked with SME, function should be in Maintenance app but might not be included in release 24."?>e<?oxy_comment_end?></title>
+    <?oxy_custom_end?>
     <para>With the <emphasis role="bold">Data set assignment editor</emphasis> you can add and
       remove multiple data sets to organisation units at once.</para>
     <orderedlist>
