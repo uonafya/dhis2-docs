@@ -503,6 +503,84 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
           </tgroup>
         </table></para>
     </section>
+    <section>
+      <title>Translation API</title>
+      <para>From 2.24 and upwards the translation APIs have changed quite a bit in the way they
+        work, in older releases we have to use the <emphasis role="italic"
+          >/api/translations</emphasis> API to get all available locales for an object, this now
+        instead exists directly on the object itself. Please note that the <emphasis role="italic"
+          >translations</emphasis> array in the JSON/XML payloads are normally pre-filtered for you,
+        which means they can not directly be used to import/export translations (as that would
+        normally overwrite locales other than current users).</para>
+      <para><emphasis role="italic">Example of data element with translation array filtered on user
+          locale:</emphasis><screen>{
+  "id": "FTRrcoaog83",
+  "displayName": "Accute French",
+  "translations": [
+    {
+      "property": "SHORT_NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    },
+    {
+      "property": "NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    }
+  ]
+}</screen></para>
+      <para><emphasis role="italic">Example of data element with translations turned
+        off:</emphasis><screen>{
+  "id": "FTRrcoaog83",
+  "displayName": "Accute Flaccid Paralysis (Deaths &lt; 5 yrs)",
+  "translations": [
+    {
+      "property": "FORM_NAME",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "SHORT_NAME",
+      "locale": "en_GB",
+      "value": "Accute Flaccid Paral"
+    },
+    {
+      "property": "SHORT_NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    },
+    {
+      "property": "NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    },
+    {
+      "property": "NAME",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "DESCRIPTION",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "SHORT_NAME",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "NAME",
+      "locale": "en_GB",
+      "value": "Accute Flaccid Paralysis (Deaths &lt; 5 yrs)"
+    }
+  ]
+}</screen></para>
+      <para>Please note that even if you get the unfiltered result, and are using the appropriate
+        type endpoint i..e <emphasis role="italic">/api/24/dataElements</emphasis> we do not allow
+        updates, as it would be too easy to make mistakes and overwrite the other available
+        locales.</para>
+    </section>
   </section>
   <section>
     <title>Working with the metadata API</title>
