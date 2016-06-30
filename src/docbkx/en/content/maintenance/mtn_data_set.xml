@@ -142,19 +142,6 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
                             <para>You can, for example, mimic an existing paper aggregation form
                                 with a custom form. This makes data entry easier, and should reduce
                                 the number incorrectly entered data elements.</para>
-                            <para>You design custom forms in a built-in WYSIWYG HTML editor. If you
-                                select <emphasis role="bold">Source</emphasis>, you can paste HTML
-                                code directly in the editing area. For a complete guide on how to
-                                use the
-                                <?oxy_comment_start author="cecilia" timestamp="20160609T114330+0200" comment="For SME: Which version of the editor is used? 
-Answer from SME:
-We&apos;re using CKEditor version 4.5.9 - which is the latest release at the moment. (Nicolay)
-" flag="done"?>editor<?oxy_comment_end?>,
-                                refer to
-                                    <?oxy_comment_start author="cecilia" timestamp="20160609T112954+0200" comment="Verfy that link works and is visible in output."?><link
-                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    xlink:href="http://docs.ckeditor.com/"
-                                /><?oxy_comment_end?>.</para>
                             <para>When you have added a custom form to a data set, the custom form
                                 is available in the <emphasis role="bold">Data entry</emphasis>
                                 <?oxy_comment_start author="cecilia" timestamp="20160608T165012+0200" comment="For SME: What do you mean with &quot;used automatically&quot;? A user still has to select it, right?
@@ -204,9 +191,7 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
                             <para>Object type</para>
                         </entry>
                         <entry>
-                            <para>Available
-                                <?oxy_comment_start author="cecilia" timestamp="20160603T102204+0200" comment="There will be more functions, as in the old app.
-&quot;View section&quot; = Mange section form"?>functions<?oxy_comment_end?></para>
+                            <para>Available functions</para>
                         </entry>
                     </row>
                 </thead>
@@ -218,35 +203,35 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
                         <entry>
                             <para>Create, assign to organisation units, edit, clone, share, delete,
                                 show details and translate</para>
+                            <para>Edit compulsory data elements</para>
                             <para>Add and remove multiple data sets to organisation units at
                                 once</para>
-                            <?oxy_comment_start author="cecilia" timestamp="20160602T150202+0200" comment="Before release:
-A separate task? Can not find it in GUI."?>
-                            <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="16"?>
-                            <para> Edit compulsory data elements: This dialog will allow you to add
-                                or remove data elements which will be marked as compulsory during
-                                data entry. </para>
-                            <?oxy_comment_end?>
-                            <?oxy_custom_end mid="16"?>
                         </entry>
                     </row>
                     <row>
                         <entry>
-                            <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
                             <para>Section form</para>
-                            <?oxy_custom_end?>
                         </entry>
                         <entry>
                             <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-                            <para>Create, edit, delete and translate</para>
+                            <para>Create, edit, delete, translate</para>
                             <?oxy_custom_end?>
                         </entry>
                     </row>
                     <row>
                         <entry>
+                            <para>Section</para>
+                        </entry>
+                        <entry>
                             <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-                            <para>Custom form</para>
+                            <para>Create, edit, delete, translate</para>
                             <?oxy_custom_end?>
+                            <para>Change display order</para>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <para>Custom form</para>
                         </entry>
                         <?oxy_comment_start author="cecilia" timestamp="20160614T144733+0200" comment="For SME: Exactly what can you do with the forms within the Data set section of the Maintenance app??"?>
                         <entry>
@@ -522,9 +507,9 @@ Assign organisation units to data sets: This function will allow you to assign i
                 </orderedlist>
             </listitem>
         </orderedlist>
-        <para>Your data set is now ready to be used in the <emphasis role="bold">Data
-                entry</emphasis> app for the organisation units that you have assigned and for
-            periods according to your selected frequency (period type).</para>
+        <para>You can now use the data set in the <emphasis role="bold">Data entry</emphasis> app
+            for the organisation units that you have assigned to and for periods according to the
+            selected frequency (period type).</para>
     </section>
     <section>
         <title>Edit data
@@ -586,7 +571,7 @@ At the moment, I can only do x-refs to section 1 tags.
         </orderedlist>
     </section>
     <section>
-        <title>Change sharing settings for data sets and other objects</title>
+        <title>Change sharing settings for data sets</title>
         <para>You can assign different rights to the data set based on user groups and user
             roles.</para>
         <orderedlist>
@@ -722,6 +707,547 @@ Reword, remove passive voice." flag="done"?>
         </orderedlist>
     </section>
     <section>
+        <title>Edit complulsory data elements in a data set</title>
+        <para>You can add or remove data elements which will be marked as compulsory during data
+            entry.</para>
+        <orderedlist>
+            <listitem>
+                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                        >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
+                        <emphasis role="bold">Data set</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>In the list, find the data set you want to edit.</para>
+            </listitem>
+            <listitem>
+                <para>Click the options menu and select <emphasis role="bold">Edit compulsory data
+                        elements</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Assign the compulsory data elements.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Save</emphasis>.</para>
+            </listitem>
+        </orderedlist>
+    </section>
+    <section>
+        <title>Manage section forms</title>
+        <section>
+            <title>Create a section form</title>
+            <para>Section forms are separated automatically by data element category combinations,
+                which produce a spreadsheet like data entry form for each section.</para>
+            <orderedlist>
+                <listitem>
+                    <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                            >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
+                            <emphasis role="bold">Data set</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the data set you want to create a section form
+                        for.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold">Manage
+                            sections</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the add button.</para>
+                </listitem>
+                <listitem>
+                    <para>In the <emphasis role="bold">Name</emphasis> field, type the name of the
+                        section.</para>
+                </listitem>
+                <listitem>
+                    <para>In the <emphasis role="bold">Description</emphasis> field, type a
+                        description of the section.</para>
+                </listitem>
+                <listitem>
+                    <para>Select a <emphasis role="bold">Category
+                            <?oxy_comment_start author="cecilia" timestamp="20160629T150155+0200" comment="For SMe: Only default to choose... What does default mean?
+- Depends on the cat combo, not always default." flag="done"?>combination<?oxy_comment_end?></emphasis>.</para>
+                    <para>
+                        <note>
+                            <?oxy_comment_start author="cecilia" timestamp="20160629T150351+0200" comment="For SME: Still correct?
+ - Yes, for now. " flag="done"?>
+                            <para>You can only use one category combination per section.</para>
+                            <?oxy_comment_end?>
+                        </note>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>Select data elements and assign them.</para>
+                </listitem>
+                <listitem>
+                    <para>(Optional) Sort the data elements within the section by using the up and
+                        down arrows to the left of the assigned data elements field.</para>
+                </listitem>
+                <listitem>
+                    <para>Click <emphasis role="bold">Save</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>Repeat
+                        <?oxy_comment_start author="cecilia" timestamp="20160630T172809+0200" comment="At next release: Add x-refs to the steps to claify." flag="done"?>add<?oxy_comment_end?>
+                        section steps for each section you want to have in your section form.</para>
+                    <?oxy_comment_start author="cecilia" timestamp="20160630T173012+0200" comment="At next release: Rewrite para." flag="done"?>
+                    <para>In the <emphasis role="bold">Data entry</emphasis> app you can now use the
+                        section form. The section form appears automatically when sections are
+                        available for the selected data set. Data sets which have section forms will
+                        automatically display the section form.</para>
+                    <?oxy_comment_end?>
+                </listitem>
+            </orderedlist>
+            <example>
+                <?oxy_comment_start author="cecilia" timestamp="20160629T121605+0200" comment="Before release: replace screenshot"?>
+                <title>Section form example</title>
+                <?oxy_comment_end?>
+                <para><?oxy_comment_start author="cecilia" timestamp="20160630T174604+0200" comment="For SME: Is example correct?"?>How
+                    each data element category has been separated into a separate section, and a
+                    data entry table has been automatically generated by the
+                    system<?oxy_comment_end?>. Use of section forms in combination with data element
+                    categories can drastically reduce the amount of time which is required to create
+                    data entry forms for data sets.</para>
+                <screenshot>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="80%" align="center"
+                                fileref="resources/images/dhis2UserManual/section_form.png"
+                                format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </screenshot>
+            </example>
+        </section>
+        <section>
+            <title>Edit a section form</title>
+            <orderedlist>
+                <listitem>
+                    <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                            >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
+                            <emphasis role="bold">Data set</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the data set you want to edit the section form
+                        for.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold">Manage
+                            sections</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the section you want to edit.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold"
+                        >Edit</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>Edit the section and click <emphasis role="bold">Save</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>Repeat
+                        <?oxy_comment_start author="cecilia" timestamp="20160630T175028+0200" comment="At next release: add x-refs to steps." flag="done"?>edit<?oxy_comment_end?>
+                        section steps for each section you want to edit.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section>
+            <title><?oxy_comment_start author="cecilia" timestamp="20160630T163957+0200" comment="Come up with a better title. What is the real task you do?"?>Manage<?oxy_comment_end?>
+                grey fields in a section form</title>
+            <?oxy_comment_start author="cecilia" timestamp="20160630T180433+0200" comment="Before release: Verify that para is correct."?>
+            <para>You can disable data elements and category options for data entry. That means it
+                wont't be possible to enter data into these fields during data entry.</para>
+            <?oxy_comment_end?>
+            <screenshot>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata width="80%" align="center"
+                            fileref="resources/images/datasets/section_form_grey_fields.png"
+                            format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </screenshot>
+            <orderedlist>
+                <listitem>
+                    <para><?oxy_comment_start author="cecilia" timestamp="20160630T181049+0200" comment="Verify that image renders correctly."?>Click<?oxy_comment_end?>
+                        <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                            >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
+                            <emphasis role="bold">Data set</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the data set you want to edit the section form
+                        for.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold">Manage
+                            sections</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the section you want to edit.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold">Manage grey
+                            fields</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>Select which fields you want to disable.</para>
+                </listitem>
+                <listitem>
+                    <para>Click <emphasis role="bold">Save</emphasis>.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section>
+            <title>Change section display order in a section form</title>
+            <para>You can control in which order sections are displayed in a section form.</para>
+            <orderedlist>
+                <listitem>
+                    <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                            >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
+                            <emphasis role="bold">Data set</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the data set you want to edit the section form
+                        for.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold">Manage
+                            sections</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the section you want to move.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold">Move up</emphasis>
+                        or <emphasis role="bold">Move down</emphasis>.</para>
+                    <para>If the section you want to move is the first or last section in the list,
+                        you'll only see one of the move options.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section>
+            <title>Delete a section in a section form</title>
+            <orderedlist>
+                <listitem>
+                    <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                            >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
+                            <emphasis role="bold">Data set</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the data set you want to edit the section form
+                        for.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold">Manage
+                            sections</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the section you want to delete.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold"
+                        >Delete</emphasis>.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section>
+            <title>Translate a section in a section form</title>
+            <orderedlist>
+                <listitem>
+                    <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                            >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
+                            <emphasis role="bold">Data set</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the data set you want to edit the section form
+                        for.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold"
+                            >Translate</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>Select a locale.</para>
+                </listitem>
+                <listitem>
+                    <para>Enter the required information.</para>
+                </listitem>
+                <listitem>
+                    <para>Click <emphasis role="bold">Close</emphasis>.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+    </section>
+    <section>
+        <title>Manage custom forms</title>
+        <section>
+            <title>Create a custom
+                <?oxy_comment_start author="cecilia" timestamp="20160630T172030+0200" comment="Before release, verify that image renders correctly."?>form<?oxy_comment_end?></title>
+            <para>You design custom forms in a built-in WYSIWYG HTML editor. If you select <emphasis
+                    role="bold">Source</emphasis>, you can paste HTML code directly in the editing
+                area. For a complete guide on how to use the
+                <?oxy_comment_start author="cecilia" timestamp="20160609T114330+0200" comment="For SME: Which version of the editor is used? 
+Answer from SME:
+We&apos;re using CKEditor version 4.5.9 - which is the latest release at the moment. (Nicolay)
+" flag="done"?>editor<?oxy_comment_end?>,
+                refer to
+                    <?oxy_comment_start author="cecilia" timestamp="20160609T112954+0200" comment="Verfy that link works and is visible in output.
+- Link ok" flag="done"?><link
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="http://docs.ckeditor.com/"/><?oxy_comment_end?>.</para>
+            <screenshot>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata width="80%" align="center"
+                            fileref="resources/images/datasets/data_set_custom_form_create.png"
+                            format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </screenshot>
+            <para>To create a custom form:</para>
+            <orderedlist>
+                <listitem>
+                    <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                            >Maintenance</emphasis> > <emphasis role="bold">Data
+                        set</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the list, find the data set you want to add a custom form to.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the options menu and select <emphasis role="bold">Design data entry
+                            form</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>In the eiditing area, create the custom form.</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Double-clik on a object in the left-hand list to insert it in the
+                                form.</para>
+                        </listitem>
+                        <listitem>
+                            <para>If you already have the HTML code for your form, click <emphasis
+                                    role="bold">Source</emphasis> and paste the code.</para>
+                        </listitem>
+                    </itemizedlist>
+                </listitem>
+                <listitem>
+                    <para>Select a <emphasis role="bold">Form display style</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>Click <emphasis role="bold">Save</emphasis>.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section>
+            <title><?oxy_comment_start author="cecilia" timestamp="20160609T164133+0200" comment="Task done by implmenter" flag="done"?>Script<?oxy_comment_end?>ing
+                in custom forms</title>
+            <para>In custom data entry form you can use
+                <?oxy_comment_start author="cecilia" timestamp="20160614T113801+0200" comment="Note: JavaScript is a trademark owned by Oracle (previously Sun corp.)" flag="done"?>JavaScript<?oxy_comment_end?>
+                to create dynamic behavior and customizations. As an example, you can hide form
+                sections based on specific user input for data elements, or show specific
+                information when a form loads.</para>
+            <section>
+                <title>Events</title>
+                <para>The DHIS 2 data entry module provides a range of events which you can register
+                    for and use to perform actions at certain times. The events are registered on
+                    the
+                    <?oxy_comment_start author="cecilia" timestamp="20160609T173110+0200" comment="A document element is a term used by developers." flag="done"?>document
+                    element<?oxy_comment_end?>. The jQuery event object and the data set identifier
+                    are always the first two arguments provided to the callback functions. The table
+                    below provides an overview of the events and when they are triggered.</para>
+                <table frame="all">
+                    <?oxy_comment_start author="cecilia" timestamp="20160609T172708+0200" comment="Before publication, verify that cell content don&apos;t bleed.
+- Table ok." flag="done"?>
+                    <title>Data entry events</title>
+                    <?oxy_comment_end?>
+                    <tgroup cols="3">
+                        <colspec colnum="1" colname="c1" colwidth="1.18*"/>
+                        <colspec colnum="2" colname="c2" colwidth="1.42*"/>
+                        <colspec colnum="3" colname="newCol3" colwidth="1*"/>
+                        <thead>
+                            <row>
+                                <entry>Key</entry>
+                                <entry>Description</entry>
+                                <entry>Arguments</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>
+                                    <para>dhis2.de.event.formLoaded</para>
+                                </entry>
+                                <entry>
+                                    <para>Triggered after the data entry form is rendered, but
+                                        before data values are set in entry fields.</para>
+                                </entry>
+                                <entry>
+                                    <para>Event | Data set ID</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>dhis2.de.event.dataValuesLoaded</para>
+                                </entry>
+                                <entry>
+                                    <para>Triggered after data values are set in entry
+                                        fields.</para>
+                                </entry>
+                                <entry>
+                                    <para>Event | Data set ID</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>dhis2.de.event.formReady</para>
+                                </entry>
+                                <entry>
+                                    <para>Triggered when the data entry form is completely rendered
+                                        and loaded with all elements.</para>
+                                </entry>
+                                <entry>
+                                    <para>Event | Data set ID</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>dhis2.de.event.dataValueSaved</para>
+                                </entry>
+                                <entry>
+                                    <para>Triggered when a data value is saved successfully.</para>
+                                </entry>
+                                <entry>
+                                    <para>Event | Data set ID | Data value object</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>dhis2.de.event.completed</para>
+                                </entry>
+                                <entry>
+                                    <para>Triggered when a data set is successfully marked as
+                                        complete.</para>
+                                </entry>
+                                <entry>
+                                    <para>Event | Data set ID | Complete registration object</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>dhis2.de.event.uncompleted</para>
+                                </entry>
+                                <entry>
+                                    <para>Triggered when a data set is successfully marked as
+                                        incomplete.</para>
+                                </entry>
+                                <entry>
+                                    <para>Event | Data set ID</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>dhis2.de.event.validationSuccess</para>
+                                </entry>
+                                <entry>
+                                    <para>Triggered when validation is done and there were no
+                                        violations.</para>
+                                </entry>
+                                <entry>
+                                    <para>Event | Data set ID</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>dhis2.de.event.validationError</para>
+                                </entry>
+                                <entry>
+                                    <para>Triggered when validation is done and there were one or
+                                        more violations.</para>
+                                </entry>
+                                <entry>
+                                    <para>Event | Data set ID</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>dhis2.ou.event.orgUnitSelected</para>
+                                </entry>
+                                <entry>
+                                    <para>Triggered when one or more organisation units are selected
+                                        in the org unit web tree.</para>
+                                </entry>
+                                <entry>
+                                    <para>Event | Org unit IDs | Org unit names | Sub org unit
+                                        IDs</para>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+                <para>To register for an event:</para>
+                <screen>&lt;script type=&quot;text/javascript&quot;&gt;
+
+dhis2.util.on( &apos;dhis2.de.event.formReady&apos;, function( event, ds ) {
+  console.log( &apos;The form with id: &apos; + ds + &apos; is loaded!&apos; );
+} );
+
+dhis2.util.on( &apos;dhis2.de.event.dataValueSaved&apos;, function( event, ds, dv ) {
+  console.log( &apos;Data value: &apos; + dv.value + &apos; was saved with data element: &apos; + dv.de );
+} );
+
+dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
+  console.log( &apos;Form was completed for org unit: &apos; + cr.ou );
+} );
+
+&lt;/script&gt;</screen>
+                <note>
+                    <para>Be careful to only use &quot;namespaced&quot; events like the ones in the
+                        example above and not general ones like &quot;click&quot; as the
+                        dhis2.util.on method will unregister the event first.</para>
+                </note>
+                <para>If your function only applies to certain data sets you can use the supplied
+                    data set identifier and shortcut your function for unwanted data sets like
+                    this:</para>
+                <screen>dhis2.de.on( &apos;dhis2.de.event.validationSuccess&apos;, function( event, ds ) {
+  if ( $.inArray( ds, [&apos;utXOiGbEj14&apos;, &apos;Re7qzHEThSC&apos;] ) == -1 ) {
+    return false;
+  }
+  console.log( &apos;Form with id: &apos; + ds + &apos; validated successfully!&apos; );
+} );</screen>
+                <para>The identifiers of the input fields in the data entry form is on the format
+                    described below. This format can be used to select the input fields in your
+                    script and perform actions on
+                    them:<screen>&lt;dataelementid&gt;-&lt;optioncomboid&gt;-val</screen></para>
+                <para>Since the data set identifier is provided for all events a feasible
+                    alternative is to utilize the &quot;files&quot; Web API resource and keep your
+                    callback functions in a single file, where you let the JavaScript code take
+                    action based on which data set is currently loaded.</para>
+            </section>
+            <section>
+                <title>Functions</title>
+                <para>The DHIS 2 data entry module contains JavaScript API functions which can be
+                    accessed from custom data entry forms.</para>
+                <para><emphasis role="bold">dhis2.de.api.getSelections</emphasis>: This function
+                    returns a JavaScript object which contains properties for all dimensions with
+                    corresponding values for the identifiers of the selected options. It contains
+                    properties for "ds" (data set), "pe" (period), "ou" (organisation unit) and
+                    identifiers for all data set categories.</para>
+                <para>An example response looks like
+                    this:<screen>{
+ +  ds: "lyLU2wR22tC",
+ +  pe: "201605",
+ +  ou: "g8upMTyEZGZ",
+ +  LFsZ8v5v7rq: "CW81uF03hvV",
+ +  yY2bQYqNt0o: "yMj2MnmNI8L"
+ +}</screen></para>
+                <para>Example JavaScript usage of this
+                    function:<screen>var sel = dhis2.de.api.getSelections();
+ +var orgUnit = sel["ou"];
+ +var partner = sel["LFsZ8v5v7rq"];</screen></para>
+            </section>
+        </section>
+    </section>
+    <section>
         <title>Download default data
             <?oxy_comment_start author="cecilia" timestamp="20160608T152409+0200" comment="For SME: Do you actually download a data set or do you download the associated data form?
 - Lars: Download default data form, can be imported in DHIS 2" flag="done"?>forms<?oxy_comment_end?>
@@ -746,422 +1272,5 @@ For SME: Change to &quot;Download PDF&quot; as in the analysis apps?
                         PDF for data entry<?oxy_comment_end?></emphasis>.</para>
             </listitem>
         </orderedlist>
-    </section>
-    <section>
-        <title>Edit complulsory data
-            <?oxy_comment_start author="cecilia" timestamp="20160629T161018+0200" comment="Before release: add content."?>elements<?oxy_comment_end?></title>
-        <para/>
-    </section>
-    <section>
-        <title>Create a section form</title>
-        <para>Section forms are separated automatically by data element category combinations, which
-            produce a spreadsheet like data entry form for each section.</para>
-        <para>Create section form (create the sections that together compile the section form</para>
-        <para>Edit section from (edit the sections that together compile the section form)</para>
-        <para>Sort sections within a section form</para>
-        <para>For each section: Edit, delete section, translate and manage grey fields</para>
-        <?oxy_comment_start author="cecilia" timestamp="20160602T150129+0200" comment="For SME: Not yet in GUI"?>
-        <para>View sections: Allows you to add or remove sections to the data set as required. These
-            sections do not apply to custom forms.</para>
-        <?oxy_comment_end?>
-        <orderedlist>
-            <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
-                        <emphasis role="bold">Data set</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>In the list, find the data set you want to create a section form for.</para>
-            </listitem>
-            <listitem>
-                <para>Click the options menu and select <emphasis role="bold">Manage section
-                        form</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>Add the sections you need:</para>
-                <orderedlist>
-                    <listitem>
-                        <para>Click the add button.</para>
-                    </listitem>
-                    <listitem>
-                        <para>In the <emphasis role="bold">Name</emphasis>
-                            <?oxy_comment_start author="cecilia" timestamp="20160602T113445+0200" comment="Discuss choice of word with tech writer" flag="done"?>field<?oxy_comment_end?>,
-                            type the name of the section.</para>
-                    </listitem>
-                    <listitem>
-                        <para>In the <emphasis role="bold">Description</emphasis> field, type a
-                            description of the section.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Select a <emphasis role="bold">Category
-                                <?oxy_comment_start author="cecilia" timestamp="20160629T150155+0200" comment="For SMe: Only default to choose... What does default mean?
-- Depends on the cat combo, not always default."?>combination<?oxy_comment_end?></emphasis>.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Select data elements and assign them.</para>
-                        <para>You can sort the data elements
-                            <?oxy_comment_start author="cecilia" timestamp="20160629T150604+0200" comment="For SME: What does this mean? How the form looks to the data entry person?"?>within
-                            the section<?oxy_comment_end?> by using the up and down arrows to the
-                            left of the assigned data elements field.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Click <emphasis role="bold">Save</emphasis>.</para>
-                    </listitem>
-                </orderedlist>
-            </listitem>
-            <listitem>
-                <para>
-                    <note>
-                        <?oxy_comment_start author="cecilia" timestamp="20160629T150351+0200" comment="For SME: Still correct?
- - Yes, for now. "?>
-                        <para>You can only use one category combination per section.</para>
-                        <?oxy_comment_end?>
-                    </note>
-                </para>
-            </listitem>
-            <listitem>
-                <?oxy_comment_start author="cecilia" timestamp="20160629T150819+0200" comment="Reword para."?>
-                <para>(Optional) Edit existing sections: click the options menu and select <emphasis
-                        role="bold">Edit</emphasis>.</para>
-                <?oxy_comment_end?>
-            </listitem>
-            <listitem>
-                <para>Sort the sections:</para>
-                <para>You may need to control how the data element sections are displayed on the
-                    final form. In the Data set Section management, leave [All] in the &quot;Select
-                    Category Combo&quot; drop-down. Click on &quot;Sort section&quot; to sort the
-                    order of appearance of your sections in the data entry form.</para>
-            </listitem>
-            <listitem>
-                <para>(Optional) Disabled certain data elements for data entry.</para>
-                <para>Within Data set section management, choose the section which contains these
-                    data elements and select Section grey field management from the context window.
-                    Pressing the &quot;Disable&quot; button will prevent data from being entered
-                    into this specific data element/category option during data entry. Be sure to
-                    press &quot;Done&quot; to save your changes.</para>
-                <screenshot>
-                    <mediaobject>
-                        <imageobject>
-                            <imagedata width="80%" align="center"
-                                fileref="resources/images/datasets/sectionform_grey_field_management.png"
-                                format="PNG"/>
-                        </imageobject>
-                    </mediaobject>
-                </screenshot>
-            </listitem>
-            <listitem>
-                <para>In the <emphasis role="bold">Data entry</emphasis> app you can now use the
-                    section form (which will appear automatically when sections are available for
-                    the selected data set). Data sets which have section forms will automatically
-                    display the section form.</para>
-            </listitem>
-        </orderedlist>
-        <example>
-            <?oxy_comment_start author="cecilia" timestamp="20160629T121605+0200" comment="Before release: replace screenshot"?>
-            <title>Section form example</title>
-            <?oxy_comment_end?>
-            <para>A sample section form is displayed in the next figure. Notice how each data
-                element category has been separated into a separate section, and a data entry table
-                has been automatically generated by the system. Use of section forms in combination
-                with data element categories can drastically reduce the amount of time which is
-                required to create data entry forms for data sets.</para>
-            <screenshot>
-                <mediaobject>
-                    <imageobject>
-                        <imagedata width="80%" align="center"
-                            fileref="resources/images/dhis2UserManual/section_form.png" format="PNG"/>
-                    </imageobject>
-                </mediaobject>
-            </screenshot>
-        </example>
-    </section>
-    <section>
-        <?oxy_comment_start author="cecilia" timestamp="20160610T102651+0200" comment="This feature is under development (moving from Data entry app to Mtn app)"?>
-        <title>Create a custom form</title>
-        <?oxy_comment_end?>
-        <para>To add a custom form to a data set:</para>
-        <orderedlist>
-            <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        ><?oxy_comment_start author="cecilia" timestamp="20160609T161212+0200" comment="For SME: In which app will the Data set assignment editor be?
-Maintenance" flag="done"?>Maintenance<?oxy_comment_end?></emphasis>
-                    > <emphasis role="bold">Data set</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>In the list, find the data set you want to add a custom form to.</para>
-            </listitem>
-            <listitem>
-                <para>Click the options menu and select <emphasis role="bold">Design data entry
-                        form</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para/>
-            </listitem>
-            <listitem>
-                <para>Click <emphasis role="bold">Save</emphasis>.</para>
-            </listitem>
-        </orderedlist>
-        <para>first locate your data set in the Data set Management window and click on the Design
-            data entry form from the context menu.</para>
-        <para>First provide a Name for the form. There are a few important buttons in the Editor
-            that you must pay special attention to. The icon with four outward arrows is the full
-            screen mode on/off button, which can be very useful. The there is a Source button that
-            shows the HTML code for your form. </para>
-        <para>If you already have the HTML for your form then you should start by pasting it in
-            here. Click on Source again to go back to preview/non-HTML mode. A blue icon under the
-            editor window, &quot;Insert data elements,&quot; allows you to add data elements to the
-            form.</para>
-        <para>All the input fields need to have a link to a data element or indicator. To add new
-            data elements to the form, double-click them from the data element/indicator box as
-            shown below. You can also select a data element/indicator and press the
-            &quot;+Insert&quot; button. You can switch between either data elements, totals for or
-            indicators by pressing the respective buttons.</para>
-        <screenshot>
-            <mediaobject>
-                <imageobject>
-                    <imagedata width="50%" align="center"
-                        fileref="resources/images/datasets/custom_forms_data_elements1.png"/>
-                </imageobject>
-            </mediaobject>
-        </screenshot>
-        <para>You can save by clicking on the Save button, and this will not close the window. It is
-            recommended to save often to ensure you do not loose your work.</para>
-        <para>When you are done or want to test your form in data entry click on &lt;Save and
-            close&gt;.</para>
-    </section>
-    <section>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-        <title>Edit multiple data sets at
-            onc<?oxy_comment_start author="cecilia" timestamp="20160609T135643+0200" comment="Before release:
-Check if feature is included in new release.
-Previous info: Have checked with SME, function should be in Maintenance app but might not be included in release 24."?>e<?oxy_comment_end?></title>
-        <?oxy_custom_end?>
-        <para>With the <emphasis role="bold">Data set assignment editor</emphasis> you can add and
-            remove multiple data sets to organisation units at once.</para>
-        <orderedlist>
-            <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        ><?oxy_comment_start author="cecilia" timestamp="20160609T161212+0200" comment="For SME: In which app will the Data set assignment editor be?
-Maintenance" flag="done"?>Maintenance<?oxy_comment_end?></emphasis>
-                    > <emphasis role="bold">Data set assignment editor</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>Select an organisation unit.</para>
-                <para>A table appears with data sets as columns and child organisation units as
-                    rows.</para>
-            </listitem>
-            <listitem>
-                <para>Assign or unassign data sets by clicking the corresponding icons in the
-                    table.</para>
-                <para>Your changes are saved automatically.</para>
-                <tip>
-                    <para>If you want to assign or unassign an organisation unit to all data sets,
-                        select or clear the check box next to the organisation unit.</para>
-                </tip>
-            </listitem>
-        </orderedlist>
-    </section>
-    <section>
-        <title><?oxy_comment_start author="cecilia" timestamp="20160609T164133+0200" comment="Task done by implmenter" flag="done"?>Script<?oxy_comment_end?>ing
-            in custom forms</title>
-        <para>In custom data entry form you can use
-            <?oxy_comment_start author="cecilia" timestamp="20160614T113801+0200" comment="Note: JavaScript is a trademark owned by Oracle (previously Sun corp.)" flag="done"?>JavaScript<?oxy_comment_end?>
-            to create dynamic behavior and customizations. As an example, you can hide form sections
-            based on specific user input for data elements, or show specific information when a form
-            loads.</para>
-        <section>
-            <title>Events</title>
-            <para>The DHIS 2 data entry module provides a range of events which you can register for
-                and use to perform actions at certain times. The events are registered on the
-                <?oxy_comment_start author="cecilia" timestamp="20160609T173110+0200" comment="A document element is a term used by developers." flag="done"?>document
-                element<?oxy_comment_end?>. The jQuery event object and the data set identifier are
-                always the first two arguments provided to the callback functions. The table below
-                provides an overview of the events and when they are triggered.</para>
-            <table frame="all">
-                <?oxy_comment_start author="cecilia" timestamp="20160609T172708+0200" comment="Before publication, verify that cell content don&apos;t bleed."?>
-                <title>Data entry events</title>
-                <?oxy_comment_end?>
-                <tgroup cols="3">
-                    <colspec colnum="1" colname="c1" colwidth="1.18*"/>
-                    <colspec colnum="2" colname="c2" colwidth="1.42*"/>
-                    <colspec colnum="3" colname="newCol3" colwidth="1*"/>
-                    <thead>
-                        <row>
-                            <entry>Key</entry>
-                            <entry>Description</entry>
-                            <entry>Arguments</entry>
-                        </row>
-                    </thead>
-                    <tbody>
-                        <row>
-                            <entry>
-                                <para>dhis2.de.event.formLoaded</para>
-                            </entry>
-                            <entry>
-                                <para>Triggered after the data entry form is rendered, but before
-                                    data values are set in entry fields.</para>
-                            </entry>
-                            <entry>
-                                <para>Event | Data set ID</para>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <para>dhis2.de.event.dataValuesLoaded</para>
-                            </entry>
-                            <entry>
-                                <para>Triggered after data values are set in entry fields.</para>
-                            </entry>
-                            <entry>
-                                <para>Event | Data set ID</para>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <para>dhis2.de.event.formReady</para>
-                            </entry>
-                            <entry>
-                                <para>Triggered when the data entry form is completely rendered and
-                                    loaded with all elements.</para>
-                            </entry>
-                            <entry>
-                                <para>Event | Data set ID</para>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <para>dhis2.de.event.dataValueSaved</para>
-                            </entry>
-                            <entry>
-                                <para>Triggered when a data value is saved successfully.</para>
-                            </entry>
-                            <entry>
-                                <para>Event | Data set ID | Data value object</para>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <para>dhis2.de.event.completed</para>
-                            </entry>
-                            <entry>
-                                <para>Triggered when a data set is successfully marked as
-                                    complete.</para>
-                            </entry>
-                            <entry>
-                                <para>Event | Data set ID | Complete registration object</para>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <para>dhis2.de.event.uncompleted</para>
-                            </entry>
-                            <entry>
-                                <para>Triggered when a data set is successfully marked as
-                                    incomplete.</para>
-                            </entry>
-                            <entry>
-                                <para>Event | Data set ID</para>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <para>dhis2.de.event.validationSuccess</para>
-                            </entry>
-                            <entry>
-                                <para>Triggered when validation is done and there were no
-                                    violations.</para>
-                            </entry>
-                            <entry>
-                                <para>Event | Data set ID</para>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <para>dhis2.de.event.validationError</para>
-                            </entry>
-                            <entry>
-                                <para>Triggered when validation is done and there were one or more
-                                    violations.</para>
-                            </entry>
-                            <entry>
-                                <para>Event | Data set ID</para>
-                            </entry>
-                        </row>
-                        <row>
-                            <entry>
-                                <para>dhis2.ou.event.orgUnitSelected</para>
-                            </entry>
-                            <entry>
-                                <para>Triggered when one or more organisation units are selected in
-                                    the org unit web tree.</para>
-                            </entry>
-                            <entry>
-                                <para>Event | Org unit IDs | Org unit names | Sub org unit
-                                    IDs</para>
-                            </entry>
-                        </row>
-                    </tbody>
-                </tgroup>
-            </table>
-            <para>To register for an event:</para>
-            <screen>&lt;script type=&quot;text/javascript&quot;&gt;
-
-dhis2.util.on( &apos;dhis2.de.event.formReady&apos;, function( event, ds ) {
-  console.log( &apos;The form with id: &apos; + ds + &apos; is loaded!&apos; );
-} );
-
-dhis2.util.on( &apos;dhis2.de.event.dataValueSaved&apos;, function( event, ds, dv ) {
-  console.log( &apos;Data value: &apos; + dv.value + &apos; was saved with data element: &apos; + dv.de );
-} );
-
-dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
-  console.log( &apos;Form was completed for org unit: &apos; + cr.ou );
-} );
-
-&lt;/script&gt;</screen>
-            <note>
-                <para>Be careful to only use &quot;namespaced&quot; events like the ones in the
-                    example above and not general ones like &quot;click&quot; as the dhis2.util.on
-                    method will unregister the event first.</para>
-            </note>
-            <para>If your function only applies to certain data sets you can use the supplied data
-                set identifier and shortcut your function for unwanted data sets like this:</para>
-            <screen>dhis2.de.on( &apos;dhis2.de.event.validationSuccess&apos;, function( event, ds ) {
-  if ( $.inArray( ds, [&apos;utXOiGbEj14&apos;, &apos;Re7qzHEThSC&apos;] ) == -1 ) {
-    return false;
-  }
-  console.log( &apos;Form with id: &apos; + ds + &apos; validated successfully!&apos; );
-} );</screen>
-            <para>The identifiers of the input fields in the data entry form is on the format
-                described below. This format can be used to select the input fields in your script
-                and perform actions on
-                them:<screen>&lt;dataelementid&gt;-&lt;optioncomboid&gt;-val</screen></para>
-            <para>Since the data set identifier is provided for all events a feasible alternative is
-                to utilize the &quot;files&quot; Web API resource and keep your callback functions
-                in a single file, where you let the JavaScript code take action based on which data
-                set is currently loaded.</para>
-        </section>
-        <section>
-            <title>Functions</title>
-            <para>The DHIS 2 data entry module contains JavaScript API functions which can be
-                accessed from custom data entry forms.</para>
-            <para><emphasis role="bold">dhis2.de.api.getSelections</emphasis>: This function returns
-                a JavaScript object which contains properties for all dimensions with corresponding
-                values for the identifiers of the selected options. It contains properties for "ds"
-                (data set), "pe" (period), "ou" (organisation unit) and identifiers for all data set
-                categories.</para>
-            <para>An example response looks like
-                this:<screen>{
- +  ds: "lyLU2wR22tC",
- +  pe: "201605",
- +  ou: "g8upMTyEZGZ",
- +  LFsZ8v5v7rq: "CW81uF03hvV",
- +  yY2bQYqNt0o: "yMj2MnmNI8L"
- +}</screen></para>
-            <para>Example JavaScript usage of this
-                function:<screen>var sel = dhis2.de.api.getSelections();
- +var orgUnit = sel["ou"];
- +var partner = sel["LFsZ8v5v7rq"];</screen></para>
-        </section>
     </section>
 </section>
