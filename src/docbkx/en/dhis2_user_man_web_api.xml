@@ -503,6 +503,116 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
           </tgroup>
         </table></para>
     </section>
+    <section>
+      <title>Translation API</title>
+      <para>From 2.24 and upwards the translation APIs have changed quite a bit in the way they
+        work, in older releases we have to use the <emphasis role="italic"
+          >/api/translations</emphasis> API to get all available locales for an object, this now
+        instead exists directly on the object itself. Please note that the <emphasis role="italic"
+          >translations</emphasis> array in the JSON/XML payloads are normally pre-filtered for you,
+        which means they can not directly be used to import/export translations (as that would
+        normally overwrite locales other than current users).</para>
+      <para><emphasis role="italic">Example of data element with translation array filtered on user
+          locale:</emphasis><screen>{
+  "id": "FTRrcoaog83",
+  "displayName": "Accute French",
+  "translations": [
+    {
+      "property": "SHORT_NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    },
+    {
+      "property": "NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    }
+  ]
+}</screen></para>
+      <para><emphasis role="italic">Example of data element with translations turned
+        off:</emphasis><screen>{
+  "id": "FTRrcoaog83",
+  "displayName": "Accute Flaccid Paralysis (Deaths &lt; 5 yrs)",
+  "translations": [
+    {
+      "property": "FORM_NAME",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "SHORT_NAME",
+      "locale": "en_GB",
+      "value": "Accute Flaccid Paral"
+    },
+    {
+      "property": "SHORT_NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    },
+    {
+      "property": "NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    },
+    {
+      "property": "NAME",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "DESCRIPTION",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "SHORT_NAME",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "NAME",
+      "locale": "en_GB",
+      "value": "Accute Flaccid Paralysis (Deaths &lt; 5 yrs)"
+    }
+  ]
+}</screen></para>
+      <para>Please note that even if you get the unfiltered result, and are using the appropriate
+        type endpoint i..e <emphasis role="italic">/api/24/dataElements</emphasis> we do not allow
+        updates, as it would be too easy to make mistakes and overwrite the other available
+        locales.</para>
+      <para>To be able to easily read and update translation we have also added new endpoints for
+        this, these can be accessed by <emphasis role="bold">GET</emphasis> or <emphasis role="bold"
+          >PUT</emphasis> on the appropriate <emphasis role="italic"
+          >/api/24/type/id/translations</emphasis> endpoint, i.e for a data element with ID
+          <emphasis role="italic">"FTRrcoaog83"</emphasis> you could use <emphasis role="italic"
+          >/api/24/dataElements/FTRrcoaog83/translations</emphasis> to get and update translations.
+        To add a translation it follows a very simple format, the fields available are <emphasis
+          role="italic">property</emphasis> with options <emphasis role="bold">NAME</emphasis>,
+          <emphasis role="bold">SHORT_NAME</emphasis>, <emphasis role="bold">DESCRIPTION</emphasis>,
+        the <emphasis role="italic">locale</emphasis> which supports any valid locale ID, and then
+        the <emphasis role="italic">value</emphasis> itself.</para>
+      <para><emphasis role="italic">Example of NAME property for french
+        locale:</emphasis><screen>{
+  "property": "NAME",
+  "locale": "fr",
+  "value": "Paralysie Flasque Aiguë (Décès &lt;5 ans)"
+}</screen></para>
+      <para>This payload would then be added to a translation array, and sent back to the
+        appropriate
+        endpoint:<screen>{
+  "translations": [
+    {
+      "property": "NAME",
+      "locale": "fr",
+      "value": "Paralysie Flasque Aiguë (Décès &lt;5 ans)"
+    }
+  ]
+}</screen></para>
+      <para>Then for a an data element with ID <emphasis role="italic">FTRrcoaog83</emphasis> you
+        would <emphasis role="bold">PUT</emphasis> this to <emphasis role="italic"
+          >/api/24/dataElements/FTRrcoaog83/translation</emphasis>.  Please make sure that you send
+        all translations for the object,  if not you will overwrite the old ones.</para>
+    </section>
   </section>
   <section>
     <title>Working with the metadata API</title>
@@ -9250,13 +9360,19 @@ interval=WEEK" -u admin:district</screen>
       <para><emphasis role="italic">GenericHttp</emphasis></para>
       <screen>{
   &quot;name&quot; : &quot;generic&quot;,
-  &quot;username&quot;: &quot;genericUser&quot;,
-  &quot;password&quot;: &quot;abc123&quot;,
+  &quot;messageParameter&quot;: &quot;message&quot;,
+  &quot;recipientParameter&quot;: &quot;msisdn&quot;,
   &quot;urlTemplate&quot;: &quot;http://localhost:template&quot;,
-  &quot;parameters&quot;: {
-  &quot;parameter1&quot;: &quot;value1&quot;,
-  &quot;parameter2&quot;: &quot;value2&quot;
-  }
+  &quot;parameters&quot;: [
+    {
+      &quot;key&quot;: &quot;username&quot;,
+      &quot;value&quot;: &quot;user12&quot;
+    }.
+    {
+     &quot;key&quot;: &quot;password&quot;,
+      &quot;value&quot;: &quot;XXX&quot;
+    }
+  ]
 }</screen>
 
       <para>The various gateway configurations can be instantiated using the endpoints listed
