@@ -14,7 +14,10 @@
   <section>
     <title>GIS overview</title>
     <screenshot>
+      <?oxy_comment_start author="cecilia" timestamp="20160626T153414+0200" comment="Before release:
+Replace screenshot."?>
       <title>Main GIS screen</title>
+      <?oxy_comment_end?>
       <mediaobject>
         <imageobject>
           <imagedata fileref="resources/images/gis/gis_main.png" align="center" width="100%"
@@ -24,7 +27,7 @@
     </screenshot>
     <itemizedlist>
       <listitem>
-        <para>The four icons in the left upper corner represent the vector layers and they are the
+        <para>The icons in the left upper corner represent the vector layers and they are the
           starting point of the <emphasis role="bold">GIS</emphasis> app.</para>
       </listitem>
       <listitem>
@@ -460,13 +463,12 @@ https://www.google.com/permissions/trademark/trademark-list.html
   </section>
   <section xml:id="gisThematicMap">
     <title>Manage thematic layer 1- 4</title>
-    <para>The four thematic layer panels let you use your data for thematic mapping. All you need to
-      do is selecting your desired combination of indicator/data element, period and map
-      combination. Then the organisation unit level and parent to define the boundaries. If your
-      database has coordinates and aggregated data values for these organisation units they will
-      appear on the map. </para>
+    <para>The four thematic layer panels let you use your data for thematic mapping. Select your
+      desired combination of indicator/data element, period and map combination, then the
+      organisation unit level and parent to define the boundaries. If your database has coordinates
+      and aggregated data values for these organisation units, they will appear on the map.</para>
     <note>
-      <para>The DHIS 2 analytics tables must be refreshed in order to have aggregated data values
+      <para>You must refresch the DHIS 2 analytics tables to have aggregated data values
         available.</para>
     </note>
     <screenshot>
@@ -693,9 +695,9 @@ https://www.google.com/permissions/trademark/trademark-list.html
   </section>
   <section>
     <title>Manage Earth Engine layer</title>
-    <para>The Earth Engine layer lets you display satellite imagery and geospatial datasets from
-      Google's vast catalog. This layer is useful in combination with thematic and event layers to
-      enhance analysis. The following layers are currently supported:<itemizedlist>
+    <para>The  Google Earth Engine layer lets you display satellite imagery and geospatial datasets
+      from Google's vast catalog. This layer is useful in combination with thematic and event layers
+      to enhance analysis. The following layers are supported:<itemizedlist>
         <listitem>
           <para>Elevation: Metres above sea level.</para>
         </listitem>
@@ -708,7 +710,9 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </listitem>
       </itemizedlist></para>
       <screenshot>
-      <title>Earth engine population density layer</title>
+      <title>Earth Engine population density
+        <?oxy_comment_start author="cecilia" timestamp="20160626T153942+0200" comment="For SME: In GUI, it&apos;s called dataset, not layer Correct?
+Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end?></title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/gis/gis_earth_engine_layer_population.png" format="PNG"/>
@@ -718,18 +722,20 @@ https://www.google.com/permissions/trademark/trademark-list.html
       <section>
         <title>Create or modify an Earth Engine layer</title>
         <orderedlist>
-          <listitem><para>In the top menu, click the Earth Engine layer icon.</para></listitem>
+          <listitem><para>In the top menu, click the Google Earth Engine layer icon.</para></listitem>
         <listitem>
-          <para>Select a <emphasis role="bold">dataset</emphasis>, e.g. "Elevation".</para>
+          <para>Select a data set, for example "Elevation".</para>
         </listitem>
         <listitem>
-          <para>Select <emphasis role="bold">min / max values</emphasis>. The meaning of those
-            values depend on which data set you select.</para>
+          <para>Select <emphasis role="bold">Min / max value</emphasis>.</para>
+          <para>The meaning of these values depend on which data set yo've selected.</para>
         </listitem>
         <listitem>
-          <para>Select a <emphasis role="bold">color scale</emphasis> and the number of <emphasis
-              role="bold">steps</emphasis> (meaning number of distinct colors in the color
-            scale).</para>
+          <para>Select a <emphasis role="bold">Color scale</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Select the number of <emphasis role="bold">Steps</emphasis>.</para>
+          <para>The number of steps means the number of distinct colors in the color scale.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Update</emphasis>. </para>
@@ -1130,19 +1136,7 @@ At the moment, feature doesn&apos;t work and is not included in version 2.23. Wi
     <title>Using place search</title>
     <para>The place search function allows you to search for almost any location or address. The
       place search is powered by the Mapzen mapping platform. This function is useful in order to
-      locate sites, facilities, villages, towns and more on the map.</para>
-    <orderedlist>
-      <listitem>
-        <para>Click the magnifier icon on the left side of the screen.</para>
-      </listitem>
-      <listitem>
-        <para>Enter your search term.</para>
-      </listitem>
-      <listitem>
-        <para>Select from the list of matching locations which appear as you type. A pin will
-          indicate the location on the map.</para>
-      </listitem>
-    </orderedlist>
+      locate for example sites, facilities, villages or towns on the map.</para>
     <screenshot>
       <title>Place search</title>
       <mediaobject>
@@ -1152,6 +1146,18 @@ At the moment, feature doesn&apos;t work and is not included in version 2.23. Wi
         </imageobject>
       </mediaobject>
     </screenshot>
+    <orderedlist>
+      <listitem>
+        <para>On the left side of the GIS window, click the magnifier icon.</para>
+      </listitem>
+      <listitem>
+        <para>Type the location you're looking.</para>
+        <para>A list of matching locations appear as you type.</para>
+      </listitem>
+      <listitem>
+        <para>From the list, select a location. A pin indicates the location on the map.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
     <title>Measure distance and area in a map</title>
