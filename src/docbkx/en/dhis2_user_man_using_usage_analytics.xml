@@ -6,116 +6,79 @@
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
     xmlns:db="http://docbook.org/ns/docbook">
-    <title>Using the Usage Analytics
-        <?oxy_comment_start author="CPersson" timestamp="20160428T162631+0200" comment="Who would be using this app?
-Admin?"?><?oxy_comment_start author="yrjanaff" timestamp="20160623T093349+0200" comment="Yes, mostly admin" mid="1"?>app<?oxy_comment_end?><?oxy_comment_end mid="1"?></title>
-    <section>
+    <title>Using the Usage Analytics</title>
+    <para>The Usage Analytics app lets you visualize statistics on how users are working with the
+        Dashboard, Pivot Table, GIS, Event Visualizer, Data Visualizer and Event Reports apps within
+        DHIS 2, and answers questions such as:</para>
+    <itemizedlist>
+        <listitem>
+            <para>How many times people have loaded charts, pivots tables and dashboards.</para>
+        </listitem>
+        <listitem>
+            <para>How many favorites users have created.</para>
+        </listitem>
+        <listitem>
+            <para>How many users that are logging in versus total number of users.</para>
+        </listitem>
+        <listitem>
+            <para>What are the most viewed favorites.</para>
+        </listitem>
+    </itemizedlist>
         <screenshot>
             <mediaobject>
                 <imageobject>
-                    <imagedata align="center" format="png" width="95%"
+                    <imagedata align="center" format="png" width="100%"
                         fileref="resources/images/usage_analytics/usage_analytics_interface.png"/>
                 </imageobject>
             </mediaobject>
         </screenshot>
-        <para>The Usage Analytics app lets you visualize statistics on how users are working with
-            the Dashboard, Pivot Table, GIS, Event Visualizer, Data Visualizer and Event Reports
-            apps within DHIS 2. This includes:</para>
-        <itemizedlist>
-            <listitem>
-                <para>How many times people have loaded charts, pivots tables and dashboards.</para>
-            </listitem>
-            <listitem>
-                <para>How many favorites users have created .</para>
-            </listitem>
-            <listitem>
-                <para>How many users that are logging in versus total number of users.</para>
-            </listitem>
-        </itemizedlist>
+    <section>
+        <title>Workflow</title>
         <para>To create an usage analytics graph:</para>
         <orderedlist>
             <listitem>
-                <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold"
-                        >Usage Analytics</emphasis>.</para>
+                <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Usage Analytics</emphasis>.</para>
             </listitem>
             <listitem>
-                <para>Select a start date.</para>
+                <para>Select a <emphasis role="bold">start date</emphasis> and <emphasis role="bold">end date</emphasis>.</para>
             </listitem>
             <listitem>
-                <para>Select an end date.</para>
+                <para>Select an interval: Day, week month or year.</para>
             </listitem>
             <listitem>
-                <para>Select an interval: day, week month or year.</para>
-            </listitem>
-            <listitem>
-                <para>Select a category.</para>
-                <table frame="all">
-                    <title>Category types</title>
-                    <tgroup cols="2">
-                        <colspec colname="c1" colnum="1" colwidth="1*"/>
-                        <colspec colname="c2" colnum="2" colwidth="1.9*"/>
-                        <thead>
-                            <row>
-                                <entry>
-                                    <para>Category type</para>
-                                </entry>
-                                <entry>
-                                    <para>Description</para>
-                                </entry>
-                            </row>
-                        </thead>
-                        <tbody>
-                            <row>
-                                <entry>
-                                    <para><emphasis role="bold">Favorite views</emphasis></para>
-                                </entry>
-                                <entry>
-                                    <para>Number of times users have looked at favorites during the
-                                        selected interval.</para>
-                                    <para>You can switch between <emphasis role="bold">All favorite
-                                            views</emphasis>, <emphasis role="bold">Total
-                                            views</emphasis>, <emphasis role="bold">All favorite
-                                            average views per user</emphasis> and <emphasis
-                                            role="bold">Total view per user</emphasis>. The table
-                                        updates automatically with the corresponding values.</para>
-                                </entry>
-                            </row>
-                            <row>
-                                <entry>
-                                    <para><emphasis role="bold">Favorites</emphasis></para>
-                                </entry>
-                                <entry>
-                                    <para>Number of
-                                        <?oxy_comment_start author="CPersson" timestamp="20160426T165827+0200" comment="Must define in which apps.
-
-Consider rewording to &quot;... a saved favorite in the xx, yy ... and zz apps."?>analysis<?oxy_comment_end?>
-                                        favorites users have created during the selected interval.
-                                        <?oxy_comment_start author="yrjanaff" timestamp="20160623T094040+0200" comment="Is this more descriptive?"?>The
-                                        analysis favorites are fetched from the Dashboard, Pivot
-                                        Table, GIS, Event Visualizer, Data Visualizer and Event
-                                        Reports apps.</para>
-                                    <?oxy_comment_end?>
-                                </entry>
-                            </row>
-                            <row>
-                                <entry>
-                                    <para><emphasis role="bold">Users</emphasis></para>
-                                </entry>
-                                <entry>
-                                    <para>Number of users in the system during the selected
-                                        interval.</para>
-                                </entry>
-                            </row>
-                        </tbody>
-                    </tgroup>
-                </table>
+                <para>Select an analytics category.</para>
             </listitem>
             <listitem>
                 <para>Click <emphasis role="bold">Update</emphasis>.</para>
             </listitem>
-            <listitem>
-                <para>(Optional) Click a series label to hide the corresponding graph.</para>
-            </listitem>
         </orderedlist>
+    </section>
+    <section>
+        <title>Categories of analytics</title>
+        <para>The following categories of analytics are available.<itemizedlist>
+                <listitem>
+                    <para><emphasis role="bold">Favorite views:</emphasis> Provides the number of
+                        times various types of favorites have been viewed, such as charts, pivot
+                        tables and dashboards, over time. This analysis lets you switch between all
+                        types of favorites, the total across all types and the average number of
+                        views.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold">Favorites:</emphasis> Provides the number of
+                        favorites which have been created and stored in the system over time.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold">Users:</emphasis> Provides the number of active as
+                        well as total number of users over time.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold">Top favorites:</emphasis> Shows the most viewed
+                        favorites in the system by type.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold">Data values:</emphasis> Provides the number of data
+                        values stored in the system over time. </para>
+                </listitem>
+            </itemizedlist></para>
     </section>
 </chapter>

@@ -468,8 +468,11 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     <screen>/api/24/identifiableObjects/&lt;id&gt;</screen>
     <section>
       <title>Translation</title>
-      <para>Support for I18n translation in the web-api was added in 2.19 release. It is supported
-        by two parameters:<table frame="all">
+      <para>DHIS 2 supports translations of database content, such as data elements, indicators and
+        programs. All metadata objects in the Web API have properties meant to be used for display /
+        UI purposes, which includes <emphasis>displayName</emphasis>,
+          <emphasis>displayShortName</emphasis> and <emphasis>displayDescription</emphasis>.<table
+          frame="all">
           <title>Translate options</title>
           <tgroup cols="3">
             <colspec colnum="1" colname="c1" colwidth="1.28*"/>
@@ -487,18 +490,96 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
                 <entry>translate</entry>
                 <entry>true | false</entry>
                 <entry>Translate display* properties in metadata output (displayName,
-                  displayShortName, displayDescription, and displayFormName for data
-                  elements)</entry>
+                  displayShortName, displayDescription, and displayFormName for data elements).
+                  Default value is true.</entry>
               </row>
               <row>
                 <entry>locale</entry>
                 <entry>Locale to use</entry>
-                <entry>Translate metadata output using a specified locale (implies
-                  translate=true)</entry>
+                <entry>Translate metadata output using a specified locale (requires
+                  translate=true).</entry>
               </row>
             </tbody>
           </tgroup>
         </table></para>
+    </section>
+    <section>
+      <title>Translation API</title>
+      <para>From 2.24 and upwards the translation APIs have changed quite a bit in the way they
+        work, in older releases we have to use the <emphasis role="italic"
+          >/api/translations</emphasis> API to get all available locales for an object, this now
+        instead exists directly on the object itself. Please note that the <emphasis role="italic"
+          >translations</emphasis> array in the JSON/XML payloads are normally pre-filtered for you,
+        which means they can not directly be used to import/export translations (as that would
+        normally overwrite locales other than current users).</para>
+      <para><emphasis role="italic">Example of data element with translation array filtered on user
+          locale:</emphasis><screen>{
+  "id": "FTRrcoaog83",
+  "displayName": "Accute French",
+  "translations": [
+    {
+      "property": "SHORT_NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    },
+    {
+      "property": "NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    }
+  ]
+}</screen></para>
+      <para><emphasis role="italic">Example of data element with translations turned
+        off:</emphasis><screen>{
+  "id": "FTRrcoaog83",
+  "displayName": "Accute Flaccid Paralysis (Deaths &lt; 5 yrs)",
+  "translations": [
+    {
+      "property": "FORM_NAME",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "SHORT_NAME",
+      "locale": "en_GB",
+      "value": "Accute Flaccid Paral"
+    },
+    {
+      "property": "SHORT_NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    },
+    {
+      "property": "NAME",
+      "locale": "fr",
+      "value": "Accute French"
+    },
+    {
+      "property": "NAME",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "DESCRIPTION",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "SHORT_NAME",
+      "locale": "en_FK",
+      "value": "aa"
+    },
+    {
+      "property": "NAME",
+      "locale": "en_GB",
+      "value": "Accute Flaccid Paralysis (Deaths &lt; 5 yrs)"
+    }
+  ]
+}</screen></para>
+      <para>Please note that even if you get the unfiltered result, and are using the appropriate
+        type endpoint i..e <emphasis role="italic">/api/24/dataElements</emphasis> we do not allow
+        updates, as it would be too easy to make mistakes and overwrite the other available
+        locales.</para>
     </section>
   </section>
   <section>
@@ -3606,7 +3687,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           <tgroup cols="3">
             <colspec colnum="1" colname="c1" colwidth="1*"/>
             <colspec colnum="2" colname="c2" colwidth="4*"/>
-            <colspec colnum="2" colname="c2" colwidth="1*"/>
+            <colspec colnum="3" colname="c3" colwidth="1*"/>
             <thead>
               <row>
                 <entry>name</entry>
@@ -3668,7 +3749,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           <tgroup cols="3">
             <colspec colnum="1" colname="c1" colwidth="1*"/>
             <colspec colnum="2" colname="c2" colwidth="4*"/>
-            <colspec colnum="2" colname="c2" colwidth="1*"/>
+            <colspec colnum="3" colname="c3" colwidth="1*"/>
             <thead>
               <row>
                 <entry>name</entry>
@@ -3809,6 +3890,48 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                       <para>*Either dataElement or trackedEntityAttribute must be specified.</para>
                     </listitem>
                     <listitem>
+                      <para><emphasis role="bold">WARNINGONCOMPLETINON</emphasis> - Show a warning
+                        to the user on the "Complete form" dialog, but allowing the user to complete
+                        the event.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">content</emphasis> - if defined, content is
+                            a static part that is displayed at the end of the error message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">data</emphasis> - if defined, data forms an
+                            expression that is evaluated and added to the end of the warning
+                            message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">dataElement</emphasis> - if defined, the
+                            warning message prefixed with the name/formName of the data
+                            element.</para>
+                        </listitem>
+                      </itemizedlist>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">ERRORONCOMPLETION</emphasis> - Show an error to
+                        the user on in a modal window when the user tries to complete the event. The
+                        user is prevented from completing the event.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">content</emphasis> - if defined, content is
+                            a static part that is displayed in the start of the error
+                            message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">data</emphasis> - if defined, data forms an
+                            expression that is evaluated and added to the end of the error
+                            message.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">dataElement</emphasis> - if defined, the
+                            error message is linked to this data element.</para>
+                        </listitem>
+                      </itemizedlist>
+                    </listitem>
+                    <listitem>
                       <para><emphasis role="bold">CREATEEVENT</emphasis> - Create an event within
                         the same enrollment.</para>
                       <itemizedlist>
@@ -3843,23 +3966,24 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                 <entry>content</entry>
                 <entry>Used for user messages in the different actions. See the actionType overview
                   for a detailed explanation for how it is used in each of the action types.
-                  Compulsory for SHOWWARNING, SHOWERROR, DISPLAYTEXT and DISPLAYKEYVALUEPAIR.
-                  Optional for HIDEFIELD and ASSIGN.</entry>
+                  Compulsory for SHOWWARNING, SHOWERROR, WARNINGONCOMPLETION, ERRORONCOMPLETION,
+                  DISPLAYTEXT and DISPLAYKEYVALUEPAIR. Optional for HIDEFIELD and ASSIGN.</entry>
                 <entry>See description</entry>
               </row>
               <row>
                 <entry>data</entry>
                 <entry>Used for expressions in the different actions. See the actionType overview
                   for a detailed explanation for how it is used in each of the action types.
-                  Compulsory for ASSIGN. Optional for SHOWWARNING, SHOWERROR, DISPLAYTEXT,
-                  CREATEEVENT and DISPLAYKEYVALUEPAIR</entry>
+                  Compulsory for ASSIGN. Optional for SHOWWARNING, SHOWERROR, WARNINGONCOMPLETION,
+                  ERRORONCOMPLETION, DISPLAYTEXT, CREATEEVENT and DISPLAYKEYVALUEPAIR</entry>
                 <entry>See description</entry>
               </row>
               <row>
                 <entry>dataElement</entry>
                 <entry>Used for linking rule actions to dataElements. See the actionType overview
                   for a detailed explanation for how it is used in each of the action types.
-                  Optional for SHOWWARNING, SHOWERROR, ASSIGN and HIDEFIELD</entry>
+                  Optional for SHOWWARNING, SHOWERROR, WARNINGONCOMPLETION, ERRORONCOMPLETION,
+                  ASSIGN and HIDEFIELD</entry>
                 <entry>See description</entry>
               </row>
               <row>
@@ -3892,7 +4016,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           <tgroup cols="3">
             <colspec colnum="1" colname="c1" colwidth="1*"/>
             <colspec colnum="2" colname="c2" colwidth="4*"/>
-            <colspec colnum="2" colname="c2" colwidth="1*"/>
+            <colspec colnum="3" colname="c3" colwidth="1*"/>
             <thead>
               <row>
                 <entry>name</entry>
@@ -3955,6 +4079,13 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                 <entry>Used for linking the programRuleVariable to a trackedEntityAttribute.
                   Compulsory for sourceType TEI_ATTRIBUTE.</entry>
                 <entry>See description</entry>
+              </row>
+              <row>
+                <entry>useCodeFor- OptionSet</entry>
+                <entry>If checked, the variable will be populated with the code - not the name -
+                  from any linked option set. Default is unchecked, meaning that the name of the
+                  option is populated.</entry>
+                <entry/>
               </row>
               <row>
                 <entry>programStage</entry>
@@ -5018,9 +5149,10 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         user.<screen>{ &quot;removed&quot; : [&quot;xE7jOejl9FI&quot;] }</screen></para>
       <para>On failure the returned object will contain a message payload which describes the
         error.<screen>{ &quot;message&quot; : &quot;No user with uid: dMV6G0tPAEa&quot; }</screen></para>
-      <para>The observant reader will already have noticed that the object returned on success in
-        our example is actually a list of ids (containing a single entry). This is due to the
-        endpoint also supporting batch removals. The request is made to the same <emphasis
+      <para><?oxy_comment_start author="cecilia" timestamp="20160628T110014+0200" comment="At next release: rewrite section and remove expressions like the observant reader." flag="done"?>The
+        observant reader will alread<?oxy_comment_end?>y have noticed that the object returned on
+        success in our example is actually a list of ids (containing a single entry). This is due to
+        the endpoint also supporting batch removals. The request is made to the same <emphasis
           role="italic">messageConversations</emphasis> resource but follows slightly different
         semantics. For batch operations the conversation ids are given as query string parameters.
         The following example removes two separate message conversations for the current
@@ -5038,7 +5170,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         tracking whether a user has seen (opened) a message or not. In a typical application
         scenario (e.g. the DHIS 2 web portal) a message will be marked read as soon as the user
         opens it for the first time. However, users might want to manage the read or unread status
-        of their messages in order to keep track of certains conversations.</para>
+        of their messages in order to keep track of certain conversations.</para>
       <para>Marking messages read or unread follows similar semantics as batch removals, and also
         supports batch operations. To mark messages as read we issue a <emphasis role="italic"
           >POST</emphasis> to the <emphasis role="italic">messageConversations/read</emphasis>
@@ -5055,9 +5187,10 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     </section>
     <section>
       <title>Tickets</title>
-      <para>You can create tickets using the "write feedback" tool. Tickets are the same as messages. You can give a status or a 
-      priority to a ticket. To do this, use these API
-        endpoints:<screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/status</screen><screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/priority</screen></para>
+      <para>You can use the "write feedback" tool to create tickets and messages. The only
+        difference between a ticket and a message is that you can give a status and a priority to a
+        ticket. To do this, use these
+        API<screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/status</screen><screen>POST https://play.dhis2.org/demo/api/24/messageConversations/&lt;uid>/priority</screen></para>
       <para>
         <table frame="all">
           <title>A list of valid status and priority values</title>
@@ -5091,10 +5224,10 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
           </tgroup>
         </table>
       </para>
-      <para>Tickets can also contain internal messages, which is visiable only to users with the
-        "Manage tickets" authority. To send a internal message, include the optional parameter
-        "internal" when replying to a message conversation, and set it to
-        "true".<screen>curl -d &quot;This is an internal message&quot; 
+      <para>You can also add an internal message to a ticket, which can only be seen by users who
+        have "Manage tickets" permissions. To create an internal reply, include the "internal"
+        parameter, and set it
+        to<screen>curl -d &quot;This is an internal message&quot; 
   &quot;https://play.dhis2.org/demo/api/24/messageConversations/ZjHHSjyyeJ2?internal=true&quot; 
   -H &quot;Content-Type:text/plain&quot; -u admin:district -X POST -v</screen></para>
     </section>
@@ -8107,66 +8240,39 @@ ORDER BY oul.level, par.name, ou.name</screen>
   <section>
     <title>Data usage analytics</title>
     <para>The usage analytics API lets you access information about how people are using DHIS 2
-      <?oxy_insert_start author="CPersson" timestamp="20160502T102626+0200"?>based
-      on<?oxy_insert_end?> data analysis. When users access favorites, an event
-      <?oxy_insert_start author="CPersson" timestamp="20160502T102635+0200"?>is<?oxy_insert_end?>
-      recorded<?oxy_insert_start author="CPersson" timestamp="20160502T102646+0200"?>. The event
-      consists<?oxy_insert_end?> of the
-      <?oxy_insert_start author="CPersson" timestamp="20160502T134235+0200"?>user
-      name<?oxy_insert_end?>, the UID of the favorite, when the event took place, and the type of
-      event. The different types of events are
-      <?oxy_insert_start author="CPersson" timestamp="20160502T134752+0200"?>listed<?oxy_insert_end?>
-      in the <xref xmlns:xlink="http://www.w3.org/1999/xlink" linkend="dataUsage_eventTypes_table"/>
-      table.<?oxy_insert_start author="CPersson" timestamp="20160502T102953+0200" type="split"?></para>
-    <para><?oxy_insert_end?>The usage analytics API lets you retrieve aggregated snapshots of usage
-      analytics based on <?oxy_insert_start author="CPersson" timestamp="20160502T121750+0200"?>time
-      <?oxy_insert_end?>intervals. The API
-      capture<?oxy_insert_start author="CPersson" timestamp="20160502T121811+0200"?>s<?oxy_insert_end?>
-      user views (<?oxy_insert_start author="CPersson" timestamp="20160502T101938+0200"?>for
-      example<?oxy_insert_end?> the number of times a chart or pivot table has been viewed by
-      <?oxy_insert_start author="CPersson" timestamp="20160502T134824+0200"?>a<?oxy_insert_end?>
-      user) and saved analysis favorites
-      (<?oxy_insert_start author="CPersson" timestamp="20160502T102319+0200"?>for
-      example<?oxy_insert_end?> favorite charts and pivot tables). DHIS 2 will capture nightly
-      snapshots which are then aggregated at request.</para>
+      based on data analysis. When users access favorites, an event is recorded. The event consists
+      of the user name, the UID of the favorite, when the event took place, and the type of event.
+      The different types of events are listed in the <xref
+        xmlns:xlink="http://www.w3.org/1999/xlink" linkend="dataUsage_eventTypes_table"/>
+      table.</para>
+    <para>The usage analytics API lets you retrieve aggregated snapshots of usage analytics based on
+      time intervals. The API captures user views (for example the number of times a chart or pivot
+      table has been viewed by a user) and saved analysis favorites (for example favorite charts and
+      pivot tables). DHIS 2 will capture nightly snapshots which are then aggregated at
+      request.</para>
     <section>
       <title>Request query parameter</title>
-      <para>The usage analytics (data statistics) API supports two
-        operations:<?oxy_delete author="CPersson" timestamp="20160502T135303+0200" content=" "?></para>
+      <para>The usage analytics (data statistics) API supports two operations:</para>
       <itemizedlist>
         <listitem>
-          <para>POST<?oxy_insert_start author="CPersson" timestamp="20160502T121856+0200"?>:
-            <?oxy_insert_end?>create<?oxy_insert_start author="CPersson" timestamp="20160502T121902+0200"?>s<?oxy_insert_end?>
-            a view event</para>
+          <para>POST: creates a view event</para>
         </listitem>
         <listitem>
-          <para>GET<?oxy_insert_start author="CPersson" timestamp="20160502T121908+0200"?>:<?oxy_insert_end?>
-            retrieve<?oxy_insert_start author="CPersson" timestamp="20160502T121912+0200"?>s<?oxy_insert_end?>
-            aggregated statistics</para>
+          <para>GET: retrieves aggregated statistics</para>
         </listitem>
       </itemizedlist>
     </section>
     <section>
-      <title>Creat<?oxy_insert_start author="CPersson" timestamp="20160502T121918+0200"?>e<?oxy_insert_end?>
-        view events (POST)</title>
+      <title>Create view events (POST)</title>
       <para>The usage analytics API lets you create event views. The dataStatisticsEventType
         parameter describes what type of item was viewed. The favorite parameter indicates the
-        identifier of the relevant
-        favorite.<?oxy_delete author="CPersson" timestamp="20160502T134857+0200" content=" "?></para>
-      <?oxy_insert_start author="CPersson" timestamp="20160502T103115+0200"?>
-      <example>
-        <title>URL that creates a new event view of charts</title>
-        <para>
-          <screen>POST /api/dataStatistics?eventType=CHART_VIEW&amp;favorite=LW0O27b7TdD</screen>
-        </para>
-      </example>
-      <?oxy_insert_end?>
+        identifier of the relevant favorite.</para>
+      <para>URL that creates a new event view of
+        charts:<screen>POST /api/dataStatistics?eventType=CHART_VIEW&amp;favorite=LW0O27b7TdD</screen></para>
       <para>A successful save operation returns HTTP status code 201. The table below shows the
         supported types of events.</para>
       <table frame="all" xml:id="dataUsage_eventTypes_table">
-        <title><?oxy_insert_start author="CPersson" timestamp="20160502T122004+0200"?>Supported
-          <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T122006+0200"?>e<?oxy_insert_end?>vent
-          types</title>
+        <title>Supported event types</title>
         <tgroup cols="2">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
           <colspec colname="c2" colnum="2" colwidth="1.63*"/>
@@ -8210,9 +8316,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       </table>
     </section>
     <section>
-      <title><?oxy_insert_start author="CPersson" timestamp="20160502T121926+0200"?>Retrieve
-        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T121928+0200"?>a<?oxy_insert_end?>ggregated
-        usage analytics report (GET)</title>
+      <title>Retrieve aggregated usage analytics report (GET)</title>
       <para>The usage analytics (data statistics) API lets you specify certain query parameters when
         asking for an aggregated report.<table frame="all">
           <title>Query parameters for aggregated usage analytics (data statistics)</title>
@@ -8251,36 +8355,16 @@ ORDER BY oul.level, par.name, ou.name</screen>
             </tbody>
           </tgroup>
         </table></para>
-      <para>The startDate and endDate parameters
-        <?oxy_insert_start author="CPersson" timestamp="20160502T134320+0200"?>specify<?oxy_insert_end?>
-        the period for which
-        <?oxy_insert_start author="CPersson" timestamp="20160502T134336+0200"?>snapshots<?oxy_insert_end?>
-        are to be used in the aggregation.
-        <?oxy_insert_start author="CPersson" timestamp="20160502T122044+0200"?>You must format
-        <?oxy_insert_end?><?oxy_delete author="CPersson" timestamp="20160502T122048+0200" content="T"?><?oxy_insert_start author="CPersson" timestamp="20160502T122048+0200"?>t<?oxy_insert_end?>he
-        dates as shown <link xmlns:xlink="http://www.w3.org/1999/xlink" linkend="entry_ayf_gyy_jw"
-          >above</link>. If
-        <?oxy_insert_start author="CPersson" timestamp="20160502T103511+0200"?>no snapshots
-        are<?oxy_insert_end?> saved in the specified
-        period<?oxy_insert_start author="CPersson" timestamp="20160502T103525+0200"?>,<?oxy_insert_end?>
-        an empty list
-        <?oxy_insert_start author="CPersson" timestamp="20160502T122106+0200"?>is<?oxy_insert_end?>
-        sent back. The parameter called interval
-        specifie<?oxy_insert_start author="CPersson" timestamp="20160502T134400+0200"?>s<?oxy_insert_end?>
-        what type of aggregation will be done.</para>
-      <?oxy_insert_start author="CPersson" timestamp="20160502T103543+0200"?>
-      <example>
-        <title><?oxy_insert_end?>API query
-          <?oxy_insert_start author="CPersson" timestamp="20160502T103543+0200"?>that creates a
-          query for a yearly aggregation</title>
-        <para>
-          <screen>GET /api/dataStatistics?startDate=2014-01-02&amp;endDate=2016-01-01&amp;interval=MONTH</screen>
-        </para>
-      </example>
-      <?oxy_insert_end?>
+      <para>The startDate and endDate parameters specify the period for which snapshots are to be
+        used in the aggregation. You must format the dates as shown <link
+          xmlns:xlink="http://www.w3.org/1999/xlink" linkend="entry_ayf_gyy_jw">above</link>. If no
+        snapshots are saved in the specified period, an empty list is sent back. The parameter
+        called interval specifies what type of aggregation will be done.</para>
+      <para>API query that creates a query for a yearly
+        aggregation:<screen>GET /api/dataStatistics?startDate=2014-01-02&amp;endDate=2016-01-01&amp;interval=MONTH</screen></para>
     </section>
     <section>
-      <title>Retrieve top favortites</title>
+      <title>Retrieve top favourites</title>
       <para>The usage analytics API lets you retrieve the top favorites used in DHIS 2, and by
           user.<table frame="all">
           <title>Query parameters for top favorites</title>
@@ -8332,12 +8416,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
     <section>
       <title>Response format</title>
-      <para><?oxy_insert_start author="CPersson" timestamp="20160502T103902+0200"?>You can return
-        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T103906+0200"?>t<?oxy_insert_end?>he
-        <?oxy_insert_start author="CPersson" timestamp="20160502T104102+0200"?>aggregated data in a
-        <?oxy_insert_end?>usage analytics response in
-        <?oxy_insert_start author="CPersson" timestamp="20160502T104033+0200"?>several<?oxy_insert_end?>
-        representation formats. The default format is JSON. The available formats and content types are<?oxy_insert_start author="CPersson" timestamp="20160502T103949+0200"?>:<?oxy_insert_end?><itemizedlist>
+      <para>You can return the aggregated data in a usage analytics response in several
+        representation formats. The default format is JSON. The available formats and content types are:<itemizedlist>
           <listitem>
             <para>json (application/json)</para>
           </listitem>
@@ -8348,38 +8428,21 @@ ORDER BY oul.level, par.name, ou.name</screen>
             <para>html (text/html)</para>
           </listitem>
         </itemizedlist></para>
-      <?oxy_insert_start author="CPersson" timestamp="20160502T104215+0200" type="surround"?>
-      <example>
-        <?oxy_insert_end?>
-        <?oxy_insert_start author="CPersson" timestamp="20160502T105130+0200"?>
-        <title><?oxy_insert_end?>API query
-          <?oxy_insert_start author="CPersson" timestamp="20160502T105130+0200"?>that requests an
-          usage analytics response in XML format </title>
-        <?oxy_insert_end?>
-        <para>
-          <screen>/api/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen>
-        </para>
-      </example>
-      <para><?oxy_insert_start author="CPersson" timestamp="20160502T135057+0200"?>You must retrieve
-        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T135103+0200"?>t<?oxy_insert_end?>he
-        aggregated usage analytics response
-        <?oxy_insert_start author="CPersson" timestamp="20160502T135109+0200"?>with<?oxy_insert_end?>
-        the HTTP GET method. This allows
-        <?oxy_insert_start author="CPersson" timestamp="20160502T104311+0200"?>you to link directly
-        <?oxy_insert_end?><?oxy_insert_start author="CPersson" timestamp="20160502T135146+0200"?>from
-        Web pages and other HTTP-enabled clients<?oxy_insert_end?> to usage analytics responses. To
-        do functional testing use the
-        <?oxy_comment_start author="yrjanaff" timestamp="20160623T095607+0200" comment="cURL is a developer testing tool for API queries, so the c in cURL must not be removed."?>cURL<?oxy_comment_end?>
-        library.<?oxy_delete author="CPersson" timestamp="20160502T104442+0200" content=" "?></para>
-      <?oxy_insert_start author="CPersson" timestamp="20160502T105030+0200"?>
-      <example>
-        <title>Usage analytics response in JSON format</title>
-        <para>Execute this command against the demo database to get an usage analytics response in
-          JSON format:
-          <screen>curl "play.dhis2.org/demo/api/dataStatistics?startDate=2016-02-01&amp;endDate=2016-02-14&amp;
-interval=WEEK" -u admin:district</screen></para>
-        <para>The JSON response looks like this:
-          <screen>[
+      <para>API query that requests an usage analytics response in XML
+        format:<screen>/api/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen></para>
+      <para>You must retrieve the aggregated usage analytics response with the HTTP GET method. This
+        allows you to link directly from Web pages and other HTTP-enabled clients to usage analytics
+        responses. To do functional testing use the
+        <?oxy_comment_start author="yrjanaff" timestamp="20160623T095607+0200" comment="cURL is a developer testing tool for API queries, so the c in cURL must not be removed." flag="done"?>cURL<?oxy_comment_end?>
+        library.</para>
+      <para>Execute this command against the demo database to get an usage analytics response in
+        JSON format: </para>
+      <para>
+        <screen>curl "play.dhis2.org/demo/api/dataStatistics?startDate=2016-02-01&amp;endDate=2016-02-14&amp;
+interval=WEEK" -u admin:district</screen>
+      </para>
+      <para>The JSON response looks like this:
+        <screen>[
   {
     "year": 2016,
     "week": 5,
@@ -8435,8 +8498,6 @@ interval=WEEK" -u admin:district</screen></para>
     "users": 953
   }
 ]</screen></para>
-      </example>
-      <?oxy_insert_end?>
     </section>
   </section>
   <section>
@@ -9281,7 +9342,7 @@ interval=WEEK" -u admin:district</screen></para>
     }
   ]
 }</screen>
-     
+
       <para>The various gateway configurations can be instantiated using the endpoints listed
         below.</para>
       <table frame="all">
@@ -9320,23 +9381,24 @@ interval=WEEK" -u admin:district</screen></para>
   </section>
   <section>
     <title>SMSCommand</title>
-    <para>SMSCommands are being used to collect data through SMS. These commands belong to specific Parser Type. Each parser has different functionality.</para>
+    <para>SMSCommands are being used to collect data through SMS. These commands belong to specific
+      Parser Type. Each parser has different functionality.</para>
     <section>
-      <title>API End Points</title> 
+      <title>API End Points</title>
       <para>The list of commands can be retrieved using GET.</para>
       <screen>GET /api/24/sms/commands</screen>
       <para>One particular command can also be retreived using GET. Where parameter <emphasis
-        role="italic">type</emphasis> can be one of the below mentioned parsers</para>
+          role="italic">type</emphasis> can be one of the below mentioned parsers</para>
       <screen>GET /api/24/sms/commands/{commandName}?type=EVENT_REGISTRATION_PARSER</screen>
       <itemizedlist>
         <listitem>
           <para>KEY_VALUE_PARSER</para>
         </listitem>
         <listitem>
-          <para>J2ME_PARSER</para> 
+          <para>J2ME_PARSER</para>
         </listitem>
         <listitem>
-          <para>ALERT_PARSER</para> 
+          <para>ALERT_PARSER</para>
         </listitem>
         <listitem>
           <para>UNREGISTERED_PARSER</para>
@@ -9351,34 +9413,36 @@ interval=WEEK" -u admin:district</screen></para>
           <para>EVENT_REGISTRATION_PARSER</para>
         </listitem>
       </itemizedlist>
-    </section> 
+    </section>
   </section>
   <section>
     <title>Program Message Service</title>
-    <para>Program Message holds reminders and alerts data related to specific Program or Program Stage. Web APIs are exposed to handle CRUD operations on Program Messages and we will go through them in the below section.</para>
+    <para>Program Message holds reminders and alerts data related to specific Program or Program
+      Stage. Web APIs are exposed to handle CRUD operations on Program Messages and we will go
+      through them in the below section.</para>
     <section>
       <title>Sending/Posting Program Message</title>
-      <para>Program Message holds alert or reminder data that needs to be sent to concerned person via Delivery channels. Currently we are supporting only two Delivery Channels SMS and EMAIL but more can be added if needed. 
-        In order to use these channels, SMS and EMAIL setting should be in place prior to sending messages using these channels. 
-      There are four different type of recipients which are listed below. In case of TrackedEntityInstance and OrganisationUnit, system will fetch their respective phone Number and email address based on Delivery Channel specified in payload.
-      Raw phone Numbers and email Addresses can also be used as recipients.
-      <itemizedlist>
-        <listitem>
-          <para> TrackedEntityInstance</para>
-        </listitem>
-        <listitem>
-          <para>OrganisationUnit</para> 
-        </listitem>
-        <listitem>
-          <para>List of PhoneNumbers</para> 
-        </listitem>
-        <listitem>
-          <para>List of EmailAddresses</para>
-        </listitem>
-      </itemizedlist>
-        
-      Below is the sample json payload for sending messages using POST.
-      </para>
+      <para>Program Message holds alert or reminder data that needs to be sent to concerned person
+        via Delivery channels. Currently we are supporting only two Delivery Channels SMS and EMAIL
+        but more can be added if needed. In order to use these channels, SMS and EMAIL setting
+        should be in place prior to sending messages using these channels. There are four different
+        type of recipients which are listed below. In case of TrackedEntityInstance and
+        OrganisationUnit, system will fetch their respective phone Number and email address based on
+        Delivery Channel specified in payload. Raw phone Numbers and email Addresses can also be
+        used as recipients. <itemizedlist>
+          <listitem>
+            <para> TrackedEntityInstance</para>
+          </listitem>
+          <listitem>
+            <para>OrganisationUnit</para>
+          </listitem>
+          <listitem>
+            <para>List of PhoneNumbers</para>
+          </listitem>
+          <listitem>
+            <para>List of EmailAddresses</para>
+          </listitem>
+        </itemizedlist> Below is the sample json payload for sending messages using POST. </para>
       <screen>/api/24/messages/</screen>
       <screen>{
     &quot;recipients&quot;: {
@@ -9395,18 +9459,18 @@ interval=WEEK" -u admin:district</screen></para>
     &quot;text&quot;: &quot;sms testing&quot;,
     &quot;subject&quot;: &quot;Alert&quot;,
     &quot;storeCopy&quot;: false
-  }</screen> 
+  }</screen>
     </section>
 
-      <section>
-      <title>API End Points</title> 
+    <section>
+      <title>API End Points</title>
       <para>The list of messages can be retrieved using GET.</para>
       <screen>GET /api/24/messages</screen>
       <para>One particular message can also be retreived using GET.</para>
       <screen>GET /api/24/messages/{uid}</screen>
       <para>Message can be deleted using DELETE.</para>
       <screen>DELETE /api/24/messages/{uid}</screen>
-      </section>
+    </section>
     <section>
       <title>Query Program Messages</title>
       <para>API supports program message queries based on request parameters.</para>
@@ -10601,7 +10665,8 @@ interval=WEEK" -u admin:district</screen></para>
     </section>
     <section>
       <title>Create and enroll tracked entity instances</title>
-      <para>It is also possible to both create (and update) a tracked entity instance and at the same time enroll into a program.</para>
+      <para>It is also possible to both create (and update) a tracked entity instance and at the
+        same time enroll into a program.</para>
       <screen>{
     "trackedEntity": "tracked-entity-id",
     "orgUnit": "org-unit-id",
@@ -10625,6 +10690,87 @@ interval=WEEK" -u admin:district</screen></para>
         tracked entity
         instane.<screen>curl -X POST -d @tei.json -H "Content-Type: application/json"
   -u user:pass http://server/api/24/trackedEntityInstances</screen></para>
+    </section>
+    <section>
+      <title>Generated tracked entity instance attributes</title>
+      <para>Tracked entity instance attributes that is using automatic generation of unique values
+        has two endpoints that is used by apps. One is used to generate values, the other to
+        generate and reserve one or more values for use later.</para>
+      <section>
+        <title>Generate value endpoint</title>
+        <para>Online web apps and other clients that wants to generate a value that will be used
+          right away can use the simple generate endpoint. This endpoint will generate a value that
+          is guaranteed to be unique at the time of generation. The value is also guaranteed not to
+          be reserved by use of the generateAndReseve endpoint.</para>
+        <screen>curl -X GET -H "Content-Type: application/json" -u admin:district 
+          https://play.dhis2.org/dev/api/trackedEntityAttributes/lZGmxYbs97q/generate</screen>
+      </section>
+      <section>
+        <title>Generate and reserve value endpoint</title>
+        <para>The generate and reserve endpoint is used by offline clients that needs to be able to
+          register tracked entities with unique ids. They will reserve a number of unique ids that
+          this device will then use when registering new tracked entity instances. The endpoint is
+          called to retreieve a number of tracked entity instance reserved values. An optional
+          parameter numberToReserve specifies how many ids to generate (default is 1). </para>
+        <screen>curl -X GET -H "Content-Type: application/json" -u admin:district 
+          https://play.dhis2.org/dev/api/trackedEntityAttributes/lZGmxYbs97q/generateAndReserve?numberToReserve=3</screen>
+        <screen>[
+   {
+      "created":"2016-06-25T07:52:26.466+0000",
+      "expiryDate":"2017-06-25T07:52:26.466+0000",
+      "value":"43327401",
+      "trackedEntityAttribute":{  }
+   },
+   {
+      "created":"2016-06-25T07:52:26.468+0000",
+      "expiryDate":"2017-06-25T07:52:26.468+0000",
+      "value":"82676084",
+      "trackedEntityAttribute":{  }
+   },
+   {
+      "created":"2016-06-25T07:52:26.471+0000",
+      "expiryDate":"2017-06-25T07:52:26.471+0000",
+      "value":"91700776",
+      "trackedEntityAttribute":{  }
+   }
+]
+        </screen>
+        <para>The generate and reserve endpoint returns an array of reserved values:</para>
+        <table frame="all">
+          <title>Tracked entity reserved values</title>
+          <tgroup cols="2">
+            <colspec colnum="1" colname="c1" colwidth="1.38*"/>
+            <colspec colnum="2" colname="c3" colwidth="7.25*"/>
+            <thead>
+              <row>
+                <entry>Property</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>created</entry>
+                <entry>The date the reserved value was created.</entry>
+              </row>
+              <row>
+                <entry>expiryDate</entry>
+                <entry>After this date the value can be deleted/unreserved by the server if  no
+                  tracked entity has been registered with the value. The deletion does not happen
+                  automatically at the exact time of the expiration, but can/will be done with
+                  scripts or mechanisms implemneted later.</entry>
+              </row>
+              <row>
+                <entry>value</entry>
+                <entry>The actual generated value that is reserved.</entry>
+              </row>
+              <row>
+                <entry>trackedEntityAttribute</entry>
+                <entry>The tracked entity attribute that the value was generated for.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
     </section>
   </section>
   <section>
@@ -11990,9 +12136,11 @@ interval=WEEK" -u admin:district</screen></para>
   <section>
     <title>Data store</title>
     <para>Using the <emphasis>dataStore</emphasis> resource, developers can store arbitrary data for
-      their apps. Access to a datastore is limited to the user&apos;s access to the corresponding
-      app. For example a user with access to the &quot;sampleApp&quot; application will also be able
-      to use the sampleApp namespace in the datastore.<screen>/api/24/dataStore</screen></para>
+      their apps. Access to a datastore's namespace is limited to the user&apos;s access to the
+      corresponding app, if the app has reserved the namespace. For example a user with access to
+      the &quot;sampleApp&quot; application will also be able to use the sampleApp namespace in the
+      datastore. If a namespace is not reserved, no specific access is required to use
+      it.<screen>/api/24/dataStore</screen></para>
     <section>
       <title>Data store structure</title>
       <para>Data store entries consist of a namespace, key and value. The combination of namespace
@@ -12276,6 +12424,53 @@ interval=WEEK" -u admin:district</screen></para>
     </section>
   </section>
   <section>
+    <title>Predictors</title>
+    <para>A predictor allows you to generate data values based on an expression. This can be used to generate targets, thresholds and estimated values.</para>
+    <section>
+      <title>Creating a predictor</title>
+      <para>You can create a
+        predictor with a POST request to the predictors
+        resource:<screen>POST /api/24/predictors</screen></para>
+      <para>A sample payload looks like
+        this:<screen>{
+    "id": "AG10KUJCrRk",
+    "name": "Malaria Outbreak Threshold Predictor",
+    "shortName": "Malaria Outbreak Predictor",
+    "description": "Computes the threshold for potential malaria outbreaks based on the mean plus 1.5x the std dev",
+    "output": {
+        "id": "nXJJZNVAy0Y"
+    },
+    "generator": {
+        "expression": "AVG(#{r6nrJANOqMw})+1.5*STDDEV(#{r6nrJANOqMw})",
+        "dataElements": [],
+        "sampleElements": [{
+            "id": "r6nrJANOqMw"
+        }]
+    },
+    "periodType": "Monthly",
+    "sequentialSampleCount": 4,
+    "sequentialSkipCount": 1,
+    "annualSampleCount": 3,
+    "organisationUnitLevels": [4]
+}
+</screen></para>
+      <para>The output element refers to the identifier of the data element for which to saved
+        predited data values. The generator element refers to the expression to use when calculating
+        the predicted values.</para>
+    </section>
+    <section>
+      <title>Generating predicted values</title>
+      <para>To run all predictors (generating predicted values) you can make a POST request to the run
+        resource:<screen>POST /api/24/predictors/run</screen></para>
+      <para>To run a single predictor you can make a POST request to the run resource for a
+        predictor:<screen>POST /api/24/predictors/AG10KUJCrRk/run</screen></para>
+      <para>To do a dry run for a single predictor you can use the dryRun resource. This resource will
+        return all predicted values in the response, as opposed to actually writing those values to
+        the database:<screen>POST /api/24/predictors/AG10KUJCrRk/dryRun</screen></para>
+    </section>
+  </section>
+  
+  <section>
     <title>Tokens</title>
     <para>The <emphasis>tokens</emphasis> resource provides access tokens to various
       services.</para>
@@ -12384,5 +12579,3 @@ curl -u username:password -X POST -d @updated_facility.json
   -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/ohie/fred/v1/facilities/&lt;uuid&gt;.json</screen>
   </section>
 </chapter>
-
-
