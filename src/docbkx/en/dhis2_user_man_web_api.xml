@@ -580,6 +580,38 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
         type endpoint i..e <emphasis role="italic">/api/24/dataElements</emphasis> we do not allow
         updates, as it would be too easy to make mistakes and overwrite the other available
         locales.</para>
+      <para>To be able to easily read and update translation we have also added new endpoints for
+        this, these can be accessed by <emphasis role="bold">GET</emphasis> or <emphasis role="bold"
+          >PUT</emphasis> on the appropriate <emphasis role="italic"
+          >/api/24/type/id/translations</emphasis> endpoint, i.e for a data element with ID
+          <emphasis role="italic">"FTRrcoaog83"</emphasis> you could use <emphasis role="italic"
+          >/api/24/dataElements/FTRrcoaog83/translations</emphasis> to get and update translations.
+        To add a translation it follows a very simple format, the fields available are <emphasis
+          role="italic">property</emphasis> with options <emphasis role="bold">NAME</emphasis>,
+          <emphasis role="bold">SHORT_NAME</emphasis>, <emphasis role="bold">DESCRIPTION</emphasis>,
+        the <emphasis role="italic">locale</emphasis> which supports any valid locale ID, and then
+        the <emphasis role="italic">value</emphasis> itself.</para>
+      <para><emphasis role="italic">Example of NAME property for french
+        locale:</emphasis><screen>{
+  "property": "NAME",
+  "locale": "fr",
+  "value": "Paralysie Flasque Aiguë (Décès &lt;5 ans)"
+}</screen></para>
+      <para>This payload would then be added to a translation array, and sent back to the
+        appropriate
+        endpoint:<screen>{
+  "translations": [
+    {
+      "property": "NAME",
+      "locale": "fr",
+      "value": "Paralysie Flasque Aiguë (Décès &lt;5 ans)"
+    }
+  ]
+}</screen></para>
+      <para>Then for a an data element with ID <emphasis role="italic">FTRrcoaog83</emphasis> you
+        would <emphasis role="bold">PUT</emphasis> this to <emphasis role="italic"
+          >/api/24/dataElements/FTRrcoaog83/translation</emphasis>.  Please make sure that you send
+        all translations for the object,  if not you will overwrite the old ones.</para>
     </section>
   </section>
   <section>
