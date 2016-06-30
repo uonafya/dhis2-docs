@@ -2243,7 +2243,7 @@ http://server/api/24/constants/ID</screen></para>
           is invoked.</para>
       </listitem>
       <table frame="all">
-        <title>Parameters</title>
+        <title>Query Parameters</title>
         <tgroup cols="3">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
           <colspec colname="c1" colnum="1" colwidth="1.25*"/>
@@ -2269,9 +2269,9 @@ http://server/api/24/constants/ID</screen></para>
       <section>
         <title>Examples</title>
         <para><emphasis role="bold">Example: Get the current metadata version of this system</emphasis></para>
-        <para>Sample request: <br/>
+        <para><emphasis role="bold">Sample request:</emphasis>
           <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version"</screen></para>
-        <para>Sample response: <br/>
+        <para><emphasis role="bold">Sample response:</emphasis>
           <screen>{
             "name": "Version_4",
             "created": "2016-06-30T06:01:28.684+0000",
@@ -2283,9 +2283,9 @@ http://server/api/24/constants/ID</screen></para>
             "id": "Ayz2AEMB6ry"
             }</screen></para>
         <para><emphasis role="bold">Example: Get the details of version with name “Version_2”</emphasis></para>
-        <para>Sample request: <br/>
+        <para><emphasis role="bold">Sample request:</emphasis>
           <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version?versionName=Version_2"</screen></para>
-        <para>Sample response: <br/>
+        <para><emphasis role="bold">Sample response:</emphasis>
         <screen>{
           "name": "Version_2",
           "created": "2016-06-30T05:59:33.238+0000",
@@ -2301,7 +2301,7 @@ http://server/api/24/constants/ID</screen></para>
             the system on which it is invoked.</para>
         </listitem>
         <table frame="all">
-          <title>Parameters</title>
+          <title>Query Parameters</title>
           <tgroup cols="3">
             <colspec colname="c1" colnum="1" colwidth="1*"/>
             <colspec colname="c1" colnum="1" colwidth="1.25*"/>
@@ -2325,12 +2325,13 @@ http://server/api/24/constants/ID</screen></para>
             </tbody>
           </tgroup>
         </table>
+        </section>
         <section>
           <title>Examples</title>
           <para><emphasis role="bold">Example: Get the list of all versions in this system</emphasis></para>
-          <para>Sample request: <br/>
+          <para><emphasis role="bold">Sample request:</emphasis>
             <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version/history"</screen></para>
-          <para>Sample response: <br/>
+          <para><emphasis role="bold">Sample response:</emphasis>
           <screen>{
             "metadataversions": [{
             "name": "Version_1",
@@ -2359,9 +2360,9 @@ http://server/api/24/constants/ID</screen></para>
             }]
             }</screen></para>
           <para><emphasis role="bold">Example: Get the list of all versions in this system created after “Version_2”</emphasis></para>
-          <para>Sample request: <br/>
+          <para><emphasis role="bold">Sample request:</emphasis>
             <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version/history?baseline=Version_2"</screen></para>
-          <para>Sample response: <br/>
+          <para><emphasis role="bold">Sample response:</emphasis>
           <screen>{
             "metadataversions": [{
             "name": "Version_3",
@@ -2382,7 +2383,7 @@ http://server/api/24/constants/ID</screen></para>
               type as specified in the parameter.</para>
           </listitem>
           <table frame="all">
-            <title>Parameters</title>
+            <title>Query Parameters</title>
             <tgroup cols="3">
               <colspec colname="c1" colnum="1" colwidth="1*"/>
               <colspec colname="c1" colnum="1" colwidth="1.25*"/>
@@ -2398,7 +2399,9 @@ http://server/api/24/constants/ID</screen></para>
                 <row>
                   <entry>type</entry>
                   <entry>true</entry>
-                  <entry>The type of metadata version which needs to be created. <br/> BEST_EFFORT <br/> ATOMIC</entry>
+                  <entry>The type of metadata version which needs to be created.
+                    BEST_EFFORT
+                    ATOMIC</entry>
                 </row>
               </tbody>
             </tgroup>
@@ -2416,10 +2419,297 @@ http://server/api/24/constants/ID</screen></para>
                 fail if any of the references do not exist.</para>
             </listitem>
           </itemizedlist>
-          <para>P.S. It&apos;s recommended to have ATOMIC type of versions to ensure that all systems (central and
+          <note>It&apos;s recommended to have ATOMIC type of versions to ensure that all systems (central and
             local) have the same metadata. Any missing reference is caught in the validation phase itself. Please see
-            the importer details for better understanding.</para>
+            the importer details for better understanding.</note>
         </section>
+        <section>
+          <title>Examples</title>
+          <para><emphasis role="bold">Example: To create metadata version of type BEST_EFFORT</emphasis></para>
+          <para><emphasis role="bold">Sample request:</emphasis>
+            <screen>curl -X POST -u admin:district "https://play.dhis2.org/dev/api/metadata/version/create?type=BEST_EFFORT"</screen></para>
+          <para><emphasis role="bold">Sample response:</emphasis>
+            <screen>{
+            "name": "Version_1",
+            "created": "2016-06-30T05:54:41.139+0000",
+            "lastUpdated": "2016-06-30T05:54:41.333+0000",
+            "externalAccess": false,
+            "publicAccess": "--------",
+            "user": {
+            "name": "John Traore",
+            "created": "2013-04-18T17:15:08.407+0000",
+            "lastUpdated": "2016-04-06T00:06:06.571+0000",
+            "externalAccess": false,
+            "displayName": "John Traore",
+            "id": "xE7jOejl9FI"
+            },
+            "displayName": "Version_1",
+            "type": "BEST_EFFORT",
+            "hashCode": "fd1398ff7ec9fcfd5b59d523c8680798",
+            "id": "SjnhUp6r4hG"
+            }</screen></para>
+          <listitem> 
+            <para>/api/metadata/version/{versionName}/data - This api will download the actual metadata specific 
+              to the version name passed as path parameter.</para> 
+          </listitem> 
+          <listitem> 
+            <para>/api/metadata/version/{versionName}/data.gz - This api will download the actual metadata specific 
+              to the version name passed as path parameter in a compressed format (gzipped).</para> 
+          </listitem> 
+          <table frame="all"> 
+            <title>Path Parameters</title> 
+            <tgroup cols="3"> 
+              <colspec colname="c1" colnum="1" colwidth="1*"/> 
+              <colspec colname="c1" colnum="1" colwidth="1.25*"/> 
+              <colspec colname="c2" colnum="2" colwidth="3*"/> 
+              <thead> 
+                <row> 
+                  <entry>Name</entry> 
+                  <entry>Required</entry> 
+                  <entry>Description</entry> 
+                </row> 
+              </thead> 
+              <tbody> 
+                <row> 
+                  <entry>versionName</entry> 
+                  <entry>true</entry> 
+                  <entry>path parameter of the form &quot;Version_&lt;id&gt;&quot; so that the api 
+                    downloads the specific version.</entry> 
+                </row> 
+              </tbody> 
+            </tgroup> 
+          </table>
+        </section>
+        <section>
+          <title>Examples</title>
+          <para><emphasis role="bold">Example: Get the actual metadata for &quot;Version_5&quot;</emphasis></para>
+          <para><emphasis role="bold">Sample request:</emphasis>
+            <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version/Version_5/data"</screen></para>
+          <para><emphasis role="bold">Sample response:</emphasis>
+            <screen>{
+              "date": "2016-06-30T06:10:23.120+0000",
+              "dataElements": [{
+              "code": "ANC 5th Visit",
+              "created": "2016-06-30T06:10:09.870+0000",
+              "lastUpdated": "2016-06-30T06:10:09.870+0000",
+              "name": "ANC 5th Visit",
+              "id": "sCuZKDsix7Y",
+              "shortName": "ANC 5th Visit ",
+              "aggregationType": "SUM",
+              "domainType": "AGGREGATE",
+              "zeroIsSignificant": false,
+              "valueType": "NUMBER",
+              "categoryCombo": {
+              "id": "p0KPaWEg3cf"
+              },
+              "user": {
+              "id": "xE7jOejl9FI"
+              },
+              "userGroupAccesses": [],
+              "attributeValues": [],
+              "translations": [],
+              "aggregationLevels": []
+              }]
+              }
+            </screen></para>
+        </section>
+    </itemizedlist></para>
+  </section>
+  <section xml:id="working_with_metadata_sync_API">
+    <title>Working with Metadata Synchronization API</title>
+    <para>This section explains the Metadata Synchronization API available starting 2.24<itemizedlist>
+      <listitem>
+        <para>/api/metadata/sync - This api performs a metadata sync of the version name passed in the query
+          parameter by downloading and importing the specified version from the remote server as defined in the
+          settings app.</para>
+      </listitem>
+      <table frame="all"> 
+        <title>Query Parameters</title> 
+        <tgroup cols="3"> 
+          <colspec colname="c1" colnum="1" colwidth="1*"/> 
+          <colspec colname="c1" colnum="1" colwidth="1.25*"/> 
+          <colspec colname="c2" colnum="2" colwidth="3*"/> 
+          <thead> 
+            <row> 
+              <entry>Name</entry> 
+              <entry>Required</entry> 
+              <entry>Description</entry> 
+            </row> 
+          </thead> 
+          <tbody> 
+            <row> 
+              <entry>versionName</entry> 
+              <entry>true</entry> 
+              <entry>versionName query parameter of the form &quot;Version_&lt;id&gt;&quot; . The api downloads this
+                version from the remote server and imports it in the local system.</entry> 
+            </row> 
+          </tbody> 
+        </tgroup> 
+      </table>
+      <listitem>
+        <para>This API should be used with utmost care. Please note that there is an alternate way to achieve sync in
+          a completely automated manner by leveraging the Metadata Sync Task from the &quot;Data Administration&quot;
+          app. See Chapter 22, Section 22.17 of User Manual for more details regarding Metadata Sync Task.</para>
+      </listitem>
+      <listitem>
+        <para>This sync API can alternatively be used to sync metadata for the versions which have failed from the
+          metadata sync scheduler.  Due to its dependence on the given metadata version number, care should be taken
+          for the order in which this gets invoked. E.g. If this api is used to sync some higher version from central
+          instance, then the sync might fail as the metadata dependencies are not present in the local instance.</para>
+      </listitem>
+      <listitem>
+        <para>Assume the local instance is at Version_12 and if this api is used to sync Version_15 (of type
+          BEST_EFFORT) from the central instance, the scheduler will start syncing metadata from Version_16. So the
+          local instance will not have the metadata versions between Version_12 and Version_15. You need to manually
+          sync the missing versions using this API only.</para>
+      </listitem>
+      <section>
+        <title>Examples</title>
+        <para><emphasis role="bold">Example: Sync Version_6 from central system to this system</emphasis></para>
+        <para><emphasis role="bold">Sample request:</emphasis>
+          <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/sync?versionName=Version_6"</screen></para>
+        <para><emphasis role="bold">Sample response:</emphasis>The response of this api will be the import summary when the version is imported.
+          <screen>{
+          "importReport": {
+          "status": "WARNING",
+          "typeReports": [
+          {
+          "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+          "stats": {
+          "total": 4,
+          "created": 4,
+          "updated": 0,
+          "deleted": 0,
+          "ignored": 0
+          },
+          "objectReports": [
+          {
+          "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+          "index": 0,
+          "errorReports": [
+          {
+          "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object null [TDHKlu97e6r] (ProgramTrackedEntityAttribute) for association `trackedEntityAttribute`.",
+          "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+          "errorCode": "E5002"
+          }
+          ]
+          },
+          {
+          "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+          "index": 1,
+          "errorReports": [
+          {
+          "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object null [vuXZNwzxquV] (ProgramTrackedEntityAttribute) for association `trackedEntityAttribute`.",
+          "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+          "errorCode": "E5002"
+          }
+          ]
+          },
+          {
+          "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+          "index": 2,
+          "errorReports": [
+          {
+          "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object null [ZdmxgXZuczS] (ProgramTrackedEntityAttribute) for association `trackedEntityAttribute`.",
+          "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+          "errorCode": "E5002"
+          }
+          ]
+          },
+          {
+          "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+          "index": 3,
+          "errorReports": [
+          {
+          "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object null [uy4ggiS0YyA] (ProgramTrackedEntityAttribute) for association `trackedEntityAttribute`.",
+          "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+          "errorCode": "E5002"
+          }
+          ]
+          }
+          ]
+          },
+          {
+          "klass": "org.hisp.dhis.program.Program",
+          "stats": {
+          "total": 1,
+          "created": 1,
+          "updated": 0,
+          "deleted": 0,
+          "ignored": 0
+          },
+          "objectReports": [
+          {
+          "klass": "org.hisp.dhis.program.Program",
+          "index": 0,
+          "errorReports": [
+          {
+          "message": "Invalid reference null null [I54AmnAohza] (User) on object program_5 [LZ2X0y9INqx] (Program) for association `user`.",
+          "mainKlass": "org.hisp.dhis.program.Program",
+          "errorCode": "E5002"
+          }
+          ]
+          }
+          ]
+          },
+          {
+          "klass": "org.hisp.dhis.dataelement.DataElementCategory",
+          "stats": {
+          "total": 0,
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "ignored": 0
+          }
+          },
+          {
+          "klass": "org.hisp.dhis.program.ProgramStage",
+          "stats": {
+          "total": 1,
+          "created": 1,
+          "updated": 0,
+          "deleted": 0,
+          "ignored": 0
+          },
+          "objectReports": [
+          {
+          "klass": "org.hisp.dhis.program.ProgramStage",
+          "index": 0,
+          "uid": "Zo88TPlmqlH"
+          }
+          ]
+          }
+          ],
+          "stats": {
+          "total": 6,
+          "created": 6,
+          "updated": 0,
+          "deleted": 0,
+          "ignored": 0
+          }
+          },
+          "metadataVersion": {
+          "name": "Version_35",
+          "created": "2016-06-21T13:51:35.277+0000",
+          "lastUpdated": "2016-06-30T06:34:01.751+0000",
+          "externalAccess": false,
+          "publicAccess": "--------",
+          "user": {
+          "code": "admin",
+          "name": "admin admin",
+          "created": "2016-06-21T06:55:07.960+0000",
+          "lastUpdated": "2016-06-30T04:52:06.791+0000",
+          "externalAccess": false,
+          "displayName": "admin admin",
+          "id": "M5zQapPyTZI"
+          },
+          "displayName": "Version_35",
+          "importDate": "2016-06-30T06:34:01.750+0000",
+          "type": "BEST_EFFORT",
+          "hashCode": "c75683eb7bb3cd46413c1c94bc2b5f8c",
+          "id": "jphRaaF2nb4"
+          }
+          }</screen></para>
       </section>
     </itemizedlist></para>
   </section>
