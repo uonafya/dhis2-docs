@@ -392,17 +392,58 @@
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="50%" align="center" fileref="resources/images/maintainence/scheduling.png"/>
+          <imagedata width="50%" align="center" fileref="resources/images/maintainence/scheduling_management.png"/>
         </imageobject>
       </mediaobject>
     </screenshot>
+    <para>Starting 2.24 you can also schedule metadata synchronization on regular intervals. Simply select
+      &quot;Enabled&quot; from the drop-down, select the time-period during which you want to run the task. Pressing
+      &quot;Start&quot; will enable the scheduled job to run at that specific time selected.</para>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%" align="center" fileref="resources/images/maintainence/metadata_synchronization.png"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>As depicted in the screenshot, one can select the time period as daily, weekly, monthly or yearly.</para>
+    <itemizedlist>
+      <listitem>
+        <para>Daily: On selecting this checkbox, you will need to select the time at which it needs to run daily.</para>
+      </listitem>
+      <listitem>
+        <para>Weekly: On selecting this checkbox, you need to select the day of the week and time on that day on
+          which it needs to run.</para>
+      </listitem>
+      <listitem>
+        <para>Monthly: On selecting this checkbox, you need to select a day of the week, say Every 1st Sunday, Every
+          2nd Saturday, etc. and time on that day on which it needs to run.</para>
+      </listitem>
+      <listitem>
+        <para>Yearly: On Selecting this checkbox, you need to select the month, specific day of the month and time on
+          that day on which it needs to run.</para>
+      </listitem>
+    </itemizedlist>
+    <para>There is also capability for running the metadata synchronization immediately also. Using
+      &quot;Sync Now&quot; button you can run the metadata synchronization task immediately even if the scheduler
+      is scheduled to run at specific time or not.</para>
+    <itemizedlist>
+      <listitem>
+        <para>If the scheduler is already enabled, you will see the &quot;Sync Now&quot; button on the page itself.</para>
+      </listitem>
+      <listitem>
+        <para>If the scheduler is not enabled, simply select &quot;Enabled&quot; from the drop-down for Metadata Synchronization
+          and click &quot;Sync Now&quot; button.</para>
+      </listitem>
+    </itemizedlist>
   </section>
   <section>
     <title>Data synchronization</title>
     <para>DHIS 2 provides a feature for synchronizing data being captured on the local instance with
       a another, remote instance of DHIS 2. This can be useful e.g. when you have deployed multiple
       stand-alone instances of DHIS 2 which are required to submit data values to a central DHIS 2
-      instance.</para>
+      instance. Till now only aggregate data was being synced. From this release even non anonymous
+      events data (line list) will also be synced.</para>
     <para>These are the steps to enable data synchronziation:<itemizedlist>
         <listitem>
           <para>Go to Settings &gt; Synchronization, enter the remote server URL, username and password
@@ -449,5 +490,60 @@
             scheduling screen next to the &quot;Last success&quot; label.</para>
         </listitem>
       </itemizedlist></para>
+  </section>
+  <section xml:id="Metadata Synchronization">
+    <title>Metadata Synchronization Scheduling</title>
+    <para>DHIS 2 provides a feature for synchronizing metadata from a remote instance to a local instance of DHIS 2.
+      This can be useful when you have deployed multiple stand-alone instances of DHIS 2 and you need to create
+      metadata in all the local instances similar to the central DHIS 2 instance.</para>
+    <para>These are the steps to enable metadata synchronization:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Go to Settings &gt; Synchronization, enter the remote server URL, username and password and click Save.</para>
+      </listitem>
+      <listitem>
+        <para>Go to Metadata administration &gt; Scheduling. Under Metadata synchronization set strategy to Enabled,
+          select the time-period and click Start.</para>
+      </listitem>
+    </itemizedlist>
+    <para>Some aspects of the metadata synchronization feature to be aware of:</para>
+    <itemizedlist>
+      <listitem>
+        <para>The local DHIS 2 instance will store the password of the user account of the remote instance in its
+          database. The remote user account is used for authentication when transferring/downloading data. For
+          security purposes make sure you set the &quot;encryption.password&quot; configuration parameter in
+          hibernate.properties to a strong password.</para>
+      </listitem>
+      <listitem>
+        <para>Deploying the remote server on SSL/HTTPS is strongly recommended as the username and password are sent
+          in clear text using basic authentication and could be intercepted by an attacker.</para>
+      </listitem>
+      <listitem>
+        <para>Also ensure that the remote user is not having ALL authority, instead simply create a user with
+          F_METADATA_MANAGE authority so that even if these details are intercepted by a hacker, one cannot have full
+          control of the remote system.</para>
+      </listitem>
+      <listitem>
+        <para>The metadata synchronization relies on the underlying import layer. Each metadata version is an export
+          of metadata between two given timestamps. Each sync of metadata version is an attempt to import that
+          metadata snapshot into the local instance. The sync of versions is incremental. The local instance will try
+          to download the metadata versions from the central instance one after the other. Failure to sync a specific
+          metadata version will not let the sync proceed to further versions. In case of failures, appropriate
+          changes must be made to metadata at central to ensure that the error gets resolved. Metadata configuration
+          is critical and the configurator should be careful while rolling out the updates to the production. It&apos;s
+          always recommended to have staging environments in place to ensure the sanity of the metadata  versions and
+          their impact thereafter. The local instance will sync the metadata from first version so that harmony is
+          maintained and local and central instance will work appropriately.</para>
+      </listitem>
+      <listitem>
+        <para>The system will attempt a synchronization at the scheduled time. If the local or remote server does not
+          have a working Internet connection at the time, the synchronization will be aborted and re-attempted after
+          as per the retry count as mentioned in the dhis.conf file.</para>
+      </listitem>
+      <listitem>
+        <para>You can see the time of last successful synchronization with remote server in the scheduling screen next
+          to the &quot;Last success&quot; label.</para>
+      </listitem>
+    </itemizedlist>
   </section>
 </chapter>
