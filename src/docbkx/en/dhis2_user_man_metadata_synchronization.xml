@@ -14,47 +14,6 @@
   <section xml:id="concept">
     <title>Concept</title>
     <para><emphasis role="bold">Metadata Versioning:</emphasis></para>
-    <para>Metadata is &quot;data about data&quot;. In the context of DHIS 2, metadata consists of definitions of data
-      elements, indicators, the structure and names contained in the organizational hierarchy, and other options.</para>
-    <para>Users can create or modify metadata at any point of time and save them in DHIS 2 using Metadata
-      Synchronization feature added from 2.24. The process on how to use this feature is explained in subsequent
-      sections of this chapter.</para>
-    <para>Metadata Versioning as a feature will be useful in a hierarchical model e.g. when you have deployed multiple
-      stand-alone instances of DHIS 2 and you need to create metadata in all the local instances similar to a central
-      DHIS 2 instance. The metadata would simply be created in one central instance and all the local instances would
-      download the metadata at their convenience. The local systems can request the download of metadata at any point
-      of time and hence it makes sense to store all the metadata created in the central system.</para>
-    <para>Each snapshot of metadata export generated is referred as a Metadata Version. The new version created would
-      contain only the new changes from the previous version to the current one. i.e...It is an export between two
-      timestamps. All of these versions are maintained in the DHIS 2 database itself and would be available to all
-      the local instances who would connect to this central system. The local instances would simply need to connect
-      to this central system and download/import metadata to their system rather than creating the same metadata all
-      over again.</para>
-    <para>Users can select the type of metadata which needs to be created. This type will be used while importing the
-      metadata. There are two types of metadata.</para>
-    <itemizedlist>
-      <listitem>
-        <para>BEST_EFFORT - means that even if some metadata references did not exist, the metadata would still be
-          imported (i.e. missing data elements on a data element group import)</para>
-      </listitem>
-      <listitem>
-        <para>ATOMIC - ensures a strict type checking of the metadata references and the metadata import will fail if
-          any of the references do not exist.</para>
-      </listitem>
-    </itemizedlist>
-    <para><emphasis role="bold">Metadata Sync:</emphasis></para>
-    <para>The process of connecting to a central system and downloading and importing metadata to their system is
-      referred to as Metadata Synchronization. This feature to synchronise metadata created in one system to another
-      system seamlessly is now available with just a click of a button. Till now for this purpose, users need to use
-      the Import-Export functionality for metadata in DHIS2. (See Chapter 21). For syncing metadata on two instances,
-      an export is carried out from the instance we want to sync metadata from and an import is done on the instance
-      where we want to get the changes in. Both these individual actions are  exposed as Web API.</para>
-    <para>This new feature automates these actions without any manual intervention from the user. Metadata will be
-      created in only one system and all other instances can sync the metadata from that system if metadata
-      scheduling is enabled in that system. In this way, we can ensure the metadata is same and up-to-date across all
-      the systems and the consistency across all the systems can be maintained more effectively.</para>
-    <note>Users can still use the existing Export/Import actions if they need to sync metadata manually.</note>
-    <para>The following diagram illustrates this feature.</para>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -62,8 +21,49 @@
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>The central system at Headquarters is the one where metadata is created.</para>
-    <para>The other local instances sync the metadata created at the central system.</para>
+    <para>Metadata is &quot;data about data&quot;. In the context of DHIS 2, metadata consists of definitions of data
+      elements, indicators, the structure and names contained in the organizational hierarchy, and other options.</para>
+    <para>Users can create or modify metadata at any point of time and save them in DHIS 2 using Metadata
+      Synchronization feature added from 2.24. The process on how to use this feature is explained in subsequent
+      sections of this chapter.</para>
+    <para>Given the above deployment strategy there is a dire need to ensure that all the field instances are up to
+      date with a common metadata model. The central instance is the common data warehouse for the local instances.
+      All the data collected at the local instances is pushed to the central instance for analysis and decision
+      making. Metadata sync enables the local instances to interact with the central instance to get the metadata
+      versions in the same order in which they get created. In case of multiple local nodes the need to effectively
+      track the version at which they are, is  imperative.</para>
+    <para>The metadata simply gets created at one central instance and all the local instances would download the
+      metadata at their convenience. The local systems can request the download of metadata at any point of time and
+      hence it makes sense to store all the metadata created in the central system.</para>
+    <para>Each snapshot of metadata export generated is referred as a Metadata Version. The new version created would
+      contain only the new changes from the previous version to the current one. i.e...It is an export between two
+      timestamps. All of these versions are maintained in the DHIS 2 database itself and would be available to all
+      the local instances who would connect to this central system. The local instances would simply need to connect
+      to this central system and download/import metadata to their system rather than creating the same metadata all
+      over again.</para>
+    <para>Users can select the type of metadata which needs to be created. Metadata Version type governs how the
+      importer should treat the given version. This type will be used while importing the metadata. There are two
+      types of metadata.</para>
+    <itemizedlist>
+      <listitem>
+        <para>BEST_EFFORT - This type suggests that missing references can be ignored and the importer can continue
+          importing the metadata (e.g. missing data elements on a data element group import)</para>
+      </listitem>
+      <listitem>
+        <para>ATOMIC - ensures a strict type checking of the metadata references and the metadata import will fail
+          if any of the references do not exist.</para>
+      </listitem>
+    </itemizedlist>
+    <para><emphasis role="bold">Metadata Sync:</emphasis></para>
+    <para>The process of connecting to a central system for downloading and then importing metadata to local system
+      is referred to as Metadata Synchronization. The feature to synchronise metadata created in one system to
+      another in a seamless fashion is now available at just a click of a button. Till now for this purpose, users
+      need to use the Import-Export functionality for metadata in DHIS2 (See <xref linkend="import_export">this</xref>).</para>
+    <para>This new feature automates the export-import  actions without any manual intervention from the user.
+      Metadata will be created at only one system(central) and all other instances(fields) can sync the metadata from
+      it. But metadata scheduling needs to be enabled at the field. In this way, we can ensure the metadata is same
+      and up-to-date across all the systems and the consistency across all the systems can be maintained more effectively.</para>
+    <note>Users can still use the existing Export/Import actions if they need to sync metadata manually.</note>
   </section>
   <section xml:id="metadata_sync_task">
     <title>Metadata Sync Task</title>
@@ -74,52 +74,55 @@
         <para>Data push (aggregate data and anonymous events data) from local instance to central instance.</para>
       </listitem>
       <listitem>
-        <para>Gets the current metadata version of the local instance and uses that information to fetch the list of
-          metadata versions created after that version in central instance.</para>
+        <para>Gets the current metadata version of the local instance. Then uses this version information as a
+          baseline to fetch the list of metadata versions created after the baseline.</para>
       </listitem>
       <listitem>
-        <para>After getting the required version information from central instance and if there are any new versions
-          created in central instance, it performs the sync of metadata versions one after the other. A mail will be
-          sent to the configured user after each successful sync of metadata version in the local instance. (More
-          details to configure email are in section 36.4).</para>
+        <para>If there are new versions created at central instance, it performs the sync of metadata versions one
+          after the other. A mail will be sent to the configured user (see <xref linkend="configure_local_instance"/>)
+          after each successful sync of metadata version at the local instance.</para>
       </listitem>
       <para>This task is scheduled using the Data Administration app.</para>
       <listitem>
-        <para>Go to Data Administration app &gt; Scheduling. Under Metadata Synchronization, set metadata synchronization
-          strategy to Enabled, and then select appropriate time/ time period for scheduling and click Start.
-          Alternatively, metadata can be synced instantly from one system to another using the &quot;Sync Now&quot; button. For
-          this, scheduling is not required (More details are available in chapter 22).</para>
+        <para>Go to Data Administration app &gt; Scheduling. Under Metadata Synchronization, set metadata
+          synchronization strategy to Enabled, and then select appropriate time/ time period for scheduling and
+          click Start. Alternatively, metadata can be synced instantly from one system to another using the
+          &quot;Sync Now&quot; button. For this, scheduling is not required. ( More details are available in chapter 22 ).</para>
       </listitem>
     </itemizedlist>
     <para>Once this task is run at the scheduled time, this task has the ability to retry (if any of the steps fail)
       based on the configuration of below parameters as defined in dhis.conf file.</para>
-    <para>ex:</para>
-    <para>metadata.sync.retry = 5</para>
-    <para>metadata.sync.retry.time.frequency.millisec = 10000</para>
-    <para></para>
-    <para>If no values are specified then the default values are</para>
-    <para>metadata.sync.retry = 3</para>
-    <para>metadata.sync.retry.time.frequency.millisec = 30000</para>
+    <para>ex: <br/>
+    metadata.sync.retry = 5 <br/>
+    metadata.sync.retry.time.frequency.millisec = 10000</para>
+    <para>If no values are specified then the default values are <br/>
+    metadata.sync.retry = 3 <br/>
+    metadata.sync.retry.time.frequency.millisec = 30000</para>
     <para>Each retry will be made after the time (in millisec) as specified. If the steps still fail even after all
-      the retries, then the scheduler stops its execution and then a mail will be sent to the configured user (More
-      details in section 36.4)</para>
+      the retries, then the scheduler stops its execution and then a mail will be sent to the configured user (see
+    <xref linkend="configure_local_instance"/>)</para>
   </section>
-  <section xml:id="authorities_to_sync_metadata">
-    <title>Authorities to sync metadata</title>
-    <para>To create or sync metadata, the user must be assigned a role containing below authority:</para>
+  <section xml:id="authorities_to_sync_and_create_versioned_metadata">
+    <title>Authorities to sync and create versioned metadata</title>
+    <para>To sync metadata, the user account of the central system must have the following authority:</para>
     <itemizedlist>
       <listitem>
         <para><emphasis role="bold">F_METADATA_MANAGE</emphasis>- Only users with this authority will be able to
-          create and download metadata. This is to ensure security of the central system which creates the metadata.
-          So instead of giving the credentials of user having ALL authority to the field instances, you need to
-          create a user having this specific authority only.</para>
+          create and download metadata. This is to ensure security of the central system where the metadata is
+          created. So, instead of giving the credentials of user having ALL authority to the field instances, you
+          need to create a user having this specific authority only.</para>
       </listitem>
     </itemizedlist>
   </section>
   <section xml:id="configure_central_instanse">
-    <para>If you are configuring central instance from where all the local instances will sync the metadata from,
-      please go through below for the configuration.</para>
-    <para>Login as user having ALL authority and create all the required metadata. Once you have created metadata:</para>
+    <para>Metadata creation happens at the central instance. Use a user with required authorities to setup the
+      metadata. The user being used to create the metadata also has a bearing on the successful import of the
+      metadata version given the version type is &quot;ATOMIC&quot;. Each metadata entity is associated with a
+      &quot;User&quot; object. If this &quot;User&quot; reference is missing while importing (for ATOMIC), the
+      import will fail at the validation phase itself. For metadata versions which are of type &quot;BEST_EFFORT&quot;
+      it should be alright. The point here is, the user that creates metadata also needs to sync down to local
+      instances in order to successfully import the metadata given its of &quot;ATOMIC&quot; type.  Once you have
+      created metadata:</para>
     <itemizedlist>
       <listitem>
         <para>Go to Settings &gt; Synchronization &gt; Enable Versioning for Metadata Sync &gt; Select the specific
@@ -134,14 +137,11 @@
       </mediaobject>
     </screenshot>
     <para>A new version will be created in the system and can be seen in a table on settings page itself. Now, a new
-      version is available in central system for all the local systems to download.</para>
+      version is available in central system for all the local systems to download. As a practice it is recommended
+      to keep the metadata versions size small and logical.</para>
   </section>
   <section xml:id="configure_local_instance">
     <title>Configure Local Instanse</title>
-    <para>If you are configuring local instance which will sync the metadata from a central instance, please go
-      through below for the configuration.</para>
-    <para>Enter the central server details from which you want to sync the metadata from using the settings app. (More
-      details available in chapter 23)</para>
     <itemizedlist>
       <listitem>
         <para>Go to Settings  app &gt; Synchronization. Under Synchronization Settings, enter the remote server URL,
@@ -153,7 +153,7 @@
     <itemizedlist>
       <listitem>
         <para>Go to Settings app &gt; Email. Enter the details of smtp server and other details of the &quot;From&quot;
-          sender of the email. (More details available in chapter 23, section 23.1.4)</para>
+          sender of the email. (More details available in <xref linkend="systemEmailSettings"/>)</para>
       </listitem>
       <listitem>
         <para>We need to set an email address which will be notified of the status of the Metadata Sync task. Go to
@@ -183,20 +183,45 @@
       created as entries in a table that is available for view on the Settings app.</para>
     <para>To view the metadata versioning table in the local instance, Go to Settings &gt; Synchronization &gt;
       Enable Versioning for Metadata Sync.</para>
-    <note>Enabling or disabling versioning for metadata sync at Field instance, will not hinder metadata scheduling
-      / sync process.</note>
+    <note> Enabling or disabling versioning for metadata sync at local instance, will not hinder metadata scheduling
+      / sync process. Because the Metadata Sync Task interacts with versioning of the central instance and not of the
+      local instance.</note>
   </section>
-  <section xml:id="best_practices">
-    <title>Best Practices</title>
+  <section xml:id="best_practices_at_central_instance">
+    <title>Best Practices at Central Instance</title>
+    <para>Metadata configuration is critical and the configurator should be careful while rolling out the updates to
+      the production.</para>
     <itemizedlist>
       <listitem>
-        <para>In a local instance, do not create metadata and click ‘Create New Version’ button in the settings app.
-          The local instance is meant to sync metadata from a central system and not create metadata on its own.</para>
+        <para>The user being used to create the metadata also has a bearing on the successful import of the metadata
+          version given the version type is &quot;ATOMIC&quot;. Each metadata entity is associated with a
+          &quot;User&quot; object. If this &quot;User&quot; reference is missing while importing (for ATOMIC), the
+          import will fail at the validation phase itself. For metadata versions which are of type
+          &quot;BEST_EFFORT&quot; it should be alright. The point here is, the user that creates metadata also needs
+          to sync down to local instances in order to successfully import the metadata given its of &quot;ATOMIC&quot;
+          type.</para>
+      </listitem>
+      <listitem>
+        <para>It is recommended to keep the metadata versions size small and logical.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section xml:id="best_practices_at_local_instance">
+    <title>Best Practices at Local Instance</title>
+    <itemizedlist>
+      <listitem>
+        <para>TAt a local instance, do not create metadata and click &quot;Create New Version&quot; button in the
+          settings app. The local instance is meant to sync metadata from a central system and not create metadata
+          on its own.</para>
       </listitem>
       <listitem>
         <para>On receiving email notification informing about the metadata sync failure, check the metadata version
           which is the cause of error and resolve it so that the future versions are downloaded without any issues.</para>
       </listitem>
     </itemizedlist>
+  </section>
+  <section xml:id="optimization_of_initial_setup_of_new_field_instances">
+    <title>Optimization of initial setup of new field instances</title>
+    <para>To be done.</para>
   </section>
 </chapter>
