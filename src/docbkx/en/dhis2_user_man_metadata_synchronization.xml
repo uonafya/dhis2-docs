@@ -87,16 +87,16 @@
         <para>Go to Data Administration app &gt; Scheduling. Under Metadata Synchronization, set metadata
           synchronization strategy to Enabled, and then select appropriate time/ time period for scheduling and
           click Start. Alternatively, metadata can be synced instantly from one system to another using the
-          &quot;Sync Now&quot; button. For this, scheduling is not required. ( More details are available in chapter 22 ).</para>
+          &quot;Sync Now&quot; button. For this, scheduling is not required. ( More details are available in <xref linkend="scheduling"/> ).</para>
       </listitem>
     </itemizedlist>
     <para>Once this task is run at the scheduled time, this task has the ability to retry (if any of the steps fail)
       based on the configuration of below parameters as defined in dhis.conf file.</para>
-    <para>ex: <br/>
-    metadata.sync.retry = 5 <br/>
+    <para>ex:
+    metadata.sync.retry = 5
     metadata.sync.retry.time.frequency.millisec = 10000</para>
-    <para>If no values are specified then the default values are <br/>
-    metadata.sync.retry = 3 <br/>
+    <para>If no values are specified then the default values are
+    metadata.sync.retry = 3
     metadata.sync.retry.time.frequency.millisec = 30000</para>
     <para>Each retry will be made after the time (in millisec) as specified. If the steps still fail even after all
       the retries, then the scheduler stops its execution and then a mail will be sent to the configured user (see
@@ -114,7 +114,8 @@
       </listitem>
     </itemizedlist>
   </section>
-  <section xml:id="configure_central_instanse">
+  <section xml:id="configure_central_instance">
+    <title>Configure Central Instance</title>
     <para>Metadata creation happens at the central instance. Use a user with required authorities to setup the
       metadata. The user being used to create the metadata also has a bearing on the successful import of the
       metadata version given the version type is &quot;ATOMIC&quot;. Each metadata entity is associated with a
@@ -141,7 +142,7 @@
       to keep the metadata versions size small and logical.</para>
   </section>
   <section xml:id="configure_local_instance">
-    <title>Configure Local Instanse</title>
+    <title>Configure Local Instance</title>
     <itemizedlist>
       <listitem>
         <para>Go to Settings  app &gt; Synchronization. Under Synchronization Settings, enter the remote server URL,
@@ -160,8 +161,8 @@
           Settings app &gt; Server. Enter the System notifications email address.</para>
       </listitem>
     </itemizedlist>
-    <para>Now go to the Data Administration app and configure Metadata Sync Task as mentioned in section 36.2. There
-      are four different time periods you can select time for scheduling. Daily, Weekly, Monthly, Yearly. And time
+    <para>Now go to the Data Administration app and configure Metadata Sync Task as mentioned in <xref linkend="metadata_sync_task"/>. There
+      are four different time periods that you can select for scheduling. Daily, Weekly, Monthly and Yearly. And time
       for each can be set appropriately.</para>
     <screenshot>
       <mediaobject>
@@ -181,10 +182,10 @@
       reasons. After metadata sync, passwords of the synced users need to be reset using Admin user.</para>
     <para>Every time a new version is created at central system and synced to the local system, these versions are
       created as entries in a table that is available for view on the Settings app.</para>
-    <para>To view the metadata versioning table in the local instance, Go to Settings &gt; Synchronization &gt;
+    <para>To view the metadata versioning table at the local instance, Go to Settings &gt; Synchronization &gt;
       Enable Versioning for Metadata Sync.</para>
     <note> Enabling or disabling versioning for metadata sync at local instance, will not hinder metadata scheduling
-      / sync process. Because the Metadata Sync Task interacts with versioning of the central instance and not of the
+      / sync process. Because the Metadata Sync Task interacts with versioning end points of the central instance and not of the
       local instance.</note>
   </section>
   <section xml:id="best_practices_at_central_instance">
@@ -210,7 +211,7 @@
     <title>Best Practices at Local Instance</title>
     <itemizedlist>
       <listitem>
-        <para>TAt a local instance, do not create metadata and click &quot;Create New Version&quot; button in the
+        <para>At a local instance, do not create metadata and click &quot;Create New Version&quot; button in the
           settings app. The local instance is meant to sync metadata from a central system and not create metadata
           on its own.</para>
       </listitem>
