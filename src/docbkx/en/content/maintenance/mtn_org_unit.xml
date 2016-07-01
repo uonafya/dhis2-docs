@@ -101,7 +101,7 @@ Rewritten version:
                     District B and C, not to the obsolete District A.</para>
             </example>
         </important>
-        <para>In the <emphasis role="bold">Maintenance</emphasis> app, you can manage the following
+        <para>In the <emphasis role="bold">Maintenance</emphasis> app, you manage the following
             organisation unit objects:</para>
         <table frame="all">
             <title>Organisation
@@ -212,9 +212,10 @@ Handle org units? Manage org units? Create an org unit group set? Create an org 
         </screenshot>
         <para>You add organisation units to the hierarchy one by one, either as a
             <?oxy_comment_start author="cecilia" timestamp="20160518T102014+0200" comment="For SME: Can you crate a new root? 
-WIP, follow-up with SME.
-Follow-up with mark before release."?>root
-            unit<?oxy_comment_end?> or as a child of a selected organisation unit.</para>
+Follow-up with SME before release.
+- 2.24. you can only have one root unit." flag="done"?>root
+            unit<?oxy_comment_end?> or as a child of a selected organisation unit. You can only have
+            one root unit.</para>
         <para>To create a new organisation unit:</para>
         <orderedlist>
             <listitem>
@@ -303,15 +304,13 @@ Follow-up with mark before release."?>root
                     more information about how to use attributes, refer to the
                     &quot;Attributes&quot; section.<?oxy_comment_end?></para>
             </listitem>
-            <listitem>
-                <para>Click <emphasis role="bold">Save</emphasis>.</para>
-            </listitem>
             <?oxy_comment_start author="cecilia" timestamp="20160524T121553+0200" comment="Will be added, see Iissue on GitHub
-https://github.com/dhis2/maintenance-app/issues/162"?>
-            <?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="16"?>
+https://github.com/dhis2/maintenance-app/issues/162
+- If release on Monday, field included."?>
             <listitem>
-                <para>Coordinates: This field is used to create the maps in the GIS module. Paste in
-                    the coordinates of the organisation unit in this field, either a polygon (for
+                <para>Enter <emphasis role="bold">Coordinates</emphasis>.</para>
+                <para>This field is used to create the maps in the GIS module. Paste in the
+                    coordinates of the organisation unit in this field, either a polygon (for
                     organisation units that represent an administrative boundary) or a point (for
                     health facilities). Without this information the GIS module will not work. It
                     might be more efficient to import these coordinates later as a batch job for all
@@ -319,26 +318,9 @@ https://github.com/dhis2/maintenance-app/issues/162"?>
                     details.</para>
             </listitem>
             <?oxy_comment_end?>
-            <?oxy_comment_start author="cecilia" timestamp="20160518T113233+0200" comment="For SME: No longer applicable in new Mtn app?
-
-Controlled in Settings&gt;Access
-&quot;Allow assigning object to related objects during add or update&quot;
-
-- Doesn&apos;t seem to wrok..."?>
             <listitem>
-                <para>Datasets: Datasets can be assigned to organisation units here. See the chapter
-                    on &quot;Data sets&quot; for more detailed information on assigning datasets to
-                    organisation units.</para>
+                <para>Click <emphasis role="bold">Save</emphasis>.</para>
             </listitem>
-            <?oxy_comment_end?>
-            <?oxy_comment_start author="cecilia" timestamp="20160518T113239+0200" comment="For SME: No longer applicable in new Mtn app?" mid="18"?>
-            <listitem>
-                <para>Organisation unit groups: Assignments to organisation units group sets can be
-                    assigned through the individual drop-down boxes which appear for each group
-                    set.</para>
-            </listitem>
-            <?oxy_custom_end mid="16"?>
-            <?oxy_comment_end mid="18"?>
         </orderedlist>
     </section>
     <section>
