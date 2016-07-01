@@ -6,8 +6,7 @@
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
     xmlns:db="http://docbook.org/ns/docbook">
-    <title>[review ongoing]
-        <?oxy_comment_start author="cecilia" timestamp="20160603T100652+0200" comment="Verify with Lars:
+    <title><?oxy_comment_start author="cecilia" timestamp="20160603T100652+0200" comment="Verify with Lars:
 Do you use data sets somewhere else than in forms? (Custom form and Section form)
 - Data sets also used in data exchange (import)" flag="done"?>Manage<?oxy_comment_end?>
         data sets and
@@ -73,7 +72,7 @@ Added to term list" flag="done"?>data
             <title>Data entry form types</title>
             <tgroup cols="2">
                 <colspec colname="c1" colnum="1" colwidth="1*"/>
-                <colspec colname="c2" colnum="2" colwidth="1.94*"/>
+                <colspec colname="c2" colnum="2" colwidth="1.65*"/>
                 <thead>
                     <row>
                         <entry><?oxy_comment_start author="cecilia" timestamp="20160615T145549+0200" comment="A form = a way to present the data set to the end user. (Visually)
@@ -98,7 +97,7 @@ Add screenshots with examples of the different data entry forms." flag="done"?>t
                                 the organisation units you have assigned it to.</para>
                             <para>A default form consist of a list of the data elements belonging to
                                 the data set together with a column
-                                f<?oxy_comment_start author="cecilia" timestamp="20160615T144118+0200" comment="Verify in GUI: data entry?"?>or
+                                f<?oxy_comment_start author="cecilia" timestamp="20160615T144118+0200" comment="At next release: rewrite para." flag="done"?>or
                                 inputting the values.<?oxy_comment_end?> If your data set contains
                                 data elements with a non-default category combination, for example
                                 age groups or gender, additional columns are automatically created
@@ -178,8 +177,9 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
                 </listitem>
             </orderedlist>
         </note>
-        <para>In the <emphasis role="bold">Maintenance</emphasis> app, you can manage the following
-            data set objects:</para>
+        <para>In the <emphasis role="bold">Maintenance</emphasis> app, you manage the following data
+            set
+            <?oxy_comment_start author="cecilia" timestamp="20160701T142527+0200" comment="At next revision: review table with SME." flag="done"?>objects<?oxy_comment_end?>:</para>
         <table frame="all">
             <title>Data set objects in the Maintenance app</title>
             <tgroup cols="2">
@@ -213,9 +213,7 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
                             <para>Section form</para>
                         </entry>
                         <entry>
-                            <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-                            <para>Create, edit, delete, translate</para>
-                            <?oxy_custom_end?>
+                            <para>Create, edit and manage grey fields</para>
                         </entry>
                     </row>
                     <row>
@@ -223,23 +221,16 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
                             <para>Section</para>
                         </entry>
                         <entry>
-                            <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-                            <para>Create, edit, delete, translate</para>
-                            <?oxy_custom_end?>
-                            <para>Change display order</para>
+                            <para>Change display order, delete and translate</para>
                         </entry>
                     </row>
                     <row>
                         <entry>
                             <para>Custom form</para>
                         </entry>
-                        <?oxy_comment_start author="cecilia" timestamp="20160614T144733+0200" comment="For SME: Exactly what can you do with the forms within the Data set section of the Maintenance app??"?>
                         <entry>
-                            <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-                            <para>Create, edit, delete and translate</para>
-                            <?oxy_custom_end?>
+                            <para>Create, edit and script</para>
                         </entry>
-                        <?oxy_comment_end?>
                     </row>
                 </tbody>
             </tgroup>
@@ -268,7 +259,8 @@ No, it is the preferred form, selected by the system." flag="done"?>a<?oxy_comme
         </orderedlist>
     </section>
     <section>
-        <title>Create a data set</title>
+        <title>Create a data
+            <?oxy_comment_start author="cecilia" timestamp="20160701T142620+0200" comment="Screenshot renders correctly after build." flag="done"?>set<?oxy_comment_end?></title>
         <screenshot>
             <mediaobject>
                 <imageobject>
@@ -431,7 +423,7 @@ Do you mean in the Data entry app? Or just normal data entry?" flag="done"?>
                     saved in the user&apos;s web browser. Normally you shouldn't select <emphasis
                         role="bold">Skip offline</emphasis>. This is the default setting. If you
                     have forms which are rarely used and are very big you can consider selecting
-                    this optionto speed up initial loading of the data entry module.</para>
+                    this option to speed up initial loading of the data entry module.</para>
                 <?oxy_comment_end?>
             </listitem>
             <listitem>
@@ -440,7 +432,7 @@ Do you mean in the Data entry app? Or just normal data entry?" flag="done"?>
 More data to download, might not want to have this on a slow line.
 " flag="done"?><emphasis
                         role="bold">Data element decoration</emphasis><?oxy_comment_end?></para>
-                <?oxy_comment_start author="cecilia" timestamp="20160623T171426+0200" comment="For SME: Correctly phrased?"?>
+                <?oxy_comment_start author="cecilia" timestamp="20160623T171426+0200" comment="At next release: review para with SME: Correctly phrased?" flag="done"?>
                 <para>If you select this option, descriptions of data elements render in call-outs
                     in downloaded data sets in offline mode in the <emphasis role="bold">Data
                         entry</emphasis> app.</para>
@@ -448,35 +440,32 @@ More data to download, might not want to have this on a slow line.
             </listitem>
             <listitem>
                 <?oxy_comment_start author="cecilia" timestamp="20160629T115742+0200" comment="Before release: verify that this work.
-
-Only for section forms"?>
+"?>
                 <para>If applicable, select <emphasis role="bold">Render sections as
                     tabs</emphasis>.</para>
                 <?oxy_comment_end?>
                 <?oxy_comment_start author="cecilia" timestamp="20160629T115722+0200" comment="At next release: rewrite para." flag="done"?>
-                <para> For section forms, this option allows you to render each section as a tab
-                    horizontally above the data set. This is useful for long data sets as it allows
-                    appropriate sections to be selected quickly without going through the entire
-                    form.</para>
+                <para>This option is only applicable for section forms. The option allows you to
+                    render each section as a tab horizontally above the data set. This is useful for
+                    long data sets as it allows appropriate sections to be selected quickly without
+                    going through the entire form.</para>
                 <?oxy_comment_end?>
             </listitem>
             <listitem>
                 <?oxy_comment_start author="cecilia" timestamp="20160602T141431+0200" comment="For SME: What does this option mean?
-- Only applicable for section forms
 Before release, verify that this works."?>
-                <?oxy_comment_start author="cecilia" timestamp="20160613T110721+0200" comment="Send email to lars, doesn&apos;t seem to work" mid="39"?>
                 <para>If applicable, select <emphasis role="bold">Render
                     vertically</emphasis>.</para>
                 <?oxy_comment_end?>
-                <?oxy_comment_end mid="39"?>
+                <para>This option is only applicable for section forms.</para>
             </listitem>
             <listitem>
-                <?oxy_comment_start author="cecilia" timestamp="20160602T141437+0200" comment="For SME: What does this option mean?"?>
-                <para>Select data elements and ssign them.</para>
+                <?oxy_comment_start author="cecilia" timestamp="20160602T141437+0200" comment="At next release: add explanation." flag="done"?>
+                <para>Select data elements and assign them.</para>
                 <?oxy_comment_end?>
             </listitem>
             <listitem>
-                <?oxy_comment_start author="cecilia" timestamp="20160602T141441+0200" comment="For SME: What does this option mean?"?>
+                <?oxy_comment_start author="cecilia" timestamp="20160602T141441+0200" comment="At next release: add explanation." flag="done"?>
                 <para>Select indicators and assign them.</para>
                 <?oxy_comment_end?>
             </listitem>
@@ -707,7 +696,7 @@ Reword, remove passive voice." flag="done"?>
         </orderedlist>
     </section>
     <section>
-        <title>Edit complulsory data elements in a data set</title>
+        <title>Edit compulsory data elements in a data set</title>
         <para>You can add or remove data elements which will be marked as compulsory during data
             entry.</para>
         <orderedlist>
@@ -728,6 +717,32 @@ Reword, remove passive voice." flag="done"?>
             </listitem>
             <listitem>
                 <para>Click <emphasis role="bold">Save</emphasis>.</para>
+            </listitem>
+        </orderedlist>
+    </section>
+    <section>
+        <title>Download default data
+            <?oxy_comment_start author="cecilia" timestamp="20160608T152409+0200" comment="For SME: Do you actually download a data set or do you download the associated data form?
+- Lars: Download default data form, can be imported in DHIS 2" flag="done"?>forms<?oxy_comment_end?>
+            in PDF format</title>
+        <para>You can download a default data from in PDF format for offline data entry.</para>
+        <orderedlist>
+            <listitem>
+                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                        >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
+                        <emphasis role="bold">Data set</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>In the list, find the
+                    <?oxy_comment_start author="cecilia" timestamp="20160608T153648+0200" comment="At next release: Replace object with a specific term." flag="done"?>object<?oxy_comment_end?>
+                    you want to download.</para>
+            </listitem>
+            <listitem>
+                <para>Click the options menu and select <emphasis role="bold"
+                        ><?oxy_comment_start author="cecilia" timestamp="20160602T152417+0200" comment="For next release:
+For SME: Change to &quot;Download PDF&quot; as in the analysis apps?
+" flag="done"?>Get
+                        PDF for data entry<?oxy_comment_end?></emphasis>.</para>
             </listitem>
         </orderedlist>
     </section>
@@ -801,7 +816,8 @@ Reword, remove passive voice." flag="done"?>
                 <?oxy_comment_start author="cecilia" timestamp="20160629T121605+0200" comment="Before release: replace screenshot"?>
                 <title>Section form example</title>
                 <?oxy_comment_end?>
-                <para><?oxy_comment_start author="cecilia" timestamp="20160630T174604+0200" comment="For SME: Is example correct?"?>How
+                <para>Note
+                    h<?oxy_comment_start author="cecilia" timestamp="20160630T174604+0200" comment="For SME: Is example correct?"?>ow
                     each data element category has been separated into a separate section, and a
                     data entry table has been automatically generated by the
                     system<?oxy_comment_end?>. Use of section forms in combination with data element
@@ -852,11 +868,13 @@ Reword, remove passive voice." flag="done"?>
             </orderedlist>
         </section>
         <section>
-            <title><?oxy_comment_start author="cecilia" timestamp="20160630T163957+0200" comment="Come up with a better title. What is the real task you do?"?>Manage<?oxy_comment_end?>
+            <title><?oxy_comment_start author="cecilia" timestamp="20160630T163957+0200" comment="At next release: 
+Come up with a better title. What is the real task you do?" flag="done"?>Manage<?oxy_comment_end?>
                 grey fields in a section form</title>
-            <?oxy_comment_start author="cecilia" timestamp="20160630T180433+0200" comment="Before release: Verify that para is correct."?>
+            <?oxy_comment_start author="cecilia" timestamp="20160630T180433+0200" comment="Before release: Verify that para is correct.
+- Ok in output." flag="done"?>
             <para>You can disable data elements and category options for data entry. That means it
-                wont't be possible to enter data into these fields during data entry.</para>
+                won’t be possible to enter data into these fields during data entry.</para>
             <?oxy_comment_end?>
             <screenshot>
                 <mediaobject>
@@ -869,8 +887,7 @@ Reword, remove passive voice." flag="done"?>
             </screenshot>
             <orderedlist>
                 <listitem>
-                    <para><?oxy_comment_start author="cecilia" timestamp="20160630T181049+0200" comment="Verify that image renders correctly."?>Click<?oxy_comment_end?>
-                        <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                    <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
                             >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
                             <emphasis role="bold">Data set</emphasis>.</para>
                 </listitem>
@@ -982,7 +999,8 @@ Reword, remove passive voice." flag="done"?>
         <title>Manage custom forms</title>
         <section>
             <title>Create a custom
-                <?oxy_comment_start author="cecilia" timestamp="20160630T172030+0200" comment="Before release, verify that image renders correctly."?>form<?oxy_comment_end?></title>
+                <?oxy_comment_start author="cecilia" timestamp="20160630T172030+0200" comment="Before release, verify that image renders correctly.
+- Ok in output." flag="done"?>form<?oxy_comment_end?></title>
             <para>You design custom forms in a built-in WYSIWYG HTML editor. If you select <emphasis
                     role="bold">Source</emphasis>, you can paste HTML code directly in the editing
                 area. For a complete guide on how to use the
@@ -1019,7 +1037,7 @@ We&apos;re using CKEditor version 4.5.9 - which is the latest release at the mom
                             form</emphasis>.</para>
                 </listitem>
                 <listitem>
-                    <para>In the eiditing area, create the custom form.</para>
+                    <para>In the editing area, create the custom form.</para>
                     <itemizedlist>
                         <listitem>
                             <para>Double-clik on a object in the left-hand list to insert it in the
@@ -1246,31 +1264,5 @@ dhis2.util.on( &apos;dhis2.de.event.completed&apos;, function( event, ds, cr ) {
  +var partner = sel["LFsZ8v5v7rq"];</screen></para>
             </section>
         </section>
-    </section>
-    <section>
-        <title>Download default data
-            <?oxy_comment_start author="cecilia" timestamp="20160608T152409+0200" comment="For SME: Do you actually download a data set or do you download the associated data form?
-- Lars: Download default data form, can be imported in DHIS 2" flag="done"?>forms<?oxy_comment_end?>
-            in PDF format</title>
-        <para>You can download a default data from in PDF format for offline data entry.</para>
-        <orderedlist>
-            <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data set</emphasis> >
-                        <emphasis role="bold">Data set</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>In the list, find the
-                    <?oxy_comment_start author="cecilia" timestamp="20160608T153648+0200" comment="At next release: Replace object with a specific term." flag="done"?>object<?oxy_comment_end?>
-                    you want to download.</para>
-            </listitem>
-            <listitem>
-                <para>Click the options menu and select <emphasis role="bold"
-                        ><?oxy_comment_start author="cecilia" timestamp="20160602T152417+0200" comment="For next release:
-For SME: Change to &quot;Download PDF&quot; as in the analysis apps?
-" flag="done"?>Get
-                        PDF for data entry<?oxy_comment_end?></emphasis>.</para>
-            </listitem>
-        </orderedlist>
     </section>
 </section>
