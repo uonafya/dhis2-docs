@@ -10,3 +10,5 @@ if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" ==
     mvn -f pom-short.xml -Ddocbkx.fopLogLevel=ERROR -Denforcer.fail=false  package
   fi
 fi 
+
+exit $?
