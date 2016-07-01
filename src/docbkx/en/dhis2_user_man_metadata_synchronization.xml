@@ -92,12 +92,12 @@
     </itemizedlist>
     <para>Once this task is run at the scheduled time, this task has the ability to retry (if any of the steps fail)
       based on the configuration of below parameters as defined in dhis.conf file.</para>
-    <para>ex:
-    metadata.sync.retry = 5
-    metadata.sync.retry.time.frequency.millisec = 10000</para>
-    <para>If no values are specified then the default values are
-    metadata.sync.retry = 3
-    metadata.sync.retry.time.frequency.millisec = 30000</para>
+    <para>ex:</para>
+    <para>metadata.sync.retry = 5</para>
+    <para>metadata.sync.retry.time.frequency.millisec = 10000</para>
+    <para>If no values are specified then the default values are</para>
+    <para>metadata.sync.retry = 3</para>
+    <para>metadata.sync.retry.time.frequency.millisec = 30000</para>
     <para>Each retry will be made after the time (in millisec) as specified. If the steps still fail even after all
       the retries, then the scheduler stops its execution and then a mail will be sent to the configured user (see
     <xref linkend="configure_local_instance"/>)</para>
@@ -167,7 +167,7 @@
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" align="center" fileref="resources/images/metadata_synchronization/metadata_sync.png" format="PNG"/>
+          <imagedata width="70%" align="center" fileref="resources/images/metadata_synchronization/metadata_sync.png" format="PNG"/>
         </imageobject>
       </mediaobject>
     </screenshot>

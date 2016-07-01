@@ -2237,11 +2237,13 @@ http://server/api/24/constants/ID</screen></para>
   </section>
   <section xml:id="metadata_sync_API">
     <title>Working with Metadata Versioning API</title>
-    <para>This section explains the Metadata  Versioning APIs available starting 2.24<itemizedlist>
+    <para>This section explains the Metadata  Versioning APIs available starting 2.24</para>
+    <itemizedlist>
       <listitem>
         <para>/api/metadata/version	 - This api will return the current metadata version of the system on which it
           is invoked.</para>
       </listitem>
+    </itemizedlist>
       <table frame="all">
         <title>Query Parameters</title>
         <tgroup cols="3">
@@ -2282,7 +2284,7 @@ http://server/api/24/constants/ID</screen></para>
             "hashCode": "848bf6edbaf4faeb7d1a1169445357b0",
             "id": "Ayz2AEMB6ry"
             }</screen></para>
-        <para><emphasis role="bold">Example: Get the details of version with name “Version_2”</emphasis></para>
+        <para><emphasis role="bold">Example: Get the details of version with name &quot;Version_2&quot;</emphasis></para>
         <para><emphasis role="bold">Sample request:</emphasis>
           <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version?versionName=Version_2"</screen></para>
         <para><emphasis role="bold">Sample response:</emphasis>
@@ -2295,12 +2297,14 @@ http://server/api/24/constants/ID</screen></para>
           "type": "BEST_EFFORT",
           "hashCode": "8050fb1a604e29d5566675c86d02d10b",
           "id": "SaNyhusVxBG"
-          }</screen></para></section>
-
-        <listitem>
-          <para>/api/metadata/version/history - This api will return the list of all metadata versions of
-            the system on which it is invoked.</para>
-        </listitem>
+          }</screen></para>
+        </section>
+    <itemizedlist>
+      <listitem>
+        <para>/api/metadata/version/history - This api will return the list of all metadata versions of
+          the system on which it is invoked.</para>
+      </listitem>
+    </itemizedlist>
         <table frame="all">
           <title>Query Parameters</title>
           <tgroup cols="3">
@@ -2326,7 +2330,6 @@ http://server/api/24/constants/ID</screen></para>
             </tbody>
           </tgroup>
         </table>
-
         <section>
           <title>Examples</title>
           <para><emphasis role="bold">Example: Get the list of all versions in this system</emphasis></para>
@@ -2360,7 +2363,7 @@ http://server/api/24/constants/ID</screen></para>
             "hashCode": "848bf6edbaf4faeb7d1a1169445357b0"
             }]
             }</screen></para>
-          <para><emphasis role="bold">Example: Get the list of all versions in this system created after “Version_2”</emphasis></para>
+          <para><emphasis role="bold">Example: Get the list of all versions in this system created after &quot;Version_2&quot;</emphasis></para>
           <para><emphasis role="bold">Sample request:</emphasis>
             <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version/history?baseline=Version_2"</screen></para>
           <para><emphasis role="bold">Sample response:</emphasis>
@@ -2378,13 +2381,14 @@ http://server/api/24/constants/ID</screen></para>
             "id": "Ayz2AEMB6ry",
             "hashCode": "848bf6edbaf4faeb7d1a1169445357b0"
             }]
-            }</screen></para></section>
-
-
+            }</screen></para>
+          </section>
+    <itemizedlist>
           <listitem>
             <para>/api/metadata/version/create - This api will create the metadata version for the version
               type as specified in the parameter.</para>
           </listitem>
+    </itemizedlist>
           <table frame="all">
             <title>Query Parameters</title>
             <tgroup cols="3">
@@ -2403,8 +2407,15 @@ http://server/api/24/constants/ID</screen></para>
                   <entry>type</entry>
                   <entry>true</entry>
                   <entry>The type of metadata version which needs to be created.
-                    BEST_EFFORT
-                    ATOMIC</entry>
+                    <itemizedlist>
+                      <listitem>
+                        <para>BEST_EFFORT</para>
+                      </listitem>
+                      <listitem>
+                        <para>ATOMIC</para>
+                      </listitem>
+                    </itemizedlist>
+                  </entry>
                 </row>
               </tbody>
             </tgroup>
@@ -2415,7 +2426,7 @@ http://server/api/24/constants/ID</screen></para>
           <itemizedlist>
             <listitem>
               <para>BEST_EFFORT -  This type suggests that missing references can be ignored and the importer can
-                continue importing the metadata (e.g. missing data elements on a data element group import)</para>
+                continue importing the metadata (e.g. missing data elements on a data element group import).</para>
             </listitem>
             <listitem>
               <para>ATOMIC - ensures a strict type checking of the metadata references and the metadata import will
@@ -2425,7 +2436,6 @@ http://server/api/24/constants/ID</screen></para>
           <note>It&apos;s recommended to have ATOMIC type of versions to ensure that all systems (central and
             local) have the same metadata. Any missing reference is caught in the validation phase itself. Please see
             the importer details for better understanding.</note>
-
         <section>
           <title>Examples</title>
           <para><emphasis role="bold">Example: To create metadata version of type BEST_EFFORT</emphasis></para>
@@ -2450,17 +2460,16 @@ http://server/api/24/constants/ID</screen></para>
             "type": "BEST_EFFORT",
             "hashCode": "fd1398ff7ec9fcfd5b59d523c8680798",
             "id": "SjnhUp6r4hG"
-            }</screen></para></section>
-
-
-          <listitem> 
-            <para>/api/metadata/version/{versionName}/data - This api will download the actual metadata specific 
-              to the version name passed as path parameter.</para> 
-          </listitem> 
-          <listitem> 
-            <para>/api/metadata/version/{versionName}/data.gz - This api will download the actual metadata specific 
-              to the version name passed as path parameter in a compressed format (gzipped).</para> 
-          </listitem> 
+            }</screen></para>
+        </section>
+    <itemizedlist>
+      <listitem>
+        <para>/api/metadata/version/{versionName}/data - This api will download the actual metadata specific to the version name passed as path parameter.</para>
+      </listitem>
+      <listitem>
+        <para>/api/metadata/version/{versionName}/data.gz - This api will download the actual metadata specific to the version name passed as path parameter in a compressed format (gzipped).</para>
+      </listitem>
+    </itemizedlist>
           <table frame="all"> 
             <title>Path Parameters</title> 
             <tgroup cols="3"> 
@@ -2484,7 +2493,6 @@ http://server/api/24/constants/ID</screen></para>
               </tbody> 
             </tgroup> 
           </table>
-
         <section>
           <title>Examples</title>
           <para><emphasis role="bold">Example: Get the actual metadata for &quot;Version_5&quot;</emphasis></para>
@@ -2518,16 +2526,17 @@ http://server/api/24/constants/ID</screen></para>
               }
             </screen></para>
         </section>
-    </itemizedlist></para>
   </section>
   <section xml:id="working_with_metadata_sync_API">
     <title>Working with Metadata Synchronization API</title>
-    <para>This section explains the Metadata Synchronization API available starting 2.24<itemizedlist>
+    <para>This section explains the Metadata Synchronization API available starting 2.24</para>
+    <itemizedlist>
       <listitem>
         <para>/api/metadata/sync - This api performs a metadata sync of the version name passed in the query
           parameter by downloading and importing the specified version from the remote server as defined in the
           settings app.</para>
       </listitem>
+    </itemizedlist>
       <table frame="all"> 
         <title>Query Parameters</title> 
         <tgroup cols="3"> 
@@ -2551,6 +2560,7 @@ http://server/api/24/constants/ID</screen></para>
           </tbody> 
         </tgroup> 
       </table>
+    <itemizedlist>
       <listitem>
         <para>This API should be used with utmost care. Please note that there is an alternate way to achieve sync in
           a completely automated manner by leveraging the Metadata Sync Task from the &quot;Data Administration&quot;
@@ -2568,6 +2578,7 @@ http://server/api/24/constants/ID</screen></para>
           local instance will not have the metadata versions between Version_12 and Version_15. You need to manually
           sync the missing versions using this API only.</para>
       </listitem>
+    </itemizedlist>
       <section>
         <title>Examples</title>
         <para><emphasis role="bold">Example: Sync Version_6 from central system to this system</emphasis></para>
@@ -2575,148 +2586,145 @@ http://server/api/24/constants/ID</screen></para>
           <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/sync?versionName=Version_6"</screen></para>
         <para><emphasis role="bold">Sample response:</emphasis>The response of this api will be the import summary when the version is imported.
           <screen>{
-          "importReport": {
-          "status": "WARNING",
-          "typeReports": [
-          {
-          "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-          "stats": {
-          "total": 4,
-          "created": 4,
-          "updated": 0,
-          "deleted": 0,
-          "ignored": 0
-          },
-          "objectReports": [
-          {
-          "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-          "index": 0,
-          "errorReports": [
-          {
-          "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object null [TDHKlu97e6r] (ProgramTrackedEntityAttribute) for association `trackedEntityAttribute`.",
-          "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-          "errorCode": "E5002"
-          }
-          ]
-          },
-          {
-          "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-          "index": 1,
-          "errorReports": [
-          {
-          "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object null [vuXZNwzxquV] (ProgramTrackedEntityAttribute) for association `trackedEntityAttribute`.",
-          "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-          "errorCode": "E5002"
-          }
-          ]
-          },
-          {
-          "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-          "index": 2,
-          "errorReports": [
-          {
-          "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object null [ZdmxgXZuczS] (ProgramTrackedEntityAttribute) for association `trackedEntityAttribute`.",
-          "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-          "errorCode": "E5002"
-          }
-          ]
-          },
-          {
-          "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-          "index": 3,
-          "errorReports": [
-          {
-          "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object null [uy4ggiS0YyA] (ProgramTrackedEntityAttribute) for association `trackedEntityAttribute`.",
-          "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-          "errorCode": "E5002"
-          }
-          ]
-          }
-          ]
-          },
-          {
-          "klass": "org.hisp.dhis.program.Program",
-          "stats": {
-          "total": 1,
-          "created": 1,
-          "updated": 0,
-          "deleted": 0,
-          "ignored": 0
-          },
-          "objectReports": [
-          {
-          "klass": "org.hisp.dhis.program.Program",
-          "index": 0,
-          "errorReports": [
-          {
-          "message": "Invalid reference null null [I54AmnAohza] (User) on object program_5 [LZ2X0y9INqx] (Program) for association `user`.",
-          "mainKlass": "org.hisp.dhis.program.Program",
-          "errorCode": "E5002"
-          }
-          ]
-          }
-          ]
-          },
-          {
-          "klass": "org.hisp.dhis.dataelement.DataElementCategory",
-          "stats": {
-          "total": 0,
-          "created": 0,
-          "updated": 0,
-          "deleted": 0,
-          "ignored": 0
-          }
-          },
-          {
-          "klass": "org.hisp.dhis.program.ProgramStage",
-          "stats": {
-          "total": 1,
-          "created": 1,
-          "updated": 0,
-          "deleted": 0,
-          "ignored": 0
-          },
-          "objectReports": [
-          {
-          "klass": "org.hisp.dhis.program.ProgramStage",
-          "index": 0,
-          "uid": "Zo88TPlmqlH"
-          }
-          ]
-          }
-          ],
-          "stats": {
-          "total": 6,
-          "created": 6,
-          "updated": 0,
-          "deleted": 0,
-          "ignored": 0
-          }
-          },
-          "metadataVersion": {
-          "name": "Version_35",
-          "created": "2016-06-21T13:51:35.277+0000",
-          "lastUpdated": "2016-06-30T06:34:01.751+0000",
-          "externalAccess": false,
-          "publicAccess": "--------",
-          "user": {
-          "code": "admin",
-          "name": "admin admin",
-          "created": "2016-06-21T06:55:07.960+0000",
-          "lastUpdated": "2016-06-30T04:52:06.791+0000",
-          "externalAccess": false,
-          "displayName": "admin admin",
-          "id": "M5zQapPyTZI"
-          },
-          "displayName": "Version_35",
-          "importDate": "2016-06-30T06:34:01.750+0000",
-          "type": "BEST_EFFORT",
-          "hashCode": "c75683eb7bb3cd46413c1c94bc2b5f8c",
-          "id": "jphRaaF2nb4"
-          }
-          }</screen></para>
+            "importReport":{
+            "status":"WARNING",
+            "typeReports":[
+                {
+                    "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+                    "stats": {
+                    "total": 4,
+                    "created": 4,
+                    "updated": 0,
+                    "deleted": 0,
+                    "ignored": 0
+                },
+                "objectReports": [
+                    {
+                        "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+                        "index": 0,
+                        "errorReports": [
+                            {
+                                "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object
+                                            null [TDHKlu97e6r] (ProgramTrackedEntityAttribute) for association
+                                            `trackedEntityAttribute`.",
+                                "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+                                "errorCode": "E5002"
+                            }
+                        ]
+                    }, {
+                        "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+                        "index": 1,
+                        "errorReports": [
+                            {
+                                "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object
+                                            null [vuXZNwzxquV] (ProgramTrackedEntityAttribute) for association
+                                            `trackedEntityAttribute`.",
+                                "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+                                "errorCode": "E5002"
+                            }
+                        ]
+                    }, {
+                        "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+                        "index": 2,
+                        "errorReports": [
+                            {
+                                "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object
+                                            null [ZdmxgXZuczS] (ProgramTrackedEntityAttribute) for association
+                                            `trackedEntityAttribute`.",
+                                "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+                                "errorCode": "E5002"
+                            }
+                        ]
+                    }, {
+                        "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+                        "index": 3,
+                        "errorReports": [
+                            {
+                                "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object
+                                            null [uy4ggiS0YyA] (ProgramTrackedEntityAttribute) for association
+                                            `trackedEntityAttribute`.",
+                                "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
+                                "errorCode": "E5002"
+                            }
+                        ]
+                    }
+                ]
+            }, {
+                "klass": "org.hisp.dhis.program.Program",
+                "stats": {
+                "total": 1,
+                "created": 1,
+                "updated": 0,
+                "deleted": 0,
+                "ignored": 0
+            },
+            "objectReports": [
+                {
+                    "klass": "org.hisp.dhis.program.Program",
+                    "index": 0,
+                    "errorReports": [
+                        {
+                            "message": "Invalid reference null null [I54AmnAohza] (User) on object program_5
+                                        [LZ2X0y9INqx] (Program) for association `user`.",
+                            "mainKlass": "org.hisp.dhis.program.Program",
+                            "errorCode": "E5002"
+                        }
+                    ]
+                }
+            ]
+            },  {
+                    "klass": "org.hisp.dhis.dataelement.DataElementCategory",
+                    "stats": {
+                    "total": 0,
+                    "created": 0,
+                    "updated": 0,
+                    "deleted": 0,
+                    "ignored": 0
+                }
+            }, {
+                    "klass": "org.hisp.dhis.program.ProgramStage",
+                    "stats": {
+                    "total": 1,
+                    "created": 1,
+                    "updated": 0,
+                    "deleted": 0,
+                    "ignored": 0
+                },
+                    "objectReports": [
+                        {
+                            "klass": "org.hisp.dhis.program.ProgramStage",
+                            "index": 0,
+                            "uid": "Zo88TPlmqlH"
+                        }
+                    ]
+                }
+            ],
+            "stats":{"total":6, "created":6, "updated":0, "deleted":0, "ignored":0}
+            },
+                "metadataVersion":{
+                    "name":"Version_35",
+                    "created":"2016-06-21T13:51:35.277+0000",
+                    "lastUpdated":"2016-06-30T06:34:01.751+0000",
+                    "externalAccess":false,
+                    "publicAccess":"--------",
+                    "user":{
+                        "code":"admin",
+                        "name":"admin admin",
+                        "created":"2016-06-21T06:55:07.960+0000",
+                        "lastUpdated":"2016-06-30T04:52:06.791+0000",
+                        "externalAccess":false,
+                        "displayName":"admin admin",
+                        "id":"M5zQapPyTZI"
+                    },
+                "displayName":"Version_35",
+                "importDate":"2016-06-30T06:34:01.750+0000",
+                "type":"BEST_EFFORT",
+                "hashCode":"c75683eb7bb3cd46413c1c94bc2b5f8c",
+                "id":"jphRaaF2nb4"
+                }
+            }
+          </screen></para>
       </section>
-    </itemizedlist></para>
   </section>
   <section>
     <title>Data values</title>
@@ -5742,7 +5750,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       <para>You can also add an internal message to a ticket, which can only be seen by users who
         have "Manage tickets" permissions. To create an internal reply, include the "internal"
         parameter, and set it
-        to<screen>curl -d &quot;This is an internal message&quot; 
+        to<screen>curl -d &quot;This is an internal message&quot;
   &quot;https://play.dhis2.org/demo/api/24/messageConversations/ZjHHSjyyeJ2?internal=true&quot; 
   -H &quot;Content-Type:text/plain&quot; -u admin:district -X POST -v</screen></para>
     </section>
@@ -12985,7 +12993,7 @@ interval=WEEK" -u admin:district</screen>
         the database:<screen>POST /api/24/predictors/AG10KUJCrRk/dryRun</screen></para>
     </section>
   </section>
-  
+
   <section>
     <title>Tokens</title>
     <para>The <emphasis>tokens</emphasis> resource provides access tokens to various
