@@ -14,7 +14,7 @@
     <?oxy_comment_start author="cecilia" timestamp="20160701T094524+0200" comment="At next release: review section completely"?>Capture<?oxy_comment_end?></title>
   <section>
     <title>Overview</title>
-    <para>Tracker capture is an advanced version of the event capture app. While the event capture
+    <para>Tracker capture is an advanced version of the Event capture app. While the event capture
       deals with single event without registration, tracker capture deals with multiple events
       (including single event) with registration. The implication of this is that, any event
       capturing has to be for a registered tracked entity instance (TEI). This makes
@@ -22,10 +22,9 @@
   </section>
   <section>
     <title>TEI search and registration</title>
-    <para>To proceed with the tracker capture one needs to have a TEI. As shown in the screenshot
+    <para>To proceed with the tracker capture you need to have a TEI. As shown in the screenshot
       below, the first page of the app provides two features for this - searching an existing one or
       registering a new one.</para>
-    <para/>
     <screenshot>
       <title>Example: searching/registration</title>
       <mediaobject>
@@ -37,12 +36,15 @@
     </screenshot>
     <para>All searching and registration operations are accessible from the screen shown above.<orderedlist>
         <listitem>
-          <para>Searching: there are two modes of searching - simple and advanced. The simple one
-            works by typing a free text on the provided area. What is typed in the input box is
-            applied across all attributes for partial match. The advanced one, which is accessible
-            when the small drop-down button is clicked - works when various search criteria are
-            provided in the drop down window. Here, the match is exact match. Both search modes
-            return matching list of TEI displayed in a table. </para>
+          <para>Searching: there are two modes of searching: simple and advanced.</para>
+          <para>The simple search works by typing a free text in the search field. What is typed in
+            the input box is applied across all attributes for partial match. The advanced search,
+            which is accessible when the small drop-down button is clicked - works when various
+            search criteria are provided in the drop down window. Here, the match is exact
+            match.</para>
+          <para>Both search modes present the search results in a table. While in the TEI table,
+            click on a row to open the selected TEI's dashboard. Clicking <emphasis role="bold"
+              >Back</emphasis> in the dashboard takes you back to the search result table.</para>
           <para>If a program is selected, the app provides further filtering on the table based on
             enrollment status which are All, Active, Completed, Cancelled.  as shown below.</para>
           <screenshot>
@@ -54,22 +56,20 @@
             </mediaobject>
           </screenshot>
           <para>The advanced search also provides one more additional feature. Under normal
-            circumstances, advanced search is conducted for the selected orgunit (from left-hand
-            side tree) and scope (which could be Selected, Immediate children or All children).  The
-            left-hand side tree is generated based on the logged in user's assigned orgunits.
-            However, there could be cases to search for a TEI from another orgunit (which is not
-            neccessarily part of the assigned orgunits. To support such use case, advanced search
-            provides another orgunit tree. The tree displayed here depends on the role that the
-            logged in user has. If the user has role "Search Tracked Entity Instance in All Org
-            Units" or "ALL", a tree with all available orgunits is provided other wise the tree
-            displayed in advanced search is the same as the one on the left-hand side. Whichever
-            tree (or hierarchy of orgunits) is provided, if an orgunit is selected in advanced
-            search, the searching is conducted against this selected orgunit and scope.</para>
+            circumstances, advanced search is conducted for the selected organisation unit (from
+            left-hand side tree) and scope (which could be Selected, Immediate children or All
+            children). The left-hand side tree is generated based on the logged in user's assigned
+            organisation units. However, there could be cases to search for a TEI from another
+            organisation unit (which is not necessarily part of the assigned organisation units. To
+            support such use case, advanced search provides another organisation unit tree. The tree
+            displayed here depends on the role that the logged in user has. If the user has role
+            "Search Tracked Entity Instance in All Org Units" or "ALL", a tree with all available
+            organisation units is provided other wise the tree displayed in advanced search is the
+            same as the one on the left-hand side. Whichever tree (or hierarchy of organisation
+            units) is provided, if an organisation unit is selected in advanced search, the
+            searching is conducted against this selected organisation unit and scope.</para>
           <para>If a program is selected, advanced search allows you to search on the incident date
             if the program has one.</para>
-          
-          <para>While in the TEI table, clicking on any row takes to the selected TEI's
-            dashboard.</para>
         </listitem>
         <listitem>
           <para>Registration: this is accessible through the "Register" button. During registration,
@@ -78,9 +78,29 @@
             performs enrollment at the background. If a TEI is registered without a program, then
             enrollment is possible from the TEI dashboard. Both skip-logic and validation
             error/warning messages are supported during registration.</para>
+          <para>For unique tracked entity attributes you can have the system automatically generate
+            and assign numeric IDs. When registering tracked entity instances on web, the tracker
+            capture registration form will then automatically be populated with a number in the
+            given pattern. In tracker on Android, the ID generation is used to reserve a series of
+            IDs for each Android device. This allows offline registration of tracked entity
+            instances without risking duplicate IDs when syncing with the server.</para>
+          <para>You configure the system-generated identifiers in the <emphasis role="bold"
+              >Program/Attributes</emphasis> app:</para>
+          <orderedlist>
+            <listitem>
+              <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+                  >Program/Attributes</emphasis> > <emphasis role="bold">Tracked entity</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Select an attribute and click <emphasis role="bold">Edit</emphasis>.</para>
+            </listitem>
+            <listitem>
+              <para>Select <emphasis role="bold">Automatically generated</emphasis>.</para>
+            </listitem>
+          </orderedlist>
         </listitem>
       </orderedlist></para>
-    <para/>
     <para>Both search and registration are dictated by a selected program. It is program attributes
       which are being used as search criteria, registration attributes and also as columns names for
       tracked entity list. If no program is selected, the system picks default attributes. If no
@@ -109,7 +129,7 @@
           <para>back button - this helps to go back to the search and registration page</para>
         </listitem>
         <listitem>
-          <para>previous and next buttons - these are buttons to acces the previous/next TEI
+          <para>previous and next buttons - these are buttons to access the previous/next TEI
             details</para>
         </listitem>
         <listitem>
@@ -137,19 +157,18 @@
               <listitem>
                 <para> Show/hide widgets - this helps to control which widgets to display. From the
                   figure above, there are eight widgets on display. The widgets are collapsible,
-                  responsive and draggable - this helps to acquire optimal view area as per user
-                  needs. Widget (re)arrangments are saved automatically per user per program.
-                </para>
+                  responsive and drag gable - this helps to acquire optimal view area as per user
+                  needs. Widget (re)arrangements are saved automatically per user per program. </para>
               </listitem>
               <listitem>
                 <para>Save dashboard layout as default - widgets arrangement is saved automatically
-                  everytime a widget's position or state (expand/collapse) is changed. However, for
-                  the entrie layout to be considered a default layout for the selected program it is
+                  every time a widget's position or state (expand/collapse) is changed. However, for
+                  the entire layout to be considered a default layout for the selected program it is
                   required to explicitly save as "Default layout". </para>
               </listitem>
               <listitem>
                 <para>Set tei to active/inactive - this has nothing to do with widgets or the
-                  dashboard but it helps to set the status of dashborad owner (the TEI) to either
+                  dashboard but it helps to set the status of dashboard owner (the TEI) to either
                   active or inactive. If a TEI is set to inactive, only read operations are allowed
                   - no data entry, no profile editing, no enrollment.</para>
               </listitem>
@@ -193,7 +212,7 @@
         </listitem>
         <listitem>
           <para><emphasis role="bold">Indicators</emphasis> - any indicator defined for the selected
-            program will have its value cacluated and displayed under this widget. </para>
+            program will have its value calculated and displayed under this widget. </para>
         </listitem>
         <listitem>
           <para><emphasis role="bold">Notes | Messaging</emphasis> - this is the same as event
@@ -211,13 +230,13 @@
         <listitem>
           <para><emphasis role="bold">Profile </emphasis> - this is to edit TEI's profile or
             attributes. Here, if the TEI has an attribute of value type "Tracker Associate", a small
-            icon next to the input filed is displayed. Clcking the icon opens a popup where users
+            icon next to the input filed is displayed. Clicking the icon opens a pop-up where users
             are allowed to either search or register new associate.</para>
         </listitem>
         <listitem>
           <para><emphasis role="bold">Active programs</emphasis> - this is an extension of the
             enrollment widget. While the enrollment widget displays both active and historical
-            enrollment for the selected program, active programs widget displayes all other programs
+            enrollment for the selected program, active programs widget displays all other programs
             that the selected TEI has active enrollments.</para>
         </listitem>
         <listitem>
@@ -236,6 +255,32 @@
         </listitem>
       </itemizedlist>
     </para>
+    <section>
+      <title>Share tracker
+        <?oxy_comment_start author="cecilia" timestamp="20160701T113624+0200" comment="Before release: make sure link works."?>dashboard<?oxy_comment_end?></title>
+      <para>You can share a tracker dashboard via its web address.</para>
+      <orderedlist>
+        <listitem>
+          <para>Open the dashboard you want to share.</para>
+        </listitem>
+        <listitem>
+          <para>Copy the URL.</para>
+          <para>Make sure that URL contains "tei", "program" and "ou" (organisation unit)
+            parameters.</para>
+          <example>
+            <para><link
+                xlink:href="https://play.dhis2.org/dhis-web-tracker-capture/index.html#/dashboard%3Ftei=bLpfA4CjeMl%26program=IpHINAT79UW%26ou=DiszpKrYNg8"
+                xmlns:xlink="http://www.w3.org/1999/xlink"/></para>
+          </example>
+        </listitem>
+        <listitem>
+          <para>Paste the URL in the sharing method of your choice, for example an e-mail or a
+            message within DHIS 2.</para>
+          <para>If you're not logged in to DHIS 2 when you click the link, you'll be asked to do so
+            and then taken to the dashboard.</para>
+        </listitem>
+      </orderedlist>
+    </section>
   </section>
   <section>
     <title>Tracker reports</title>
@@ -250,7 +295,7 @@
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>Running any of these repots is very easy, one just has to select a program, orgnisation
+    <para>Running any of these reports is very easy, one just has to select a program, orgnisation
       unit scope and whenever possible start and end dates. Below is a sample program summary
       report. It displays a list of TEI's and their records for "MNCH/PNC (Adult Woman)" program.
       The records are organized in the form of tabs where each tab is a program stage. The columns
