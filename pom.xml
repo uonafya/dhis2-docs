@@ -234,47 +234,6 @@
 							</postProcess>
 						</configuration>
 					</execution>
-					<!-- Chunked HTML CCEI User docs-->
-					<execution>
-						<id>chunked-html-docs-ccei-user</id>
-						<phase>package</phase>
-						<goals>
-							<goal>generate-html</goal>
-						</goals>
-						<configuration>
-							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
-							<targetDirectory>${docbook.target}/en/ccei-user/html/</targetDirectory>
-							<admonGraphics>1</admonGraphics>
-							<admonGraphicsPath>resources/images/admon/</admonGraphicsPath>
-							<htmlStylesheet>resources/css/docbook_bsd.css</htmlStylesheet>
-							<glossaryCollection>resources/glossary_en.xml</glossaryCollection>
-							<sectionAutolabel>1</sectionAutolabel>
-							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
-							<chunkedOutput>true</chunkedOutput>
-							<useEmbedForSvg>1</useEmbedForSvg>
-							<collectXrefTargets>yes</collectXrefTargets>
-							<targetsFilename>${docbook.target}/en/ccei-user/html/ccei_user_manual_en.html.target.db</targetsFilename>
-							<olinkBaseUri>ccei_user_manual_en.html</olinkBaseUri>
-							<targetDatabaseDocument>olinkdb.xml</targetDatabaseDocument>
-							<includes>ccei_user_manual_en.xml</includes>
-							<postProcess>
-								<copy todir="${docbook.target}/en/ccei-user/html/resources/images">
-									<fileset dir="src/docbkx/en/resources/images">
-										<include name="**/*.png" />
-										<include name="**/*.PNG" />
-										<include name="**/*.gif" />
-										<include name="**/*.jpg" />
-										<include name="**/*.svg" />
-									</fileset>
-								</copy>
-								<copy todir="${docbook.target}/en/ccei-user/html/resources/css">
-									<fileset dir="src/docbkx/en/resources/css">
-										<include name="**/*.css" />
-									</fileset>
-								</copy>
-							</postProcess>
-						</configuration>
-					</execution>
 					<!-- Chunked HTML Implementer docs-->
 					<execution>
 						<id>chunked-html-docs-implementer</id>
@@ -355,6 +314,42 @@
 							</postProcess>
 						</configuration>
 					</execution>
+					<!-- HTML User stories -->
+					<execution>
+						<id>chunked-html-docs-user-stories</id>
+						<phase>package</phase>
+						<goals>
+							<goal>generate-html</goal>
+						</goals>
+						<configuration>
+							<admonGraphics>1</admonGraphics>
+							<admonGraphicsPath>resources/images/admon/</admonGraphicsPath>
+							<htmlStylesheet>resources/css/docbook_bsd.css</htmlStylesheet>
+							<chapterAutolabel>false</chapterAutolabel>
+							<sectionAutolabel>false</sectionAutolabel>
+							<sectionLabelIncludesComponentLabel>false</sectionLabelIncludesComponentLabel>
+							<chunkedOutput>false</chunkedOutput>
+							<includes>user_stories_book.xml</includes>
+							<sourceDirectory>${docbook.source}/en/content/user_stories</sourceDirectory>
+							<targetDirectory>${docbook.target}/en/user-stories/html</targetDirectory>
+							<postProcess>
+								<copy todir="${docbook.target}/en/user-stories/html/resources/images">
+									<fileset dir="src/docbkx/en/resources/images">
+										<include name="**/*.png" />
+										<include name="**/*.PNG" />
+										<include name="**/*.gif" />
+										<include name="**/*.jpg" />
+										<include name="**/*.svg" />
+									</fileset>
+								</copy>
+								<copy todir="${docbook.target}/en/user-stories/html/resources/css">
+									<fileset dir="src/docbkx/en/resources/css">
+										<include name="**/*.css" />
+									</fileset>
+								</copy>
+							</postProcess>
+						</configuration>
+					</execution>
 					<!-- Single page HTML -->
 					<execution>
 						<id>html-docs-en</id>
@@ -370,14 +365,13 @@
 							<sectionAutolabel>1</sectionAutolabel>
 							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 							<chunkedOutput>false</chunkedOutput>
-							<includes>dhis2_user_manual_en.xml,dhis2_android_user_man.xml,dhis2_end_user_manual.xml,dhis2_implementation_guide_en.xml,ccei_user_manual_en.xml,dhis2_developer_manual.xml</includes>
+							<includes>dhis2_user_manual_en.xml,dhis2_android_user_man.xml,dhis2_end_user_manual.xml,dhis2_implementation_guide_en.xml,dhis2_developer_manual.xml</includes>
 							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
 							<postProcess>
 								<copy file="target/docbkx/html/dhis2_user_manual_en.html" tofile="${docbook.target}/en/user/html/dhis2_user_manual_en_full.html" />
 								<copy file="target/docbkx/html/dhis2_android_user_man.html" tofile="${docbook.target}/en/android/html/dhis2_android_user_man_full.html" />
 								<copy file="target/docbkx/html/dhis2_end_user_manual.html" tofile="${docbook.target}/en/end-user/html/dhis2_end_user_manual_full.html" />
 								<copy file="target/docbkx/html/dhis2_implementation_guide_en.html" tofile="${docbook.target}/en/implementer/html/dhis2_implementation_guide_en_full.html" />
-								<copy file="target/docbkx/html/ccei_user_manual_en.html" tofile="${docbook.target}/en/ccei-user/html/ccei_user_manual_en_full.html" />
 								<copy file="target/docbkx/html/dhis2_developer_manual.html" tofile="${docbook.target}/en/developer/html/dhis2_developer_manual_full.html" />
 							</postProcess>
 						</configuration>
@@ -416,25 +410,6 @@
 							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
 							<postProcess>
 								<copy file="target/docbkx/pdf/dhis2_android_user_man.pdf" todir="${docbook.target}/en/android"/>
-							</postProcess>
-						</configuration>
-					</execution>
-					<!-- PDF CCEI User docs-->
-					<execution>
-						<id>pdf-docs-en-ccei-user</id>
-						<phase>package</phase>
-						<goals>
-							<goal>generate-pdf</goal>
-						</goals>
-						<configuration>
-							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
-							<doubleSided>1</doubleSided>
-							<paperType>A4</paperType>
-							<includes>ccei_user_manual_en.xml</includes>
-							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
-							<postProcess>
-								<copy file="target/docbkx/pdf/ccei_user_manual_en.pdf" todir="${docbook.target}/en/ccei-user"/>
 							</postProcess>
 						</configuration>
 					</execution>
@@ -504,7 +479,7 @@
 						</goals>
 						<configuration>
 							<argLine>-Xmx1024m</argLine>
-							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization> -->
+							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
 							<includes>dhis2_developer_manual.xml</includes>
