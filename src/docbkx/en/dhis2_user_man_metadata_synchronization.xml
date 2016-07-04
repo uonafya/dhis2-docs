@@ -10,10 +10,17 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>Metadata Synchronization</title>
+  <title><?oxy_comment_start author="cecilia" timestamp="20160704T122650+0200" comment="At next release:
+Do full editorial review of content." flag="done"?>Synchronizing<?oxy_comment_end?>
+    <?oxy_comment_start author="cecilia" timestamp="20160704T114426+0200" comment="At next release: verify if content exist.
+
+For 2.24: 
+Removed last section because it didn&apos;t contain any information:
+Title:Optimization of initial setup of new field instances
+To be done." flag="done"?>metadata<?oxy_comment_end?></title>
   <section xml:id="concept">
-    <title>Concept</title>
-    <para><emphasis role="bold">Metadata Versioning:</emphasis></para>
+    <title>About metadata synchronization</title>
+    <para><emphasis role="bold">Metadata versioning:</emphasis></para>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -46,8 +53,9 @@
       types of metadata.</para>
     <itemizedlist>
       <listitem>
-        <para>BEST_EFFORT - This type suggests that missing references can be ignored and the importer can continue
-          importing the metadata (e.g. missing data elements on a data element group import)</para>
+        <para>BEST_EFFORT - This type suggests that missing references can be ignored and the
+          importer can continue importing the metadata (for example missing data elements on a data
+          element group import)</para>
       </listitem>
       <listitem>
         <para>ATOMIC - ensures a strict type checking of the metadata references and the metadata import will fail
@@ -55,15 +63,22 @@
       </listitem>
     </itemizedlist>
     <para><emphasis role="bold">Metadata Sync:</emphasis></para>
-    <para>The process of connecting to a central system for downloading and then importing metadata to local system
-      is referred to as Metadata Synchronization. The feature to synchronise metadata created in one system to
-      another in a seamless fashion is now available at just a click of a button. Till now for this purpose, users
-      need to use the Import-Export functionality for metadata in DHIS2 (See <xref linkend="import_export">this</xref>).</para>
+    <para>The process of connecting to a central system for downloading and then importing metadata
+      to local system is referred to as Metadata Synchronization. The feature to synchronise
+      metadata created in one system to another in a seamless fashion is now available at just a
+      click of a button. Till now for this purpose, users need to use the Import-Export
+      <?oxy_comment_start author="cecilia" timestamp="20160704T115045+0200" comment="At next release: add link to correct section.
+2.24: Removed link because it doesn&apos;t work.
+&quot;See import export&quot; " flag="done"?>functionality<?oxy_comment_end?>
+      for metadata in DHIS 2.</para>
     <para>This new feature automates the export-import  actions without any manual intervention from the user.
       Metadata will be created at only one system(central) and all other instances(fields) can sync the metadata from
       it. But metadata scheduling needs to be enabled at the field. In this way, we can ensure the metadata is same
       and up-to-date across all the systems and the consistency across all the systems can be maintained more effectively.</para>
-    <note>Users can still use the existing Export/Import actions if they need to sync metadata manually.</note>
+    <note>
+      <para>Users can still use the existing Export/Import actions if they need to sync metadata
+        manually.</para>
+    </note>
   </section>
   <section xml:id="metadata_sync_task">
     <title>Metadata Sync Task</title>
@@ -81,13 +96,17 @@
         <para>If there are new versions created at central instance, it performs the sync of metadata versions one
           after the other. A mail will be sent to the configured user (see <xref linkend="configure_local_instance"/>)
           after each successful sync of metadata version at the local instance.</para>
+        <para>This task is scheduled using the Data Administration app.</para>
       </listitem>
-      <para>This task is scheduled using the Data Administration app.</para>
       <listitem>
-        <para>Go to Data Administration app &gt; Scheduling. Under Metadata Synchronization, set metadata
-          synchronization strategy to Enabled, and then select appropriate time/ time period for scheduling and
-          click Start. Alternatively, metadata can be synced instantly from one system to another using the
-          &quot;Sync Now&quot; button. For this, scheduling is not required. ( More details are available in <xref linkend="scheduling"/> ).</para>
+        <para>Go to Data Administration app &gt; Scheduling. Under Metadata Synchronization, set
+          metadata synchronization strategy to Enabled, and then select appropriate time/ time
+          period for scheduling and click Start. Alternatively, metadata can be synced instantly
+          from one system to another using the &quot;Sync Now&quot; button. For this,
+          <?oxy_comment_start author="cecilia" timestamp="20160704T114853+0200" comment="At next release: add link to correct section.
+2.24: removed link because it didn&apos;t work
+ ( More details are available in  scheduling))" flag="done"?>scheduling<?oxy_comment_end?>
+          is not required.</para>
       </listitem>
     </itemizedlist>
     <para>Once this task is run at the scheduled time, this task has the ability to retry (if any of the steps fail)
@@ -98,13 +117,14 @@
     <para>If no values are specified then the default values are</para>
     <para>metadata.sync.retry = 3</para>
     <para>metadata.sync.retry.time.frequency.millisec = 30000</para>
-    <para>Each retry will be made after the time (in millisec) as specified. If the steps still fail even after all
-      the retries, then the scheduler stops its execution and then a mail will be sent to the configured user (see
-    <xref linkend="configure_local_instance"/>)</para>
+    <para>Each retry will be made after the time (in millisecond) as specified. If the steps still
+      fail even after all the retries, then the scheduler stops its execution and then a mail will
+      be sent to the configured user (see <xref linkend="configure_local_instance"/>)</para>
   </section>
   <section xml:id="authorities_to_sync_and_create_versioned_metadata">
     <title>Authorities to sync and create versioned metadata</title>
-    <para>To sync metadata, the user account of the central system must have the following authority:</para>
+    <para>To synchronize metadata, the user account of the central system must have the following
+      authority:</para>
     <itemizedlist>
       <listitem>
         <para><emphasis role="bold">F_METADATA_MANAGE</emphasis>- Only users with this authority will be able to
@@ -149,16 +169,22 @@
           username and password and click Save.</para>
       </listitem>
     </itemizedlist>
-    <para>This feature has ability to send email notifications to notify users in case of successful or unsuccessful
-      metadata sync. There are two steps to configure email settings.</para>
+    <para>This feature has ability to send email notifications to notify users in case of successful
+      or unsuccessful metadata sync. There are two steps to configure e-mail settings.</para>
     <itemizedlist>
       <listitem>
-        <para>Go to Settings app &gt; Email. Enter the details of smtp server and other details of the &quot;From&quot;
-          sender of the email. (More details available in <xref linkend="systemEmailSettings"/>)</para>
+        <para>Go to <emphasis role="bold">Settings</emphasis> app &gt; <emphasis role="bold"
+            >Email</emphasis>. Enter the details of smtp server and other details of the
+          &quot;From&quot; sender of the
+          e-<?oxy_comment_start author="cecilia" timestamp="20160704T114554+0200" comment="At next release: add link to correct chapter
+
+2.24: Removed link because it doesn&apos;t work." flag="done"?>mail<?oxy_comment_end?>.</para>
       </listitem>
       <listitem>
-        <para>We need to set an email address which will be notified of the status of the Metadata Sync task. Go to
-          Settings app &gt; Server. Enter the System notifications email address.</para>
+        <para>We need to set an email address which will be notified of the status of the Metadata
+          Sync task. Go to <emphasis role="bold">Settings</emphasis> app &gt; <emphasis role="bold"
+            >Server</emphasis>. Enter the <emphasis role="bold">System notifications email
+            address</emphasis>.</para>
       </listitem>
     </itemizedlist>
     <para>Now go to the Data Administration app and configure Metadata Sync Task as mentioned in <xref linkend="metadata_sync_task"/>. There
@@ -184,14 +210,16 @@
       created as entries in a table that is available for view on the Settings app.</para>
     <para>To view the metadata versioning table at the local instance, Go to Settings &gt; Synchronization &gt;
       Enable Versioning for Metadata Sync.</para>
-    <note> Enabling or disabling versioning for metadata sync at local instance, will not hinder metadata scheduling
-      / sync process. Because the Metadata Sync Task interacts with versioning end points of the central instance and not of the
-      local instance.</note>
+    <note>
+      <para>Enabling or disabling versioning for metadata sync at local instance, will not hinder
+        metadata scheduling / sync process. Because the Metadata Sync Task interacts with versioning
+        end points of the central instance and not of the local instance.</para>
+    </note>
   </section>
   <section xml:id="best_practices_at_central_instance">
     <title>Best Practices at Central Instance</title>
-    <para>Metadata configuration is critical and the configurator should be careful while rolling out the updates to
-      the production.</para>
+    <para>Metadata configuration is critical and the you must be careful while rolling out the
+      updates to the production.</para>
     <itemizedlist>
       <listitem>
         <para>The user being used to create the metadata also has a bearing on the successful import of the metadata
@@ -220,9 +248,5 @@
           which is the cause of error and resolve it so that the future versions are downloaded without any issues.</para>
       </listitem>
     </itemizedlist>
-  </section>
-  <section xml:id="optimization_of_initial_setup_of_new_field_instances">
-    <title>Optimization of initial setup of new field instances</title>
-    <para>To be done.</para>
   </section>
 </chapter>

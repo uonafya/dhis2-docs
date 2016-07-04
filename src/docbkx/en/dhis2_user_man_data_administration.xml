@@ -150,7 +150,10 @@
     </section>
     <section>
       <title> Organisation units with cyclic references</title>
-      <para>Organisation units cannot be both parent and children of each other, directly nor indirectly. If this situation occurs, you will need to resolve the cyclic reference directly in the DHIS 2 datrabase in the &quot;organisationunit&quot; table, by reassigning the &quot;parentid&quot; field of the organisation units. </para>
+      <para>Organisation units cannot be both parent and children of each other, directly nor
+        indirectly. If this situation occurs, you will need to resolve the cyclic reference directly
+        in the DHIS 2 database in the &quot;organisation unit&quot; table, by reassigning the
+        &quot;parentid&quot; field of the organisation units. </para>
     </section>
     <section>
       <title>Orphaned organisation units</title>
@@ -372,7 +375,12 @@
   </section>
   <section xml:id="minMaxValueGeneration">
     <title>Min-Max Value Generation</title>
-    <para>This administrative function can be used to generate min-max values, which are used as part of the data quality and validation process for specific organization units and data sets. Simply select the dataset from the left hand frame, and then select the required orgunits to generate the min-max values for from the organisational units selector on the right. Press the &quot;Generate&quot; button to generate or regenerate all min-max values. Press &quot;Remove&quot; to remove all min-max values which are currently stored in the database. </para>
+    <para>This administrative function can be used to generate min-max values, which are used as
+      part of the data quality and validation process for specific organization units and data sets.
+      Simply select the dataset from the left hand frame, and then select the required organisation
+      units to generate the min-max values for from the organisational units selector on the right.
+      Press the &quot;Generate&quot; button to generate or regenerate all min-max values. Press
+      &quot;Remove&quot; to remove all min-max values which are currently stored in the database. </para>
     <para><screenshot>
         <mediaobject>
           <imageobject>
@@ -387,10 +395,11 @@
   </section>
   <section xml:id="scheduling">
     <title>Scheduling</title>
-    <para>The analytics, resource tables, data sync, metadata sync and data mart can be automatically scheduled to
-      run on regular intervals. Simply select the aggregation period types, organisation unit group set aggregation
-      level, and strategy to configure how the scheduled job should run. If you are using surveillance rules, you
-      can choose to run them &quot;All daily&quot; by selecting this option.</para>
+    <para>The analytics, resource tables, data sync, metadata sync and data mart can be
+      automatically scheduled to run on regular intervals. Simply select the aggregation period
+      types, organisation unit group set aggregation level, and strategy to configure how the
+      scheduled job should run. If you are using surveillance rules, you can choose to run them
+      &quot;All daily&quot; by selecting this option.</para>
     <para>Pressing &quot;Start&quot; will enable the scheduled job to run at a pre-determined time (always at
       midnight based on the server time).</para>
     <screenshot>
@@ -410,7 +419,8 @@
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>As depicted in the screenshot, one can select the time period as daily, weekly, monthly or yearly.</para>
+    <para>As depicted in the screenshot, you can select the time period as daily, weekly, monthly or
+      yearly.</para>
     <itemizedlist>
       <listitem>
         <para>Daily: On selecting this checkbox, you will need to select the time at which it needs to run daily.</para>
@@ -424,13 +434,14 @@
           2nd Saturday, etc. and time on that day on which it needs to run.</para>
       </listitem>
       <listitem>
-        <para>Yearly: On Selecting this checkbox, you need to select the month, specific day of the month and time on
-          that day on which it needs to run.</para>
+        <para>Yearly: On Selecting this check box, you need to select the month, specific day of the
+          month and time on that day on which it needs to run.</para>
       </listitem>
     </itemizedlist>
-    <para>There is also the capability for running the metadata synchronization immediately. Using
-      &quot;<emphasis role="bold">Sync Now</emphasis>&quot; button you can run the metadata synchronization task
-      immediately even if the scheduler is scheduled to run at specific time or not.</para>
+    <para>There is also the capability for running the meta data synchronization immediately. Using
+        &quot;<emphasis role="bold">Sync Now</emphasis>&quot; button you can run the meta data
+      synchronization task immediately even if the scheduler is scheduled to run at specific time or
+      not.</para>
     <itemizedlist>
       <listitem>
         <para>If the scheduler is already enabled, you will see the &quot;Sync Now&quot; button on the page itself.</para>
@@ -448,23 +459,24 @@
       stand-alone instances of DHIS 2 which are required to submit data values to a central DHIS 2
       instance. Till now only aggregate data was being synced. Starting from 2.24 even non anonymous
       events data (line list) will also be synced.</para>
-    <para>These are the steps to enable data synchronziation:<itemizedlist>
+    <para>These are the steps to enable data synchronization:<itemizedlist>
         <listitem>
-          <para>Go to Settings &gt; Synchronization, enter the remote server URL, username and password
-            and click Save. You can test your settings by clicking on the &quot;Test settings&quot;
-            link.</para>
+          <para>Go to Settings &gt; Synchronization, enter the remote server URL, username and
+            password and click Save. You can test your settings by clicking on the &quot;Test
+            settings&quot; link.</para>
         </listitem>
         <listitem>
-          <para>Go to Data administration &gt; Scheduling. Under Data synchronization set strategy to
-            Enabled, and click Start.</para>
+          <para>Go to Data administration &gt; Scheduling. Under Data synchronization set strategy
+            to Enabled, and click Start.</para>
         </listitem>
       </itemizedlist></para>
     <para>Some aspects of the data synchronization feature to be aware of:<itemizedlist>
         <listitem>
           <para>The local DHIS 2 instance will store the password of the user account on the remote
-            instance encrypted in the local database. The remote account is used for authencation
-            when transferring data. For security purposes make sure you set the &quot;enryption.password&quot;
-            configuration parameter in hibernate.properties to a strong password.</para>
+            instance encrypted in the local database. The remote account is used for authentication
+            when transferring data. For security purposes make sure you set the
+            &quot;enryption.password&quot; configuration parameter in hibernate.properties to a
+            strong password.</para>
         </listitem>
         <listitem>
           <para>Deploying the remote server on SSL/HTTPS is strongly recommended as the username and
@@ -495,58 +507,67 @@
         </listitem>
       </itemizedlist></para>
   </section>
-  <section xml:id="Metadata Synchronization">
-    <title>Metadata Synchronization Scheduling</title>
-    <para>DHIS 2 provides a feature for synchronizing metadata from a remote instance to a local instance of DHIS 2.
-      This can be useful when you have deployed multiple stand-alone instances of DHIS 2 and you need to create
-      metadata in all the local instances similar to the central DHIS 2 instance.</para>
-    <para>These are the steps to enable metadata synchronization:</para>
+  <section>
+    <title>Metadata Synchronization
+      <?oxy_comment_start author="cecilia" timestamp="20160704T115331+0200" comment="2.24: Removed xml:id tag Metadata Synchronization
+Linking between files doesn&apos;t work."?>Scheduling<?oxy_comment_end?></title>
+    <para>DHIS 2 provides a feature for synchronizing meta data from a remote instance to a local
+      instance of DHIS 2. This can be useful when you have deployed multiple stand-alone instances
+      of DHIS 2 and you need to create meta data in all the local instances similar to the central
+      DHIS 2 instance.</para>
+    <para>These are the steps to enable meta data synchronization:</para>
     <itemizedlist>
       <listitem>
-        <para>Go to Settings &gt; Synchronization, enter the remote server URL, username and password and click Save.</para>
+        <para>Go to Settings &gt; Synchronization, enter the remote server URL, username and
+          password and click Save.</para>
       </listitem>
       <listitem>
-        <para>Go to Metadata administration &gt; Scheduling. Under Metadata synchronization set strategy to Enabled,
-          select the time-period and click Start.</para>
+        <para>Go to Metadata administration &gt; Scheduling. Under Metadata synchronization set
+          strategy to Enabled, select the time-period and click Start.</para>
       </listitem>
     </itemizedlist>
-    <para>Some aspects of the metadata synchronization feature to be aware of:</para>
+    <para>Some aspects of the meta data synchronization feature to be aware of:</para>
     <itemizedlist>
       <listitem>
-        <para>The local DHIS 2 instance will store the password of the user account of the remote instance in its
-          database. The remote user account is used for authentication when transferring/downloading data. For
-          security purposes make sure you set the &quot;encryption.password&quot; configuration parameter in
-          hibernate.properties to a strong password.</para>
+        <para>The local DHIS 2 instance will store the password of the user account of the remote
+          instance in its database. The remote user account is used for authentication when
+          transferring/downloading data. For security purposes make sure you set the
+          &quot;encryption.password&quot; configuration parameter in hibernate.properties to a
+          strong password.</para>
       </listitem>
       <listitem>
-        <para>Deploying the remote server on SSL/HTTPS is strongly recommended as the username and password are sent
-          in clear text using basic authentication and could be intercepted by an attacker.</para>
+        <para>Deploying the remote server on SSL/HTTPS is strongly recommended as the username and
+          password are sent in clear text using basic authentication and could be intercepted by an
+          attacker.</para>
       </listitem>
       <listitem>
-        <para>Also ensure that the remote user is not having ALL authority, instead simply create a user with
-          F_METADATA_MANAGE authority so that even if these details are intercepted by a hacker, one cannot have full
-          control of the remote system.</para>
+        <para>Also ensure that the remote user is not having ALL authority, instead simply create a
+          user with F_METADATA_MANAGE authority so that even if these details are intercepted by a
+          hacker, one cannot have full control of the remote system.</para>
       </listitem>
       <listitem>
-        <para>The metadata synchronization relies on the underlying import layer. Each metadata version is an export
-          of metadata between two given timestamps. Each sync of metadata version is an attempt to import that
-          metadata snapshot into the local instance. The sync of versions is incremental. The local instance will try
-          to download the metadata versions from the central instance one after the other. Failure to sync a specific
-          metadata version will not let the sync proceed to further versions. In case of failures, appropriate
-          changes must be made to metadata at central to ensure that the error gets resolved. Metadata configuration
-          is critical and the configurator should be careful while rolling out the updates to the production. It&apos;s
-          always recommended to have staging environments in place to ensure the sanity of the metadata  versions and
-          their impact thereafter. The local instance will sync the metadata from first version so that harmony is
-          maintained and local and central instance will work appropriately.</para>
+        <para>The meta data synchronization relies on the underlying import layer. Each meta data
+          version is an export of meta data between two given timestamps. Each sync of meta data
+          version is an attempt to import that meta data snapshot into the local instance. The sync
+          of versions is incremental. The local instance will try to download the meta data versions
+          from the central instance one after the other. Failure to sync a specific meta data
+          version will not let the sync proceed to further versions. In case of failures,
+          appropriate changes must be made to meta data at central to ensure that the error gets
+          resolved. Metadata configuration is critical and the configurator should be careful while
+          rolling out the updates to the production. It&apos;s always recommended to have staging
+          environments in place to ensure the sanity of the meta data versions and their impact
+          thereafter. The local instance will sync the meta data from first version so that harmony
+          is maintained and local and central instance will work appropriately.</para>
       </listitem>
       <listitem>
-        <para>The system will attempt a synchronization at the scheduled time. If the local or remote server does not
-          have a working Internet connection at the time, the synchronization will be aborted and re-attempted after
-          as per the retry count as mentioned in the dhis.conf file.</para>
+        <para>The system will attempt a synchronization at the scheduled time. If the local or
+          remote server does not have a working Internet connection at the time, the synchronization
+          will be aborted and re-attempted after as per the retry count as mentioned in the
+          dhis.conf file.</para>
       </listitem>
       <listitem>
-        <para>You can see the time of last successful synchronization with remote server in the scheduling screen next
-          to the &quot;Last success&quot; label.</para>
+        <para>You can see the time of last successful synchronization with remote server in the
+          scheduling screen next to the &quot;Last success&quot; label.</para>
       </listitem>
     </itemizedlist>
   </section>

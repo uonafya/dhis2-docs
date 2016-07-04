@@ -2248,8 +2248,8 @@ http://server/api/24/constants/ID</screen></para>
         <title>Query Parameters</title>
         <tgroup cols="3">
           <colspec colname="c1" colnum="1" colwidth="1*"/>
-          <colspec colname="c1" colnum="1" colwidth="1.25*"/>
-          <colspec colname="c2" colnum="2" colwidth="3*"/>
+          <colspec colname="c2" colnum="2" colwidth="1.25*"/>
+          <colspec colname="c3" colnum="3" colwidth="3*"/>
           <thead>
             <row>
               <entry>Name</entry>
@@ -2298,38 +2298,51 @@ http://server/api/24/constants/ID</screen></para>
           "hashCode": "8050fb1a604e29d5566675c86d02d10b",
           "id": "SaNyhusVxBG"
           }</screen></para>
+      <itemizedlist>
+        <listitem>
+          <para>/api/metadata/version/history - This api will return the list of all metadata
+            versions of the system on which it is invoked.</para>
+        </listitem>
+      </itemizedlist>
+      <table frame="all">
+        <title>Query Parameters</title>
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="1.25*"/>
+          <colspec colname="c3" colnum="3" colwidth="3*"/>
+          <thead>
+            <row>
+              <entry>
+                <para>Name</para>
+              </entry>
+              <entry>
+                <para>Required</para>
+              </entry>
+              <entry>
+                <para>Description</para>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                <para>baseline</para>
+              </entry>
+              <entry>
+                <para>false</para>
+              </entry>
+              <entry>
+                <para>If this parameter is not specified, it will return list of all metadata
+                  versions. Otherwise we need to pass a versionName parameter of the form
+                  &quot;Version_&lt;id&gt;&quot;. It will then return the list of versions present
+                  in the system which were created after the version name supplied as the query
+                  parameter.</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
         </section>
-    <itemizedlist>
-      <listitem>
-        <para>/api/metadata/version/history - This api will return the list of all metadata versions of
-          the system on which it is invoked.</para>
-      </listitem>
-    </itemizedlist>
-        <table frame="all">
-          <title>Query Parameters</title>
-          <tgroup cols="3">
-            <colspec colname="c1" colnum="1" colwidth="1*"/>
-            <colspec colname="c1" colnum="1" colwidth="1.25*"/>
-            <colspec colname="c2" colnum="2" colwidth="3*"/>
-            <thead>
-              <row>
-                <entry>Name</entry>
-                <entry>Required</entry>
-                <entry>Description</entry>
-              </row>
-            </thead>
-            <tbody>
-              <row>
-                <entry>baseline</entry>
-                <entry>false</entry>
-                <entry>If this parameter is not specified, it will return list of all metadata versions. Otherwise we
-                  need to pass a versionName parameter of the form &quot;Version_&lt;id&gt;&quot;. It will then
-                  return the list of versions present in the system which were created after the version name
-                  supplied as the query parameter.</entry>
-              </row>
-            </tbody>
-          </tgroup>
-        </table>
         <section>
           <title>Examples to get list of all metadata versions</title>
           <para><emphasis role="bold">Example: Get the list of all versions in this system</emphasis></para>
@@ -2382,60 +2395,73 @@ http://server/api/24/constants/ID</screen></para>
             "hashCode": "848bf6edbaf4faeb7d1a1169445357b0"
             }]
             }</screen></para>
+      <itemizedlist>
+        <listitem>
+          <para>/api/metadata/version/create - This api will create the metadata version for the
+            version type as specified in the parameter.</para>
+        </listitem>
+      </itemizedlist>
+      <table frame="all">
+        <title>Query Parameters</title>
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="1.25*"/>
+          <colspec colname="c3" colnum="3" colwidth="3*"/>
+          <thead>
+            <row>
+              <entry>
+                <para>Name</para>
+              </entry>
+              <entry>
+                <para>Required</para>
+              </entry>
+              <entry>
+                <para>Description</para>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                <para>type</para>
+              </entry>
+              <entry>
+                <para>true</para>
+              </entry>
+              <entry>
+                <para>The type of metadata version which needs to be created.<itemizedlist>
+                    <listitem>
+                      <para>BEST_EFFORT</para>
+                    </listitem>
+                    <listitem>
+                      <para>ATOMIC</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>Users can select the type of metadata which needs to be created. Metadata Version type
+        governs how the importer should treat the given version. This type will be used while
+        importing the metadata. There are two types of metadata.</para>
+      <itemizedlist>
+        <listitem>
+          <para>BEST_EFFORT - This type suggests that missing references can be ignored and the
+            importer can continue importing the metadata (e.g. missing data elements on a data
+            element group import).</para>
+        </listitem>
+        <listitem>
+          <para>ATOMIC - ensures a strict type checking of the metadata references and the metadata
+            import will fail if any of the references do not exist.</para>
+        </listitem>
+      </itemizedlist>
+      <note>
+        <para>It&apos;s recommended to have ATOMIC type of versions to ensure that all systems
+          (central and local) have the same metadata. Any missing reference is caught in the
+          validation phase itself. Please see the importer details for better understanding.</para>
+      </note>
           </section>
-    <itemizedlist>
-          <listitem>
-            <para>/api/metadata/version/create - This api will create the metadata version for the version
-              type as specified in the parameter.</para>
-          </listitem>
-    </itemizedlist>
-          <table frame="all">
-            <title>Query Parameters</title>
-            <tgroup cols="3">
-              <colspec colname="c1" colnum="1" colwidth="1*"/>
-              <colspec colname="c1" colnum="1" colwidth="1.25*"/>
-              <colspec colname="c2" colnum="2" colwidth="3*"/>
-              <thead>
-                <row>
-                  <entry>Name</entry>
-                  <entry>Required</entry>
-                  <entry>Description</entry>
-                </row>
-              </thead>
-              <tbody>
-                <row>
-                  <entry>type</entry>
-                  <entry>true</entry>
-                  <entry>The type of metadata version which needs to be created.
-                    <itemizedlist>
-                      <listitem>
-                        <para>BEST_EFFORT</para>
-                      </listitem>
-                      <listitem>
-                        <para>ATOMIC</para>
-                      </listitem>
-                    </itemizedlist>
-                  </entry>
-                </row>
-              </tbody>
-            </tgroup>
-          </table>
-          <para>Users can select the type of metadata which needs to be created. Metadata Version type governs how
-            the importer should treat the given version. This type will be used while importing the metadata. There
-            are two types of metadata.</para>
-          <itemizedlist>
-            <listitem>
-              <para>BEST_EFFORT -  This type suggests that missing references can be ignored and the importer can
-                continue importing the metadata (e.g. missing data elements on a data element group import).</para>
-            </listitem>
-            <listitem>
-              <para>ATOMIC - ensures a strict type checking of the metadata references and the metadata import will
-                fail if any of the references do not exist.</para>
-            </listitem>
-          </itemizedlist>
-          <note>It&apos;s recommended to have ATOMIC type of versions to ensure that all systems (central and
-            local) have the same metadata. Any missing reference is caught in the validation phase itself. Please see
-            the importer details for better understanding.</note>
         <section>
           <title>Examples to create metadata version</title>
           <para><emphasis role="bold">Example: To create metadata version of type BEST_EFFORT</emphasis></para>
@@ -2461,38 +2487,53 @@ http://server/api/24/constants/ID</screen></para>
             "hashCode": "fd1398ff7ec9fcfd5b59d523c8680798",
             "id": "SjnhUp6r4hG"
             }</screen></para>
+      <itemizedlist>
+        <listitem>
+          <para>/api/metadata/version/{versionName}/data - This api will download the actual
+            metadata specific to the version name passed as path parameter.</para>
+        </listitem>
+        <listitem>
+          <para>/api/metadata/version/{versionName}/data.gz - This api will download the actual
+            metadata specific to the version name passed as path parameter in a compressed format
+            (gzipped).</para>
+        </listitem>
+      </itemizedlist>
+      <table frame="all">
+        <title>Path parameters</title>
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+          <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+          <colspec colname="newCol3" colnum="3" colwidth="1*"/>
+          <thead>
+            <row>
+              <entry>
+                <para>Name</para>
+              </entry>
+              <entry>
+                <para>Required</para>
+              </entry>
+              <entry>
+                <para>Description</para>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                <para>versionName</para>
+              </entry>
+              <entry>
+                <para>true</para>
+              </entry>
+              <entry>
+                <para>Path parameter of the form &quot;Version_&lt;id&gt;&quot; so that the api 
+                  downloads the specific version</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
         </section>
-    <itemizedlist>
-      <listitem>
-        <para>/api/metadata/version/{versionName}/data - This api will download the actual metadata specific to the version name passed as path parameter.</para>
-      </listitem>
-      <listitem>
-        <para>/api/metadata/version/{versionName}/data.gz - This api will download the actual metadata specific to the version name passed as path parameter in a compressed format (gzipped).</para>
-      </listitem>
-    </itemizedlist>
-          <table frame="all"> 
-            <title>Path Parameters</title> 
-            <tgroup cols="3"> 
-              <colspec colname="c1" colnum="1" colwidth="1*"/> 
-              <colspec colname="c1" colnum="1" colwidth="1.25*"/> 
-              <colspec colname="c2" colnum="2" colwidth="3*"/> 
-              <thead> 
-                <row> 
-                  <entry>Name</entry> 
-                  <entry>Required</entry> 
-                  <entry>Description</entry> 
-                </row> 
-              </thead> 
-              <tbody> 
-                <row> 
-                  <entry>versionName</entry> 
-                  <entry>true</entry> 
-                  <entry>path parameter of the form &quot;Version_&lt;id&gt;&quot; so that the api 
-                    downloads the specific version.</entry> 
-                </row> 
-              </tbody> 
-            </tgroup> 
-          </table>
         <section>
           <title>Examples to download metadata</title>
           <para><emphasis role="bold">Example: Get the actual metadata for &quot;Version_5&quot;</emphasis></para>
@@ -2537,29 +2578,42 @@ http://server/api/24/constants/ID</screen></para>
           settings app.</para>
       </listitem>
     </itemizedlist>
-      <table frame="all"> 
-        <title>Query Parameters</title> 
-        <tgroup cols="3"> 
-          <colspec colname="c1" colnum="1" colwidth="1*"/> 
-          <colspec colname="c1" colnum="1" colwidth="1.25*"/> 
-          <colspec colname="c2" colnum="2" colwidth="3*"/> 
-          <thead> 
-            <row> 
-              <entry>Name</entry> 
-              <entry>Required</entry> 
-              <entry>Description</entry> 
-            </row> 
-          </thead> 
-          <tbody> 
-            <row> 
-              <entry>versionName</entry> 
-              <entry>true</entry> 
-              <entry>versionName query parameter of the form &quot;Version_&lt;id&gt;&quot; . The api downloads this
-                version from the remote server and imports it in the local system.</entry> 
-            </row> 
-          </tbody> 
-        </tgroup> 
-      </table>
+    <table frame="all">
+      <title>Query parameters</title>
+      <tgroup cols="3">
+        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+        <colspec colname="c3" colnum="3" colwidth="1.0*"/>
+        <thead>
+          <row>
+            <entry>
+              <para>Name</para>
+            </entry>
+            <entry>
+              <para>Required</para>
+            </entry>
+            <entry>
+              <para>Description</para>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              <para>versionName</para>
+            </entry>
+            <entry>
+              <para>true</para>
+            </entry>
+            <entry>
+              <para>versionName query parameter of the form &quot;Version_&lt;id&gt;&quot; . The api
+                downloads this version from the remote server and imports it in the local
+                system.</para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
     <itemizedlist>
       <listitem>
         <para>This API should be used with utmost care. Please note that there is an alternate way to achieve sync in
@@ -10530,7 +10584,11 @@ interval=WEEK" -u admin:district</screen>
             </row>
             <row>
               <entry>helpPageLink</entry>
-              <entry>Link to help page. Default: "../dhis-web-commons-about/help.action"</entry>
+              <entry>Link to help page.
+                <?oxy_comment_start author="cecilia" timestamp="20160704T120524+0200" comment="Before release: Veirfy that link works."?>Default<?oxy_comment_end?>:
+                  "<link xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="http://dhis2.github.io/dhis2-docs/master/en/user/html/dhis2_user_manual_en.html"
+                  >https://dhis2.github.io/dhis2-docs/master/en/user/html/dhis2_user_manual_en.html</link></entry>
             </row>
             <row>
               <entry>keyAcceptanceRequiredForApproval</entry>
