@@ -409,7 +409,6 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       links to your desired resource, for instance <emphasis role="italic"
         >/api/dataElements</emphasis>. For all resources which return a list of elements certain
       query parameters can be used to modify the response:</para>
-    <para>
       <table frame="all">
         <title>Query parameters</title>
         <tgroup cols="4">
@@ -455,7 +454,6 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
           </tbody>
         </tgroup>
       </table>
-    </para>
     <para>An example of how these parameters can be used to get a full list of data element groups
       in XML response format is:</para>
     <screen>/api/24/dataElementGroups.xml?links=false&amp;paging=false</screen>
@@ -505,10 +503,8 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     </section>
     <section>
       <title>Translation API</title>
-      <para>From 2.24 and upwards the translation APIs have changed quite a bit in the way they
-        work, in older releases we have to use the <emphasis role="italic"
-          >/api/translations</emphasis> API to get all available locales for an object, this now
-        instead exists directly on the object itself. Please note that the <emphasis role="italic"
+      <para>The translations for an object is rendered as part of the object itself in the
+          <emphasis>translations</emphasis> array. Note that the <emphasis role="italic"
           >translations</emphasis> array in the JSON/XML payloads are normally pre-filtered for you,
         which means they can not directly be used to import/export translations (as that would
         normally overwrite locales other than current users).</para>
@@ -576,21 +572,21 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     }
   ]
 }</screen></para>
-      <para>Please note that even if you get the unfiltered result, and are using the appropriate
-        type endpoint i..e <emphasis role="italic">/api/24/dataElements</emphasis> we do not allow
+      <para>Note that even if you get the unfiltered result, and are using the appropriate type
+        endpoint i..e <emphasis role="italic">/api/24/dataElements</emphasis> we do not allow
         updates, as it would be too easy to make mistakes and overwrite the other available
         locales.</para>
-      <para>To be able to easily read and update translation we have also added new endpoints for
-        this, these can be accessed by <emphasis role="bold">GET</emphasis> or <emphasis role="bold"
-          >PUT</emphasis> on the appropriate <emphasis role="italic"
-          >/api/24/type/id/translations</emphasis> endpoint, i.e for a data element with ID
-          <emphasis role="italic">"FTRrcoaog83"</emphasis> you could use <emphasis role="italic"
-          >/api/24/dataElements/FTRrcoaog83/translations</emphasis> to get and update translations.
-        To add a translation it follows a very simple format, the fields available are <emphasis
-          role="italic">property</emphasis> with options <emphasis role="bold">NAME</emphasis>,
-          <emphasis role="bold">SHORT_NAME</emphasis>, <emphasis role="bold">DESCRIPTION</emphasis>,
-        the <emphasis role="italic">locale</emphasis> which supports any valid locale ID, and then
-        the <emphasis role="italic">value</emphasis> itself.</para>
+      <para>To read and update translations you can use the special translations endpoint for each
+        object resource. These can be accessed by <emphasis role="bold">GET</emphasis> or <emphasis
+          role="bold">PUT</emphasis> on the appropriate <emphasis role="italic"
+          >/api/24/&lt;object-type>/&lt;object-id>/translations</emphasis> endpoint. As an example,
+        for a data element with identifier <emphasis role="italic">FTRrcoaog83</emphasis> you could
+        use <emphasis role="italic">/api/24/dataElements/FTRrcoaog83/translations</emphasis> to get
+        and update translations. The fields available are <emphasis role="italic"
+          >property</emphasis> with options <emphasis role="bold">NAME</emphasis>, <emphasis
+          role="bold">SHORT_NAME</emphasis>, <emphasis role="bold">DESCRIPTION</emphasis>, the
+          <emphasis role="italic">locale</emphasis> which supports any valid locale ID and the the
+          <emphasis role="italic">value</emphasis> itself.</para>
       <para><emphasis role="italic">Example of NAME property for french
         locale:</emphasis><screen>{
   "property": "NAME",
@@ -608,10 +604,11 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     }
   ]
 }</screen></para>
-      <para>Then for a an data element with ID <emphasis role="italic">FTRrcoaog83</emphasis> you
-        would <emphasis role="bold">PUT</emphasis> this to <emphasis role="italic"
-          >/api/24/dataElements/FTRrcoaog83/translation</emphasis>.  Please make sure that you send
-        all translations for the object,  if not you will overwrite the old ones.</para>
+      <para>For a an data element with ID <emphasis role="italic">FTRrcoaog83</emphasis> you can
+          <emphasis role="bold">PUT</emphasis> this to <emphasis role="italic"
+          >/api/24/dataElements/FTRrcoaog83/translations</emphasis>. Make sure to send all
+        translations for the specific object and not just for a single locale (if not you will
+        potentially overwrite existing locales for other locales).</para>
     </section>
   </section>
   <section>
