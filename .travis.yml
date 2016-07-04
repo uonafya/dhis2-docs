@@ -11,7 +11,7 @@ before_install:
     - git submodule update --init --recursive
 install: true
 script:
-    - mvn -Ddocbkx.fopLogLevel=ERROR -Denforcer.fail=false -q package
+    - bash ./travis-build.sh
 after_success:
     - bash ./.utility/deploy.sh
 jdk:

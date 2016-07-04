@@ -1,6 +1,9 @@
 #!/bin/bash
 
-if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+BRANCH_REGEX="2.2[0-9]|master"
+
+if [ "$TRAVIS_REPO_SLUG" == "dhis2/dhis2-docs" ]  && [ "$TRAVIS_PULL_REQUEST" == "false" ] \
+ && [[ "$TRAVIS_BRANCH" =~ $BRANCH_REGEX ]]; then
     set -e # exit with nonzero exit code if anything fails
 
     cd ${HOME}
