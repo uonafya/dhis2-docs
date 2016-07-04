@@ -12,7 +12,7 @@
          xmlns:db="http://docbook.org/ns/docbook">
   <title>Using the GIS app</title>
   <section>
-    <title>GIS overview</title>
+    <title>About the GIS app</title>
     <screenshot>
       <?oxy_comment_start author="cecilia" timestamp="20160626T153414+0200" comment="Before release:
 Replace screenshot."?>
@@ -45,7 +45,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
           </listitem>
           <listitem>
             <para>If you want to see the background, but with reduced opacity, you can set the
-              visibility to something lower than 100 % in the numberbox to the right.</para>
+              visibility to something lower than 100 % in the box to the right.</para>
           </listitem>
           <listitem>
             <para>The final four layers are the vector layers which you use for thematic mapping
@@ -468,7 +468,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
       organisation unit level and parent to define the boundaries. If your database has coordinates
       and aggregated data values for these organisation units, they will appear on the map.</para>
     <note>
-      <para>You must refresch the DHIS 2 analytics tables to have aggregated data values
+      <para>You must refresh the DHIS 2 analytics tables to have aggregated data values
         available.</para>
     </note>
     <screenshot>
@@ -638,7 +638,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
       <orderedlist>
         <listitem>
           <para>Right-click a facility and click <emphasis role="bold">Swap
-            lon/lat</emphasis>.</para>
+            lob/lat</emphasis>.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -695,30 +695,34 @@ https://www.google.com/permissions/trademark/trademark-list.html
   </section>
   <section>
     <title>Manage Earth Engine layer</title>
-    <para>The  Google Earth Engine layer lets you display satellite imagery and geospatial datasets
-      from Google's vast catalog. This layer is useful in combination with thematic and event layers
-      to enhance analysis. The following layers are supported:<itemizedlist>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <?oxy_comment_start author="cecilia" timestamp="20160630T212009+0200" comment="Before release: Update screenshot: Select layer has changed to Select data set" flag="done"?>
+          <imagedata width="100%"
+            fileref="resources/images/gis/gis_earth_engine_layer_population.png" format="PNG"
+            align="center"/>
+          <?oxy_comment_end?>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>The Google Earth Engine layer lets you display satellite imagery and geospatial datasets
+      from Google's vast catalog. This
+      <?oxy_comment_start author="cecilia" timestamp="20160630T205122+0200" comment="For SME: In GUI, it&apos;s called dataset, not layer Correct?
+Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end?>
+      is useful in combination with thematic and event layers to enhance analysis. The following
+      layers are supported:<itemizedlist>
         <listitem>
-          <para>Elevation: Metres above sea level.</para>
+          <para>Elevation: Metres above sea level</para>
         </listitem>
         <listitem>
           <para>Nighttime lights: Lights from cities, towns, and other sites with persistent
-            lighting, including gas flares (from 2013).</para>
+            lighting, including gas flares (from 2013)</para>
         </listitem>
         <listitem>
-          <para>Population density: Population in 100 x 100 m grid cells (from 2010).</para>
+          <para>Population density: Population in 100 x 100 m grid cells (from 2010)</para>
         </listitem>
       </itemizedlist></para>
-      <screenshot>
-      <title>Earth Engine population density
-        <?oxy_comment_start author="cecilia" timestamp="20160626T153942+0200" comment="For SME: In GUI, it&apos;s called dataset, not layer Correct?
-Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end?></title>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="100%" fileref="resources/images/gis/gis_earth_engine_layer_population.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-      </screenshot>
       <section>
         <title>Create or modify an Earth Engine layer</title>
         <orderedlist>
@@ -728,7 +732,7 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
         </listitem>
         <listitem>
           <para>Select <emphasis role="bold">Min / max value</emphasis>.</para>
-          <para>The meaning of these values depend on which data set yo've selected.</para>
+          <para>The meaning of these values depend on which data set you've selected.</para>
         </listitem>
         <listitem>
           <para>Select a <emphasis role="bold">Color scale</emphasis>.</para>
@@ -1133,12 +1137,11 @@ At the moment, feature doesn&apos;t work and is not included in version 2.23. Wi
     </para>
   </section>
   <section>
-    <title>Using place search</title>
+    <title>Search for a location</title>
     <para>The place search function allows you to search for almost any location or address. The
       place search is powered by the Mapzen mapping platform. This function is useful in order to
       locate for example sites, facilities, villages or towns on the map.</para>
     <screenshot>
-      <title>Place search</title>
       <mediaobject>
         <imageobject>
           <imagedata fileref="resources/images/gis/gis_place_search.png" align="center" width="75%"
