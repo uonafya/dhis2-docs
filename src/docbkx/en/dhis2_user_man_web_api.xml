@@ -9114,21 +9114,6 @@ interval=WEEK" -u admin:district</screen>
     &quot;47XXXXXX2&quot;
   ] 
 }</screen>
-      <screen>/api/24/sms/outbound/batch</screen>
-      <screen>{ 
-  &quot;smsBatch&quot;:[{
-  &quot;message&quot;:&quot;Sms Text&quot;,  
-  &quot;recipients&quot;: [
-  &quot;47XXXXXX1&quot;
-  ]
-  },
-  {
-  &quot;message&quot;:&quot;Sms Text2&quot;,  
-  &quot;recipients&quot;: [
-  &quot;47XXXXXX1&quot;
-  ]
-  }] 
-}</screen>
       <para>The Web API also supports a query parameter version, but the parameterized API can only
         be used for sending SMS to a single destination. </para>
       <screen>/api/24/sms/outbound?message=text&amp;recipient=47XXXXXX</screen>
@@ -9367,7 +9352,7 @@ interval=WEEK" -u admin:district</screen>
       &quot;key&quot;: &quot;username&quot;,
       &quot;value&quot;: &quot;user12&quot;
       &quot;classified&quot;: &quot;false&quot;
-    }.
+    },
     {
       &quot;key&quot;: &quot;password&quot;,
       &quot;value&quot;: &quot;XXX&quot;
@@ -9376,6 +9361,7 @@ interval=WEEK" -u admin:district</screen>
   ]
 }</screen>
 
+  <para>HTTP.OK will be returned if configurations are saved successfully. In all other cases HTTP.ERROR will be retured.</para>
       <para>The various gateway configurations can be instantiated using the endpoints listed
         below.</para>
       <table frame="all">
