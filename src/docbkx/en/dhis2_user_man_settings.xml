@@ -10,7 +10,10 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>Settings</title>
+  <title><?oxy_comment_start author="cecilia" timestamp="20160704T115725+0200" comment="2.24:
+Removed empty section
+OAuth2 clients
+" flag="done"?>Settings<?oxy_comment_end?></title>
   <para>The settings module provides a set of application configuration options. There are two main
     groups of settings: the <emphasis role="italic">system settings</emphasis> apply to the whole
     system and all its users while the <emphasis role="italic">user settings</emphasis> apply to the
@@ -304,33 +307,39 @@
         </listitem>
         <listitem>
           <para>Require category option combo to be specified: Require category option combo of data
-            value to be specifed. By default it will fall back to default category option combo if
+            value to be specified. By default it will fall back to default category option combo if
             not specified.</para>
         </listitem>
         <listitem>
           <para>Require attribute option combo to be specified: Require attribute option combo of
-            data value to be specifed. By default it will fall back to default attribute option
+            data value to be specified. By default it will fall back to default attribute option
             combo if not specified.</para>
         </listitem>
       </itemizedlist>
     </section>
     <section>
       <title>Synchronization settings</title>
-      <para>DHIS 2 provides a feature for synchronizing metadata and data. Given two instances in a central-local
-        deployment strategy, metadata created at central can be synced to the local and the data created at local
-        can be synced to the central. This can be useful  when there are multiple stand-alone instances of DHIS 2
-        and a global metadata  needs to  be created at all the local instances. So, metadata creation and updation
-        happens at the central and if the metadata sync task is enabled, the metadata gets synced down to all the
-        local instances which are bound to the given central instance. These local instances will in turn push data
-        values to that central instance. The following settings are used for both data and metadata synchronization.</para>
+      <para>DHIS 2 provides a feature for synchronizing metadata and data. Given two instances in a
+        central-local deployment strategy, metadata created at
+        <?oxy_comment_start author="cecilia" timestamp="20160704T123350+0200" comment="Central what? Central level?"?>central<?oxy_comment_end?>
+        can be synched to the local and the data created at local can be synced to the central. This
+        can be useful when there are multiple stand-alone instances of DHIS 2 and a global metadata
+        needs to be created at all the local instances. So, metadata creation and update happens at
+        the central and if the metadata sync task is enabled, the metadata gets synced down to all
+        the local instances which are bound to the given central instance. These local instances
+        will in turn push data values to that central instance. The following settings are used for
+        both data and metadata synchronization.</para>
       <itemizedlist>
         <listitem>
           <para>Remote server URL: The URL of the remote server running DHIS 2 to upload data values to. Use of
             SSL/HTTPS is recommended since username and password is sent with the request (using basic
             authentication). The system will attempt to synchronize data once every minute. Note that you must
             enable data sync from Data administration &gt; Scheduling.</para>
-          <note>The system will use this setting for metadata synchronization as well. Note that the metadata
-            synchronization needs to be enabled from Data Administration app &gt; Scheduling.</note>
+          <note>
+            <para>The system will use this setting for metadata synchronization as well. Note that
+              the metadata synchronization needs to be enabled from Data Administration app &gt;
+              Scheduling.</para>
+          </note>
         </listitem>
         <listitem>
           <para>Remote server username: The username of the DHIS 2 user account on the remote server to use for data
@@ -347,14 +356,15 @@
         <listitem>
           <para>Enable Versioning for Metadata Sync: This is a new feature added in 2.24. If you are following model
             as mentioned above, then enable this setting. Otherwise you can ignore it.</para>
+            <screenshot>
+              <mediaobject>
+                <imageobject>
+                  <imagedata width="80%" align="center"
+                    fileref="resources/images/settings/metadata_versioning_table.png" format="PNG"/>
+                </imageobject>
+              </mediaobject>
+            </screenshot>
         </listitem>
-        <screenshot>
-          <mediaobject>
-            <imageobject>
-              <imagedata width="80%" align="center" fileref="resources/images/settings/metadata_versioning_table.png" format="PNG"/>
-            </imageobject>
-          </mediaobject>
-        </screenshot>
         <listitem>
           <para>If metadata versioning is enabled, the user gets the option to create metadata versions.</para>
         <itemizedlist>
@@ -368,8 +378,10 @@
               <para>When: The timestamp of metadata version creation at central instance.</para>
             </listitem>
             <listitem>
-              <para>Type: Type of metadata version. For getting more details about how to create versions and how
-                they are captured internally please see <xref linkend="concept"/>.</para>
+              <para>Type: Type of metadata
+                      <?oxy_comment_start author="cecilia" timestamp="20160704T115615+0200" comment="At next release: Add link to Concept in Settings chapter.
+2.24: Linking doesn&apos;t work, removed link:
+&quot;For getting more details about how to create versions and how they are captured internally please see Concept&quot; " flag="done"?>version<?oxy_comment_end?>.</para>
             </listitem>
           </itemizedlist>
           <para>Additionally you will see the following label on top of the table:</para>
@@ -410,10 +422,6 @@
           </mediaobject>
         </screenshot>
       </para>
-    </section>
-    <section>
-      <title>OAuth2 clients</title>
-      <para/>
     </section>
   </section>
 </chapter>
