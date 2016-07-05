@@ -409,7 +409,6 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       links to your desired resource, for instance <emphasis role="italic"
         >/api/dataElements</emphasis>. For all resources which return a list of elements certain
       query parameters can be used to modify the response:</para>
-    <para>
       <table frame="all">
         <title>Query parameters</title>
         <tgroup cols="4">
@@ -455,7 +454,6 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
           </tbody>
         </tgroup>
       </table>
-    </para>
     <para>An example of how these parameters can be used to get a full list of data element groups
       in XML response format is:</para>
     <screen>/api/24/dataElementGroups.xml?links=false&amp;paging=false</screen>
@@ -505,10 +503,8 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     </section>
     <section>
       <title>Translation API</title>
-      <para>From 2.24 and upwards the translation APIs have changed quite a bit in the way they
-        work, in older releases we have to use the <emphasis role="italic"
-          >/api/translations</emphasis> API to get all available locales for an object, this now
-        instead exists directly on the object itself. Please note that the <emphasis role="italic"
+      <para>The translations for an object is rendered as part of the object itself in the
+          <emphasis>translations</emphasis> array. Note that the <emphasis role="italic"
           >translations</emphasis> array in the JSON/XML payloads are normally pre-filtered for you,
         which means they can not directly be used to import/export translations (as that would
         normally overwrite locales other than current users).</para>
@@ -576,21 +572,21 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     }
   ]
 }</screen></para>
-      <para>Please note that even if you get the unfiltered result, and are using the appropriate
-        type endpoint i..e <emphasis role="italic">/api/24/dataElements</emphasis> we do not allow
+      <para>Note that even if you get the unfiltered result, and are using the appropriate type
+        endpoint i..e <emphasis role="italic">/api/24/dataElements</emphasis> we do not allow
         updates, as it would be too easy to make mistakes and overwrite the other available
         locales.</para>
-      <para>To be able to easily read and update translation we have also added new endpoints for
-        this, these can be accessed by <emphasis role="bold">GET</emphasis> or <emphasis role="bold"
-          >PUT</emphasis> on the appropriate <emphasis role="italic"
-          >/api/24/type/id/translations</emphasis> endpoint, i.e for a data element with ID
-          <emphasis role="italic">"FTRrcoaog83"</emphasis> you could use <emphasis role="italic"
-          >/api/24/dataElements/FTRrcoaog83/translations</emphasis> to get and update translations.
-        To add a translation it follows a very simple format, the fields available are <emphasis
-          role="italic">property</emphasis> with options <emphasis role="bold">NAME</emphasis>,
-          <emphasis role="bold">SHORT_NAME</emphasis>, <emphasis role="bold">DESCRIPTION</emphasis>,
-        the <emphasis role="italic">locale</emphasis> which supports any valid locale ID, and then
-        the <emphasis role="italic">value</emphasis> itself.</para>
+      <para>To read and update translations you can use the special translations endpoint for each
+        object resource. These can be accessed by <emphasis role="bold">GET</emphasis> or <emphasis
+          role="bold">PUT</emphasis> on the appropriate <emphasis role="italic"
+          >/api/24/&lt;object-type>/&lt;object-id>/translations</emphasis> endpoint. As an example,
+        for a data element with identifier <emphasis role="italic">FTRrcoaog83</emphasis> you could
+        use <emphasis role="italic">/api/24/dataElements/FTRrcoaog83/translations</emphasis> to get
+        and update translations. The fields available are <emphasis role="italic"
+          >property</emphasis> with options <emphasis role="bold">NAME</emphasis>, <emphasis
+          role="bold">SHORT_NAME</emphasis>, <emphasis role="bold">DESCRIPTION</emphasis>, the
+          <emphasis role="italic">locale</emphasis> which supports any valid locale ID and the the
+          <emphasis role="italic">value</emphasis> itself.</para>
       <para><emphasis role="italic">Example of NAME property for french
         locale:</emphasis><screen>{
   "property": "NAME",
@@ -608,10 +604,11 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     }
   ]
 }</screen></para>
-      <para>Then for a an data element with ID <emphasis role="italic">FTRrcoaog83</emphasis> you
-        would <emphasis role="bold">PUT</emphasis> this to <emphasis role="italic"
-          >/api/24/dataElements/FTRrcoaog83/translation</emphasis>.  Please make sure that you send
-        all translations for the object,  if not you will overwrite the old ones.</para>
+      <para>For a an data element with ID <emphasis role="italic">FTRrcoaog83</emphasis> you can
+          <emphasis role="bold">PUT</emphasis> this to <emphasis role="italic"
+          >/api/24/dataElements/FTRrcoaog83/translations</emphasis>. Make sure to send all
+        translations for the specific object and not just for a single locale (if not you will
+        potentially overwrite existing locales for other locales).</para>
     </section>
   </section>
   <section>
@@ -2071,13 +2068,13 @@ http://server/api/24/constants/ID</screen></para>
     </section>
   </section>
   <section>
-    <title>Metadata Export API 23/24</title>
-    <para>This section explain the new metadata exporter available from DHIS 2.23, the metatada API
+    <title>Metadata export</title>
+    <para>This section explains the new metadata exporter available from DHIS 2.23, the metatada API
       is available at <emphasis role="italic">/api/23/metadata</emphasis> and <emphasis
         role="italic">/api/24/metadata</emphasis>endpoints, both XML and JSON is supported in this
       exporter.</para>
-    <para>The most common parameters are described down below in the "Export Paramter" table, but
-      you can also apply this to all available types by using <emphasis role="italic"
+    <para>The most common parameters are described below in the "Export Parameter" table, but you
+      can also apply this to all available types by using <emphasis role="italic"
         >type:fields=&lt;filter></emphasis> and <emphasis role="italic"
         >type:filter=&lt;filter></emphasis>, you can also enable/disable export of certain types by
       setting <emphasis role="italic">type=true/false</emphasis>, please see examples of these down
@@ -2119,7 +2116,7 @@ http://server/api/24/constants/ID</screen></para>
       </tgroup>
     </table>
     <section>
-      <title>Export Examples</title>
+      <title>Metadata export examples</title>
       <para>Export all
         metadata:<screen>curl -u user:pass http://server/api/24/metadata</screen></para>
       <para>Export all metadata ordered by lastUpdated
@@ -2140,7 +2137,7 @@ http://server/api/24/constants/ID</screen></para>
     </section>
   </section>
   <section>
-    <title>Metadata Import API 23/24</title>
+    <title>Metadata import</title>
     <para>This section explain the new metadata importer available from DHIS 2.23, the metatada API
       is available at <emphasis role="italic">/api/23/metadata</emphasis> and <emphasis
         role="italic">/api/24/metadata</emphasis>endpoints, both XML and JSON is supported in this
@@ -2236,7 +2233,7 @@ http://server/api/24/constants/ID</screen></para>
     </table>
   </section>
   <section xml:id="metadata_sync_API">
-    <title>Working with Metadata Versioning API</title>
+    <title>Metadata versioning</title>
     <para>This section explains the Metadata  Versioning APIs available starting 2.24</para>
     <itemizedlist>
       <listitem>
@@ -2269,41 +2266,41 @@ http://server/api/24/constants/ID</screen></para>
         </tgroup>
       </table>
       <section>
-        <title>Examples to get metadata version details</title>
+        <title>Get metadata version details</title>
         <para><emphasis role="bold">Example: Get the current metadata version of this system</emphasis></para>
         <para><emphasis role="bold">Sample request:</emphasis>
           <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version"</screen></para>
         <para><emphasis role="bold">Sample response:</emphasis>
-          <screen>{
-            "name": "Version_4",
-            "created": "2016-06-30T06:01:28.684+0000",
-            "lastUpdated": "2016-06-30T06:01:28.685+0000",
-            "externalAccess": false,
-            "displayName": "Version_4",
-            "type": "BEST_EFFORT",
-            "hashCode": "848bf6edbaf4faeb7d1a1169445357b0",
-            "id": "Ayz2AEMB6ry"
-            }</screen></para>
+        <screen>{
+    "name": "Version_4",
+    "created": "2016-06-30T06:01:28.684+0000",
+    "lastUpdated": "2016-06-30T06:01:28.685+0000",
+    "externalAccess": false,
+    "displayName": "Version_4",
+    "type": "BEST_EFFORT",
+    "hashCode": "848bf6edbaf4faeb7d1a1169445357b0",
+    "id": "Ayz2AEMB6ry"
+}</screen></para>
         <para><emphasis role="bold">Example: Get the details of version with name &quot;Version_2&quot;</emphasis></para>
         <para><emphasis role="bold">Sample request:</emphasis>
           <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version?versionName=Version_2"</screen></para>
         <para><emphasis role="bold">Sample response:</emphasis>
         <screen>{
-          "name": "Version_2",
-          "created": "2016-06-30T05:59:33.238+0000",
-          "lastUpdated": "2016-06-30T05:59:33.239+0000",
-          "externalAccess": false,
-          "displayName": "Version_2",
-          "type": "BEST_EFFORT",
-          "hashCode": "8050fb1a604e29d5566675c86d02d10b",
-          "id": "SaNyhusVxBG"
-          }</screen></para>
-      <itemizedlist>
-        <listitem>
-          <para>/api/metadata/version/history - This api will return the list of all metadata
+    "name": "Version_2",
+    "created": "2016-06-30T05:59:33.238+0000",
+    "lastUpdated": "2016-06-30T05:59:33.239+0000",
+    "externalAccess": false,
+    "displayName": "Version_2",
+    "type": "BEST_EFFORT",
+    "hashCode": "8050fb1a604e29d5566675c86d02d10b",
+    "id": "SaNyhusVxBG"
+}</screen></para>
+        <itemizedlist>
+          <listitem>
+      <para>/api/metadata/version/history - This api will return the list of all metadata
             versions of the system on which it is invoked.</para>
-        </listitem>
-      </itemizedlist>
+          </listitem>
+        </itemizedlist>
       <table frame="all">
         <title>Query Parameters</title>
         <tgroup cols="3">
@@ -2344,57 +2341,51 @@ http://server/api/24/constants/ID</screen></para>
       </table>
         </section>
         <section>
-          <title>Examples to get list of all metadata versions</title>
+          <title>Get list of all metadata versions</title>
           <para><emphasis role="bold">Example: Get the list of all versions in this system</emphasis></para>
           <para><emphasis role="bold">Sample request:</emphasis>
             <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version/history"</screen></para>
           <para><emphasis role="bold">Sample response:</emphasis>
-          <screen>{
-            "metadataversions": [{
-            "name": "Version_1",
-            "type": "BEST_EFFORT",
-            "created": "2016-06-30T05:54:41.139+0000",
-            "id": "SjnhUp6r4hG",
-            "hashCode": "fd1398ff7ec9fcfd5b59d523c8680798"
-            }, {
-            "name": "Version_2",
-            "type": "BEST_EFFORT",
-            "created": "2016-06-30T05:59:33.238+0000",
-            "id": "SaNyhusVxBG",
-            "hashCode": "8050fb1a604e29d5566675c86d02d10b"
-            }, {
-            "name": "Version_3",
-            "type": "BEST_EFFORT",
-            "created": "2016-06-30T06:01:23.680+0000",
-            "id": "FVkGzSjAAYg",
-            "hashCode": "70b779ea448b0da23d8ae0bd59af6333"
-            }, {
-            "name": "Version_4",
-            "type": "BEST_EFFORT",
-            "created": "2016-06-30T06:01:28.684+0000",
-            "id": "Ayz2AEMB6ry",
-            "hashCode": "848bf6edbaf4faeb7d1a1169445357b0"
-            }]
-            }</screen></para>
+        <screen>{
+    "metadataversions": [{
+        "name": "Version_1",
+        "type": "BEST_EFFORT",
+        "created": "2016-06-30T05:54:41.139+0000",
+        "id": "SjnhUp6r4hG",
+        "hashCode": "fd1398ff7ec9fcfd5b59d523c8680798"
+     }, {
+         "name": "Version_2",
+         "type": "BEST_EFFORT",
+         "created": "2016-06-30T05:59:33.238+0000",
+         "id": "SaNyhusVxBG",
+         "hashCode": "8050fb1a604e29d5566675c86d02d10b"
+     }, {
+         "name": "Version_3",
+         "type": "BEST_EFFORT",
+         "created": "2016-06-30T06:01:23.680+0000",
+         "id": "FVkGzSjAAYg",
+         "hashCode": "70b779ea448b0da23d8ae0bd59af6333"
+     }]
+}</screen></para>
           <para><emphasis role="bold">Example: Get the list of all versions in this system created after &quot;Version_2&quot;</emphasis></para>
           <para><emphasis role="bold">Sample request:</emphasis>
             <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version/history?baseline=Version_2"</screen></para>
           <para><emphasis role="bold">Sample response:</emphasis>
-          <screen>{
-            "metadataversions": [{
-            "name": "Version_3",
-            "type": "BEST_EFFORT",
-            "created": "2016-06-30T06:01:23.680+0000",
-            "id": "FVkGzSjAAYg",
-            "hashCode": "70b779ea448b0da23d8ae0bd59af6333"
-            }, {
-            "name": "Version_4",
-            "type": "BEST_EFFORT",
-            "created": "2016-06-30T06:01:28.684+0000",
-            "id": "Ayz2AEMB6ry",
-            "hashCode": "848bf6edbaf4faeb7d1a1169445357b0"
-            }]
-            }</screen></para>
+        <screen>{
+    "metadataversions": [{
+        "name": "Version_3",
+        "type": "BEST_EFFORT",
+        "created": "2016-06-30T06:01:23.680+0000",
+        "id": "FVkGzSjAAYg",
+        "hashCode": "70b779ea448b0da23d8ae0bd59af6333"
+    }, {
+        "name": "Version_4",
+        "type": "BEST_EFFORT",
+        "created": "2016-06-30T06:01:28.684+0000",
+        "id": "Ayz2AEMB6ry",
+        "hashCode": "848bf6edbaf4faeb7d1a1169445357b0"
+    }]
+ }</screen></para>
       <itemizedlist>
         <listitem>
           <para>/api/metadata/version/create - This api will create the metadata version for the
@@ -2463,30 +2454,30 @@ http://server/api/24/constants/ID</screen></para>
       </note>
           </section>
         <section>
-          <title>Examples to create metadata version</title>
+          <title>Create metadata version</title>
           <para><emphasis role="bold">Example: To create metadata version of type BEST_EFFORT</emphasis></para>
           <para><emphasis role="bold">Sample request:</emphasis>
             <screen>curl -X POST -u admin:district "https://play.dhis2.org/dev/api/metadata/version/create?type=BEST_EFFORT"</screen></para>
           <para><emphasis role="bold">Sample response:</emphasis>
-            <screen>{
-            "name": "Version_1",
-            "created": "2016-06-30T05:54:41.139+0000",
-            "lastUpdated": "2016-06-30T05:54:41.333+0000",
-            "externalAccess": false,
-            "publicAccess": "--------",
-            "user": {
-            "name": "John Traore",
-            "created": "2013-04-18T17:15:08.407+0000",
-            "lastUpdated": "2016-04-06T00:06:06.571+0000",
-            "externalAccess": false,
-            "displayName": "John Traore",
-            "id": "xE7jOejl9FI"
-            },
-            "displayName": "Version_1",
-            "type": "BEST_EFFORT",
-            "hashCode": "fd1398ff7ec9fcfd5b59d523c8680798",
-            "id": "SjnhUp6r4hG"
-            }</screen></para>
+        <screen>{
+    "name": "Version_1",
+    "created": "2016-06-30T05:54:41.139+0000",
+    "lastUpdated": "2016-06-30T05:54:41.333+0000",
+    "externalAccess": false,
+    "publicAccess": "--------",
+    "user": {
+        "name": "John Traore",
+        "created": "2013-04-18T17:15:08.407+0000",
+        "lastUpdated": "2016-04-06T00:06:06.571+0000",
+        "externalAccess": false,
+        "displayName": "John Traore",
+        "id": "xE7jOejl9FI"
+    },
+    "displayName": "Version_1",
+    "type": "BEST_EFFORT",
+    "hashCode": "fd1398ff7ec9fcfd5b59d523c8680798",
+    "id": "SjnhUp6r4hG"
+}</screen></para>
       <itemizedlist>
         <listitem>
           <para>/api/metadata/version/{versionName}/data - This api will download the actual
@@ -2535,41 +2526,36 @@ http://server/api/24/constants/ID</screen></para>
       </table>
         </section>
         <section>
-          <title>Examples to download metadata</title>
+          <title>Download metadata</title>
           <para><emphasis role="bold">Example: Get the actual metadata for &quot;Version_5&quot;</emphasis></para>
           <para><emphasis role="bold">Sample request:</emphasis>
             <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version/Version_5/data"</screen></para>
           <para><emphasis role="bold">Sample response:</emphasis>
-            <screen>{
-              "date": "2016-06-30T06:10:23.120+0000",
-              "dataElements": [{
-              "code": "ANC 5th Visit",
-              "created": "2016-06-30T06:10:09.870+0000",
-              "lastUpdated": "2016-06-30T06:10:09.870+0000",
-              "name": "ANC 5th Visit",
-              "id": "sCuZKDsix7Y",
-              "shortName": "ANC 5th Visit ",
-              "aggregationType": "SUM",
-              "domainType": "AGGREGATE",
-              "zeroIsSignificant": false,
-              "valueType": "NUMBER",
-              "categoryCombo": {
-              "id": "p0KPaWEg3cf"
-              },
-              "user": {
-              "id": "xE7jOejl9FI"
-              },
-              "userGroupAccesses": [],
-              "attributeValues": [],
-              "translations": [],
-              "aggregationLevels": []
-              }]
-              }
-            </screen></para>
+        <screen>{
+    "date": "2016-06-30T06:10:23.120+0000",
+    "dataElements": [{
+        "code": "ANC 5th Visit",
+        "created": "2016-06-30T06:10:09.870+0000",
+        "lastUpdated": "2016-06-30T06:10:09.870+0000",
+        "name": "ANC 5th Visit",
+        "id": "sCuZKDsix7Y",
+        "shortName": "ANC 5th Visit ",
+        "aggregationType": "SUM",
+        "domainType": "AGGREGATE",
+        "zeroIsSignificant": false,
+        "valueType": "NUMBER",
+        "categoryCombo": {
+            "id": "p0KPaWEg3cf"
+        },
+        "user": {
+            "id": "xE7jOejl9FI"
+        }
+    }]
+}            </screen></para>
         </section>
   </section>
   <section xml:id="working_with_metadata_sync_API">
-    <title>Working with Metadata Synchronization API</title>
+    <title>Metadata Synchronization</title>
     <para>This section explains the Metadata Synchronization API available starting 2.24</para>
     <itemizedlist>
       <listitem>
@@ -2634,150 +2620,10 @@ http://server/api/24/constants/ID</screen></para>
       </listitem>
     </itemizedlist>
       <section>
-        <title>Examples to sync metadata version</title>
+        <title>Sync metadata version</title>
         <para><emphasis role="bold">Example: Sync Version_6 from central system to this system</emphasis></para>
         <para><emphasis role="bold">Sample request:</emphasis>
           <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/sync?versionName=Version_6"</screen></para>
-        <para><emphasis role="bold">Sample response:</emphasis>The response of this api will be the import summary when the version is imported.
-          <screen>{
-            "importReport":{
-            "status":"WARNING",
-            "typeReports":[
-                {
-                    "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-                    "stats": {
-                    "total": 4,
-                    "created": 4,
-                    "updated": 0,
-                    "deleted": 0,
-                    "ignored": 0
-                },
-                "objectReports": [
-                    {
-                        "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-                        "index": 0,
-                        "errorReports": [
-                            {
-                                "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object
-                                            null [TDHKlu97e6r] (ProgramTrackedEntityAttribute) for association
-                                            `trackedEntityAttribute`.",
-                                "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-                                "errorCode": "E5002"
-                            }
-                        ]
-                    }, {
-                        "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-                        "index": 1,
-                        "errorReports": [
-                            {
-                                "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object
-                                            null [vuXZNwzxquV] (ProgramTrackedEntityAttribute) for association
-                                            `trackedEntityAttribute`.",
-                                "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-                                "errorCode": "E5002"
-                            }
-                        ]
-                    }, {
-                        "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-                        "index": 2,
-                        "errorReports": [
-                            {
-                                "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object
-                                            null [ZdmxgXZuczS] (ProgramTrackedEntityAttribute) for association
-                                            `trackedEntityAttribute`.",
-                                "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-                                "errorCode": "E5002"
-                            }
-                        ]
-                    }, {
-                        "klass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-                        "index": 3,
-                        "errorReports": [
-                            {
-                                "message": "Invalid reference [lAyiM8iBECP] (TrackedEntityAttribute) on object
-                                            null [uy4ggiS0YyA] (ProgramTrackedEntityAttribute) for association
-                                            `trackedEntityAttribute`.",
-                                "mainKlass": "org.hisp.dhis.program.ProgramTrackedEntityAttribute",
-                                "errorCode": "E5002"
-                            }
-                        ]
-                    }
-                ]
-            }, {
-                "klass": "org.hisp.dhis.program.Program",
-                "stats": {
-                "total": 1,
-                "created": 1,
-                "updated": 0,
-                "deleted": 0,
-                "ignored": 0
-            },
-            "objectReports": [
-                {
-                    "klass": "org.hisp.dhis.program.Program",
-                    "index": 0,
-                    "errorReports": [
-                        {
-                            "message": "Invalid reference null null [I54AmnAohza] (User) on object program_5
-                                        [LZ2X0y9INqx] (Program) for association `user`.",
-                            "mainKlass": "org.hisp.dhis.program.Program",
-                            "errorCode": "E5002"
-                        }
-                    ]
-                }
-            ]
-            },  {
-                    "klass": "org.hisp.dhis.dataelement.DataElementCategory",
-                    "stats": {
-                    "total": 0,
-                    "created": 0,
-                    "updated": 0,
-                    "deleted": 0,
-                    "ignored": 0
-                }
-            }, {
-                    "klass": "org.hisp.dhis.program.ProgramStage",
-                    "stats": {
-                    "total": 1,
-                    "created": 1,
-                    "updated": 0,
-                    "deleted": 0,
-                    "ignored": 0
-                },
-                    "objectReports": [
-                        {
-                            "klass": "org.hisp.dhis.program.ProgramStage",
-                            "index": 0,
-                            "uid": "Zo88TPlmqlH"
-                        }
-                    ]
-                }
-            ],
-            "stats":{"total":6, "created":6, "updated":0, "deleted":0, "ignored":0}
-            },
-                "metadataVersion":{
-                    "name":"Version_35",
-                    "created":"2016-06-21T13:51:35.277+0000",
-                    "lastUpdated":"2016-06-30T06:34:01.751+0000",
-                    "externalAccess":false,
-                    "publicAccess":"--------",
-                    "user":{
-                        "code":"admin",
-                        "name":"admin admin",
-                        "created":"2016-06-21T06:55:07.960+0000",
-                        "lastUpdated":"2016-06-30T04:52:06.791+0000",
-                        "externalAccess":false,
-                        "displayName":"admin admin",
-                        "id":"M5zQapPyTZI"
-                    },
-                "displayName":"Version_35",
-                "importDate":"2016-06-30T06:34:01.750+0000",
-                "type":"BEST_EFFORT",
-                "hashCode":"c75683eb7bb3cd46413c1c94bc2b5f8c",
-                "id":"jphRaaF2nb4"
-                }
-            }
-          </screen></para>
       </section>
   </section>
   <section>
@@ -9980,12 +9826,12 @@ interval=WEEK" -u admin:district</screen>
     </section>
   </section>
   <section>
-    <title>Program Message Service</title>
+    <title>Program Messages</title>
     <para>Program Message holds reminders and alerts data related to specific Program or Program
       Stage. Web APIs are exposed to handle CRUD operations on Program Messages and we will go
       through them in the below section.</para>
     <section>
-      <title>Sending/Posting Program Message</title>
+      <title>Sending program messages</title>
       <para>Program Message holds alert or reminder data that needs to be sent to concerned person
         via Delivery channels. Currently we are supporting only two Delivery Channels SMS and EMAIL
         but more can be added if needed. In order to use these channels, SMS and EMAIL setting
@@ -9995,39 +9841,39 @@ interval=WEEK" -u admin:district</screen>
         Delivery Channel specified in payload. Raw phone Numbers and email Addresses can also be
         used as recipients. <itemizedlist>
           <listitem>
-            <para> TrackedEntityInstance</para>
+            <para>Tracked entity instance</para>
           </listitem>
           <listitem>
-            <para>OrganisationUnit</para>
+            <para>Organisation unit</para>
           </listitem>
           <listitem>
-            <para>List of PhoneNumbers</para>
+            <para>List of phone numbers</para>
           </listitem>
           <listitem>
-            <para>List of EmailAddresses</para>
+            <para>List of email addresses</para>
           </listitem>
-        </itemizedlist> Below is the sample json payload for sending messages using POST. </para>
+        </itemizedlist> Below is the sample json payload for sending messages using the POST method. </para>
       <screen>/api/24/messages/</screen>
       <screen>{
     &quot;recipients&quot;: {
-      &quot;trackedEntityInstanceId&quot;{
-      &quot;id&quot;: &quot;UN810PwyVYO&quot;
-      }
+        &quot;trackedEntityInstanceId&quot;{
+        &quot;id&quot;: &quot;UN810PwyVYO&quot;
+        }
     },    
     &quot;programStageInstance&quot;: {
-    &quot;id&quot;: &quot;pSllsjpfLH2&quot;
+        &quot;id&quot;: &quot;pSllsjpfLH2&quot;
     },
     &quot;deliveryChannels&quot;: [
-    &quot;SMS&quot;
+        &quot;SMS&quot;
     ],
-    &quot;text&quot;: &quot;sms testing&quot;,
-    &quot;subject&quot;: &quot;Alert&quot;,
+    &quot;text&quot;: &quot;An outbreak has been detected&quot;,
+    &quot;subject&quot;: &quot;Outbreak alert&quot;,
     &quot;storeCopy&quot;: false
-  }</screen>
+}</screen>
     </section>
 
     <section>
-      <title>API End Points</title>
+      <title>Retrieving and deleting program messages</title>
       <para>The list of messages can be retrieved using GET.</para>
       <screen>GET /api/24/messages</screen>
       <para>One particular message can also be retreived using GET.</para>
@@ -10036,9 +9882,9 @@ interval=WEEK" -u admin:district</screen>
       <screen>DELETE /api/24/messages/{uid}</screen>
     </section>
     <section>
-      <title>Query Program Messages</title>
-      <para>API supports program message queries based on request parameters.</para>
-      <para>Messages can be filtered based on below mentioned query parameters. All requests should
+      <title>Querying program messages</title>
+      <para>The program message API supports program message queries based on request
+        parameters. Messages can be filtered based on below mentioned query parameters. All requests should
         use the GET HTTP verb for retreiving information. <table frame="all">
           <title>Query program messages API</title>
           <tgroup cols="2">
@@ -10046,7 +9892,7 @@ interval=WEEK" -u admin:district</screen>
             <colspec colname="Example" colnum="2" colwidth="3.0*"/>
             <thead>
               <row>
-                <entry>Paramater</entry>
+                <entry>Parameter</entry>
                 <entry>Example</entry>
               </row>
             </thead>

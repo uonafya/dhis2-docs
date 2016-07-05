@@ -1,0 +1,175 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.hisp.dhis</groupId>
+	<artifactId>dhis-documentation-docbook</artifactId>
+	<name>DHIS2 Documentation</name>
+	<version>2.24</version>
+	<description>DHIS 2 Documentation</description>
+	<packaging>pom</packaging>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>docbkx.snapshots</id>
+			<name>Maven Plugin Snapshots</name>
+			<url>http://docbkx-tools.sourceforge.net/snapshots/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>docbook-utils</id>
+			<name>DocBook Utils</name>
+			<url>http://docbook-utils.sourceforge.net/maven2</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+	<properties>
+		<docbkx.plugin.version>2.0.17</docbkx.plugin.version>
+		<docbook.source>${project.basedir}/src/docbkx</docbook.source>
+		<docbook.target>${project.basedir}/target/site</docbook.target>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>1.1.1</version>
+				<executions>
+					<execution>
+						<id>enforce</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>[3.0.5,)</version>
+								</requireMavenVersion>
+								<requireJavaVersion>
+									<version>[1.6,)</version>
+								</requireJavaVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!--This section dynamically builds the build.properties which is replaced inside the document preface -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>revision</id>
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<tstamp>
+									<format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
+								</tstamp>
+								<exec executable="git" outputproperty="revision" failifexecutionfails="false">
+									<arg line="rev-list --count HEAD"/>
+								</exec>
+								<echo file="${project.basedir}/src/docbkx/build.properties" message="&lt;revhistory  xmlns=&apos;http://docbook.org/ns/docbook&apos;&gt;&lt;revision&gt;&lt;revnumber&gt;${revision}&lt;/revnumber&gt;&lt;date&gt;${now}&lt;/date&gt;&lt;revremark&gt;Version ${project.version}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;"/>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>submodules</id>
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<exec executable="git" failifexecutionfails="true">
+									<arg line="submodule update --init --recursive"/>
+								</exec>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.agilejava.docbkx</groupId>
+				<artifactId>docbkx-maven-plugin</artifactId>
+				<version>${docbkx.plugin.version}</version>
+				<configuration>
+					<xincludeSupported>true</xincludeSupported>
+					<bodyFontFamily>DejaVu Sans</bodyFontFamily>
+					<fonts>
+						<font>
+							<name>DejaVu Sans</name>
+							<style>normal</style>
+							<weight>normal</weight>
+							<embedFile>${project.basedir}/src/fonts/DejaVuSans.ttf</embedFile>
+							<metricsFile>${project.basedir}/target/fonts/DejaVuSans-metrics.xml</metricsFile>
+						</font>
+					</fonts>
+				</configuration>
+				<executions>
+					<!-- Single page HTML -->
+					<execution>
+						<id>html-docs-en</id>
+						<phase>package</phase>
+						<goals>
+							<goal>generate-html</goal>
+						</goals>
+						<configuration>
+							<admonGraphics>1</admonGraphics>
+							<admonGraphicsPath>resources/images/admon/</admonGraphicsPath>
+							<htmlStylesheet>resources/css/docbook_bsd.css</htmlStylesheet>
+							<glossaryCollection>resources/glossary_en.xml</glossaryCollection>
+							<sectionAutolabel>1</sectionAutolabel>
+							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
+							<chunkedOutput>false</chunkedOutput>
+							<includes>dhis2_user_manual_en.xml,dhis2_android_user_man.xml,dhis2_end_user_manual.xml,dhis2_implementation_guide_en.xml,ccei_user_manual_en.xml,dhis2_developer_manual.xml</includes>
+							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>net.sf.docbook</groupId>
+						<artifactId>docbook-xml</artifactId>
+						<version>5.0-all</version>
+						<classifier>resources</classifier>
+						<type>zip</type>
+						<scope>runtime</scope>
+					</dependency>
+					<dependency>
+						<groupId>net.sf.offo</groupId>
+						<artifactId>fop-hyph</artifactId>
+						<version>1.2</version>
+						<scope>runtime</scope>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>com.agilejava.docbkx</groupId>
+				<artifactId>docbkx-fop-support</artifactId>
+				<version>${docbkx.plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<ansi>false</ansi>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
