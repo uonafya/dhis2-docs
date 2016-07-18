@@ -376,6 +376,7 @@
 							</postProcess>
 						</configuration>
 					</execution>
+					<!-- PDF User docs -->
 					<execution>
 						<id>pdf-docs-en-user</id>
 						<phase>package</phase>
@@ -387,6 +388,11 @@
 							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
+							<preProcess>
+							   <copy todir="target/docbkx/pdf/resources/images">
+							   <fileset dir="src/docbkx/en/resources/images" />
+							   </copy>
+							</preProcess>
 							<includes>dhis2_user_manual_en.xml</includes>
 							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
 							<postProcess>

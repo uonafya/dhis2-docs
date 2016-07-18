@@ -21,9 +21,10 @@
                 
 <xsl:import href="urn:docbkx:stylesheet"/>
 
-<!-- 
-<xsl:param name="draft.mode">yes</xsl:param>
- -->
+
+<xsl:param name="img.src.path">target/docbkx/pdf/</xsl:param>
+<xsl:param name="keep.relative.image.uris">false</xsl:param> 
+
 
 <!--###################################################
                       Extensions
