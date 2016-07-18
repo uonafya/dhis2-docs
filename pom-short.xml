@@ -69,7 +69,7 @@
 						<id>revision</id>
 						<phase>package</phase>
 						<configuration>
-							<tasks>
+							<target>
 								<tstamp>
 									<format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
 								</tstamp>
@@ -77,7 +77,7 @@
 									<arg line="rev-list --count HEAD"/>
 								</exec>
 								<echo file="${project.basedir}/src/docbkx/build.properties" message="&lt;revhistory  xmlns=&apos;http://docbook.org/ns/docbook&apos;&gt;&lt;revision&gt;&lt;revnumber&gt;${revision}&lt;/revnumber&gt;&lt;date&gt;${now}&lt;/date&gt;&lt;revremark&gt;Version ${project.version}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;"/>
-							</tasks>
+							</target>
 						</configuration>
 						<goals>
 							<goal>run</goal>
@@ -87,11 +87,11 @@
 						<id>submodules</id>
 						<phase>package</phase>
 						<configuration>
-							<tasks>
+							<target>
 								<exec executable="git" failifexecutionfails="true">
 									<arg line="submodule update --init --recursive"/>
 								</exec>
-							</tasks>
+							</target>
 						</configuration>
 						<goals>
 							<goal>run</goal>
