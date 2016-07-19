@@ -70,12 +70,10 @@
 						<id>revision</id>
 						<phase>package</phase>
 						<configuration>
-							<target name="get-timestamp">
+							<target name="build-properties">
 								<tstamp>
 									<format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
 								</tstamp>
-							</target>
-							<target name="build-properties">
 								<exec executable="git" outputproperty="revision" failifexecutionfails="true">
 									<arg line="rev-list --count HEAD"/>
 								</exec>
