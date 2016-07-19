@@ -1,4 +1,6 @@
-﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.hisp.dhis</groupId>
 	<artifactId>dhis-documentation-docbook</artifactId>
@@ -69,10 +71,12 @@
 						<id>revision</id>
 						<phase>package</phase>
 						<configuration>
-							<target>
+							<target name="get-timestamp">
 								<tstamp>
 									<format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
 								</tstamp>
+							</target>
+							<target name="init-git-submodules">
 								<exec executable="git" outputproperty="revision" failifexecutionfails="false">
 									<arg line="rev-list --count HEAD"/>
 								</exec>
@@ -87,7 +91,7 @@
 						<id>submodules</id>
 						<phase>package</phase>
 						<configuration>
-							<target>
+							<target name="init-git-submodules">
 								<exec executable="git" failifexecutionfails="true">
 									<arg line="submodule update --init --recursive"/>
 								</exec>

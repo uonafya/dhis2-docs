@@ -64,16 +64,19 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
 				<executions>
 					<execution>
 						<id>revision</id>
 						<phase>package</phase>
 						<configuration>
-							<target>
+							<target name="get-timestamp">
 								<tstamp>
 									<format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
 								</tstamp>
-								<exec executable="git" outputproperty="revision" failifexecutionfails="false">
+							</target>
+							<target name="build-properties">
+								<exec executable="git" outputproperty="revision" failifexecutionfails="true">
 									<arg line="rev-list --count HEAD"/>
 								</exec>
 								<echo file="${project.basedir}/src/docbkx/build.properties" message="&lt;revhistory  xmlns=&apos;http://docbook.org/ns/docbook&apos;&gt;&lt;revision&gt;&lt;revnumber&gt;${revision}&lt;/revnumber&gt;&lt;date&gt;${now}&lt;/date&gt;&lt;revremark&gt;Version ${project.version}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;"/>
@@ -87,7 +90,7 @@
 						<id>submodules</id>
 						<phase>package</phase>
 						<configuration>
-							<target>
+							<target name="init-git-submodules">
 								<exec executable="git" failifexecutionfails="true">
 									<arg line="submodule update --init --recursive"/>
 								</exec>
