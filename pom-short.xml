@@ -71,12 +71,10 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 						<id>revision</id>
 						<phase>package</phase>
 						<configuration>
-							<target name="get-timestamp">
+							<target name="build-properties">
 								<tstamp>
 									<format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
 								</tstamp>
-							</target>
-							<target name="init-git-submodules">
 								<exec executable="git" outputproperty="revision" failifexecutionfails="false">
 									<arg line="rev-list --count HEAD"/>
 								</exec>
