@@ -78,7 +78,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 								<exec executable="git" outputproperty="revision" failifexecutionfails="false">
 									<arg line="rev-list --count HEAD"/>
 								</exec>
-								<echo file="${project.basedir}/src/docbkx/build.properties" message="&lt;revhistory  xmlns=&apos;http://docbook.org/ns/docbook&apos;&gt;&lt;revision&gt;&lt;revnumber&gt;${revision}&lt;/revnumber&gt;&lt;date&gt;${now}&lt;/date&gt;&lt;revremark&gt;Version ${project.version}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;"/>
+								<echo file="${project.basedir}/src/docbkx/en/content/bookinfo/build.properties" message="&lt;revhistory  xmlns=&apos;http://docbook.org/ns/docbook&apos;&gt;&lt;revision&gt;&lt;revnumber&gt;${revision}&lt;/revnumber&gt;&lt;date&gt;${now}&lt;/date&gt;&lt;revremark&gt;Version ${project.version}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;"/>
 							</target>
 						</configuration>
 						<goals>
