@@ -8,7 +8,7 @@
     <xsl:variable name="quote">"</xsl:variable>
     <xsl:template match="/">
         <xsl:text>
-<![CDATA[fmsgid ""
+<![CDATA[msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2016-05-20 09:53+0200\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"]]>
         </xsl:text>
+        <xsl:text>&#xa;</xsl:text>
         <xsl:for-each select="//db:glossary/db:glossdiv/db:glossentry">
           <xsl:text>msgid </xsl:text> 
             <xsl:value-of select="$quote"/>
