@@ -21,9 +21,10 @@
                 
 <xsl:import href="urn:docbkx:stylesheet"/>
 
-<!-- 
-<xsl:param name="draft.mode">yes</xsl:param>
- -->
+
+<xsl:param name="img.src.path">target/docbkx/pdf/</xsl:param>
+<xsl:param name="keep.relative.image.uris">false</xsl:param> 
+
 
 <!--###################################################
                       Extensions
@@ -393,13 +394,15 @@
                       Table Of Contents
     ################################################### -->   
 
+    <xsl:param name="generate.section.toc.level" select="1"/>
+
     <!-- Generate the TOCs for named components only -->
     <xsl:param name="generate.toc">
-        book   toc
+        book   toc,title
     </xsl:param>
     
     <!-- Show only Sections up to level 3 in the TOCs -->
-    <xsl:param name="toc.section.depth">3</xsl:param>
+    <xsl:param name="toc.section.depth" select="3"/>
     
     <!-- Dot and Whitespace as separator in TOC between Label and Title-->
     <xsl:param name="autotoc.label.separator" select="'.  '"/>
