@@ -3101,7 +3101,13 @@ http://server/api/24/constants/ID</screen></para>
             </row>
             <row>
               <entry>lastUpdated</entry>
-              <entry>Include only data values which are updated after the given time stamp.</entry>
+              <entry>Include only data values which are updated since the given time stamp.</entry>
+            </row>
+            <row>
+              <entry>lastUpdatedDuration</entry>
+              <entry>Include only data values which are updated within the given duration. The
+                format is &lt;value>&lt;time-unit>, where the supported time units are "d" (days),
+                "h" (hours), "m" (minutes) and "s" (seconds).</entry>
             </row>
             <row>
               <entry>limit</entry>
@@ -3154,6 +3160,9 @@ http://server/api/24/constants/ID</screen></para>
       <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;dataSet=BfMAe6Itzgt&amp;startDate=2013-01-01
 &amp;endDate=2013-01-31&amp;orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; 
 -H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
+      <para>To retrieve data values which have been created or updated within the last 10 days you
+        can make a request like this:</para>
+      <screen>https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;orgUnit=DiszpKrYNg8&amp;lastUpdatedDuration=10d</screen>
       <para>The response will look like this:</para>
       <screen>&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
 &lt;dataValueSet xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot; dataSet=&quot;pBOMPrpg1QX&quot;
