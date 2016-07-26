@@ -3049,138 +3049,6 @@ http://server/api/24/constants/ID</screen></para>
       </table>
     </section>
     <section>
-      <title>Sending, reading and deleting individual data values</title>
-      <para>This example will show how to send individual data values to be saved in a request. This
-        can be achieved by sending a <emphasis role="italic">POST</emphasis> request to the
-          <emphasis role="italic">dataValues</emphasis> resource:</para>
-      <screen>https://play.dhis2.org/demo/api/24/dataValues</screen>
-      <para>The following query parameters are supported for this resource:</para>
-      <table frame="all">
-        <title>Data values query parameters</title>
-        <tgroup cols="3">
-          <colspec colnum="1" colname="c1" colwidth="1*"/>
-          <colspec colnum="2" colname="c2" colwidth="1.23*"/>
-          <colspec colnum="3" colname="c3" colwidth="4.08*"/>
-          <thead>
-            <row>
-              <entry>Query parameter</entry>
-              <entry>Required</entry>
-              <entry>Description</entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>de</entry>
-              <entry>Yes</entry>
-              <entry>Data element identifier</entry>
-            </row>
-            <row>
-              <entry>pe</entry>
-              <entry>Yes</entry>
-              <entry>Period identifier</entry>
-            </row>
-            <row>
-              <entry>ou</entry>
-              <entry>Yes</entry>
-              <entry>Organisation unit identifier</entry>
-            </row>
-            <row>
-              <entry>co</entry>
-              <entry>No</entry>
-              <entry>Category option combo identifier, default will be used if omitted</entry>
-            </row>
-            <row>
-              <entry>cc</entry>
-              <entry>No (must combine with cp)</entry>
-              <entry>Attribute combo identifier</entry>
-            </row>
-            <row>
-              <entry>cp</entry>
-              <entry>No (must combine with cc)</entry>
-              <entry>Attribute option identifiers, separated with ; for multiple values</entry>
-            </row>
-            <row>
-              <entry>value</entry>
-              <entry>No</entry>
-              <entry>Data value</entry>
-            </row>
-            <row>
-              <entry>comment</entry>
-              <entry>No</entry>
-              <entry>Data comment</entry>
-            </row>
-            <row>
-              <entry>followUp</entry>
-              <entry>No</entry>
-              <entry>Follow up on data value, will toggle the current boolean value</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
-      <para>If any of the identifiers given are invalid, if the data value or comment are invalid or
-        if the data is locked, the response will contain the <emphasis role="italic">409
-          Conflict</emphasis> status code and descriptive text message. If the operation lead to a
-        saved or updated value, <emphasis role="italic">200 OK</emphasis> will be returned. An
-        example of a request looks like this:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&amp;value=12&quot;
--X POST -u admin:district -v</screen>
-      <para>This resource also allows a special syntax for associating the value to an attribute
-        option combination. This can be done by sending the identifier of the attribute combination,
-        together with the identifier(s) of the attribute option(s) which the value represents within
-        the combination. An example looks like this:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;ou=DiszpKrYNg8&amp;pe=201308&amp;cc=dzjKKQq0cSO&amp;cp=wbrDrL2aYEc;btOyqprQ9e8&amp;value=26&quot;
--X POST -u admin:district -v</screen>
-      <para>You can retrieve a data value with a request using the <emphasis role="italic"
-          >GET</emphasis> method. The value, comment and followUp params are not applicable in this
-        regard:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&quot;
--X GET -u admin:district -v</screen>
-      <para>You can delete a data value with a request using the <emphasis role="italic"
-          >DELETE</emphasis> method. </para>
-      <section xml:id="datavalue_file">
-        <title>Working with file data values</title>
-        <para>When dealing with data values which have a data element of type <emphasis
-            role="italic">file</emphasis> there is some deviation from the method described above.
-          These data values are special in that the contents of the value is a UID reference to a
-            <emphasis role="italic">FileResource</emphasis> object instead of a self-contained
-          constant. These data values will behave just like other data values which store text
-          content, but should be handled differently in order to produce meaningful input and
-          output.</para>
-        <para>The process of storing one of these data values roughly goes like this:<orderedlist>
-            <listitem>
-              <para>Upload the file to the <emphasis role="italic">/api/24/fileResources</emphasis>
-                endpoint as described in <xref linkend="fileresource"/>.</para>
-            </listitem>
-            <listitem>
-              <para>Retrieve the &apos;id&apos; property of the returned <emphasis role="italic"
-                  >FileResource</emphasis>.</para>
-            </listitem>
-            <listitem>
-              <para>Store the retrieved id <emphasis role="bold">as the value</emphasis> to the data
-                value using any of the methods described above.</para>
-            </listitem>
-          </orderedlist></para>
-        <para>Only one-to-one relationships between data values and file resources are allowed. This
-          is enforced internally so that saving a file resource id in several data values is not
-          allowed and will return an error. Deleting the data value will delete the referenced file
-          resource. Direct deletion of file resources are not possible.</para>
-        <para>The data value can now be retrieved as any other but the returned data will be the UID
-          of the file resource. In order to retrieve the actual contents (meaning the file which is
-          stored in the file resource mapped to the data value) a GET request must be made to
-            <emphasis role="italic">api/dataValues/files</emphasis> mirroring the query parameters
-          as they would be for the data value itself. The <emphasis role="italic"
-            >dataValues/files</emphasis> endpoint only supports GET requests.</para>
-        <para>It is worth noting that due to the underlying storage mechanism working asynchronously
-          the file content might not be immediately ready for download from the <emphasis
-            role="italic">dataValues/files</emphasis> endpoint. This is especially true for large
-          files which might require time consuming uploads happening in the background to a an
-          external file store (depending on the system configuration). Retrieving the file resource
-          meta-data from the <emphasis role="italic">api/fileResources/&lt;id&gt;</emphasis>
-          endpoint allows checking the <emphasis role="italic">storageStatus</emphasis> of the
-          content before attempting to download it.</para>
-      </section>
-    </section>
-    <section>
       <title>Reading data values</title>
       <para>This section explains how to retrieve data values from the Web API by interacting with
         the <emphasis role="italic">dataValueSets</emphasis> resource. Data values can be retrieved
@@ -3205,6 +3073,10 @@ http://server/api/24/constants/ID</screen></para>
             <row>
               <entry>dataSet</entry>
               <entry>Data set identifier. Can be repeated any number of times.</entry>
+            </row>
+            <row>
+              <entry>dataElementGroup</entry>
+              <entry>Data element group identifier. Can be repeated any number of times.</entry>
             </row>
             <row>
               <entry>period</entry>
@@ -3336,6 +3208,138 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
             <para>Limit cannot be less than zero.</para>
           </listitem>
         </itemizedlist></para>
+    </section>
+    <section>
+      <title>Sending, reading and deleting individual data values</title>
+      <para>This example will show how to send individual data values to be saved in a request. This
+        can be achieved by sending a <emphasis role="italic">POST</emphasis> request to the
+          <emphasis role="italic">dataValues</emphasis> resource:</para>
+      <screen>https://play.dhis2.org/demo/api/24/dataValues</screen>
+      <para>The following query parameters are supported for this resource:</para>
+      <table frame="all">
+        <title>Data values query parameters</title>
+        <tgroup cols="3">
+          <colspec colnum="1" colname="c1" colwidth="1*"/>
+          <colspec colnum="2" colname="c2" colwidth="1.23*"/>
+          <colspec colnum="3" colname="c3" colwidth="4.08*"/>
+          <thead>
+            <row>
+              <entry>Query parameter</entry>
+              <entry>Required</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>de</entry>
+              <entry>Yes</entry>
+              <entry>Data element identifier</entry>
+            </row>
+            <row>
+              <entry>pe</entry>
+              <entry>Yes</entry>
+              <entry>Period identifier</entry>
+            </row>
+            <row>
+              <entry>ou</entry>
+              <entry>Yes</entry>
+              <entry>Organisation unit identifier</entry>
+            </row>
+            <row>
+              <entry>co</entry>
+              <entry>No</entry>
+              <entry>Category option combo identifier, default will be used if omitted</entry>
+            </row>
+            <row>
+              <entry>cc</entry>
+              <entry>No (must combine with cp)</entry>
+              <entry>Attribute combo identifier</entry>
+            </row>
+            <row>
+              <entry>cp</entry>
+              <entry>No (must combine with cc)</entry>
+              <entry>Attribute option identifiers, separated with ; for multiple values</entry>
+            </row>
+            <row>
+              <entry>value</entry>
+              <entry>No</entry>
+              <entry>Data value</entry>
+            </row>
+            <row>
+              <entry>comment</entry>
+              <entry>No</entry>
+              <entry>Data comment</entry>
+            </row>
+            <row>
+              <entry>followUp</entry>
+              <entry>No</entry>
+              <entry>Follow up on data value, will toggle the current boolean value</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>If any of the identifiers given are invalid, if the data value or comment are invalid or
+        if the data is locked, the response will contain the <emphasis role="italic">409
+          Conflict</emphasis> status code and descriptive text message. If the operation lead to a
+        saved or updated value, <emphasis role="italic">200 OK</emphasis> will be returned. An
+        example of a request looks like this:</para>
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&amp;value=12&quot;
+-X POST -u admin:district -v</screen>
+      <para>This resource also allows a special syntax for associating the value to an attribute
+        option combination. This can be done by sending the identifier of the attribute combination,
+        together with the identifier(s) of the attribute option(s) which the value represents within
+        the combination. An example looks like this:</para>
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;ou=DiszpKrYNg8&amp;pe=201308&amp;cc=dzjKKQq0cSO&amp;cp=wbrDrL2aYEc;btOyqprQ9e8&amp;value=26&quot;
+-X POST -u admin:district -v</screen>
+      <para>You can retrieve a data value with a request using the <emphasis role="italic"
+          >GET</emphasis> method. The value, comment and followUp params are not applicable in this
+        regard:</para>
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&quot;
+-X GET -u admin:district -v</screen>
+      <para>You can delete a data value with a request using the <emphasis role="italic"
+          >DELETE</emphasis> method. </para>
+      <section xml:id="datavalue_file">
+        <title>Working with file data values</title>
+        <para>When dealing with data values which have a data element of type <emphasis
+            role="italic">file</emphasis> there is some deviation from the method described above.
+          These data values are special in that the contents of the value is a UID reference to a
+            <emphasis role="italic">FileResource</emphasis> object instead of a self-contained
+          constant. These data values will behave just like other data values which store text
+          content, but should be handled differently in order to produce meaningful input and
+          output.</para>
+        <para>The process of storing one of these data values roughly goes like this:<orderedlist>
+            <listitem>
+              <para>Upload the file to the <emphasis role="italic">/api/24/fileResources</emphasis>
+                endpoint as described in <xref linkend="fileresource"/>.</para>
+            </listitem>
+            <listitem>
+              <para>Retrieve the &apos;id&apos; property of the returned <emphasis role="italic"
+                  >FileResource</emphasis>.</para>
+            </listitem>
+            <listitem>
+              <para>Store the retrieved id <emphasis role="bold">as the value</emphasis> to the data
+                value using any of the methods described above.</para>
+            </listitem>
+          </orderedlist></para>
+        <para>Only one-to-one relationships between data values and file resources are allowed. This
+          is enforced internally so that saving a file resource id in several data values is not
+          allowed and will return an error. Deleting the data value will delete the referenced file
+          resource. Direct deletion of file resources are not possible.</para>
+        <para>The data value can now be retrieved as any other but the returned data will be the UID
+          of the file resource. In order to retrieve the actual contents (meaning the file which is
+          stored in the file resource mapped to the data value) a GET request must be made to
+            <emphasis role="italic">api/dataValues/files</emphasis> mirroring the query parameters
+          as they would be for the data value itself. The <emphasis role="italic"
+            >dataValues/files</emphasis> endpoint only supports GET requests.</para>
+        <para>It is worth noting that due to the underlying storage mechanism working asynchronously
+          the file content might not be immediately ready for download from the <emphasis
+            role="italic">dataValues/files</emphasis> endpoint. This is especially true for large
+          files which might require time consuming uploads happening in the background to a an
+          external file store (depending on the system configuration). Retrieving the file resource
+          meta-data from the <emphasis role="italic">api/fileResources/&lt;id&gt;</emphasis>
+          endpoint allows checking the <emphasis role="italic">storageStatus</emphasis> of the
+          content before attempting to download it.</para>
+      </section>
     </section>
   </section>
   <section>
