@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<section version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook" xml:id="mobile_sms_service">
+  <title>SMS Service</title>
+  <para>SMS Service is a generic service used for sending/receiving SMS. Any other DHIS2 module can include this service and utilize it to send and receive SMS from users or workers in the field.</para>
+  <section>
+    <title>Setting up SMS service</title>
+    <para>There are few pre-requisites in order to make this service functional. There are two ways to complete these steps. One way is to configure gateway from the GUI in Mobile Configuration Module. The other
+    way is to use SMS Web Api.</para>
+    <itemizedlist>
+      <listitem>
+        <para>Configure SMS Gateway</para>
+      </listitem>
+    </itemizedlist>
+    <section>
+      <title>Configure SMS Gateway</title>
+      <para>There are five different types of Gateways supported by SMS Service. SMS can be sent if any one of the gateway is configured. If more than one gateways are present, then they will be used in round-robin fashion for load balancing.
+      There are different parameters for different type of gateway. The Gateway can be configured in GUI in Mobile Configuration Module as shown in the figure. More information about parameters needed to configure 
+      gateway can be found in <link linkend="gateway.configuration">Gateway Configuraitons</link></para>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="40%" align="center" fileref="resources/images/dhis2_mobile_sms/gateway_configurations.png"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </section>
+    
+    
+    <section>
+      <title>Configure GenericHttp Gateway</title>
+      <para>Many DHIS2 instances are using GenericHttpGateway to connect to their local gateways. These local gateways provides HTTP APIs for sending SMS. In new GenericHttpGateway it is now possible to configure url parameters provided in their APIs. For example
+        <uri>http://gateway.com/sendMessage?username=AA&amp;password=xxxxx&amp;message=testing&amp;msisdn=9999</uri>. In this url username, password, message, msisdn are parameters that are required by external gateways. Now in GenericHttp these parameters are configurable which was not possible in previous releases. 
+      Making is configurable will help DHIS2 to interact with other gateways which have different url formats.
+      </para>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="40%" align="center" fileref="resources/images/dhis2_mobile_sms/generichttp-configuration.png"/>
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </section>
+    
+    
+  </section>
+  <section xml:id="gateway.configuration">
+    <title>Gateway Configurations</title>
+    <para>Below table shows the parameters required for configuring gateway.</para>
+    <table frame="all">
+      <title>Gateway Configuration Parameters</title>
+      <tgroup cols="5">
+        <colspec colname="c1" colnum="1" colwidth="5.52*"/>
+        <colspec colname="c2" colnum="2" colwidth="5.52*"/>
+        <colspec colname="c3" colnum="3" colwidth="5.52*"/>
+        <colspec colname="c4" colnum="4" colwidth="5.52*"/>
+        <colspec colname="c5" colnum="5" colwidth="5.52*"/>
+        
+        
+        <thead>
+          <row>
+            <entry>Parameter</entry>
+            <entry>BulkSMS  Gateway</entry>
+            <entry>Clickatell Gateway</entry>
+            <entry>Generic HTTP Gateway</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Gateway Name</entry>         
+            <entry>Optional</entry>
+            <entry>Optional</entry>
+            <entry>Optional</entry>
+            <entry>Used as gateway identity. Default name will be stored in case this parameter is not configured. Its use is recommended</entry>
+          </row>
+          <row>
+            <entry>User Name</entry>         
+            <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Used for API authentication</entry>
+          </row>
+          <row>
+            <entry>Password</entry>         
+            <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Required</entry>
+            <entry>Used for API authentication</entry>
+          </row>
+          <row>
+            <entry>Auth-Token</entry>         
+            <entry>N/A</entry>
+            <entry>Required</entry>
+            <entry>N/A</entry>
+            <entry>Used for API authentication</entry>
+          </row>
+          <row>
+            <entry>MessageParameter</entry>         
+            <entry>N/A</entry>
+            <entry>N/A</entry>
+            <entry>Required</entry>
+            <entry>Message query parameter. For example http://gateway.com?<emphasis role="italic">message</emphasis>=Hi</entry>
+          </row>
+          <row>
+            <entry>RecipientParameter</entry>         
+            <entry>N/A</entry>
+            <entry>N/A</entry>
+            <entry>Required</entry>
+            <entry>Recipient query parameter. For example http://gateway.com?<emphasis role="italic">phoneNumber</emphasis>=47XXXXX</entry>
+          </row>
+          <row>
+            <entry>URL Template</entry>         
+            <entry>N/A</entry>
+            <entry>N/A</entry>
+            <entry>Required</entry>
+            <entry>Url Tempalte is only required in case of GenericHttpGateway . For example "http://smsgatewa1.com"</entry>
+          </row>
+
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+</section>
+

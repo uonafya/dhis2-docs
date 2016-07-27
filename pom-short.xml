@@ -66,6 +66,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
 				<executions>
 					<execution>
 						<id>revision</id>
@@ -78,7 +79,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 								<exec executable="git" outputproperty="revision" failifexecutionfails="false">
 									<arg line="rev-list --count HEAD"/>
 								</exec>
-								<echo file="${project.basedir}/src/docbkx/build.properties" message="&lt;revhistory  xmlns=&apos;http://docbook.org/ns/docbook&apos;&gt;&lt;revision&gt;&lt;revnumber&gt;${revision}&lt;/revnumber&gt;&lt;date&gt;${now}&lt;/date&gt;&lt;revremark&gt;Version ${project.version}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;"/>
+								<echo file="${project.basedir}/src/docbkx/en/content/bookinfo/build.properties" message="&lt;revhistory  xmlns=&apos;http://docbook.org/ns/docbook&apos;&gt;&lt;revision&gt;&lt;revnumber&gt;${revision}&lt;/revnumber&gt;&lt;date&gt;${now}&lt;/date&gt;&lt;revremark&gt;Version ${project.version}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;"/>
 							</target>
 						</configuration>
 						<goals>
@@ -134,7 +135,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 							<sectionAutolabel>1</sectionAutolabel>
 							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 							<chunkedOutput>false</chunkedOutput>
-							<includes>dhis2_user_manual_en.xml,dhis2_android_user_man.xml,dhis2_end_user_manual.xml,dhis2_implementation_guide_en.xml,ccei_user_manual_en.xml,dhis2_developer_manual.xml</includes>
+							<includes>dhis2_user_manual_en.xml,dhis2_android_user_man.xml,dhis2_end_user_manual.xml,dhis2_implementation_guide.xml,ccei_user_manual_en.xml,dhis2_developer_manual.xml</includes>
 							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
 						</configuration>
 					</execution>

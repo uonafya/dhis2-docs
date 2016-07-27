@@ -4,7 +4,7 @@
 	<artifactId>dhis-documentation-docbook</artifactId>
 	<name>DHIS2 Documentation</name>
 	<version>2.24</version>
-	<description>DHIS 2 Documentation</description>
+	<description>DHIS2 Documentation</description>
 	<packaging>pom</packaging>
 	<pluginRepositories>
 		<pluginRepository>
@@ -77,7 +77,7 @@
 								<exec executable="git" outputproperty="revision" failifexecutionfails="true">
 									<arg line="rev-list --count HEAD"/>
 								</exec>
-								<echo file="${project.basedir}/src/docbkx/build.properties" message="&lt;revhistory  xmlns=&apos;http://docbook.org/ns/docbook&apos;&gt;&lt;revision&gt;&lt;revnumber&gt;${revision}&lt;/revnumber&gt;&lt;date&gt;${now}&lt;/date&gt;&lt;revremark&gt;Version ${project.version}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;"/>
+								<echo file="${project.basedir}/src/docbkx/en/content/bookinfo/build.properties" message="&lt;revhistory  xmlns=&apos;http://docbook.org/ns/docbook&apos;&gt;&lt;revision&gt;&lt;revnumber&gt;${revision}&lt;/revnumber&gt;&lt;date&gt;${now}&lt;/date&gt;&lt;revremark&gt;Version ${project.version}&lt;/revremark&gt;&lt;/revision&gt;&lt;/revhistory&gt;"/>
 							</target>
 						</configuration>
 						<goals>
@@ -131,7 +131,7 @@
 							<admonGraphics>1</admonGraphics>
 							<admonGraphicsPath>resources/images/admon/</admonGraphicsPath>
 							<htmlStylesheet>resources/css/docbook_bsd.css</htmlStylesheet>
-							<glossaryCollection>resources/glossary_en.xml</glossaryCollection>
+							<glossaryCollection>content/glossary/glossary.xml</glossaryCollection>
 							<sectionAutolabel>1</sectionAutolabel>
 							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 							<chunkedOutput>true</chunkedOutput>
@@ -210,7 +210,7 @@
 							<admonGraphics>1</admonGraphics>
 							<admonGraphicsPath>resources/images/admon/</admonGraphicsPath>
 							<htmlStylesheet>resources/css/docbook_bsd.css</htmlStylesheet>
-							<glossaryCollection>resources/glossary_en.xml</glossaryCollection>
+							<glossaryCollection>content/glossary/glossary.xml</glossaryCollection>
 							<sectionAutolabel>1</sectionAutolabel>
 							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 							<chunkedOutput>true</chunkedOutput>
@@ -246,11 +246,11 @@
 							<admonGraphics>1</admonGraphics>
 							<admonGraphicsPath>resources/images/admon/</admonGraphicsPath>
 							<htmlStylesheet>resources/css/docbook_bsd.css</htmlStylesheet>
-							<glossaryCollection>resources/glossary_en.xml</glossaryCollection>
+							<glossaryCollection>content/glossary/glossary.xml</glossaryCollection>
 							<sectionAutolabel>1</sectionAutolabel>
 							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 							<chunkedOutput>true</chunkedOutput>
-							<includes>dhis2_implementation_guide_en.xml</includes>
+							<includes>dhis2_implementation_guide.xml</includes>
 							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
 							<targetDirectory>${docbook.target}/en/implementer/html</targetDirectory>
 							<postProcess>
@@ -362,17 +362,17 @@
 							<admonGraphics>1</admonGraphics>
 							<admonGraphicsPath>resources/images/admon/</admonGraphicsPath>
 							<htmlStylesheet>resources/css/docbook_bsd.css</htmlStylesheet>
-							<glossaryCollection>resources/glossary_en.xml</glossaryCollection>
+							<glossaryCollection>content/glossary/glossary.xml</glossaryCollection>
 							<sectionAutolabel>1</sectionAutolabel>
 							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 							<chunkedOutput>false</chunkedOutput>
-							<includes>dhis2_user_manual_en.xml,dhis2_android_user_man.xml,dhis2_end_user_manual.xml,dhis2_implementation_guide_en.xml,dhis2_developer_manual.xml</includes>
+							<includes>dhis2_user_manual_en.xml,dhis2_android_user_man.xml,dhis2_end_user_manual.xml,dhis2_implementation_guide.xml,dhis2_developer_manual.xml</includes>
 							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
 							<postProcess>
 								<copy file="target/docbkx/html/dhis2_user_manual_en.html" tofile="${docbook.target}/en/user/html/dhis2_user_manual_en_full.html" />
 								<copy file="target/docbkx/html/dhis2_android_user_man.html" tofile="${docbook.target}/en/android/html/dhis2_android_user_man_full.html" />
 								<copy file="target/docbkx/html/dhis2_end_user_manual.html" tofile="${docbook.target}/en/end-user/html/dhis2_end_user_manual_full.html" />
-								<copy file="target/docbkx/html/dhis2_implementation_guide_en.html" tofile="${docbook.target}/en/implementer/html/dhis2_implementation_guide_en_full.html" />
+								<copy file="target/docbkx/html/dhis2_implementation_guide.html" tofile="${docbook.target}/en/implementer/html/dhis2_implementation_guide_full.html" />
 								<copy file="target/docbkx/html/dhis2_developer_manual.html" tofile="${docbook.target}/en/developer/html/dhis2_developer_manual_full.html" />
 							</postProcess>
 						</configuration>
@@ -432,10 +432,10 @@
 							<foCustomization>${docbook.source}/en/resources/xsl/fop-cust.xsl</foCustomization>
 							<doubleSided>1</doubleSided>
 							<paperType>A4</paperType>
-							<includes>dhis2_implementation_guide_en.xml</includes>
+							<includes>dhis2_implementation_guide.xml</includes>
 							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
 							<postProcess>
-								<copy file="target/docbkx/pdf/dhis2_implementation_guide_en.pdf" todir="${docbook.target}/en/implementer" />
+								<copy file="target/docbkx/pdf/dhis2_implementation_guide.pdf" todir="${docbook.target}/en/implementer" />
 							</postProcess>
 						</configuration>
 					</execution>

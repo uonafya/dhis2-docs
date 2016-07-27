@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Data approval</title>
+  <para>DHIS2 has an optional feature that allows authorized users to approve data that has been entered. It allows data to be reviewed and approved at selected levels in the organisation unit hierarchy, so the approval follows the structure of the hierarchy from lower levels to higher levels.</para>
+  <para>Data is approved for a combination of (a) period, (b) organisation unit and (c) workflow.
+    Data may be approved for the organisation unit for which it is entered, as well as for
+    higher-level organisation units to which the data is aggregated. As part of system settings, you
+    can choose the organisation unit level(s) at which data is approved. It can be approved at
+    higher levels only after it has been approved for all that organisation unit&apos;s descendants
+    at lower levels for the same workflow and period. When you approve a workflow, it approves data
+    for any data sets that have been assigned to that workflow.</para>
+  <para>After a period, organisation unit and workflow combination has been approved, data sets
+    associated with that workflow will be locked for that period and organisation unit, and any
+    further data entry or modification will be prohibited unless it is first un-approved.</para>
+  <para>For example, the following diagram illustrates that data has already been approved for
+    organisation units C and D, for a given period and workflow. It may now be approved for
+    organisation unit B for the same period and workflow. But it is not ready to be approved for
+    organization unit A. Before it can be approved for organisation unit A, it must be approved for
+    B, and for any other children of organisation unit A, for that period and workflow.</para>
+  <figure>
+    <title>Approving at organisation units</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata width="200px" align="center" fileref="resources/images/data_approval/approval_hierarchy.png"/>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <section>
+    <title>Approving and accepting</title>
+    <para>DHIS2 supports two different types of approval processes: either a one-step process where the data is approved at each level, or a two-step process where data is first approved and then accepted at each level. This is illustrated in the following diagram:</para>
+    <figure>
+      <title>Approving and accepting</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="300px" align="center" fileref="resources/images/data_approval/approval_level_steps.png"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>In the one-step process, data is approved at one level, and then approved at the next higher level. Until it is approved at the next higher level, it may be unapproved at the first level. (For example, if the data was approved my mistake, this allows the  approver to undo their mistake.) Once the data is approved at the next higher level, it may not be unapproved at the lower level unless it is first unapproved at the higher level. </para>
+    <para>In the two-step process, data is approved at one level, and then the approval is accepted at the same level. This acceptance is done by a user who is authorized to approve data at the next higher level. Once the data is accepted, it may not be changed or unapproved  unless it is first <emphasis role="italic">unaccepted</emphasis>.</para>
+    <para>The two-step process is not required by DHIS2. It is an optional step for a user reviewing data at the next higher level. It has the benefit of locking the acceptance from the level below, so reviewer does not have to worry that the data could be changing from below while it is being reviewed. It can also be used by the higher-level user to keep track of which lower-level data has already been reviewed.</para>
+  </section>
+  <section>
+    <title>Authorities for approving data</title>
+    <para>To approve data, you must be assigned a role containing one of these  authorities:</para>
+    <itemizedlist>
+<?dbfo keep-together="always" ?>      <listitem>
+        <para><emphasis role="bold">Approve data</emphasis> - You may approve data for the organisation unit(s) to which you are assigned. Note that this authority does not allow you to approve data for lower-levels below the organisation unit(s) to which you are assigned. This is useful to separate the users authorized to approve at one level from the users authorized to approve at levels below.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Approve data at lower levels</emphasis> - Allows you to approve data for all lower levels below the organisation units assigned to you. This is useful if, for example, you are a district-level user whose role includes approving the data for all the facilities within that district, but not for the district itself. If you are assigned this as well as the <emphasis role="italic">Approve data</emphasis> authority, you may approve data at the level of the organisation unit(s) to which you have been assigned, and for any level below.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Accept data at lower levels</emphasis> - Allows you to accept data  for the level just below the organisation unit(s) assigned to you. This authority can be given to the same users as approve data. Or it may be given to different users, if you want to have some users who accept data from the level below, and a different set of users who approve data to go up to the next level above.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section>
+    <title>Configuring data approval</title>
+    <para>In the <emphasis role="italic">Settings</emphasis> section under <emphasis role="italic"
+        >System Approval Settings</emphasis> you can specify the levels at which you want to approve
+      data in the system. Click the Add new button on this page and select the organisation unit
+      level at which you want approvals. It will be added to the list of approval settings. You may
+      configure the system for approving data at every organisation unit level, or only at selected
+      organisation unit levels.</para>
+    <para>Note that when you add a new approval level, you may optionally choose a Category option
+      group set. This feature is discussed later in this chapter.</para>
+    <para>Also under <emphasis role="italic">System Approval Settings</emphasis>, you can define the
+      workflows that will be used for approving data. Each workflow can be associated with one or
+      more approval levels. Any two workflows may operate at all the same approval levels as each
+      other, some of the same and some different levels, or completely different levels.</para>
+    <para>If you want data for a data set to be approved according to a workflow, then assign the
+      workflow to the data set when you add or edit the data set. If you do not want data for a data
+      set to be subject to approval, then do not assign any workflow to that data set. For data sets
+      that you want to approve at the same time as each other, assign them to the same workflow. For
+      data sets that you want to approve independently, assign each data set to its own
+      workflow.</para>
+    <para>On the <emphasis role="italic">System Approval Settings</emphasis> page, you may select
+      the option <emphasis role="italic">Hide unapproved data in analytics</emphasis> to hide
+      unapproved data in reports, pivot table, data visualizer and GIS. If this option is checked,
+      unapproved data will be hidden from users assigned to higher-level organisation units compared
+      to where approval is required. Users who are assigned to organisation units where data is
+      ready for approval can still view the data, as can users assigned to higher-level organisation
+      units if they have the <emphasis role="italic">Approve data at lower levels</emphasis>
+      authority. If this option is not checked, then all data is shown whether approved or
+      not.</para>
+  </section>
+  <section>
+    <title>Data visibility</title>
+  <para>If the option <emphasis role="italic">Hide unapproved data in analytics</emphasis> is
+      enabled, data will be hidden from viewing by users associated with higher levels. When
+      determining whether a data record should be hidden for a specific user, the system associates
+      a user with a specific approval level and compares it to the level to which the data record
+      has been approved up to. A user is associated with the approval level which matches the level
+      of the organisation unit(s) she is linked to, or if no approvel level exists at that level,
+      the next approval level linked to an organisation unit level below herself. A user will be
+      allowed to see data which has been approved up to the level immediately below her associated
+      approval level. The rationale behind this is that a user must be ablet to view the data that
+      has been approved below so that she can eventually view and approve it herself.</para>
+    <para>Note that if the user has been granted the <emphasis role="italic">View unapproved
+        data</emphasis> or the <emphasis role="italic">ALL</emphasis> authority she will be able to
+      view data irrespective of the approval status.</para>
+    <para><emphasis role="italic">Lets consider the following example:</emphasis> There are four
+      organisation unit levels, with approval levels associated with level 2 and 4. <emphasis
+        role="italic">User A</emphasis> at country level (1) gets associated with approval level 1
+      since the approval level exists at the same level as the organisation unit level. <emphasis
+        role="italic">User B</emphasis> gets associated with approval level 2 since there is no
+      approval level directly linked to her organisation unit level and approval level 2 is the
+      immediate level below. <emphasis role="italic">User C</emphasis> gets associated with approval
+      level 2. <emphasis role="italic">User D</emphasis> is below all approval levels which implies
+      that she can see all data entered at or below her organisation unit level.</para>
+    <figure>
+      <title>Hiding of unapproved data</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata align="center" fileref="resources/images/data_approval/approval_data_hiding.png"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>Using this example, lets consider some scenarios:<itemizedlist>
+        <listitem>
+          <para>Data is entered at facility level: Only <emphasis role="italic">User D</emphasis>
+            can see the data, as the data has not yet been approved at all.</para>
+        </listitem>
+        <listitem>
+          <para>Data is approved by <emphasis role="italic">User D</emphasis> at facility level:
+            Data becomes visible to User C and User B, as the data is now approved at their
+            level.</para>
+        </listitem>
+        <listitem>
+          <para>Data is approved by <emphasis role="italic">User C</emphasis> at district level:
+            Data becomes visible to User A, as data is now approved at the level immediately below
+            herself.</para>
+        </listitem>
+      </itemizedlist></para>
+  </section>
+  <section>
+    <title>Approving data</title>
+    <para>To approve data, go to <emphasis role="italic">Reports</emphasis> and choose <emphasis role="italic">Data Approval</emphasis>. When this report shows data that is configured for approval, it shows the approval status of the data in the report. The approval status will be one of the following:</para>
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">Waiting for lower level org units to approve</emphasis> - This
+          data is not yet ready to be approved, because it first needs to be approved for all the
+          child organisation units to this organisation unit, for the same workflow and
+          period.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Ready for approval</emphasis> - This data may now be approved by an authorized user.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Approved</emphasis> - This data has already been approved.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Approved and accepted</emphasis> - This data has already been approved, and also accepted.</para>
+      </listitem>
+    </itemizedlist>
+    <para>If the data you are viewing is in an approval state that can be acted upon, and if you have sufficient authority, one or more of the following actions will be available to you on the <emphasis role="italic">Data Approval</emphasis> form:</para>
+    <itemizedlist>
+<?dbfo keep-together="always" ?>      <listitem>
+        <para><emphasis role="bold">Approve</emphasis> - Approve data that has not yet been approved, or that was formerly approved and has been unapproved.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Unapprove</emphasis> - Return to an unapproved state data that has been approved or accepted.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Accept</emphasis> - Accept data that has  been approved.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Unaccept</emphasis> - Return to an unaccepted (but still approved) state data that has been accepted.</para>
+      </listitem>
+    </itemizedlist>
+    <para>In order to unapprove data for a given organisation unit, you must have the authority to approve data for that organisation unit or to approve data for a higher-level organisation unit to which that data is aggregated. The reason for this is as follows: If you are reviewing data for approval at a higher organisation unit level, you should consider whether the data at lower organisation units are reasonable. If all lower-level data looks good, you can approve the data at the higher level. If some lower-level data looks suspect, you can unapprove the data at the lower level. This allows the data to be reviewed again at the lower level, corrected if necessary, and re-approved up through the organisation unit levels according to the hierarchy.</para>
+  </section>
+  <section>
+    <title>Approving by category option group set</title>
+    <para>When defining an approval level, you specify the organisation unit level at which data will be approved. You may also optionally specify a category option group set. This is useful if you are using  category option groups to define additional dimensions of your data, and you want approvals to be based on these dimensions. The following examples illustrate how this can be done within a single category option group set, and by using multiple category option group sets.</para>
+    <section>
+      <title>Approving by one category option group set</title>
+      <para>For example, suppose you define a category option group set to represent NGOs who serve as healthcare partners at one or more organisation units. Each category option group within this set represents a different partner. The category option group for Partner 1 may group together category options (such as funding account codes) that are used by that partner as a dimension of the data. So data entered by Partner 1 is attributed to a category option in Partner 1&apos;s category option group. Whereas data entered by partner 2 is attributed to a category option in Partner 2&apos;s category option group:</para>
+      <table frame="all">
+        <title>Example Category Option Groups</title>
+<?dbfo keep-together="always" ?>        <tgroup cols="3">
+          <thead>
+            <row>
+              <entry>Category option group set</entry>
+              <entry>Category option group</entry>
+              <entry>Category options</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>Partner</entry>
+              <entry>Partner 1</entry>
+              <entry>Account 1A, Account 1B</entry>
+            </row>
+            <row>
+              <entry>Partner</entry>
+              <entry>Partner 2</entry>
+              <entry>Account 2A, Account 2B</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>Each partner could enter data for their accounts independently of the other, for the
+        same or different workflows, at the same or different facilities. So for example, data can
+        be entered and/or aggregated at the following levels for each partner, independently of each
+        other:</para>
+      <figure>
+        <title>Example category option groups</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="160px" align="center" fileref="resources/images/data_approval/approval_partner_example.png"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+      <tip>
+        <para>You can use the sharing feature on category options and category option groups to insure that a user can enter data (and/or see data) only for  certain category options and groups. If you don&apos;t want users to see data that is aggregated beyond of their assigned category options and/or category option groups, you can  assign <emphasis role="italic">Selected dimension restrictions for data analysis</emphasis>,  when adding or updating a user.</para>
+      </tip>
+      <para>You can optionally define approval levels for partner data within any or all of these organisation unit levels. For example, you could define any or all of the following approval levels:</para>
+      <table frame="all">
+        <title>Example Category Option Group Set approval levels</title>
+<?dbfo keep-together="always" ?>        <tgroup cols="3">
+          <thead>
+            <row>
+              <entry>Approval level</entry>
+              <entry>Organisation unit level</entry>
+              <entry>Category option group set</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>1</entry>
+              <entry>Country</entry>
+              <entry>Partner</entry>
+            </row>
+            <row>
+              <entry>2</entry>
+              <entry>District</entry>
+              <entry>Partner</entry>
+            </row>
+            <row>
+              <entry>3</entry>
+              <entry>Facility</entry>
+              <entry>Partner</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <section>
+      <title>Approving by multiple category option group sets</title>
+      <para>You can also define approval levels for different category option group sets. To continue the example, suppose that you have various agencies that manage the funding to the different partners. For example, Agency A  funds accounts 1A and 2A, while Agency B  funds accounts 1B and 2B. You could set up category option groups for Agency A, and Agency B, and make them both part of a category option group set called Agency. So you would have:</para>
+      <table frame="all">
+        <title>Example Multiple Category Option Group Sets</title>
+<?dbfo keep-together="always" ?>        <tgroup cols="3">
+          <thead>
+            <row>
+              <entry>Category option group set</entry>
+              <entry>Category option group</entry>
+              <entry>Category options</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>Partner</entry>
+              <entry>Partner 1</entry>
+              <entry>Account 1A, Account 1B</entry>
+            </row>
+            <row>
+              <entry>Partner</entry>
+              <entry>Partner 2</entry>
+              <entry>Account 2A, Account 2B</entry>
+            </row>
+            <row>
+              <entry>Agency</entry>
+              <entry>Agency A</entry>
+              <entry>Account 1A, Account 2A</entry>
+            </row>
+            <row>
+              <entry>Agency</entry>
+              <entry>Agency B</entry>
+              <entry>Account 1B, Account 2B</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>Now suppose that at the country level, you want each partner to approve the data entered by that partner. Once this approval is done, you want each agency to then approve the data from accounts that are managed by that agency. Finally, you want to approve data at the country level across all agencies. You could do this by defining the following approval levels:</para>
+      <table frame="all">
+        <title>Example Multiple Category Option Group Set approval levels</title>
+<?dbfo keep-together="always" ?>        <tgroup cols="3">
+          <thead>
+            <row>
+              <entry>Approval level</entry>
+              <entry>Organisation unit level</entry>
+              <entry>Category option group set</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>1</entry>
+              <entry>Country</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry>2</entry>
+              <entry>Country</entry>
+              <entry>Agency</entry>
+            </row>
+            <row>
+              <entry>3</entry>
+              <entry>Country</entry>
+              <entry>Partner</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>Note that multiple approval levels can be defined  for the same organisation unit level. In our example, Partner 1 would approve country-wide data at approval level 3 from category options Account 1A and Account 1B. Next, Agency A would approve country-wide data at approval level 2 from category options Account 1A (after approval by Partner 1) and Account 2A (after approval by Partner 2.) Finally, after approval from all agencies, country-wide data can be approved at approval level 1 across all category options. Note that approval level 1 does not specify a category option group set, meaning that it is for approving data across all category options.</para>
+      <para>This example is meant to be illustrative only. You may define as many category option groups as you need, and  as many approval levels as you need at the same organisation unit level for different category option group sets.</para>
+      <para>If you have multiple approval levels for different category option group sets at the same organisation unit level, you may change the approval ordering in the <emphasis role="italic">Settings</emphasis> section, under <emphasis role="italic">System Approval Settings</emphasis>. Just click on the approval level you wish to move, and select <emphasis role="italic">Move up</emphasis> or <emphasis role="italic">Move down</emphasis>. If you have an approval level with no category option groups set, it must be the highest approval level for that organisation unit level.</para>
+    </section>
+  </section>
+</chapter>

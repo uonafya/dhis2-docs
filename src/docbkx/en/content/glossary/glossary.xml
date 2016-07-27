@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8'?>
+      <glossary version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook" xml:id="dhis2_glossary">
+  <title>DHIS2 Glossary</title>
+  <glossdiv>
+    <title>A</title>
+    <glossentry>
+      <glossterm>Aggregation</glossterm>
+      <glossdef>
+        <para>In the context of DHIS2, aggregation refers to how data elements are combined within a particular hierarchical relationship. As an example, all the health facilities in a particular district would contribute to the total value for the particular district in question. Different aggregation operators are supported within DHIS2, such as SUM, AVERAGE, and COUNT.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm baseform="aggregateData">Aggregate data</glossterm>
+      <glossdef>
+        <para>In the context of DHIS2, aggregate data refers to either data elements or indicators that have been derived from other hierarchical data sources. For instance, aggreagte facility data would result from the aggregate totals of all patients that have attended that facility for a particular service. Aggregate district data would result from the aggregate totals of all facilities contained with a particular district.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Application programming interface</glossterm>
+      <abbrev>API</abbrev>
+      <glossdef>
+        <para>An application programming interface is a specification of how different software components should interact with each other. The DHIS2 API (or WebAPI) can be used to interface DHIS2 with other software, to build reports or custom data entry forms. </para>
+      </glossdef>
+    </glossentry>
+  </glossdiv>
+  <glossdiv>
+    <title>B</title>
+    <glossentry>
+      <glossterm>Bimonthly</glossterm>
+      <glossdef>
+        <para>Refers to a two-month period, such as January 1st to February 28th.</para>
+      </glossdef>
+    </glossentry>
+  </glossdiv>
+  <glossdiv>
+    <title>C</title>
+    <glossentry>
+      <glossterm>Category</glossterm>
+      <glossdef>
+        <para>Categories are groups of category options. The are used in combinations to disaggregate data elements. Categories are typically a single type of concept, such as &quot;Age&quot; or &quot;Gender&quot;. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Category combinations</glossterm>
+      <glossdef>
+        <para>Category combinations are used to disaggreate data elements. As an example, the data element &quot;Number of confirmed cases of malaria&quot; could be disaggregated subdivided into to categories:  &quot;Age&quot; and &quot;Gender&quot;. In turn each of these categories, would consist of several category options, such as &quot;Male&quot; and &quot;Female&quot; for the gender category. Category combinations may consist of one or several categories. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Category combination options</glossterm>
+      <glossdef>
+        <para>Category combination options are dynamically composed of all of the different combinations of category options which compose a category combination. As an example, two categories &quot;Gender&quot; and &quot;Age&quot;, might have options such as &quot;Male&quot;/&quot;Female&quot; and &quot;&lt;5 years&quot;/&quot;&gt;5 years&quot;. The category combination options would then consist of:</para>
+        <simplelist>
+          <member>(Male/&lt;5 years)</member>
+          <member>(Male/&gt;5 years)</member>
+          <member>(Female/&lt;5 years)</member>
+          <member>(Female/&gt;5 years)</member>
+        </simplelist>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Category option</glossterm>
+      <glossdef>
+        <para>Category options are atomic elements that are grouped into categories.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Comma separated values</glossterm>
+      <abbrev>CSV</abbrev>
+      <glossdef>
+        <para>Comma separated values are series of tabular data stored in a plain-text format. They are commonly used with DHIS2 to export and import data values. </para>
+      </glossdef>
+    </glossentry>
+  </glossdiv>
+  <glossdiv>
+    <title>D</title>
+    <glossentry>
+      <glossterm>Data dictionary</glossterm>
+      <glossdef>
+        <para>A collection of data elements and indicators, which can be exchanged with other DHIS2 systems. Typically used to define a set of data elements and indicators when setting up the DHIS2 system. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Data exchange format</glossterm>
+      <glossdef>
+        <para>In the context of DHIS2, the &quot;data exchange format&quot; refers to a XML schema that enables the transportation of data and metadata between disconnected DHIS2 instances, as well as between different applications that support the DXF schema. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Datamart</glossterm>
+      <glossdef>
+        <para>A set of database tables in DHIS2 that contains processed data elements and indicator values that is generated based on aggregation rules and calculated data element and indicator formular. Datamart tables are used for analysis  and report production. Typically, users should not work directly with unaggregated data values, but rather with values that have resulted from a datamart export for analysis. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Data element</glossterm>
+      <glossdef>
+        <para>A data element is the fundamental building block of DHIS2. It is an atomic unit of data with well-defined meaning. Essentially it is a data value that has been actually observed or recorded which is further characterized by a number of dimensions. As an example the data element &quot;Number of fully immunized children&quot; would refer to the number of children that received this particular service. Data elements are always linked to a period as as well as an organizational unit. They optionally may be linked to other dimensions. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Data element group</glossterm>
+      <glossdef>
+        <para>Data element groups are used to categorize multiple data elements according to a common theme, such as &quot;Immunization&quot; or &quot;ART&quot;. Typically, they are used during reporting and analysis to allow related data elements to be analyzed together. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Data element group sets</glossterm>
+      <glossdef>
+        <para>Data element groups are used to categorize multiple data element groups into a common theme. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Dimension</glossterm>
+      <glossdef>
+        <para>A dimension is used to categorize data elements during analysis. Dimensions provide a mechanism to group and filter data based on common characteristics. Typically, related data elements may be aggregated or filtered during analysis with the use of dimensions. Dimensions may be a member of a hierarchy. For instance the &quot;Period&quot; dimension may be broken down into &quot;Day-&gt;Month-&gt;Quarter-&gt;Year&quot;. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>DXF</glossterm>
+      <glosssee> Data exchange format</glosssee>
+    </glossentry>
+  </glossdiv>
+<!-- <glossdiv>
+    <title>E</title>
+  </glossdiv>
+  <glossdiv>
+    <title>F</title>
+  </glossdiv>
+  <glossdiv>
+    <title>G</title>
+  </glossdiv>
+  <glossdiv>
+    <title>E</title>
+  </glossdiv>
+  <glossdiv>
+    <title>F</title>
+  </glossdiv>
+  <glossdiv>
+    <title>G</title>
+  </glossdiv>
+  <glossdiv>
+    <title>H</title>
+  </glossdiv> -->  <glossdiv>
+    <title>H</title>
+    <glossentry>
+      <glossterm>Health management information system</glossterm>
+      <abbrev>HMIS</abbrev>
+      <glossdef>
+        <para>Typically, an electronic database system that is used to record aggregated data on service delivery, disease incidence, human resource data and other information used to evaluate the performance of delivery of health services. Typically, an HMIS does not contain the highly detailed data of electronic medical record systems or individual patient data. </para>
+      </glossdef>
+    </glossentry>
+  </glossdiv>
+  <glossdiv>
+    <title>I</title>
+    <glossentry>
+      <glossterm>Indicator</glossterm>
+      <glossdef>
+        <para>The divisor of an indicator. Can be composed of multiple data elements with the use of an indicator formula.<equation>
+            <mediaobject>
+              <imageobject>
+                <imagedata width="40%" align="center" fileref="resources/images/glossary/indicator.png"/>
+              </imageobject>
+            </mediaobject>
+          </equation></para>
+        <para>This is obviously a very generalized example. The numerator and indicator themselves can be composed of various data elements, factors, and the four basic operands (addition, multiplication, division and subtraction). </para>
+      </glossdef>
+    </glossentry>
+  </glossdiv>
+  <glossdiv>
+<!--<title>J</title>
+  </glossdiv>
+  <glossdiv>
+    <title>K</title>
+  </glossdiv>
+  <glossdiv>
+    <title>L</title>
+  </glossdiv>
+  <glossdiv>
+    <title>M</title>
+  </glossdiv>
+  <glossdiv> -->    <title>N</title>
+    <glossentry>
+      <glossterm>Numerator</glossterm>
+      <glossdef>
+        <para>The dividend of a indicator. Can be composed of multiple data elements and factors with the use of indicator formulas.</para>
+      </glossdef>
+    </glossentry>
+  </glossdiv>
+  <glossdiv>
+    <title>O</title>
+    <glossentry>
+      <glossterm>Organisational unit</glossterm>
+      <abbrev>orgunit</abbrev>
+      <glossdef>
+        <para>An organisational unit is usually a geographical unit, which exists within  hierarchy.  As an example, in the United States, &quot;Georgia&quot; would be considered an organisational unit with in the orgunit level of &quot;State&quot;. Organizational units can also be used to specify an administrative unit, such as a ward within a hospital. The organisational unit dimension specifies essentially &quot;where&quot; a particular data value occurs.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry>
+      <glossterm>Organisational unit level</glossterm>
+      <abbrev>Orgunit level</abbrev>
+      <glossdef>
+        <para>Refers to a level within an organizational hierarchy. Typically, countries are administered at different levels, such as 1) Country 2) States 3) Counties 4) Health facilities. In the context of DHIS2, health facilities typically are the lowest orgunit level. Data is aggregated upwards from the lowest orgunit level to the highest. </para>
+      </glossdef>
+    </glossentry>
+  </glossdiv>
+  <glossdiv>
+    <title>P</title>
+    <glossentry>
+      <glossterm>Period</glossterm>
+      <glossdef>
+        <para>A period is a specific time interval which consists of a start date and end date. For instance &quot;January 2011&quot; would refer to the time interval of January 1st 2011-January 31st 2011. </para>
+      </glossdef>
+    </glossentry>
+  </glossdiv>
+<!--<glossdiv>
+    <title>Q</title>
+  </glossdiv>
+  <glossdiv>
+    <title>R</title>
+    <glossentry>
+      <glossterm>Report table</glossterm>
+    </glossentry>
+  </glossdiv>
+  <glossdiv>
+    <title>S</title>
+  </glossdiv>
+  <glossdiv>
+    <title>T</title>
+  </glossdiv>
+  <glossdiv>
+    <title>U</title>
+  </glossdiv>
+  <glossdiv>
+    <title>W</title>
+  </glossdiv>
+  <glossdiv>
+    <title>X</title>
+  </glossdiv>
+  <glossdiv>
+    <title>Y</title>
+  </glossdiv>
+  <glossdiv>
+    <title>Z</title>
+  </glossdiv> -->  <glossdiv>
+    <title>U</title>
+    <glossentry>
+      <glossterm>Unique identifier</glossterm>
+      <abbrev>UID</abbrev>
+      <glossdef>
+        <para>A unique identifier (UID) is a semi-random series of letters and numbers used by DHIS2 to identify specific resources. UIDs begin with a letter, and are followed by exactly 10 letters or digits. </para>
+      </glossdef>
+    </glossentry>
+  </glossdiv>
+</glossary>
