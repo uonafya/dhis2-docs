@@ -11,7 +11,7 @@
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook" xml:id="mobile_sms_service">
   <title>SMS Service</title>
-  <para>SMS Service is a generic service used for sending/receiving SMS. Any other DHIS 2 module can include this service and utilize it to send and receive SMS from users or workers in the field.</para>
+  <para>SMS Service is a generic service used for sending/receiving SMS. Any other DHIS2 module can include this service and utilize it to send and receive SMS from users or workers in the field.</para>
   <section>
     <title>Setting up SMS service</title>
     <para>There are few pre-requisites in order to make this service functional. There are two ways to complete these steps. One way is to configure gateway from the GUI in Mobile Configuration Module. The other
@@ -38,9 +38,9 @@
     
     <section>
       <title>Configure GenericHttp Gateway</title>
-      <para>Many DHIS 2 instances are using GenericHttpGateway to connect to their local gateways. These local gateways provides HTTP APIs for sending SMS. In new GenericHttpGateway it is now possible to configure url parameters provided in their APIs. For example
+      <para>Many DHIS2 instances are using GenericHttpGateway to connect to their local gateways. These local gateways provides HTTP APIs for sending SMS. In new GenericHttpGateway it is now possible to configure url parameters provided in their APIs. For example
         <uri>http://gateway.com/sendMessage?username=AA&amp;password=xxxxx&amp;message=testing&amp;msisdn=9999</uri>. In this url username, password, message, msisdn are parameters that are required by external gateways. Now in GenericHttp these parameters are configurable which was not possible in previous releases. 
-      Making is configurable will help DHIS 2 to interact with other gateways which have different url formats.
+      Making is configurable will help DHIS2 to interact with other gateways which have different url formats.
       </para>
       <screenshot>
         <mediaobject>

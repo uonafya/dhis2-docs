@@ -15,17 +15,17 @@
     <title>Data sources for reporting</title>
     <section>
       <title>Types of data and aggregation</title>
-      <para>In the bigger picture of HIS terminology all data in DHIS are usually called aggregated as they are aggregates (e.g. monthly summaries) of medical records or some kind of service registers reported from the health facilities. Aggregation inside DHIS however, which is the topic here, is concerned with how the raw data captured in DHIS (through data entry or import)are further aggregated over time (e.g. from monthly to quarterly values) or up the organisational hierarchy (e.g. from facility to district values). 
+      <para>In the bigger picture of HIS terminology all data in DHIS2 are usually called aggregated as they are aggregates (e.g. monthly summaries) of medical records or some kind of service registers reported from the health facilities. Aggregation inside DHIS2 however, which is the topic here, is concerned with how the raw data captured in DHIS2 (through data entry or import)are further aggregated over time (e.g. from monthly to quarterly values) or up the organisational hierarchy (e.g. from facility to district values). 
 </para>
       <section>
         <title>Terminology</title>
         <itemizedlist>
           <listitem>
-            <para><emphasis>Raw data</emphasis> refers to data that is registered into the DHIS 2 either through data entry or data import, and has not been manipulated by the DHIS aggregation process. All these data are stored in the table (or Java object if you prefer) called DataValue.
+            <para><emphasis>Raw data</emphasis> refers to data that is registered into the DHIS2 either through data entry or data import, and has not been manipulated by the DHIS2 aggregation process. All these data are stored in the table (or Java object if you prefer) called DataValue.
  </para>
           </listitem>
           <listitem>
-            <para><emphasis>Aggregated data</emphasis> refers to data that has been aggregated by the DHIS 2, meaning it is no longer raw data, but some kind of aggregate of the raw data.</para>
+            <para><emphasis>Aggregated data</emphasis> refers to data that has been aggregated by the DHIS2, meaning it is no longer raw data, but some kind of aggregate of the raw data.</para>
           </listitem>
           <listitem>
             <para><emphasis>Indicator values</emphasis> can also be understood as aggregated data, but these are special in the way that they are calculated based on user defined formulas (factor * numerator/denominator). Indicator values are therefore processed data and not raw data, and are located in the aggregatedindicatorvalue table/object. Indicators are calculated at any level of the organisational hierarchy and these calculations are then based on the aggregated data values available at each level. A level attribute in the aggregateddatavalue table refers to the organisational level of the orgunit the value has been calculated for.
@@ -48,10 +48,10 @@
           <title>What is added together</title>
           <para>Data (raw) can be registered at any organisational level, e.g. at national hospital
             at level 2, a health facility at level 5, or at a bigger PHC at level 4. This varies
-            form country to country, but DHIS is flexible in allowing data entry or data import to
+            form country to country, but DHIS2 is flexible in allowing data entry or data import to
             take place at any level. This means that orgunits that themselves have children can
             register data, sometimes the same data elements as their children units. The basic rule
-            of aggregation in DHIS 2 is that <emphasis>all raw data is aggregated
+            of aggregation in DHIS2 is that <emphasis>all raw data is aggregated
               together</emphasis>, meaning data registered at a facility on level 5 is added to the
             data registered for a PHC at level 4.</para>
           <para>
@@ -70,11 +70,11 @@ Along the time dimension there are several possibilities, the two most common wa
         <title>Dimensions of aggregation</title>
         <section>
           <title>Organisational units and levels</title>
-          <para>Organisational units are used to represent the &apos;where&apos; dimension associated with data values. In DHIS 2, organisational units are arranged in a hierarchy, which typically corresponds to the hierarchical nature of the organisation or country. Organisational unit levels correspond to the distinct levels within the hierarchy. For instance, a country may be organized into provinces, then districts, then facilities, and then sub-centers. This organisational hierarchy would have five levels. Within each level, a number of organisational units would exist. During the aggregation process, data is aggregated from the lower organisational unit levels to higher levels. Depending on the aggregation operator, data may be &apos;summed&apos; or &apos;averaged&apos; within a given organisational unit level, to derive the aggregate total for all the organisational units that are contained within a higher level organisational unit level. For instance, if there are ten districts contained in a province and the aggregation operator for a given data element has been defined as &apos;SUM&apos;,  the aggregate total for the province would be calculated as the sum of the values of the individual ten districts contained in that province.</para>
+          <para>Organisational units are used to represent the &apos;where&apos; dimension associated with data values. In DHIS2, organisational units are arranged in a hierarchy, which typically corresponds to the hierarchical nature of the organisation or country. Organisational unit levels correspond to the distinct levels within the hierarchy. For instance, a country may be organized into provinces, then districts, then facilities, and then sub-centers. This organisational hierarchy would have five levels. Within each level, a number of organisational units would exist. During the aggregation process, data is aggregated from the lower organisational unit levels to higher levels. Depending on the aggregation operator, data may be &apos;summed&apos; or &apos;averaged&apos; within a given organisational unit level, to derive the aggregate total for all the organisational units that are contained within a higher level organisational unit level. For instance, if there are ten districts contained in a province and the aggregation operator for a given data element has been defined as &apos;SUM&apos;,  the aggregate total for the province would be calculated as the sum of the values of the individual ten districts contained in that province.</para>
         </section>
         <section>
           <title>Period</title>
-          <para>Periods are used to represent the &apos;when&apos; dimension associated with data values. Data can easily be aggregated from weeks to months, from months to quarters, and from quarters to years. DHIS 2 uses known rules of how these different intervals are contained within other intervals (for instance Quarter 1 2010 is known to contain January 2010, February 2010 an March 2010) in order to aggregate data from smaller time intervals, e.g. weeks, into longer time intervals, e.g. months. </para>
+          <para>Periods are used to represent the &apos;when&apos; dimension associated with data values. Data can easily be aggregated from weeks to months, from months to quarters, and from quarters to years. DHIS2 uses known rules of how these different intervals are contained within other intervals (for instance Quarter 1 2010 is known to contain January 2010, February 2010 an March 2010) in order to aggregate data from smaller time intervals, e.g. weeks, into longer time intervals, e.g. months. </para>
         </section>
         <section>
           <title>Data Elements and Categories</title>
@@ -90,7 +90,7 @@ Along the time dimension there are several possibilities, the two most common wa
         <section>
           <title>Average</title>
           <para>When the average aggregation operator is selected, the unweighted average of all data values within a given aggregation matrix are calculated. </para>
-          <para>It is important to understand how DHIS 2 treats null values in the context of the
+          <para>It is important to understand how DHIS2 treats null values in the context of the
             average operator. It is fairly common for some organisational units not to submit data
             for certain data elements. In the context of the average operator, the average results
             from the number of data elements that are actually present (therefore NOT NULL) within a
@@ -297,7 +297,7 @@ male+&lt;1, male+&gt;1, Female+&lt;1, female+&gt;1, male, female,&lt;1, &gt;1, t
     </section>
     <section>
       <title>Report table - best practices</title>
-      <para>To make the report tables reusable over time and across orgunits they can have  parameters. Four types of parameters are allowed; orgunit, parent orgunit (for listing of orgunits in one area), grand parent orgunit and reporting month. As a side note it can be mentioned that we are looking into expanding this to include reporting quarter and year, or to make that period parameter more generic with regard to period type somehow. The ability to use period as a parameter makes the report table reusable over time and as such fits nicely with report needs such as monthly, quarterly or annual reports. When a report is run by the user in DHIS 2, the user must specify the values for the report tables that are linked to the report. First the report table is re-generated (deleted and re-created with updated data), and then the report is run (in the background, in Jasper report engine).
+      <para>To make the report tables reusable over time and across orgunits they can have  parameters. Four types of parameters are allowed; orgunit, parent orgunit (for listing of orgunits in one area), grand parent orgunit and reporting month. As a side note it can be mentioned that we are looking into expanding this to include reporting quarter and year, or to make that period parameter more generic with regard to period type somehow. The ability to use period as a parameter makes the report table reusable over time and as such fits nicely with report needs such as monthly, quarterly or annual reports. When a report is run by the user in DHIS2, the user must specify the values for the report tables that are linked to the report. First the report table is re-generated (deleted and re-created with updated data), and then the report is run (in the background, in Jasper report engine).
 
 </para>
       <para>Report tables can consist of  values related to data elements, indicators or data completeness, which is related to completeness of reporting across orgunits for a given month. Completeness reports will be covered in a separate section.</para>
@@ -305,7 +305,7 @@ male+&lt;1, male+&gt;1, Female+&lt;1, female+&gt;1, male, female,&lt;1, &gt;1, t
       <para><emphasis role="bold">Using relative periods</emphasis></para>
       <para>The period selection is more advanced as it can in addition to specific periods like Jan-09, Q1-08, 2007 also contain what is called relative periods. As report usually is run routinely over time a specific period like Jan-09 is not very useful in a report. Instead, if you want to design a monthly report, you should use the relative period called Reporting Month. Then you must also include Reporting Month as one of your report parameters to let the system know what exactly is the Reporting Month on the time of report generation. There are many other relative periods available, and they all relate to the report parameter Reporting Month. E.g. the relative period called So far this year refers to the accumulative value for the year incl. the Reporting Month. If you want a trend report with multiple periods in stead of one aggregated period, you can select e.g. &apos;Months this year&apos;, which would give you values for each month so far in the year. You can do a similar report with quarters. The idea is to support as many generic report types as possible using relative periods, so if you have other report needs, please suggest new relative periods on the mailing list, and they might be added to the report table options.</para>
       <para><emphasis role="bold">Cross-tabbing dimensions</emphasis></para>
-      <para>Cross tabbing is a very powerful functionality in report design, as the typical DHIS 2 data table with references to period, data element/indicator and orgunit makes more advanced report design very difficult, as you cannot put e.g. specific indicators, periods or orgunits on specific columns. E.g. by cross-tabbing on the indicator dimension in an indicator report table you will get the indicator names on the column headers in your report, in addition to a column referencing orgunit, and another column referencing period. With such a table design you could drag and drop indicator names to specific columns or chart positions in the iReport software. Similarly you can cross tab on orgunits or periods to make their names specifically available to report design. E.g. by cross-tabbing on periods and selecting the two relative periods &apos;Reporting month&apos; and &apos;This year&apos;, you can design reports with both the last month and the accumulative annual value for given month as they will be available as column headers in your report table. It is also possible to combine two dimensions in cross-tabbing, e.g. period and indicator, which makes it possible to e.g. look at three selected indicators for two specific relative periods. This would e.g. make it possible to make a table or chart based report with BCG, DPT3 and Measles coverage, both for the last month and the accumulative coverage so far in the year. 
+      <para>Cross tabbing is a very powerful functionality in report design, as the typical DHIS2 data table with references to period, data element/indicator and orgunit makes more advanced report design very difficult, as you cannot put e.g. specific indicators, periods or orgunits on specific columns. E.g. by cross-tabbing on the indicator dimension in an indicator report table you will get the indicator names on the column headers in your report, in addition to a column referencing orgunit, and another column referencing period. With such a table design you could drag and drop indicator names to specific columns or chart positions in the iReport software. Similarly you can cross tab on orgunits or periods to make their names specifically available to report design. E.g. by cross-tabbing on periods and selecting the two relative periods &apos;Reporting month&apos; and &apos;This year&apos;, you can design reports with both the last month and the accumulative annual value for given month as they will be available as column headers in your report table. It is also possible to combine two dimensions in cross-tabbing, e.g. period and indicator, which makes it possible to e.g. look at three selected indicators for two specific relative periods. This would e.g. make it possible to make a table or chart based report with BCG, DPT3 and Measles coverage, both for the last month and the accumulative coverage so far in the year. 
 
 </para>
       <para>All in all, by combining the functionality of cross tabbing, relative periods and report table parameters you should have a tool to support most report scenarios. If not, we would be very happy to receive suggestions to further improvements to report tables. As already mentioned, we have started to look at more fine-grained parameters for the period dimension as the &apos;Reporting month&apos; does not cover enough, or at least is not intuitive enough, when it comes to e.g. quarterly reports.
@@ -315,7 +315,7 @@ male+&lt;1, male+&gt;1, Female+&lt;1, female+&gt;1, male, female,&lt;1, &gt;1, t
   <section>
     <title>Report table outcome</title>
     <para>
-When the report table is run, the system will calculate values for specified indicators/data elements/data sets, orgunits and periods. The data will be presented in DHIS 2 in a table layout. The column headers will correspond to the cross-tab dimension you have selected. An example report table showing ANC coverage for a district in The Gambia, is shown below. Here the indicator and the periods are cross-tabbed, as can be seen from the column headers.
+When the report table is run, the system will calculate values for specified indicators/data elements/data sets, orgunits and periods. The data will be presented in DHIS2 in a table layout. The column headers will correspond to the cross-tab dimension you have selected. An example report table showing ANC coverage for a district in The Gambia, is shown below. Here the indicator and the periods are cross-tabbed, as can be seen from the column headers.
 </para>
     <screenshot>
       <title>Example report table</title>
@@ -349,7 +349,7 @@ Above the table there are six buttons; five download buttons and one Back button
       <listitem>
         <para><emphasis role="italic">Download as PDF:</emphasis></para>
         <para>Downloads a generated PDF file. The data will be presented in a similar layout as the
-          generated table you are already viewing in DHIS 2.</para>
+          generated table you are already viewing in DHIS2.</para>
       </listitem>
       <listitem>
         <para><emphasis role="italic">Download as Report:</emphasis></para>
@@ -372,17 +372,17 @@ Above the table there are six buttons; five download buttons and one Back button
         specified layout. Standard reports can be based either on report tables or SQL queries. Both
         approaches are described in the following sections. The main advantage of using report
         tables is that of simplicity - no special development skills are required. In cases where
-        you have special requirements or need to utilize additional parts of the DHIS database you
+        you have special requirements or need to utilize additional parts of the DHIS2 database you
         might want to use a SQL based standard report. In any case you will be able to utilize
         report parameters in order to create dynamic reports. The following guide will use the
         report table approach, while the SQL approach is covered towards the end.</para>
     </section>
     <section>
       <title>Designing Standard reports in iReport</title>
-      <para>Jasper iReport Designer is a tool for creating reports that can be used as Standard Reports in DHIS 2. The tool allows for the creation of standard report templates that can easily be exported from DHIS 2 with up to date data. The process of creating reports involves four major steps:</para>
+      <para>Jasper iReport Designer is a tool for creating reports that can be used as Standard Reports in DHIS2. The tool allows for the creation of standard report templates that can easily be exported from DHIS2 with up to date data. The process of creating reports involves four major steps:</para>
       <orderedlist>
         <listitem>
-          <para>A report table must be created in DHIS 2 with the indicators/data elements/datasets to be used in the report.</para>
+          <para>A report table must be created in DHIS2 with the indicators/data elements/datasets to be used in the report.</para>
         </listitem>
         <listitem>
           <para>You have to run the report table and download the design file (Click the &quot;Download as JRXML&quot; button).</para>
@@ -391,10 +391,10 @@ Above the table there are six buttons; five download buttons and one Back button
           <para>Open the downloaded .jrxml file using the free software Jasper iReport Designer to edit the layout of the report.</para>
         </listitem>
         <listitem>
-          <para>The edited report can then be uploaded to DHIS 2 to be used as a standard report.</para>
+          <para>The edited report can then be uploaded to DHIS2 to be used as a standard report.</para>
         </listitem>
       </orderedlist>
-      <para>If you want to preview your report during the design in iReport, you actually have to upload your file to DHIS 2 to see how it looks.</para>
+      <para>If you want to preview your report during the design in iReport, you actually have to upload your file to DHIS2 to see how it looks.</para>
       <para>These four steps will be describe in detail in the coming sections. In general, when you are making standard reports you should have a clear idea of how it should look before you even make the report table, as how the report table is designed has implications for how the report can be formatted in iReport. For example, what crosstab dimensions are selected in the report table has consequences for what crosstabs are available for the standard report, and it has consequences for what types of charts you can make.</para>
       <section>
         <title>Download and open the design file</title>
@@ -550,7 +550,7 @@ Above the table there are six buttons; five download buttons and one Back button
           <para>Text fields can represent either numbers or text, so that they can be used both for
             showing for example names of district or for numeric values. It is therefore important
             the Expression class, seen in the Text field properties matches the Text field
-            expression. For the default text fields in the .jrxml file downloaded from DHIS 2 this
+            expression. For the default text fields in the .jrxml file downloaded from DHIS2 this
             is not a problem, but it is important when making new text fields. The two most
             important Expression classes are java.lang.Double for numbers and java.lang.String for
             text.</para>
@@ -588,7 +588,7 @@ Above the table there are six buttons; five download buttons and one Back button
       </section>
       <section>
         <title>Filtering the table rows</title>
-        <para>In the default table exported from DHIS 2, there are some rows that it might be better to leave out of the table, and some that it would be preferable to have at the end. For example, when making a table based on a report table with the «parent organisation unit» parameter, the default table might have a row with the national level somewhere in between all the regions. In iReport, this can be changed so that the «parent organisation unit» appears at the bottom of the table. This involves two steps that will be explained below. Note that this will not work where there is only one organisation units, and it is therefore most useful when using the «parent organisation unit» or «grand parent organisation unit» parameters in the report table.</para>
+        <para>In the default table exported from DHIS2, there are some rows that it might be better to leave out of the table, and some that it would be preferable to have at the end. For example, when making a table based on a report table with the «parent organisation unit» parameter, the default table might have a row with the national level somewhere in between all the regions. In iReport, this can be changed so that the «parent organisation unit» appears at the bottom of the table. This involves two steps that will be explained below. Note that this will not work where there is only one organisation units, and it is therefore most useful when using the «parent organisation unit» or «grand parent organisation unit» parameters in the report table.</para>
         <section>
           <title>Hiding the «parameter organisation unit» from the table</title>
           <para>We exclude the &quot;parameter organisation unit&quot; from the table by using a
@@ -691,7 +691,7 @@ Above the table there are six buttons; five download buttons and one Back button
       </section>
       <section>
         <title>Changing indicator/data element names</title>
-        <para>By default, the reports from DHIS 2 uses the short names for indicators and data elements in reports and charts. In some cases these are not always very meaningful for third parties, but with some work they can be given custom names through iReport. This is useful for example if you are making a report with indicators as rows and periods as column, or for charts with indicators. </para>
+        <para>By default, the reports from DHIS2 uses the short names for indicators and data elements in reports and charts. In some cases these are not always very meaningful for third parties, but with some work they can be given custom names through iReport. This is useful for example if you are making a report with indicators as rows and periods as column, or for charts with indicators. </para>
         <screenshot>
           <title>Shortnames - before and after</title>
           <mediaobject>
@@ -773,7 +773,7 @@ Above the table there are six buttons; five download buttons and one Back button
       <section>
         <title>Groups of tables</title>
         <para>There are cases when it can be useful to have several tables in one report. This can be done using Report groups. Using this functionality, one can for example create a report one table for each indicator, or one table of each organisation unit. In the following, we will go through the steps needed to make a report with three indicators, each represented in one table. It is important that the report table does not crosstab on indicators when we want to make groups of tables based on indicators. </para>
-        <para>In our example, the .jrxml file downloaded from DHIS 2 will by default have one column for organisation unit and on for indicators (assuming we have chosen periods as the only crosstab dimension). We start by removing the indicator column, since this in not needed in our case, and realign the other fields to fit the report.</para>
+        <para>In our example, the .jrxml file downloaded from DHIS2 will by default have one column for organisation unit and on for indicators (assuming we have chosen periods as the only crosstab dimension). We start by removing the indicator column, since this in not needed in our case, and realign the other fields to fit the report.</para>
         <screenshot>
           <title>Delete column</title>
           <mediaobject>
@@ -876,7 +876,7 @@ Above the table there are six buttons; five download buttons and one Back button
               </imageobject>
             </mediaobject>
           </screenshot>
-          <para>Bar charts are the default chart type in DHIS 2. In this section, we will look at
+          <para>Bar charts are the default chart type in DHIS2. In this section, we will look at
             how to make a bar charts like the one above, comparing the value of one indicator in
             several districts. To edit the default chart in iReport, right click on it and choose
             Chart data.</para>
@@ -1169,8 +1169,8 @@ Above the table there are six buttons; five download buttons and one Back button
           </mediaobject>
         </screenshot>
         </section>-->      <section>
-        <title>Adding the Report to DHIS 2</title>
-        <para>We can now switch to DHIS 2 and import our report. Go to the Report Module in DHIS 2, and select &quot;Standard Report&quot;. In the &quot;Standard Report&quot; screen, click &quot;Add new&quot;, or edit an existing one.</para>
+        <title>Adding the Report to DHIS2</title>
+        <para>We can now switch to DHIS2 and import our report. Go to the Report Module in DHIS2, and select &quot;Standard Report&quot;. In the &quot;Standard Report&quot; screen, click &quot;Add new&quot;, or edit an existing one.</para>
         <para>In the following screen, there are several actions we need to take. First, enter a name for the new &quot;Standard Report&quot;. Second, for design, click &quot;Choose File&quot; and find the .jrxml-file you have edited in iReport. Then we select the report table that we used as a basis for the report in iReport. Click add, and it should move to the &quot;Selected report tables&quot; area. Finally, click save. 
 </para>
         <screenshot>
@@ -1181,7 +1181,7 @@ Above the table there are six buttons; five download buttons and one Back button
             </imageobject>
           </mediaobject>
         </screenshot>
-        <para>The report is now available as a &quot;Standard Report&quot; in DHIS 2:</para>
+        <para>The report is now available as a &quot;Standard Report&quot; in DHIS2:</para>
         <screenshot>
           <title>The report is available as a Standard Report</title>
           <mediaobject>
@@ -1195,13 +1195,13 @@ Above the table there are six buttons; five download buttons and one Back button
         <title>Some final guidelines</title>
         <itemizedlist>
           <listitem>
-            <para>Use the same version of iReport and DHIS 2&apos;s version of Jasper reports. See the About page in DHIS 2 for the Jasper version in use.</para>
+            <para>Use the same version of iReport and DHIS2&apos;s version of Jasper reports. See the About page in DHIS2 for the Jasper version in use.</para>
           </listitem>
           <listitem>
             <para>Use report tables with cross tab dimensions  as your data source for your report designs. This will make it a lot easier to design reports where you need to put specific indicators, periods, or orgunits on columns.</para>
           </listitem>
           <listitem>
-            <para>Learn from others, there are many DHIS 2 report designs for Jasper  on  launchpad, see http://bazaar.launchpad.net/~DHIS 2-devs-core/DHIS 2/trunk/files/head:/resources/</para>
+            <para>Learn from others, there are many DHIS2 report designs for Jasper  on  launchpad, see http://bazaar.launchpad.net/~DHIS2-devs-core/DHIS2/trunk/files/head:/resources/</para>
           </listitem>
         </itemizedlist>
       </section>
@@ -1209,13 +1209,13 @@ Above the table there are six buttons; five download buttons and one Back button
     <section>
       <title>Designing SQL based standard reports</title>
       <para>A standard report might be based on SQL queries. This is useful when you need to access
-        multiple tables in the DHIS database and do custom selects and joins. </para>
+        multiple tables in the DHIS2 database and do custom selects and joins. </para>
       <para>- This step is optional, but handy when you need to debug your reports and when you have
         direct access to the database you want to use. Click on the "report datasources" button,
         "New", "Database JDBC connection" and click "next". In this window you can give you
         connection a name and select the JDBC driver. PostgreSQL and MySQL should come included in
         your iReport. Then enter the JDBC connection URL, username and password. The last three
-        refers to your database and can be retrieved from your DHIS configuration file
+        refers to your database and can be retrieved from your DHIS2 configuration file
         (hibernate.properties). Click "save". You have now connected iReport to your
         database.</para>
       <para>- Go to standard reports and click "add new", then "get report template". Open this
@@ -1275,7 +1275,7 @@ and ous.$P!{organisationunit_level_column}=$P!{organisationunits}
 order by district.name, chiefdom.name, ou.name;
 </screen>
       <para>Notice how all parameters are used in the query, along with SQL joins of resource tables
-        in the DHIS database.</para>
+        in the DHIS2 database.</para>
       <para>- Finally, back in the add new report screen, we click on "Use JDBC data source". This
         enables you to select any relative period and report parameters for your report. Relative
         periods are relative to today's date. Report parameters will cause a prompt during report
@@ -1292,7 +1292,7 @@ order by district.name, chiefdom.name, ou.name;
         standard reports is that it allows for maximum flexibility. Using HTML you can design
         exactly the report you want, positioning tables, logos and values on the page according to
         your design needs. You can write and save your standard report design in a regular text
-        file. To upload your HTML based standard report to DHIS 2 do the following:</para>
+        file. To upload your HTML based standard report to DHIS2 do the following:</para>
       <itemizedlist>
         <listitem>
           <para>Navigate to standard reports and click "Add new".</para>
@@ -1347,7 +1347,7 @@ $( document ).ready( function() {
 &lt;div>BGG coverage: &lt;span id="bcg">&lt;/span>&lt;/div>
 &lt;div>FIC coverage: &lt;span id="fic">&lt;/span>&lt;/div></screen>
       <para>A few other tips: To include graphics you can convert an image to SVG and embed that SVG
-        content directly in the report - DHIS 2 is based on HTML 5 where SVG tags are valid markup.
+        content directly in the report - DHIS2 is based on HTML 5 where SVG tags are valid markup.
         To include charts and maps in your report you can use the charts and maps resources in the
         Web API. You can use the full capability of the Web API from JavaScript in your report - it
         may be useful to read through the Web API chapter to get an overview of all available
