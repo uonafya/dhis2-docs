@@ -10,19 +10,19 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook" xml:id="doc_guide_chapter">
-  <title>DHIS 2 Documentation Guide</title>
+  <title>DHIS2 Documentation Guide</title>
   <section xml:id="docs_1">
-    <title>DHIS 2 Documentation System Overview</title>
-    <para remap="">DHIS 2 is a web-based  information management system under very active
+    <title>DHIS2 Documentation System Overview</title>
+    <para remap="">DHIS2 is a web-based  information management system under very active
       development with typically four releases per year. Each release typically includes a number of
       new features and additional functionality.  Given the fast pace of development, the system's
       wide user base and distributed, global nature of development, a comprehensive documentation
-      system is required. An in-depth discussion of the need for documentation of DHIS 2 has been
+      system is required. An in-depth discussion of the need for documentation of DHIS2 has been
       considered previously.<citation>Store2007</citation>
       <link xl:href="http://www.docbook.org">DocBook</link> is a comprehensive, standard XML based
       markup language for  the creation of books, papers and other technical documents maintained by
         <link xl:href=" http://www.oasis-open.org/">OASIS</link> . In this chapter, we will describe
-      the documentation system of DHIS 2 and how you can contribute. </para>
+      the documentation system of DHIS2 and how you can contribute. </para>
   </section>
   <section xml:id="docs_2">
     <title>Introduction</title>
@@ -30,7 +30,7 @@
         xlink:href="http://docbook.org/whatis">DocBook</link> is that there is complete separation
       between the content and presentation. DocBook is a pure XML markup format used for technical
       documentation. In spite of the hundreds of tags which DocBook supports, only a very small
-      subset of its features are currently used for the DHIS 2 documentation. Since DocBook can be
+      subset of its features are currently used for the DHIS2 documentation. Since DocBook can be
       transformed into a wide variety of formats (HTML, PDF, etc) and is a text-based format, it
       serves as an ideal format for documentation of the system.</para>
 <para>There exist a wide range of text editors which can be used for the creation of DocBook files.
@@ -64,7 +64,7 @@
       list will be rendered with each element being numbered sequentially. Other key elements are
         <tag>screenshot</tag> and <tag>table</tag> which should be self-explanatory. </para>
     <para>The reader is referered to the DocBook documentation for a more in-depth description of
-      the exact elements which are availbale to be used. Currently, the DHIS 2 documentation is
+      the exact elements which are availbale to be used. Currently, the DHIS2 documentation is
       using version 5.0 of DocBook.</para>
   </section>
   <section xml:id="docs_3">
@@ -129,7 +129,7 @@ Just follow this procedure:</para>
 downloaded to the folder that you specified.</para>
       </listitem>
       <listitem>
-        <para>The DHIS 2 documents depend on other branches for their documentation. Be sure to keep
+        <para>The DHIS2 documents depend on other branches for their documentation. Be sure to keep
           these these up to date as well. When you build the documentation, the necessary submodules
           will be downloaded automatically as part of the build process ,if you have not already
           done so. </para>
@@ -155,15 +155,15 @@ downloaded to the folder that you specified.</para>
       the build process.</para>
   </section>
   <section>
-    <title>DHIS 2 Bibliography</title>
-    <para>DHIS 2 has a rich set of academic literature which can serve as useful resources during
+    <title>DHIS2 Bibliography</title>
+    <para>DHIS2 has a rich set of academic literature which can serve as useful resources during
       implementations, project proposals and more detailed reading than what is appropriate for a
       general user manual. A specialized bibliography has been added to the source code of the
       application. <link xmlns:xlink="http://www.w3.org/1999/xlink"
         xlink:href="http://www.bibtex.org">BibTeX</link> is a specialized language which is widely
       used in the academic world to handle bibliographic databases. A large number of free and open
       source tools are capable of working with BibTeX. Currently, the recommended tool of choice for
-      manipulating the DHIS 2 bibliography is <link xmlns:xlink="http://www.w3.org/1999/xlink"
+      manipulating the DHIS2 bibliography is <link xmlns:xlink="http://www.w3.org/1999/xlink"
         xlink:href="http://jabref.sourceforge.net/">JabRef</link>. </para>
     <para>To get started with the bibliography, download a copy of JabRef and open the
         <filename>/src/bibliography/dhis2_bibliography.bib file</filename>. . Add some new
@@ -177,7 +177,7 @@ downloaded to the folder that you specified.</para>
     <para>Screen shots are very useful for providing information to users on how particular actions
 should be performed. DocBook has no intrinsic mechanisms to know exactly how an image should be rendered in the final document. Therefore, it is necessary to provide instructions through element attributes. The following XML code fragment demonstrates how an image can be specified to occupy 80% of the available page width. For screen shots in landscape format, this seems to be an appropriate amount. You may need to experiment a bit to obtain a proper width for your image. Alternatively, you can edit the resolution of the image itself, in order to obtain a proper size during rendering. </para>
     <programlisting>&lt;screenshot&gt;
- &lt;title&gt;DHIS 2 Login screen&lt;/title&gt;
+ &lt;title&gt;DHIS2 Login screen&lt;/title&gt;
   &lt;mediaobject&gt;
    &lt;imageobject&gt; 
     &lt;imagedata fileref=&quot;resources/images/login/dhis2_login_screen.jpg&quot; format=&quot;JPG&quot; width=&quot;80%&quot;/&gt;
@@ -200,12 +200,12 @@ into a master document. Fragments from different documents can also be reused in
 mechanism to assign an id to a section. In the example below, a section has been assigned an id. This id must be unique within the document. </para>
     <para>
 <programlisting>  &lt;section xml:id=&quot;mod2_1&quot;&gt;
-&lt;title&gt;Getting started with DHIS 2&lt;/title&gt; ....</programlisting> </para>
+&lt;title&gt;Getting started with DHIS2&lt;/title&gt; ....</programlisting> </para>
     <para>In order to include an article into a book, an Xinclude statement must be used. The
 following example shows how. </para>
     <para>
 <programlisting>&lt;chapter&gt;
-&lt;title&gt;Getting started with DHIS 2&lt;/title&gt; 
+&lt;title&gt;Getting started with DHIS2&lt;/title&gt; 
 &lt;xi:include xmlns:xi=&quot;http://www.w3.org/2001/XInclude&quot; href=&quot;dhis2_user_man_mod2.xml&quot;
  xpointer=&quot;mod2_1&quot; encoding=&quot;UTF-8&quot;/&gt;
 ... </programlisting>
@@ -237,7 +237,7 @@ only want to include a portion of the chapter. If you want to use a section of t
         sheets</link> into the desired output  format. The complete list of tools capable of
       transforming DocBook will not be listed here, but a few examples are provided below. </para>
     <para>Latest builds of the documentation are available from the <link
-        xl:href="http://www.dhis2.org/documentation">DHIS 2 website</link>. The latest snapshot
+        xl:href="http://www.dhis2.org/documentation">DHIS2 website</link>. The latest snapshot
       builds and previous versions of the documentation are available through a searchable site
       located <link xl:href="http://dhis2.github.io/dhis2-docs/">here</link>.</para>
     <section>
