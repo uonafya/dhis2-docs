@@ -1,5 +1,5 @@
 <!-- 
-     This is the XSL FO (PDF) stylesheet for the DHIS 2 reference
+     This is the XSL FO (PDF) stylesheet for the DHIS2 reference
     documentation.
 
     Thanks are due to Christian Bauer of the Hibernate project

@@ -11,24 +11,32 @@
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
   <title>Installation</title>
-  <para>The installation chapter provides information on how to install DHIS 2 in various contexts, including online central server, offline local network, standalone application and self-contained package called DHIS 2 Live.</para>
+  <para>The installation chapter provides information on how to install DHIS2 in various contexts, including online central server, offline local network, standalone application and self-contained package called DHIS2 Live.</para>
   <section>
     <title>Introduction</title>
   
-  <para>DHIS 2 runs on all platforms for which there exists a Java Runtime Environment version 8 or
-      higher, which includes most popular operating systems such as Windows, Linux and Mac. DHIS 2
-      also runs on many relational database systems such as PostgreSQL, MySQL, H2 and Derby. DHIS 2
+  <para>DHIS2 runs on all platforms for which there exists a Java Runtime Environment version 8 or
+      higher, which includes most popular operating systems such as Windows, Linux and Mac. DHIS2
+      also runs on many relational database systems such as PostgreSQL, MySQL, H2 and Derby. DHIS2
       is packaged as a standard Java Web Archive (WAR-file) and thus runs on any Servlet containers
       such as Tomcat and Jetty.</para>
-  <para>The DHIS 2 team recommends Ubuntu 14.04 LTS operating system, PostgreSQL database system and
+  <para>The DHIS2 team recommends Ubuntu 16.04 LTS operating system, PostgreSQL database system and
       Tomcat Servlet container as the preferred environment for server installations.</para>
-  <para>This chapter provides a guide for setting up the above technology stack. It should however be read as a guide for getting up and running and not as an exhaustive documentation for the mentioned environment. We refer to the official Ubuntu, PostgreSQL and Tomcat documentation for in-depth reading.</para>
+  <para>This chapter provides a guide for setting up the above technology stack. It should however
+      be read as a guide for getting up and running and not as an exhaustive documentation for the
+      mentioned environment. We refer to the official Ubuntu, PostgreSQL and Tomcat documentation
+      for in-depth reading. </para>
+    <para>The <link xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink:href="https://github.com/dhis2/dhis2-tools">dhis2-tools</link> Ubuntu package
+      automates many of the tasks described in the guide below and is highly reccomended for most
+      users, especially those who are not familiar with the command line or administration of
+      servers. It is described in detail in a seperate chapter in this book. </para>
   </section>
   <section>
     <title>Server specifications</title>
-    <para>DHIS 2 is a database intensive application and requires that your server has an
+    <para>DHIS2 is a database intensive application and requires that your server has an
       appropriate amount of RAM, number of CPU cores and a fast disk. These recommendations should
-      be considered as rules-of-thumb and not exact measures. DHIS 2 scales linearly on the amount
+      be considered as rules-of-thumb and not exact measures. DHIS2 scales linearly on the amount
       of RAM and number of CPU cores so the more you can afford, the better the application will
       perform.</para>
     <itemizedlist>
@@ -42,15 +50,19 @@
       </listitem>
       <listitem>
         <para>Disk: Ideally use an SSD. Otherwise use a 7200 rpm disk. Minimum read speed is 150
-          Mb/s, 200 Mb/s is good, 350 Mb/s or better is ideal. </para>
+          Mb/s, 200 Mb/s is good, 350 Mb/s or better is ideal.  In terms of disk space, at least 60
+          GB is reccomended, but will depend entirely on the amount of data which is contained in
+          the data value tables. Analytics tables require a significant amount of disk space. Plan
+          ahead and ensure that your server can be upgraded with more disk space as it becomes
+          needed.</para>
       </listitem>
     </itemizedlist>
   </section>
   <section>
     <title>Server setup</title>
-    <para>This section describes how to set up a server instance of DHIS 2 on Ubuntu 14.04 64 bit
+    <para>This section describes how to set up a server instance of DHIS2 on Ubuntu 14.04 64 bit
       with PostgreSQL as database system and Tomcat as Servlet container. This guide is not meant to
-      be a step-by-step guide per se, but rather to serve as a reference to how DHIS 2 can be
+      be a step-by-step guide per se, but rather to serve as a reference to how DHIS2 can be
       deployed on a server. There are many possible deployment strategies, which will differ
       depending on the operating system and database you are using, and other factors. The term
         <emphasis role="italic">invoke</emphasis> refers to executing a given command in a terminal. </para>
@@ -64,8 +76,8 @@
         <emphasis role="italic">optional</emphasis>, like the step for performance tuning, can be
       done at a later stage.</para>
     <section>
-      <title>Creating a user to run DHIS 2</title>
-      <para>You should create a dedicated user for running DHIS - it is not recommended to run as
+      <title>Creating a user to run DHIS2</title>
+      <para>You should create a dedicated user for running DHIS2 - it is not recommended to run as
         the root user. Create a new user called dhis by invoking:</para>
       <screen>useradd -d /home/dhis -m dhis -s /bin/bash</screen>
       <para>Then make the user able to perform operations temporarily as root user by
@@ -79,19 +91,19 @@
     </section>
     <section>
       <title>Creating the configuration directory</title>
-      <para>Start by creating a suitable directory for the DHIS 2 configuration files. This
+      <para>Start by creating a suitable directory for the DHIS2 configuration files. This
         directory will also be used for apps, files and log files. An example directory could
         be:<screen>/home/dhis/config</screen></para>
-      <para>DHIS 2 will look for an environment variable called <emphasis>DHIS 2_HOME</emphasis> to
-        locate the DHIS 2 configuration directory. This directory will be referred to as
-          <emphasis>DHIS 2_HOME</emphasis> in this installation guide. We will define the environment
+      <para>DHIS2 will look for an environment variable called <emphasis>DHIS2_HOME</emphasis> to
+        locate the DHIS2 configuration directory. This directory will be referred to as
+          <emphasis>DHIS2_HOME</emphasis> in this installation guide. We will define the environment
         variable in a later step in the installation process.</para>
     </section>
     <section>
       <title>Setting server time zone and locale (optional)</title>
       <para>It may be necessary to reconfigure the time zone of the server to match the time zone of
-        the location which the DHIS 2 server will be covering. If you are using a virtual private
-        server, the default time zone may not correspond to the time zone of your DHIS 2 location.
+        the location which the DHIS2 server will be covering. If you are using a virtual private
+        server, the default time zone may not correspond to the time zone of your DHIS2 location.
         You can easily reconfigure the time zone by invoking the below and following the
         instructions.</para>
       <screen>sudo dpkg-reconfigure tzdata</screen>
@@ -120,16 +132,16 @@ sudo locale-gen nb_NO.UTF-8</screen>
     </section>
     <section>
       <title>PostGIS installation</title>
-      <para>In order to take advantage of the GIS clustering functionality introduced in DHIS 2.23
+      <para>In order to take advantage of the GIS clustering functionality introduced in DHIS2.23
         you must install the PostGIS extender on the server. After installing the extender, PostGIS
-        will be installed in the database automatically when DHIS 2 is started. Install PostGIS on
+        will be installed in the database automatically when DHIS2 is started. Install PostGIS on
         the server by invoking:</para>
       <screen>sudo apt-get install postgresql-9.4 postgresql-9.4-postgis-2.2 postgresql-contrib-9.4</screen>
     </section>
     <section>
       <title>PostgreSQL performance tuning (optional)</title>
       <para>Tuning PostgreSQL is necessary to achieve a high-performing system but is optional in
-        terms of getting DHIS 2 to run. PostgreSQL is configured and tuned through the <emphasis
+        terms of getting DHIS2 to run. PostgreSQL is configured and tuned through the <emphasis
           role="italic">postgresql.conf</emphasis> file which can be edited like this:</para>
       <para><screen>sudo nano /etc/postgresql/9.4/main/postgresql.conf</screen></para>
       <para>and set the following properties:</para>
@@ -144,7 +156,7 @@ sudo locale-gen nb_NO.UTF-8</screen>
       <para><screen>work_mem = 20MB</screen></para>
       <para>Determines the amount of memory used for internal sort and hash operations. This setting
       is per connection, per query so a lot of memory may be consumed if raising this too high.
-      Setting this value correctly is essential for DHIS 2 aggregation performance.</para>
+      Setting this value correctly is essential for DHIS2 aggregation performance.</para>
       <para><screen>maintenance_work_mem = 512MB</screen></para>
       <para>Determines the amount of memory PostgreSQL can use for maintenance operations such as
         creating indexes, running vacuum, adding foreign keys. Incresing this value might improve
@@ -163,16 +175,16 @@ sudo locale-gen nb_NO.UTF-8</screen>
       <para><screen>wal_buffers = 16MB</screen></para>
       <para>Sets the memory used for buffering during the WAL write process. Increasing this value might improve throughput in write-heavy systems.</para>
       <para><screen>synchronous_commit = off</screen></para>
-      <para>Specifies whether transaction commits will wait for WAL records to be written to the disk before returning to the client or not. Setting this to off will improve performance considerably. It also implies that there is a slight delay between the transaction is reported successful to the client and it actually being safe, but the database state cannot be corrupted and this is a good alternative for performance-intensive and write-heavy systems like DHIS 2.</para>
+      <para>Specifies whether transaction commits will wait for WAL records to be written to the disk before returning to the client or not. Setting this to off will improve performance considerably. It also implies that there is a slight delay between the transaction is reported successful to the client and it actually being safe, but the database state cannot be corrupted and this is a good alternative for performance-intensive and write-heavy systems like DHIS2.</para>
       <para><screen>wal_writer_delay = 10000ms</screen></para>
       <para>Specifies the delay between WAL write operations. Setting this to a high value will improve performance on write-heavy systems since potentially many write operations can be executed within a single flush to disk.</para>
       <para>Restart PostgreSQL by invoking <code>sudo /etc/init.d/postgresql restart</code></para>
     </section>
     <section>
       <title>Database configuration</title>
-      <para>The database connection information is provided to DHIS 2 through a configuration file
+      <para>The database connection information is provided to DHIS2 through a configuration file
         called <emphasis role="italic">dhis.conf</emphasis>. Create this file and save it in the
-          <emphasis>DHIS 2_HOME</emphasis> directory. As an example this location could
+          <emphasis>DHIS2_HOME</emphasis> directory. As an example this location could
         be:<screen>/home/dhis/config/dhis.conf</screen> A configuration file for PostgreSQL
         corresponding to the above setup has these properties: </para>
       <para><screen># Hibernate SQL dialect
@@ -202,18 +214,18 @@ encryption.password = xxxx</screen></para>
           characters</emphasis>.</para>
       <para>A common mistake is to have a white-space after the last property value so make sure
         there is no white-space at the end of any line. Also remember that this file contains the
-        clear text password for your DHIS 2 database so it needs to be protected from unauthorized
+        clear text password for your DHIS2 database so it needs to be protected from unauthorized
         access. To do this invoke the following command which ensures that only the dhis user which
         owns the file is allowed to read it:</para>
       <screen>chmod 0600 dhis.conf</screen>
     </section>
     <section>
       <title>File store configuration (optional)</title>
-      <para>DHIS 2 is capable of capturing and storing files. By default files will be stored on the
-        file system of the server which runs DHIS 2 in a <emphasis role="italic">files</emphasis>
-        directory under the <emphasis role="italic">DHIS 2_HOME</emphasis> external directory
+      <para>DHIS2 is capable of capturing and storing files. By default files will be stored on the
+        file system of the server which runs DHIS2 in a <emphasis role="italic">files</emphasis>
+        directory under the <emphasis role="italic">DHIS2_HOME</emphasis> external directory
         location.</para>
-      <para>You can also configure DHIS 2 to store files on cloud-based storage providers.
+      <para>You can also configure DHIS2 to store files on cloud-based storage providers.
         Currently, AWS S3 is the only supported provider. To enable cloud-based storage you must
         define the following addtional properties in your <emphasis role="italic"
           >dhis.conf</emphasis> file:</para>
@@ -251,7 +263,7 @@ filestore.secret = xxxx</screen>
     </section>
     <section>
       <title>Google service account configuration (optional)</title>
-      <para>DHIS 2 can connect to various Google service APIs. For instance, the DHIS 2 GIS
+      <para>DHIS2 can connect to various Google service APIs. For instance, the DHIS2 GIS
         component can utilize the Google Earth Engine API to load map layers. In order to provide
         API access tokens you must set up a Google service account and create a private key:</para>
       <para>
@@ -272,7 +284,7 @@ filestore.secret = xxxx</screen>
         </itemizedlist>
       </para>
       <para>After downloading the key file, put the <emphasis>dhis-google-auth.json</emphasis> file
-        in the DHIS 2_HOME directory (the same location as the <emphasis>dhis.conf</emphasis> file).
+        in the DHIS2_HOME directory (the same location as the <emphasis>dhis.conf</emphasis> file).
         As an example this location could
         be:<screen>/home/dhis/config/dhis-google-auth.json</screen></para>
     </section>
@@ -291,7 +303,7 @@ sudo apt-get install oracle-java8-installer</screen>
       <screen>sudo apt-get install oracle-java8-set-default</screen>
     </section>
     <section>
-      <title>Install Tomcat and DHIS 2</title>
+      <title>Install Tomcat and DHIS2</title>
       <para>To install the Tomcat servlet container we will utilize the Tomcat user package by
         invoking:</para>
       <screen>sudo apt-get install tomcat7-user</screen>
@@ -304,14 +316,14 @@ sudo apt-get install oracle-java8-installer</screen>
         of dhis instances if that is desired.</para>
       <para>Next edit the file <emphasis role="italic">tomcat-dhis/bin/setenv.sh</emphasis> and add
         the lines below. The first line will set the location of your Java Runtime Environment, the
-        second will dedicate memory to Tomcat and the third will set the location for where DHIS 2
+        second will dedicate memory to Tomcat and the third will set the location for where DHIS2
         will search for the <emphasis role="italic">dhis.conf</emphasis> configuration file. Please
         check that the path the Java binaries are correct as they might vary from system to system,
         e.g. on AMD systems you might see <emphasis role="italic">/java-7-openjdk-amd64</emphasis>
         Note that you should adjust this to your environment:</para>
       <para><screen>export JAVA_HOME=&apos;/usr/lib/jvm/java-8-oracle/&apos;
 export JAVA_OPTS=&apos;-Xmx7500m -Xms4000m&apos;
-export DHIS 2_HOME=&apos;/home/dhis/config&apos;</screen></para>
+export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
       <para>The Tomcat configiration file is located in <emphasis role="italic"
           >tomcat-dhis/conf/server.xml</emphasis>. The element which defines the connection to DHIS
         is the <emphasis role="italic">Connector</emphasis> element with port 8080. You can change
@@ -322,8 +334,8 @@ export DHIS 2_HOME=&apos;/home/dhis/config&apos;</screen></para>
   connectionTimeout="20000"
   redirectPort="8443"
   URIEncoding="UTF-8" /></screen>
-      <para>The next step is to download the DHIS 2 WAR file and place it into the webapps directory
-        of Tomcat. You can download the DHIS version 2.23 WAR release like this (replace 2.23 with
+      <para>The next step is to download the DHIS2 WAR file and place it into the webapps directory
+        of Tomcat. You can download the DHIS2 version 2.23 WAR release like this (replace 2.23 with
         your preferred version if necessary):</para>
       <screen>wget https://www.dhis2.org/download/releases/2.23/dhis.war</screen>
       <para>Move the WAR file into the Tomcat webapps directory. We want to call the WAR file
@@ -331,17 +343,53 @@ export DHIS 2_HOME=&apos;/home/dhis/config&apos;</screen></para>
       <screen>mv dhis.war tomcat-dhis/webapps/ROOT.war</screen>
     </section>
     <section>
-      <title>Running DHIS 2</title>
-      <para>DHIS 2 can now be started by invoking:</para>
+      <title>Running DHIS2</title>
+      <para>DHIS2 can now be started by invoking:</para>
       <screen>tomcat-dhis/bin/startup.sh</screen>
-      <para>DHIS 2 can be stopped by invoking:</para>
+      <para>DHIS2 can be stopped by invoking:</para>
       <screen>tomcat-dhis/bin/shutdown.sh</screen>
       <para>To monitor the behavior of Tomcat the log is the primary source of information. The log
         can be viewed with the following command:</para>
       <screen>tail -f tomcat-dhis/logs/catalina.out</screen>
-      <para>Assuming that the WAR file is called ROOT.war, you can now access your DHIS instance at
+      <para>Assuming that the WAR file is called ROOT.war, you can now access your DHIS2 instance at
         the following URL:</para>
       <screen>http://localhost:8080</screen>
+    </section>
+    <section>
+      <title>Starting tomcat at boot-time</title>
+      <para>In certain situations a server might reboot unexpectedly. It is hence preferable to have
+        Tomcat start automatically when the server starts. To achieve that the first step is to
+        create init scripts. Create a new file called <code>tomcat</code> and paste the below
+        content into it (adjust the HOME variable to your environment):</para>
+      <screen>#!/bin/sh
+#Tomcat init script
+
+HOME=/home/dhis/tomcat/bin
+
+case $1 in
+start)
+        sh ${HOME}/startup.sh
+        ;;
+stop)
+        sh ${HOME}/shutdown.sh
+        ;;
+restart)
+        sh ${HOME}/shutdown.sh
+        sleep 5
+        sh ${HOME}/startup.sh
+        ;;
+esac
+exit 0</screen>
+      <para>Move the script to the init script directory and make them executable by
+        invoking:</para>
+      <screen>sudo mv tomcat /etc/init.d
+sudo chmod +x /etc/init.d/tomcat</screen>
+      <para>Next make sure the tomcat init script will be invoked during system startup and
+        shutdown:</para>
+      <screen>sudo /usr/sbin/update-rc.d -f tomcat defaults 81</screen>
+      <para>Tomcat will now be started at system startup and stopped at system shutdown. If you
+        later need to revert this you can replace <code>defaults</code> with <code>remove</code> and
+        invoke the above commands again.</para>
     </section>
   </section>
   <section>
@@ -349,10 +397,10 @@ export DHIS 2_HOME=&apos;/home/dhis/config&apos;</screen></para>
     <para>A reverse proxy is a proxy server that acts on behalf of a server. Using a reverse proxy in combination with a servlet container is optional but has many advantages:</para>
     <itemizedlist>
       <listitem>
-        <para>Requests can be mapped and passed on to multiple servlet containers - this improves flexibility and makes it easier to run multiple instances of DHIS on the same server. It also makes it possible to change the internal server setup without affecting clients.</para>
+        <para>Requests can be mapped and passed on to multiple servlet containers - this improves flexibility and makes it easier to run multiple instances of DHIS2 on the same server. It also makes it possible to change the internal server setup without affecting clients.</para>
       </listitem>
       <listitem>
-        <para>The DHIS application can be run as a non-root user on a port different than 80 which reduces the consequences of session hijacking.</para>
+        <para>The DHIS2 application can be run as a non-root user on a port different than 80 which reduces the consequences of session hijacking.</para>
       </listitem>
       <listitem>
         <para>The reverse proxy can  act as a single SSL server and be configured to inspect requests for malicious content, log requests and responses and provide non-sensitive error messages which will improve security.</para>
@@ -413,7 +461,7 @@ sudo /etc/init.d/nginx stop</screen></para>
     }
   }
 }</screen></para>
-      <para>You can now access your DHIS instance at <emphasis role="italic">http://localhost</emphasis>. Since the reverse proxy has been set up we can improve
+      <para>You can now access your DHIS2 instance at <emphasis role="italic">http://localhost</emphasis>. Since the reverse proxy has been set up we can improve
         security by making Tomcat only listen for local connections. In <emphasis role="italic">/conf/server.xml</emphasis> you can add an <emphasis role="italic">address</emphasis>
         attribute with the value <emphasis role="italic">localhost</emphasis> to the Connector
         element for HTTP 1.1 like this:</para>
@@ -421,7 +469,7 @@ sudo /etc/init.d/nginx stop</screen></para>
     </section>
     <section>
       <title>Enabling SSL on nginx</title>
-      <para>In order to improve security it is recommended to configure the server running DHIS to
+      <para>In order to improve security it is recommended to configure the server running DHIS2 to
         communicate with clients over an encrypted connection and to identify itself to clients
         using a trusted certificate. This can be achieved through SSL which is an cryptographic
         communication protocol running on top of TCP/IP. First, install the required <emphasis role="italic">openssl</emphasis> library:</para>
@@ -432,7 +480,7 @@ sudo /etc/init.d/nginx stop</screen></para>
         together with the generated server.key file in a location which is reachable by nginx. A
         good location for this can be the same directory as where your nginx.conf file is
         located.</para>
-      <para>Below is an nginx server block where the certificate files are named server.crt and server.key. Since SSL connections usually occur on port 443 (HTTPS) we pass requests on that port (443) on to the DHIS instance running on <emphasis role="italic">http://localhost:8080</emphasis> The first server block will rewrite all requests connecting to port 80 and force the use of HTTPS/SSL. This is also necessary because DHIS is using a lot of redirects internally which must be passed on to use HTTPS. Remember to replace <emphasis role="italic">&lt;server-ip&gt;</emphasis> with the  IP of your server. These blocks should replace the  one from the previous section.</para>
+      <para>Below is an nginx server block where the certificate files are named server.crt and server.key. Since SSL connections usually occur on port 443 (HTTPS) we pass requests on that port (443) on to the DHIS2 instance running on <emphasis role="italic">http://localhost:8080</emphasis> The first server block will rewrite all requests connecting to port 80 and force the use of HTTPS/SSL. This is also necessary because DHIS2 is using a lot of redirects internally which must be passed on to use HTTPS. Remember to replace <emphasis role="italic">&lt;server-ip&gt;</emphasis> with the  IP of your server. These blocks should replace the  one from the previous section.</para>
       <screen>http {
   gzip on; # Enables compression, incl Web API content-types
   gzip_types
@@ -565,48 +613,28 @@ sudo /etc/init.d/nginx stop</screen></para>
 
 </screen>
       <important>
-        <para>Be aware that a server side cache shortcuts the DHIS 2 security features in the sense
+        <para>Be aware that a server side cache shortcuts the DHIS2 security features in the sense
           that requests which hit the server side cache will be served directly from the cache
-          outside the control of DHIS 2 and the servlet container. This implies that request URLs
+          outside the control of DHIS2 and the servlet container. This implies that request URLs
           can be guessed and reports retrieved from the cache by unauthorized users. Hence, if you
           capture sensitive information, setting up a server side cache is not recommended.</para>
       </important>
     </section>
     <section>
-      <title>Starting tomcat on boot-time</title>
-      <para>In certain situations a server might reboot unexpectedly. It is hence preferable to have
-        Tomcat start automatically when the server starts. To achieve that the first step is to
-        create init scripts. Create a new file called <code>tomcat</code> and paste the below
-        content into it (adjust the HOME variable to your environment):</para>
-      <screen>#!/bin/sh
-#Tomcat init script
-
-HOME=/home/dhis/tomcat/bin
-
-case $1 in
-start)
-        sh ${HOME}/startup.sh
-        ;;
-stop)
-        sh ${HOME}/shutdown.sh
-        ;;
-restart)
-        sh ${HOME}/shutdown.sh
-        sleep 5
-        sh ${HOME}/startup.sh
-        ;;
-esac
-exit 0</screen>
-      <para>Move the script to the init script directory and make them executable by
-        invoking:</para>
-      <screen>sudo mv tomcat /etc/init.d
-sudo chmod +x /etc/init.d/tomcat</screen>
-      <para>Next make sure the tomcat init script will be invoked during system startup and
-        shutdown:</para>
-      <screen>sudo /usr/sbin/update-rc.d -f tomcat defaults 81</screen>
-      <para>Tomcat will now be started at system startup and stopped at system shutdown. If you
-        later need to revert this you can replace <code>defaults</code> with <code>remove</code> and
-        invoke the above commands again.</para>
+      <title>Additional resources on SSL</title>
+      <para>The configuration demonstrated above should be regarded as the absolute minumum in order
+        to establish a secure server. However, encryption methods are constantly being updated, so
+        implementers who are administerting their own server, show ensure that the server is
+        regularly updated with recent security patches (particularly the HTTP server and SSL
+        libraries). </para>
+      <para>There are numerous additional tutorials and information available on the web, including
+        a helpful <link xmlns:xlink="http://www.w3.org/1999/xlink"
+          xlink:href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04"
+          >step-by-step guide</link> for using the free <link
+          xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://letsencrypt.org/">Lets
+          Encrypt SSL certifcate system</link> . It may also be useful to regularly test your SSL
+        security with <link xmlns:xlink="http://www.w3.org/1999/xlink"
+          xlink:href="https://www.ssllabs.com/ssltest/">this website</link>.</para>
     </section>
     <section>
       <title>Making resources available with nginx</title>
@@ -635,9 +663,9 @@ sudo chmod +x /etc/init.d/tomcat</screen>
     </section>
     <section>
       <title>App setup with nginx</title>
-      <para>DHIS 2 supports installation of apps. To avoid having to re-install your apps every time
-        you update and replace the DHIS 2 WAR file it is beneficial to deploy apps on the server
-        file system outside the DHIS 2 webapp directory. To install apps directly in nginx you can
+      <para>DHIS2 supports installation of apps. To avoid having to re-install your apps every time
+        you update and replace the DHIS2 WAR file it is beneficial to deploy apps on the server
+        file system outside the DHIS2 webapp directory. To install apps directly in nginx you can
         follow these steps. First create a directory which will be used as the app installation
         folder.</para>
       <screen>sudo mkdir /usr/share/nginx/apps</screen>
@@ -657,14 +685,14 @@ sudo chmod +x /etc/init.d/tomcat</screen>
   }
   ...
 }  </screen>
-      <para>Finally navigate to the app configuration screen in your DHIS 2 instance by going to App
+      <para>Finally navigate to the app configuration screen in your DHIS2 instance by going to App
         management > Settings and adjust the settings accordingly.</para>
       <para>The <emphasis role="italic">app installation folder</emphasis> should point to the base
         directory path on the server file system:</para>
       <screen>/usr/share/nginx/apps</screen>
-      <para>The <emphasis role="italic">app base URL</emphasis> should point to the URL where DHIS 2
+      <para>The <emphasis role="italic">app base URL</emphasis> should point to the URL where DHIS2
         can find the apps. Replace www.domain.com with your real domain name and according to how
-        you have deployed DHIS 2.</para>
+        you have deployed DHIS2.</para>
       <screen>http://www.domain.com/apps</screen>
       <para>You should now be ready to upload apps from the App management screen. Remember to
         reload the nginx configuration. </para>
@@ -673,12 +701,12 @@ sudo chmod +x /etc/init.d/tomcat</screen>
       <title>Basic reverse proxy setup with Apache</title>
       <para>The Apache HTTP server is the most common </para>
       <important>
-        <para>Using nginx is the preferred option as reverse proxy with DHIS 2 and you should not
+        <para>Using nginx is the preferred option as reverse proxy with DHIS2 and you should not
           attempt to install both nginx and Apache on the same server. If you have installed nginx
           please ignore this section. </para>
       </important>
       <para>The Apache HTTP server is the most widely used HTTP server currently. Depdenign on your
-        exact nature of deployment, you may need to use Apache as a reverse proxy for your DHIS 2
+        exact nature of deployment, you may need to use Apache as a reverse proxy for your DHIS2
         server. In this section, we will describe how to implement a simple reverse proxy setup with
         Apache. </para>
       <para>First we need to install a few necessary programs modules for Apache and enable the modules. </para>
@@ -699,7 +727,7 @@ ProxyPassReverse /dhis  ajp://localhost:8009/dhis
 &lt;/Location&gt;     
 &lt;/IfModule&gt;
 </screen></para>
-      <para>You now can restart Tomcat and the Apache HTTPD server and your DHIS 2 instance should be available on http://<emphasis>myserver</emphasis>/dhis where <emphasis>myserver</emphasis> is the hostname of your server. </para>
+      <para>You now can restart Tomcat and the Apache HTTPD server and your DHIS2 instance should be available on http://<emphasis>myserver</emphasis>/dhis where <emphasis>myserver</emphasis> is the hostname of your server. </para>
     </section>
     <section>
       <title>SSL encryption with Apache</title>
@@ -733,9 +761,9 @@ XXX.XX.XXX.XXX foo.mydomain.org</screen></para>
   </section>
   <section>
     <title>LDAP configuration</title>
-    <para>DHIS 2 is capable of using an LDAP server for authentication of users. For LDAP
-      authentication it is required to have a matching user in the DHIS 2 database per LDAP entry.
-      The DHIS 2 user will be used to represent authorities / user roles. </para>
+    <para>DHIS2 is capable of using an LDAP server for authentication of users. For LDAP
+      authentication it is required to have a matching user in the DHIS2 database per LDAP entry.
+      The DHIS2 user will be used to represent authorities / user roles. </para>
     <para>To set up LDAP authentication you need to configure the LDAP server URL, a manager user
       and an LDAP search base and search filter. This configuration should be done in the main DHIS
       2 configuration file (dhis.conf). LDAP users, or entries, are identified by distinguished
@@ -768,7 +796,7 @@ ldap.search.filter = (cn={0})</screen>
           <para><emphasis role="italic">ldap.manager.dn:</emphasis> An LDAP manager user is required
             for binding to the LDAP server for the user authentication process. This property refers
             to the DN of that entry. I.e. this is not the user which will be authenticated when
-            logging into DHIS 2, rather the user which binds to the LDAP server in order to do the
+            logging into DHIS2, rather the user which binds to the LDAP server in order to do the
             authentication.</para>
         </listitem>
         <listitem>
@@ -782,32 +810,32 @@ ldap.search.filter = (cn={0})</screen>
         </listitem>
         <listitem>
           <para><emphasis role="italic">ldap.search.filter:</emphasis> The filter for matching DNs
-            of entries in the LDAP directory. The {0} variable will be substituted by the DHIS 2
+            of entries in the LDAP directory. The {0} variable will be substituted by the DHIS2
             username, or alternatively, the LDAP identifier defined for the user with the supplied
             username.</para>
         </listitem>
       </itemizedlist></para>
-    <para>DHIS 2 will use the supplied username / password and try to authenticate against an LDAP
-      server entry, then look up user roles / authorities from a corresponding DHIS 2 user. This
-      implies that a user must have a matching entry in the LDAP directory as well as a DHIS 2 user
+    <para>DHIS2 will use the supplied username / password and try to authenticate against an LDAP
+      server entry, then look up user roles / authorities from a corresponding DHIS2 user. This
+      implies that a user must have a matching entry in the LDAP directory as well as a DHIS2 user
       in order to log in.</para>
-    <para>During authentication, DHIS 2 will try to bind to the LDAP server using the configured
+    <para>During authentication, DHIS2 will try to bind to the LDAP server using the configured
       LDAP server URL and the manager DN and password. Once the binding is done, it will search for
       an entry in the directory using the configured LDAP search base and search filter.</para>
     <para>The {0} variable in the configured filter will be substituted beforing applying the
       filter. By default, it will be substituted by the supplied username. You can also set a custom
-      LDAP identifier on the relevant DHIS 2 user account. This can be done throught the DHIS 2 user
+      LDAP identifier on the relevant DHIS2 user account. This can be done throught the DHIS2 user
       module user interface in the add or edit screen by setting the "LDAP identifier" property.
       When set, the LDAP identifier will be subsituted for the {0} variable in the filter. This
       feature is useful when the LDAP common name is not suitable or cannot for some reason be used
-      as a DHIS 2 username.</para>
+      as a DHIS2 username.</para>
   </section>
   <section>
     <title>Encryption setup</title>
-    <para>DHIS 2 allows for encryption of data. This however requires some extra setup.</para>
+    <para>DHIS2 allows for encryption of data. This however requires some extra setup.</para>
       <section>
         <title>Java Cryptography Extension</title>
-        <para>DHIS 2 uses an encryption algorithm classified as strong and therefore requires the
+        <para>DHIS2 uses an encryption algorithm classified as strong and therefore requires the
           <emphasis>Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
           Files</emphasis> to be installed. These files can be installed through these steps:</para>
     <para>
@@ -866,11 +894,11 @@ ldap.search.filter = (cn={0})</screen>
     </section>
   </section>
   <section>
-    <title>Complete configuration reference</title>
+    <title>DHIS2 configuration reference</title>
     <para>The following describes the full set of configuration options for the <emphasis
         role="italic">dhis.conf</emphasis> configuration file. The uncommented properties are
       mandatory. The commented properties are optional. The configuration file should be placed in a
-      directory which is pointed to by a <emphasis role="italic">DHIS 2_HOME</emphasis> environment
+      directory which is pointed to by a <emphasis role="italic">DHIS2_HOME</emphasis> environment
       variable. The comment (#) must be removed for a property value to take effect. You can copy
       and paste the following content as a viable starting point for your own configuration
       file.<screen># ----------------------------------------------------------------------
@@ -919,7 +947,7 @@ connection.schema = update
 # File store provider, currently 'filesystem' and 'aws-s3' are supported
 # filestore.provider = filesystem
 
-# Directory / bucket name, refers to folder within DHIS 2_HOME on file system, 'bucket' on AWS S3
+# Directory / bucket name, refers to folder within DHIS2_HOME on file system, 'bucket' on AWS S3
 # filestore.container = files
 
 # Datacenter location (not required)
@@ -952,20 +980,20 @@ connection.schema = update
   </section>
   <section>
     <title>Application logging</title>
-    <para>The DHIS 2 application log output is directed to multiple files and locations. First, log
+    <para>The DHIS2 application log output is directed to multiple files and locations. First, log
       output is sent to standard output. The Tomcat servlet container usually outputs standard
       output to a file under "logs":<screen>&lt;tomcat-dir>/logs/catalina.out</screen></para>
-    <para>Second, log output is written to a "logs" directory under the DHIS 2 home directory as
-      defined by the the DHIS 2_HOME environment variables. There is a main log file for all output,
+    <para>Second, log output is written to a "logs" directory under the DHIS2 home directory as
+      defined by the the DHIS2_HOME environment variables. There is a main log file for all output,
       and separate log files for various background processes. The main file includes the background
       process logs as well. The log files are capped at 50 Mb and log content is continuously
-      appended.<screen>&lt;DHIS 2_HOME>/logs/dhis.log
+      appended.<screen>&lt;DHIS2_HOME>/logs/dhis.log
 
-&lt;DHIS 2_HOME>/logs/dhis-analytics-table.log
+&lt;DHIS2_HOME>/logs/dhis-analytics-table.log
 
-&lt;DHIS 2_HOME>/logs/dhis-data-exchange.log
+&lt;DHIS2_HOME>/logs/dhis-data-exchange.log
 
-&lt;DHIS 2_HOME>/logs/dhis-data-sync.log</screen></para>
+&lt;DHIS2_HOME>/logs/dhis-data-sync.log</screen></para>
     <para>In order to override the default logging you can specify a Java system property with the
       name <emphasis role="italic">log4j.configuration</emphasis> and a value pointing to the Log4j
       configuration file on the classpath. If you want to point to a file on the file system (i.e.
@@ -973,12 +1001,12 @@ connection.schema = update
       this:<screen>-Dlog4j.configuration=file:/home/dhis/config/log4j.properties</screen></para>
     <para>Java system properties can be set e.g. through the <emphasis role="italic"
         >JAVA_OPTS</emphasis> environment variable.</para>
-    <para>DHIS 2 will eventually phase out logging to standard out / catalina.out and as a result it
-      is recommended to rely on the logs under DHIS 2_HOME.</para>
+    <para>DHIS2 will eventually phase out logging to standard out / catalina.out and as a result it
+      is recommended to rely on the logs under DHIS2_HOME.</para>
   </section>
   <section>
     <title>Working with the PostgreSQL database</title>
-    <para>Common operations when managing a DHIS instance are dumping and restoring databases. To
+    <para>Common operations when managing a DHIS2 instance are dumping and restoring databases. To
       make a dump (copy) of your database, assuming the setup from the installation section, you can
       invoke the following: </para>
     <screen>pg_dump dhis2 -U dhis -f dhis2.sql</screen>
@@ -992,12 +1020,12 @@ connection.schema = update
     <screen>psql -d dhis2 -U dhis -f dhis2.sql</screen>
   </section>
   <section>
-    <title>DHIS 2 Live setup</title>
-    <para>The DHIS 2 Live package is extremely convenient to install and run. It is intended for
+    <title>DHIS2 Live setup</title>
+    <para>The DHIS2 Live package is extremely convenient to install and run. It is intended for
       demonstrations, for users who want to explore the system and for small, offline installations
       typically at districts or facilities. It only requires a Java Runtime Environment and runs on
       all browsers except Internet Explorer 7 and lower.</para>
-    <para>To install start by downloading DHIS 2 Live from <emphasis role="italic"
+    <para>To install start by downloading DHIS2 Live from <emphasis role="italic"
         >http://dhis2.org</emphasis> and extract the archive to any location. On Windows click the
       executable archive. On Linux invoke the startup.sh script. After the startup process is done
       your default web browser will automtically be pointed to <emphasis role="italic"
@@ -1005,7 +1033,7 @@ connection.schema = update
       accessible on most operating systems where you can start and stop the server and start new
       browser sesssions. Please note that if you have the server running there is no need to start
       it again, simply open the application from the tray menu.</para>
-    <para>DHIS 2 Live is running on an embedded Jetty servlet container and an embedded H2 database.
+    <para>DHIS2 Live is running on an embedded Jetty servlet container and an embedded H2 database.
       However it can easily be configured to run on other database systems such as PostgreSQL.
       Please read the section above about server installations for an explanation of the database
       configuration. The <emphasis role="italic">dhis.conf</emphasis> configuration file is located

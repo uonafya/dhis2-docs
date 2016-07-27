@@ -21,7 +21,7 @@
     need to be imported. This feature of exporting and importing is thus a crucial function of a
     HMIS. This feature also helps us overcome the dependency on Internet to some degree, as data
     updates can be transferred via USB key where there is no connectivity, or through email where
-    there is limited Internet connectivity. DHIS 2 provides robust export-import functionality to
+    there is limited Internet connectivity. DHIS2 provides robust export-import functionality to
     fulfill these needs. </para>
   <para>To access the main Import-Export module, choose <guimenu>Services-&gt;Import-Export. </guimenu>A number of services are available, all of which will be described in detail in respective sections below. </para>
   <screenshot>
@@ -94,16 +94,16 @@
           an object with ID &quot;aaaU6Kr7Gtpidn&quot;, which means that an object with this ID was not
           present in your imported file, and it could not be found in the existing database. Its
           important to note that even if a reference could not be found, the object will still be
-          imported, but you might have to fix this directly in DHIS 2 later, if the reference should
+          imported, but you might have to fix this directly in DHIS2 later, if the reference should
           have pointed to something else.</para>
       </section>
       <section>
         <title>Matching identifiers in DXF2</title>
-        <para>The DXF2 format currently support matching for two identifiers, the internal DHIS 2 identifier (known as a UID), and also using an  external identifier called called a &quot;code&quot;. When the importer is trying to search for
+        <para>The DXF2 format currently support matching for two identifiers, the internal DHIS2 identifier (known as a UID), and also using an  external identifier called called a &quot;code&quot;. When the importer is trying to search for
         references (like the one above), it will first go to the UID field, and then to the code
         field. This allows you to import from legacy systems without having a UID for every meta-data
         object. I.e. if you are importing facility data from a legacy system, you can leave out the
-        ID field completely (DHIS 2 will fill this in for you) and the put the legacy systems own
+        ID field completely (DHIS2 will fill this in for you) and the put the legacy systems own
         identifiers in the code field, this identifier is required to be unique. This not only works
         for organisation units, but for all kinds of meta-data, allowing for easy import from other
         systems.</para>
@@ -127,17 +127,17 @@
   </section>
   <section xml:id="import">
     <title>Importing data</title>
-    <para>The import option allows different instance of DHIS 2 to receive standardised sets of data in the absence of a networked system. The functionality can also be used to import data produced by another system (perhaps on a regular basis) or to import legacy data which has been transformed into a format which DHIS 2 can understand. Typically, a data set is exported from one DHIS 2 instance (e.g. a district level system) to another system (e.g. a provincial level system).  DHIS 2 is also capable of importing data directly from a DHIS 1.4 Access database. Each of these options will be discussed in the following sections. </para>
+    <para>The import option allows different instance of DHIS2 to receive standardised sets of data in the absence of a networked system. The functionality can also be used to import data produced by another system (perhaps on a regular basis) or to import legacy data which has been transformed into a format which DHIS2 can understand. Typically, a data set is exported from one DHIS2 instance (e.g. a district level system) to another system (e.g. a provincial level system).  DHIS2 is also capable of importing data directly from a DHIS2 1.4 Access database. Each of these options will be discussed in the following sections. </para>
     <section xml:id="import_another_instance">
       <title>XML data import</title>
       <para>To import data in XML format, simply select Services-&gt;Import-export-&gt;XML data
         import. Similar options to the XML meta-data import facility are available. Please refer to
         the Developer guide > Web API > Data values chapter on XML data import for details on the
-        XML format which is used by DHIS 2 for aggregate data import. </para>
+        XML format which is used by DHIS2 for aggregate data import. </para>
     </section>
     <section xml:id="importCSVdata">
       <title>Importing CSV data</title>
-      <para>DHIS 2 supports import of data in the CSV (Comma Separated Values)  format. This can be used to import exchange file produced by DHIS 2 itself. It also comes in handy when you want to import data from a third-party system as CSV is widely supported in applications and is easy to produce manually.</para>
+      <para>DHIS2 supports import of data in the CSV (Comma Separated Values)  format. This can be used to import exchange file produced by DHIS2 itself. It also comes in handy when you want to import data from a third-party system as CSV is widely supported in applications and is easy to produce manually.</para>
       <para>To import a CSV data exchange file navigate to the <emphasis role="italic">CSV Data
           Import </emphasis>item in the left-side menu. Upload the exchange file and click <emphasis
           role="italic">Import</emphasis>. CSV files can be imported both as plain text file or as
@@ -151,38 +151,38 @@
     </section>
     <section xml:id="importPDFdata">
       <title>Importing PDF data</title>
-      <para>DHIS 2 supports import of data in the PDF format. This can be used to import data produced by off-line PDF data entry forms. Please refer to the section &quot;Data set management&quot; for details on how to produce a PDF form which can be used for off-line data entry. </para>
+      <para>DHIS2 supports import of data in the PDF format. This can be used to import data produced by off-line PDF data entry forms. Please refer to the section &quot;Data set management&quot; for details on how to produce a PDF form which can be used for off-line data entry. </para>
       <para>To import a PDF data file, navigate to the <emphasis role="italic">PDF Data Import </emphasis>item in the left-side menu. Upload the completed PDF file and click <emphasis role="italic">Import</emphasis>.</para>
       <para>After the import process is finished, you can follow the link to the import summary, which will inform you about the outcome of the import process in terms of number of records imported, updated and ignored and potential conflicts.</para>
     </section>
     <section xml:id="dhis14import">
-      <title>Importing data from DHIS 1.4</title>
-      <para>There are two ways to import data from a DHIS 1.4 database; 1) through the 1.4 XML-based export files, or 2) directly from the DHIS 1.4 data file (.mdb). Both are accessible from the DHIS 1.4 Import menu under Import in the Import-Export module.</para>
-      <para>It is critical that all data integrity violations which are present in the DHIS 1.4
-        database be fully resolved before attempting an import into DHIS 2. You can check the data
-        integrity of DHIS 1.4 through the CORE Module-&gt;Advanced-&gt;Data integrity checks. A
+      <title>Importing data from DHIS2 1.4</title>
+      <para>There are two ways to import data from a DHIS2 1.4 database; 1) through the 1.4 XML-based export files, or 2) directly from the DHIS2 1.4 data file (.mdb). Both are accessible from the DHIS2 1.4 Import menu under Import in the Import-Export module.</para>
+      <para>It is critical that all data integrity violations which are present in the DHIS2 1.4
+        database be fully resolved before attempting an import into DHIS2. You can check the data
+        integrity of DHIS2 1.4 through the CORE Module-&gt;Advanced-&gt;Data integrity checks. A
         report will be generated of all data integrity violations which should be resolved prior to
-        importing into DHIS 2.</para>
+        importing into DHIS2.</para>
       <warning>
-        <para>When data is imported from DHIS 1.4, both the meta-data as well as data are imported. You should therefore be exceedingly careful that the meta-data present in DHIS 1.4 is compatible with your DHIS 2 data, otherwise during a DHIS 1.4 data import, the meta-data in the DHIS 2 system will be potentially overwritten by the i</para>
+        <para>When data is imported from DHIS2 1.4, both the meta-data as well as data are imported. You should therefore be exceedingly careful that the meta-data present in DHIS2 1.4 is compatible with your DHIS2 data, otherwise during a DHIS2 1.4 data import, the meta-data in the DHIS2 system will be potentially overwritten by the i</para>
       </warning>
       <section>
-        <title>DHIS 1.4 File (database) Import</title>
-        <para>This method is recommend when doing large imports from 1.4, and especially when importing into a new  DHIS 2 database.</para>
-        <para><emphasis role="bold">DHIS 1.4 File Configuration</emphasis> </para>
+        <title>DHIS2 1.4 File (database) Import</title>
+        <para>This method is recommend when doing large imports from 1.4, and especially when importing into a new  DHIS2 database.</para>
+        <para><emphasis role="bold">DHIS2 1.4 File Configuration</emphasis> </para>
         <para>Before you can start the 1.4 file import you need to provide a  few details about the 1.4 database:</para>
-        <para><emphasis role="italic">Datafile(#):</emphasis> Here you put the full path to the DHIS 1.4 data file you want to import from, e.g. C:\DHIS14\DHIS_#LR_LIBERIA.mdb. </para>
+        <para><emphasis role="italic">Datafile(#):</emphasis> Here you put the full path to the DHIS2 1.4 data file you want to import from, e.g. C:\DHIS14\DHIS_#LR_LIBERIA.mdb. </para>
         <para><emphasis role="italic">Username:</emphasis>  Leave blank (unless you have set up extra security measures on the file)</para>
         <para><emphasis role="italic">Password:</emphasis> Leave blank (unless you have set up extra security measures on the file)</para>
         <para><emphasis role="italic">Levels:</emphasis> Provide the number of levels in the orgunit hierarchy in your 1.4 database, e.g. 5.</para>
-        <para>Click &quot;Save&quot; and you will return to the DHIS 1.4 File Import window. </para>
+        <para>Click &quot;Save&quot; and you will return to the DHIS2 1.4 File Import window. </para>
         <para><emphasis role="bold">Import Type:</emphasis></para>
         <para>As with other imports you have the options to Import (directly), Preview, or Analyse the import. We recommend using the Analyse option first to check that the 1.4 database is OK and ready to be imported. </para>
-        <para>When importing a large database into a new blank DHIS 2 database we recommend using the Import option to save time. </para>
+        <para>When importing a large database into a new blank DHIS2 database we recommend using the Import option to save time. </para>
         <para>For smaller incremental imports the Preview is OK.</para>
         <para><emphasis role="bold">Last Updated:</emphasis> </para>
         <para>If you want the full import, all the data in the 1.4 database you leave this field blank.</para>
-        <para>If you only want to do an incremental import into an already existing DHIS 2 database you can use this field to filter which data values to import. Only values added or edited after the date you specify will be imported. This filter makes use of the LastUpdated column in the RoutineData table in the DHIS 1.4 data file.</para>
+        <para>If you only want to do an incremental import into an already existing DHIS2 database you can use this field to filter which data values to import. Only values added or edited after the date you specify will be imported. This filter makes use of the LastUpdated column in the RoutineData table in the DHIS2 1.4 data file.</para>
         <para><emphasis role="bold">Import process:</emphasis></para>
         <para>When you are done selecting Method, and LastUpdated you can begin the import by
           clicking on the Import button. This process might take a long time, depending on how many
@@ -190,12 +190,12 @@
           million records per 30 minutes.</para>
       </section>
       <section>
-        <title>DHIS 1.4 XML Import</title>
-        <para>Import though XML data from DHIS 1.4 is also possible using the standard DHIS 1.4
-          export format. Just be sure that the DHIS 1.4 export format has been set to &quot;DHIS
+        <title>DHIS2 1.4 XML Import</title>
+        <para>Import though XML data from DHIS2 1.4 is also possible using the standard DHIS2 1.4
+          export format. Just be sure that the DHIS2 1.4 export format has been set to &quot;DHIS
           2&quot; as illustrated in the screen shot below. After the data has been exported by
-          DHIS 1.4, you can import the data by choosing &quot;Services-&gt;Import-Export-&gt;DHIS
-          1.4 Import-&gt;DHIS 1.4 XML Import&quot; and proceeding via the procedure outline in the
+          DHIS2 1.4, you can import the data by choosing &quot;Services-&gt;Import-Export-&gt;DHIS
+          1.4 Import-&gt;DHIS2 1.4 XML Import&quot; and proceeding via the procedure outline in the
             <link linkend="import_another_instance">previous section</link>. </para>
         <screenshot>
           <mediaobject>
@@ -206,10 +206,10 @@
         </screenshot>
       </section>
       <section>
-        <title>Limitations to DHIS 1.4 imports</title>
-        <para>Although it is possible to import and export data between instances of DHIS 1.4 and
-          DHIS 2, there are significant limitations. Currently, the import of some metadata is not
-          supported from DHIS 1.4 to DHIS 2. This includes:</para>
+        <title>Limitations to DHIS2 1.4 imports</title>
+        <para>Although it is possible to import and export data between instances of DHIS2 1.4 and
+          DHIS2, there are significant limitations. Currently, the import of some metadata is not
+          supported from DHIS2 1.4 to DHIS2. This includes:</para>
         <itemizedlist>
           <listitem>
             <para>Organisational unit alternate names</para>
@@ -224,19 +224,19 @@
             <para>Dataset data entry levels</para>
           </listitem>
         </itemizedlist>
-        <para>It is also important that the aggregation operator defined in DHIS 1.4 be set to the correct value. Some data, such as population, should have their aggregation operator set to &quot;Average&quot; in DHIS 2, as this controls how the aggregation of data is handled over time (but not within the organisational unit hierarchy). </para>
+        <para>It is also important that the aggregation operator defined in DHIS2 1.4 be set to the correct value. Some data, such as population, should have their aggregation operator set to &quot;Average&quot; in DHIS2, as this controls how the aggregation of data is handled over time (but not within the organisational unit hierarchy). </para>
       </section>
     </section>
   </section>
   <section xml:id="export">
     <title>Exporting data and meta-data</title>
-    <para>DHIS 2 makes it possible to export various types of data in multiple data formats. You can
+    <para>DHIS2 makes it possible to export various types of data in multiple data formats. You can
       export your data, also referred to as measures or facts; and your meta-data, which refers to
       the information describing your data. Data can be exported both in raw, non-aggregated format
       and in aggregated format. It is also possible to export a combination of data and meta-data in
       case you have special requirements. This chapter covers mainly how to export data and
-      meta-data through the user interface of the import-export DHIS 2 module. Data can also be
-      exported programmatically through the DHIS 2 Web API, and it is useful to be aware of the
+      meta-data through the user interface of the import-export DHIS2 module. Data can also be
+      exported programmatically through the DHIS2 Web API, and it is useful to be aware of the
       various options available:</para>
     <itemizedlist>
       <listitem>
@@ -259,9 +259,9 @@
           chapter, section on meta data.</para>
       </listitem>
     </itemizedlist>
-    <para>Data can be exported on various formats, including DXF 2 (the DHIS 2 meta-data and data
-      exchange format based on XML), CSV, PDF, MS Excel and the DHIS 1.4 XML format. </para>
-    <para>Another aspect of data export is the type of DHIS 2 deployment. In the case of online
+    <para>Data can be exported on various formats, including DXF 2 (the DHIS2 meta-data and data
+      exchange format based on XML), CSV, PDF, MS Excel and the DHIS2 1.4 XML format. </para>
+    <para>Another aspect of data export is the type of DHIS2 deployment. In the case of online
       deployment, all data is saved into a single database only. In an offline deployment, each
       instance will store data in a separate database in their local system. In an offline
       deployment, after the data entry is finished, data will have to be manually sent to the next
@@ -269,7 +269,7 @@
       data is captured over an Internet connection and stored in a central location.</para>
     <section>
       <title>Metadata export</title>
-      <para>Meta-data is &quot;data about data&quot;. In the context of DHIS 2, meta-data consists
+      <para>Meta-data is &quot;data about data&quot;. In the context of DHIS2, meta-data consists
           of definitions of data elements, indicators, the structure and names contained in the
           organizational hierarchy, and other options. Click on the &quot;Meta-data export&quot; link
           from the main &quot;Data export&quot; screen in order to access this. Just select the
@@ -317,7 +317,7 @@
     </section>
     <section>
       <title>Data export</title>
-      <para>To export  raw data from DHIS 2, choose &quot;Import-export-&gt;Data export&quot;. Select the organisation unit(s), the start and end date,  and dataset or data sets for which data export should be selected. You can also select which types of identifiers which will be exported by pressing &quot;More options&quot; and then selecting either UID, Code, or Name for data elements, organisation units and category options. Once you have specified all options as required, press &quot;Export as...&quot; along with the format which you would like to export the data as (XML, JSON or CSV).</para>
+      <para>To export  raw data from DHIS2, choose &quot;Import-export-&gt;Data export&quot;. Select the organisation unit(s), the start and end date,  and dataset or data sets for which data export should be selected. You can also select which types of identifiers which will be exported by pressing &quot;More options&quot; and then selecting either UID, Code, or Name for data elements, organisation units and category options. Once you have specified all options as required, press &quot;Export as...&quot; along with the format which you would like to export the data as (XML, JSON or CSV).</para>
       <screenshot>
         <mediaobject>
           <imageobject>
@@ -347,8 +347,8 @@
     <section>
       <title>Exporting data to other systems</title>
       <section>
-        <title>DHIS 1.4 Meta-data export</title>
-        <para>The DHIS 1.4 Meta-data export functionality provides the same functionality as the standard DHIS 2 meta-data export, except that the resulting file can be used to transmit meta-data information to DHIS 1.4 systems. </para>
+        <title>DHIS2 1.4 Meta-data export</title>
+        <para>The DHIS2 1.4 Meta-data export functionality provides the same functionality as the standard DHIS2 meta-data export, except that the resulting file can be used to transmit meta-data information to DHIS2 1.4 systems. </para>
         <screenshot>
           <mediaobject>
             <imageobject>
@@ -358,8 +358,8 @@
         </screenshot>
       </section>
       <section>
-        <title>DHIS 1.4 Detailed Metadata Export</title>
-        <para>The DHIS 1.4 Metadata export functionality provides the same functionality as the detailed DHIS 2 metadata export, except that the resulting file can be used to transmit meta-data information to DHIS 1.4 systems. Simply select the data elements and indicators that you want and click &quot;Export&quot; to begin the export process.<screenshot>
+        <title>DHIS2 1.4 Detailed Metadata Export</title>
+        <para>The DHIS2 1.4 Metadata export functionality provides the same functionality as the detailed DHIS2 metadata export, except that the resulting file can be used to transmit meta-data information to DHIS2 1.4 systems. Simply select the data elements and indicators that you want and click &quot;Export&quot; to begin the export process.<screenshot>
             <mediaobject>
               <imageobject>
                 <imagedata width="70%" align="center" fileref="resources/images/dhis2UserManual/dhis14_xml_metadata_detailed_export.png" format="PNG"/>
@@ -368,8 +368,8 @@
           </screenshot></para>
       </section>
       <section>
-        <title>DHIS 1.4 Data export</title>
-        <para>This service allows you to export data to a format which can easily be imported into a compatible DHIS 1.4 database. </para>
+        <title>DHIS2 1.4 Data export</title>
+        <para>This service allows you to export data to a format which can easily be imported into a compatible DHIS2 1.4 database. </para>
         <screenshot>
           <mediaobject>
             <imageobject>

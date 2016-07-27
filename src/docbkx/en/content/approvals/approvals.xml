@@ -11,7 +11,7 @@
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
   <title>Data approval</title>
-  <para>DHIS 2 has an optional feature that allows authorized users to approve data that has been entered. It allows data to be reviewed and approved at selected levels in the organisation unit hierarchy, so the approval follows the structure of the hierarchy from lower levels to higher levels.</para>
+  <para>DHIS2 has an optional feature that allows authorized users to approve data that has been entered. It allows data to be reviewed and approved at selected levels in the organisation unit hierarchy, so the approval follows the structure of the hierarchy from lower levels to higher levels.</para>
   <para>Data is approved for a combination of (a) period, (b) organisation unit and (c) workflow.
     Data may be approved for the organisation unit for which it is entered, as well as for
     higher-level organisation units to which the data is aggregated. As part of system settings, you
@@ -37,7 +37,7 @@
   </figure>
   <section>
     <title>Approving and accepting</title>
-    <para>DHIS 2 supports two different types of approval processes: either a one-step process where the data is approved at each level, or a two-step process where data is first approved and then accepted at each level. This is illustrated in the following diagram:</para>
+    <para>DHIS2 supports two different types of approval processes: either a one-step process where the data is approved at each level, or a two-step process where data is first approved and then accepted at each level. This is illustrated in the following diagram:</para>
     <figure>
       <title>Approving and accepting</title>
       <mediaobject>
@@ -48,7 +48,7 @@
     </figure>
     <para>In the one-step process, data is approved at one level, and then approved at the next higher level. Until it is approved at the next higher level, it may be unapproved at the first level. (For example, if the data was approved my mistake, this allows the  approver to undo their mistake.) Once the data is approved at the next higher level, it may not be unapproved at the lower level unless it is first unapproved at the higher level. </para>
     <para>In the two-step process, data is approved at one level, and then the approval is accepted at the same level. This acceptance is done by a user who is authorized to approve data at the next higher level. Once the data is accepted, it may not be changed or unapproved  unless it is first <emphasis role="italic">unaccepted</emphasis>.</para>
-    <para>The two-step process is not required by DHIS 2. It is an optional step for a user reviewing data at the next higher level. It has the benefit of locking the acceptance from the level below, so reviewer does not have to worry that the data could be changing from below while it is being reviewed. It can also be used by the higher-level user to keep track of which lower-level data has already been reviewed.</para>
+    <para>The two-step process is not required by DHIS2. It is an optional step for a user reviewing data at the next higher level. It has the benefit of locking the acceptance from the level below, so reviewer does not have to worry that the data could be changing from below while it is being reviewed. It can also be used by the higher-level user to keep track of which lower-level data has already been reviewed.</para>
   </section>
   <section>
     <title>Authorities for approving data</title>

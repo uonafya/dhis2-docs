@@ -8,9 +8,9 @@
   xmlns:db="http://docbook.org/ns/docbook">
   <title>Web API</title>
   <para>The Web API is a component which makes it possible for external systems to access and
-    manipulate data stored in an instance of DHIS 2. More precisely, it provides a programmatic
+    manipulate data stored in an instance of DHIS2. More precisely, it provides a programmatic
     interface to a wide range of exposed data and service methods for applications such as
-    third-party software clients, web portals and internal DHIS 2 modules.</para>
+    third-party software clients, web portals and internal DHIS2 modules.</para>
   <section>
     <title>Introduction</title>
     <para>The Web API adheres to many of the principles behind the REST architectural style. To
@@ -23,7 +23,7 @@
           aspects of a resource can be retrieved or exchanged through resource <emphasis
             role="italic">representations</emphasis>. A representation is a view of a
           resource&apos;s state at any given time. For instance, the <emphasis role="italic"
-            >reportTable</emphasis> resource in DHIS represents a tabular report of aggregated data
+            >reportTable</emphasis> resource in DHIS2 represents a tabular report of aggregated data
           for a certain set of parameters. This resource can be retrieved in a variety of
           representation formats including HTML, PDF, and MS Excel.</para>
       </listitem>
@@ -64,13 +64,13 @@
   </section>
   <section>
     <title>Authentication</title>
-    <para>The DHIS 2 Web API supports two protocols for authentication, Basic Authentication and
+    <para>The DHIS2 Web API supports two protocols for authentication, Basic Authentication and
       OAuth 2. You can verify and get information about the currently authenticated user by making a
       GET request to the following URL:</para>
     <screen>/api/24/me</screen>
     <section>
       <title>Basic Authentication</title>
-      <para>The DHIS 2 Web API supports <emphasis role="italic">Basic authentication</emphasis>.
+      <para>The DHIS2 Web API supports <emphasis role="italic">Basic authentication</emphasis>.
         Basic authentication is a technique for clients to send login credentials over HTTP to a web
         server. Technically speaking, the username is appended with a colon and the password,
         Base64-encoded, prefixed Basic and supplied as the value of the <emphasis role="italic"
@@ -85,13 +85,13 @@
     </section>
     <section>
       <title>OAuth2</title>
-      <para>DHIS 2 support the OAuth2 protocol, which is an open standard for authorization, it
-        allows 3rd party clients to connect on behalf of a DHIS 2 user, and get a re-usable bearer
+      <para>DHIS2 support the OAuth2 protocol, which is an open standard for authorization, it
+        allows 3rd party clients to connect on behalf of a DHIS2 user, and get a re-usable bearer
         token for multiple requests to the web-api (without requiring getting the users permission
         again). We do not support fine-grained OAuth2 roles, rather we gives the application access
-        based on the users DHIS 2 user role.</para>
+        based on the users DHIS2 user role.</para>
       <para>Each client for which you want to allow OAuth 2 authentication must be registered in
-        DHIS 2. To add a new OAuth2 client, go to <emphasis role="italic">settings =&gt; OAuth2
+        DHIS2. To add a new OAuth2 client, go to <emphasis role="italic">settings =&gt; OAuth2
           Clients</emphasis>, click add new and at least the name of client, and the grant types you
         want supported.</para>
       <section>
@@ -161,7 +161,7 @@ curl -X POST -H &quot;Accept: application/json&quot; -u demo:$SECRET $SERVER/uaa
       <section>
         <title>Grant type authorization_code</title>
         <para>Authorized code grant type is the recommended approach if you don&apos;t want to store
-          the user credentials externally. It allows DHIS 2 to collect the username/password
+          the user credentials externally. It allows DHIS2 to collect the username/password
           directly from the user instead of the client collecting them and then authenticating on
           behalf of the user. Please be aware that this approach uses the <emphasis role="bold"
             >redirect_uris</emphasis> part of the client payload.</para>
@@ -217,7 +217,7 @@ curl -X POST -u demo:$SECRET -H &quot;Accept: application/json&quot; $SERVER/tok
             </row>
             <row>
               <entry>status</entry>
-              <entry>DHIS 2 status, possible values are <emphasis role="italic">OK</emphasis>
+              <entry>DHIS2 status, possible values are <emphasis role="italic">OK</emphasis>
                   |&#160;<emphasis role="italic">WARNING</emphasis> |&#160;<emphasis role="italic"
                   >ERROR</emphasis>, where <emphasis role="bold">OK</emphasis> is means everything
                 was successful, <emphasis role="bold">ERROR</emphasis> means that operation did not
@@ -373,16 +373,16 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
           <tbody>
             <row>
               <entry>ID, UID</entry>
-              <entry>Match on DHIS 2 stable Identifier, this is the default id scheme.</entry>
+              <entry>Match on DHIS2 stable Identifier, this is the default id scheme.</entry>
             </row>
             <row>
               <entry>CODE</entry>
-              <entry>Match on DHIS 2 Code, mainly used to exchange data with an external
+              <entry>Match on DHIS2 Code, mainly used to exchange data with an external
                 system.</entry>
             </row>
             <row>
               <entry>NAME</entry>
-              <entry>Match on DHIS 2 Name, please not that this uses what is available as <emphasis
+              <entry>Match on DHIS2 Name, please not that this uses what is available as <emphasis
                   role="italic">object.name</emphasis>, and not the translated name. Also not that
                 names are not always unique, and in that case they can not be used.</entry>
             </row>
@@ -466,7 +466,7 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     <screen>/api/24/identifiableObjects/&lt;id&gt;</screen>
     <section>
       <title>Translation</title>
-      <para>DHIS 2 supports translations of database content, such as data elements, indicators and
+      <para>DHIS2 supports translations of database content, such as data elements, indicators and
         programs. All metadata objects in the Web API have properties meant to be used for display /
         UI purposes, which includes <emphasis>displayName</emphasis>,
           <emphasis>displayShortName</emphasis> and <emphasis>displayDescription</emphasis>.<table
@@ -1152,7 +1152,7 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       indicators:<screen>/api/24/indicators.json?fields=:nameable</screen></para>
     <section>
       <title>Field transformers</title>
-      <para>In DHIS 2.17 we introduced field transformers, the idea is to allow further
+      <para>In DHIS2.17 we introduced field transformers, the idea is to allow further
         customization of the properties on the server side. For 2.17 we only supports one
         transformer called <emphasis role="bold">rename</emphasis>, it can be used like
         this:<screen>/api/24/dataElements/ID?fields=id|rename(i),name|rename(n)</screen></para>
@@ -1164,7 +1164,7 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     </section>
     <section>
       <title>Field converters</title>
-      <para>In DHIS 2.17 alongside transformers we also introduced field converters, while field
+      <para>In DHIS2.17 alongside transformers we also introduced field converters, while field
         transformers usually do minor changes to the data stream (name changes etc), field
         converters can completely change the output of the data. For 2.17 we are including 3 field
           converters:<table frame="all">
@@ -1394,7 +1394,7 @@ http://server/api/24/constants/ID</screen></para>
   </section>
   <section>
     <title>CSV metadata import</title>
-    <para>DHIS 2 supports import of metadata in the CSV format. Columns which are not required can
+    <para>DHIS2 supports import of metadata in the CSV format. Columns which are not required can
       be omitted in the CSV file, but the order will be affected. If you would like to specify
       columns which appear late in the order but not specify columns which appear early in the order
       you can include empty columns (&quot;&quot;) for them. The following object types are
@@ -2069,7 +2069,7 @@ http://server/api/24/constants/ID</screen></para>
   </section>
   <section>
     <title>Metadata export</title>
-    <para>This section explains the new metadata exporter available from DHIS 2.23, the metatada API
+    <para>This section explains the new metadata exporter available from DHIS2.23, the metatada API
       is available at <emphasis role="italic">/api/23/metadata</emphasis> and <emphasis
         role="italic">/api/24/metadata</emphasis>endpoints, both XML and JSON is supported in this
       exporter.</para>
@@ -2138,7 +2138,7 @@ http://server/api/24/constants/ID</screen></para>
   </section>
   <section>
     <title>Metadata import</title>
-    <para>This section explain the new metadata importer available from DHIS 2.23, the metatada API
+    <para>This section explain the new metadata importer available from DHIS2.23, the metatada API
       is available at <emphasis role="italic">/api/23/metadata</emphasis> and <emphasis
         role="italic">/api/24/metadata</emphasis>endpoints, both XML and JSON is supported in this
       importer.</para>
@@ -2632,7 +2632,7 @@ http://server/api/24/constants/ID</screen></para>
     <section>
       <title>Sending data values</title>
       <para>A common use-case for system integration is the need to send a set of data values from a
-        third-party system into DHIS. In this example we will use the DHIS 2 demo on <link
+        third-party system into DHIS. In this example we will use the DHIS2 demo on <link
           xl:href="http://play.dhis2.org/demo"/> as basis and we recommend that you follow the
         provided links with a web browser while reading (log in with <emphasis role="italic"
           >admin</emphasis><emphasis role="italic">/district</emphasis> as username/password). We
@@ -2641,7 +2641,7 @@ http://server/api/24/constants/ID</screen></para>
         the community of <emphasis role="italic">Ngelehun CHC</emphasis> (in <emphasis role="italic"
           >Badjia</emphasis> chiefdom, <emphasis role="italic">Bo</emphasis> district) for the month
         of January 2014. We have now aggregated our data into a statistical report and want to send
-        that data to the national DHIS 2 instance.</para>
+        that data to the national DHIS2 instance.</para>
       <para>The resource which is most appropriate for our purpose of sending data values is the
           <emphasis role="italic">dataValueSets</emphasis> resource. A data value set represents a
         set of data values which have a logical relationship, usually from being captured off the
@@ -2730,7 +2730,7 @@ http://server/api/24/constants/ID</screen></para>
           >application/xml</emphasis> as the content-type and authenticate using admin/district as
         username/password. If all goes well this will return a <emphasis role="italic">200
           OK</emphasis> HTTP status code. You can verify that the data has been received by opening
-        the data entry module in DHIS 2 and select the org unit, data set and period used in this
+        the data entry module in DHIS2 and select the org unit, data set and period used in this
         example.</para>
       <para>The API follows normal semantics for error handling and HTTP status codes. If you supply
         an invalid username or password, <emphasis role="italic">401 Unauthorized</emphasis> is
@@ -2874,7 +2874,7 @@ http://server/api/24/constants/ID</screen></para>
       <section>
         <title>Identifier schemes</title>
         <para>Regarding the id schemes, by default the identifiers used in the XML messages uses the
-          DHIS 2 stable object identifiers referred to as <emphasis role="italic">uid</emphasis>. In
+          DHIS2 stable object identifiers referred to as <emphasis role="italic">uid</emphasis>. In
           certain interoperability situations we might experience that external system decides the
           identifiers of the objects. In that case we can use the <emphasis role="italic"
             >code</emphasis> property of the organisation units and other objects to set fixed
@@ -2923,11 +2923,11 @@ http://server/api/24/constants/ID</screen></para>
     </section>
     <section>
       <title>CSV data value format</title>
-      <para>The following section describes the CSV format used in DHIS 2. The first row is assumed
+      <para>The following section describes the CSV format used in DHIS2. The first row is assumed
         to be a header row and will be ignored during import.</para>
       <para>
         <table>
-          <title>CSV format of DHIS 2</title>
+          <title>CSV format of DHIS2</title>
           <tgroup cols="3">
             <tbody>
               <row>
@@ -2991,7 +2991,7 @@ http://server/api/24/constants/ID</screen></para>
           </tgroup>
         </table>
       </para>
-      <para>An example of a CSV file which can be imported into DHIS 2 is seen below.</para>
+      <para>An example of a CSV file which can be imported into DHIS2 is seen below.</para>
       <screen>&quot;dataelement&quot;,&quot;period&quot;,&quot;orgunit&quot;,&quot;categoryoptioncombo&quot;,&quot;attroptioncombo&quot;,&quot;value&quot;,&quot;storedby&quot;,&quot;timestamp&quot;
 &quot;DUSpd8Jq3M7&quot;,&quot;201202&quot;,&quot;gP6hn503KUX&quot;,&quot;Prlt0C1RF0s&quot;,,&quot;7&quot;,&quot;bombali&quot;,&quot;2010-04-17&quot;
 &quot;DUSpd8Jq3M7&quot;,&quot;201202&quot;,&quot;gP6hn503KUX&quot;,&quot;V6L425pT3A0&quot;,,&quot;10&quot;,&quot;bombali&quot;,&quot;2010-04-17&quot;
@@ -3148,7 +3148,7 @@ http://server/api/24/constants/ID</screen></para>
           <para>adx (application/xml+adx)</para>
         </listitem>
       </itemizedlist>
-      <para>Assuming that we have posted data values to DHIS according to the previous section
+      <para>Assuming that we have posted data values to DHIS2 according to the previous section
         called &quot;Sending data values&quot; we can now put together our request for a single data
         value set and request it using cURL:</para>
       <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&quot;
@@ -3359,7 +3359,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
       QRPH activity can be found at <link
         xl:href="http://wiki.ihe.net/index.php?title=Quality,_Research_and_Public_Health#Current_Domain_Activities"
         >wiki.ihe.net</link>. ADX is still under active development and has now been published for
-      trial implementation. Note that what is implemented currently in DHIS 2 is the functionality
+      trial implementation. Note that what is implemented currently in DHIS2 is the functionality
       to read and write adx formatted data, i.e. what is described as Content Consumer and Content
       Producer actors in the ADX profile.</para>
     <para>The structure of an ADX data message is quite similar to what you might already be
@@ -3410,7 +3410,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         from the online demo database. This example is using codes as identifiers instead of dhis2
         uids. Codes are the preferred form of identifiier when using adx.</para>
       <para>The orgUnit, period and dataSet attributes are mandatory in adx. The group element may
-        contain additional attributes. In our DHIS 2 implementation any additional attributes are
+        contain additional attributes. In our DHIS2 implementation any additional attributes are
         simply passed through to the underlying importer. This means that all attributes which
         currently have meaning in dxf2 (such as completeDate in the example above) can continue be
         used in adx and they will be processed in the same way.</para>
@@ -3418,7 +3418,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         Adx makes strict use of ISO8601 and encodes the reporting period as
         (date|datetime)/(duration). So the period in the example above is a period of 1 month (P1M)
         starting on 2015-06-01. So it is the data for June 2015. The notation is a bit more verbose,
-        but it is very flexible and allows us to support all existing period types in DHIS 2</para>
+        but it is very flexible and allows us to support all existing period types in DHIS2</para>
     </section>
     <section>
       <title>Data values</title>
@@ -3436,13 +3436,13 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         &apos;_&apos; and it may not start with a letter. The example above shows examples of
         &apos;good&apos; category codes (&apos;GENDER&apos; and &apos;HIV_AGE&apos;).</para>
       <para>This restriction on the form of codes applies only to categories. Currently the
-        convention is not enforced by DHIS 2 when you are assigning codes, but you will get an
+        convention is not enforced by DHIS2 when you are assigning codes, but you will get an
         informative error message if you try to import adx data and the category codes are either
         not assigned or not suitable.</para>
       <para>The main benefits of using explicit dimensions of disaggregated data are that <itemizedlist>
           <listitem>
             <para>The system producing the data does not have to be synched with the
-              categoryOptionCombo within DHIS 2.</para>
+              categoryOptionCombo within DHIS2.</para>
           </listitem>
           <listitem>
             <para>The producer and consumer can match their codes to a 3rd party authoritative
@@ -3454,7 +3454,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         </itemizedlist></para>
       <para>Note that this feature may be extremely useful, for example when producing disaggregated
         data from an EMR system, but there may be cases where a
-          <emphasis>categoryOptionCombo</emphasis> mapping is easier or more desirable. The DHIS 2
+          <emphasis>categoryOptionCombo</emphasis> mapping is easier or more desirable. The DHIS2
         implementation of adx will check for the existence of a
           <emphasis>categoryOptionCombo</emphasis> attribute and, if it exists, it will use that it
         preference to exploded dimension attributes. Similarly, an
@@ -3468,9 +3468,9 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     </section>
     <section>
       <title>Importing data - HTTP POST</title>
-      <para>DHIS 2 exposes an endpoint for POST adx data at <emphasis>/api/dataValueSets</emphasis>
+      <para>DHIS2 exposes an endpoint for POST adx data at <emphasis>/api/dataValueSets</emphasis>
         using <emphasis role="italic">application/xml+adx</emphasis> as content type. So, for
-        example, the following curl command can be used to POST the example data above to the DHIS 2
+        example, the following curl command can be used to POST the example data above to the DHIS2
         demo server:
         <screen>curl -u admin:district -X POST -H &quot;Content-Type: application/xml+adx&quot;
 -d @data.xml &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataElementIdScheme=code&amp;orgUnitIdScheme=code&quot;</screen>
@@ -3479,7 +3479,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     </section>
     <section>
       <title>Exporting data - HTTP GET</title>
-      <para>DHIS 2 exposes an endpoint to GET adx data sets at
+      <para>DHIS2 exposes an endpoint to GET adx data sets at
           <emphasis>/api/dataValueSets</emphasis> using <emphasis role="italic"
           >application/xml+adx</emphasis> as the accepted content type. So, for example, the
         following curl command can be used to retrieve the adx data:
@@ -3495,11 +3495,11 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     <para>This section is about sending and reading events.</para>
     <section>
       <title>Sending events</title>
-      <para>DHIS 2 supports three kinds of events: single events with no registration (also referred
+      <para>DHIS2 supports three kinds of events: single events with no registration (also referred
         to as anonymous events), single event with registration and multiple events with
         registration. Registration implies that the data is linked to a tracked entity instance
         which is identified using some sort of identifier.</para>
-      <para>To send events to DHIS 2 you must interact with the <emphasis role="italic"
+      <para>To send events to DHIS2 you must interact with the <emphasis role="italic"
           >events</emphasis> resource. The approach to sending events is similar to sending
         aggregate data values. You will need a <emphasis role="italic">program</emphasis> which can
         be looked up using the <emphasis role="italic">programs</emphasis> resource, an <emphasis
@@ -3758,7 +3758,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
     </section>
     <section>
       <title>CSV Import / Export</title>
-      <para>In addition to XML and JSON for event import/export, in DHIS 2.17 we introduced support
+      <para>In addition to XML and JSON for event import/export, in DHIS2.17 we introduced support
         for the CSV format. Support for this format builds on what was described in the last
         section, so here we will only write about what the CSV specific parts are.</para>
       <para>To use the CSV format you must either use the <emphasis role="italic"
@@ -3878,7 +3878,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     </section>
     <section>
       <title>Querying and reading events</title>
-      <para>This section explains how to read out the events that have been stored in the DHIS 2
+      <para>This section explains how to read out the events that have been stored in the DHIS2
         instance. For more advanced uses of the event data, please see the section on event
         analytics. The output format from the <emphasis role="italic">/api/events</emphasis>
         endpoint will match the format that is used to send events to it (which the analytics event
@@ -4106,7 +4106,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         All programRules in a program share the same library of programRuleVariables, and one
         programRuleVariable can be used in several programRules&apos; expressions. </para>
       <screenshot>
-        <title>DHIS 2 Login screen</title>
+        <title>DHIS2 Login screen</title>
         <mediaobject>
           <imageobject>
             <imagedata width="80%" fileref="resources/images/program_rules/program-rule-model.jpg"
@@ -5256,7 +5256,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
   </section>
   <section>
     <title>Auditing</title>
-    <para>DHIS 2 does automatic auditing on all update and deletions of aggregate data values,
+    <para>DHIS2 does automatic auditing on all update and deletions of aggregate data values,
       tracked entity data values, tracked entity attribute values, and this chapter will explain the
       web-api available for fetching this data back out again.</para>
     <section>
@@ -5424,14 +5424,14 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
   </section>
   <section>
     <title>Message conversations</title>
-    <para>DHIS 2 features a mechanism for sending messages for purposes such as user feedback,
+    <para>DHIS2 features a mechanism for sending messages for purposes such as user feedback,
       notifications and general information to users. Messages are grouped into conversations. To
       interact with message conversations you can send POST and GET request to the <emphasis
         role="italic">messageConversations</emphasis>
-      resource.<screen>/api/24/messageConversations</screen>Messages are delivered to the DHIS 2
+      resource.<screen>/api/24/messageConversations</screen>Messages are delivered to the DHIS2
       message inbox but can also be sent to the user&apos;s email addresses and mobile phones as
       SMS. In this example we will see how we can utilize the Web API to send, read and manage
-      messages. We will pretend to be the <emphasis role="italic">DHIS Administrator</emphasis> user
+      messages. We will pretend to be the <emphasis role="italic">DHIS2 Administrator</emphasis> user
       and send a message to the <emphasis role="italic">Mobile</emphasis> user. We will then pretend
       to be the mobile user and read our new message. Following this we will manage the admin user
       inbox by marking and removing messages.</para>
@@ -5495,7 +5495,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
   &lt;/users&gt;
 &lt;/message&gt;</screen>
       <para>To test this we save the XML content into a file called <emphasis role="italic"
-          >message.xml</emphasis>. We use cURL to dispatch the message the the DHIS 2 demo instance
+          >message.xml</emphasis>. We use cURL to dispatch the message the the DHIS2 demo instance
         where we indicate that the content-type is XML and authenticate as the <emphasis
           role="italic">admin</emphasis> user:</para>
       <screen>curl -d @message.xml &quot;https://play.dhis2.org/demo/api/24/messageConversations&quot; 
@@ -5542,7 +5542,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
   link=&quot;https://play.dhis2.org/demo/api/messageConversations&quot;&gt;
   &lt;messageConversation name=&quot;Mortality data reporting&quot; id=&quot;ZjHHSjyyeJ2&quot;
     link=&quot;https://play.dhis2.org/demo/api/messageConversations/ZjHHSjyyeJ2&quot;/&gt;
-  &lt;messageConversation name=&quot;DHIS version 2.7 is deployed&quot; id=&quot;GDBqVfkmnp2&quot;
+  &lt;messageConversation name=&quot;DHIS2 version 2.7 is deployed&quot; id=&quot;GDBqVfkmnp2&quot;
     link=&quot;https://play.dhis2.org/demo/api/messageConversations/GDBqVfkmnp2&quot;/&gt;
 &lt;/messageConversations&gt;</screen>
       <para>From the response we are able to read the identifier of the newly sent message which is
@@ -5604,7 +5604,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         batch operation.</para>
       <para>Messages carry a boolean <emphasis role="italic">read</emphasis> property. This allows
         tracking whether a user has seen (opened) a message or not. In a typical application
-        scenario (e.g. the DHIS 2 web portal) a message will be marked read as soon as the user
+        scenario (e.g. the DHIS2 web portal) a message will be marked read as soon as the user
         opens it for the first time. However, users might want to manage the read or unread status
         of their messages in order to keep track of certain conversations.</para>
       <para>Marking messages read or unread follows similar semantics as batch removals, and also
@@ -5783,7 +5783,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
   </section>
   <section>
     <title>Viewing analytical resource representations</title>
-    <para>DHIS 2 has several resources for data analysis. These resources include <emphasis
+    <para>DHIS2 has several resources for data analysis. These resources include <emphasis
         role="italic">charts</emphasis>, <emphasis role="italic">maps</emphasis>, <emphasis
         role="italic">reportTables</emphasis>, <emphasis role="italic">reports</emphasis> and
         <emphasis role="italic">documents</emphasis>. By visiting these resources you will retrieve
@@ -5915,12 +5915,12 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
   </section>
   <section>
     <title>Plugins</title>
-    <para>DHIS 2 comes with plugins which enables you to embed live data directly in your web portal
+    <para>DHIS2 comes with plugins which enables you to embed live data directly in your web portal
       or web site. Currently, plugins exist for charts, maps and pivot tables.</para>
     <section>
       <title>Embedding pivot tables with the Pivot Table plug-in</title>
       <para>In this example we will see how we can embed good-looking, light-weight html pivot
-        tables with data served from a DHIS back-end into a Web page. To accomplish this we will use
+        tables with data served from a DHIS2 back-end into a Web page. To accomplish this we will use
         the Pivot table plug-in. The plug-in is written in Javascript and depends on the Ext JS
         library only. A complete working example can be found at <link
           xl:href="http://play.dhis2.org/portal/table.html"/>. Open the page in a web browser and
@@ -5990,17 +5990,17 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
 &lt;/html&gt;</screen>
       </para>
       <para>Three files are included in the header section of the HTML document. The first two files
-        are the Ext JS javascript library (we use the DHIS 2 content delivery network in this case)
+        are the Ext JS javascript library (we use the DHIS2 content delivery network in this case)
         and its css stylesheet. The third file is the Pivot table plug-in. Make sure the path is
-        pointing to your DHIS server installation.</para>
+        pointing to your DHIS2 server installation.</para>
       <screen>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://dhis2-cdn.org/v215/ext/resources/css/ext-plugin-gray.css&quot; /&gt;
 &lt;script src=&quot;http://dhis2-cdn.org/v215/ext/ext-all.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://dhis2-cdn.org/v215/plugin/table.js&quot;&gt;&lt;/script&gt;</screen>
-      <para>To authenticate with the DHIS server we use the same approach as in the previous
+      <para>To authenticate with the DHIS2 server we use the same approach as in the previous
         section. In the header of the HTML document we include the following Javascript inside a
         script element. The <emphasis role="italic">setLinks</emphasis> method will be implemented
         later. Make sure the <emphasis role="italic">base</emphasis> variable is pointing to your
-        DHIS installation.</para>
+        DHIS2 installation.</para>
       <screen>var base = &quot;https://play.dhis2.org/demo/&quot;;
 
 Ext.onReady( function() {
@@ -6014,7 +6014,7 @@ Ext.onReady( function() {
       <para>Now let us have a look at the various options for the Pivot table plug-in. Two properies
         are required: <emphasis role="italic">el</emphasis> and <emphasis role="italic"
           >url</emphasis> (please refer to the table below). Now, if you want to refer to
-        pre-defined tables already made inside DHIS it is sufficient to provide the additional
+        pre-defined tables already made inside DHIS2 it is sufficient to provide the additional
           <emphasis role="italic">id</emphasis> parameter. If you instead want to configure a pivot
         table dynamically you shoud omit the id parameter and provide data dimensions inside a
           <emphasis role="italic">columns</emphasis> array, a <emphasis role="italic"
@@ -6065,7 +6065,7 @@ Ext.onReady( function() {
               <entry>string</entry>
               <entry>Yes</entry>
               <entry/>
-              <entry>Base URL of the DHIS server</entry>
+              <entry>Base URL of the DHIS2 server</entry>
             </row>
             <row>
               <entry>id</entry>
@@ -6203,8 +6203,8 @@ Ext.onReady( function() {
     <section>
       <title>Embedding charts with the Visualizer chart plug-in</title>
       <para>In this example we will see how we can embed good-looking Ext JS charts (<link
-          xl:href="http://www.sencha.com/products/extjs"/>) with data served from a DHIS back-end
-        into a Web page. To accomplish this we will use the DHIS Visualizer plug-in. The plug-in is
+          xl:href="http://www.sencha.com/products/extjs"/>) with data served from a DHIS2 back-end
+        into a Web page. To accomplish this we will use the DHIS2 Visualizer plug-in. The plug-in is
         written in Javascript and depends on the Ext JS library only. A complete working example can
         be found at <link xl:href="http://play.dhis2.org/portal/chart.html"/>. Open the page in a
         web browser and view the source to see how it is set up.</para>
@@ -6274,17 +6274,17 @@ Ext.onReady( function() {
 &lt;/html&gt;</screen>
       </para>
       <para>Three files are included in the header section of the HTML document. The first two files
-        are the Ext JS javascript library (we use the DHIS 2 content delivery network in this case)
+        are the Ext JS javascript library (we use the DHIS2 content delivery network in this case)
         and its stylesheet. The third file is the Visualizer plug-in. Make sure the path is pointing
-        to your DHIS server installation.</para>
+        to your DHIS2 server installation.</para>
       <screen>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://dhis2-cdn.org/v215/ext/resources/css/ext-plugin-gray.css&quot; /&gt;
 &lt;script src=&quot;http://dhis2-cdn.org/v215/ext/ext-all.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://dhis2-cdn.org/v215/plugin/chart.js&quot;&gt;&lt;/script&gt;</screen>
-      <para>To authenticate with the DHIS server we use the same approach as in the previous
+      <para>To authenticate with the DHIS2 server we use the same approach as in the previous
         section. In the header of the HTML document we include the following Javascript inside a
         script element. The <emphasis role="italic">setLinks</emphasis> method will be implemented
         later. Make sure the <emphasis role="italic">base</emphasis> variable is pointing to your
-        DHIS installation.</para>
+        DHIS2 installation.</para>
       <screen>var base = &quot;https://play.dhis2.org/demo/&quot;;
 
 Ext.onReady( function() {
@@ -6298,7 +6298,7 @@ Ext.onReady( function() {
       <para>Now let us have a look at the various options for the Visualizer plug-in. Two properies
         are required: <emphasis role="italic">el</emphasis> and <emphasis role="italic"
           >url</emphasis> (please refer to the table below). Now, if you want to refer to
-        pre-defined charts already made inside DHIS it is sufficient to provide the additional
+        pre-defined charts already made inside DHIS2 it is sufficient to provide the additional
           <emphasis role="italic">id</emphasis> parameter. If you instead want to configure a chart
         dynamically you shoud omit the id parameter and provide data dimensions inside a <emphasis
           role="italic">columns</emphasis> array (chart series), a <emphasis role="italic"
@@ -6349,7 +6349,7 @@ Ext.onReady( function() {
               <entry>string</entry>
               <entry>Yes</entry>
               <entry/>
-              <entry>Base URL of the DHIS server</entry>
+              <entry>Base URL of the DHIS2 server</entry>
             </row>
             <row>
               <entry>id</entry>
@@ -6522,7 +6522,7 @@ Ext.onReady( function() {
     </section>
     <section>
       <title>Embedding maps with the GIS map plug-in</title>
-      <para>In this example we will see how we can embed maps with data served from a DHIS back-end
+      <para>In this example we will see how we can embed maps with data served from a DHIS2 back-end
         into a Web page. To accomplish this we will use the GIS map plug-in. The plug-in is written
         in Javascript and depends on the Ext JS library only. A complete working example can be
         found at <link xl:href="http://play.dhis2.org/portal/map.html"/>. Open the page in a web
@@ -6581,20 +6581,20 @@ Ext.onReady( function() {
 &lt;/body&gt;
 &lt;/html&gt;</screen></para>
       <para>Four files and Google Maps are included in the header section of the HTML document. The
-        first two files are the Ext JS javascript library (we use the DHIS 2 content delivery
+        first two files are the Ext JS javascript library (we use the DHIS2 content delivery
         network in this case) and its stylesheet. The third file is the OpenLayers javascript
         mapping framework (<link xl:href="http://openlayers.org"/>) and finally we include the GIS
-        map plug-in. Make sure the path is pointing to your DHIS server installation.</para>
+        map plug-in. Make sure the path is pointing to your DHIS2 server installation.</para>
       <screen>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://dhis2-cdn.org/v215/ext/resources/css/ext-plugin-gray.css&quot; /&gt;
 &lt;script src=&quot;http://dhis2-cdn.org/v215/ext/ext-all.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://maps.google.com/maps/api/js?sensor=false&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://dhis2-cdn.org/v215/openlayers/OpenLayers.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://dhis2-cdn.org/v215/plugin/map.js&quot;&gt;&lt;/script&gt;</screen>
-      <para>To authenticate with the DHIS server we use the same approach as in the previous
+      <para>To authenticate with the DHIS2 server we use the same approach as in the previous
         section. In the header of the HTML document we include the following Javascript inside a
         script element. The <emphasis role="italic">setLinks</emphasis> method will be implemented
         later. Make sure the <emphasis role="italic">base</emphasis> variable is pointing to your
-        DHIS installation.</para>
+        DHIS2 installation.</para>
       <screen>Ext.onReady( function() {
   Ext.Ajax.request({
     url: base + &quot;dhis-web-commons-security/login.action&quot;,
@@ -6606,7 +6606,7 @@ Ext.onReady( function() {
       <para>Now let us have a look at the various options for the GIS plug-in. Two properies are
         required: <emphasis role="italic">el</emphasis> and <emphasis role="italic">url</emphasis>
         (please refer to the table below). Now, if you want to refer to pre-defined maps already
-        made in the DHIS 2 GIS it is sufficient to provide the additional <emphasis role="italic"
+        made in the DHIS2 GIS it is sufficient to provide the additional <emphasis role="italic"
           >id</emphasis> parameter. If you instead want to configure a map dynamically you shoud
         omit the id parameter and provide <emphasis role="italic">mapViews</emphasis> (layers)
         instead. They should be configured with data dimensions inside a <emphasis role="italic"
@@ -6652,7 +6652,7 @@ Ext.onReady( function() {
               <entry>string</entry>
               <entry>Yes</entry>
               <entry/>
-              <entry>Base URL of the DHIS server</entry>
+              <entry>Base URL of the DHIS2 server</entry>
             </row>
             <row>
               <entry>id</entry>
@@ -6865,8 +6865,8 @@ Ext.onReady( function() {
       <para>The first file is the CSS stylesheet for the chart plug-in. The second file is the CSS
         stylesheet for the carousel widget. The third file is the Ext JavaScript framework which
         this plug-in depends on. The fourth file is the carousel plug-in JavaScript file. The fifth
-        file is the chart plug-in JavaScript file. The paths in this example points at the DHIS 2
-        demo site, make sure you update them to point to your own DHIS 2 installation.</para>
+        file is the chart plug-in JavaScript file. The paths in this example points at the DHIS2
+        demo site, make sure you update them to point to your own DHIS2 installation.</para>
       <para>Please refer to the section about the chart plug-in on how to do authentication.</para>
       <para>To create a chart carousel we will first render the charts we want to include in the
         carousel using the method described in the chart plug-in section. Then we create the chart
@@ -7188,7 +7188,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
   </section>
   <section>
     <title>Analytics</title>
-    <para>To access analytical, aggregated data in DHIS 2 you can work with the <emphasis
+    <para>To access analytical, aggregated data in DHIS2 you can work with the <emphasis
         role="italic">analytics</emphasis> resource. The analytics resource is powerful as it lets
       you query and retrieve data aggregated along all available data dimensions. For instance, you
       can ask the analytics resource to provide the aggregated data values for a set of data
@@ -7390,11 +7390,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
     <section>
       <title>Dimensions and items</title>
-      <para>DHIS 2 features a multi-dimensional data model with several fixed and dynamic data
+      <para>DHIS2 features a multi-dimensional data model with several fixed and dynamic data
         dimensions. The fixed dimensions are the data element, period (time) and organisation unit
         dimension. You can dynamically add dimensions through categories, data element group sets
         and organisation unit group sets. The table below displays the available data dimensions in
-        DHIS 2. Each data dimension has a corresponding <emphasis role="italic">dimension
+        DHIS2. Each data dimension has a corresponding <emphasis role="italic">dimension
           identifier</emphasis>, and each dimension can have a set of <emphasis role="italic"
           >dimension items</emphasis>:</para>
       <table frame="all">
@@ -7659,7 +7659,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
   ?dimension=dx:DE_GROUP-qfxEYY9xAl6;IN_GROUP-oehv9EO3vP7;BfMAe6Itzgt.REPORTING_RATE
   &amp;dimension=pe:LAST_12_MONTHS&amp;filter=ou:ImspTQPwCqd</screen>
       <tip>
-        <para>A great way to learn how to use the analytics API is to use the DHIS 2 <emphasis>pivot
+        <para>A great way to learn how to use the analytics API is to use the DHIS2 <emphasis>pivot
             table</emphasis> app. You can play around with pivot tables using the various dimensions
           and items and click Download > Plain data source > JSON to see the resulting analytics API
           calls in the address bar of your Web browser.</para>
@@ -7851,7 +7851,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
   <section>
     <title>Event analytics</title>
     <para>The event analytics API lets you access aggregated event data and query <emphasis
-        role="italic">events</emphasis> captured in DHIS 2. This resource lets you retrieve events
+        role="italic">events</emphasis> captured in DHIS2. This resource lets you retrieve events
       based on a program and optionally a program stage, and lets you retrieve and filter events on
       any event dimensions. </para>
     <section>
@@ -8406,7 +8406,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <section>
       <title>Event aggregate analytics</title>
       <para>The <emphasis role="italic">analytics/events/aggregate</emphasis> resource lets you
-        retrieve <emphasis role="italic">aggregated numbers</emphasis> of events captured in DHIS 2.
+        retrieve <emphasis role="italic">aggregated numbers</emphasis> of events captured in DHIS2.
         This resource lets you retrieve aggregate data based on a program and optionally a program
         stage, and lets you filter on any event dimension.</para>
       <screen>/api/24/analytics/events/aggregate</screen>
@@ -8675,7 +8675,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
   </section>
   <section>
     <title>Data usage analytics</title>
-    <para>The usage analytics API lets you access information about how people are using DHIS 2
+    <para>The usage analytics API lets you access information about how people are using DHIS2
       based on data analysis. When users access favorites, an event is recorded. The event consists
       of the user name, the UID of the favorite, when the event took place, and the type of event.
       The different types of events are listed in the <xref
@@ -8684,7 +8684,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <para>The usage analytics API lets you retrieve aggregated snapshots of usage analytics based on
       time intervals. The API captures user views (for example the number of times a chart or pivot
       table has been viewed by a user) and saved analysis favorites (for example favorite charts and
-      pivot tables). DHIS 2 will capture nightly snapshots which are then aggregated at
+      pivot tables). DHIS2 will capture nightly snapshots which are then aggregated at
       request.</para>
     <section>
       <title>Request query parameter</title>
@@ -8801,7 +8801,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     </section>
     <section>
       <title>Retrieve top favourites</title>
-      <para>The usage analytics API lets you retrieve the top favorites used in DHIS 2, and by
+      <para>The usage analytics API lets you retrieve the top favorites used in DHIS2, and by
           user.<table frame="all">
           <title>Query parameters for top favorites</title>
           <tgroup cols="4">
@@ -8939,7 +8939,7 @@ interval=WEEK" -u admin:district</screen>
   <section>
     <title>Geospatial features</title>
     <para>The <emphasis role="italic">geoFeatures</emphasis> resource lets you retrieve geospatial
-      information from DHIS 2. Geospatial features are stored together with organisation units. The
+      information from DHIS2. Geospatial features are stored together with organisation units. The
       syntax for retrieving features is identical to the syntax used for the organisation unit
       dimension for the analytics resource. It is recommended to read up on the analytics api
       resource before continuing reading this section. You must use the GET request type, and only
@@ -9026,16 +9026,16 @@ interval=WEEK" -u admin:district</screen>
   </section>
   <section>
     <title>Generating resource and analytics tables</title>
-    <para>DHIS 2 features a set of generated database tables which are used as basis for various
+    <para>DHIS2 features a set of generated database tables which are used as basis for various
       system functionality. These tables can be executed immediately or scheduled to be executed at
       regular intervals through the user interface. They can also be generated through the Web API
       as explained in this section. This task is typically one for a system administrator and not
       consuming clients. </para>
-    <para>The resource tables are used internally by the DHIS 2 application for various analysis
+    <para>The resource tables are used internally by the DHIS2 application for various analysis
       functions. These tables are also valuable for users writing advanced SQL reports. They can be
       generated with a POST or PUT request to the following URL:</para>
     <screen>/api/24/resourceTables</screen>
-    <para>The analytics tables are optimized for data aggregation and used currently in DHIS 2 for
+    <para>The analytics tables are optimized for data aggregation and used currently in DHIS2 for
       the pivot table module. The analytics tables can be generated with a POST or PUT request
       to:</para>
     <screen>/api/24/resourceTables/analytics</screen>
@@ -9095,7 +9095,7 @@ interval=WEEK" -u admin:district</screen>
       data is defined as not significant:</para>
     <screen>/api/24/maintenance/zeroDataValueRemoval</screen>
     <para>Drop SQL views will drop all SQL views in the database. Note that it will not delete the
-      DHIS 2 SQL views.</para>
+      DHIS2 SQL views.</para>
     <screen>/api/24/maintenance/sqlViewsDrop</screen>
     <para>Create SQL views will recreate all SQL views in the database.</para>
     <screen>/api/24/maintenance/sqlViewsCreate</screen>
@@ -9126,7 +9126,7 @@ interval=WEEK" -u admin:district</screen>
       resource can be found at <emphasis role="italic">/api/system</emphasis>. </para>
     <section>
       <title>Generate identifiers</title>
-      <para>To generate valid, random DHIS 2 identifiers you can do a GET request to this
+      <para>To generate valid, random DHIS2 identifiers you can do a GET request to this
         resource:</para>
       <screen>/api/24/system/id?limit=3</screen>
       <para>The <emphasis role="italic">limit</emphasis> query parameter is optional and indicates
@@ -9140,7 +9140,7 @@ interval=WEEK" -u admin:district</screen>
     &quot;BRJNBBpu4ki&quot;
   ]
 }</screen>
-      <para>The DHIS 2 UID format has these requirements:</para>
+      <para>The DHIS2 UID format has these requirements:</para>
       <itemizedlist>
         <listitem>
           <para>11 characters long.</para>
@@ -9169,7 +9169,7 @@ interval=WEEK" -u admin:district</screen>
     revision: &quot;11852&quot;,
     buildTime: &quot;2013-09-01T21:36:21.000+0000&quot;,
     serverDate: &quot;2013-09-02T12:35:54.311+0000&quot;,
-    environmentVariable: &quot;DHIS 2_HOME&quot;,
+    environmentVariable: &quot;DHIS2_HOME&quot;,
     javaVersion: &quot;1.7.0_06&quot;,
     javaVendor: &quot;Oracle Corporation&quot;,
     javaIoTmpDir: &quot;/tmp&quot;,
@@ -9317,7 +9317,7 @@ interval=WEEK" -u admin:district</screen>
   </section>
   <section>
     <title>Locales</title>
-    <para>DHIS 2 supports translations both for the user interface and for database content.</para>
+    <para>DHIS2 supports translations both for the user interface and for database content.</para>
     <section>
       <title>UI locales</title>
       <para>You can retrieve the available locales for the user interface through the following
@@ -9333,7 +9333,7 @@ interval=WEEK" -u admin:district</screen>
   </section>
   <section>
     <title>Translations</title>
-    <para>DHIS 2 allows for translations of database content. You can work with translations through
+    <para>DHIS2 allows for translations of database content. You can work with translations through
       the Web API using the <emphasis role="italic">translations</emphasis> resource.</para>
     <section>
       <title>Create translation</title>
@@ -9653,7 +9653,7 @@ interval=WEEK" -u admin:district</screen>
     <section>
       <title>Inbound SMS service</title>
       <para xml:id="para_ob1_y4h_5v">The Web API supports collecting incoming SMS messages using the
-        POST method. Incoming messages routed towards the DHIS 2 Web API can be received using this
+        POST method. Incoming messages routed towards the DHIS2 Web API can be received using this
         API. The API collects inbound SMS messages and provides it to  listeners for parsing, based
         on the SMS content (SMS Command). An example payload in JSON format is given below. Text,
         originator, received date and sent date are mandatory parameters. The rest are optional but
@@ -10251,7 +10251,7 @@ interval=WEEK" -u admin:district</screen>
       each system setting key-value pair using a POST request:</para>
     <screen>{
   &quot;keyApplicationNotification&quot;: &quot;Welcome&quot;,
-  &quot;keyApplicationIntro&quot;: &quot;DHIS 2&quot;,
+  &quot;keyApplicationIntro&quot;: &quot;DHIS2&quot;,
   &quot;keyApplicationFooter&quot;: &quot;Read more at dhis2.org&quot;
 }  </screen>
     <para>You should replace my-key with your real key and my-val with your real value. To retrieve
@@ -10322,7 +10322,7 @@ interval=WEEK" -u admin:district</screen>
             </row>
             <row>
               <entry>applicationTitle</entry>
-              <entry>The application title. Default: "DHIS 2"</entry>
+              <entry>The application title. Default: "DHIS2"</entry>
             </row>
             <row>
               <entry>keyApplicationIntro</entry>
@@ -10528,7 +10528,7 @@ interval=WEEK" -u admin:district</screen>
             </row>
             <row>
               <entry>keyStyle</entry>
-              <entry>The style used on the DHIS 2 webpages. Default:
+              <entry>The style used on the DHIS2 webpages. Default:
                 "light_blue/light_blue.css".</entry>
             </row>
             <row>
@@ -10537,11 +10537,11 @@ interval=WEEK" -u admin:district</screen>
             </row>
             <row>
               <entry>keyRemoteInstanceUsername</entry>
-              <entry>Username used to connect to remote DHIS 2 instance</entry>
+              <entry>Username used to connect to remote DHIS2 instance</entry>
             </row>
             <row>
               <entry>keyRemoteInstancePassword</entry>
-              <entry>Password used to connect to remote DHIS 2 instance</entry>
+              <entry>Password used to connect to remote DHIS2 instance</entry>
             </row>
             <row>
               <entry>keyMapzenSearchApiKey</entry>
@@ -10658,7 +10658,7 @@ interval=WEEK" -u admin:district</screen>
   <section>
     <title>Organisation units</title>
     <para>The <emphasis>organisationUnits</emphasis> resource follows the standard conventions as
-      other metadata resources in DHIS 2. This resource supports some additional query
+      other metadata resources in DHIS2. This resource supports some additional query
       parameters.<screen>/api/24/organisationUnits</screen></para>
     <table frame="all">
       <title>Organisation units query parameters</title>
@@ -10701,7 +10701,7 @@ interval=WEEK" -u admin:district</screen>
   <section>
     <title>Data sets</title>
     <para>The <emphasis>dataSets</emphasis> resource follows the standard conventions as other
-      metadata resources in DHIS 2. This resource supports some additional query
+      metadata resources in DHIS2. This resource supports some additional query
       parameters.<screen>/api/24/dataSets</screen></para>
     <para>To retrieve the version of a data set you can issue a GET
       request:<screen>GET /api/24/dataSets/&lt;uid>/version</screen></para>
@@ -10741,7 +10741,7 @@ interval=WEEK" -u admin:district</screen>
   <section>
     <title>Static content</title>
     <para>The <emphasis>staticContent</emphasis> resource allowes you to upload and retrieve custom
-      logos used in DHIS 2. The resource lets the user upload a file with an associated key, which
+      logos used in DHIS2. The resource lets the user upload a file with an associated key, which
       can later be retrieved using the key. Only PNG files are supported and can only be uploaded to
       the &quot;logo_banner&quot; and &quot;logo_front&quot;
       keys.<screen>/api/24/staticContent</screen></para>
@@ -12252,14 +12252,14 @@ interval=WEEK" -u admin:district</screen>
     <title>Email</title>
     <para>The Web API features a resource for sending emails. For emails to be sent it is required
       that the SMTP configuration has been properly set up and that a system notification email
-      address for the DHIS 2 instance has been defined. You can set SMTP settings from the email
+      address for the DHIS2 instance has been defined. You can set SMTP settings from the email
       settings screen and system notification email address from the general settings screen in DHIS
       2. </para>
     <section>
       <title>System notification</title>
       <para>The <emphasis role="italic">notification</emphasis> resource lets you send system email
         notifications with a given subject and text in JSON or XML. The email will be sent to the
-        notification email address as defined in the DHIS 2 general system settings:</para>
+        notification email address as defined in the DHIS2 general system settings:</para>
       <screen>{
   &quot;subject&quot;: &quot;Integrity check summary&quot;,
   &quot;text&quot;: &quot;All checks ran successfully&quot;
@@ -12272,7 +12272,7 @@ interval=WEEK" -u admin:district</screen>
       <title>Test message</title>
       <para>To test whether the SMTP setup is correct by sending a test email to yourself you can
         interact with the <emphasis role="italic">test</emphasis> resource. To send test emails it
-        is required that your DHIS 2 user account has a valid email address associated with it. You
+        is required that your DHIS2 user account has a valid email address associated with it. You
         can send a test email like this:</para>
       <screen>curl &quot;localhost/api/24/email/test&quot; -X POST -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
     </section>
@@ -12399,13 +12399,13 @@ interval=WEEK" -u admin:district</screen>
   </section>
   <section>
     <title>UI customization</title>
-    <para>To customize the UI of the DHIS 2 application you can insert custom Javascript and CSS
+    <para>To customize the UI of the DHIS2 application you can insert custom Javascript and CSS
       styles through the <emphasis role="italic">files</emphasis> resource. The Javascript and CSS
-      content inserted through this resource will be loaded by the DHIS 2 web application. This can
+      content inserted through this resource will be loaded by the DHIS2 web application. This can
       be particularly useful in certain situations:</para>
     <itemizedlist>
       <listitem>
-        <para>Overriding the CSS styles of the DHIS 2 application, such as the login page or main
+        <para>Overriding the CSS styles of the DHIS2 application, such as the login page or main
           page.</para>
       </listitem>
       <listitem>
@@ -12498,12 +12498,12 @@ interval=WEEK" -u admin:district</screen>
       <title>Reload apps</title>
       <para>To force a reload of currently installed apps, you can issue the following command. This
         is useful if you added a file manually directly to the file system, instead of uploading
-        through the DHIS 2 user interface.
+        through the DHIS2 user interface.
         <screen>curl -X PUT -u user:pass http://server.com/api/24/apps</screen></para>
     </section>
     <section>
       <title>Configure apps</title>
-      <para>To let DHIS 2 serve apps from the Web API make sure to set the &quot;App base URL&quot;
+      <para>To let DHIS2 serve apps from the Web API make sure to set the &quot;App base URL&quot;
         to point to the apps resource, i.e.:<screen>http://server.com/api/24/apps</screen></para>
       <para>To set the apps configuration you can make a POST request to the <emphasis role="italic"
           >config</emphasis> resourec with a JSON payload:</para>
@@ -12516,20 +12516,20 @@ interval=WEEK" -u admin:district</screen>
         resource:</para>
       <screen>curl -X DELETE -u user:pass http://server.com/api/24/apps/config</screen>
       <para>Note that by default apps will be served through the apps Web API resource, and the file
-        system folder will be <emphasis role="italic">DHIS 2_HOME/apps</emphasis>. These systems
+        system folder will be <emphasis role="italic">DHIS2_HOME/apps</emphasis>. These systems
         should be fine for most situations.</para>
     </section>
   </section>
   <section>
     <title>App store</title>
-    <para>The Web API exposes the content of the DHIS 2 App Store as a JSON representation which can
+    <para>The Web API exposes the content of the DHIS2 App Store as a JSON representation which can
       found at the <emphasis role="italic">api/appStore</emphasis> resource.</para>
     <section>
       <title>Get apps</title>
       <para>You can retrieve apps with a GET request: <screen>GET /api/24/appStore</screen></para>
       <para>A sample JSON response is described below.
         <screen>{
-  &quot;name&quot;: &quot;DHIS 2 App Store&quot;,
+  &quot;name&quot;: &quot;DHIS2 App Store&quot;,
   &quot;description&quot;: &quot;Send your apps with a description to us at apps@dhis2.org&quot;,
   &quot;apps&quot;: [
     {
@@ -12553,7 +12553,7 @@ interval=WEEK" -u admin:district</screen>
     </section>
     <section>
       <title>Install apps</title>
-      <para>You can install apps on your instance of DHIS 2 assuming you have the appropriate
+      <para>You can install apps on your instance of DHIS2 assuming you have the appropriate
         permissions. An app is referred to using the <emphasis role="italic">id</emphasis> property
         of the relevant <emphasis role="italic">version</emphasis> of the <emphasis role="italic"
           >app</emphasis>. An app is installed with a POST request with the version id to the
@@ -12937,13 +12937,13 @@ interval=WEEK" -u admin:district</screen>
             </tbody>
           </tgroup>
         </table></para>
-      <para>This assumes that a Google service account has been set up and configured for DHIS 2.
+      <para>This assumes that a Google service account has been set up and configured for DHIS2.
         Please consult the installation guide for more info.</para>
     </section>
   </section>
   <section>
     <title>Metadata repository</title>
-    <para>DHIS 2 provides a metadata repository containing metadata packages with various content. A
+    <para>DHIS2 provides a metadata repository containing metadata packages with various content. A
       metadata package is a </para>
     <para>To retrieve an index over available metadata packages you can issue a GET request to the
         <emphasis role="italic">metadataRepo</emphasis>
@@ -12978,7 +12978,7 @@ interval=WEEK" -u admin:district</screen>
   </section>
   <section>
     <title>FRED API</title>
-    <para>DHIS 2 from version 2.11 implements support for the current draft of the FRED API version
+    <para>DHIS2 from version 2.11 implements support for the current draft of the FRED API version
       1.0. The project defines itself as <quote>open standard for sharing and updating health
         facility data</quote>. The full specification, including representation format and basic
       usage, can be found at <link xl:href="http://facilityregistry.org/"

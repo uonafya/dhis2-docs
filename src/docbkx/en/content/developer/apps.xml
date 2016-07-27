@@ -14,25 +14,25 @@
 Coordinate this section with web dev section. All content should be reviewed and reorganized." flag="done"?>Apps<?oxy_comment_end?></title>
   <para>A packaged app is an <link xl:href="https://developer.mozilla.org/en-US/docs/Open_Web_apps_and_Web_standards">Open Web
       App</link> that has all of its resources (HTML, CSS, JavaScript, app manifest, and so on)
-    contained in a zip file. It can be uploaded to a DHIS 2 installation directly through the user
+    contained in a zip file. It can be uploaded to a DHIS2 installation directly through the user
     interface at runtime. A packaged app is a ZIP file with an <link xl:href="http://www.w3.org/2008/webapps/manifest/">app manifest</link> in its root directory. The
     manifest must be named <filename>manifest.webapp</filename>. A throrough description of apps can
     be obtained <link xl:href="https://developer.mozilla.org/en-US/Apps/Quickstart"
     >here</link>.</para>
   <section>
     <title>Purpose of packaged Apps</title>
-    <para>The purpose of packaged apps is to extend the web interface of DHIS 2, without the need to
-      modify the source code of DHIS 2 itself. A system deployment will often have custom and unique
+    <para>The purpose of packaged apps is to extend the web interface of DHIS2, without the need to
+      modify the source code of DHIS2 itself. A system deployment will often have custom and unique
       requirements. The apps provide a convenient extension point to the user interface. Through
-      apps, you can complement and customize the DHIS 2 core functionality with custom solutions in
+      apps, you can complement and customize the DHIS2 core functionality with custom solutions in
       a loosely coupled and clean manner.</para>
-    <para>Apps do not have permissions to interact directly with DHIS 2 Java API. Instead, apps are
-      expected to use functionality and interact with the DHIS 2 services and data by utilizing the
-      DHIS 2 Web API.</para>
+    <para>Apps do not have permissions to interact directly with DHIS2 Java API. Instead, apps are
+      expected to use functionality and interact with the DHIS2 services and data by utilizing the
+      DHIS2 Web API.</para>
   </section>
   <section>
     <title>Creating Apps</title>
-    <para>DHIS 2 apps are constructed with HTML, JavaScript and CSS files, similar to any other web
+    <para>DHIS2 apps are constructed with HTML, JavaScript and CSS files, similar to any other web
       application. Apps also need a special file called <emphasis role="italic"
         >manifest.webapp</emphasis> which describes the contents of the app. This file should be in
       the format specified by the <link xl:href="http://www.w3.org/2008/webapps/manifest/">W3C
@@ -69,18 +69,18 @@ Explain all properties that are in activities." flag="done"?>activities<?oxy_com
     <itemizedlist>
       <listitem>
         <para>The <emphasis role="italic">icons→48</emphasis> property is used for the icon that is
-          displayed on the list of apps that are installed on a DHIS 2 instance.</para>
+          displayed on the list of apps that are installed on a DHIS2 instance.</para>
       </listitem>
       <listitem>
         <para>The <emphasis role="italic">activities</emphasis> property is an dhis-specific
           extension meant to differentiate between a standard Open Web App and an app that can be
-          installed in DHIS 2. </para>
+          installed in DHIS2. </para>
       </listitem>
       <listitem>
         <para>The <emphasis role="italic">*</emphasis> value for <emphasis role="italic"
             >href</emphasis> is converted to the appropriate URL when the app is uploaded and
-          installed in DHIS 2. This value can then be used by the application&apos;s JavaScript and
-          HTML files to make calls to the DHIS 2 Web API and identify the correct location of DHIS 2
+          installed in DHIS2. This value can then be used by the application&apos;s JavaScript and
+          HTML files to make calls to the DHIS2 Web API and identify the correct location of DHIS2
           server on which the app has been installed. To clarify, the <emphasis role="italic"
             >activities</emphasis> part will look similar to this after the app has been
           installed:</para>
@@ -106,7 +106,7 @@ Explain all properties that are in activities." flag="done"?>activities<?oxy_com
         create any data in the namespace.</para>
     </note>
     <para>The <emphasis>appType</emphasis> property specifies how the app will be displayed by the
-      DHIS 2 instance. The possible values for appType and their effects are explained in the
+      DHIS2 instance. The possible values for appType and their effects are explained in the
       following table.</para>
     <para>
       <table frame="all">
@@ -167,11 +167,11 @@ Explain all properties that are in activities." flag="done"?>activities<?oxy_com
     </note>
     <para>All the files in the project should be compressed into a standard zip archive. Note that
       the manifest.webapp file must be located on the root of the zip archive (do not include a
-      parent directory in the archive). The zip archive can then be installed into DHIS 2 as you
+      parent directory in the archive). The zip archive can then be installed into DHIS2 as you
       will see in the next section.</para>
   </section>
   <section>
-    <title>Installing Apps into DHIS 2</title>
+    <title>Installing Apps into DHIS2</title>
     <para>Apps can be installed by uploading zip file into the App Manager. In, Services →
       Apps, click on the <emphasis role="italic">App Store</emphasis> menu item.
       <inlinemediaobject>      
@@ -180,9 +180,9 @@ Explain all properties that are in activities." flag="done"?>activities<?oxy_com
         </imageobject>
         </inlinemediaobject>
 The app can be uploaded by pressing the Browse button and after selecting the zip package,
-      the file is uploaded automatically and installed in DHIS 2. You can also browse through apps
-      in the DHIS 2 <link xl:href="https://www.dhis2.org/appstore">app store</link> and download apps
-      from there. The DHIS 2 app store allows for app searching, reviewing, commenting, requesting
+      the file is uploaded automatically and installed in DHIS2. You can also browse through apps
+      in the DHIS2 <link xl:href="https://www.dhis2.org/appstore">app store</link> and download apps
+      from there. The DHIS2 app store allows for app searching, reviewing, commenting, requesting
       features, rating on the apps by the community.</para>
   </section>
   <section>
@@ -192,10 +192,10 @@ The app can be uploaded by pressing the Browse button and after selecting the zi
       of the apps module.  Click on an app in the list in order to launch it.</para>
   </section>
   <section>
-    <title>Adding the DHIS 2 menu to your app</title>
-    <para>In order to maintain a uniform appearance within DHIS 2 it is possible to add your
+    <title>Adding the DHIS2 menu to your app</title>
+    <para>In order to maintain a uniform appearance within DHIS2 it is possible to add your
       app&apos;s icon to the top menu. To begin, we start with a screenshot of the top-menu of the
-      DHIS 2 user interface, where your app&apos;s icon will be placed. <screenshot>
+      DHIS2 user interface, where your app&apos;s icon will be placed. <screenshot>
         <mediaobject>
           <imageobject>
             <imagedata fileref="resources/images/apps/top-menu.png" format="PNG" width="80%"/>
@@ -210,7 +210,7 @@ The app can be uploaded by pressing the Browse button and after selecting the zi
       <itemizedlist>
         <listitem>
           <para><filename role="italic">jquery.min.js / jqLite / angular.element</filename> : One of
-            the mentioned libraries needs to be present. DHIS 2 employs a stripped-down version of
+            the mentioned libraries needs to be present. DHIS2 employs a stripped-down version of
               <classname>jqLite</classname> that is present in <emphasis>Angular</emphasis> for the
             menu. This makes it compatible with jqLite and jQuery. </para>
         </listitem>
@@ -239,14 +239,14 @@ The app can be uploaded by pressing the Browse button and after selecting the zi
         </listitem>
         <listitem>
           <para><filename role="italic">dhis2.translate.js</filename> : Translate script that
-            translates menu text to your current DHIS 2 language setting</para>
+            translates menu text to your current DHIS2 language setting</para>
         </listitem>
       </itemizedlist></para>
-    <para>For a app that will run using the same URL structure as the normal DHIS 2 apps, only the
+    <para>For a app that will run using the same URL structure as the normal DHIS2 apps, only the
       JavaScript files and style-sheets are required. If your app is running using a different URL
       structure than the default one, you will need to specify a <parameter>base URL </parameter>before including the menu scripts. Including the scripts and style-sheets would
       look something like the following:
-      <screen>&lt;!-- DHIS 2 Settings initialization for a baseUrl that is used for the menu --&gt;
+      <screen>&lt;!-- DHIS2 Settings initialization for a baseUrl that is used for the menu --&gt;
 &lt;script&gt;
  window.dhis2 = window.dhis2 || {};
  dhis2.settings = dhis2.settings || {};
@@ -265,8 +265,8 @@ The app can be uploaded by pressing the Browse button and after selecting the zi
 &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;./dhis-web-commons/css/menu.css&quot;&gt;
     </screen></para>
     <para>To clarify, the following part will initialize some variables. If you do not use any other
-      DHIS 2 libraries these will not be set and therefore will have to be set by you first. After
-      that the third line specifies a base URL of where your DHIS 2 instance is running on your web
+      DHIS2 libraries these will not be set and therefore will have to be set by you first. After
+      that the third line specifies a base URL of where your DHIS2 instance is running on your web
       server. For example: <emphasis role="italic">dhis</emphasis> in this case means the server is
       running at <emphasis role="italic">http://localhost:8080/dhis/</emphasis>. Note that you will
       only have to specify the part after the web address. So if your instance is running at
@@ -308,7 +308,7 @@ var appMenu = angular.module(&apos;appMenu&apos;,
 
         &lt;div id=&quot;dhisDropDownMenu&quot;&gt;&lt;/div&gt;
 
-        &lt;!-- DHIS 2 Settings initialization for a baseUrl that is used for the menu --&gt;
+        &lt;!-- DHIS2 Settings initialization for a baseUrl that is used for the menu --&gt;
         &lt;script&gt;
             window.dhis2 = window.dhis2 || {};
             dhis2.settings = dhis2.settings || {};

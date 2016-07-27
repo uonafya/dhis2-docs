@@ -10,9 +10,9 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>DHIS 2 Technical Architecture</title>
+  <title>DHIS2 Technical Architecture</title>
   <info>
-    <title>DHIS 2 - Technical Architecture</title>
+    <title>DHIS2 - Technical Architecture</title>
     <keywordset>
       <keyword>DHIS</keyword>
       <keyword>Technical requirements</keyword>
@@ -22,8 +22,8 @@
   </info>
   <section xml:id="technicalOverview">
     <title>Overview</title>
-    <para>This document outlines the technical architecture for the District Health Information Software 2 (DHIS 2). The DHIS 2 is a routine data based health information system which allows for data capture, aggregation, analysis, and reporting of data. </para>
-    <para>DHIS 2 is written in Java and has a three-layer architecture. The presentation layer is web-based, and the system can be used on-line as well as stand-alone.</para>
+    <para>This document outlines the technical architecture for the District Health Information Software 2 (DHIS2). The DHIS2 is a routine data based health information system which allows for data capture, aggregation, analysis, and reporting of data. </para>
+    <para>DHIS2 is written in Java and has a three-layer architecture. The presentation layer is web-based, and the system can be used on-line as well as stand-alone.</para>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -35,7 +35,7 @@
   </section>
   <section xml:id="technicalRequirements">
     <title>Technical Requirements</title>
-    <para>The DHIS 2 is intended to be installed and run on a variety of platforms. Hence the system is designed for industry standards regarding database management systems and application servers. The system should be extensible and modular in order to allow for third-party and peripheral development efforts. Hence a pluggable architecture is needed. The technical requirements are:</para>
+    <para>The DHIS2 is intended to be installed and run on a variety of platforms. Hence the system is designed for industry standards regarding database management systems and application servers. The system should be extensible and modular in order to allow for third-party and peripheral development efforts. Hence a pluggable architecture is needed. The technical requirements are:</para>
     <itemizedlist>
       <listitem>
         <para>Ability to run on any major database management system</para>
@@ -56,7 +56,7 @@
   </section>
   <section xml:id="technicalStructure">
     <title>Project Structure</title>
-    <para>DHIS 2 is made up of 42 Maven projects, out of which 18 are web modules. The root POM is located in <filename>/dhis-2</filename> and contains project aggregation for all projects excluding the <filename>/dhis-2/dhis-web</filename> folder. The <filename>/dhis-2/dhis-web</filename> folder has a web root POM which contains project aggregation for all projects within that folder. The contents of the modules are described later on.</para>
+    <para>DHIS2 is made up of 42 Maven projects, out of which 18 are web modules. The root POM is located in <filename>/dhis-2</filename> and contains project aggregation for all projects excluding the <filename>/dhis-2/dhis-web</filename> folder. The <filename>/dhis-2/dhis-web</filename> folder has a web root POM which contains project aggregation for all projects within that folder. The contents of the modules are described later on.</para>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -108,7 +108,7 @@
   <section xml:id="technicalPersistenceLayer">
     <title> The Persistence Layer </title>
     <para>The persistence layer is based on Hibernate in order to achieve the ability to run on any major DBMS. Hibernate abstracts the underlying DBMS away and let you define the database connection properties in a file called hibernate.properties. </para>
-    <para>DHIS 2 uses Spring-Hibernate integration, and retrieves a SessionFactory through Spring’s LocalSessionFactoryBean. This LocalSessionFactoryBean is injected with a custom HibernateConfigurationProvider instance which fetches Hibernate mapping files from all modules currently on the classpath. All store implementations get injected with a SessionFactory and use this to perform persistence operations.</para>
+    <para>DHIS2 uses Spring-Hibernate integration, and retrieves a SessionFactory through Spring’s LocalSessionFactoryBean. This LocalSessionFactoryBean is injected with a custom HibernateConfigurationProvider instance which fetches Hibernate mapping files from all modules currently on the classpath. All store implementations get injected with a SessionFactory and use this to perform persistence operations.</para>
     <para>Most important objects have their corresponding Hibernate store implementation. A store provides methods for CRUD operations and queries for that object, e.g. HibernateDataElementStore which offers methods such as <emphasis role="italic">addDataElement( DataElement ), deleteDataElement( DataElement ), getDataElementByName( String )</emphasis>, etc.</para>
     <screenshot>
       <mediaobject>
@@ -151,7 +151,7 @@
     <section>
       <title>The Data Mart Project</title>
       <para>The data mart component is responsible for producing aggregated data from the raw data in the time and space dimension. The aggregated data is represented by the <emphasis role="italic">AggregatedDataValue</emphasis> and <emphasis role="italic">AggregatedIndicatorValue</emphasis> objects. The <emphasis role="italic">DataSetCompletenessResult</emphasis> object is also included in the data mart and is discussed in the section covering the reporting project. These objects and their corresponding database tables are referred to as the<emphasis role="italic"> data mart.</emphasis></para>
-      <para>The following section will list the rules for aggregation in DHIS 2.</para>
+      <para>The following section will list the rules for aggregation in DHIS2.</para>
       <itemizedlist>
         <listitem>
           <para>Data is a aggregated in the time and space dimension. The time dimension is represented by the Period object and the space dimension by the OrganisationUnit object, organised in a parent-child hierarchy.</para>
@@ -222,7 +222,7 @@
           <para>The temporary crosstabulated table is removed.</para>
         </listitem>
       </itemizedlist>
-      <para>The data element tables are called “aggregateddatavalue” and “aggregatedindicatorvalue” and are used both inside DHIS 2 for e.g. report tables and by third-party reporting applications like MS Excel.</para>
+      <para>The data element tables are called “aggregateddatavalue” and “aggregatedindicatorvalue” and are used both inside DHIS2 for e.g. report tables and by third-party reporting applications like MS Excel.</para>
     </section>
     <section>
       <title>The Reporting Project</title>
@@ -294,7 +294,7 @@
         <para>Fig. Data set completeness diagram</para>
         <para>The <emphasis role="italic">CompleteDataSetRegistration</emphasis> object is representing a data set marked as complete by a user. This property holds the data set, period, organisation unit and date for when the complete registrations took place. The <emphasis role="italic">CompleteDataSetRegistrationStore</emphasis> is responsible for persistence of <emphasis role="italic">CompleteDataSetRegistration</emphasis> objects and provides methods returning collections of objects queried with different variants of data sets, periods, and organisation units as input parameters. The <emphasis role="italic">CompleteDataSetRegistrationService</emphasis> is mainly delegating method calls the store layer. These components are located in the dhis-service-core project.</para>
         <para>The completeness output is represented by the <emphasis role="italic">DataSetCompletenessResult</emphasis> object. This object holds information about the request that produced it such as data set, period, organisation unit, and information about the data set completeness situation such as number of reporting organisation units, number of complete registrations, and number of complete registrations on-time. The <emphasis role="italic">DataSetCompletenessService</emphasis> is responsible for the business logic related to data set completeness reporting. It provides methods which mainly returns collections of DataSetCompletenessResults and takes different variants of period, organisation unit and data set as parameters. It uses the CompleteDataSetRegistrationService to retrieve the number of registrations, the DataSetService to retrieve the number of reporting organisation units, and performs calculations to derive the completeness percentage based on these retrieved numbers.</para>
-        <para>The <emphasis role="italic">DataSetCompletenessExportService</emphasis> is responsible for writing DataSetCompletenessResults to a database table called “aggregateddatasetcompleteness”. This functionality is considered to be part of the data mart as this data can be used both inside DHIS 2 for e.g. report tables and by third-party reporting applications like MS Excel. This component is retrieving data set completeness information from the <emphasis role="italic">DataSetCompeletenessService</emphasis> and is using the BatchHandler interface to write such data to the database.</para>
+        <para>The <emphasis role="italic">DataSetCompletenessExportService</emphasis> is responsible for writing DataSetCompletenessResults to a database table called “aggregateddatasetcompleteness”. This functionality is considered to be part of the data mart as this data can be used both inside DHIS2 for e.g. report tables and by third-party reporting applications like MS Excel. This component is retrieving data set completeness information from the <emphasis role="italic">DataSetCompeletenessService</emphasis> and is using the BatchHandler interface to write such data to the database.</para>
       </section>
       <section>
         <title>Document</title>
@@ -312,8 +312,8 @@
       </section>
       <section>
         <title>The External Project</title>
-        <para>The <emphasis role="italic">LocationManager</emphasis> component is responsible for the communication between DHIS 2 and the file system of the operating system. It contains methods which provide read access to files through File and InputStream instances, and write access to the file system through File and OutputStream instances. The target location is relative to a system property “dhis2.home” and an environment variable “DHIS 2_HOME” in that order. This component is used e.g. by the HibernateConfigurationProvider to read in the Hibernate configuration file, and should be re-used by all new development efforts.</para>
-        <para>The <emphasis role="italic">ConfigurationManager</emphasis> is a component which facilitates the use of configuration files for different purposes in DHIS 2. It provides methods for writing and reading configuration objects to and from XML. The XStream library is used to implement this functionality. This component is typically used in conjunction with the <emphasis role="italic">LocationManager</emphasis>.</para>
+        <para>The <emphasis role="italic">LocationManager</emphasis> component is responsible for the communication between DHIS2 and the file system of the operating system. It contains methods which provide read access to files through File and InputStream instances, and write access to the file system through File and OutputStream instances. The target location is relative to a system property “dhis2.home” and an environment variable “DHIS2_HOME” in that order. This component is used e.g. by the HibernateConfigurationProvider to read in the Hibernate configuration file, and should be re-used by all new development efforts.</para>
+        <para>The <emphasis role="italic">ConfigurationManager</emphasis> is a component which facilitates the use of configuration files for different purposes in DHIS2. It provides methods for writing and reading configuration objects to and from XML. The XStream library is used to implement this functionality. This component is typically used in conjunction with the <emphasis role="italic">LocationManager</emphasis>.</para>
       </section>
     </section>
     <section>
@@ -329,11 +329,11 @@
   </section>
   <section xml:id="technicalPresentationLayer">
     <title> The Presentation Layer </title>
-    <para>The presentation layer of DHIS 2 is based on web modules which are assembled into a portal. This implies a modularized design where each module has its own domain, e.g. the dhis-web-reporting module deals with reports, charts, pivot tables, documents, while the dhis-web-maintenance-dataset module is responsible for data set management. The web modules are based on Struts and follow the MVC pattern [5]. The modules also follow the Maven standard for directory layout, which implies that Java classes are located in src/main/java, configuration files and other resources in src/main/resources, and templates and other web resources in src/main/webapp. All modules can be run as a standalone application.</para>
+    <para>The presentation layer of DHIS2 is based on web modules which are assembled into a portal. This implies a modularized design where each module has its own domain, e.g. the dhis-web-reporting module deals with reports, charts, pivot tables, documents, while the dhis-web-maintenance-dataset module is responsible for data set management. The web modules are based on Struts and follow the MVC pattern [5]. The modules also follow the Maven standard for directory layout, which implies that Java classes are located in src/main/java, configuration files and other resources in src/main/resources, and templates and other web resources in src/main/webapp. All modules can be run as a standalone application.</para>
     <para>Common Java classes, configuration files, and property files are located in the dhis-web-commons project, which is packaged as a JAR file. Common templates, style sheets and other web resources are located in the dhis-web-commons-resources project, which is packaged as a WAR file. These are closely related but are separated into two projects. The reason for this is that other modules must be able to have compile dependencies on the common Java code, which requires it to be packaged as a JAR file. For other modules to be able to access the common web resources, these must be packaged as a WAR file [6].</para>
     <section>
       <title>The Portal</title>
-      <para>DHIS 2 uses a light-weight portal construct to assemble all web modules into one application. The portal functionality is located in the dhis-web-portal project. The portal solution is integrated with Struts, and the following section requires some prior knowledge about this framework, please refer to struts.apache.org for more information.</para>
+      <para>DHIS2 uses a light-weight portal construct to assemble all web modules into one application. The portal functionality is located in the dhis-web-portal project. The portal solution is integrated with Struts, and the following section requires some prior knowledge about this framework, please refer to struts.apache.org for more information.</para>
       <section>
         <title>Module Assembly</title>
         <para>All web modules are packaged as WAR files. The portal uses the Maven WAR plug-in to assemble the common web modules and all web modules into a single WAR file. Which modules are included in the portal can be controlled simply through the dependency section in the POM file [7] in the dhis-web-portal project. The web module WAR files will be extracted and its content merged together.</para>
@@ -374,7 +374,7 @@
   </section>
   <section xml:id="technicalFrameworkStack">
     <title> Framework Stack </title>
-    <para>The following frameworks are used in the DHIS 2 application.</para>
+    <para>The following frameworks are used in the DHIS2 application.</para>
     <section>
       <title>Application Frameworks</title>
       <itemizedlist>
