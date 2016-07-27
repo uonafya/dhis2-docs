@@ -20,9 +20,17 @@
       also runs on many relational database systems such as PostgreSQL, MySQL, H2 and Derby. DHIS 2
       is packaged as a standard Java Web Archive (WAR-file) and thus runs on any Servlet containers
       such as Tomcat and Jetty.</para>
-  <para>The DHIS 2 team recommends Ubuntu 14.04 LTS operating system, PostgreSQL database system and
+  <para>The DHIS 2 team recommends Ubuntu 16.04 LTS operating system, PostgreSQL database system and
       Tomcat Servlet container as the preferred environment for server installations.</para>
-  <para>This chapter provides a guide for setting up the above technology stack. It should however be read as a guide for getting up and running and not as an exhaustive documentation for the mentioned environment. We refer to the official Ubuntu, PostgreSQL and Tomcat documentation for in-depth reading.</para>
+  <para>This chapter provides a guide for setting up the above technology stack. It should however
+      be read as a guide for getting up and running and not as an exhaustive documentation for the
+      mentioned environment. We refer to the official Ubuntu, PostgreSQL and Tomcat documentation
+      for in-depth reading. </para>
+    <para>The <link xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink:href="https://github.com/dhis2/dhis2-tools">dhis2-tools</link> Ubuntu package
+      automates many of the tasks described in the guide below and is highly reccomended for most
+      users, especially those who are not familiar with the command line or administration of
+      servers. It is described in detail in a seperate chapter in this book. </para>
   </section>
   <section>
     <title>Server specifications</title>
@@ -42,7 +50,11 @@
       </listitem>
       <listitem>
         <para>Disk: Ideally use an SSD. Otherwise use a 7200 rpm disk. Minimum read speed is 150
-          Mb/s, 200 Mb/s is good, 350 Mb/s or better is ideal. </para>
+          Mb/s, 200 Mb/s is good, 350 Mb/s or better is ideal.  In terms of disk space, at least 60
+          GB is reccomended, but will depend entirely on the amount of data which is contained in
+          the data value tables. Analytics tables require a significant amount of disk space. Plan
+          ahead and ensure that your server can be upgraded with more disk space as it becomes
+          needed.</para>
       </listitem>
     </itemizedlist>
   </section>
@@ -343,6 +355,42 @@ export DHIS 2_HOME=&apos;/home/dhis/config&apos;</screen></para>
         the following URL:</para>
       <screen>http://localhost:8080</screen>
     </section>
+    <section>
+      <title>Starting tomcat at boot-time</title>
+      <para>In certain situations a server might reboot unexpectedly. It is hence preferable to have
+        Tomcat start automatically when the server starts. To achieve that the first step is to
+        create init scripts. Create a new file called <code>tomcat</code> and paste the below
+        content into it (adjust the HOME variable to your environment):</para>
+      <screen>#!/bin/sh
+#Tomcat init script
+
+HOME=/home/dhis/tomcat/bin
+
+case $1 in
+start)
+        sh ${HOME}/startup.sh
+        ;;
+stop)
+        sh ${HOME}/shutdown.sh
+        ;;
+restart)
+        sh ${HOME}/shutdown.sh
+        sleep 5
+        sh ${HOME}/startup.sh
+        ;;
+esac
+exit 0</screen>
+      <para>Move the script to the init script directory and make them executable by
+        invoking:</para>
+      <screen>sudo mv tomcat /etc/init.d
+sudo chmod +x /etc/init.d/tomcat</screen>
+      <para>Next make sure the tomcat init script will be invoked during system startup and
+        shutdown:</para>
+      <screen>sudo /usr/sbin/update-rc.d -f tomcat defaults 81</screen>
+      <para>Tomcat will now be started at system startup and stopped at system shutdown. If you
+        later need to revert this you can replace <code>defaults</code> with <code>remove</code> and
+        invoke the above commands again.</para>
+    </section>
   </section>
   <section>
     <title>Reverse proxy configuration</title>
@@ -573,40 +621,20 @@ sudo /etc/init.d/nginx stop</screen></para>
       </important>
     </section>
     <section>
-      <title>Starting tomcat on boot-time</title>
-      <para>In certain situations a server might reboot unexpectedly. It is hence preferable to have
-        Tomcat start automatically when the server starts. To achieve that the first step is to
-        create init scripts. Create a new file called <code>tomcat</code> and paste the below
-        content into it (adjust the HOME variable to your environment):</para>
-      <screen>#!/bin/sh
-#Tomcat init script
-
-HOME=/home/dhis/tomcat/bin
-
-case $1 in
-start)
-        sh ${HOME}/startup.sh
-        ;;
-stop)
-        sh ${HOME}/shutdown.sh
-        ;;
-restart)
-        sh ${HOME}/shutdown.sh
-        sleep 5
-        sh ${HOME}/startup.sh
-        ;;
-esac
-exit 0</screen>
-      <para>Move the script to the init script directory and make them executable by
-        invoking:</para>
-      <screen>sudo mv tomcat /etc/init.d
-sudo chmod +x /etc/init.d/tomcat</screen>
-      <para>Next make sure the tomcat init script will be invoked during system startup and
-        shutdown:</para>
-      <screen>sudo /usr/sbin/update-rc.d -f tomcat defaults 81</screen>
-      <para>Tomcat will now be started at system startup and stopped at system shutdown. If you
-        later need to revert this you can replace <code>defaults</code> with <code>remove</code> and
-        invoke the above commands again.</para>
+      <title>Additional resources on SSL</title>
+      <para>The configuration demonstrated above should be regarded as the absolute minumum in order
+        to establish a secure server. However, encryption methods are constantly being updated, so
+        implementers who are administerting their own server, show ensure that the server is
+        regularly updated with recent security patches (particularly the HTTP server and SSL
+        libraries). </para>
+      <para>There are numerous additional tutorials and information available on the web, including
+        a helpful <link xmlns:xlink="http://www.w3.org/1999/xlink"
+          xlink:href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04"
+          >step-by-step guide</link> for using the free <link
+          xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://letsencrypt.org/">Lets
+          Encrypt SSL certifcate system</link> . It may also be useful to regularly test your SSL
+        security with <link xmlns:xlink="http://www.w3.org/1999/xlink"
+          xlink:href="https://www.ssllabs.com/ssltest/">this website</link>.</para>
     </section>
     <section>
       <title>Making resources available with nginx</title>
@@ -866,7 +894,7 @@ ldap.search.filter = (cn={0})</screen>
     </section>
   </section>
   <section>
-    <title>Complete configuration reference</title>
+    <title>DHIS2 configuration reference</title>
     <para>The following describes the full set of configuration options for the <emphasis
         role="italic">dhis.conf</emphasis> configuration file. The uncommented properties are
       mandatory. The commented properties are optional. The configuration file should be placed in a
