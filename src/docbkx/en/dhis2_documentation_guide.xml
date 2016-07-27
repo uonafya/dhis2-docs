@@ -84,13 +84,14 @@
       of the source code. If you do not already have a GitHub account, you will need to get one.
       This can be done <link xl:href="https://github.com/">here</link>. Once you register with
       GitHub, you will need to request access to the<emphasis> dhis2-documenters</emphasis> group if
-      you wish to modify the source code of the documentation. Login to GitHub, and then file an
-      issue <link xl:href="https://github.com/dhis2/dhis2docs/issues/new">here</link>. Your request
-      will need to be approved by the group administrators. Once you have been granted access to the
-      group, you can commit changes to the documentation branch and send and receive notifications
-      if you wish.  Alternatively, you can clone the documentation, commit your changes to your own
-      fork, and request that your changes be merged with the source of the documenation with a pull
-      request <link xmlns:xlink="http://www.w3.org/1999/xlink"
+      you wish to modify the source code of the documentation directly.</para>
+    <para>Login to GitHub, and then file an issue <link
+        xl:href="https://github.com/dhis2/dhis2docs/issues/new">here</link>. Your request will need
+      to be approved by the group administrators. Once you have been granted access to the group,
+      you can commit changes to the documentation branch and send and receive notifications if you
+      wish. Alternatively, you can clone the documentation into your own repository, commit your
+      changes to your own fork, and request that your changes be merged with the source of the
+      documenation with a pull request <link xmlns:xlink="http://www.w3.org/1999/xlink"
         xlink:href="https://github.com/dhis2/dhis2-docs/pulls">here</link>.</para>
   </section>
   <section xml:id="docs_4">
@@ -143,7 +144,15 @@ downloaded to the folder that you specified.</para>
   <section xml:id="docs_5">
     <title>Editing the documentation</title>
     <para>Once you have downloaded the source, you should have a series of folders inside of the
-dhis2docs directory. All documents should be placed in the <filename>dhis2docs/src/docbkx/XX</filename> folder. Note that the <filename>XX</filename> represents the ISO 639-1 (two-letter) language code of the documentation. If you are developing English language documentation, place it inside the <filename>/dhis2docs/src/docbkx/en/</filename> folder. Place any image files that may be linked to your document in the <filename>/dhis2docs/src/docbkx/XX/resources/images</filename> folder and link these inside your DocBook document using a relative file link. When the documentation is built, in a separate step, the images will be automatically copied over to the correct directory during the build process.</para>
+      repository directory. All documents should be placed in the
+        <filename>/src/docbkx/content/XXXX</filename> folder. Note that XXXX simply represents one
+      of the thematic folders which are used to organize the documentation. If you are editing the
+      chapter on the GIS, you will find it in the "gis" directory.  Place any image files that may
+      be linked to your document in the
+        <filename>/dhis2docs/src/docbkx/XX/resources/images</filename> folder and link these inside
+      your DocBook document using a relative file link. When the documentation is built, in a
+      separate step, the images will be automatically copied over to the correct directory during
+      the build process.</para>
   </section>
   <section>
     <title>DHIS 2 Bibliography</title>
@@ -156,7 +165,12 @@ dhis2docs directory. All documents should be placed in the <filename>dhis2docs/s
       source tools are capable of working with BibTeX. Currently, the recommended tool of choice for
       manipulating the DHIS 2 bibliography is <link xmlns:xlink="http://www.w3.org/1999/xlink"
         xlink:href="http://jabref.sourceforge.net/">JabRef</link>. </para>
-    <para>To get started with the bibliography, download a copy of JabRef and open the <filename>/src/bibliography/dhis2_bibliography.bib file</filename>. . Add some new references, then export the bibliography back to the <filename>/src/docbkx/en/dhis2_bibliography.xml</filename> file, using the DocBook 4.4 export format. The updated bibliography will automatically be included in the documentation after you commit your changes.</para>
+    <para>To get started with the bibliography, download a copy of JabRef and open the
+        <filename>/src/bibliography/dhis2_bibliography.bib file</filename>. . Add some new
+      references, then export the bibliography back to the
+        <filename>/src/docbkx/en/dhis2_bibliography.xml</filename> file, using the DocBook 5.0
+      export format. The updated bibliography will automatically be included in the documentation
+      after you commit your changes.</para>
   </section>
   <section xml:id="docs_6">
     <title>Using images</title>
@@ -166,12 +180,17 @@ should be performed. DocBook has no intrinsic mechanisms to know exactly how an 
  &lt;title&gt;DHIS 2 Login screen&lt;/title&gt;
   &lt;mediaobject&gt;
    &lt;imageobject&gt; 
-    &lt;imagedata fileref=&quot;dhis2_login_screen.jpg&quot; format=&quot;JPG&quot; width=&quot;80%&quot;/&gt;
+    &lt;imagedata fileref=&quot;resources/images/login/dhis2_login_screen.jpg&quot; format=&quot;JPG&quot; width=&quot;80%&quot;/&gt;
    &lt;/imageobject&gt;
   &lt;/mediaobject&gt; 
 &lt;/screenshot&gt;</programlisting>
     <para>For other images, depending on their size, a different value may be necessary. If you do
 not specify a width for you image, and its intrinsic size is larger than the available screen width, the image may overflow in certain document types with a fixed width, such as PDF. </para>
+    <para>Its is important that all images begin with <filename>resources/images/XXXX</filename>
+      where XXXX is the folder where the image is actually located. When the documentation is
+      actually built, the images will be copied into the correct location for the different formats.
+      If you are having trouble seeing the image in your editor, be sure you create a symlink to
+      this folder in the corresponding documents <filename>content</filename> folder. </para>
   </section>
   <section xml:id="docs_7">
     <title>Linking documents together</title>
@@ -202,15 +221,25 @@ only want to include a portion of the chapter. If you want to use a section of t
   </section>
   <section xml:id="docs_8">
     <title>Handling multilingual documentation</title>
-    <para>The directory structure of the documentation has been created in order to facilitate the
-creation of documents in any language. If you want to create a new set of documents in a given language, simply create a new directory in the <filename>dhis2-docbook-docs/src/docbkx/</filename> directory. Be sure to use the ISO 639-1 code for the language you are going to create documents in. A complete list of these codes can be found <link xl:href="http://en.wikipedia.org/wiki/ISO_639-1">here</link>. Add a new folder for
-images in a sub-directory , replacing XX with the actual ISO 639-1 code for the language you will create documents in. You will also need to edit the <filename>pom.xml </filename>file in the main dhis2docs directory. If you are unsure of what changes need to be made to this file, ask on the mailing list first, as this file controls the generation of all the documentation. </para>
+    <para>The DHIS2 docuemtnation has been translated into a number of different languages including
+      French, Spanish and Portuguese. If you would like to create a translation of the documentation
+      or contribute to one of the exisiting translations, please contact the DHIS2 documentation
+      team at the email provided at the end of this chapter. </para>
   </section>
   <section xml:id="docs_9">
     <title>Building the documentation</title>
     <para>One of the key advantages of the DocBook format is that the source documentation can be
-transformed into a wide variety of formats, including HTML, chunked HTML, XHTML, PDF, and a number of other formats. There are a wide variety of tools that are capable of performing this task. Basically the XML source of the document is transformed using the standard DocBook XSL style sheets into the desired format. The complete list of tools capable of transforming DocBook will not be listed here, but a few examples are provided below. </para>
-    <para>Latest builds of the documentation are available from the <link xl:href="http://www.dhis2.org/documentation">DHIS 2 website</link>. The latest snapshot builds are available through the continuous integration server located <link xl:href="http://apps.dhis2.org/ci/job/dhis-documentation/lastSuccessfulBuild/artifact/*zip*/archive.zip">here</link>.</para>
+      transformed into a wide variety of formats, including HTML, chunked HTML, XHTML, PDF, and a
+      number of other formats. There are a wide variety of tools that are capable of performing this
+      task. Basically the XML source of the document is transformed using the standard <link
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink:href="https://sourceforge.net/projects/docbook/files/docbook-xsl/">DocBook XSL style
+        sheets</link> into the desired output  format. The complete list of tools capable of
+      transforming DocBook will not be listed here, but a few examples are provided below. </para>
+    <para>Latest builds of the documentation are available from the <link
+        xl:href="http://www.dhis2.org/documentation">DHIS 2 website</link>. The latest snapshot
+      builds and previous versions of the documentation are available through a searchable site
+      located <link xl:href="http://dhis2.github.io/dhis2-docs/">here</link>.</para>
     <section>
       <title>Building the documentation with Apache maven</title>
       <para>In order to transform the documentation source files to different formats, such as HTML
@@ -230,20 +259,22 @@ transforming DocBook documents into many different formats. More information on 
       GitHub. Open up a command prompt on Windows or a shell on Linux, and navigate to the folder
       where you have placed your documentation. If you have added any new files or folders to your
       local repository, you will need to add them to the source tree with the <command>git add
-      </command> command, followed by the folder or file name(s) that you have added.  Be sure to
+      </command> command, followed by the folder or file name(s) that you have added. Be sure to
       include a descriptive comment with your commit. <cmdsynopsis>
         <command>git commit </command>
         <arg>-m</arg>
         <arg>&quot;Improved documentation on organisation unit imports with CSV."</arg>
       </cmdsynopsis>Finally, you should push the changes back to the repository with <command>git
-        push origin mybranch</command> . In order to do this, you will need the necessary
-      permissions to commit to the repository.When you have committed your changes, <link
-        xmlns:xlink="http://www.w3.org/1999/xlink"
+        push origin mybranch</command>, where "mybranch" is the name of the branch which you created
+      when you checked out the document source or which you happent o be working on.  In order to do
+      this, you will need the necessary permissions to commit to the repository.When you have
+      committed your changes, <link xmlns:xlink="http://www.w3.org/1999/xlink"
         xlink:href="https://github.com/dhis2/dhis2-docs/pulls">you can issue a pull request</link>
       to have them merged with the master branch. You changes will be reviewed by the core
-      documentation team and tested to ensure they do not break the build. As mentioned previously,
-      you can also push your changes to your own GitHub repo, if you do not have access to the main
-      repo,  and submit a pull request for your changes to be merged.</para>
+      documentation team and tested to ensure they do not break the build, as well as reviwed for
+      quality.  As mentioned previously, you can also push your changes to your own GitHub repo, if
+      you do not have access to the main repo, and submit a pull request for your changes to be
+      merged.</para>
     <para>If you have any questions, or cannot find that you can get started, just send an email
 with your problem to <email>dhis2-documenters@lists.launchpad.net</email>.</para>
   </section>
