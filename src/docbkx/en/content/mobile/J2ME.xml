@@ -11,9 +11,9 @@
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook" xml:id="mobile_j2me_gprs_3g">
   <title>J2ME GPRS/3G Client</title>
-  <para>The DHIS 2 GPRS/3G mobile module provides a mechanism for remote clients using mobile phones to enter data directly into the DHIS 2 system. There are two functions of the client, namely:</para>
+  <para>The DHIS2 GPRS/3G mobile module provides a mechanism for remote clients using mobile phones to enter data directly into the DHIS2 system. There are two functions of the client, namely:</para>
   <para>The solution relies on the mobile phone having a data connection available (i.e.
-    GPRS, Edge, 3G), over which it communicates with a DHIS 2 instance which must be publicly
+    GPRS, Edge, 3G), over which it communicates with a DHIS2 instance which must be publicly
     available on the internet, as any other web server. The client application on the phone downloads the data entry forms to the phone from the
     server, and the forms can therefore be updated without installing a new application. This is also a crucial feature 
     for community reporting, which relies on regularly downloading activity plans from the server.
@@ -21,7 +21,7 @@
   <itemizedlist>
     <listitem>
       <para>Facility reporting, for data entry and
-    reporting of regular DHIS 2 aggregate data,</para>
+    reporting of regular DHIS2 aggregate data,</para>
     </listitem>
     <listitem>
       <para>Activity reporting, for supporting individual
@@ -30,8 +30,8 @@
   </itemizedlist>
   <section>
     <title>Data connection availability</title>
-    <para>Data connection availability can be a problem in many of the contexts where DHIS 2 mobile
-      reporting would otherwise be a good solution for getting data directly into DHIS 2. If that is
+    <para>Data connection availability can be a problem in many of the contexts where DHIS2 mobile
+      reporting would otherwise be a good solution for getting data directly into DHIS2. If that is
       the case for you, you might want to consider trying the SMS based solution described in a
       separate document. Keep in mind that even though a data connection is currently required for
       communication between the server and the mobile phone, it is only required when initializing
@@ -41,8 +41,8 @@
   </section>
   <section xml:id="mobile_j2me_gprs_3g_facility_reporting">
     <title>J2ME GPRS 3G facility reporting client</title>
-    <para>The server side component of the web based solution  is included in the general build of DHIS 2.</para>
-    <para>In order to configure the DHIS 2 web-based mobile reporting, you should follow the following steps. </para>
+    <para>The server side component of the web based solution  is included in the general build of DHIS2.</para>
+    <para>In order to configure the DHIS2 web-based mobile reporting, you should follow the following steps. </para>
     <itemizedlist>
       <listitem>
         <para>
@@ -51,7 +51,7 @@
         </para>
       </listitem>
       <listitem>
-        <para>Create a user role for the mobile user. Select <emphasis role="italic">Maintenance-&gt;Users-&gt;User Role-&gt;Add new</emphasis>.  Add a user role name and description. Add the desired data sets for the role. The mobile user role will need to have at least privileges for DHIS Web API. Save the user role by clicking &quot;Save&quot;. </para>
+        <para>Create a user role for the mobile user. Select <emphasis role="italic">Maintenance-&gt;Users-&gt;User Role-&gt;Add new</emphasis>.  Add a user role name and description. Add the desired data sets for the role. The mobile user role will need to have at least privileges for DHIS2 Web API. Save the user role by clicking &quot;Save&quot;. </para>
       </listitem>
       <listitem>
         <para>Create a user which will be used by the client to login from <emphasis role="italic">Maintenance-&gt;Users-&gt;User -&gt;Add new</emphasis>. Fill in all of the required details, keeping in mind that the password must be at least 8 digits long, contain one capital letter,and one digit. Assign the desired user role to the user which was created in the previous step. </para>
@@ -82,7 +82,7 @@
                 <emphasis role="bold">Form design element</emphasis>
               </entry>
               <entry>
-                <emphasis role="bold">DHIS 2 Metadata</emphasis>
+                <emphasis role="bold">DHIS2 Metadata</emphasis>
               </entry>
               <entry>
                 <emphasis role="bold">Metadata element</emphasis>
@@ -114,13 +114,13 @@
     </section>
     <section>
       <title>Sorting of forms</title>
-      <para>By default, data elements will be sorted according to the global sorting assigned in DHIS 2. If sections are used, their section specific sorting order  will be used.
+      <para>By default, data elements will be sorted according to the global sorting assigned in DHIS2. If sections are used, their section specific sorting order  will be used.
       In some cases, when sections are not used, a data element might be used in multiple data sets, and conflict in the way it should be sorted in individual data sets. A work around for this situation is to wrap the whole dataset in one section (note that this will only work if the data elements have the same category option combo)</para>
     </section>
     <section>
       <title>Versioning of data sets</title>
       <para>To make it possible to compare and update the data sets on the mobile phone with the 
-        version on the server, data sets are automatically versioned when you edit the data set structure. Some changes which occur on the DHIS 2 server, will cause the mobile client to update its forms with a new version. </para>
+        version on the server, data sets are automatically versioned when you edit the data set structure. Some changes which occur on the DHIS2 server, will cause the mobile client to update its forms with a new version. </para>
       <itemizedlist>
         <title>Changes that currently trigger a new data set version</title>
         <listitem>
@@ -166,11 +166,11 @@
       <title>Installation and initialization</title>
       <section>
         <title>Installation</title>
-        <para>Download the jar packages from the DHIS 2 homepage: <link xl:href="www.dhis2.org/downloads">www.dhis2.org/downloads</link></para>
+        <para>Download the jar packages from the DHIS2 homepage: <link xl:href="www.dhis2.org/downloads">www.dhis2.org/downloads</link></para>
       </section>
       <section>
         <title>Initialization</title>
-        <para>Initialization should be performed before the phones are delivered end-users.  Given the large variation in possible phone configurations, it is impossible to describe the exact steps which are required in order to enable the client on the phone. However, for most phones, simply copying the DHIS Web Mobile client &quot;JAR&quot; file to the phone with a USB cable or via Bluetooth is sufficient. Of course, GPRS/3G connectivity must be enabled. Contact your mobile service provider for exact details on the configuration of the phones and networks. </para>
+        <para>Initialization should be performed before the phones are delivered end-users.  Given the large variation in possible phone configurations, it is impossible to describe the exact steps which are required in order to enable the client on the phone. However, for most phones, simply copying the DHIS2 Web Mobile client &quot;JAR&quot; file to the phone with a USB cable or via Bluetooth is sufficient. Of course, GPRS/3G connectivity must be enabled. Contact your mobile service provider for exact details on the configuration of the phones and networks. </para>
         <para><screenshot>
             <mediaobject>
               <imageobject>
@@ -214,7 +214,7 @@
             <para>If the user has been configured to report on aggregate datasets, a list of
               appropriate datasets will be displayed. If the user is responsible for community based
               reporting, the list of assigned activities is displayed.</para>
-            <para><emphasis role="underline">Notes</emphasis>: If the Health Worker is responsible for both Facility Reporting and Community Reporting, DHIS server will send all forms of both Facility Reporting and Community Reporting to mobile and on mobile, there will be a screen to choose whether displaying Facility Reporting or Community Reporting.</para>
+            <para><emphasis role="underline">Notes</emphasis>: If the Health Worker is responsible for both Facility Reporting and Community Reporting, DHIS2 server will send all forms of both Facility Reporting and Community Reporting to mobile and on mobile, there will be a screen to choose whether displaying Facility Reporting or Community Reporting.</para>
             <para><emphasis role="underline">Errors</emphasis>:</para>
           </listitem>
         </orderedlist>
@@ -285,7 +285,7 @@
           </listitem>
           <listitem>
             <para>Save and Complete:</para>
-            <para>After finishing data entry, the user can choose to save the data locally on the phone or to upload the data directly to the DHIS 2 server.</para>
+            <para>After finishing data entry, the user can choose to save the data locally on the phone or to upload the data directly to the DHIS2 server.</para>
             <screenshot>
               <mediaobject>
                 <imageobject>

@@ -12,9 +12,9 @@
          xmlns:db="http://docbook.org/ns/docbook">
   <title>Localization concepts</title>
   <para>Localization involves the adaptation of an application to another location. When
-    implementing DHIS 2 in a given country, adequate resources should be allocated to translate the
+    implementing DHIS2 in a given country, adequate resources should be allocated to translate the
     application when required. Translation of the user interface elements, messages, layout, date
-    and time formats, currency and other aspects must be considered. DHIS 2 supports
+    and time formats, currency and other aspects must be considered. DHIS2 supports
     internationalization (i18n) of the user interface through the use of Java property strings. Each
     element in the user interface has been assigned a specific key which is linked to a value. As an
     example, consider the following key/value pairs.</para>
@@ -34,7 +34,7 @@ error_occurred=Une erreur s&apos;est produite</programlisting>
     through the file naming convention where property keys are searched from the bottom of the
     hierarchy and returned at the first match. This comes in useful when you need partial
     translations, for instance to cater for country-specific variances in a language. One example is
-    Portuguese for which DHIS 2 has several resource bundles:</para>
+    Portuguese for which DHIS2 has several resource bundles:</para>
   <orderedlist>
     <listitem>
       <para>i18n_global.properties (The ulimate fallback locale, which is English)</para>
@@ -51,12 +51,12 @@ error_occurred=Une erreur s&apos;est produite</programlisting>
     keys which are not translated in the Brazilian Portuguese resource bundle, the system will fall
     back to the general Portuguese translation. If the key is not present in that file either, the
     system will fall back to the ultimate fallback locale which is English.</para>
-  <para>There are a number of different mechanisms to begin to localize DHIS 2, two of which will be
+  <para>There are a number of different mechanisms to begin to localize DHIS2, two of which will be
     discussed in the next sections.</para>
   <section>
-    <title>DHIS 2 i18n tool</title>
+    <title>DHIS2 i18n tool</title>
     <para>The i18n resource editor is Java desktop application which can be downloaded from
-      http://www.dhis2.org/downloads . It requires that you have checked out the DHIS 2 source code
+      http://www.dhis2.org/downloads . It requires that you have checked out the DHIS2 source code
       from Bazaar (check out http://www.dhis2.org/development if necessary) and have a Java Runtime
       Environment installed on your computer. On Windows, simly unpack the ZIP archvie and click the
       executable file. On Linux, extract the archive, navigate inside the extracted directory and
@@ -66,7 +66,7 @@ error_occurred=Une erreur s&apos;est produite</programlisting>
     <orderedlist>
       <listitem>
         <para>Press &quot;Browse&quot; when the application starts and select the path to the
-          "dhis-2" directory inside your local copy (checkout) of the DHIS 2 source code repository,
+          "dhis-2" directory inside your local copy (checkout) of the DHIS2 source code repository,
           followed by OK. </para>
         <screenshot>
           <mediaobject>
@@ -114,7 +114,7 @@ error_occurred=Une erreur s&apos;est produite</programlisting>
     </orderedlist>
   </section>
   <section>
-    <title>Using the DHIS 2 translation server</title>
+    <title>Using the DHIS2 translation server</title>
     <para>A web-based portal solution has been setup in order to facilitate the translation of DHIS
       2 into multiple languages. Simply direct your browser to http://translate.dhis2.net/ and
       register for an account by providing a username, email address and password. The server will
@@ -123,7 +123,7 @@ error_occurred=Une erreur s&apos;est produite</programlisting>
       and provide your username and password. </para>
     <para>The first time you login, you should select your settings, by clicking &quot;My account-&gt;Settings&quot;. Here you can select your interface language, the projects which you wish to work on,  and the languages which you will translate into. Be sure to press &quot;Save&quot; when have finished making your changes. </para>
     <para>To start translating, be sure you have logged in, and then press the &quot;Home&quot; link
-      in the upper-right hand corner. Select a project (e.g. DHIS 2) and then click on the language
+      in the upper-right hand corner. Select a project (e.g. DHIS2) and then click on the language
       which you wish to translate. The number of words which need to be translated will be displayed
       under the &quot;Summary&quot; field. Click on one of the modules (e.g. dhis-2) and the keep
       drilling down through the folders to find a module which needs translation, (e.g.
@@ -148,7 +148,7 @@ error_occurred=Une erreur s&apos;est produite</programlisting>
         </listitem>
         <listitem>
           <para>It is not necessary to translate a string from the original language (English) if
-            the translated string is the same. You can simply leave it blank. By default, DHIS 2
+            the translated string is the same. You can simply leave it blank. By default, DHIS2
             will use English values for all strings which have not been translated. </para>
         </listitem>
         <listitem>

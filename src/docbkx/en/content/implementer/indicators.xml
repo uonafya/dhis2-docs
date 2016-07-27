@@ -23,13 +23,13 @@
       <para>Indicator-driven data collection</para>
     </listitem>
     <listitem>
-      <para>Managing indicators in DHIS 2</para>
+      <para>Managing indicators in DHIS2</para>
     </listitem>
   </itemizedlist>
   <para>The following describes these topics in greater detail.</para>
   <section>
     <title>What is an indicator?</title>
-    <para>In DHIS 2, the indicator is a core element of data analysis. An indicator is a calculated formula based on a combination of data elements, category options, possibly constants and a factor. There are two foms of indicators, those with a denominator and those which do not have a denominator.  Calculated totals, which may be composed of multiple data elements do not have denominators. Coverage indicators (ratios, percentages, etc) are composed of two formulas of data elements, one representing the numerator and another representing the denominator.</para>
+    <para>In DHIS2, the indicator is a core element of data analysis. An indicator is a calculated formula based on a combination of data elements, category options, possibly constants and a factor. There are two foms of indicators, those with a denominator and those which do not have a denominator.  Calculated totals, which may be composed of multiple data elements do not have denominators. Coverage indicators (ratios, percentages, etc) are composed of two formulas of data elements, one representing the numerator and another representing the denominator.</para>
     <para>Indicators are thus made up of formulas of data elements and other components and are always multiplied by a  factor (e.g. 1, 100, 100, 100 000). The factor is essentially a number which is multiplied by the result of the numerator divided by  denominator.    As a concrete example,  the indicator &quot;BCG coverage &lt;1 year&quot; is defined a formula with a factor 100 (in order to obtain a percentage), a numerator (&quot;BCG doses given to children under 1 year&quot;) and a denominator (&quot;Target population under 1 year&quot;). The indicator &quot;DPT1 to DPT3 drop out rate&quot; is a formula of 100 % x (&quot;DPT1 doses given&quot;- &quot;DPT3 doses given&quot;) / (&quot;DPT1 doses given&quot;).</para>
     <table>
       <title>Indicator examples</title>
@@ -112,15 +112,15 @@
   <section>
     <title>Purpose of indicators</title>
     <para>Indicators which are defined with both numerators and denominators are typically more useful for analysis. Because  they are proportions, they are comparable across time and space, which is very important since units of analysis and comparison, such as districts, vary in size and change over time. A district with  population of 1000 people may have fewer  cases of a  given disease  than a district with a population of 10,000. However, the incidence values of a given disease will be comparable between the two districts because of the use of of the respective populations for each district.</para>
-    <para>Indicators thus allow comparison, and are the prime tool for data analysis. DHIS 2 should provide relevant indicators for analysis for all health programs, not just the raw data. Most report modules in DHIS 2 support both data elements and indicators and you can also combine these in custom reports.</para>
+    <para>Indicators thus allow comparison, and are the prime tool for data analysis. DHIS2 should provide relevant indicators for analysis for all health programs, not just the raw data. Most report modules in DHIS2 support both data elements and indicators and you can also combine these in custom reports.</para>
   </section>
   <section>
     <title>Indicator-driven data collection</title>
     <para>Since indicators are more suited for analysis compared to data elements, the calculation of indicators should be the main driving force for collection of data. A usual situation is that much data is collected but never used in any indicator, which significantly reduces the usability of the data. Either the captured data elements should be included in indicators used for management or they should probably not be collected at all.</para>
-    <para>For implementation purposes, a list of indicators used for management should be defined and implemented in DHIS 2. For analysis, training should focus on the use of indicators and why these are better suited than data elements for this purpose.</para>
+    <para>For implementation purposes, a list of indicators used for management should be defined and implemented in DHIS2. For analysis, training should focus on the use of indicators and why these are better suited than data elements for this purpose.</para>
   </section>
   <section>
     <title>Managing indicators</title>
-    <para>Indicators can be added, deleted, or modified at any time in DHIS 2 without affecting the data. Indicators are not stored as values in DHIS 2, but as formulas, which are calculated whenever the user needs them. Thus a change in the formulas will only lead to different data elements being called for when using the indicator for analysis, without any changes to the underlying data values taking place. For information how to manage indicators, please refer to the chapter on indicators in the DHIS 2 user documentation.</para>
+    <para>Indicators can be added, deleted, or modified at any time in DHIS2 without affecting the data. Indicators are not stored as values in DHIS2, but as formulas, which are calculated whenever the user needs them. Thus a change in the formulas will only lead to different data elements being called for when using the indicator for analysis, without any changes to the underlying data values taking place. For information how to manage indicators, please refer to the chapter on indicators in the DHIS2 user documentation.</para>
   </section>
 </chapter>
