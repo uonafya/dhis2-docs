@@ -3049,6 +3049,176 @@ http://server/api/24/constants/ID</screen></para>
       </table>
     </section>
     <section>
+      <title>Reading data values</title>
+      <para>This section explains how to retrieve data values from the Web API by interacting with
+        the <emphasis role="italic">dataValueSets</emphasis> resource. Data values can be retrieved
+        in <emphasis role="italic">XML</emphasis>, <emphasis role="italic">JSON</emphasis> and
+          <emphasis role="italic">CSV</emphasis> format. Since we want to read data we will use the
+          <emphasis role="italic">GET</emphasis> HTTP verb. We will also specify that we are
+        interested in the XML resource representation by including an <emphasis role="italic"
+          >Accept</emphasis> HTTP header with our request. The following query parameters are
+        required:</para>
+      <table frame="all">
+        <title>Data value set query parameters</title>
+        <tgroup cols="2">
+          <colspec colnum="1" colname="c1" colwidth="1*"/>
+          <colspec colnum="2" colname="c2" colwidth="2.69*"/>
+          <thead>
+            <row>
+              <entry> Parameter </entry>
+              <entry> Description </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>dataSet</entry>
+              <entry>Data set identifier. Can be repeated any number of times.</entry>
+            </row>
+            <row>
+              <entry>dataElementGroup</entry>
+              <entry>Data element group identifier. Can be repeated any number of times.</entry>
+            </row>
+            <row>
+              <entry>period</entry>
+              <entry>Period identifier in ISO format. Can be repeated any number of times.</entry>
+            </row>
+            <row>
+              <entry>startDate</entry>
+              <entry>Start date for the time span of the values to export.</entry>
+            </row>
+            <row>
+              <entry>endDate</entry>
+              <entry>End date for the time span of the values to export.</entry>
+            </row>
+            <row>
+              <entry>orgUnit</entry>
+              <entry>Organisation unit identifier. Can be repeated any number of times.</entry>
+            </row>
+            <row>
+              <entry>children</entry>
+              <entry>Whether to include the children in the hierarchy of the organisation
+                units.</entry>
+            </row>
+            <row>
+              <entry>lastUpdated</entry>
+              <entry>Include only data values which are updated since the given time stamp.</entry>
+            </row>
+            <row>
+              <entry>lastUpdatedDuration</entry>
+              <entry>Include only data values which are updated within the given duration. The
+                format is &lt;value>&lt;time-unit>, where the supported time units are "d" (days),
+                "h" (hours), "m" (minutes) and "s" (seconds).</entry>
+            </row>
+            <row>
+              <entry>limit</entry>
+              <entry>The max number of results in the response.</entry>
+            </row>
+            <row>
+              <entry>idScheme</entry>
+              <entry>Property of meta data objects to use for data values in response.</entry>
+            </row>
+            <row>
+              <entry>dataElementIdScheme</entry>
+              <entry>Property of the data element object to use for data values in response.</entry>
+            </row>
+            <row>
+              <entry>orgUnitIdScheme</entry>
+              <entry>Property of the org unit object to use for data values in response.</entry>
+            </row>
+            <row>
+              <entry>categoryOptionComboIdScheme</entry>
+              <entry>Property of the category option combo object to use for data values in
+                response.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>The following response formats are supported:</para>
+      <itemizedlist>
+        <listitem>
+          <para>xml (application/xml)</para>
+        </listitem>
+        <listitem>
+          <para>json (application/json)</para>
+        </listitem>
+        <listitem>
+          <para>csv (application/csv)</para>
+        </listitem>
+        <listitem>
+          <para>adx (application/xml+adx)</para>
+        </listitem>
+      </itemizedlist>
+      <para>Assuming that we have posted data values to DHIS2 according to the previous section
+        called &quot;Sending data values&quot; we can now put together our request for a single data
+        value set and request it using cURL:</para>
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&quot;
+-H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
+      <para>We can also use the start and end dates query parameters to request a larger bulk of
+        data values. I.e. you can also request data values for multiple data sets and org units and
+        a time span in order to export larger chunks of data. Note that the period query parameter
+        takes presedence over the start and end date parameters. An exampe looks like this:</para>
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;dataSet=BfMAe6Itzgt&amp;startDate=2013-01-01
+&amp;endDate=2013-01-31&amp;orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; 
+-H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
+      <para>To retrieve data values which have been created or updated within the last 10 days you
+        can make a request like this:</para>
+      <screen>https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;orgUnit=DiszpKrYNg8&amp;lastUpdatedDuration=10d</screen>
+      <para>The response will look like this:</para>
+      <screen>&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
+&lt;dataValueSet xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot; dataSet=&quot;pBOMPrpg1QX&quot;
+  completeDate=&quot;2014-01-02&quot; period=&quot;201401&quot; orgUnit=&quot;DiszpKrYNg8&quot;&gt;
+&lt;dataValue dataElement=&quot;eY5ehpbEsB7&quot; period=&quot;201401&quot; orgUnit=&quot;DiszpKrYNg8&quot;
+  categoryOptionCombo=&quot;bRowv6yZOF2&quot; value=&quot;10003&quot;/&gt;
+&lt;dataValue dataElement=&quot;Ix2HsbDMLea&quot; period=&quot;201401&quot; orgUnit=&quot;DiszpKrYNg8&quot;
+  categoryOptionCombo=&quot;bRowv6yZOF2&quot; value=&quot;10002&quot;/&gt;
+&lt;dataValue dataElement=&quot;f7n9E0hX8qk&quot; period=&quot;201401&quot; orgUnit=&quot;DiszpKrYNg8&quot;
+  categoryOptionCombo=&quot;bRowv6yZOF2&quot; value=&quot;10001&quot;/&gt;
+&lt;/dataValueSet&gt;</screen>
+      <para>You can request the data in JSON format like
+        this:<screen>https://play.dhis2.org/demo/api/24/dataValueSets.json?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8</screen></para>
+      <para>The response will look something like
+        this:<screen>{
+  &quot;dataSet&quot;: &quot;pBOMPrpg1QX&quot;,
+  &quot;completeData&quot;: &quot;2014-02-03&quot;,
+  &quot;period&quot;: &quot;201401&quot;,
+  &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;,
+  &quot;dataValues&quot;: [
+    { &quot;dataElement&quot;: &quot;eY5ehpbEsB7&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;,
+      &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;, &quot;value&quot;: &quot;10003&quot; },
+    { &quot;dataElement&quot;: &quot;Ix2HsbDMLea&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;,
+      &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;, &quot;value&quot;: &quot;10002&quot; },
+    { &quot;dataElement&quot;: &quot;f7n9E0hX8qk&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;,
+      &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;, &quot;value&quot;: &quot;10001&quot; }
+  ]
+}</screen></para>
+      <para>You can also request data in CSV format like
+        this:<screen>https://play.dhis2.org/demo/api/24/dataValueSets.csv?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8</screen></para>
+      <para>The response will look like
+        this:<screen>dataelement,period,orgunit,categoryoptioncombo,attributeoptioncombo,value,storedby,lastupdated,comment,followup
+f7n9E0hX8qk,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2015-04-05T19:58:12.000,comment1,false
+Ix2HsbDMLea,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,14,system,2015-04-05T19:58:12.000,comment2,false
+eY5ehpbEsB7,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,16,system,2015-04-05T19:58:12.000,comment3,false
+FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:45:05.519,comment4,false</screen></para>
+      <para>The following constraints apply to the data value sets resource:<itemizedlist>
+          <listitem>
+            <para>At least one data set must be specified.</para>
+          </listitem>
+          <listitem>
+            <para>Either at least one period or a start date and end date must be specified.</para>
+          </listitem>
+          <listitem>
+            <para>At least one organisation unit must be specified.</para>
+          </listitem>
+          <listitem>
+            <para>Organisation units must be within the hierarchy of the organisation units of the
+              authenticated user.</para>
+          </listitem>
+          <listitem>
+            <para>Limit cannot be less than zero.</para>
+          </listitem>
+        </itemizedlist></para>
+    </section>
+    <section>
       <title>Sending, reading and deleting individual data values</title>
       <para>This example will show how to send individual data values to be saved in a request. This
         can be achieved by sending a <emphasis role="italic">POST</emphasis> request to the
@@ -3179,163 +3349,6 @@ http://server/api/24/constants/ID</screen></para>
           endpoint allows checking the <emphasis role="italic">storageStatus</emphasis> of the
           content before attempting to download it.</para>
       </section>
-    </section>
-    <section>
-      <title>Reading data values</title>
-      <para>This section explains how to retrieve data values from the Web API by interacting with
-        the <emphasis role="italic">dataValueSets</emphasis> resource. Data values can be retrieved
-        in <emphasis role="italic">XML</emphasis>, <emphasis role="italic">JSON</emphasis> and
-          <emphasis role="italic">CSV</emphasis> format. Since we want to read data we will use the
-          <emphasis role="italic">GET</emphasis> HTTP verb. We will also specify that we are
-        interested in the XML resource representation by including an <emphasis role="italic"
-          >Accept</emphasis> HTTP header with our request. The following query parameters are
-        required:</para>
-      <table frame="all">
-        <title>Data value set query parameters</title>
-        <tgroup cols="2">
-          <colspec colnum="1" colname="c1" colwidth="1*"/>
-          <colspec colnum="2" colname="c2" colwidth="2.69*"/>
-          <thead>
-            <row>
-              <entry> Parameter </entry>
-              <entry> Description </entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>dataSet</entry>
-              <entry>Data set identifier. Can be repeated any number of times.</entry>
-            </row>
-            <row>
-              <entry>period</entry>
-              <entry>Period identifier in ISO format. Can be repeated any number of times.</entry>
-            </row>
-            <row>
-              <entry>startDate</entry>
-              <entry>Start date for the time span of the values to export.</entry>
-            </row>
-            <row>
-              <entry>endDate</entry>
-              <entry>End date for the time span of the values to export.</entry>
-            </row>
-            <row>
-              <entry>orgUnit</entry>
-              <entry>Organisation unit identifier. Can be repeated any number of times.</entry>
-            </row>
-            <row>
-              <entry>children</entry>
-              <entry>Whether to include the children in the hierarchy of the organisation
-                units.</entry>
-            </row>
-            <row>
-              <entry>lastUpdated</entry>
-              <entry>Include only data values which are updated after the given time stamp.</entry>
-            </row>
-            <row>
-              <entry>limit</entry>
-              <entry>The max number of results in the response.</entry>
-            </row>
-            <row>
-              <entry>idScheme</entry>
-              <entry>Property of meta data objects to use for data values in response.</entry>
-            </row>
-            <row>
-              <entry>dataElementIdScheme</entry>
-              <entry>Property of the data element object to use for data values in response.</entry>
-            </row>
-            <row>
-              <entry>orgUnitIdScheme</entry>
-              <entry>Property of the org unit object to use for data values in response.</entry>
-            </row>
-            <row>
-              <entry>categoryOptionComboIdScheme</entry>
-              <entry>Property of the category option combo object to use for data values in
-                response.</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
-      <para>The following response formats are supported:</para>
-      <itemizedlist>
-        <listitem>
-          <para>xml (application/xml)</para>
-        </listitem>
-        <listitem>
-          <para>json (application/json)</para>
-        </listitem>
-        <listitem>
-          <para>csv (application/csv)</para>
-        </listitem>
-        <listitem>
-          <para>adx (application/xml+adx)</para>
-        </listitem>
-      </itemizedlist>
-      <para>Assuming that we have posted data values to DHIS2 according to the previous section
-        called &quot;Sending data values&quot; we can now put together our request for a single data
-        value set and request it using cURL:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&quot;
--H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
-      <para>We can also use the start and end dates query parameters to request a larger bulk of
-        data values. I.e. you can also request data values for multiple data sets and org units and
-        a time span in order to export larger chunks of data. Note that the period query parameter
-        takes presedence over the start and end date parameters. An exampe looks like this:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;dataSet=BfMAe6Itzgt&amp;startDate=2013-01-01
-&amp;endDate=2013-01-31&amp;orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; 
--H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
-      <para>The response will look like this:</para>
-      <screen>&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
-&lt;dataValueSet xmlns=&quot;http://dhis2.org/schema/dxf/2.0&quot; dataSet=&quot;pBOMPrpg1QX&quot;
-  completeDate=&quot;2014-01-02&quot; period=&quot;201401&quot; orgUnit=&quot;DiszpKrYNg8&quot;&gt;
-&lt;dataValue dataElement=&quot;eY5ehpbEsB7&quot; period=&quot;201401&quot; orgUnit=&quot;DiszpKrYNg8&quot;
-  categoryOptionCombo=&quot;bRowv6yZOF2&quot; value=&quot;10003&quot;/&gt;
-&lt;dataValue dataElement=&quot;Ix2HsbDMLea&quot; period=&quot;201401&quot; orgUnit=&quot;DiszpKrYNg8&quot;
-  categoryOptionCombo=&quot;bRowv6yZOF2&quot; value=&quot;10002&quot;/&gt;
-&lt;dataValue dataElement=&quot;f7n9E0hX8qk&quot; period=&quot;201401&quot; orgUnit=&quot;DiszpKrYNg8&quot;
-  categoryOptionCombo=&quot;bRowv6yZOF2&quot; value=&quot;10001&quot;/&gt;
-&lt;/dataValueSet&gt;</screen>
-      <para>You can request the data in JSON format like
-        this:<screen>https://play.dhis2.org/demo/api/24/dataValueSets.json?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8</screen></para>
-      <para>The response will look something like
-        this:<screen>{
-  &quot;dataSet&quot;: &quot;pBOMPrpg1QX&quot;,
-  &quot;completeData&quot;: &quot;2014-02-03&quot;,
-  &quot;period&quot;: &quot;201401&quot;,
-  &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;,
-  &quot;dataValues&quot;: [
-    { &quot;dataElement&quot;: &quot;eY5ehpbEsB7&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;,
-      &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;, &quot;value&quot;: &quot;10003&quot; },
-    { &quot;dataElement&quot;: &quot;Ix2HsbDMLea&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;,
-      &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;, &quot;value&quot;: &quot;10002&quot; },
-    { &quot;dataElement&quot;: &quot;f7n9E0hX8qk&quot;, &quot;categoryOptionCombo&quot;: &quot;bRowv6yZOF2&quot;, &quot;period&quot;: &quot;201401&quot;,
-      &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;, &quot;value&quot;: &quot;10001&quot; }
-  ]
-}</screen></para>
-      <para>You can also request data in CSV format like
-        this:<screen>https://play.dhis2.org/demo/api/24/dataValueSets.csv?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8</screen></para>
-      <para>The response will look like
-        this:<screen>dataelement,period,orgunit,categoryoptioncombo,attributeoptioncombo,value,storedby,lastupdated,comment,followup
-f7n9E0hX8qk,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2015-04-05T19:58:12.000,comment1,false
-Ix2HsbDMLea,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,14,system,2015-04-05T19:58:12.000,comment2,false
-eY5ehpbEsB7,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,16,system,2015-04-05T19:58:12.000,comment3,false
-FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:45:05.519,comment4,false</screen></para>
-      <para>The following constraints apply to the data value sets resource:<itemizedlist>
-          <listitem>
-            <para>At least one data set must be specified.</para>
-          </listitem>
-          <listitem>
-            <para>Either at least one period or a start date and end date must be specified.</para>
-          </listitem>
-          <listitem>
-            <para>At least one organisation unit must be specified.</para>
-          </listitem>
-          <listitem>
-            <para>Organisation units must be within the hierarchy of the organisation units of the
-              authenticated user.</para>
-          </listitem>
-          <listitem>
-            <para>Limit cannot be less than zero.</para>
-          </listitem>
-        </itemizedlist></para>
     </section>
   </section>
   <section>
