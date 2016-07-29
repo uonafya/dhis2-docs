@@ -45,6 +45,19 @@
 				<groupId>com.agilejava.docbkx</groupId>
 				<artifactId>docbkx-maven-plugin</artifactId>
 				<version>${docbkx.plugin.version}</version>
+				<configuration>
+					<xincludeSupported>true</xincludeSupported>
+					<bodyFontFamily>DejaVu Sans</bodyFontFamily>
+					<fonts>
+						<font>
+							<name>DejaVu Sans</name>
+							<style>normal</style>
+							<weight>normal</weight>
+							<embedFile>${project.basedir}/src/fonts/DejaVuSans.ttf</embedFile>
+							<metricsFile>${project.basedir}/target/fonts/DejaVuSans-metrics.xml</metricsFile>
+						</font>
+					</fonts>
+				</configuration>
 				<executions>
 					<execution>
 						<id>chunked-html-docs-user-stories</id>
@@ -59,8 +72,9 @@
 							<chapterAutolabel>false</chapterAutolabel>
 							<sectionAutolabel>false</sectionAutolabel>
 							<sectionLabelIncludesComponentLabel>false</sectionLabelIncludesComponentLabel>
-							<chunkedOutput>false</chunkedOutput>
-							<includes>akros.xml,psi.xml,udsm.xml</includes>
+							<chunkedOutput>true</chunkedOutput>
+							<chunkSectionDepth>0</chunkSectionDepth>
+							<includes>user_stories_book.xml</includes>
 							<sourceDirectory>${docbook.source}/en/content/user_stories</sourceDirectory>
 							<targetDirectory>${docbook.target}/en/user-stories/html</targetDirectory>
 							<postProcess>
@@ -91,7 +105,29 @@
 						<type>zip</type>
 						<scope>runtime</scope>
 					</dependency>
+					<dependency>
+						<groupId>net.sf.offo</groupId>
+						<artifactId>fop-hyph</artifactId>
+						<version>1.2</version>
+						<scope>runtime</scope>
+					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>com.agilejava.docbkx</groupId>
+				<artifactId>docbkx-fop-support</artifactId>
+				<version>${docbkx.plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<ansi>false</ansi>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
