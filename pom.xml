@@ -1,4 +1,5 @@
-﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.hisp.dhis</groupId>
 	<artifactId>dhis-documentation-docbook</artifactId>
@@ -6,6 +7,9 @@
 	<version>2.25</version>
 	<description>DHIS2 Documentation</description>
 	<packaging>pom</packaging>
+	<prerequisites>
+      <maven>3.0.0</maven>
+    </prerequisites>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>docbkx.snapshots</id>
@@ -37,29 +41,6 @@
 	</properties>
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>1.1.1</version>
-				<executions>
-					<execution>
-						<id>enforce</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<version>[3.0.5,)</version>
-								</requireMavenVersion>
-								<requireJavaVersion>
-									<version>[1.6,)</version>
-								</requireJavaVersion>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<!--This section dynamically builds the build.properties which is replaced inside the document preface -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -325,11 +306,13 @@
 						<configuration>
 							<admonGraphics>1</admonGraphics>
 							<admonGraphicsPath>resources/images/admon/</admonGraphicsPath>
-							<htmlStylesheet>resources/css/docbook_bsd.css</htmlStylesheet>
+							<htmlStylesheet>resources/css/user_stories.css</htmlStylesheet>
 							<chapterAutolabel>false</chapterAutolabel>
 							<sectionAutolabel>false</sectionAutolabel>
 							<sectionLabelIncludesComponentLabel>false</sectionLabelIncludesComponentLabel>
-							<chunkedOutput>false</chunkedOutput>
+							<chunkedOutput>true</chunkedOutput>
+							<chunkSectionDepth>0</chunkSectionDepth>
+							<useIdAsFilename>true</useIdAsFilename>
 							<includes>user_stories_book.xml</includes>
 							<sourceDirectory>${docbook.source}/en/content/user_stories</sourceDirectory>
 							<targetDirectory>${docbook.target}/en/user-stories/html</targetDirectory>
