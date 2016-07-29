@@ -8,6 +8,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	<version>2.25</version>
 	<description>DHIS 2 Documentation</description>
 	<packaging>pom</packaging>
+	<prerequisites>
+      <maven>3.0.0</maven>
+    </prerequisites>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>docbkx.snapshots</id>
@@ -39,29 +42,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	</properties>
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>1.1.1</version>
-				<executions>
-					<execution>
-						<id>enforce</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<version>[3.0.5,)</version>
-								</requireMavenVersion>
-								<requireJavaVersion>
-									<version>[1.6,)</version>
-								</requireJavaVersion>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<!--This section dynamically builds the build.properties which is replaced inside the document preface -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

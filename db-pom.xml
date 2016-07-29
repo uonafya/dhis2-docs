@@ -7,6 +7,9 @@
 	<version>2.22</version>
 	<description>DHIS 2 Documentation</description>
 	<packaging>pom</packaging>
+	<prerequisites>
+      <maven>3.0.0</maven>
+    </prerequisites>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>docbkx.snapshots</id>
@@ -20,13 +23,11 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
 	<properties>
 		<docbkx.plugin.version>2.0.15</docbkx.plugin.version>
 		<docbook.source>${project.basedir}/src/docbkx</docbook.source>
 		<docbook.target>${project.basedir}/target/site</docbook.target>
 	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -37,7 +38,6 @@
 					<xincludeSupported>true</xincludeSupported>
 				</configuration>
 				<executions>
-
 					<execution>
 						<id>webhelp-docs-en</id>
 						<phase>package</phase>
@@ -77,7 +77,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>
