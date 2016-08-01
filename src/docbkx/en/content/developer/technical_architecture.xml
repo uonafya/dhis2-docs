@@ -124,7 +124,7 @@
     <title> The Business Layer </title>
     <para>All major classes, like those responsible for persistence, business logic, and presentation, are mapped as Spring managed beans. “Bean” is Spring terminology and simply refers to a class that is instantiated, assembled, and otherwise managed by the Spring IoC container. Dependencies between beans are injected by the IoC container, which allows for loose coupling, re-configuration and testability. For documentation on Spring, please refer to springframework.org.</para>
     <para>The services found in the dhis-service-core project basically provide methods that delegate to a corresponding method in the persistence layer, or contain simple and self-explanatory logic. Some services, like the ones found in the dhis-service-datamart, dhis-service-import-export,  dhis-service-jdbc, and dhis-service-reporting projects are more complex and will be elaborated in the following sections.</para>
-    <section>
+    <section xml:id="techarch_jdbc_service_project">
       <title>The JDBC Service Project</title>
       <para>The JDBC service project contains a set of components dealing with JDBC connections and SQL statements.</para>
       <screenshot>
@@ -296,7 +296,7 @@
       </section>
     </section>
   </section>
-  <section>
+  <section xml:id="techarch_definitions">
     <title>Definitions</title>
     <para>[1] “Classpath” refers to the root of a JAR file, /WEB-INF/lib or /WEB-INF/classes in a WAR-file and /src/main/resources in the source code; locations from where the JVM is able to load classes.</para>
     <para>[2] JFreeChart class located in the org.jfree.chart.renderer package.</para>
