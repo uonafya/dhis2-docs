@@ -69,7 +69,7 @@
       OAuth 2. You can verify and get information about the currently authenticated user by making a
       GET request to the following URL:</para>
     <screen>/api/24/me</screen>
-    <section>
+    <section xml:id="webapi_basic_authentication">
       <title>Basic Authentication</title>
       <para>The DHIS2 Web API supports <emphasis role="italic">Basic authentication</emphasis>.
         Basic authentication is a technique for clients to send login credentials over HTTP to a web
@@ -84,7 +84,7 @@
         itself and the client. Consider it a hard requirement to provide secure interactions with
         the Web API.</para>
     </section>
-    <section>
+    <section xml:id="webapi_oauth2">
       <title>OAuth2</title>
       <para>DHIS2 support the OAuth2 protocol, which is an open standard for authorization, it
         allows 3rd party clients to connect on behalf of a DHIS2 user, and get a re-usable bearer
@@ -813,8 +813,8 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
         </table>
       </para>
     </section>
-    <section>
-      <title>Examples</title>
+    <section xml:id="webapi_metadata_import_examples">
+      <title>Metadata import examples</title>
       <para>
         <emphasis role="bold">Example: Get a filtered set of metadata that was updated since August
           1, 2014</emphasis>
@@ -10208,7 +10208,7 @@ interval=WEEK" -u admin:district</screen>
   -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_current_user_information">
     <title>Current user information and associations</title>
     <para>In order to get information about the currently authenticated user and its associations to
       other resources you can work with the <emphasis role="italic">me</emphasis> resource (you can
@@ -10719,7 +10719,7 @@ interval=WEEK" -u admin:district</screen>
     <para>To bump (increase by one) the version of a data set you can issue a POST
       request:<screen>POST /api/24/dataSets/&lt;uid>/version</screen></para>
   </section>
-  <section>
+  <section xml:id="webapi_filled_organisation_unit_levels">
     <title>Filled organisation unit levels</title>
     <para>The <emphasis>filledOrganisationUnitLevels</emphasis> resource provides an ordered list of
       organisation unit levels, where generated levels are injected into the list to fill positions
