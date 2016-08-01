@@ -9,9 +9,9 @@
          xmlns:xhtml="http://www.w3.org/1999/xhtml"
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
-         xmlns:db="http://docbook.org/ns/docbook">
-  <title><?oxy_comment_start author="cecilia" timestamp="20160624T121338+0200" comment="At next release:
-Coordinate this section with web dev section. All content should be reviewed and reorganized." flag="done"?>Apps<?oxy_comment_end?></title>
+         xmlns:db="http://docbook.org/ns/docbook"
+         xml:id="apps">
+  <title>Apps</title>
   <para>A packaged app is an <link xl:href="https://developer.mozilla.org/en-US/docs/Open_Web_apps_and_Web_standards">Open Web
       App</link> that has all of its resources (HTML, CSS, JavaScript, app manifest, and so on)
     contained in a zip file. It can be uploaded to a DHIS2 installation directly through the user
@@ -19,7 +19,7 @@ Coordinate this section with web dev section. All content should be reviewed and
     manifest must be named <filename>manifest.webapp</filename>. A throrough description of apps can
     be obtained <link xl:href="https://developer.mozilla.org/en-US/Apps/Quickstart"
     >here</link>.</para>
-  <section>
+  <section xml:id="apps_purpose_packaged_apps">
     <title>Purpose of packaged Apps</title>
     <para>The purpose of packaged apps is to extend the web interface of DHIS2, without the need to
       modify the source code of DHIS2 itself. A system deployment will often have custom and unique
@@ -30,7 +30,7 @@ Coordinate this section with web dev section. All content should be reviewed and
       expected to use functionality and interact with the DHIS2 services and data by utilizing the
       DHIS2 Web API.</para>
   </section>
-  <section>
+  <section xml:id="apps_creating_apps">
     <title>Creating Apps</title>
     <para>DHIS2 apps are constructed with HTML, JavaScript and CSS files, similar to any other web
       application. Apps also need a special file called <emphasis role="italic"
@@ -170,7 +170,7 @@ Explain all properties that are in activities." flag="done"?>activities<?oxy_com
       parent directory in the archive). The zip archive can then be installed into DHIS2 as you
       will see in the next section.</para>
   </section>
-  <section>
+  <section xml:id="apps_installing_apps">
     <title>Installing Apps into DHIS2</title>
     <para>Apps can be installed by uploading zip file into the App Manager. In, Services →
       Apps, click on the <emphasis role="italic">App Store</emphasis> menu item.
@@ -185,14 +185,14 @@ The app can be uploaded by pressing the Browse button and after selecting the zi
       from there. The DHIS2 app store allows for app searching, reviewing, commenting, requesting
       features, rating on the apps by the community.</para>
   </section>
-  <section>
+  <section xml:id="apps_launching_apps">
     <title>Launching Apps</title>
     <para>After installation, your apps will be integrated with the menu system and can be accessed
       under services and from the module overview page. It can also be accessed from the home page
       of the apps module.  Click on an app in the list in order to launch it.</para>
   </section>
-  <section>
-    <title>Adding the DHIS2 menu to your app</title>
+  <section xml:id="apps_adding_menu_to_you_app">
+    <title>Adding the DHIS 2 menu to your app</title>
     <para>In order to maintain a uniform appearance within DHIS2 it is possible to add your
       app&apos;s icon to the top menu. To begin, we start with a screenshot of the top-menu of the
       DHIS2 user interface, where your app&apos;s icon will be placed. <screenshot>

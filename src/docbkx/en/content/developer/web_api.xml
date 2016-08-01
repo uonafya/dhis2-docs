@@ -5,7 +5,8 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
-  xmlns:db="http://docbook.org/ns/docbook">
+  xmlns:db="http://docbook.org/ns/docbook"
+  xml:id="webapi">
   <title>Web API</title>
   <para>The Web API is a component which makes it possible for external systems to access and
     manipulate data stored in an instance of DHIS2. More precisely, it provides a programmatic
@@ -8413,7 +8414,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
           the query. Each row represents exactly one event.</para>
       </section>
     </section>
-    <section>
+    <section xml:id="webapi_event_aggregate_analytics">
       <title>Event aggregate analytics</title>
       <para>The <emphasis role="italic">analytics/events/aggregate</emphasis> resource lets you
         retrieve <emphasis role="italic">aggregated numbers</emphasis> of events captured in DHIS2.
@@ -8566,7 +8567,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
           status code will be returned.</para>
       </section>
     </section>
-    <section>
+    <section xml:id="webapi_event_clustering_analytics">
       <title>Event clustering analytics</title>
       <para>The <emphasis role="italic">analytics/events/cluster</emphasis> resource provides
         clustered geospatial event data. A request looks like this:</para>
@@ -8608,7 +8609,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     ]
 }</screen>
     </section>
-    <section>
+    <section xml:id="webapi_event_count_extent_analytics">
       <title>Event count and extent analytics</title>
       <para>The <emphasis role="italic">analytics/events/count</emphasis> resource is suitable for
         geometry-related requests for retrieving the count and extent (bounding box) of events for a
@@ -8622,7 +8623,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
 }</screen>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_data_set_report">
     <title>Data set report</title>
     <para>Data set reports can be generated trough the web api using the
         <emphasis>/dataSetReport</emphasis> resource. This resource generates reports on data set
@@ -8683,7 +8684,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       report for a data set and orgunit for 2015 looks like
       this:<screen>GET /api/dataSetReport?ds=BfMAe6Itzgt&amp;pe=201610&amp;ou=ImspTQPwCqd&amp;selectedUnitOnly=false</screen></para>
   </section>
-  <section>
+  <section xml:id="webapi_data_usage_analytics">
     <title>Data usage analytics</title>
     <para>The usage analytics API lets you access information about how people are using DHIS2
       based on data analysis. When users access favorites, an event is recorded. The event consists
@@ -8946,7 +8947,7 @@ interval=WEEK" -u admin:district</screen>
 ]</screen></para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_geospatial_features">
     <title>Geospatial features</title>
     <para>The <emphasis role="italic">geoFeatures</emphasis> resource lets you retrieve geospatial
       information from DHIS2. Geospatial features are stored together with organisation units. The
@@ -9034,7 +9035,7 @@ interval=WEEK" -u admin:district</screen>
         unit:<screen>/api/24/organisationUnits.geojson?parent=fdc6uOvgoji&amp;level=3</screen></para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_generating_resource_analytics_tables">
     <title>Generating resource and analytics tables</title>
     <para>DHIS2 features a set of generated database tables which are used as basis for various
       system functionality. These tables can be executed immediately or scheduled to be executed at
@@ -9088,7 +9089,7 @@ interval=WEEK" -u admin:district</screen>
     </table>
     <para>These requests will return immediately and initiate a server-side process.</para>
   </section>
-  <section>
+  <section xml:id="webapi_maintenance">
     <title>Maintenance</title>
     <para>To perform maintenance you can interact with the <emphasis role="italic"
         >maintenance</emphasis> resource. You should use <emphasis role="italic">POST</emphasis> or
@@ -9130,7 +9131,7 @@ interval=WEEK" -u admin:district</screen>
   &amp;zeroDataValueRemoval=true&amp;sqlViewsDrop=true&amp;sqlViewsCreate=true&amp;categoryOptionComboUpdate=true
   &amp;cacheClear=true&amp;ouPathsUpdate=true</screen>
   </section>
-  <section>
+  <section xml:id="webapi_system_resource">
     <title>System resource</title>
     <para>The system resource provides you with convenient information and functions. The system
       resource can be found at <emphasis role="italic">/api/system</emphasis>. </para>
@@ -9325,7 +9326,7 @@ interval=WEEK" -u admin:district</screen>
         request:<screen>/api/24/system/styles</screen></para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_locales">
     <title>Locales</title>
     <para>DHIS2 supports translations both for the user interface and for database content.</para>
     <section>
@@ -9341,7 +9342,7 @@ interval=WEEK" -u admin:district</screen>
         supported.<screen>/api/24/locales/db</screen></para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_translations">
     <title>Translations</title>
     <para>DHIS2 allows for translations of database content. You can work with translations through
       the Web API using the <emphasis role="italic">translations</emphasis> resource.</para>
@@ -9511,7 +9512,7 @@ interval=WEEK" -u admin:district</screen>
         properties:<screen>/api/24/translations.json?fields=*&amp;filter=className:eq:DataElement&amp;filter=locale:eq:fr&amp;filter=objectId:eq:fbfJHSPpUQD</screen></para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_sms">
     <title>Short Message Service (SMS)</title>
     <para>This section covers the SMS Web API for sending and receiving short text messages.</para>
     <section>
@@ -9812,8 +9813,8 @@ interval=WEEK" -u admin:district</screen>
       </table>
     </section>
   </section>
-  <section>
-    <title>SMSCommand</title>
+  <section xml:id="webapi_sms_commands">
+    <title>SMS Commands</title>
     <para>SMSCommands are being used to collect data through SMS. These commands belong to specific
       Parser Type. Each parser has different functionality.</para>
     <section>
@@ -9848,7 +9849,7 @@ interval=WEEK" -u admin:district</screen>
       </itemizedlist>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_program_messages">
     <title>Program Messages</title>
     <para>Program Message holds reminders and alerts data related to specific Program or Program
       Stage. Web APIs are exposed to handle CRUD operations on Program Messages and we will go
@@ -9945,7 +9946,7 @@ interval=WEEK" -u admin:district</screen>
         </table></para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_users">
     <title>Users</title>
     <para>This section covers the user resource methods.<screen>/api/24/users</screen></para>
     <section>
@@ -10042,7 +10043,7 @@ interval=WEEK" -u admin:district</screen>
       <screen>/api/24/users?query=konan&amp;authSubset=true&amp;pageSize=10</screen>
     </section>
     <section>
-      <title>UserCredentials query</title>
+      <title>User credentials query</title>
       <para>An alternative to the previous user query, is to directly query the user credentials
         (the part where username, etc resides) using <emphasis role="italic"
           >/api/userCredentials</emphasis> endpoint, it supports all regular field and object
@@ -10246,7 +10247,7 @@ interval=WEEK" -u admin:district</screen>
     <para>Gives the data approval levels which are relenvant to the current user:</para>
     <screen>/api/me/dataApprovalLevels</screen>
   </section>
-  <section>
+  <section xml:id="webapi_system_settings">
     <title>System settings</title>
     <para>You can manipulate system settings by interacting with the <emphasis role="italic"
         >systemSettings</emphasis> resource. A system setting is a simple key-value pair, where both
@@ -10561,7 +10562,7 @@ interval=WEEK" -u admin:district</screen>
         </tgroup>
       </table></para>
   </section>
-  <section>
+  <section xml:id="webapi_user_settings">
     <title>User settings</title>
     <para>You can manipulate user settings by interacting with the <emphasis role="italic"
         >userSettings</emphasis> resource. A user setting is a simple key-value pair, where both the
@@ -10665,7 +10666,7 @@ interval=WEEK" -u admin:district</screen>
         </tgroup>
       </table></para>
   </section>
-  <section>
+  <section xml:id="webapi_organisation_units">
     <title>Organisation units</title>
     <para>The <emphasis>organisationUnits</emphasis> resource follows the standard conventions as
       other metadata resources in DHIS2. This resource supports some additional query
@@ -10708,7 +10709,7 @@ interval=WEEK" -u admin:district</screen>
       </tgroup>
     </table>
   </section>
-  <section>
+  <section xml:id="webapi_data_sets">
     <title>Data sets</title>
     <para>The <emphasis>dataSets</emphasis> resource follows the standard conventions as other
       metadata resources in DHIS2. This resource supports some additional query
@@ -10748,7 +10749,7 @@ interval=WEEK" -u admin:district</screen>
       <screen>curl "http://localhost/api/24/filledOrganisationUnitLevels" -H "Content-Type:application/json"
   -d @levels.json -u admin:district -v</screen></para>
   </section>
-  <section>
+  <section xml:id="webapi_static_content">
     <title>Static content</title>
     <para>The <emphasis>staticContent</emphasis> resource allowes you to upload and retrieve custom
       logos used in DHIS2. The resource lets the user upload a file with an associated key, which
@@ -10793,7 +10794,7 @@ interval=WEEK" -u admin:district</screen>
         <emphasis>true</emphasis>. If the corresponding setting is false, the default logo will be
       served.</para>
   </section>
-  <section>
+  <section xml:id="webapi_configuration">
     <title>Configuration</title>
     <para>To access configuration you can interact with the <emphasis role="italic"
         >configuration</emphasis> resource. You can get XML and JSON responses through the <emphasis
@@ -10883,7 +10884,7 @@ interval=WEEK" -u admin:district</screen>
       command:<screen>curl &quot;localhost/api/24/configuration/feedbackRecipients&quot; -d &quot;wl5cDMuUhmF&quot; 
   -H &quot;Content-Type:text/plain&quot;-u admin:district -v</screen></para>
   </section>
-  <section>
+  <section xml:id="webapi_i18n">
     <title>Internationalization</title>
     <para>In order to retrieve key-value pairs for translated strings you can use the <emphasis
         role="italic">i18n</emphasis> resource.<screen>/api/24/i18n</screen> The endpoint is located
@@ -10904,7 +10905,7 @@ interval=WEEK" -u admin:district</screen>
   &quot;uploading_data_notification&quot;:&quot;Uploading locally stored data to the server&quot;
 }</screen>
   </section>
-  <section>
+  <section xml:id="webapi_svg_conversion">
     <title>SVG conversion</title>
     <para>The Web API provides a resource which can be used to convert SVG content into more widely
       used formats such as PNG and PDF. Ideally this conversion should happen on the client side,
@@ -10949,7 +10950,7 @@ interval=WEEK" -u admin:district</screen>
       </tgroup>
     </table>
   </section>
-  <section>
+  <section xml:id="webapi_tracked_entity_instance_management">
     <title>Tracked entity instance management</title>
     <para>Tracked entity instances have full CRUD (create, read, update, delete) support in the
       Web-API. Together with the API for enrollment most operations needed for working with tracked
@@ -11210,7 +11211,7 @@ interval=WEEK" -u admin:district</screen>
       </section>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_tracked_entity_instance_query">
     <title>Tracked entity instance query</title>
     <para>To query for tracked entity instances you can interact with the <emphasis role="italic"
         >/api/trackedEntityInstances</emphasis>
@@ -11611,7 +11612,7 @@ interval=WEEK" -u admin:district</screen>
 }</screen>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_tracked_entity_instance_grid_query">
     <title>Tracked entity instance grid query</title>
     <para>To query for tracked entity instances you can interact with the <emphasis role="italic"
         >/api/trackedEntityInstances/grid</emphasis> resource. There are two types of queries: One
@@ -12012,7 +12013,7 @@ interval=WEEK" -u admin:district</screen>
 }</screen>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_enrollment_instance_query">
     <title>Enrollment instance query</title>
     <para>To query for tracked entity instances you can interact with the <emphasis role="italic"
         >/api/enrollments</emphasis> resource. </para>
@@ -12222,7 +12223,7 @@ interval=WEEK" -u admin:district</screen>
 }</screen>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_tracker_bulk_deletion">
     <title>Tracker bulk deletion</title>
     <para>Bulk deletion of tracker objects work in a similar fashion to adding and updating tracker
       objects, the only difference is that the <emphasis role="italic">importStrategy</emphasis> is
@@ -12258,7 +12259,7 @@ interval=WEEK" -u admin:district</screen>
     <screen>curl -X POST -d @data.json -H &quot;Content-Type: application/json&quot;
   &quot;http://server/api/24/events?strategy=DELETE&quot;</screen>
   </section>
-  <section>
+  <section xml:id="webapi_email">
     <title>Email</title>
     <para>The Web API features a resource for sending emails. For emails to be sent it is required
       that the SMTP configuration has been properly set up and that a system notification email
@@ -12287,7 +12288,7 @@ interval=WEEK" -u admin:district</screen>
       <screen>curl &quot;localhost/api/24/email/test&quot; -X POST -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_sharing">
     <title>Sharing</title>
     <para>The sharing solution allows you to share most objects in the system with specific user
       groups and to define whether objects should be publicly accessible or private. To get and set
@@ -12350,7 +12351,7 @@ interval=WEEK" -u admin:district</screen>
   -H &quot;Content-Type:application/json&quot; -u admin:district -v</screen>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_scheduling">
     <title>Scheduling</title>
     <para>To schedule tasks to run at fixed intervals you can interact with the scheduling resource.
       To configure tasks you can do a POST request to the following
@@ -12397,7 +12398,7 @@ interval=WEEK" -u admin:district</screen>
         </tgroup>
       </table></para>
   </section>
-  <section>
+  <section xml:id="webapi_schema">
     <title>Schema</title>
     <para>A resource which can be used to introspect all available DXF 2 objects can be found on
         <emphasis role="italic">/api/schemas</emphasis>. For specific resources you can have a look
@@ -12407,7 +12408,7 @@ interval=WEEK" -u admin:district</screen>
     <para>To get JSON schema for a specific
       class:<screen>GET /api/schemas/dataElement.json</screen></para>
   </section>
-  <section>
+  <section xml:id="webapi_ui_customization">
     <title>UI customization</title>
     <para>To customize the UI of the DHIS2 application you can insert custom Javascript and CSS
       styles through the <emphasis role="italic">files</emphasis> resource. The Javascript and CSS
@@ -12451,7 +12452,7 @@ interval=WEEK" -u admin:district</screen>
       <para>To remove the Javascript content you can use a DELETE-e "request.</para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_synchronization">
     <title>Synchronization</title>
     <para>This section covers pull and push of data and metadata.</para>
     <section>
@@ -12474,7 +12475,7 @@ interval=WEEK" -u admin:district</screen>
         resource:<screen>/api/24/synchronization/availability</screen></para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_apps">
     <title>Apps</title>
     <para> The <emphasis role="italic">/api/apps</emphasis> endpoint can be used for installing,
       deleting and listing apps. The app key is derived from the name of the ZIP archive, exluding
@@ -12530,7 +12531,7 @@ interval=WEEK" -u admin:district</screen>
         should be fine for most situations.</para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_app_store">
     <title>App store</title>
     <para>The Web API exposes the content of the DHIS2 App Store as a JSON representation which can
       found at the <emphasis role="italic">api/appStore</emphasis> resource.</para>
@@ -12570,7 +12571,7 @@ interval=WEEK" -u admin:district</screen>
         following resource:<screen>POST /api/24/appStore/{app-version-id}</screen></para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_data_store">
     <title>Data store</title>
     <para>Using the <emphasis>dataStore</emphasis> resource, developers can store arbitrary data for
       their apps. Access to a datastore's namespace is limited to the user&apos;s access to the
@@ -12717,7 +12718,7 @@ interval=WEEK" -u admin:district</screen>
 }</screen></para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_user_data_store">
     <title>User data store</title>
     <para>In addition to the <emphasis>dataStore</emphasis> which is shared between all users of the
       system, a user-based data store is also available. Data stored to the
@@ -12860,7 +12861,7 @@ interval=WEEK" -u admin:district</screen>
 }</screen></para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_predictors">
     <title>Predictors</title>
     <para>A predictor allows you to generate data values based on an expression. This can be used to generate targets, thresholds and estimated values.</para>
     <section>
@@ -12906,8 +12907,7 @@ interval=WEEK" -u admin:district</screen>
         the database:<screen>POST /api/24/predictors/AG10KUJCrRk/dryRun</screen></para>
     </section>
   </section>
-
-  <section>
+  <section xml:id="webapi_tokens">
     <title>Tokens</title>
     <para>The <emphasis>tokens</emphasis> resource provides access tokens to various
       services.</para>
@@ -12951,7 +12951,7 @@ interval=WEEK" -u admin:district</screen>
         Please consult the installation guide for more info.</para>
     </section>
   </section>
-  <section>
+  <section xml:id="webapi_metadata_repository">
     <title>Metadata repository</title>
     <para>DHIS2 provides a metadata repository containing metadata packages with various content. A
       metadata package is a </para>
@@ -12986,7 +12986,7 @@ interval=WEEK" -u admin:district</screen>
   -d &quot;https://dhis2.org/metadata-repo/221/trainingland-org-units/metadata.json&quot;
   -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen></para>
   </section>
-  <section>
+  <section xml:id="webapi_fred_api">
     <title>FRED API</title>
     <para>DHIS2 from version 2.11 implements support for the current draft of the FRED API version
       1.0. The project defines itself as <quote>open standard for sharing and updating health
