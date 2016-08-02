@@ -7197,7 +7197,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       combination of any number of dimensions based on data elements and organisation unit group
       sets.</para>
     <screen>/api/24/analytics</screen>
-    <section>
+    <section xml:id="webapi_analytics_query_parameters">
       <title>Request query parameters</title>
       <para>The analytics resource lets you specify a range of query parameters:<table frame="all">
           <title>Query parameters</title>
@@ -7396,7 +7396,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <screen>/api/24/analytics.html?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;dimension=pe:2014Q1;2014Q2
   &amp;dimension=ou:O6uvpzGd5pu&amp;tableLayout=true&amp;columns=dx;ou&amp;rows=pe</screen>
     </section>
-    <section>
+    <section xml:id="webapi_analytics_dimensions_and_items">
       <title>Dimensions and items</title>
       <para>DHIS2 features a multi-dimensional data model with several fixed and dynamic data
         dimensions. The fixed dimensions are the data element, period (time) and organisation unit
@@ -7585,7 +7585,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </listitem>
       </itemizedlist>
     </section>
-    <section>
+    <section xml:id="webapi_analytics_dx_dimension">
       <title>The dx dimension</title>
       <para>The <emphasis>dx</emphasis> dimension is a special dimension which can contain all of
         the following data types.</para>
@@ -7673,7 +7673,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
           calls in the address bar of your Web browser.</para>
       </tip>
     </section>
-    <section>
+    <section xml:id="webapi_analytics_response_formats">
       <title>Response formats</title>
       <para>The analytics response containing aggregate data can be returned in various
         representation formats. As usual, you can indicate interest in a specific format by
@@ -7805,7 +7805,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         column and a value column. The first column contains indicator identifiers, the second
         contains ISO period identifiers and the third contains aggregeted data values.</para>
     </section>
-    <section>
+    <section xml:id="webapi_analytics_constraints">
       <title>Constraints</title>
       <para>There are several constraints on the input you can provide to the analytics
         resource.</para>
@@ -7820,10 +7820,13 @@ ORDER BY oul.level, par.name, ou.name</screen>
           <para>At least one period must be specified as dimension or filter.</para>
         </listitem>
         <listitem>
-          <para>Data sets and categories cannot be specified as filters.</para>
+          <para>Categories cannot be specified as filter.</para>
         </listitem>
         <listitem>
           <para>Only a single indicator can be specified as filter.</para>
+        </listitem>
+        <listitem>
+          <para>Only a single reporting rate can be specified as filter.</para>
         </listitem>
         <listitem>
           <para>Data element group sets cannot be specified together with data sets.</para>
@@ -7848,7 +7851,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         with status code 409 and content-type &quot;text/plain&quot; together with a textual
         description of the problem.</para>
     </section>
-    <section>
+    <section xml:id="webapi_analytics_debugging">
       <title>Debugging</title>
       <para>When debugging analytics requests it can be useful to examine the data value source of
         the aggregated analytics response. The <emphasis role="italic"
