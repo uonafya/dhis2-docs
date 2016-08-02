@@ -330,17 +330,20 @@
     </section>
     <section>
       <title>SQL View management</title>
-      <para>In order to utilize the SQL views, simply press the &quot;Execute query&quot; button 
-        <inlinemediaobject>
-          <imageobject>
-            <imagedata fileref="resources/images/dhis2_images/start_process.png"/>
-          </imageobject>
-        </inlinemediaobject>from the &quot;SQL View management page. Once the process is completed, you will be informed that a table has been created. The name of the table will be provided, and is composed from the &quot;Description&quot; attribute provided in the SQL view definition. Once the view has been materialized, click on the &quot;View&quot; button 
-        <inlinemediaobject>
-          <imageobject>
-            <imagedata fileref="resources/images/dhis2_images/view_sections.png"/>
-          </imageobject>
-        </inlinemediaobject>.</para>
+      <para>In order to utilize the SQL views, simply click the view and from the context menu,
+        choose &quot;Execute query&quot;. Once the process is completed, you will be informed that a
+        table has been created. The name of the table will be provided, and is composed from the
+        &quot;Description&quot; attribute provided in the SQL view definition. Once the view has
+        been generated, you can view it by clicking the view again, and selecting "Show SQL View". </para>
+      <tip>
+        <para>If  you have a view which depends on another view, you should be careful about how the
+          views are named.  When analytics is run on the DHIS2 server, all views must be dropped,
+          and are recreated. When analytics starts, the views are dropped in alphabetical order, and
+          then recreated in reverse alphabetical order. Thus, if view A depends on view B, it must
+          appear before view B in alphabetical order. If it appears after view B in alphabetical
+          order, analytics may fail, as the view with dependencies will not be dropped in the
+          correct order.</para>
+      </tip>
     </section>
   </section>
   <section xml:id="duplicateDataElimination">
