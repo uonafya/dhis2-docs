@@ -1,17 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
       <chapter version="5.0"
-         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
-          xmlns="http://docbook.org/ns/docbook"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns:xs="http://www.w3.org/2001/XMLSchema"
-         xmlns:xl="http://www.w3.org/1999/xlink"
-         xmlns:xi="http://www.w3.org/2001/XInclude"
-         xmlns:xhtml="http://www.w3.org/1999/xhtml"
-         xmlns:svg="http://www.w3.org/2000/svg"
-         xmlns:mth="http://www.w3.org/1998/Math/MathML"
-         xmlns:db="http://docbook.org/ns/docbook">
+  xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+  xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+  xmlns:db="http://docbook.org/ns/docbook" xml:id="pivot">
   <title>Using the Pivot Table app</title>
-  <section>
+  <section xml:id="pivot_about">
     <title>About the Pivot table app</title>
     <para>With the Pivot Table app, you can create pivot tables based on all available data
       dimensions in DHIS2. A pivot table is a dynamic tool for data analysis which lets you
@@ -49,7 +45,7 @@ Revise phrase to &quot;A pivot table arranges data...&quot; = correct?"?>can
       dimensions you select as filters will not be included in the pivot table, but will aggregate
       and filter the table data based on the selected filter items.</para>
   </section>
-  <section>
+  <section xml:id="pivot_create">
     <title>Create a pivot table</title>
     <orderedlist>
       <listitem>
@@ -243,8 +239,7 @@ Consider presenting content in a table."?>items<?oxy_comment_end?></title>
         dimension as rows, the pivot table will generate all combinations of the items in these
         dimensions and produce a table like this:</para>
       <screenshot>
-        <title>Pivot table where organisation units and periods are repeated on
-          rows.</title>
+        <title>Pivot table where organisation units and periods are repeated on rows.</title>
         <mediaobject>
           <imageobject>
             <imagedata width="80%" align="center"
@@ -254,7 +249,7 @@ Consider presenting content in a table."?>items<?oxy_comment_end?></title>
       </screenshot>
     </section>
   </section>
-  <section>
+  <section xml:id="pivot_change_display">
     <title>Change the display of your table</title>
     <orderedlist>
       <listitem>
@@ -293,7 +288,7 @@ Consider presenting content in a table."?>items<?oxy_comment_end?></title>
                   <para>Displays subtotals in the table for each dimension. In the screenshot above,
                     notice how subtotals are generated for each of the periods in the period
                     dimension. If you only select one dimension, subtotals will be hidden for those
-                    columns or rows. This is because  the values will be equal to the
+                    columns or rows. This is because the values will be equal to the
                     subtotals.</para>
                 </entry>
               </row>
@@ -404,7 +399,7 @@ Consider presenting content in a table."?>items<?oxy_comment_end?></title>
       </listitem>
     </orderedlist>
   </section>
-  <section>
+  <section xml:id="pivot_favorites">
     <title>Manage pivot table favorites</title>
     <section>
       <title>Save a pivot table as a favorite</title>
@@ -561,7 +556,7 @@ Consider presenting content in a table."?>items<?oxy_comment_end?></title>
       </para>
     </section>
   </section>
-  <section>
+  <section xml:id="pivot_download_data">
     <title>Download data from a pivot table</title>
     <section>
       <title>Download table layout data format</title>
@@ -595,8 +590,8 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
         data formats with different identification schemes (ID, Code, and Name). The data document
         uses identifiers of the dimension items and opens in a new browser window to display the URL
         of the request to the Web API in the address bar. This is useful for developers of apps and
-        other client modules based on the DHIS2 Web API or for those who require a plan data
-        source, for instance for import into statistical packages.</para>
+        other client modules based on the DHIS2 Web API or for those who require a plan data source,
+        for instance for import into statistical packages.</para>
       <para>To download plain data source formats:</para>
       <orderedlist>
         <listitem>
@@ -723,7 +718,7 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
       <para>To download data in CSV format without first rendering data in the web browser:</para>
       <orderedlist>
         <listitem>
-          <para>Click the arrow beside  <emphasis role="bold">Update</emphasis>.</para>
+          <para>Click the arrow beside <emphasis role="bold">Update</emphasis>.</para>
           <mediaobject>
             <imageobject>
               <imagedata align="center" fileref="resources/images/pivot_table/data_dump.png"
@@ -745,7 +740,7 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
       </orderedlist>
     </section>
   </section>
-  <section>
+  <section xml:id="pivot_embed">
     <title>Embed a pivot table in an external web page</title>
     <para>Certain analysis-related resources in DHIS2, like pivot tables, charts and maps, can be
       embedded in any web page by using a plug-in. You will find more information about the plug-ins
@@ -763,7 +758,7 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
       </orderedlist>
     </para>
   </section>
-  <section>
+  <section xml:id="pivot_integration">
     <title>Visualize a pivot table data as a chart or a map</title>
     <para>When you have made a pivot table you can switch between pivot table, chart and map
       visualization of your data. </para>
@@ -839,7 +834,7 @@ Refer to: https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/
       </orderedlist>
     </section>
   </section>
-  <section>
+  <section xml:id="pivot_tips">
     <title>Constraints and tips</title>
     <para>When selecting and arranging dimensions there are a few
       <?oxy_comment_start author="Home" timestamp="20160407T165212+0200" comment="Consider moving to beginning of section. If there are any constraints the user must know them before he/she starts working with the app."?>constraints<?oxy_comment_end?>
