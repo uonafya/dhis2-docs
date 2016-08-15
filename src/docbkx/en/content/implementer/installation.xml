@@ -382,6 +382,78 @@ filestore.secret = xxxx</screen>
         As an example this location could
         be:<screen>/home/dhis/config/dhis-google-auth.json</screen></para>
     </section>
+    <section xml:id="install_ldap_configuration">
+      <title>LDAP configuration</title>
+      <para>DHIS2 is capable of using an LDAP server for authentication of users. For LDAP
+        authentication it is required to have a matching user in the DHIS2 database per LDAP entry.
+        The DHIS2 user will be used to represent authorities / user roles. </para>
+      <para>To set up LDAP authentication you need to configure the LDAP server URL, a manager user
+        and an LDAP search base and search filter. This configuration should be done in the main
+        DHIS 2 configuration file (dhis.conf). LDAP users, or entries, are identified by
+        distinguished names (DN from now on). An example configuration looks like this:</para>
+      <screen># LDAP server URL
+ldap.url = ldaps://domain.org:636
+
+# LDAP manager entry distinguished name
+ldap.manager.dn = cn=johndoe,dc=domain,dc=org
+
+# LDAP manager entry password
+ldap.manager.password = xxxx
+
+# LDAP base search
+ldap.search.base = dc=domain,dc=org
+
+# LDAP search filter
+ldap.search.filter = (cn={0})</screen>
+      <para>The LDAP configuration properties are explained below:<itemizedlist>
+          <listitem>
+            <para><emphasis role="italic">ldap.url:</emphasis> The URL of the LDAP server for which
+              to authenticate against. Using SSL/encryption is strongly recommended in order to make
+              authentication secure. As example URL is <emphasis role="italic"
+                >ldaps://domain.org:636</emphasis>, where ldaps refers to the protocol, <emphasis
+                role="italic">domain.org</emphasis> refers to the domain name or IP address, and
+                <emphasis role="italic">636</emphasis> refers to the port (636 is default for
+              LDAPS).</para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="italic">ldap.manager.dn:</emphasis> An LDAP manager user is
+              required for binding to the LDAP server for the user authentication process. This
+              property refers to the DN of that entry. I.e. this is not the user which will be
+              authenticated when logging into DHIS2, rather the user which binds to the LDAP server
+              in order to do the authentication.</para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="italic">ldap.manager.password:</emphasis> The password for the
+              LDAP manager user.</para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="italic">ldap.search.base:</emphasis> The search base, or the
+              distinguished name of the search base object, which defines the location in the
+              directory from which the LDAP search begins.</para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="italic">ldap.search.filter:</emphasis> The filter for matching DNs
+              of entries in the LDAP directory. The {0} variable will be substituted by the DHIS2
+              username, or alternatively, the LDAP identifier defined for the user with the supplied
+              username.</para>
+          </listitem>
+        </itemizedlist></para>
+      <para>DHIS2 will use the supplied username / password and try to authenticate against an LDAP
+        server entry, then look up user roles / authorities from a corresponding DHIS2 user. This
+        implies that a user must have a matching entry in the LDAP directory as well as a DHIS2 user
+        in order to log in.</para>
+      <para>During authentication, DHIS2 will try to bind to the LDAP server using the configured
+        LDAP server URL and the manager DN and password. Once the binding is done, it will search
+        for an entry in the directory using the configured LDAP search base and search
+        filter.</para>
+      <para>The {0} variable in the configured filter will be substituted beforing applying the
+        filter. By default, it will be substituted by the supplied username. You can also set a
+        custom LDAP identifier on the relevant DHIS2 user account. This can be done throught the
+        DHIS2 user module user interface in the add or edit screen by setting the "LDAP identifier"
+        property. When set, the LDAP identifier will be subsituted for the {0} variable in the
+        filter. This feature is useful when the LDAP common name is not suitable or cannot for some
+        reason be used as a DHIS2 username.</para>
+    </section>
     <section xml:id="install_read_replica_configuration">
       <title>Read replica database configuration</title>
       <para>DHIS 2 allows for utilizing read only replicas of the master database (the main DHIS 2
@@ -790,79 +862,8 @@ XXX.XX.XXX.XXX foo.mydomain.org</screen></para>
       <screen>/etc/init.d/apache2 restart</screen>
     </section>
   </section>
-  <section xml:id="install_ldap_configuration">
-    <title>LDAP configuration</title>
-    <para>DHIS2 is capable of using an LDAP server for authentication of users. For LDAP
-      authentication it is required to have a matching user in the DHIS2 database per LDAP entry.
-      The DHIS2 user will be used to represent authorities / user roles. </para>
-    <para>To set up LDAP authentication you need to configure the LDAP server URL, a manager user
-      and an LDAP search base and search filter. This configuration should be done in the main DHIS
-      2 configuration file (dhis.conf). LDAP users, or entries, are identified by distinguished
-      names (DN from now on). An example configuration looks like this:</para>
-    <screen># LDAP server URL
-ldap.url = ldaps://domain.org:636
-
-# LDAP manager entry distinguished name
-ldap.manager.dn = cn=johndoe,dc=domain,dc=org
-
-# LDAP manager entry password
-ldap.manager.password = xxxx
-
-# LDAP base search
-ldap.search.base = dc=domain,dc=org
-
-# LDAP search filter
-ldap.search.filter = (cn={0})</screen>
-    <para>The LDAP configuration properties are explained below:<itemizedlist>
-        <listitem>
-          <para><emphasis role="italic">ldap.url:</emphasis> The URL of the LDAP server for which to
-            authenticate against. Using SSL/encryption is strongly recommended in order to make
-            authentication secure. As example URL is <emphasis role="italic"
-              >ldaps://domain.org:636</emphasis>, where ldaps refers to the protocol, <emphasis
-              role="italic">domain.org</emphasis> refers to the domain name or IP address, and
-              <emphasis role="italic">636</emphasis> refers to the port (636 is default for
-            LDAPS).</para>
-        </listitem>
-        <listitem>
-          <para><emphasis role="italic">ldap.manager.dn:</emphasis> An LDAP manager user is required
-            for binding to the LDAP server for the user authentication process. This property refers
-            to the DN of that entry. I.e. this is not the user which will be authenticated when
-            logging into DHIS2, rather the user which binds to the LDAP server in order to do the
-            authentication.</para>
-        </listitem>
-        <listitem>
-          <para><emphasis role="italic">ldap.manager.password:</emphasis> The password for the LDAP
-            manager user.</para>
-        </listitem>
-        <listitem>
-          <para><emphasis role="italic">ldap.search.base:</emphasis> The search base, or the
-            distinguished name of the search base object, which defines the location in the
-            directory from which the LDAP search begins.</para>
-        </listitem>
-        <listitem>
-          <para><emphasis role="italic">ldap.search.filter:</emphasis> The filter for matching DNs
-            of entries in the LDAP directory. The {0} variable will be substituted by the DHIS2
-            username, or alternatively, the LDAP identifier defined for the user with the supplied
-            username.</para>
-        </listitem>
-      </itemizedlist></para>
-    <para>DHIS2 will use the supplied username / password and try to authenticate against an LDAP
-      server entry, then look up user roles / authorities from a corresponding DHIS2 user. This
-      implies that a user must have a matching entry in the LDAP directory as well as a DHIS2 user
-      in order to log in.</para>
-    <para>During authentication, DHIS2 will try to bind to the LDAP server using the configured
-      LDAP server URL and the manager DN and password. Once the binding is done, it will search for
-      an entry in the directory using the configured LDAP search base and search filter.</para>
-    <para>The {0} variable in the configured filter will be substituted beforing applying the
-      filter. By default, it will be substituted by the supplied username. You can also set a custom
-      LDAP identifier on the relevant DHIS2 user account. This can be done throught the DHIS2 user
-      module user interface in the add or edit screen by setting the "LDAP identifier" property.
-      When set, the LDAP identifier will be subsituted for the {0} variable in the filter. This
-      feature is useful when the LDAP common name is not suitable or cannot for some reason be used
-      as a DHIS2 username.</para>
-  </section>
-  <section xml:id="install_encryption_setup">
-    <title>Encryption setup</title>
+  <section xml:id="install_encryption_configuration">
+    <title>Encryption configuration</title>
     <para>DHIS2 allows for encryption of data. This however requires some extra setup.</para>
       <section xml:id="install_java_cryptography_extension">
         <title>Java Cryptography Extension</title>
