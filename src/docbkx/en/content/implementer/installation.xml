@@ -395,12 +395,11 @@ sudo chmod +x /etc/init.d/tomcat</screen>
     <para>This section describes optional, advanced aspects of the DHIS 2 installation which enhance
       the system capability and performance.</para>
     <section xml:id="install_read_replica_configuration">
-      <title>Read replica configuration</title>
-      <para>DHIS 2 allows for utilizing read only replicas of the master database (which refers to
-        the main DHIS 2 database). The purpose of read replicas is to enhance the performance of
-        database read queries and scale out the capacity beyond the constraints of a single
-        database. Read-heavy operations such as analytics and event queries will benefit from
-        this.</para>
+      <title>Read replica database configuration</title>
+      <para>DHIS 2 allows for utilizing read only replicas of the master database (the main DHIS 2
+        database). The purpose of read replicas is to enhance the performance of database read
+        queries and scale out the capacity beyond the constraints of a single database. Read-heavy
+        operations such as analytics and event queries will benefit from this.</para>
       <para>The configuration requires that you have created one or more replicated instances of the
         master DHIS 2 database. PostgreSQL achieves this through a concept referred to as
           <emphasis>streaming replication</emphasis>. Configuring read replicas for PostgreSQL is
@@ -409,7 +408,7 @@ sudo chmod +x /etc/init.d/tomcat</screen>
         You can specify up to 5 read replicas per DHIS 2 instance. Each read replica is denoted with
         a number between 1 and 5. The JDBC connection URL must be defined per replica. The username
         and password can be specified; if not, the username and password for the master database
-        instance will be used instead.</para>
+        will be used instead.</para>
       <para>The configuration for read replicas in <emphasis>dhis.conf</emphasis> look like the
         below. Each replica is specified with the configuration key <emphasis>readN</emphasis>
         prefix, where N refers to the replica
@@ -418,14 +417,14 @@ sudo chmod +x /etc/init.d/tomcat</screen>
 # Database connection URL, username and password
 read1.connection.url = jdbc:postgresql://127.0.0.11/dbread1
 read1.connection.username = dhis
-read1.connection.password = dhis
+read1.connection.password = xxxx
 
 # Read replica 2 configuration
 
 # Database connection URL, username and password
 read2.connection.url = jdbc:postgresql://127.0.0.12/dbread2
 read2.connection.username = dhis
-read2.connection.password = dhis
+read2.connection.password = xxxx
 
 # Read replica 3 configuration
 
