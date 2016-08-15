@@ -392,39 +392,48 @@ sudo chmod +x /etc/init.d/tomcat</screen>
   </section>
   <section xml:id="install_advanced_server_setup">
     <title>Advanced server setup</title>
-    <para>This section describes optional, advanced aspects of the DHIS 2 installation which enables
+    <para>This section describes optional, advanced aspects of the DHIS 2 installation which enhance
       the system capability and performance.</para>
     <section xml:id="install_read_replica_configuration">
       <title>Read replica configuration</title>
-      <para>DHIS 2 allows for utilizing read only replicas of the database. The purpose of this is
-        to enhance the performance of database read queries and scale out beyond the capacity
-        constraints of a single database. Read-heavy functionality such as analytics queries and
-        event queries will benefit from this.</para>
-      <para>This setup requires that you have created one or more replicated instances of the main
-        DHIS 2 database. PostgreSQL achieves this through a concept referred to as
+      <para>DHIS 2 allows for utilizing read only replicas of the master database (which refers to
+        the main DHIS 2 database). The purpose of read replicas is to enhance the performance of
+        database read queries and scale out the capacity beyond the constraints of a single
+        database. Read-heavy operations such as analytics and event queries will benefit from
+        this.</para>
+      <para>The configuration requires that you have created one or more replicated instances of the
+        master DHIS 2 database. PostgreSQL achieves this through a concept referred to as
           <emphasis>streaming replication</emphasis>. Configuring read replicas for PostgreSQL is
         not covered in this guide.</para>
       <para>Read replicas can be defined in the <emphasis>dhis.conf</emphasis> configuration file.
         You can specify up to 5 read replicas per DHIS 2 instance. Each read replica is denoted with
-        a number going from 1 to 5. The JDBC connection URL must be defined. The username and
-        password can be specified, if not, the username and password for the main database instance
-        will be used.</para>
-      <para>The configuration for read replicas look like the below. Each replica is specified with
-        the configuratio key <emphasis>readN</emphasis> prefix, where N refers to the replica
-        number.<screen># Read replica 1 config
+        a number between 1 and 5. The JDBC connection URL must be defined per replica. The username
+        and password can be specified; if not, the username and password for the master database
+        instance will be used instead.</para>
+      <para>The configuration for read replicas in <emphasis>dhis.conf</emphasis> look like the
+        below. Each replica is specified with the configuration key <emphasis>readN</emphasis>
+        prefix, where N refers to the replica
+        number.<screen># Read replica 1 configuration
 
 # Database connection URL, username and password
-read1.connection.url = jdbc:postgresql://127.0.0.11/dhis2read1
+read1.connection.url = jdbc:postgresql://127.0.0.11/dbread1
 read1.connection.username = dhis
 read1.connection.password = dhis
 
-# Read replica 2 config
+# Read replica 2 configuration
 
 # Database connection URL, username and password
-read2.connection.url = jdbc:postgresql://127.0.0.12/dhis2read2
+read2.connection.url = jdbc:postgresql://127.0.0.12/dbread2
 read2.connection.username = dhis
-read2.connection.password = dhis</screen></para>
-      <para>Note that you must your servlet container for the changes to take effect.</para>
+read2.connection.password = dhis
+
+# Read replica 3 configuration
+
+# Database connection URL, fallback to master for username and password
+read3.connection.url = jdbc:postgresql://127.0.0.13/dbread3</screen></para>
+      <para>Note that you must restart your servlet container for the changes to take effect. DHIS 2
+        will automatically distribute the load across the read replicas. The ordering of replicas
+        has no significance.</para>
     </section>
   </section>
   <section xml:id="install_reverse_proxy_configuration">
