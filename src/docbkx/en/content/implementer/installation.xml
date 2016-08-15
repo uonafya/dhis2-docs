@@ -58,8 +58,8 @@
       </listitem>
     </itemizedlist>
   </section>
-  <section xml:id="install_basic_server_setup">
-    <title>Basic server setup</title>
+  <section xml:id="install_server_setup">
+    <title>Server setup</title>
     <para>This section describes how to set up a server instance of DHIS2 on Ubuntu 14.04 64 bit
       with PostgreSQL as database system and Tomcat as Servlet container. This guide is not meant to
       be a step-by-step guide per se, but rather to serve as a reference to how DHIS2 can be
@@ -129,6 +129,70 @@ sudo locale-gen nb_NO.UTF-8</screen>
       <para>Return to your session by invoking <code>exit</code> You now have a PostgreSQL user
         called <emphasis role="italic">dhis</emphasis> and a database called <emphasis role="italic"
           >dhis2</emphasis>.</para>
+    </section>
+    <section xml:id="install_postgresql_performance_tuning">
+      <title>PostgreSQL performance tuning</title>
+      <para>Tuning PostgreSQL is necessary to achieve a high-performing system but is optional in
+        terms of getting DHIS2 to run. PostgreSQL is configured and tuned through the <emphasis
+          role="italic">postgresql.conf</emphasis> file which can be edited like this:</para>
+      <para>
+        <screen>sudo nano /etc/postgresql/9.4/main/postgresql.conf</screen>
+      </para>
+      <para>and set the following properties:</para>
+      <para>
+        <screen>max_connections = 200</screen>
+      </para>
+      <para>Determines maximum number of connections which PostgreSQL will allow.</para>
+      <para>
+        <screen>shared_buffers = 3200MB</screen>
+      </para>
+      <para>Determines how much memory should be allocated exclusively for PostgreSQL caching. This
+        setting controls the size of the kernel shared memory which should be reserved for
+        PostgreSQL. Should be set to around 40% of total memory dedicated for PostgreSQL.</para>
+      <para>
+        <screen>work_mem = 20MB</screen>
+      </para>
+      <para>Determines the amount of memory used for internal sort and hash operations. This setting
+        is per connection, per query so a lot of memory may be consumed if raising this too high.
+        Setting this value correctly is essential for DHIS2 aggregation performance.</para>
+      <para>
+        <screen>maintenance_work_mem = 512MB</screen>
+      </para>
+      <para>Determines the amount of memory PostgreSQL can use for maintenance operations such as
+        creating indexes, running vacuum, adding foreign keys. Incresing this value might improve
+        performance of index creation during the analytics generation processes.</para>
+      <para>
+        <screen>effective_cache_size = 8000MB</screen>
+      </para>
+      <para>An estimate of how much memory is available for disk caching by the operating system
+        (not an allocation) and isdb.no used by PostgreSQL to determine whether a query plan will
+        fit into memory or not. Setting it to a higher value than what is really available will
+        result in poor performance. This value should be inclusive of the shared_buffers setting.
+        PostgreSQL has two layers of caching: The first layer uses the kernel shared memory and is
+        controlled by the shared_buffers setting. PostgreSQL delegates the second layer to the
+        operating system disk cache and the size of available memory can be given with the
+        effective_cache_size setting.</para>
+      <para>
+        <screen>checkpoint_completion_target = 0.8</screen>
+      </para>
+      <para>Sets the memory used for buffering during the WAL write process. Increasing this value
+        might improve throughput in write-heavy systems.</para>
+      <para>
+        <screen>synchronous_commit = off</screen>
+      </para>
+      <para>Specifies whether transaction commits will wait for WAL records to be written to the
+        disk before returning to the client or not. Setting this to off will improve performance
+        considerably. It also implies that there is a slight delay between the transaction is
+        reported successful to the client and it actually being safe, but the database state cannot
+        be corrupted and this is a good alternative for performance-intensive and write-heavy
+        systems like DHIS2.</para>
+      <para>
+        <screen>wal_writer_delay = 10000ms</screen>
+      </para>
+      <para>Specifies the delay between WAL write operations. Setting this to a high value will
+        improve performance on write-heavy systems since potentially many write operations can be
+        executed within a single flush to disk.</para>
+      <para>Restart PostgreSQL by invoking <code>sudo /etc/init.d/postgresql restart</code></para>
     </section>
     <section xml:id="install_postgis_installation">
       <title>PostGIS installation</title>
@@ -245,75 +309,7 @@ export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
       <screen>http://localhost:8080</screen>
     </section>
   </section>
-  <section xml:id="install_advanced_server_setup">
-    <title>Advanced server setup</title>
-    <para>This section describes optional, advanced aspects of the DHIS 2 installation which will
-      enhance the system capabilities and performance.</para>
-    <section xml:id="install_postgresql_performance_tuning">
-      <title>PostgreSQL performance tuning</title>
-      <para>Tuning PostgreSQL is necessary to achieve a high-performing system but is optional in
-        terms of getting DHIS2 to run. PostgreSQL is configured and tuned through the <emphasis
-          role="italic">postgresql.conf</emphasis> file which can be edited like this:</para>
-      <para>
-        <screen>sudo nano /etc/postgresql/9.4/main/postgresql.conf</screen>
-      </para>
-      <para>and set the following properties:</para>
-      <para>
-        <screen>max_connections = 200</screen>
-      </para>
-      <para>Determines maximum number of connections which PostgreSQL will allow.</para>
-      <para>
-        <screen>shared_buffers = 3200MB</screen>
-      </para>
-      <para>Determines how much memory should be allocated exclusively for PostgreSQL caching. This
-        setting controls the size of the kernel shared memory which should be reserved for
-        PostgreSQL. Should be set to around 40% of total memory dedicated for PostgreSQL.</para>
-      <para>
-        <screen>work_mem = 20MB</screen>
-      </para>
-      <para>Determines the amount of memory used for internal sort and hash operations. This setting
-        is per connection, per query so a lot of memory may be consumed if raising this too high.
-        Setting this value correctly is essential for DHIS2 aggregation performance.</para>
-      <para>
-        <screen>maintenance_work_mem = 512MB</screen>
-      </para>
-      <para>Determines the amount of memory PostgreSQL can use for maintenance operations such as
-        creating indexes, running vacuum, adding foreign keys. Incresing this value might improve
-        performance of index creation during the analytics generation processes.</para>
-      <para>
-        <screen>effective_cache_size = 8000MB</screen>
-      </para>
-      <para>An estimate of how much memory is available for disk caching by the operating system
-        (not an allocation) and isdb.no used by PostgreSQL to determine whether a query plan will
-        fit into memory or not. Setting it to a higher value than what is really available will
-        result in poor performance. This value should be inclusive of the shared_buffers setting.
-        PostgreSQL has two layers of caching: The first layer uses the kernel shared memory and is
-        controlled by the shared_buffers setting. PostgreSQL delegates the second layer to the
-        operating system disk cache and the size of available memory can be given with the
-        effective_cache_size setting.</para>
-      <para>
-        <screen>checkpoint_completion_target = 0.8</screen>
-      </para>
-      <para>Sets the memory used for buffering during the WAL write process. Increasing this value
-        might improve throughput in write-heavy systems.</para>
-      <para>
-        <screen>synchronous_commit = off</screen>
-      </para>
-      <para>Specifies whether transaction commits will wait for WAL records to be written to the
-        disk before returning to the client or not. Setting this to off will improve performance
-        considerably. It also implies that there is a slight delay between the transaction is
-        reported successful to the client and it actually being safe, but the database state cannot
-        be corrupted and this is a good alternative for performance-intensive and write-heavy
-        systems like DHIS2.</para>
-      <para>
-        <screen>wal_writer_delay = 10000ms</screen>
-      </para>
-      <para>Specifies the delay between WAL write operations. Setting this to a high value will
-        improve performance on write-heavy systems since potentially many write operations can be
-        executed within a single flush to disk.</para>
-      <para>Restart PostgreSQL by invoking <code>sudo /etc/init.d/postgresql restart</code></para>
-    </section>
-    <section xml:id="install_file_store_configuration">
+  <section xml:id="install_file_store_configuration">
       <title>File store configuration</title>
       <para>DHIS2 is capable of capturing and storing files. By default files will be stored on the
         file system of the server which runs DHIS2 in a <emphasis role="italic">files</emphasis>
@@ -454,6 +450,71 @@ ldap.search.filter = (cn={0})</screen>
         filter. This feature is useful when the LDAP common name is not suitable or cannot for some
         reason be used as a DHIS2 username.</para>
     </section>
+    <section xml:id="install_encryption_configuration">
+      <title>Encryption configuration</title>
+      <para>DHIS2 allows for encryption of data. This however requires some extra setup.</para>
+      <section xml:id="install_java_cryptography_extension">
+        <title>Java Cryptography Extension</title>
+        <para>DHIS2 uses an encryption algorithm classified as strong and therefore requires the
+            <emphasis>Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
+            Files</emphasis> to be installed. These files can be installed through these steps: </para>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>Download the JCE Unlimited Strength Jurisdiction Policy Files for your java
+                version of Java from the Oracle Web site. Scroll down to the "Java Cryptography
+                Extension (JCE) Unlimited Strength Jurisdiction Policy Files" section. It is
+                important that the version of the files match the version of Java on your
+                server.</para>
+              <para><link
+                  xl:href="http://www.oracle.com/technetwork/java/javase/downloads/index.htm"
+                  >http://www.oracle.com/technetwork/java/javase/downloads/index.html</link></para>
+            </listitem>
+            <listitem>
+              <para>Extract the downloaded ZIP archive. It contains two JAR files: <emphasis
+                  role="italic">local_policy.jar</emphasis> and <emphasis role="italic"
+                  >US_export_policy.jar</emphasis>.</para>
+            </listitem>
+            <listitem>
+              <para>Locate the JDK directory of your Java installation. From there, navigate into
+                the <emphasis role="italic">jre/security</emphasis> directory. On Ubuntu it is often
+                found at <emphasis role="italic"
+                  >/usr/lib/jvm/java-8-oracle/jre/lib/security</emphasis>.</para>
+            </listitem>
+            <listitem>
+              <para>(Optional) Back up your existing <emphasis role="italic"
+                  >local_policy.jar</emphasis> and <emphasis role="italic"
+                  >US_export_policy.jar</emphasis> in case you want to revert to them later.</para>
+            </listitem>
+            <listitem>
+              <para>Copy the <emphasis role="italic">local_policy.jar</emphasis> and <emphasis
+                  role="italic">US_export_policy.jar</emphasis> files into the security folder. You
+                should now have the following files which completes the installation. Remember to
+                restart your servlet container for it to take
+                effect.<screen>/usr/lib/jvm/java-8-oracle/jre/lib/security/local_policy.jar
+/usr/lib/jvm/java-8-oracle/jre/lib/security/US_export_policy.jar</screen></para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <section xml:id="install_password_configuration">
+        <title>Password configuration</title>
+        <para>To provide security to the encryption alogorithm you will have to set a password in
+          the <emphasis role="italic">dhis.conf</emphasis> configuration file through the <emphasis
+            role="italic">encryption.password</emphasis>
+          property:<screen>encryption.password = xxxx</screen></para>
+        <para>The password must be at least <emphasis role="bold">24 characters long</emphasis> and
+          it is recommended to use a mix of numbers and lower- and uppercase letters. The encryption
+          password must be kept secret.</para>
+      </section>
+      <section xml:id="install_considerations_for_encryption">
+        <title>Considerations for encryption</title>
+        <para><emphasis role="italic">A word of caution:</emphasis> It is not possible to recover
+          encrypted data if the encryption password is lost or changed. Conversely, the encryption
+          provides no security if the password is compromised. Hence, great consideration should be
+          given to storing the password in a safe place.</para>
+      </section>
+    </section>
     <section xml:id="install_read_replica_configuration">
       <title>Read replica database configuration</title>
       <para>DHIS 2 allows for utilizing read only replicas of the master database (the main DHIS 2
@@ -469,7 +530,7 @@ ldap.search.filter = (cn={0})</screen>
         a number between 1 and 5. The JDBC connection URL must be defined per replica. The username
         and password can be specified; if not, the username and password for the master database
         will be used instead.</para>
-      <para>The configuration for read replicas in <emphasis>dhis.conf</emphasis> look like the
+      <para>The configuration for read replicas in <emphasis>dhis.conf</emphasis> looks like the
         below. Each replica is specified with the configuration key <emphasis>readN</emphasis>
         prefix, where N refers to the replica
         number.<screen># Read replica 1 configuration
@@ -530,7 +591,6 @@ sudo chmod +x /etc/init.d/tomcat</screen>
         later need to revert this you can replace <code>defaults</code> with <code>remove</code> and
         invoke the above commands again.</para>
     </section>
-  </section>
   <section xml:id="install_reverse_proxy_configuration">
     <title>Reverse proxy configuration</title>
     <para>A reverse proxy is a proxy server that acts on behalf of a server. Using a reverse proxy in combination with a servlet container is optional but has many advantages:</para>
@@ -860,70 +920,6 @@ a2ensite default-ssl</screen>
 XXX.XX.XXX.XXX foo.mydomain.org</screen></para>
       <para>Now, just restart Apache and you should be able to view https://foo.mydomain.org/dhis. </para>
       <screen>/etc/init.d/apache2 restart</screen>
-    </section>
-  </section>
-  <section xml:id="install_encryption_configuration">
-    <title>Encryption configuration</title>
-    <para>DHIS2 allows for encryption of data. This however requires some extra setup.</para>
-      <section xml:id="install_java_cryptography_extension">
-        <title>Java Cryptography Extension</title>
-        <para>DHIS2 uses an encryption algorithm classified as strong and therefore requires the
-          <emphasis>Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
-          Files</emphasis> to be installed. These files can be installed through these steps:
-    </para>
-    <para>
-      <orderedlist>
-        <listitem>
-          <para>Download the JCE Unlimited Strength Jurisdiction Policy Files for your java version
-            of Java from the Oracle Web site. Scroll down to the "Java Cryptography Extension (JCE)
-            Unlimited Strength Jurisdiction Policy Files" section. It is important that the version
-            of the files match the version of Java on your server.</para>
-          <para><link xl:href="http://www.oracle.com/technetwork/java/javase/downloads/index.htm"
-              >http://www.oracle.com/technetwork/java/javase/downloads/index.html</link></para>
-        </listitem>
-        <listitem>
-          <para>Extract the downloaded ZIP archive. It contains two JAR files: <emphasis
-              role="italic">local_policy.jar</emphasis> and <emphasis role="italic"
-              >US_export_policy.jar</emphasis>.</para>
-        </listitem>
-        <listitem>
-          <para>Locate the JDK directory of your Java installation. From there, navigate into the
-              <emphasis role="italic">jre/security</emphasis> directory. On Ubuntu it is often found
-            at <emphasis role="italic"
-            >/usr/lib/jvm/java-8-oracle/jre/lib/security</emphasis>.</para>
-        </listitem>
-        <listitem>
-          <para>(Optional) Back up your existing <emphasis role="italic">local_policy.jar</emphasis>
-            and <emphasis role="italic">US_export_policy.jar</emphasis> in case you want to revert
-            to them later.</para>
-        </listitem>
-        <listitem>
-          <para>Copy the <emphasis role="italic">local_policy.jar</emphasis> and <emphasis
-              role="italic">US_export_policy.jar</emphasis> files into the security folder. You
-            should now have the following files which completes the installation. Remember to
-            restart your servlet container for it to take
-            effect.<screen>/usr/lib/jvm/java-8-oracle/jre/lib/security/local_policy.jar
-/usr/lib/jvm/java-8-oracle/jre/lib/security/US_export_policy.jar</screen></para>
-        </listitem>
-      </orderedlist>
-    </para>
-    </section>
-    <section xml:id="install_password_configuration">
-      <title>Password configuration</title>
-      <para>To provide security to the encryption alogorithm you will have to set a password in the
-          <emphasis role="italic">dhis.conf</emphasis> configuration file through the <emphasis
-          role="italic">encryption.password</emphasis>
-        property:<screen>encryption.password = xxxx</screen></para>
-      <para>The password must be at least <emphasis role="bold">24 characters long</emphasis> and it
-        is recommended to use a mix of numbers and lower- and uppercase letters. The encryption
-        password must be kept secret.</para>
-    </section>
-    <section xml:id="install_considerations_for_encryption">
-      <title>Considerations for encryption</title>
-      <para><emphasis role="italic">A word of caution:</emphasis> It is not possible to recover
-        encrypted data if the encryption password is lost or changed. Conversely, the encryption
-        provides no security if the password is compromised. Hence, great consideration should be
-        given to storing the password in a safe place.</para>
     </section>
   </section>
   <section xml:id="install_dhis2_configuration_reference">
