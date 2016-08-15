@@ -100,7 +100,7 @@
         variable in a later step in the installation process.</para>
     </section>
     <section xml:id="install_setting_server_tz">
-      <title>Setting server time zone and locale (optional)</title>
+      <title>Setting server time zone and locale</title>
       <para>It may be necessary to reconfigure the time zone of the server to match the time zone of
         the location which the DHIS2 server will be covering. If you are using a virtual private
         server, the default time zone may not correspond to the time zone of your DHIS2 location.
@@ -137,46 +137,6 @@ sudo locale-gen nb_NO.UTF-8</screen>
         will be installed in the database automatically when DHIS2 is started. Install PostGIS on
         the server by invoking:</para>
       <screen>sudo apt-get install postgresql-9.4 postgresql-9.4-postgis-2.2 postgresql-contrib-9.4</screen>
-    </section>
-    <section xml:id="install_postgresql_performance_tuning">
-      <title>PostgreSQL performance tuning (optional)</title>
-      <para>Tuning PostgreSQL is necessary to achieve a high-performing system but is optional in
-        terms of getting DHIS2 to run. PostgreSQL is configured and tuned through the <emphasis
-          role="italic">postgresql.conf</emphasis> file which can be edited like this:</para>
-      <para><screen>sudo nano /etc/postgresql/9.4/main/postgresql.conf</screen></para>
-      <para>and set the following properties:</para>
-      <para>
-        <screen>max_connections = 200</screen>
-      </para>
-      <para>Determines maximum number of connections which PostgreSQL will allow.</para>
-      <para><screen>shared_buffers = 3200MB</screen></para>
-      <para>Determines how much memory should be allocated exclusively for PostgreSQL caching. This
-      setting controls the size of the kernel shared memory which should be reserved for PostgreSQL.
-      Should be set to around 40% of total memory dedicated for PostgreSQL.</para>
-      <para><screen>work_mem = 20MB</screen></para>
-      <para>Determines the amount of memory used for internal sort and hash operations. This setting
-      is per connection, per query so a lot of memory may be consumed if raising this too high.
-      Setting this value correctly is essential for DHIS2 aggregation performance.</para>
-      <para><screen>maintenance_work_mem = 512MB</screen></para>
-      <para>Determines the amount of memory PostgreSQL can use for maintenance operations such as
-        creating indexes, running vacuum, adding foreign keys. Incresing this value might improve
-        performance of index creation during the analytics generation processes.</para>
-      <para><screen>effective_cache_size = 8000MB</screen></para>
-      <para>An estimate of how much memory is available for disk caching by the operating system
-        (not an allocation) and isdb.no used by PostgreSQL to determine whether a query plan will
-        fit into memory or not. Setting it to a higher value than what is really available will
-        result in poor performance. This value should be inclusive of the shared_buffers setting.
-        PostgreSQL has two layers of caching: The first layer uses the kernel shared memory and is
-        controlled by the shared_buffers setting. PostgreSQL delegates the second layer to the
-        operating system disk cache and the size of available memory can be given with the
-        effective_cache_size setting.</para>
-      <para><screen>checkpoint_completion_target = 0.8</screen></para>
-      <para>Sets the memory used for buffering during the WAL write process. Increasing this value might improve throughput in write-heavy systems.</para>
-      <para><screen>synchronous_commit = off</screen></para>
-      <para>Specifies whether transaction commits will wait for WAL records to be written to the disk before returning to the client or not. Setting this to off will improve performance considerably. It also implies that there is a slight delay between the transaction is reported successful to the client and it actually being safe, but the database state cannot be corrupted and this is a good alternative for performance-intensive and write-heavy systems like DHIS2.</para>
-      <para><screen>wal_writer_delay = 10000ms</screen></para>
-      <para>Specifies the delay between WAL write operations. Setting this to a high value will improve performance on write-heavy systems since potentially many write operations can be executed within a single flush to disk.</para>
-      <para>Restart PostgreSQL by invoking <code>sudo /etc/init.d/postgresql restart</code></para>
     </section>
     <section xml:id="install_database_configuration">
       <title>Database configuration</title>
@@ -216,75 +176,6 @@ encryption.password = xxxx</screen></para>
         access. To do this invoke the following command which ensures that only the dhis user which
         owns the file is allowed to read it:</para>
       <screen>chmod 0600 dhis.conf</screen>
-    </section>
-    <section xml:id="install_file_store_configuration">
-      <title>File store configuration (optional)</title>
-      <para>DHIS2 is capable of capturing and storing files. By default files will be stored on the
-        file system of the server which runs DHIS2 in a <emphasis role="italic">files</emphasis>
-        directory under the <emphasis role="italic">DHIS2_HOME</emphasis> external directory
-        location.</para>
-      <para>You can also configure DHIS2 to store files on cloud-based storage providers.
-        Currently, AWS S3 is the only supported provider. To enable cloud-based storage you must
-        define the following addtional properties in your <emphasis role="italic"
-          >dhis.conf</emphasis> file:</para>
-      <screen># File store provider. Currently 'filesystem' and 'aws-s3' are supported.
-filestore.provider = filesystem
-
-# Directory / bucket name. Refers to subdirectory in external directory on file system and bucket on AWS S3.
-filestore.container = files
-
-# The following configuration is applicable only on non-filesystem providers (AWS S3)
-
-# Datacenter location. Not required but recommended for performance reasons.
-filestore.location = eu-west-1
-
-# Public identity / username
-filestore.identity = xxxx
-
-# Secret password (sensitive)
-filestore.secret = xxxx</screen>
-      <para>This configuration is an example reflecting the defaults and should be changed to fit
-        your needs. In other words, you can omit it entirely if you plan to use the default values.
-        If you want to use an external provider the last block of properties need to be defined, as
-        well as the <emphasis role="italic">provider</emphasis> property being set to a supported
-        provider (currently only AWS S3).</para>
-      <para>For a production system the initial setup of the file store should be carefully
-        considered as moving files across storage providers while keeping the integrity of the
-        database references could be complex. Keep in mind that the contents of the file store might
-        contain both sensitive and integral information and protecting access to the folder as well
-        as making sure a backup plan is in place is recommended on a production
-        implementation.</para>
-      <para><emphasis role="italic">A note on external provider support: AWS S3 is the only
-          supported provider at the moment but more providers are likely to be added, such as Google
-          Cloud Store and Rackspace Cloud Files. Let the developers know if you have inquiries about
-          adding support for more providers.</emphasis></para>
-    </section>
-    <section xml:id="install_google_service_account_configuration">
-      <title>Google service account configuration (optional)</title>
-      <para>DHIS2 can connect to various Google service APIs. For instance, the DHIS2 GIS
-        component can utilize the Google Earth Engine API to load map layers. In order to provide
-        API access tokens you must set up a Google service account and create a private key:</para>
-      <para>
-        <itemizedlist>
-          <listitem>
-            <para>Create a Google service account. Please consult the <link
-                xl:href="https://developers.google.com/identity/protocols/OAuth2ServiceAccount#overview"
-              >Google identify platform</link> documentation.</para>
-          </listitem>
-          <listitem>
-            <para>Visit the <link xl:href="https://console.cloud.google.com">Google cloud
-                console</link> and go to API Manager > Credentials > Create credentials > Service
-              account key. Select your service account and JSON as key type and click Create.</para>
-          </listitem>
-          <listitem>
-            <para>Rename the JSON key to <emphasis>dhis-google-auth.json</emphasis>.</para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>After downloading the key file, put the <emphasis>dhis-google-auth.json</emphasis> file
-        in the DHIS2_HOME directory (the same location as the <emphasis>dhis.conf</emphasis> file).
-        As an example this location could
-        be:<screen>/home/dhis/config/dhis-google-auth.json</screen></para>
     </section>
     <section xml:id="install_java_installation">
       <title>Java installation</title>
@@ -353,47 +244,144 @@ export DHIS2_HOME=&apos;/home/dhis/config&apos;</screen></para>
         the following URL:</para>
       <screen>http://localhost:8080</screen>
     </section>
-    <section xml:id="install_starting_tomcat_boot_time">
-      <title>Starting Tomcat at boot-time</title>
-      <para>In certain situations a server might reboot unexpectedly. It is hence preferable to have
-        Tomcat start automatically when the server starts. To achieve that the first step is to
-        create init scripts. Create a new file called <code>tomcat</code> and paste the below
-        content into it (adjust the HOME variable to your environment):</para>
-      <screen>#!/bin/sh
-#Tomcat init script
-
-HOME=/home/dhis/tomcat/bin
-
-case $1 in
-start)
-        sh ${HOME}/startup.sh
-        ;;
-stop)
-        sh ${HOME}/shutdown.sh
-        ;;
-restart)
-        sh ${HOME}/shutdown.sh
-        sleep 5
-        sh ${HOME}/startup.sh
-        ;;
-esac
-exit 0</screen>
-      <para>Move the script to the init script directory and make them executable by
-        invoking:</para>
-      <screen>sudo mv tomcat /etc/init.d
-sudo chmod +x /etc/init.d/tomcat</screen>
-      <para>Next make sure the tomcat init script will be invoked during system startup and
-        shutdown:</para>
-      <screen>sudo /usr/sbin/update-rc.d -f tomcat defaults 81</screen>
-      <para>Tomcat will now be started at system startup and stopped at system shutdown. If you
-        later need to revert this you can replace <code>defaults</code> with <code>remove</code> and
-        invoke the above commands again.</para>
-    </section>
   </section>
   <section xml:id="install_advanced_server_setup">
     <title>Advanced server setup</title>
-    <para>This section describes optional, advanced aspects of the DHIS 2 installation which enhance
-      the system capability and performance.</para>
+    <para>This section describes optional, advanced aspects of the DHIS 2 installation which will
+      enhance the system capabilities and performance.</para>
+    <section xml:id="install_postgresql_performance_tuning">
+      <title>PostgreSQL performance tuning</title>
+      <para>Tuning PostgreSQL is necessary to achieve a high-performing system but is optional in
+        terms of getting DHIS2 to run. PostgreSQL is configured and tuned through the <emphasis
+          role="italic">postgresql.conf</emphasis> file which can be edited like this:</para>
+      <para>
+        <screen>sudo nano /etc/postgresql/9.4/main/postgresql.conf</screen>
+      </para>
+      <para>and set the following properties:</para>
+      <para>
+        <screen>max_connections = 200</screen>
+      </para>
+      <para>Determines maximum number of connections which PostgreSQL will allow.</para>
+      <para>
+        <screen>shared_buffers = 3200MB</screen>
+      </para>
+      <para>Determines how much memory should be allocated exclusively for PostgreSQL caching. This
+        setting controls the size of the kernel shared memory which should be reserved for
+        PostgreSQL. Should be set to around 40% of total memory dedicated for PostgreSQL.</para>
+      <para>
+        <screen>work_mem = 20MB</screen>
+      </para>
+      <para>Determines the amount of memory used for internal sort and hash operations. This setting
+        is per connection, per query so a lot of memory may be consumed if raising this too high.
+        Setting this value correctly is essential for DHIS2 aggregation performance.</para>
+      <para>
+        <screen>maintenance_work_mem = 512MB</screen>
+      </para>
+      <para>Determines the amount of memory PostgreSQL can use for maintenance operations such as
+        creating indexes, running vacuum, adding foreign keys. Incresing this value might improve
+        performance of index creation during the analytics generation processes.</para>
+      <para>
+        <screen>effective_cache_size = 8000MB</screen>
+      </para>
+      <para>An estimate of how much memory is available for disk caching by the operating system
+        (not an allocation) and isdb.no used by PostgreSQL to determine whether a query plan will
+        fit into memory or not. Setting it to a higher value than what is really available will
+        result in poor performance. This value should be inclusive of the shared_buffers setting.
+        PostgreSQL has two layers of caching: The first layer uses the kernel shared memory and is
+        controlled by the shared_buffers setting. PostgreSQL delegates the second layer to the
+        operating system disk cache and the size of available memory can be given with the
+        effective_cache_size setting.</para>
+      <para>
+        <screen>checkpoint_completion_target = 0.8</screen>
+      </para>
+      <para>Sets the memory used for buffering during the WAL write process. Increasing this value
+        might improve throughput in write-heavy systems.</para>
+      <para>
+        <screen>synchronous_commit = off</screen>
+      </para>
+      <para>Specifies whether transaction commits will wait for WAL records to be written to the
+        disk before returning to the client or not. Setting this to off will improve performance
+        considerably. It also implies that there is a slight delay between the transaction is
+        reported successful to the client and it actually being safe, but the database state cannot
+        be corrupted and this is a good alternative for performance-intensive and write-heavy
+        systems like DHIS2.</para>
+      <para>
+        <screen>wal_writer_delay = 10000ms</screen>
+      </para>
+      <para>Specifies the delay between WAL write operations. Setting this to a high value will
+        improve performance on write-heavy systems since potentially many write operations can be
+        executed within a single flush to disk.</para>
+      <para>Restart PostgreSQL by invoking <code>sudo /etc/init.d/postgresql restart</code></para>
+    </section>
+    <section xml:id="install_file_store_configuration">
+      <title>File store configuration</title>
+      <para>DHIS2 is capable of capturing and storing files. By default files will be stored on the
+        file system of the server which runs DHIS2 in a <emphasis role="italic">files</emphasis>
+        directory under the <emphasis role="italic">DHIS2_HOME</emphasis> external directory
+        location.</para>
+      <para>You can also configure DHIS2 to store files on cloud-based storage providers. Currently,
+        AWS S3 is the only supported provider. To enable cloud-based storage you must define the
+        following addtional properties in your <emphasis role="italic">dhis.conf</emphasis>
+        file:</para>
+      <screen># File store provider. Currently 'filesystem' and 'aws-s3' are supported.
+filestore.provider = filesystem
+
+# Directory / bucket name. Refers to subdirectory in external directory on file system and bucket on AWS S3.
+filestore.container = files
+
+# The following configuration is applicable only on non-filesystem providers (AWS S3)
+
+# Datacenter location. Not required but recommended for performance reasons.
+filestore.location = eu-west-1
+
+# Public identity / username
+filestore.identity = xxxx
+
+# Secret password (sensitive)
+filestore.secret = xxxx</screen>
+      <para>This configuration is an example reflecting the defaults and should be changed to fit
+        your needs. In other words, you can omit it entirely if you plan to use the default values.
+        If you want to use an external provider the last block of properties need to be defined, as
+        well as the <emphasis role="italic">provider</emphasis> property being set to a supported
+        provider (currently only AWS S3).</para>
+      <para>For a production system the initial setup of the file store should be carefully
+        considered as moving files across storage providers while keeping the integrity of the
+        database references could be complex. Keep in mind that the contents of the file store might
+        contain both sensitive and integral information and protecting access to the folder as well
+        as making sure a backup plan is in place is recommended on a production
+        implementation.</para>
+      <para><emphasis role="italic">A note on external provider support: AWS S3 is the only
+          supported provider at the moment but more providers are likely to be added, such as Google
+          Cloud Store and Rackspace Cloud Files. Let the developers know if you have inquiries about
+          adding support for more providers.</emphasis></para>
+    </section>
+    <section xml:id="install_google_service_account_configuration">
+      <title>Google service account configuration</title>
+      <para>DHIS2 can connect to various Google service APIs. For instance, the DHIS2 GIS component
+        can utilize the Google Earth Engine API to load map layers. In order to provide API access
+        tokens you must set up a Google service account and create a private key:</para>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>Create a Google service account. Please consult the <link
+                xl:href="https://developers.google.com/identity/protocols/OAuth2ServiceAccount#overview"
+                >Google identify platform</link> documentation.</para>
+          </listitem>
+          <listitem>
+            <para>Visit the <link xl:href="https://console.cloud.google.com">Google cloud
+                console</link> and go to API Manager > Credentials > Create credentials > Service
+              account key. Select your service account and JSON as key type and click Create.</para>
+          </listitem>
+          <listitem>
+            <para>Rename the JSON key to <emphasis>dhis-google-auth.json</emphasis>.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>After downloading the key file, put the <emphasis>dhis-google-auth.json</emphasis> file
+        in the DHIS2_HOME directory (the same location as the <emphasis>dhis.conf</emphasis> file).
+        As an example this location could
+        be:<screen>/home/dhis/config/dhis-google-auth.json</screen></para>
+    </section>
     <section xml:id="install_read_replica_configuration">
       <title>Read replica database configuration</title>
       <para>DHIS 2 allows for utilizing read only replicas of the master database (the main DHIS 2
@@ -433,6 +421,42 @@ read3.connection.url = jdbc:postgresql://127.0.0.13/dbread3</screen></para>
       <para>Note that you must restart your servlet container for the changes to take effect. DHIS 2
         will automatically distribute the load across the read replicas. The ordering of replicas
         has no significance.</para>
+    </section>
+    <section xml:id="install_starting_tomcat_boot_time">
+      <title>Starting Tomcat at boot time</title>
+      <para>In certain situations a server might reboot unexpectedly. It is hence preferable to have
+        Tomcat start automatically when the server starts. To achieve that the first step is to
+        create init scripts. Create a new file called <code>tomcat</code> and paste the below
+        content into it (adjust the HOME variable to your environment):</para>
+      <screen>#!/bin/sh
+#Tomcat init script
+
+HOME=/home/dhis/tomcat/bin
+
+case $1 in
+start)
+        sh ${HOME}/startup.sh
+        ;;
+stop)
+        sh ${HOME}/shutdown.sh
+        ;;
+restart)
+        sh ${HOME}/shutdown.sh
+        sleep 5
+        sh ${HOME}/startup.sh
+        ;;
+esac
+exit 0</screen>
+      <para>Move the script to the init script directory and make them executable by
+        invoking:</para>
+      <screen>sudo mv tomcat /etc/init.d
+sudo chmod +x /etc/init.d/tomcat</screen>
+      <para>Next make sure the tomcat init script will be invoked during system startup and
+        shutdown:</para>
+      <screen>sudo /usr/sbin/update-rc.d -f tomcat defaults 81</screen>
+      <para>Tomcat will now be started at system startup and stopped at system shutdown. If you
+        later need to revert this you can replace <code>defaults</code> with <code>remove</code> and
+        invoke the above commands again.</para>
     </section>
   </section>
   <section xml:id="install_reverse_proxy_configuration">
