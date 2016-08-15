@@ -59,7 +59,7 @@
     </itemizedlist>
   </section>
   <section>
-    <title>Server setup</title>
+    <title>Basic server setup</title>
     <para>This section describes how to set up a server instance of DHIS2 on Ubuntu 14.04 64 bit
       with PostgreSQL as database system and Tomcat as Servlet container. This guide is not meant to
       be a step-by-step guide per se, but rather to serve as a reference to how DHIS2 can be
@@ -162,17 +162,15 @@ sudo locale-gen nb_NO.UTF-8</screen>
         creating indexes, running vacuum, adding foreign keys. Incresing this value might improve
         performance of index creation during the analytics generation processes.</para>
       <para><screen>effective_cache_size = 8000MB</screen></para>
-      <para>An estimate of how much memory is available for disk caching by the operating system (not
-      an allocation) and is used by PostgreSQL to determine whether a query plan will fit into
-      memory or not. Setting it to a higher value than what is really available will result in poor
-      performance. This value should be inclusive of the shared_buffers setting. PostgreSQL has two
-      layers of caching: The first layer uses the kernel shared memory and is controlled by the
-      shared_buffers setting. PostgreSQL delegates the second layer to the operating system disk
-      cache and the size of available memory can be given with the effective_cache_size
-      setting.</para>
+      <para>An estimate of how much memory is available for disk caching by the operating system
+        (not an allocation) and isdb.no used by PostgreSQL to determine whether a query plan will
+        fit into memory or not. Setting it to a higher value than what is really available will
+        result in poor performance. This value should be inclusive of the shared_buffers setting.
+        PostgreSQL has two layers of caching: The first layer uses the kernel shared memory and is
+        controlled by the shared_buffers setting. PostgreSQL delegates the second layer to the
+        operating system disk cache and the size of available memory can be given with the
+        effective_cache_size setting.</para>
       <para><screen>checkpoint_completion_target = 0.8</screen></para>
-      <para>Determines the percentage of segment completion before a checkpoint occurs. Setting this to a high value will thus spread the writes out and lower the average write overhead.</para>
-      <para><screen>wal_buffers = 16MB</screen></para>
       <para>Sets the memory used for buffering during the WAL write process. Increasing this value might improve throughput in write-heavy systems.</para>
       <para><screen>synchronous_commit = off</screen></para>
       <para>Specifies whether transaction commits will wait for WAL records to be written to the disk before returning to the client or not. Setting this to off will improve performance considerably. It also implies that there is a slight delay between the transaction is reported successful to the client and it actually being safe, but the database state cannot be corrupted and this is a good alternative for performance-intensive and write-heavy systems like DHIS2.</para>
@@ -193,7 +191,7 @@ connection.dialect = org.hibernate.dialect.PostgreSQLDialect
 # JDBC driver class
 connection.driver_class = org.postgresql.Driver
 
-# JDBC driver connection URL
+# Database connection URL
 connection.url = jdbc:postgresql:dhis2
 
 # Database username
@@ -390,6 +388,43 @@ sudo chmod +x /etc/init.d/tomcat</screen>
       <para>Tomcat will now be started at system startup and stopped at system shutdown. If you
         later need to revert this you can replace <code>defaults</code> with <code>remove</code> and
         invoke the above commands again.</para>
+    </section>
+  </section>
+  <section>
+    <title>Advanced server setup</title>
+    <para>This section describes optional, advanced aspects of the DHIS 2 installation which enables
+      the system capability and performance.</para>
+    <section>
+      <title>Read replica configuration</title>
+      <para>DHIS 2 allows for utilizing read only replicas of the database. The purpose of this is
+        to enhance the performance of database read queries and scale out beyond the capacity
+        constraints of a single database. Read-heavy functionality such as analytics queries and
+        event queries will benefit from this.</para>
+      <para>This setup requires that you have created one or more replicated instances of the main
+        DHIS 2 database. PostgreSQL achieves this through a concept referred to as
+          <emphasis>streaming replication</emphasis>. Configuring read replicas for PostgreSQL is
+        not covered in this guide.</para>
+      <para>Read replicas can be defined in the <emphasis>dhis.conf</emphasis> configuration file.
+        You can specify up to 5 read replicas per DHIS 2 instance. Each read replica is denoted with
+        a number going from 1 to 5. The JDBC connection URL must be defined. The username and
+        password can be specified, if not, the username and password for the main database instance
+        will be used.</para>
+      <para>The configuration for read replicas look like the below. Each replica is specified with
+        the configuratio key <emphasis>readN</emphasis> prefix, where N refers to the replica
+        number.<screen># Read replica 1 config
+
+# Database connection URL, username and password
+read1.connection.url = jdbc:postgresql://127.0.0.11/dhis2read1
+read1.connection.username = dhis
+read1.connection.password = dhis
+
+# Read replica 2 config
+
+# Database connection URL, username and password
+read2.connection.url = jdbc:postgresql://127.0.0.12/dhis2read2
+read2.connection.username = dhis
+read2.connection.password = dhis</screen></para>
+      <para>Note that you must your servlet container for the changes to take effect.</para>
     </section>
   </section>
   <section>
@@ -911,7 +946,7 @@ connection.dialect = org.hibernate.dialect.PostgreSQLDialect
 # JDBC driver class
 connection.driver_class = org.postgresql.Driver
 
-# JDBC driver connection URL
+# Database connection URL
 connection.url = jdbc:postgresql:dhis2
 
 # Database username
