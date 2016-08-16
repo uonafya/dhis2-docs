@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8'?>
+ <chapter version="5.0"
+  xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+  xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+  xmlns:db="http://docbook.org/ns/docbook" xml:id="gis_creating">
+  <title>Setting up GIS</title>
+  <section xml:id="gis_creating_context">
+    <title>Context</title>
+    <para>Setting up the GIS simply means storing coordinates for the organisation units you want to
+      show on the map in the database. Coordinates are often distributed in proprietary formats and
+      will need to be converted to a format which DHIS2 understands. ESRI shapefiles are the most
+      common geospatial vector data format for desktop applications. You might find shapefiles for
+      your country <link xl:href="http://www.diva-gis.org/gdata">here</link> or in many other
+      geospatial data repositories on the web. Some amount of work needs to be done in order to use
+      these coordinates in DHIS2 GIS, namely transforming the data into a suitable format and
+      ensuring the name which are contained in the geospatial data match exactly with the names of
+      the organization units which they should be matched to. </para>
+    <para>If you go to the organisation unit module and edit one of the units, you can see a text
+      field called Coordinates. Here you may fill in its coordinates directly (geojson format) which
+      is useful if you just want to update a couple of units.</para>
+    <para>An example point/facility coordinate:</para>
+    <para>
+      <programlisting><userinput>[29.341,-11.154]</userinput></programlisting>
+    </para>
+    <para>An example polygon/area coordinates string:</para>
+    <para>
+      <programlisting><userinput>[[[[29.343,-11.154],[28.329,-11.342],[28.481,-10.239],[29.833,-10.412]]]]</userinput></programlisting>
+    </para>
+    <para>However, if you are going to e.g. add coordinates for all units at a certain level you
+      don&apos;t want to do that manually. This is where the automatic GML import comes into play
+      and the following section explains the preferred way of using it.<important>
+        <para>The only co-ordinate reference system supported by DHIS2 is EPSG:4326, also known as
+          geographic longitude/latitude. Coordinates must be stored with the longitude (east/west
+          position) proceeding the latitude (north/south position). If your vector data is in a
+          different CRS than EPSG 4326, you will need to re-project the data first before importing
+          into DHIS2. </para>
+      </important></para>
+  </section>
+  <section xml:id="gis_creating_setup">
+    <title>Importing coordinates</title>
+    <para>Step 1 - Simplify/generalize your geographical data</para>
+    <para>The boundaries in geographical data files are usually very accurate, too much so for the
+      needs of a web-based GIS. This usually does not affect the performance when using GIS files on
+      a local system, but it is usually necessary to optimize the geographical data for the
+      web-based GIS system of DHIS2. All geographical data needs to be downloaded from the server
+      and rendered in a browser, so if the data is overly complex, the performance of the DHIS2 GIS
+      will be negatively impacted. This optimization process can be described as follows:</para>
+    <para>
+      <simplelist>
+        <member>Coordinates: The number of significant decimal digits (e.g. 23.02937874993774)
+          should be shortened to fewer digits (e.g. 23.03). Although this will result in some
+          inaccuracies on the map, given the usual scale at which maps in DHIS2 are produced (&gt;
+          1:50,000), the loss of precision should not be noticeable. Normally, no more than four
+          significant digits after the decimal point should be necessary.</member>
+        <member>Polygons: In addition to shortening the number of significant digits, the actual
+          number of points should also be reduced to an optimal level. Finding this optimal level
+          may take a bit of experimentation. Decreasing the precision of the points as well as the
+          number of points through generalization, will lead to degradation of the polygon. However,
+          after a bit of experimentation, an optimal level of generalization can be found, where the
+          accuracy of the polygon is visually acceptable, and the performance of the GIS is optimal.
+        </member>
+      </simplelist>
+    </para>
+    <para>For polygons, we need to make the boundary lines less detailed by removing some of the
+      line points. Make a backup of your shapefiles before you start. One possible method is the use
+      of <link xl:href="http://www.mapshaper.org/">MapShaper</link> which is an online tool which
+      can be used to generalize geographical data. To use MapShaper, simply upload your shapefile to
+      the site. Then, at the center bottom you see a slider that starts at 0%. It is usually
+      acceptable to drag it up to about 80%. In the left menu you can check &quot;show original
+      lines&quot; to compare the result and you may want to give a different simplification method a
+      try. When you are happy with the result, click &quot;export&quot; in the top right corner.
+      Then check the first of the four options called &quot;Shapefile - polygons&quot;, click
+      &quot;create&quot; and wait for the download buttons to appear. Now, download the two files to
+      your local computer and overwrite the existing ones. Move on to the next step with your new
+      simplified shapefile. </para>
+    <para>Step 2 - Convert the shapefile to GML</para>
+    <para> The recommended tool for geographical format conversions is called &quot;ogr2ogr&quot;.
+      This should be available for most Linux distributions <command>sudo apt-get install
+        gdal-bin</command>. For Windows, go to <link xl:href="http://fwtools.maptools.org/"
+        >http://fwtools.maptools.org/ </link>and download &quot;FWTools&quot;, install it and open
+      up the FWTools command shell. During the format conversion we also want to ensure that the
+      output has the correct coordinate projection (called EPSG:4326 with geographic longitude and
+      latitude). For a more detailed reference of geographic coordinates, please refer to this <link
+        xl:href="http://www.epsg-registry.org/">site</link>. If you have already reprojected the
+      geographic data to the geographic latitude/longitude (EPSG:4326) system, there is no need to
+      explicitly define the output coordinate system, assuming that <command>ogr2ogr</command> can
+      determine the input spatial reference system. Note that most shapefiles are using the
+      EPSG:4326 system. You can determine the spatial reference system by executing the following
+      command.</para>
+    <para>
+      <programlisting><userinput>ogrinfo -al -so filename.shp</userinput></programlisting>
+    </para>
+    <para>Assuming that the projection is reported to be EPSG:27700 by <command>ogrinfo</command>,
+      we can transform it to EPSG:4326 by executing the following
+      command.<programlisting><userinput>ogr2ogr -s_srs EPSG:27700 -t_srs EPSG:4326 -f GML filename.gml filename.shp </userinput></programlisting></para>
+    <para>If the geographic data is already in EPSG:4326, you can simply transform the shapefile to
+      GML by executing the following command. </para>
+    <para>
+      <programlisting><userinput>ogr2ogr -f GML filename.gml filename.shp</userinput></programlisting>
+    </para>
+    <para> You will find the created GML file in the same folder as the shapefile. </para>
+    <para>Step 3 - Prepare the GML file</para>
+    <para>Unfortunately, the GML file is not ready for importation yet. Open it in a robust text
+      editor like Geany (Linux) or Notepad++ (Windows). GML is an XML based format which means that
+      you will recognize the regular XML tag hierarchy. In the GML file an organisation unit is
+      represented as a &lt;gml:featureMember&gt;. Inside the feature members we usually find a lot
+      of attributes, but we are just going to import their coordinates.</para>
+    <para>In order to import geospatial data from the feature members of the GML input, DHIS2 must
+      match each of them with an organisation unit in its database. The feature member element must,
+      in other words, contain a reference to its corresponding organisation unit. The reference
+      itself must be one of three possible DHIS2 identifiers: <emphasis role="bold">uid</emphasis>,
+        <emphasis role="bold">code</emphasis> or <emphasis role="bold">name</emphasis>. The
+      identifier of choice must be provided as a property for each feature member element. The
+      importer will look for a property with the local name of either <emphasis role="italic"
+        >Uid</emphasis>, <emphasis role="italic">Code</emphasis> or <emphasis role="italic"
+        >Name</emphasis>, e.g. &quot;ogr:Name&quot; or &quot;anyPrefix:Code&quot;.</para>
+    <para>If your feature members already contain a property of the identifier you wish to use (such
+      as the name of an area) you can use search and replace in a text editor to rename these
+      elements to a name DHIS2 will recognize (see the below table). This is typically a workflow
+      which is applicable when using the name as the identifier (the source shapefile or even GML
+      will usually contain the name for each area it defines).</para>
+    <para>
+      <table frame="all">
+        <title>Organisation unit identifiers supported for GML import</title>
+        <tgroup cols="4">
+          <colspec colname="newCol1"/>
+          <colspec colname="c1"/>
+          <colspec colname="c2"/>
+          <colspec colname="c4"/>
+          <thead>
+            <row>
+              <entry>Matching priority</entry>
+              <entry>Identifier</entry>
+              <entry>Valid spellings</entry>
+              <entry>Guaranteed unique</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>1</entry>
+              <entry>Uid</entry>
+              <entry>uid, Uid, UID</entry>
+              <entry>Yes</entry>
+            </row>
+            <row>
+              <entry>2</entry>
+              <entry>Code</entry>
+              <entry>code, Code, CODE</entry>
+              <entry>No</entry>
+            </row>
+            <row>
+              <entry>3</entry>
+              <entry>Name</entry>
+              <entry>name, Name, NAME</entry>
+              <entry>No</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </para>
+    <para>In the case of renaming properties one would usually find a tag named something like
+      &quot;ogr:DISTRICT_NAME&quot;, &quot;ogr:NAME_1&quot; and rename it to &quot;ogr:Name&quot;.
+      If using the <emphasis role="italic">code</emphasis> or <emphasis role="italic">uid</emphasis>
+      identifiers on the other hand, looking up the correct values in the DHIS2 database and going
+      through the GML file, adding the properties for each corresponding feature member might be
+      necessary. In any of the cases it is important to realize that the identifier used must
+        <emphasis role="bold">uniquely</emphasis> identify an organisation unit (e.g. if there are
+      two organisation units in the database of the same name or code, these cannot be matched
+      properly on either). As <emphasis role="italic">uid</emphasis> is the only
+      guaranteed-to-be-unque identifier it is the most robust choice. However, as matching on name
+      is usually easier (given that the name is already part of your data), a viable approach to
+      solving uniqueness conflicts can be to match any non-uniquely named organisation units on a
+      different identifier (uid, preferrably) and the rest on their names.</para>
+    <para>As can be seen in the above table there is a matching priority, meaning is any two or more
+      identifiers are provided for the same feature member, matching will be performed on the
+      highest priority identifier. Note also the valid properties which can be used in you GML. The
+      namespace prefix is not important as only the local name is used.</para>
+    <para>A common pitfall of performing preparation of the GML files is syntax- or element naming
+      errors. Therefore please make sure that all properties of the GML file are started and
+      terminated with correctly corresponding tags. Also make sure the properties follow either of
+      the given valid spellings of the property name. The identifying properties are supposed to
+      look like e.g. &lt;ogr:Name&gt;Moyamba District&lt;/ogr:Name&gt;,
+      &lt;somePrefix:uid&gt;x7uuia898nJ&lt;/somePrefix:uid&gt; or &lt;CODE&gt;OU_12345&lt;/CODE&gt;.
+      Another common error is not making sure the identifier matches exactly, especially when using
+      the <emphasis role="italic">name</emphasis> property. All matches are performed on exact
+      values, meaning that &quot;Moyamba&quot; in a source GML file would not be matched against
+      &quot;Moyamba District&quot; in the database.</para>
+    <para>Have a brief look at the identifiers and compare them to the corresponding values in the
+      database. If they seem to match fairly good, it is about time to do a preview in the
+      import-export module. </para>
+    <para> Go to Services -&gt; Import-Export, select &quot;Preview&quot;, select the GML file and
+      click &quot;Import&quot;. Look for new/updated organisation units. Our intention is to add
+      coordinates to already existing organisation units in the database, so we want as many updates
+      as possible and 0 new. Those listed as new will be created as root units and mess up the
+      organisation unit trees in DHIS2. If any listed as new, click the number and the organisation
+      units in question will appear in the list below. If there are any slight misspellings compared
+      to the organisation unit names in the database - fix them and do the preview again. Otherwise,
+      click the &quot;discard all&quot; button below the list and then the &quot;Import all&quot;
+      button above the list. </para>
+    <para> If the import process completes successfully, you should now be able to utilize the
+      geographical data in the DHIS2 GIS. If not, check the log for hints and look for common errors
+      such as: </para>
+    <para>- Name duplicates in the GML file. The name column in the database is unique and does not
+      accept two organisation units with the same name.</para>
+    <para>- The &quot;shortname&quot; column in the organisationunit table in your database has a
+      too small varchar definition. Increase it to 100.</para>
+    <para>- Special name characters in the GML file. Be sure to convert these to appropriate XML
+      equivalents or escape sequences.</para>
+    <para>- Wrongly formatted input GML, non-matching tags</para>
+  </section>
+</chapter>

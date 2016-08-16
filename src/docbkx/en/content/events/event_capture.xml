@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+      <chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Using Event Capture</title>
+  <section>
+    <title>Overview</title>
+    <para>The event capture app allows users to register events that occurred at a particular time
+      and place. An event can happen at any given point in time. This stands in contrast to routine
+      data, which can be captured for predefined, regular intervals. Events in DHIS2 are linked to
+      a program. Hence, the event capture app lets you select the organisation unit and program and
+      specifiy a date when a event (also known as case or record) happened, before entering
+      information for the event.</para>
+  </section>
+  <section>
+    <title>Capturing events</title>
+    <para>To capture an event, the first step is to select an organisation unit from the left-side
+      organisation unit tree. After selecting an org unit, the list of programs will display the
+      programs which have been associated with the selected organisation unit and which have been
+      given access to the current user through user roles. Events are displayed in a tabular fashion
+      as shown in the figure below. As seen in the screenshot, each row corresponds to an event. The
+      columns display information about the events, more specifically they display data for data
+      elements which are part of the program.</para>
+    <screenshot>
+      <title>Example event list</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/event_capture/event_list.png" format="PNG"
+            width="70%" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>All event related operations are accessible from the screen shown above. The operations
+      currently available are: <orderedlist>
+        <listitem>
+          <para><emphasis role="bold">Capturing data:</emphasis> this available by clicking the
+            "Register event" button.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Showing/hiding colums: </emphasis>this is to allow users
+            decide which columns to show/hide in the table of events. This feature is especially
+            important when we have a long list of data elements assigned to a program stage.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Editing:</emphasis> the rows in the table are clickable,
+            clicking them shows three menus - <emphasis role="bold">Edit</emphasis>, <emphasis role="bold">Edit in grid</emphasis> and <emphasis role="bold">Remove.</emphasis> The
+            edit function takes you to a new page where information for the selected event can be
+            updated. The edit in grid function allows you to edit the selected event within the
+            table but only those columns (data elements) visible in the grid. If more columns are
+            required it is possible to add using the "Show/Hide columns" button to speficy which
+            columns should be displayed in the list.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Sorting:</emphasis> this can be done by clicking the sorting
+            icon of each column header. A red sorting icon implies the current sorting column.
+            However, the sorting functionality works only within the page displayed. Currently, it
+            is not possible to do sorting from serverside.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Filtering:</emphasis> this is done by clicking the small
+            search icon shown to the right of each column header. Clicking them provides an input
+            field to type a filtering criteria. The system starts applying the filter the moment a
+            user starts to type. During filtering it is possible to define start and end dates for
+            date type data elements and lower and upper limits for number types. Server side
+            filtering is not-support at the moment.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Paging:</emphasis> The list of events can be paged by using
+            the paging section at the bootom of the list. Paging allows you to quickly move between
+            pages of events and to change the page size, i.e. the number of events per page.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Printing:</emphasis> The "Print list" button allows to print
+            the list of events. This button also changes its label accordingly - for example "Print
+            details" and "Print form" - and does the printing functionality.</para>
+        </listitem>
+      </orderedlist></para>
+    <para>The event capture app works offline, in the sense that if Internet connectivity drops
+      during your working session, you can continue to capture events which will be stored locally
+      in your web browser (client). When connectivity has returned the system will ask to upload
+      locally stored data, and sends it to the server where it is stored. Note that if the Web
+      browser is closed while in offline-mode, it is not possible to reopen a new browser window and
+      continue the working session; however the data will still be saved locally and can be uploaded
+      to the server the next time the machine is online and the user has logged into the
+      server.</para>
+    <para>If the selected program's program stage is configured to capture GPS coordinate, the app
+      provides two ways of capturing coordinates. The first is two simple text boxes so that a user
+      can fillin proper latitude and longitude values. The second option is using google map, where
+      it is possible to point and click for coordinates. The google map option also displays
+      polygons and points that are defined for organisation units.</para>
+    <para>Another feature availble in the Event capture app is skip-logic and validation
+      functionality. Using program rules engine it is possible to put some rules for a program and
+      take some actions when the rules are met. Currently supported actions are skipping/hiding a
+      dataelement or an entire section, display warning for some soft-validations or display error
+      for hard-validations. For example if a rule defined says "DataElementA > 100" and has action
+      as "show warning" and message "Datalelement A can not have value more than 100". What will
+      happen during data entry is - the moment a value greater than 100 is entered for data element
+      A, the warning message will be dsiplayed. Because, it is just a warning it is still possible
+      to keep the value more than 100. However, if the action is "Show error", the error message
+      will be displayed and the system will also ignore the value - i.e. it is not possible to store
+      a value that viloates the rule.</para>
+    <para>Together with the rules engine expression evaluation, on-the-fly indicator expression
+      evaluation is also supported.  If a program has indicators defined for it and the moment all
+      values related to the indicator expression are filled, the system will calcualte indicator and
+      display the result. A figure below demonstrates this.</para>
+    <screenshot>
+      <title>Example event list</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/event_capture/event_editing.png" format="PNG"
+            width="70%" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+  </section>
+</chapter>

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<chapter version="5.0"
+  xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xl="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:mth="http://www.w3.org/1998/Math/MathML"
+  xmlns:db="http://docbook.org/ns/docbook"
+  xml:id="dev_infrastructure">
+  <title>Development Infrastructure</title>
+  <para></para>
+  <section xml:id="dev_inf_release_process">
+    <title>Release process</title>
+    <para>Checklist for release.<orderedlist>
+        <listitem>
+          <para>In order to tag  the source source code with new release. First temporarily add a dependency to
+            dhis-web in the root pom.xml:<screen>&lt;module>dhis-web&lt;/module></screen>Use the mvn
+            version plugin with:</para>
+          <screen>mvn versions:set
+mvn versions:commit</screen>
+          <para>This will prompt you to enter the version. Remove the dhis-web dependency. Update
+            application cache manifests in the various apps to new version. Commit the changes to
+            trunk.</para>
+        </listitem>
+        <listitem>
+          <para>Push a release branch to Launchad, e.g. with:</para>
+          <screen>bzr push lp:~dhis2-devs-core/dhis2/2.19</screen>
+        </listitem>
+        <listitem>
+          <para>Tag source code with SNAPSHOT release. Remember to add the temporary dhis-web
+            dependency in the root pom.xml. Commit the changes to trunk.</para>
+        </listitem>
+        <listitem>
+          <para>Enable email notifications for release branch.</para>
+        </listitem>
+        <listitem>
+          <para>Create Jenkins build for the release WAR file.</para>
+        </listitem>
+        <listitem>
+          <para>Create Jenkins build for the release Javadocs.</para>
+        </listitem>
+        <listitem>
+          <para>Create automatic copy job for WAR file from Jenkins to dhis2.org.</para>
+        </listitem>
+        <listitem>
+          <para>Create automatic WAR file update of play.dhis2.org/demo and play.dhis2.org/dev
+            systems.</para>
+        </listitem>
+        <listitem>
+          <para>Update the database and WAR file on play.dhis2.org/demo and play.dhis2.org/dev
+            instances. To create a dump in directory format and turn it into a tar
+            file:<screen>pg_dump dhis2 -Fd -U dhis -j 4 -f db.pgdump
+tar zcvf db.tar.gz db.pgdump</screen></para>
+          <para>To unpack the tar file:<screen>tar zxvf db.tar.gz</screen></para>
+          <para>Run reinit-db-instance to make the changes take effect.</para>
+        </listitem>
+        <listitem>
+          <para>Create a new DHIS2 Live package on dhis2.org and place it in download/live
+            directory. Only the WAR file must be updated. An uncompressed Live package is located on
+            the demo server at:<screen>/home/dhis/dhis-live-package</screen></para>
+          <para>Replace the uncompressed WAR file with the new release. Make a compressed Live
+            archive and move to /download/live directory.</para>
+        </listitem>
+        <listitem>
+          <para>Upload sample database to dhis2.org and place it in download/resources
+            directory.</para>
+        </listitem>
+        <listitem>
+          <para>Update download page at www.dhis2.org/downloads with links to new Live package, WAR
+            file, source code branch page and sample data including version.</para>
+        </listitem>
+        <listitem>
+          <para>Add stable WAR file download link in nginx.conf on dhis2.org.</para>
+        </listitem>
+        <listitem>
+          <para>Create a documentation branch and update documentation page at
+            www.dhis2.org/documentation with links to documentation and Javadocs.</para>
+        </listitem>
+        <listitem>
+          <para>Write and send release email.</para>
+        </listitem>
+        </orderedlist></para>
+  </section>
+</chapter>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>DHIS2 Frequently Asked Questions</title>
+  <qandaset>
+    <qandaentry>
+      <question>
+        <para>I have entered data into a data entry form, but I cannot see the data in any reports (pivot tables, charts, maps). Why does data which is entered not show up immediately in my graphs in DHIS2?</para>
+      </question>
+      <answer>
+        <para>Data which is entered into DHIS2 must first be processed with the &quot;analytics&quot;. This means that data is not immediately available in the analytics resources (such as reports, pivot tables, data visualizer, GIS, etc) after it has been entered. If scheduling is active, the analytics process will run automatically at midnight each day. After that, new data which was entered since the last time the analytics process ran, will become visible. </para>
+        <para>You can trigger the analytics process manually by selecting Reports-&gt;Analytics from the main menu and pressing the &quot;Start export&quot; button.  Note, the process may take a significant amount of time depending on the amount of data in your database. </para>
+        <para>Other factors which can affect the visibility of data are: </para>
+        <itemizedlist>
+          <listitem>
+            <para>Data approval: If data has not been approved to a level which corresponds to your users level, the data may not be visible to you. </para>
+          </listitem>
+          <listitem>
+            <para>Sharing of meta-data objects: If certain meta-data objects have not been shared with a user group which you are a member of, the data may not be visible to you. </para>
+          </listitem>
+          <listitem>
+            <para>Caching of analytics: In many cases, server administrators cache analytical objects (such as pivot tables, maps, graphs) on the server. If you have entered data, re-run analytics, and you are still not seeing any (updated) data, be sure that your data is not being cached by the server. </para>
+          </listitem>
+        </itemizedlist>
+      </answer>
+    </qandaentry>
+  </qandaset>
+</chapter>

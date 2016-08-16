@@ -1,0 +1,427 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<chapter version="5.0"
+         xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+          xmlns="http://docbook.org/ns/docbook"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mth="http://www.w3.org/1998/Math/MathML"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title><?oxy_comment_start author="cecilia" timestamp="20160704T115725+0200" comment="2.24:
+Removed empty section
+OAuth2 clients
+" flag="done"?>Settings<?oxy_comment_end?></title>
+  <para>The settings module provides a set of application configuration options. There are two main
+    groups of settings: the <emphasis role="italic">system settings</emphasis> apply to the whole
+    system and all its users while the <emphasis role="italic">user settings</emphasis> apply to the
+    environment of the currently logged in user. The system settings can be accessed from the
+    maintenance menu, settings module. The user settings can be accessed under the profile menu,
+    settings page.</para>
+  <section>
+    <title>System settings</title>
+    <para>The system settings section provides general configuration options and options specifically for appearance and email.</para>
+    <section xml:id="systemGeneralSettings">
+      <title>General settings</title>
+      <itemizedlist>
+        <listitem>
+          <para>Maximum number of analytics records: This number can be increased to provide more
+            records from the analytics. The default is 50,000 and can be increased. Note that
+            setting the maximum number of analytics records to "unlimited" should be used with
+            caution as it might result in very high load on your server.</para>
+        </listitem>
+        <listitem>
+          <para>Infrastructural indicators: This setting defines an indicator group where the member
+            indicators should describe data about the infrastructure of organisation units. This
+            infrastructural data can currently be viewed in the GIS module in the facility
+            information sheet.</para>
+        </listitem>
+        <listitem>
+          <para>Infrastructural data elements: This setting defines a data element group where the member data elements should describe data about the infrastructure of organisation units. Examples of such infrastructural data elements could be population, doctors, beds, Internet connectivity and climate. This infrastructural data can currently be viewed in the GIS module in the facility information sheet.</para>
+        </listitem>
+        <listitem>
+          <para>Infrastructural period type: Sets the frequency for which the data elements in the
+            infrastructural data elements group are captured. This will typically be yearly. When
+            viewing the infrastructural data you will be able to select the time period of the data
+            source.</para>
+        </listitem>
+        <listitem>
+          <para>Default relative period for analysis: Defines the relative period to use by default
+            in analytics apps such as pivot table, charts and GIS. This relative period will be
+            automatically selected when the apps are opened, and should likely be the most commonly
+            used relative period among your users.</para>
+        </listitem>
+        <listitem>
+          <para>Feedback recipients: This setting defines a user group where the members will
+            receive all messages being sent through the function for writing feedback in the
+            dashboard module. This will typically be members of the super user team who are able to
+            support and answer questions coming from end-users.</para>
+        </listitem>
+        <listitem>
+          <para>Maximum offline organisation unit levels: This setting defines how many levels in
+            the organisation unit hierarchy will be available offline in the organisation unit tree
+            widget. Under normal circumstances you can leaves this on the lowest level, which is
+            default behavior. Setting it to a higher level might be useful in order to reduce
+            initial load time in cases where you have a large number of organisation units, typically
+            more than 30 000.</para>
+        </listitem>
+        <listitem>
+          <para>Data analysis std dev factor: Sets the number of standard deviations for use in the outlier analysis performed on the captured data in the data entry module. The default value is 2; a high value will catch less outlier values than a low value.</para>
+        </listitem>
+        <listitem>
+          <para>Phone number area code: The area code for the area in which your deployment is
+            located. Used for sending and receiving SMS.Typically, this would be a country code, for
+            instance , +260 , which is the country code for Zambia. </para>
+        </listitem>
+        <listitem>
+          <para>Enable multi-organisation unit forms: Enable support for entering data forms for
+            multiple organisation units at the same time, in data entry, click on the parent
+            organisation unit for the children that you want to enter data for, and the dataset list
+            will include datasets that are assigned to the children of that parent.</para>
+        </listitem>
+        <listitem>
+          <para>Put analytics in maintenance mode: Puts the analytics engine / Web API resource in
+            maintenance mode, implying that 503 Service Unavailable will be returned for all
+            requests. This is useful when you need to perform maintenance on the server like
+            rebuilding indexes while the server is running in production, in order to reduce load
+            and more efficiently carry out the maintenance.</para>
+        </listitem>
+        <listitem>
+          <para>Days after period end to qualify for timely data submission: Sets the number of days after the end of a period in which a data entry form must be marked as complete in order to be considered timely. This affects the &quot;reporting rate&quot; tool in the reporting module which lists forms marked as complete as well as marked as complete in time. The default value is 15.</para>
+        </listitem>
+        <listitem>
+          <para>Omit indicator values with zero numerator value in data mart: Defines whether
+            aggregated indicator values with zero as the numerator value should be written to the
+            indicator data mart table. Having such values written is required for instance when
+            connecting Excel pivot tables to the data mart as Excel will need the numerator data to
+            correctly aggregate up in the organisation unit hierarchy. If third-party tools like
+            Excel are not used with the application this will reduce the total number of values
+            written to the data mart (which again will improve performance) and could safely be set
+            to omit.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>Server settings</title>
+      <itemizedlist>
+        <listitem>
+          <para>Cache strategy: Decides for how long reports and responses related to analysis
+            should be cached. If you are using the scheduled, nightly data mart tasks it makes sense
+            to put this on &quot;Cache until 6 AM tomorrow&quot;. This is because we know that data
+            in reports change at that time, and you can safely cache data up to the moment when the
+            data mart is updated. If you are loading data continuously into the datamart you should
+            set it to &quot;No cache&quot;. If you load data very infrequently into data mart you
+            should consider setting it to &quot;Cache for two weeks&quot;.</para>
+        </listitem>
+        <listitem>
+          <para>Number of database server CPUs: The number of CPU cores of your database server can
+            be configured as a system setting. This allows the system to perform optimally when the
+            database is hosted on a different server than the application server, as the analytics
+            engine scales linearly on the number of available cores. </para>
+        </listitem>
+        <listitem>
+          <para>System notifications email address: An email address can be specified to receive
+            system notifications. Notifications about failures in processes such as analytics table
+            generation will be sent here. This is useful for application monitoring.</para>
+        </listitem>
+        <listitem>
+          <para>Server base URL: The full, externally accessible base URL for this server. Example:
+            https://apps.dhis2.org/demo is the server base URL for the DHIS2 demo server. The URL
+            is used to provide links to this server from external locations such as in emails sent
+            from the system. Note that if this URL is not present, emails sent from the messaging
+            system will not contain a reply link.</para>
+        </listitem>
+        <listitem>
+          <para>Google Analytics (Universal Analytics) Key: Set your Google UA key here to provide
+            analytics for your DHIS2 instance. Most places are covered, but it will not be provided
+            for custom apps. You can read more about Google Analytics at <link
+              xlink:href="http://google.com/analytics">http://google.com/analytics</link>.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="systemAppearanceSettings">
+      <title>Appearance settings</title>
+      <itemizedlist>
+        <listitem>
+          <para>Application title: Sets the application title on the top menu.</para>
+        </listitem>
+        <listitem>
+          <para>Application introduction: Sets an introduction of the system which will be visible
+            on the top-left part of the login page.</para>
+        </listitem>
+        <listitem>
+          <para>Application notification: Sets a notification which should be displayed to users.
+            Will be visible on the front page under the login area.</para>
+        </listitem>
+        <listitem>
+          <para>Application left-side footer: Sets a text in the left-side footer area of the login
+            page.</para>
+        </listitem>
+        <listitem>
+          <para>Application right-side footer: Sets a text in the right-side footer area of the
+            login page.</para>
+        </listitem>
+        <listitem>
+          <para>Style: Sets the style / look-and-feel of the system. The corresponding user style setting overrides this.</para>
+        </listitem>
+        <listitem>
+          <para>Start page: Sets page / module which the user will be redirected to after logging
+            in. The dashboard module is the recommended start module.</para>
+        </listitem>
+        <listitem>
+          <para>Help page link: A URL can be provided for an alternative help source. This defines
+            the URL which users will see when selecting Profile-&gt;Help. </para>
+        </listitem>
+        <listitem>
+          <para>Flag: Sets the flag which is displayed in the left menu of the dashboard module.</para>
+        </listitem>
+        <listitem>
+          <para>Require authority to add to view object lists: Will hide menu and index page items /
+            links to lists of objects if the current user does not have the authority to create the
+            type of objects (privately or publicly).</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="systemEmailSettings">
+      <title>Email settings</title>
+      <itemizedlist>
+        <listitem>
+          <para>Host name: Refers to the host name of the SMTP server. For instance when using
+            Google SMTP services this should be smtp.gmail.com.</para>
+        </listitem>
+        <listitem>
+          <para>Port: The port to connect to the SMTP server.</para>
+        </listitem>
+        <listitem>
+          <para>User name: The user name of the user account with the SMTP server. For instance mail@dhis2.org.</para>
+        </listitem>
+        <listitem>
+          <para>Password: The password of the user account with the SMTP server.</para>
+        </listitem>
+        <listitem>
+          <para>TLS: Refers to whether the SMPT server requires TLS for connections.</para>
+        </listitem>
+        <listitem>
+          <para>Email sender: The email address to use as sender when sending out emails.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>Access settings</title>
+      <itemizedlist>
+        <listitem>
+          <para>Self registration account user role: Defines which user role should be given to self-registered user accounts. To enable
+            self-registration of users, select any user role from the list. To disable it, select &quot;Do not allow self registration&quot;. When
+            enabled, a link to the self-registration form will be displayed on the login page.</para>
+        </listitem>
+        <listitem>
+          <para>Do not require recaptcha for self registration: Whether or not to use reCAPTCHA for user registration.</para>
+        </listitem>
+        <listitem>
+          <para>Self registration account organisation unit: Defines which organisation unit should
+            be associated with self-registered users. Any organisation unit must be selected in
+            order to enable self registration.</para>
+        </listitem>
+        <listitem>
+          <para>Enable user account recovery: Defines whether users are allowed to restore the
+            password of their account if they forgotten it. When enabled, a link to the account
+            recovery form will be displayed on the front page. User account recovery requires that
+            you have configured email settings (SMTP).</para>
+        </listitem>
+        <listitem>
+          <para>Allow users to grant own user roles: Defines whether users should be allowed to
+            grant the user roles they are granted themselves to others.</para>
+        </listitem>
+        <listitem>
+          <para>Allow assigning object to related objects during add or update: Defines whether to
+            allow users to assign an object to a related object in the add or updated object
+            screens. As an example, you can allow users to assign an organisation unit to data sets
+            and org unit group sets when creating or updating the org unit.</para>
+        </listitem>
+        <listitem>
+          <para>Require user account password change: Require that users change their password every
+            3,6,12 months. Please note that for 2.14 release, they will have to login through the
+            desktop to change passwords.</para>
+        </listitem>
+        <listitem>
+          <para>OpenID provider: Defines the OpenId provider.</para>
+        </listitem>
+        <listitem>
+          <para>OpenID provider label: Defines the label to display for the specified OpenID
+            provider.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>Approval</title>
+      <itemizedlist>
+        <listitem>
+          <para>Hide unapproved data in analytics: Defines whether unapproved data should be visible
+            or hidden in analytics.</para>
+        </listitem>
+        <listitem>
+          <para>Acceptance required before approval: Defines whether to include an acceptance step
+            before the approval step in the approval workflow.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>Calendar settings</title>
+      <itemizedlist>
+        <listitem>
+          <para>Calendar: Defines which calendar system should be used throughout the system.</para>
+          <para>There are currently eight calendar systems which are supported, namely Coptic, Ethiopic, Gregorian, Julian, Islamic, ISO, Nepal and Thai. Note that this is a system wide setting. It is not possible to have multiple calendars within a single DHIS2 instance.  </para>
+        </listitem>
+        <listitem>
+          <para>Date format: Defines which date format should be used throughout the system.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>Data import</title>
+      <para>These settings apply to the data import process, and provide optional constraints on
+        what should be considered a conflict during import. The constraints are applied to each
+        individual data value in the import.</para>
+      <itemizedlist>
+        <listitem>
+          <para>Require periods to match period type of  data set: Require period of data value to
+            be of the same period type as the data sets for which the data element of data value is
+            assigned to.</para>
+        </listitem>
+        <listitem>
+          <para>Require category option combos to match category combo of data element: Require
+            category option combo of data value to be part of the category combo of the data element
+            of the data value.</para>
+        </listitem>
+        <listitem>
+          <para>Require organisation units to match assignment of data set: Require organisation
+            unit of data value to be assigned to one or more of the data sets which the data element
+            of data value is assigned to.</para>
+        </listitem>
+        <listitem>
+          <para>Require attribute option combos to match category combo of data set: Require
+            attribute option combo of data value to be part of the category combo of the data set
+            which the data element of data value is assigned to.</para>
+        </listitem>
+        <listitem>
+          <para>Require category option combo to be specified: Require category option combo of data
+            value to be specified. By default it will fall back to default category option combo if
+            not specified.</para>
+        </listitem>
+        <listitem>
+          <para>Require attribute option combo to be specified: Require attribute option combo of
+            data value to be specified. By default it will fall back to default attribute option
+            combo if not specified.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>Synchronization settings</title>
+      <para>DHIS2 provides a feature for synchronizing metadata and data. Given two instances in a
+        central-local deployment strategy, metadata created at
+        <?oxy_comment_start author="cecilia" timestamp="20160704T123350+0200" comment="Central what? Central level?"?>central<?oxy_comment_end?>
+        can be synched to the local and the data created at local can be synced to the central. This
+        can be useful when there are multiple stand-alone instances of DHIS2 and a global metadata
+        needs to be created at all the local instances. So, metadata creation and update happens at
+        the central and if the metadata sync task is enabled, the metadata gets synced down to all
+        the local instances which are bound to the given central instance. These local instances
+        will in turn push data values to that central instance. The following settings are used for
+        both data and metadata synchronization.</para>
+      <itemizedlist>
+        <listitem>
+          <para>Remote server URL: The URL of the remote server running DHIS2 to upload data values to. Use of
+            SSL/HTTPS is recommended since username and password is sent with the request (using basic
+            authentication). The system will attempt to synchronize data once every minute. Note that you must
+            enable data sync from Data administration &gt; Scheduling.</para>
+          <note>
+            <para>The system will use this setting for metadata synchronization as well. Note that
+              the metadata synchronization needs to be enabled from Data Administration app &gt;
+              Scheduling.</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>Remote server username: The username of the DHIS2 user account on the remote server to use for data
+            synchronization. Whilst metadata versioning is enabled, there is a need to ensure that the configured
+            user has the authority &quot;F_METADATA_MANAGE&quot;.</para>
+        </listitem>
+        <listitem>
+          <para>Remote server password: The password of the DHIS2 user account on the remote server. The password
+            will be stored encrypted.</para>
+        </listitem>
+      </itemizedlist>
+      <para>If you are syncing metadata also, then see the below settings.
+        <itemizedlist>
+        <listitem>
+          <para>Enable Versioning for Metadata Sync: This is a new feature added in 2.24. If you are following model
+            as mentioned above, then enable this setting. Otherwise you can ignore it.</para>
+            <screenshot>
+              <mediaobject>
+                <imageobject>
+                  <imagedata width="80%" align="center"
+                    fileref="resources/images/settings/metadata_versioning_table.png" format="PNG"/>
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+        </listitem>
+        <listitem>
+          <para>If metadata versioning is enabled, the user gets the option to create metadata versions.</para>
+        <itemizedlist>
+          <listitem>
+            <para>When system is a <emphasis role="bold">central instance</emphasis>, then you will see three columns in the Versioning table</para>
+          <itemizedlist>
+            <listitem>
+              <para>Version: Name of the Version which is automatically generated by system.</para>
+            </listitem>
+            <listitem>
+              <para>When: The timestamp of metadata version creation at central instance.</para>
+            </listitem>
+            <listitem>
+              <para>Type: Type of metadata
+                      <?oxy_comment_start author="cecilia" timestamp="20160704T115615+0200" comment="At next release: Add link to Concept in Settings chapter.
+2.24: Linking doesn&apos;t work, removed link:
+&quot;For getting more details about how to create versions and how they are captured internally please see Concept&quot; " flag="done"?>version<?oxy_comment_end?>.</para>
+            </listitem>
+          </itemizedlist>
+          <para>Additionally you will see the following label on top of the table:</para>
+          <para><emphasis role="bold">Master Version</emphasis> - this is the latest version in the system.</para>
+          </listitem>
+          <listitem>
+            <para>When system is <emphasis role="bold">field instance</emphasis>, then you will see four columns in the Versioning table</para>
+          <itemizedlist>
+            <listitem>
+              <para>Version: Name of the Version which is automatically generated by system.</para>
+            </listitem>
+            <listitem>
+              <para>When: The timestamp of metadata version creation at central instance.</para>
+            </listitem>
+            <listitem>
+              <para>Type: Type of metadata version</para>
+            </listitem>
+            <listitem>
+              <para>Last Sync: Timestamp of when the last sync happened for this version in this system</para>
+            </listitem>
+          </itemizedlist>
+          <para>Additionally you will see the following labels on top of the table:</para>
+          <para><emphasis role="bold">Master Version</emphasis> - the latest version of central instance. This is
+            important to understand that the master version information is the central instance&apos;s latest
+            version. This is important to look at the difference between the versions of metadata that exist at
+            central and at local.</para>
+          <para><emphasis role="bold">Last sync attempt</emphasis> - If the last sync attempt is a failure, this will
+            be shown.</para>
+          </listitem>
+        </itemizedlist>
+        </listitem>
+      </itemizedlist>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="80%" align="center" fileref="resources/images/settings/metadata_versioning_table_failure_case.png" format="PNG"/>
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </para>
+    </section>
+  </section>
+</chapter>
