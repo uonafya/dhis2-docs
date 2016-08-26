@@ -2629,7 +2629,8 @@ http://server/api/24/constants/ID</screen></para>
   </section>
   <section xml:id="webapi_data_values">
     <title>Data values</title>
-    <para>This section is about sending and reading data values.</para>
+    <para>This section is about sending and reading data
+      values.<screen>/api/24/dataValueSets</screen></para>
     <section>
       <title>Sending data values</title>
       <para>A common use-case for system integration is the need to send a set of data values from a
@@ -3320,7 +3321,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         <para>The process of storing one of these data values roughly goes like this:<orderedlist>
             <listitem>
               <para>Upload the file to the <emphasis role="italic">/api/24/fileResources</emphasis>
-                endpoint as described in <xref linkend="fileresource"/>.</para>
+                endpoint as described in the file resource section.</para>
             </listitem>
             <listitem>
               <para>Retrieve the &apos;id&apos; property of the returned <emphasis role="italic"
@@ -3493,7 +3494,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
   </section>
   <section xml:id="webapi_events">
     <title>Events</title>
-    <para>This section is about sending and reading events.</para>
+    <para>This section is about sending and reading events.<screen>/api/24/events</screen></para>
     <section>
       <title>Sending events</title>
       <para>DHIS2 supports three kinds of events: single events with no registration (also referred
@@ -5674,7 +5675,8 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     <para>For certain analysis-related resources in DHIS, like charts, maps and report tables, one
       can write and share a data interpretation. An interpretation is simply a link to the the
       relevant resource together with a text expressing some insight about the data. Interpretations
-      access control follows the access given for the interpreted object.</para>
+      access control follows the access given for the interpreted
+      object.<screen>/api/24/interpretations</screen></para>
     <section>
       <title>Reading interpretations</title>
       <para>To read interpretations we will interact with the <emphasis role="italic"
@@ -6992,7 +6994,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
       or report table, or represent a list of links to analytical resources, like reports,
       resources, tabular reports and users. A dashboard item can contain up to eight links.
       Typically, a dashboard client could choose to visualize the single-object items directly in a
-      user interface, while rendering the multi-object items as clickable links. </para>
+      user interface, while rendering the multi-object items as clickable
+      links.<screen>/api/24/dashboards</screen></para>
     <section>
       <title>Browsing dashboards</title>
       <para>To get a list of your dashboards with basic information including identifier, name and
@@ -7867,7 +7870,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <para>The event analytics API lets you access aggregated event data and query <emphasis
         role="italic">events</emphasis> captured in DHIS2. This resource lets you retrieve events
       based on a program and optionally a program stage, and lets you retrieve and filter events on
-      any event dimensions. </para>
+      any event dimensions.<screen>/api/24/analytics/events</screen></para>
     <section>
       <title>Dimensions and items</title>
       <para>Event dimensions include data elements, attributes, organisation units and periods. The
@@ -8630,8 +8633,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
     <title>Data set report</title>
     <para>Data set reports can be generated trough the web api using the
         <emphasis>/dataSetReport</emphasis> resource. This resource generates reports on data set
-      and returns the result in the form of a HTML table. The request supports the following
-      parameters:</para>
+      and returns the result in the form of a HTML table.
+      <screen>/api/24/dataSetReport</screen></para>
+    <para>The request supports the following parameters:</para>
     <para>
       <table frame="all">
         <title>Accepted parameters of /dataSetReport resource</title>
@@ -8689,12 +8693,11 @@ ORDER BY oul.level, par.name, ou.name</screen>
   </section>
   <section xml:id="webapi_data_usage_analytics">
     <title>Data usage analytics</title>
-    <para>The usage analytics API lets you access information about how people are using DHIS2
-      based on data analysis. When users access favorites, an event is recorded. The event consists
-      of the user name, the UID of the favorite, when the event took place, and the type of event.
-      The different types of events are listed in the <xref
-        xmlns:xlink="http://www.w3.org/1999/xlink" linkend="dataUsage_eventTypes_table"/>
-      table.</para>
+    <para>The usage analytics API lets you access information about how people are using DHIS2 based
+      on data analysis. When users access favorites, an event is recorded. The event consists of the
+      user name, the UID of the favorite, when the event took place, and the type of event. The
+      different types of events are listed in the
+      table.<screen>/api/24/dataStatistics</screen></para>
     <para>The usage analytics API lets you retrieve aggregated snapshots of usage analytics based on
       time intervals. The API captures user views (for example the number of times a chart or pivot
       table has been viewed by a user) and saved analysis favorites (for example favorite charts and
@@ -8806,8 +8809,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
           </tgroup>
         </table></para>
       <para>The startDate and endDate parameters specify the period for which snapshots are to be
-        used in the aggregation. You must format the dates as shown <link
-          xmlns:xlink="http://www.w3.org/1999/xlink" linkend="entry_ayf_gyy_jw">above</link>. If no
+        used in the aggregation. You must format the dates as shown above. If no
         snapshots are saved in the specified period, an empty list is sent back. The parameter
         called interval specifies what type of aggregation will be done.</para>
       <para>API query that creates a query for a yearly
@@ -8836,8 +8838,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
                 <entry>eventType</entry>
                 <entry>Yes</entry>
                 <entry>The data statistics event type</entry>
-                <entry>See <link xmlns:xlink="http://www.w3.org/1999/xlink"
-                    linkend="dataUsage_eventTypes_table">above table</link></entry>
+                <entry>See above table</entry>
               </row>
               <row>
                 <entry>pageSize</entry>
@@ -9348,7 +9349,8 @@ interval=WEEK" -u admin:district</screen>
   <section xml:id="webapi_translations">
     <title>Translations</title>
     <para>DHIS2 allows for translations of database content. You can work with translations through
-      the Web API using the <emphasis role="italic">translations</emphasis> resource.</para>
+      the Web API using the <emphasis role="italic">translations</emphasis>
+      resource.<screen>/api/24/translations</screen></para>
     <section>
       <title>Create translation</title>
       <para>You can create a translation with a POST request in JSON
@@ -9856,7 +9858,7 @@ interval=WEEK" -u admin:district</screen>
     <title>Program Messages</title>
     <para>Program Message holds reminders and alerts data related to specific Program or Program
       Stage. Web APIs are exposed to handle CRUD operations on Program Messages and we will go
-      through them in the below section.</para>
+      through them in the below section.<screen>/api/24/messages</screen></para>
     <section>
       <title>Sending program messages</title>
       <para>Program Message holds alert or reminder data that needs to be sent to concerned person
@@ -9880,7 +9882,7 @@ interval=WEEK" -u admin:district</screen>
             <para>List of email addresses</para>
           </listitem>
         </itemizedlist> Below is the sample json payload for sending messages using the POST method. </para>
-      <screen>/api/24/messages/</screen>
+      <screen>/api/24/messages</screen>
       <screen>{
     &quot;recipients&quot;: {
         &quot;trackedEntityInstanceId&quot;{
@@ -10957,7 +10959,8 @@ interval=WEEK" -u admin:district</screen>
     <title>Tracked entity instance management</title>
     <para>Tracked entity instances have full CRUD (create, read, update, delete) support in the
       Web-API. Together with the API for enrollment most operations needed for working with tracked
-      entity instances and programs are supported.</para>
+      entity instances and programs are
+      supported.<screen>/api/24/trackedEntityInstances</screen></para>
     <section>
       <title>Creating a new tracked entity instance</title>
       <para>For creating a new person in the system, you will be working with the <emphasis
@@ -12019,7 +12022,7 @@ interval=WEEK" -u admin:district</screen>
   <section xml:id="webapi_enrollment_instance_query">
     <title>Enrollment instance query</title>
     <para>To query for tracked entity instances you can interact with the <emphasis role="italic"
-        >/api/enrollments</emphasis> resource. </para>
+        >/api/enrollments</emphasis> resource. <screen>/api/24/enrollments</screen></para>
     <section>
       <title>Request syntax</title>
       <table frame="all">
@@ -12268,7 +12271,7 @@ interval=WEEK" -u admin:district</screen>
       that the SMTP configuration has been properly set up and that a system notification email
       address for the DHIS2 instance has been defined. You can set SMTP settings from the email
       settings screen and system notification email address from the general settings screen in DHIS
-      2. </para>
+      2.<screen>/api/24/email</screen></para>
     <section>
       <title>System notification</title>
       <para>The <emphasis role="italic">notification</emphasis> resource lets you send system email
@@ -12537,7 +12540,8 @@ interval=WEEK" -u admin:district</screen>
   <section xml:id="webapi_app_store">
     <title>App store</title>
     <para>The Web API exposes the content of the DHIS2 App Store as a JSON representation which can
-      found at the <emphasis role="italic">api/appStore</emphasis> resource.</para>
+      found at the <emphasis role="italic">api/appStore</emphasis>
+      resource.<screen>/api/24/appStore</screen></para>
     <section>
       <title>Get apps</title>
       <para>You can retrieve apps with a GET request: <screen>GET /api/24/appStore</screen></para>
@@ -12866,7 +12870,9 @@ interval=WEEK" -u admin:district</screen>
   </section>
   <section xml:id="webapi_predictors">
     <title>Predictors</title>
-    <para>A predictor allows you to generate data values based on an expression. This can be used to generate targets, thresholds and estimated values.</para>
+    <para>A predictor allows you to generate data values based on an expression. This can be used to
+      generate targets, thresholds and estimated values. You can interact with predictors through
+      the <emphasis>/api/predictors</emphasis> resource.<screen>/api/24/predictors</screen></para>
     <section>
       <title>Creating a predictor</title>
       <para>You can create a
@@ -12988,34 +12994,5 @@ interval=WEEK" -u admin:district</screen>
       this:<screen>curl &quot;localhost:8080/api/synchronization/metadataPull&quot; -X POST
   -d &quot;https://dhis2.org/metadata-repo/221/trainingland-org-units/metadata.json&quot;
   -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen></para>
-  </section>
-  <section xml:id="webapi_fred_api">
-    <title>FRED API</title>
-    <para>DHIS2 from version 2.11 implements support for the current draft of the FRED API version
-      1.0. The project defines itself as <quote>open standard for sharing and updating health
-        facility data</quote>. The full specification, including representation format and basic
-      usage, can be found at <link xl:href="http://facilityregistry.org/"
-        >http://facilityregistry.org/</link>.</para>
-    <para>Since version 1.0 is not finalized there are parts of the current specification that has
-      not been implemented as we found it not to be in a stable enough state. Most notably we do not
-      currently support sorting (we do however sort on name by default) and filtering of
-      facilities.</para>
-    <para>The entry point for the implementation can be found at http://&lt;server-url&gt;/api-fred
-      and the current version is located at http://&lt;server-url>/ohie/fred/v1</para>
-    <para>This section will give some simple examples of using the API.</para>
-    <para>Get all facilities:</para>
-    <screen>curl -u username:password -X GET http://&lt;server-url&gt;/ohie/fred/v1/facilities.json</screen>
-    <para>Get a specific facility based on either identifier or UUID:</para>
-    <screen>curl -u username:password -X GET http://&lt;server-url&gt;/ohie/fred/v1/facilities/&lt;id&gt;.json
-curl -u username:password -X GET http://&lt;server-url&gt;/ohie/fred/v1/facilities/&lt;uuid&gt;.json</screen>
-    <para>Create a new facility:</para>
-    <screen>curl -u username:password -X POST -d @new_facility.json
-  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/ohie/fred/v1/facilities.json</screen>
-    <para>Update a facility:</para>
-    <screen>curl -u username:password -X POST -d @updated_facility.json
-  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/ohie/fred/v1/facilities/&lt;id&gt;.json
-
-curl -u username:password -X POST -d @updated_facility.json
-  -H &quot;Content-Type: application/json&quot; http://&lt;server-url&gt;/ohie/fred/v1/facilities/&lt;uuid&gt;.json</screen>
   </section>
 </chapter>
