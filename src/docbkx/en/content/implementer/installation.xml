@@ -555,6 +555,109 @@ read3.connection.url = jdbc:postgresql://127.0.0.13/dbread3</screen></para>
         will automatically distribute the load across the read replicas. The ordering of replicas
         has no significance.</para>
     </section>
+  <section xml:id="install_web_server_cluster_configuration">
+    <title>Web server cluster configuration</title>
+    <para>Clustering is a common technique for improving system scalability and availability.
+      Clustering refers to setting up multiple web servers such as Tomcat instances and have them
+      serve a single application. Clustering allows for <emphasis>scaling out</emphasis> an
+      application in the sense that new servers can be added to improve performance. It also allows
+      for <emphasis>high availability</emphasis> as the system can tolerate instances going down
+      without making the system inaccessible to users.</para>
+    <para>When setting up multiple Tomcat instances there is a need for the instances to be aware of
+      each other. Each DHIS 2 instance will keep a local data cache. When an update is done on one
+      instance, the caches on the other instances must be notified so that they can be invalidated
+      and avoid becoming stale.</para>
+    <section xml:id="install_cluster_configuration">
+      <title>Cluster configuration</title>
+      <para>A DHIS 2 cluster setup is based on manual configuration of each instance. For each DHIS
+        2 instance one must specify the public <emphasis>hostname</emphasis> as well as the
+        hostnames of the other instances participating in the cluster. You can optionally specify
+        the <emphasis>port</emphasis> number for which each instance should listen for cache
+        updates. The default port number is <emphasis>4001</emphasis>.</para>
+      <para>The hostname of the server is specified using the
+          <emphasis>cluster.instance0.hostname</emphasis> configuration property. Additional servers
+        which participate in the cluster are specified using properties on the format
+          <emphasis>cluster.instanceN.hostname</emphasis>, where N refers to the cluster instance
+        number. You can specify up to 4 cluster instances in a configuration file, giving a maxium
+        cluster size of 5 instances. N is a number between 1 and 4. The hostname must be visible to
+        the participating servers on the network for the clustering to work. You might have to allow
+        incoming and outgoing connections on port <emphasis>4001</emphasis> (or whichever port
+        number is configured) in the firewall.</para>
+      <para>The port number of the server is specified using the<emphasis>
+          cluster.instance0.cache.port</emphasis> configuration property. Specifying the port number
+        is typically only useful when you have multiple cluster instances on the same server /
+        virtual machine. When running cluster instances on separate servers / virtual machines it is
+        often appropriate to use the default port number and omit this configuration
+        property.</para>
+      <para>An example setup for a cluster of two web servers is described below. For
+          <emphasis>server A</emphasis> availabe at hostname <emphasis>193.157.199.131</emphasis>
+        the following can be specified in
+        <emphasis>dhis.conf</emphasis>:<screen># Cluster configuration for server A
+
+# Hostname for this web server
+cluster.instance0.hostname = 193.157.199.131
+
+# Port for cache listener, can be omitted
+cluster.instance0.cache.port = 4001
+
+# Hostname for web server B participating in cluster
+cluster.instance1.hostname = 193.157.199.132
+
+# Port for cache listener on web server B, can be omitted
+cluster.instance1.cache.port = 4001</screen></para>
+      <para>For <emphasis>server B</emphasis> available at hostname
+          <emphasis>193.157.199.132</emphasis> the following can be specified in
+          <emphasis>dhis.conf</emphasis> (notice how port configuration is
+        omitted):<screen># Cluster configuration for server B
+
+# Hostname for this web server
+cluster.instance0.hostname = 193.157.199.132
+
+# Hostname for web server A participating in cluster
+cluster.instance1.hostname = 193.157.199.131</screen></para>
+      <para>You must restart each Tomcat instance to make the changes take effect. The two instances
+        have now been made aware of each other and DHIS 2 will ensure that their caches are kept in
+        sync.</para>
+    </section>
+    <section>
+      <title>Load balancing</title>
+      <para>With a cluster of Tomcat instances set up, a common approach for routing incoming web
+        requests to the backend instances participating in the cluster is using a <emphasis>load
+          balancer</emphasis>. A load balancer will make sure that load is distributed evenly across
+        the cluster instances. It will also detect whether an instance becomes unavailable, and if
+        so, stop routine requests to that instance and instead use other available instances.</para>
+      <para>Load balancing can be achieved in multiple ways. A simple approach is using
+          <emphasis>nginx</emphasis>, in which case you will define an <emphasis>upstream</emphasis>
+        element which enumerates the location of the backend instances and later use that element in
+        the <emphasis>proxy</emphasis> location
+        block.<screen>http {
+
+  # Upstream element with sticky sessions
+
+  upstream dhis_cluster {
+    ip_hash;
+    server 193.157.199.131:8080;
+    server 193.157.199.132:8080;
+  }
+
+  # Proxy pass to backend servers in cluster
+
+  server {
+    listen 80;
+
+    location / {
+      proxy_pass   http://dhis_cluster/;
+    }
+  }
+}  </screen></para>
+      <para>DHIS 2 keeps server-side state for user sessions to a limited degree. Using "sticky
+        sessions" is a simple approach to avoid replicating the server session state by routing
+        requests from the same client to the same server. The <emphasis>ip_hash</emphasis> directive
+        in the upstream element ensures this.</para>
+      <para>Note that several instructions have been omitted for brevity in the above example.
+        Consult the reverse proxy section for a detailed configuration guide.</para>
+    </section>
+  </section>
     <section xml:id="install_starting_tomcat_boot_time">
       <title>Starting Tomcat at boot time</title>
       <para>In certain situations a server might reboot unexpectedly. It is hence preferable to have

@@ -5674,7 +5674,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     <title>Interpretations</title>
     <para>For resources related to data analysis in DHIS 2, such as pivot tables, charts, maps,
       event reports and event charts, you can write and share data interpretations. An
-      interpretation can be a comment, question, observation or interpretation about data report or
+      interpretation can be a comment, question, observation or interpretation about a data report or
       visualization.<screen>/api/24/interpretations</screen></para>
     <section>
       <title>Reading interpretations</title>
@@ -5744,7 +5744,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
             <row>
               <entry>type</entry>
               <entry>The type of analytical object being interpreted. Valid options: REPORT_TABLE,
-                CHART, MAP, EVENT_REPORT, EVENT_CHART, DATA, DATASET_REPORT.</entry>
+                CHART, MAP, EVENT_REPORT, EVENT_CHART, DATASET_REPORT.</entry>
             </row>
             <row>
               <entry>user</entry>
@@ -5820,8 +5820,8 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     <section>
       <title>Updating and removing interpretations</title>
       <para>To update an existing interpretation you can use a PUT request where the interpretation
-        text is the request body using the following URL
-        pattern:<screen>/api/24/interpretations/{id}/</screen></para>
+        text is the request body using the following URL pattern, where {id} refers to the
+        interpretation identifier:<screen>/api/24/interpretations/{id}</screen></para>
       <para>Based on this we can use curl to update the
         interpretation:<screen>curl -d "This charts shows a high dropout" -X PUT
   &quot;https://play.dhis2.org/demo/api/24/interpretations/chart/EV08iI1cJRA&quot;
