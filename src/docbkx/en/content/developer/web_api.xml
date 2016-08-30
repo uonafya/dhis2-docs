@@ -5672,116 +5672,191 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
   </section>
   <section xml:id="webapi_interpretations">
     <title>Interpretations</title>
-    <para>For certain analysis-related resources in DHIS, like charts, maps and report tables, one
-      can write and share a data interpretation. An interpretation is simply a link to the the
-      relevant resource together with a text expressing some insight about the data. Interpretations
-      access control follows the access given for the interpreted
-      object.<screen>/api/24/interpretations</screen></para>
+    <para>For resources related to data analysis in DHIS 2, such as pivot tables, charts, maps,
+      event reports and event charts, you can write and share data interpretations. An
+      interpretation can be a comment, question, observation or interpretation about data report or
+      visualization.<screen>/api/24/interpretations</screen></para>
     <section>
       <title>Reading interpretations</title>
       <para>To read interpretations we will interact with the <emphasis role="italic"
-          >/api/24/interpretations</emphasis> resource. The output in JSON response format could
-        look like below (use e.g. api/interpretations.json):</para>
+          >/api/24/interpretations</emphasis> resource. A typical GET request using field filtering
+        can look like
+        this:<screen>GET /api/24/interpretations?fields=*,comments[id,text,user]</screen></para>
+      <para>The output in JSON response format could look like below (additional fields omitted for
+        brevity):</para>
       <screen>{
     &quot;interpretations&quot;: [{
-        &quot;created&quot;: &quot;2013-10-07T11:37:19.273+0000&quot;,
-        &quot;lastUpdated&quot;: &quot;2013-10-07T12:08:58.028+0000&quot;,
-        &quot;type&quot;: &quot;map&quot;,
-        &quot;href&quot;: &quot;https://play.dhis2.org/demo/api/interpretations/d3BukolfFZI&quot;,
-        &quot;id&quot;: &quot;d3BukolfFZI&quot;
-    }, {
+        &quot;id&quot;: &quot;XSHiFlHAhhh&quot;,
         &quot;created&quot;: &quot;2013-05-30T10:24:06.181+0000&quot;,
-        &quot;lastUpdated&quot;: &quot;2013-05-30T10:25:08.066+0000&quot;,
-        &quot;type&quot;: &quot;reportTable&quot;,
-        &quot;href&quot;: &quot;https://play.dhis2.org/demo/api/interpretations/XSHiFlHAhhh&quot;,
-        &quot;id&quot;: &quot;XSHiFlHAhhh&quot;
+        "text": "Data looks suspicious, could be a data entry mistake.",
+        &quot;type&quot;: &quot;REPORT_TABLE&quot;,
+        "user": {
+          "id": "uk7diLujYif"
+        },
+        "reportTable": {
+          "id": "LcSxnfeBxyi"
+        }
     }, {
+        &quot;id&quot;: &quot;kr4AnZmYL43&quot;,
         &quot;created&quot;: &quot;2013-05-29T14:47:13.081+0000&quot;,
-        &quot;lastUpdated&quot;: &quot;2013-05-29T14:47:13.081+0000&quot;,
-        &quot;type&quot;: &quot;chart&quot;,
-        &quot;href&quot;: &quot;https://play.dhis2.org/demo/api/interpretations/kr4AnZmYL43&quot;,
-        &quot;id&quot;: &quot;kr4AnZmYL43&quot;
+        "text": "Delivery rates in Bo looks high.",
+        &quot;type&quot;: &quot;CHART&quot;,
+        "user": {
+          "id": "uk7diLujYif"
+        },
+        "chart": {
+          "id": "HDEDqV3yv3H"
+        },
+        &quot;comments&quot;: [{
+            "id": "iB4Etq8yTE6",
+            "text": "This report indicates a surge",
+            "user": {
+                "id": "B4XIfwOcGyI"
+            }, {
+            "id": "iB4Etq8yTE6",
+            "text": "Likely caused by heavy rainfall",
+            "user": {
+                "id": "B4XIfwOcGyI"
+            }]
+        }
     }]
 }</screen>
-      <para>An interpretation contains properties for identifier, date of creation and date of last
-        modification. The type property refers to the kind of object is being interpreted, and is
-        useful to show an appropriate visual clue in a client. Valid options are &quot;chart&quot;,
-        &quot;map&quot;, &quot;reportTable&quot; and &quot;dataSetReport&quot;. By following the
-        link given in the &quot;href&quot; property one can get more information about a specific
-        interpretation. In the case of the map interpretation, the response will look like
-        this:</para>
-      <screen>{
-    &quot;created&quot;: &quot;2013-10-07T11:37:19.273+0000&quot;,
-    &quot;lastUpdated&quot;: &quot;2014-10-07T12:08:58.028+0000&quot;,
-    &quot;map&quot;: {
-        &quot;name&quot;: &quot;ANC: ANC 2 Coverage&quot;,
-        &quot;created&quot;: &quot;2014-11-13T12:01:21.918+0000&quot;,
-        &quot;lastUpdated&quot;: &quot;2014-11-13T12:01:21.918+0000&quot;,
-        &quot;href&quot;: &quot;https://play.dhis2.org/demo/api/maps/bhmHJ4ZCdCd&quot;,
-        &quot;id&quot;: &quot;bhmHJ4ZCdCd&quot;
-    },
-    &quot;text&quot;: &quot;We can see that the ANC 2 coverage of Kasonko and Lei districts are under 40 %.&quot;,
-    &quot;comments&quot;: [{
-        &quot;created&quot;: &quot;2014-10-07T12:08:58.026+0000&quot;,
-        &quot;lastUpdated&quot;: &quot;2014-10-07T12:08:58.026+0000&quot;,
-        &quot;text&quot;: &quot;Due to the rural environment, getting women to the facilities is a challenge.&quot;,
-        &quot;href&quot;: &quot;https://play.dhis2.org/demo/api/null/iB4Etq8yTE6&quot;,
-        &quot;id&quot;: &quot;iB4Etq8yTE6&quot;
-    }],
-    &quot;type&quot;: &quot;map&quot;,
-    &quot;href&quot;: &quot;https://play.dhis2.org/demo/api/24/interpretations/d3BukolfFZI&quot;,
-    &quot;id&quot;: &quot;d3BukolfFZI&quot;
-}</screen>
-      <para>The map interpretation contains identifier and type information in the &quot;id&quot;
-        and &quot;type&quot; properties. The interpretation text is available in the
-        &quot;text&quot; property and references to any comments in the &quot;comments&quot; list.
-        It also contains information about the interpreted object, in this case the &quot;map&quot;
-        property. Note that you can follow the link to the actual map through the &quot;href&quot;
-        property. For all analytical objects you can append <emphasis role="italic">/data</emphasis>
-        to the URL to retrieve the data associated with the resource, as apposed to the metadata. As
+      <table frame="all">
+        <title>Interpretation fields</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="3*"/>
+          <thead>
+            <row>
+              <entry>Field</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>id</entry>
+              <entry>The interpretation identifier.</entry>
+            </row>
+            <row>
+              <entry>created</entry>
+              <entry>The time of when the interpretation was created.</entry>
+            </row>
+            <row>
+              <entry>type</entry>
+              <entry>The type of analytical object being interpreted. Valid options: REPORT_TABLE,
+                CHART, MAP, EVENT_REPORT, EVENT_CHART, DATA, DATASET_REPORT.</entry>
+            </row>
+            <row>
+              <entry>user</entry>
+              <entry>Association to the user creating the interpretation.</entry>
+            </row>
+            <row>
+              <entry>reportTable</entry>
+              <entry>Association to the report table if type is REPORT_TABLE.</entry>
+            </row>
+            <row>
+              <entry>chart</entry>
+              <entry>Association to the chart if type is CHART.</entry>
+            </row>
+            <row>
+              <entry>map</entry>
+              <entry>Association to the map if type is MAP.</entry>
+            </row>
+            <row>
+              <entry>eventReport</entry>
+              <entry>Association to the event report is type is EVENT_REPORT.</entry>
+            </row>
+            <row>
+              <entry>eventChart</entry>
+              <entry>Association to the event chart if type is EVENT_CHART.</entry>
+            </row>
+            <row>
+              <entry>dataSet</entry>
+              <entry>Association to the data set if type is DATASET_REPORT.</entry>
+            </row>
+            <row>
+              <entry>comments</entry>
+              <entry>Array of comments for the interpretation. The text field holds the actual
+                comment.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>For all analytical objects you can append <emphasis role="italic">/data</emphasis> to
+        the URL to retrieve the data associated with the resource (as apposed to the metadata). As
         an example, by following the map link and appending /data one can retrieve a PNG (image)
         representation of the thematic map through the following URL:</para>
       <screen>https://play.dhis2.org/demo/api/24/maps/bhmHJ4ZCdCd/data</screen>
     </section>
     <section>
       <title>Writing interpretations</title>
-      <para>We will start by writing an interpretation for the chart with identifier <emphasis
-          role="italic">EbRN2VIbPdV</emphasis>. To write chart interpretations we will interact with
-        the <link xl:href="http://play.dhis2.org/demo/api/interpretations/chart/{chartId}"/>
-        resource. The interpretation will be the request body. Based on this we can put together the
-        following request using cURL:</para>
-      <screen>curl -d &quot;This chart shows a significant ANC 1-3 dropout&quot; 
-  &quot;https://play.dhis2.org/demo/api/24/interpretations/chart/EbRN2VIbPdV&quot; \
+      <para>When writing interpretations you will supply the interpretation text as the request body
+        using a POST request with content type "text/plain". The URL pattern looks like the below,
+        where {object-type} refers to the type of the object being interpreted, and {object-id}
+        refers to the identifier of the obejct being
+        interpreted.<screen>/api/24/interpretations/{object-type}/{object-id}</screen></para>
+      <para>Valid options for object type are <emphasis>reportTable</emphasis>,
+          <emphasis>chart</emphasis>, <emphasis>map</emphasis>, <emphasis>eventReport</emphasis>,
+          <emphasis>eventChart</emphasis> and <emphasis>dataSetReport</emphasis>.</para>
+      <para>Some valid examples for interpretations are listed
+        below.<screen>/api/24/interpretations/reportTable/yC86zJxU1i1
+/api/24/interpretations/chart/ZMuYVhtIceD
+/api/24/interpretations/map/FwLHSMCejFu
+/api/24/interpretations/eventReport/xJmPLGP3Cde
+/api/24/interpretations/eventChart/nEzXB2M9YBz
+/api/24/interpretations/dataSetReport/tL7eCjmDIgM</screen>As
+        an example we will start by writing an interpretation for the chart with identifier
+          <emphasis>EbRN2VIbPdV</emphasis>. To write chart interpretations we will
+        interact with the <emphasis>/api/24/interpretations/chart/{chartId}</emphasis> resource. The
+        interpretation will be the request body. Based on this we can put together the following
+        request using cURL:</para>
+      <screen>curl -d &quot;This chart shows a significant ANC 1-3 dropout&quot; -X POST
+  &quot;https://play.dhis2.org/demo/api/24/interpretations/chart/EbRN2VIbPdV&quot;
   -H &quot;Content-Type:text/plain&quot; -u admin:district</screen>
-      <para>Second we will write a comment on the interpretation we just wrote. By looking at the
-        interpretation response you will see that a <emphasis role="italic">Location</emphasis>
-        header is returned. This header tells us the URL of the newly created interpretation and
-        from that we can read its identifier. This identifier is randomly generated so you will have
-        to replace the one in the command below with your own. To write a comment we can interact
-        with the <link
-          xl:href="http://play.dhis2.org/demo/api/interpretations/{interpretationId}/comment"/> like
-        this:</para>
-      <screen>curl -d &quot;An intervention is needed&quot; 
+      <para>Notice that the response provides a Location header with a value indicating the location
+        of the created interpretation. This is useful from a client perspective when you would like
+        to add a comment to the interpretation.</para>
+    </section>
+    <section>
+      <title>Updating and removing interpretations</title>
+      <para>To update an existing interpretation you can use a PUT request where the interpretation
+        text is the request body using the following URL
+        pattern:<screen>/api/24/interpretations/{id}/</screen></para>
+      <para>Based on this we can use curl to update the
+        interpretation:<screen>curl -d "This charts shows a high dropout" -X PUT
+  &quot;https://play.dhis2.org/demo/api/24/interpretations/chart/EV08iI1cJRA&quot;
+  -H "Content-Type:text/plain" -u admin:district</screen></para>
+      <para>You can use the same URL pattern as above using a DELETE request to remove the
+        interpretation.</para>
+    </section>
+    <section>
+      <title>Creating interpretation comments</title>
+      <para>When writing comments to interpretations you will supply the comment text as the request
+        body using a POST request with content type "text/plain". The URL pattern looks like the
+        below, where {interpretation-id} refers to the interpretation
+        identifier.<screen>/api/24/interpretations/{interpretation-id}/comment</screen></para>
+      <para>Second, we will write a comment to the interpretation we wrote in the example above. By
+        looking at the interpretation response you will see that a <emphasis role="italic"
+          >Location</emphasis> header is returned. This header tells us the URL of the newly created
+        interpretation and from that we can read its identifier. This identifier is randomly
+        generated so you will have to replace the one in the command below with your own. To write a
+        comment we can interact with the <emphasis>/api/24/interpretations/{id}/comment"</emphasis>
+        resource like this:</para>
+      <screen>curl -d &quot;An intervention is needed&quot; -X POST
   &quot;https://play.dhis2.org/demo/api/24/interpretations/j8sjHLkK8uY/comment&quot;
-  -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
-      <para>You can also write interpretations for report tables in a similar way by interacting
-        with the <link
-          xl:href="http://app.dhis2.org/demo/api/interpretations/reportTable/{reportTableId}"/>. For
-        report tables you can also provide an optional <emphasis role="italic">ou</emphasis> query
-        parameter to supply an organisation unit identifier in the case where the report table has
-        an organisation unit report parameter:</para>
-      <screen>curl -d &quot;This table reveals poor data quality&quot; 
-  &quot;https://play.dhis2.org/demo/api/24/interpretations/reportTable/xIWpSo5jjT1?ou=O6uvpzGd5pu&quot;
   -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
     </section>
     <section>
-      <title>Creating, updating and removing interpretation comments</title>
-      <para> Creating comments to existing interpretations:
-        <screen>POST &quot;plain-text comment&quot; to /api/24/interpretations/ID/comments</screen></para>
-      <para> Updating comments in existing interpretations:
-        <screen>PUT &quot;plain-text comment&quot; to /api/24/interpretations/ID/comments/ID</screen></para>
-      <para> Removing comments in existing interpretations:
-        <screen>DELETE /api/24/interpretations/ID/comments/ID</screen></para>
+      <title>Updating and removing interpretation comments</title>
+      <para>To updating an interpretation comment you can use a PUT request where the comment text
+        is the request body using the following URL
+        pattern:<screen>/api/24/interpretations/{interpretation-id}/comments/{comment-id}</screen></para>
+      <para>Based on this we can use curl to update the
+        comment:<screen>curl -d "I agree with that." -X PUT
+  https://play.dhis2.org/demo/api/24/interpretations/j8sjHLkK8uY/comment/idAzzhVWvh2"
+  -H "Content-Type:text/plain" -u admin:district -v</screen></para>
+      <para>You can use the same URL pattern as above using a DELETE request to the remove the
+        interpretation comment.</para>
     </section>
   </section>
   <section xml:id="webapi_viewing_analytical_resource_representations">
@@ -5789,7 +5864,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     <para>DHIS2 has several resources for data analysis. These resources include <emphasis
         role="italic">charts</emphasis>, <emphasis role="italic">maps</emphasis>, <emphasis
         role="italic">reportTables</emphasis>, <emphasis role="italic">reports</emphasis> and
-        <emphasis role="italic">documents</emphasis>. By visiting these resources you will retrieve
+        <emphasis>documents</emphasis>. By visiting these resources you will retrieve
       information about the resource. For instance, by navigating to <emphasis role="italic"
         >api/charts/R0DVGvXDUNP</emphasis> the response will contain the name, last date of
       modication and so on for the chart. To retrieve the analytical representation, for instance a
