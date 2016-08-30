@@ -10,24 +10,115 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>[Review ongoing]Using the Tracker
-    <?oxy_comment_start author="cecilia" timestamp="20160701T094524+0200" comment="At next release: review section completely"?>Capture<?oxy_comment_end?>
-    app</title>
+  <title>[Review ongoing]Using the Tracker <?oxy_comment_start author="cecilia" timestamp="20160701T094524+0200" comment="At next release: review section completely"?>Capture<?oxy_comment_end?>
+    <?oxy_comment_start author="cecilia" timestamp="20160830T134627+0200" comment="Add workflow section and commonc concept information about event vs. tracked event"?>app<?oxy_comment_end?></title>
   <section>
     <title>About the Tracker Capture app</title>
-    <para>Tracker capture is an advanced version of the Event capture app. While the event capture
-      deals with single event without registration, tracker capture deals with multiple events
-      (including single event) with registration. The implication of this is that, any event
-      capturing has to be for a registered tracked entity instance (TEI). This makes
-      registration/searching of TEI a key component of the tracker capture app. </para>
+    <para>The Tracker Capture app is an advanced version of the Event Capture app. While the Event
+      Capture app handles single events without registration, the Tracker Capture app handles
+      multiple events (including single event) with registration.
+      <?oxy_comment_start author="cecilia" timestamp="20160830T135029+0200" comment="Rewrite."?>You
+      capture an event for a registered tracked entity instance (TEI)<?oxy_comment_end?>.</para>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
+    <para>Both search and registration are dictated by a selected program. It is program attributes
+      which are being used as search criteria, registration attributes and also as columns names for
+      tracked entity list. If no program is selected, the system picks default attributes. If no
+      search criteria is assigned for an attribute, then the attribute has no effect on searching.
+      However to control the appearance or not of an attribute as a column list, one has to go
+      through a menu available under the small gear icon.</para>
+    <?oxy_custom_end?>
   </section>
   <section>
-    <title>TEI search and registration</title>
-    <para>To proceed with the tracker capture you need to have a TEI. As shown in the screenshot
-      below, the first page of the app provides two features for this - searching an existing one or
-      registering a new one.</para>
+    <title><?oxy_comment_start author="cecilia" timestamp="20160830T135525+0200" comment="Workflow of what?
+Use Tracker Capture?
+Data entry for a TEI and a program?"?>Workflow<?oxy_comment_end?></title>
+    <orderedlist>
+      <listitem>
+        <para>Create new or find existing TEI.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Cr<?oxy_comment_start author="cecilia" timestamp="20160830T135151+0200" comment="Create a TEI?
+Register a TEI?
+
+How do you create a TEI without enrolling it into a program?"?>eate<?oxy_comment_end?>
+      a tracked entity instance (TEI)</title>
+    <orderedlist>
+      <listitem>
+        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Tracker
+            Capture</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Select an organisation unit.</para>
+      </listitem>
+      <listitem>
+        <para>Select a program.</para>
+        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
+        <para>You'll only see programs associated with the selected organisation unit and programs
+          you've access to through your user role.</para>
+        <?oxy_custom_end?>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Register</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Select a date.</para>
+      </listitem>
+      <listitem>
+        <para>Fill in the required
+          <?oxy_comment_start author="cecilia" timestamp="20160826T141524+0200" comment="Does the fields depend on which program you&apos;ve chosen?"?>information<?oxy_comment_end?>.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save and continue</emphasis> or <emphasis role="bold">Save
+            and add new</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+    <para>Registration: this is accessible through the "Register" button. During registration, it is
+      possible to stay on the same page and keep doing more registration or go straight to the
+      dashboard of the registered TEI. Selecting a program and doing registration also performs
+      enrollment at the background. If a TEI is registered without a program, then enrollment is
+      possible from the TEI dashboard. Both skip-logic and validation error/warning messages are
+      supported during registration.</para>
+    <para>For unique tracked entity attributes you can have the system automatically generate and
+      assign numeric IDs. When registering tracked entity instances on web, the tracker capture
+      registration form will then automatically be populated with a number in the given pattern. In
+      tracker on Android, the ID generation is used to reserve a series of IDs for each Android
+      device. This allows offline registration of tracked entity instances without risking duplicate
+      IDs when syncing with the server.</para>
+    <note>
+      <para>You
+        <?oxy_comment_start author="cecilia" timestamp="20160701T122212+0200" comment="Before release: verify path to automatically generated.
+Also make sure this task is in the Create program section.
+
+When olink works, add x-ref to relevant section."?>configure<?oxy_comment_end?>
+        the system-generated identifiers in the <emphasis role="bold">Program/Attributes</emphasis>
+        app:</para>
+      <orderedlist>
+        <listitem>
+          <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+              >Program/Attributes</emphasis> > <emphasis role="bold">Tracked entity</emphasis>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>Select an attribute and click <emphasis role="bold">Edit</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para><?oxy_comment_start author="cecilia" timestamp="20160830T152541+0200" comment="Verify with SME: this option is not in UI. Has the function moved?"?>Select<?oxy_comment_end?>
+            <emphasis role="bold">Automatically generated</emphasis>.</para>
+        </listitem>
+      </orderedlist>
+    </note>
+  </section>
+  <section>
+    <title><?oxy_comment_start author="cecilia" timestamp="20160830T135543+0200" comment="Find?
+Search?
+Locate?"?>Search<?oxy_comment_end?>
+      for a tracked entity instance (TEI)</title>
     <screenshot>
+      <?oxy_comment_start author="cecilia" timestamp="20160830T135408+0200" comment="Replace with new screenshot or remove completely."?>
       <title>Example: searching/registration</title>
+      <?oxy_comment_end?>
       <mediaobject>
         <imageobject>
           <imagedata fileref="resources/images/tracker_capture/search_register.png" format="PNG"
@@ -35,86 +126,49 @@
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>All searching and registration operations are accessible from the screen shown above.<orderedlist>
-        <listitem>
-          <para>Searching: there are two modes of searching: simple and advanced.</para>
-          <para>The simple search works by typing a free text in the search field. What is typed in
-            the input box is applied across all attributes for partial match. The advanced search,
-            which is accessible when the small drop-down button is clicked - works when various
-            search criteria are provided in the drop down window. Here, the match is exact
-            match.</para>
-          <para>Both search modes present the search results in a table. While in the TEI table,
-            click on a row to open the selected TEI's dashboard. Clicking <emphasis role="bold"
-              >Back</emphasis> in the dashboard takes you back to the search result table.</para>
-          <para>If a program is selected, the app provides further filtering on the table based on
-            enrollment status which are All, Active, Completed, Cancelled.  as shown below.</para>
-          <screenshot>
-            <title>Enrollment status filtering icons</title>
-            <mediaobject>
-              <imageobject>
-                <imagedata fileref="resources/images/tracker_capture/enrollment_status.png" format="PNG" align="center" width="20%"/>
-              </imageobject>
-            </mediaobject>
-          </screenshot>
-          <para>The advanced search also provides one more additional feature. Under normal
-            circumstances, advanced search is conducted for the selected organisation unit (from
-            left-hand side tree) and scope (which could be Selected, Immediate children or All
-            children). The left-hand side tree is generated based on the logged in user's assigned
-            organisation units. However, there could be cases to search for a TEI from another
-            organisation unit (which is not necessarily part of the assigned organisation units. To
-            support such use case, advanced search provides another organisation unit tree. The tree
-            displayed here depends on the role that the logged in user has. If the user has role
-            "Search Tracked Entity Instance in All Org Units" or "ALL", a tree with all available
-            organisation units is provided other wise the tree displayed in advanced search is the
-            same as the one on the left-hand side. Whichever tree (or hierarchy of organisation
-            units) is provided, if an organisation unit is selected in advanced search, the
-            searching is conducted against this selected organisation unit and scope.</para>
-          <para>If a program is selected, advanced search allows you to search on the incident date
-            if the program has one.</para>
-        </listitem>
-        <listitem>
-          <para>Registration: this is accessible through the "Register" button. During registration,
-            it is possible to stay on the same page and keep doing more registration or go straight
-            to the dashboard of the registered TEI. Selecting a program and doing registration also
-            performs enrollment at the background. If a TEI is registered without a program, then
-            enrollment is possible from the TEI dashboard. Both skip-logic and validation
-            error/warning messages are supported during registration.</para>
-          <para>For unique tracked entity attributes you can have the system automatically generate
-            and assign numeric IDs. When registering tracked entity instances on web, the tracker
-            capture registration form will then automatically be populated with a number in the
-            given pattern. In tracker on Android, the ID generation is used to reserve a series of
-            IDs for each Android device. This allows offline registration of tracked entity
-            instances without risking duplicate IDs when syncing with the server.</para>
-          <para>You
-            <?oxy_comment_start author="cecilia" timestamp="20160701T122212+0200" comment="Before release: verify path to automatically generated."?>configure<?oxy_comment_end?>
-            the system-generated identifiers in the <emphasis role="bold"
-              >Program/Attributes</emphasis> app:</para>
-          <orderedlist>
-            <listitem>
-              <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                  >Program/Attributes</emphasis> > <emphasis role="bold">Tracked entity</emphasis>.
-              </para>
-            </listitem>
-            <listitem>
-              <para>Select an attribute and click <emphasis role="bold">Edit</emphasis>.</para>
-            </listitem>
-            <listitem>
-              <para>Select <emphasis role="bold">Automatically generated</emphasis>.</para>
-            </listitem>
-          </orderedlist>
-        </listitem>
-      </orderedlist></para>
-    <para>Both search and registration are dictated by a selected program. It is program attributes
-      which are being used as search criteria, registration attributes and also as columns names for
-      tracked entity list. If no program is selected, the system picks default attributes. If no
-      search criteria is assigned for an attribute, then the attribute has no effect on searching.
-      However to control the appearance or not of an attribute as a column list, one has to go
-      through a menu available under the small gear icon. </para>
-    <para>Once a TEI is obtained - either through searching or registration - the app presents the
-      selected TEI's dashboard.</para>
+    <para>Searching: there are two modes of searching: simple and advanced.</para>
+    <orderedlist>
+      <listitem>
+        <para>The simple search works by typing a free text in the search field. What is typed in
+          the input box is applied across all attributes for partial match. The advanced search,
+          which is accessible when the small drop-down button is clicked - works when various search
+          criteria are provided in the drop down window. Here, the match is exact match.</para>
+        <para>Both search modes present the search results in a table. While in the TEI table, click
+          on a row to open the selected TEI's dashboard. Clicking <emphasis role="bold"
+            >Back</emphasis> in the dashboard takes you back to the search result table.</para>
+        <para>If a program is selected, the app provides further filtering on the table based on
+          enrollment status which are All, Active, Completed, Cancelled. as shown below.</para>
+        <screenshot>
+          <title>Enrollment status filtering icons</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="resources/images/tracker_capture/enrollment_status.png"
+                format="PNG" align="center" width="20%"/>
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+        <para>The advanced search also provides one more additional feature. Under normal
+          circumstances, advanced search is conducted for the selected organisation unit (from
+          left-hand side tree) and scope (which could be Selected, Immediate children or All
+          children). The left-hand side tree is generated based on the logged in user's assigned
+          organisation units. However, there could be cases to search for a TEI from another
+          organisation unit (which is not necessarily part of the assigned organisation units. To
+          support such use case, advanced search provides another organisation unit tree. The tree
+          displayed here depends on the role that the logged in user has. If the user has role
+          "Search Tracked Entity Instance in All Org Units" or "ALL", a tree with all available
+          organisation units is provided other wise the tree displayed in advanced search is the
+          same as the one on the left-hand side. Whichever tree (or hierarchy of organisation units)
+          is provided, if an organisation unit is selected in advanced search, the searching is
+          conducted against this selected organisation unit and scope.</para>
+        <para>If a program is selected, advanced search allows you to search on the incident date if
+          the program has one.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
-    <title>Tracker dashboard</title>
+    <title>Manage a tracked instance entity (TEI) (Tracker dashboard)</title>
+    <para>Once a TEI is obtained - either through searching or registration - the app presents the
+      selected TEI's dashboard.</para>
     <para>All operations on a tracked entity are available from this dashboard. Anticipating
       multiple usecases or operations on registered TEI, we have structured the dashboard as a
       collection of widgets - more widgets can be added. This helps to scale and handle complexity
@@ -281,10 +335,10 @@
     </section>
   </section>
   <section>
-    <title>Tracker reports</title>
-    <para>Tracker capture app also provides some basic reports. These reports are accessible by
-      clicking on the "Reports" link on the left-hand side. Below is a description for some of the
-      reports.</para>
+    <title>Create reports</title>
+    <para>The Tracker Capture app provides some basic reports.</para>
+    <para>These reports are accessible by clicking on the "Reports" link on the left-hand side.
+      Below is a description for some of the reports.</para>
     <screenshot>
       <title>List of tracker reports</title>
       <mediaobject>
