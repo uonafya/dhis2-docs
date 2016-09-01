@@ -5676,7 +5676,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       event reports and event charts, you can write and share data interpretations. An
       interpretation can be a comment, question, observation or interpretation about a data report or
       visualization.<screen>/api/24/interpretations</screen></para>
-    <section>
+    <section xml:id="webapi_reading_interpretation">
       <title>Reading interpretations</title>
       <para>To read interpretations we will interact with the <emphasis role="italic"
           >/api/24/interpretations</emphasis> resource. A typical GET request using field filtering
@@ -5788,7 +5788,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         representation of the thematic map through the following URL:</para>
       <screen>https://play.dhis2.org/demo/api/24/maps/bhmHJ4ZCdCd/data</screen>
     </section>
-    <section>
+    <section xml:id="webapi_writing_interpretations">
       <title>Writing interpretations</title>
       <para>When writing interpretations you will supply the interpretation text as the request body
         using a POST request with content type "text/plain". The URL pattern looks like the below,
@@ -5817,7 +5817,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         of the created interpretation. This is useful from a client perspective when you would like
         to add a comment to the interpretation.</para>
     </section>
-    <section>
+    <section xml:id="webapi_updating_removing_interpretations">
       <title>Updating and removing interpretations</title>
       <para>To update an existing interpretation you can use a PUT request where the interpretation
         text is the request body using the following URL pattern, where {id} refers to the
@@ -5829,7 +5829,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       <para>You can use the same URL pattern as above using a DELETE request to remove the
         interpretation.</para>
     </section>
-    <section>
+    <section xml:id="webapi_creating_interpretation_comments">
       <title>Creating interpretation comments</title>
       <para>When writing comments to interpretations you will supply the comment text as the request
         body using a POST request with content type "text/plain". The URL pattern looks like the
@@ -5846,7 +5846,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
   &quot;https://play.dhis2.org/demo/api/24/interpretations/j8sjHLkK8uY/comment&quot;
   -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
     </section>
-    <section>
+    <section xml:id="webapi_updating_removing_interpretation_comments">
       <title>Updating and removing interpretation comments</title>
       <para>To updating an interpretation comment you can use a PUT request where the comment text
         is the request body using the following URL
@@ -5857,6 +5857,16 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
   -H "Content-Type:text/plain" -u admin:district -v</screen></para>
       <para>You can use the same URL pattern as above using a DELETE request to the remove the
         interpretation comment.</para>
+    </section>
+    <section>
+      <title>Liking interpretations</title>
+      <para>To like an interpretation you can use an empty POST request to the
+          <emphasis>like</emphasis>
+        resource:<screen>POST /api/24/interpretations/{id}/like</screen></para>
+      <para>A like will be added for the currently authenticated user. A user can only like an
+        interpretation once.</para>
+      <para>To remove a like for an interpretation you can use a DELETE request to the same resource
+        as for the like operation.</para>
     </section>
   </section>
   <section xml:id="webapi_viewing_analytical_resource_representations">
