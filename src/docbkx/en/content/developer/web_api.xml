@@ -5676,7 +5676,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       event reports and event charts, you can write and share data interpretations. An
       interpretation can be a comment, question, observation or interpretation about a data report or
       visualization.<screen>/api/24/interpretations</screen></para>
-    <section xml:id="webapi_reading_interpretation">
+    <section xml:id="webapi_reading_interpretations">
       <title>Reading interpretations</title>
       <para>To read interpretations we will interact with the <emphasis role="italic"
           >/api/24/interpretations</emphasis> resource. A typical GET request using field filtering
@@ -5690,6 +5690,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         &quot;created&quot;: &quot;2013-05-30T10:24:06.181+0000&quot;,
         "text": "Data looks suspicious, could be a data entry mistake.",
         &quot;type&quot;: &quot;REPORT_TABLE&quot;,
+        "likes": 2,
         "user": {
           "id": "uk7diLujYif"
         },
@@ -5701,6 +5702,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         &quot;created&quot;: &quot;2013-05-29T14:47:13.081+0000&quot;,
         "text": "Delivery rates in Bo looks high.",
         &quot;type&quot;: &quot;CHART&quot;,
+        "likes": 3,
         "user": {
           "id": "uk7diLujYif"
         },
@@ -5858,7 +5860,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       <para>You can use the same URL pattern as above using a DELETE request to the remove the
         interpretation comment.</para>
     </section>
-    <section>
+    <section xml:id="webapi_liking_interpretations">
       <title>Liking interpretations</title>
       <para>To like an interpretation you can use an empty POST request to the
           <emphasis>like</emphasis>
@@ -5867,6 +5869,24 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         interpretation once.</para>
       <para>To remove a like for an interpretation you can use a DELETE request to the same resource
         as for the like operation.</para>
+      <para>The like status of an intepretation can be viewed by looking at the regular Web API
+        representation:<screen>GET /api/24/interpretations/{id}</screen></para>
+      <para>The like information is found in the <emphasis>likes</emphasis> field, which represents
+        the number of likes, and the <emphasis>likedBy</emphasis> array, which enumerates the users
+        who have liked the interpretation.</para>
+      <para>
+        <screen>{
+    &quot;id&quot;: &quot;XSHiFlHAhhh&quot;,
+    "text": "Data looks suspicious, could be a data entry mistake.",
+    &quot;type&quot;: &quot;REPORT_TABLE&quot;,
+    "likes": 2,
+    "likedBy": [{
+        "id": "k7Hg12fJ2f1"
+    }, {
+        "id: "gYhf26fFkjFS"
+    }]
+}</screen>
+      </para>
     </section>
   </section>
   <section xml:id="webapi_viewing_analytical_resource_representations">
