@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.hisp.dhis</groupId>
 	<artifactId>dhis-documentation-docbook</artifactId>
-	<name>DHIS2 Documentation</name>
+	<name>DHIS2 online help</name>
 	<version>2.25</version>
-	<description>DHIS2 Documentation</description>
+	<description>DHIS2 online help</description>
 	<packaging>pom</packaging>
 	<prerequisites>
       <maven>3.0.0</maven>
@@ -109,10 +109,32 @@
 							<goal>generate-webhelp</goal>
 						</goals>
 						<configuration>
+							<webhelpStylesheet>resources/css/webhelp.css</webhelpStylesheet>
+							<chapterAutolabel>false</chapterAutolabel>
+							<sectionAutolabel>false</sectionAutolabel>
 							<webhelpIndexerLanguage>en</webhelpIndexerLanguage>
 							<webhelpIncludeSearchTab>1</webhelpIncludeSearchTab>
+							<useIdAsFilename>true</useIdAsFilename>							
 							<includes>dhis2_user_manual_en.xml</includes>
+							
 							<sourceDirectory>${docbook.source}/en/</sourceDirectory>
+							<targetDirectory>${docbook.target}/en/user-manual/webhelp</targetDirectory>
+							<postProcess>
+								<copy todir="${docbook.target}/en/user-manual/webhelp/resources/images">
+									<fileset dir="src/docbkx/en/resources/images">
+										<include name="**/*.png" />
+										<include name="**/*.PNG" />
+										<include name="**/*.gif" />
+										<include name="**/*.jpg" />
+										<include name="**/*.svg" />
+									</fileset>
+								</copy>
+								<copy todir="${docbook.target}/en/user-manual/webhelp/resources/css">
+									<fileset dir="src/docbkx/en/resources/css">
+										<include name="**/*.css" />
+									</fileset>
+								</copy>
+							</postProcess>
 						</configuration>
 					</execution>
                     </executions>
