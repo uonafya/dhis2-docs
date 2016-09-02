@@ -13111,12 +13111,13 @@ interval=WEEK" -u admin:district</screen>
   <section xml:id="webapi_metadata_repository">
     <title>Metadata repository</title>
     <para>DHIS2 provides a metadata repository containing metadata packages with various content. A
-      metadata package is a </para>
+      metadata package is a DHIS2-compliant JSON document which describes a set of metadata
+      objects.</para>
     <para>To retrieve an index over available metadata packages you can issue a GET request to the
         <emphasis role="italic">metadataRepo</emphasis>
       resource:<screen>GET /api/synchronization/metadataRepo</screen></para>
     <para>A metadata package entry contains information about the package and a URL to the relevant
-      package. A metadata package is simply a DXF metadata file. An index could look like
+      package. An index could look like
       this:<screen>{
   &quot;packages&quot;: [ {
     &quot;id&quot;: &quot;sierre-leone-demo&quot;,
@@ -13134,9 +13135,9 @@ interval=WEEK" -u admin:district</screen>
   }
  ]
 }</screen></para>
-    <para>A client can follow the URLs in a RESTful fashion and install a metadata package by
-      supplying POST request as text/plain with the metadata package URL as the payload to the
-        <emphasis role="italic">metadataPull</emphasis>
+    <para>A client can follow the URLs and install a metadata package through a POST request with
+      content type <emphasis>text/plain</emphasis> with the metadata package URL as the payload to
+      the <emphasis role="italic">metadataPull</emphasis>
       resource:<screen>POST /api/synchronization/metadataPull</screen></para>
     <para>An example curl command looks like
       this:<screen>curl &quot;localhost:8080/api/synchronization/metadataPull&quot; -X POST
