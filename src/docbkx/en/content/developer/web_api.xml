@@ -7959,6 +7959,48 @@ ORDER BY oul.level, par.name, ou.name</screen>
         with status code 409 and content-type &quot;text/plain&quot; together with a textual
         description of the problem.</para>
     </section>
+    <section xml:id="webapi_analytics_data_value_set_format">
+      <title>Data value set format</title>
+      <para>The analytics resource allows for returning aggregated data in the data value set
+        format. This format represents raw data values, as opposed to data which has been aggregated
+        along various dimensions. Exporting aggregated data as regular data values is useful for
+        data exchange between systems when the target system contains data of finer granularity
+        compared to what the destination system is storing. </para>
+      <para>As an example one can specify an indicator in the target system to summarize data for
+        multiple data elements and import this data for a single data element in the destionation
+        system. As another example one can aggregate data collected at organisation unit level 4 in
+        the target system to level 2 and import that data in the destination system.</para>
+      <para>You can retrieve data in the raw data value set format from the
+          <emphasis>analytics/dataValueSets</emphasis>
+        resource:<screen>/api/24/analytics/dataValueSet</screen></para>
+      <para>The following resource representations are supported:<itemizedlist>
+          <listitem>
+            <para>json (application/json)</para>
+          </listitem>
+          <listitem>
+            <para>xml (application/xml)</para>
+          </listitem>
+        </itemizedlist></para>
+      <para>When using the data value set format, exactly three dimensions must be specified as
+        analytics dimensions with at least one dimension item each:<itemizedlist>
+          <listitem>
+            <para>Data (dx)</para>
+          </listitem>
+          <listitem>
+            <para>Period (pe)</para>
+          </listitem>
+          <listitem>
+            <para>Organisation unit (ou)</para>
+          </listitem>
+        </itemizedlist></para>
+      <para>Any other dimension will be ignored. Filters will be applied as with regular analytics
+        requests. Note that any data dimension type can be specified, including indicators, data
+        elements, data sets and program indicators.</para>
+      <para>An example request which aggregates data for specific indicators, periods and
+        organisation units looks like
+        this:<screen>api/analytics/dataValueSet.xml?dimension=dx:Uvn6LCg7dVU;OdiHJayrsKo
+&amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:lc3eMKXaEfw;PMa2VCrupOd</screen></para>
+    </section>
     <section xml:id="webapi_analytics_debugging">
       <title>Debugging</title>
       <para>When debugging analytics requests it can be useful to examine the data value source of
