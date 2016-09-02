@@ -7997,9 +7997,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
         requests. Note that any data dimension type can be specified, including indicators, data
         elements, data sets and program indicators.</para>
       <para>An example request which aggregates data for specific indicators, periods and
-        organisation units looks like
+        organisation units and returns it as regular data values in XML looks like
         this:<screen>api/analytics/dataValueSet.xml?dimension=dx:Uvn6LCg7dVU;OdiHJayrsKo
-&amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:lc3eMKXaEfw;PMa2VCrupOd</screen></para>
+  &amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:lc3eMKXaEfw;PMa2VCrupOd</screen></para>
     </section>
     <section xml:id="webapi_analytics_debugging">
       <title>Debugging</title>
@@ -8009,7 +8009,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
         relevant content of the datavalue table. You can produce this SQL by doing a GET request
         with content type &quot;text/html&quot; or &quot;text/plain&quot; like below. The dimension
         and filter syntax is identical to regular analytics queries:</para>
-      <screen>/api/24/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2016Q1;2016Q2&amp;filter=ou:O6uvpzGd5pu</screen>
+      <screen>/api/24/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+  &amp;filter=pe:2016Q1;2016Q2&amp;filter=ou:O6uvpzGd5pu</screen>
     </section>
   </section>
   <section xml:id="webapi_event_analytics">
