@@ -7959,6 +7959,48 @@ ORDER BY oul.level, par.name, ou.name</screen>
         with status code 409 and content-type &quot;text/plain&quot; together with a textual
         description of the problem.</para>
     </section>
+    <section xml:id="webapi_analytics_data_value_set_format">
+      <title>Data value set format</title>
+      <para>The analytics resource allows for returning aggregated data in the data value set
+        format. This format represents raw data values, as opposed to data which has been aggregated
+        along various dimensions. Exporting aggregated data as regular data values is useful for
+        data exchange between systems when the target system contains data of finer granularity
+        compared to what the destination system is storing. </para>
+      <para>As an example one can specify an indicator in the target system to summarize data for
+        multiple data elements and import this data for a single data element in the destionation
+        system. As another example one can aggregate data collected at organisation unit level 4 in
+        the target system to level 2 and import that data in the destination system.</para>
+      <para>You can retrieve data in the raw data value set format from the
+          <emphasis>analytics/dataValueSets</emphasis>
+        resource:<screen>/api/24/analytics/dataValueSet</screen></para>
+      <para>The following resource representations are supported:<itemizedlist>
+          <listitem>
+            <para>json (application/json)</para>
+          </listitem>
+          <listitem>
+            <para>xml (application/xml)</para>
+          </listitem>
+        </itemizedlist></para>
+      <para>When using the data value set format, exactly three dimensions must be specified as
+        analytics dimensions with at least one dimension item each:<itemizedlist>
+          <listitem>
+            <para>Data (dx)</para>
+          </listitem>
+          <listitem>
+            <para>Period (pe)</para>
+          </listitem>
+          <listitem>
+            <para>Organisation unit (ou)</para>
+          </listitem>
+        </itemizedlist></para>
+      <para>Any other dimension will be ignored. Filters will be applied as with regular analytics
+        requests. Note that any data dimension type can be specified, including indicators, data
+        elements, data sets and program indicators.</para>
+      <para>An example request which aggregates data for specific indicators, periods and
+        organisation units and returns it as regular data values in XML looks like
+        this:<screen>api/analytics/dataValueSet.xml?dimension=dx:Uvn6LCg7dVU;OdiHJayrsKo
+  &amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:lc3eMKXaEfw;PMa2VCrupOd</screen></para>
+    </section>
     <section xml:id="webapi_analytics_debugging">
       <title>Debugging</title>
       <para>When debugging analytics requests it can be useful to examine the data value source of
@@ -7967,7 +8009,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
         relevant content of the datavalue table. You can produce this SQL by doing a GET request
         with content type &quot;text/html&quot; or &quot;text/plain&quot; like below. The dimension
         and filter syntax is identical to regular analytics queries:</para>
-      <screen>/api/24/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2016Q1;2016Q2&amp;filter=ou:O6uvpzGd5pu</screen>
+      <screen>/api/24/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+  &amp;filter=pe:2016Q1;2016Q2&amp;filter=ou:O6uvpzGd5pu</screen>
     </section>
   </section>
   <section xml:id="webapi_event_analytics">
@@ -13068,12 +13111,13 @@ interval=WEEK" -u admin:district</screen>
   <section xml:id="webapi_metadata_repository">
     <title>Metadata repository</title>
     <para>DHIS2 provides a metadata repository containing metadata packages with various content. A
-      metadata package is a </para>
+      metadata package is a DHIS2-compliant JSON document which describes a set of metadata
+      objects.</para>
     <para>To retrieve an index over available metadata packages you can issue a GET request to the
         <emphasis role="italic">metadataRepo</emphasis>
       resource:<screen>GET /api/synchronization/metadataRepo</screen></para>
     <para>A metadata package entry contains information about the package and a URL to the relevant
-      package. A metadata package is simply a DXF metadata file. An index could look like
+      package. An index could look like
       this:<screen>{
   &quot;packages&quot;: [ {
     &quot;id&quot;: &quot;sierre-leone-demo&quot;,
@@ -13091,9 +13135,9 @@ interval=WEEK" -u admin:district</screen>
   }
  ]
 }</screen></para>
-    <para>A client can follow the URLs in a RESTful fashion and install a metadata package by
-      supplying POST request as text/plain with the metadata package URL as the payload to the
-        <emphasis role="italic">metadataPull</emphasis>
+    <para>A client can follow the URLs and install a metadata package through a POST request with
+      content type <emphasis>text/plain</emphasis> with the metadata package URL as the payload to
+      the <emphasis role="italic">metadataPull</emphasis>
       resource:<screen>POST /api/synchronization/metadataPull</screen></para>
     <para>An example curl command looks like
       this:<screen>curl &quot;localhost:8080/api/synchronization/metadataPull&quot; -X POST
