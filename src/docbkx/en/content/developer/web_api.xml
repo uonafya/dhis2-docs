@@ -7997,9 +7997,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
         requests. Note that any data dimension type can be specified, including indicators, data
         elements, data sets and program indicators.</para>
       <para>An example request which aggregates data for specific indicators, periods and
-        organisation units looks like
+        organisation units and returns it as regular data values in XML looks like
         this:<screen>api/analytics/dataValueSet.xml?dimension=dx:Uvn6LCg7dVU;OdiHJayrsKo
-&amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:lc3eMKXaEfw;PMa2VCrupOd</screen></para>
+  &amp;dimension=pe:LAST_4_QUARTERS&amp;dimension=ou:lc3eMKXaEfw;PMa2VCrupOd</screen></para>
     </section>
     <section xml:id="webapi_analytics_debugging">
       <title>Debugging</title>
@@ -8009,7 +8009,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
         relevant content of the datavalue table. You can produce this SQL by doing a GET request
         with content type &quot;text/html&quot; or &quot;text/plain&quot; like below. The dimension
         and filter syntax is identical to regular analytics queries:</para>
-      <screen>/api/24/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU&amp;filter=pe:2016Q1;2016Q2&amp;filter=ou:O6uvpzGd5pu</screen>
+      <screen>/api/24/analytics/debug/sql?dimension=dx:fbfJHSPpUQD;cYeuwXTCPkU
+  &amp;filter=pe:2016Q1;2016Q2&amp;filter=ou:O6uvpzGd5pu</screen>
     </section>
   </section>
   <section xml:id="webapi_event_analytics">
@@ -13110,12 +13111,13 @@ interval=WEEK" -u admin:district</screen>
   <section xml:id="webapi_metadata_repository">
     <title>Metadata repository</title>
     <para>DHIS2 provides a metadata repository containing metadata packages with various content. A
-      metadata package is a </para>
+      metadata package is a DHIS2-compliant JSON document which describes a set of metadata
+      objects.</para>
     <para>To retrieve an index over available metadata packages you can issue a GET request to the
         <emphasis role="italic">metadataRepo</emphasis>
       resource:<screen>GET /api/synchronization/metadataRepo</screen></para>
     <para>A metadata package entry contains information about the package and a URL to the relevant
-      package. A metadata package is simply a DXF metadata file. An index could look like
+      package. An index could look like
       this:<screen>{
   &quot;packages&quot;: [ {
     &quot;id&quot;: &quot;sierre-leone-demo&quot;,
@@ -13133,9 +13135,9 @@ interval=WEEK" -u admin:district</screen>
   }
  ]
 }</screen></para>
-    <para>A client can follow the URLs in a RESTful fashion and install a metadata package by
-      supplying POST request as text/plain with the metadata package URL as the payload to the
-        <emphasis role="italic">metadataPull</emphasis>
+    <para>A client can follow the URLs and install a metadata package through a POST request with
+      content type <emphasis>text/plain</emphasis> with the metadata package URL as the payload to
+      the <emphasis role="italic">metadataPull</emphasis>
       resource:<screen>POST /api/synchronization/metadataPull</screen></para>
     <para>An example curl command looks like
       this:<screen>curl &quot;localhost:8080/api/synchronization/metadataPull&quot; -X POST
