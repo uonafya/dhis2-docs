@@ -86,19 +86,19 @@
     </section>
     <section xml:id="webapi_oauth2">
       <title>OAuth2</title>
-      <para>DHIS2 support the OAuth2 protocol, which is an open standard for authorization, it
-        allows 3rd party clients to connect on behalf of a DHIS2 user, and get a re-usable bearer
-        token for multiple requests to the web-api (without requiring getting the users permission
-        again). We do not support fine-grained OAuth2 roles, rather we gives the application access
-        based on the users DHIS2 user role.</para>
+      <para>DHIS2 supports the OAuth2 authentication protocol. OAuth2 is an open standard for
+        authorization which it allows third-party clients to connect on behalf of a DHIS2 user and
+        get a reusable bearer token for subsequent requests to the Web API. DHIS 2 does not support
+        fine-grained OAuth2 roles but rather provides applications access based on user roles of the
+        DHIS2 user.</para>
       <para>Each client for which you want to allow OAuth 2 authentication must be registered in
-        DHIS2. To add a new OAuth2 client, go to <emphasis role="italic">settings =&gt; OAuth2
-          Clients</emphasis>, click add new and at least the name of client, and the grant types you
-        want supported.</para>
+        DHIS2. To add a new OAuth2 client go to <emphasis role="italic">Apps > Settings > OAuth2
+          Clients</emphasis>, click add new and enter the desired client name and the grant
+        types.</para>
       <section>
-        <title>Adding a client using the web-api</title>
-        <para>An OAuth2 client can also be added through the Web API. As an example we can send a
-          payload like
+        <title>Adding a client using the Web API</title>
+        <para>An OAuth2 client can be added through the Web API. As an example we can send a payload
+          like
           this:<screen>{
    &quot;name&quot; : &quot;OAuth2 Demo Client&quot;,
    &quot;cid&quot; : &quot;demo&quot;,
@@ -113,7 +113,8 @@
    ]
 }</screen></para>
         <screen>SERVER=&quot;https://play.dhis2.org/dev&quot;
-curl -X POST -H &quot;Content-Type: application/json&quot; -d @client.json -u admin:district $SERVER/api/oAuth2Clients</screen>
+curl -X POST -H &quot;Content-Type: application/json&quot; -d @client.json 
+  -u admin:district $SERVER/api/oAuth2Clients</screen>
         <para>We will use this client as the basis for our next grant type examples.</para>
       </section>
       <section>
@@ -166,20 +167,21 @@ curl -X POST -H &quot;Accept: application/json&quot; -u demo:$SECRET $SERVER/uaa
           directly from the user instead of the client collecting them and then authenticating on
           behalf of the user. Please be aware that this approach uses the <emphasis role="bold"
             >redirect_uris</emphasis> part of the client payload.</para>
-        <para>Step 1 - Using a browser visit this URL (if you have more than one redirect URIs, you
+        <para>Step 1: Using a browser visit this URL (if you have more than one redirect URIs, you
           might want to add &amp;redirect_uri=http://www.example.org)
           :<screen>SERVER=&quot;https://play.dhis2.org/dev&quot;
 
 $SERVER/uaa/oauth/authorize?client_xml:id=demo&amp;response_type=code</screen></para>
-        <para>Step 2 - After the user have successfully logged in and accepted your client access,
-          it will redirect back to your redirect uri like
+        <para>Step 2: After the user have successfully logged in and accepted your client access, it
+          will redirect back to your redirect uri like
           this:<screen>http://www.example.org/?code=XYZ</screen></para>
-        <para>Step 3 - This step is similar to what we did in the password grant type, using the
+        <para>Step 3: This step is similar to what we did in the password grant type, using the
           given code, we will now ask for a access
           token:<screen>SERVER=&quot;https://play.dhis2.org/dev&quot;
 SECRET=&quot;1e6db50c-0fee-11e5-98d0-3c15c2c6caf6&quot;
 
-curl -X POST -u demo:$SECRET -H &quot;Accept: application/json&quot; $SERVER/token -d grant_type=authorization_code -d code=XYZ</screen></para>
+curl -X POST -u demo:$SECRET -H &quot;Accept: application/json&quot; $SERVER/token 
+  -d grant_type=authorization_code -d code=XYZ</screen></para>
       </section>
     </section>
   </section>
@@ -7971,7 +7973,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         system. As another example one can aggregate data collected at organisation unit level 4 in
         the target system to level 2 and import that data in the destination system.</para>
       <para>You can retrieve data in the raw data value set format from the
-          <emphasis>analytics/dataValueSets</emphasis>
+          <emphasis>analytics/dataValueSethttp://dhis2.github.io/dhis2-docs/master/en/developer/html/webapi_authentication.html#webapi_oauth2http://dhis2.github.io/dhis2-docs/master/en/developer/html/webapi_authentication.html#webapi_oauth2</emphasis>
         resource:<screen>/api/24/analytics/dataValueSet</screen></para>
       <para>The following resource representations are supported:<itemizedlist>
           <listitem>
@@ -12818,7 +12820,7 @@ interval=WEEK" -u admin:district</screen>
 }</screen></para>
     </section>
     <section>
-      <title>Create and update values</title>
+      <title>Create values</title>
       <para>To create a new key and value for a
         namespace:<screen>POST /api/24/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
       <para>Example curl request for create, assuming a valid json
@@ -12831,9 +12833,12 @@ interval=WEEK" -u admin:district</screen>
     &quot;status&quot;: &quot;OK&quot;,
     &quot;message&quot;: &quot;Key &apos;key_1&apos; created.&quot;
 }</screen></para>
-      <para>If you require the data you store to be encrypted (For example user credentials or
+      <para>If you require the data you store to be encrypted (for example user credentials or
         similar) you can append a query to the url like
         this:<screen>GET /api/24/dataStore/&lt;namespace>/&lt;key>?encrypt=true</screen></para>
+      </section>
+      <section>
+        <title>Update values</title>
       <para>To update a key that exists in a
         namespace:<screen>PUT /api/24/dataStore/&lt;namespace&gt;/&lt;key&gt;</screen></para>
       <para>Example curl request for update, assuming valid JSON
@@ -12964,7 +12969,7 @@ interval=WEEK" -u admin:district</screen>
 }</screen></para>
     </section>
     <section>
-      <title>Add new value</title>
+      <title>Create value</title>
       <para>Adds a new value to a given key in a given
         namespace.<screen>POST /api/24/userDataStore/&lt;namespace>/&lt;key></screen></para>
       <para>Example
