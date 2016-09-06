@@ -8062,12 +8062,19 @@ ORDER BY oul.level, par.name, ou.name</screen>
             <row>
               <entry>Organisation units</entry>
               <entry>ou</entry>
-              <entry>Organisation unit identifiers</entry>
+              <entry>Organisation unit identifiers and keywords USER_ORGUNIT, USER_ORGUNIT_CHILDREN,
+                USER_ORGUNIT_GRANDCHILDREN, LEVEL-&lt;level&gt; and
+                OU_GROUP-&lt;group-id&gt;</entry>
             </row>
             <row>
               <entry>Organisation unit group sets</entry>
-              <entry>&lt;id&gt;</entry>
+              <entry>&lt;org unit group set id&gt;</entry>
               <entry>Organisation unit group set identifiers</entry>
+            </row>
+            <row>
+              <entry>Categories</entry>
+              <entry>&lt;category id></entry>
+              <entry>Category identifiers (program attribute categories only)</entry>
             </row>
           </tbody>
         </tgroup>
@@ -8388,8 +8395,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
         <para>You can filter the &quot;Age&quot; data element for multiple, specific ages using the
           IN operator like this:<screen>&amp;dimension=qrur9Dvnyt5:IN:18;19;20</screen></para>
         <para>You can specify multiple filters for a given item by repeating the operator and filter
-          components:</para>
-        <screen>&amp;dimension=qrur9Dvnyt5:GT:5;LT;15</screen>
+          components, all separated with semi-colons:</para>
+        <screen>&amp;dimension=qrur9Dvnyt5:GT:5:LT:15</screen>
         <para>The available operators are listed below.</para>
         <table frame="all">
           <title>Filter operators</title>
@@ -11475,23 +11482,24 @@ interval=WEEK" -u admin:district</screen>
             </row>
             <row>
               <entry>CHILDREN</entry>
-              <entry>Immediate children, i.e. only the first level below, of the organisation units
-                defined in the request.</entry>
+              <entry>The selected organisation units and the immediate children, i.e. the
+                organisation units at the level below.</entry>
             </row>
             <row>
               <entry>DESCENDANTS</entry>
-              <entry>All children, i.e. at only levels below, e.g. including children of children,
-                of the organisation units defined in the request.</entry>
+              <entry>The selected organisation units and and all children, i.e. all organisation
+                units in the subhierarchy.</entry>
             </row>
             <row>
               <entry>ACCESSIBLE</entry>
-              <entry>All descendants of the data view organisation units associated with the current
-                user. Will fall back to data capture organisation units associated with the current
-                user if the former is not defined.</entry>
+              <entry>The data view organisation units associated with the current user and all
+                children, i.e. all organisation units in the subhierarchy. Will fall back to data
+                capture organisation units associated with the current user if the former is not
+                defined.</entry>
             </row>
             <row>
               <entry>ALL</entry>
-              <entry>All organisation units in the system. Requires authority.</entry>
+              <entry>All organisation units in the system. Requires the ALL authority.</entry>
             </row>
           </tbody>
         </tgroup>
