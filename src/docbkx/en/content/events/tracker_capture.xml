@@ -10,9 +10,11 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>[Review ongoing]Using the <?oxy_comment_start author="cecilia" timestamp="20160905T145828+0200" comment="Before release, replace all screen shots."?>Tracker<?oxy_comment_end?>
-    <?oxy_comment_start author="cecilia" timestamp="20160701T094524+0200" comment="At next release: review section completely"?>Capture<?oxy_comment_end?>
-    <?oxy_comment_start author="cecilia" timestamp="20160830T134627+0200" comment="Add workflow section and commonc concept information about event vs. tracked event"?>app<?oxy_comment_end?></title>
+  <title>[Review ongoing]Using the
+    <?oxy_comment_start author="cecilia" timestamp="20160905T145828+0200" comment="Before release, replace all screen shots."?>Tracker<?oxy_comment_end?>
+    Capture
+    <?oxy_comment_start author="cecilia" timestamp="20160830T134627+0200" comment="Add workflow section and commonc concept information about event vs. tracked event
+Also add info about search results, that you can download the list. What is the list called? Participants in a program?"?>app<?oxy_comment_end?></title>
   <section>
     <title>About the Tracker Capture app</title>
     <para>The Tracker Capture app is an advanced version of the Event Capture app. While the Event
@@ -34,6 +36,56 @@
     <para>Both skip-logic and validation error/warning messages are supported during
       registration.</para>
     <?oxy_comment_end?>
+  </section>
+  <section>
+    <title>About the TEI dashboard</title>
+    <para>You manage a TEI from the TEI's dashboard in the Tracker Capture app. The dashboard
+      consist of widgets.</para>
+    <screenshot>
+      <title>Functionalities under settings</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/tracker_capture/tei_dashboard.png" format="PNG"
+            align="center" width="90%"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>As shown in the figure above, the dashboard starts with four sets of menus at the top: <itemizedlist>
+        <listitem>
+          <para>back button - this helps to go back to the search and registration page</para>
+        </listitem>
+        <listitem>
+          <para>previous and next buttons - these are buttons to access the previous/next TEI
+            details</para>
+        </listitem>
+        <listitem>
+          <para>program selection menu - this is to dictate what kind of data to record and track
+            for the selected TEI. This also affects the contents of the widgets.</para>
+        </listitem>
+        <listitem>
+          <para>a small pin icon at the right corner - this allows to pin (or stick) the right side
+            of the widgets. This is useful especially during data entry. If for example there are a
+            many data elements or big form to fill, sticking the right side helps to remain visible
+            while scrolling data entry part.</para>
+        </listitem>
+        <listitem>
+          <para>a small gear icon at the right corner - currently three functionalities are
+            available from this icon. <screenshot>
+              <title>Example: TEI dashboard</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="resources/images/tracker_capture/settings_icon.png"
+                    format="PNG" align="center" width="20%"/>
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </para>
+        </listitem>
+      </itemizedlist></para>
+    <para><emphasis role="bold">Indicators</emphasis> - any
+      <?oxy_comment_start author="cecilia" timestamp="20160906T163028+0200" comment="Can you do any task in this widget?"?>indicator<?oxy_comment_end?>
+      defined for the selected program will have its value calculated and displayed under this
+      widget.</para>
   </section>
   <section>
     <title><?oxy_comment_start author="cecilia" timestamp="20160830T135525+0200" comment="Workflow of what?
@@ -132,7 +184,7 @@ When olink works, add x-ref to relevant section."?>configure<?oxy_comment_end?>
     <title><?oxy_comment_start author="cecilia" timestamp="20160830T135543+0200" comment="Find?
 Search?
 Locate?"?>Search<?oxy_comment_end?>
-      for a tracked entity instance (TEI)</title>
+      for/Find/Open an existing TEI (dashboard?)</title>
     <screenshot>
       <?oxy_comment_start author="cecilia" timestamp="20160830T135408+0200" comment="Replace with new screenshot or remove completely."?>
       <title>Example: searching/registration</title>
@@ -184,91 +236,58 @@ Locate?"?>Search<?oxy_comment_end?>
     </orderedlist>
   </section>
   <section>
-    <title>Manage a tracked
-      <?oxy_comment_start author="cecilia" timestamp="20160906T161922+0200" comment="Verify that all widgets are documented."?>instance<?oxy_comment_end?>
-      entity (TEI)</title>
+    <title>Enroll an existing TEI in a program</title>
+    <orderedlist>
+      <listitem>
+        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Tracker
+            Capture</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Open an existing TEI.</para>
+      </listitem>
+      <listitem>
+        <para>Select a program.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Enrollment</emphasis> widget, click <emphasis role="bold"
+            >Add new</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Fill in the required information and click <emphasis role="bold"
+          >Enroll</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Enter event data for a TEI</title>
+    <para>Tabualr or data form??</para>
+    <para><emphasis role="bold">Data entry</emphasis> - this is for doing data entry using either
+      default or custom forms. Depending on program definition, in particular program stages, events
+      will be displayed in a timely fashion. Clicking on any of them displays the corresponding data
+      entry. If a stage needs new event, a plus icon is displayed for new event creation. To proceed
+      with data entry, it is mandatory to have event date. Once an event date is specified it is not
+      possible to change due date. The assumption is that by specifying event date, the event has
+      already taken place. If the event hasn't occurred yet, it is possible to change due date -
+      this is effectively doing nothing but rescheduling. The buttons at the bottom help to change
+      the status of a selected event.</para>
+    <para> Another key feature from this widget is addition of multiple notes for an event. Normally
+      data recording is through data elements, however there are cases where it is necessary to
+      record additional information or comments. This is where the notes section comes handy.
+      However it is not possible to delete a note. The idea is notes are more like log books. Both
+      skip-logic and validation error/warning messages are supported during data entry.</para>
+    <para><emphasis role="bold">Tabular data entry</emphasis> - this widget that allows for
+      tabular-style data entry. It displays the list of program stages as left-hand side labels.
+      Events will be listed in table for repeatable program stage, and allows for in-line edits of
+      event data values.</para>
+  </section>
+  <section>
+    <title>Manage a
+      <?oxy_comment_start author="cecilia" timestamp="20160906T161922+0200" comment="Verify that all widgets are documented.
+
+Add ino that you can switch between the different programs."?>TEI<?oxy_comment_end?>'s
+      enrollments</title>
     <section>
-      <title>About TEI dashboard</title>
-      <para>You manage a TEI from the TEI's dashboard in the Tracker Capture app. The dashboard
-        consist of widgets.</para>
-      <screenshot>
-        <title>Functionalities under settings</title>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="resources/images/tracker_capture/tei_dashboard.png" format="PNG"
-              align="center" width="90%"/>
-          </imageobject>
-        </mediaobject>
-      </screenshot>
-      <para>As shown in the figure above, the dashboard starts with four sets of menus at the top: <itemizedlist>
-          <listitem>
-            <para>back button - this helps to go back to the search and registration page</para>
-          </listitem>
-          <listitem>
-            <para>previous and next buttons - these are buttons to access the previous/next TEI
-              details</para>
-          </listitem>
-          <listitem>
-            <para>program selection menu - this is to dictate what kind of data to record and track
-              for the selected TEI. This also affects the contents of the widgets.</para>
-          </listitem>
-          <listitem>
-            <para>a small pin icon at the right corner - this allows to pin (or stick) the right
-              side of the widgets. This is useful especially during data entry. If for example there
-              are a many data elements or big form to fill, sticking the right side helps to remain
-              visible while scrolling data entry part.</para>
-          </listitem>
-          <listitem>
-            <para>a small gear icon at the right corner - currently three functionalities are
-              available from this icon. <screenshot>
-                <title>Example: TEI dashboard</title>
-                <mediaobject>
-                  <imageobject>
-                    <imagedata fileref="resources/images/tracker_capture/settings_icon.png"
-                      format="PNG" align="center" width="20%"/>
-                  </imageobject>
-                </mediaobject>
-              </screenshot>
-            </para>
-          </listitem>
-        </itemizedlist></para>
-      <para><emphasis role="bold">Active programs</emphasis> - this is an extension of the
-        enrollment widget. While the enrollment widget displays both active and historical
-        enrollment for the selected program,
-        <?oxy_comment_start author="cecilia" timestamp="20160906T163359+0200" comment="Verify with SME: Does this widget still exist? 
-It looks like this information is under the Enrollment widget"?>active
-        programs widget <?oxy_comment_end?>displays all other programs that the selected TEI has
-        active enrollments.</para>
-      <para><emphasis role="bold">Indicators</emphasis> - any
-        <?oxy_comment_start author="cecilia" timestamp="20160906T163028+0200" comment="Can you do any task in this widget?"?>indicator<?oxy_comment_end?>
-        defined for the selected program will have its value calculated and displayed under this
-        widget.</para>
-    </section>
-    <section>
-      <title>Show or hide widgets</title>
-      <para> Show/hide widgets - this helps to control which widgets to display. From the figure
-        above, there are eight widgets on display. The widgets are collapsible, responsive and drag
-        gable - this helps to acquire optimal view area as per user needs. Widget (re)arrangements
-        are saved automatically per user per program. </para>
-    </section>
-    <section>
-      <title>Save the dashboard's layout as default</title>
-      <para>Save dashboard layout as default - widgets arrangement is saved automatically every time
-        a widget's position or state (expand/collapse) is changed. However, for the entire layout to
-        be considered a default layout for the selected program it is required to explicitly save as
-        "Default layout". </para>
-    </section>
-    <section>
-      <title>Enroll a TEI in a program from dashboard</title>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-      <para>then enrollment is possible from the TEI dashboard.</para>
-      <?oxy_custom_end?>
-      <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
-        selected program. If an active enrollment already exists, the widget automatically displays
-        it with some details about it. </para>
-    </section>
-    <section>
-      <title>Set TEI to active or inactive</title>
+      <title>Set/Mark TEI's enrollment to active or inactive</title>
       <para>Set TEI to active/inactive - this has nothing to do with widgets or the dashboard but it
         helps to set the status of dashboard owner (the TEI) to either active or inactive. If a TEI
         is set to inactive, only read operations are allowed - no data entry, no profile editing, no
@@ -276,7 +295,7 @@ It looks like this information is under the Enrollment widget"?>active
     </section>
     <section>
       <title>Mark/Set TEI's
-        <?oxy_comment_start author="cecilia" timestamp="20160906T162346+0200" comment="FVerify with SME that title is correct."?>enrollment<?oxy_comment_end?>
+        <?oxy_comment_start author="cecilia" timestamp="20160906T162346+0200" comment="Verify with SME that title is correct."?>enrollment<?oxy_comment_end?>
         as complete</title>
       <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
         selected program. If an active enrollment already exists, the widget automatically displays
@@ -299,16 +318,8 @@ It looks like this information is under the Enrollment widget"?>active
         the TEI has historical enrollment.</para>
     </section>
     <section>
-      <title>Mark TEI for follow-up</title>
-      <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
-        selected program. If an active enrollment already exists, the widget automatically displays
-        it with some details about it. The widget also helps to do some operations on the selected
-        enrollment - for example terminate/complete or a possibility to mark the enrollment for
-        followup. The later one helps for example to deal with high-risk cases during pregnancy
-        followup. A link to history is also provided if the TEI has historical enrollment.</para>
-    </section>
-    <section>
-      <title>View TEI's
+      <title><?oxy_comment_start author="cecilia" timestamp="20160907T140103+0200" comment="View or Display?"?>Display<?oxy_comment_end?>
+        TEI's
         <?oxy_comment_start author="cecilia" timestamp="20160906T162632+0200" comment="For SME: Verify that this works.
 Add example"?>enrollment<?oxy_comment_end?>
         history</title>
@@ -321,29 +332,6 @@ Add example"?>enrollment<?oxy_comment_end?>
         history is also provided if the TEI has historical enrollment.<?oxy_custom_end?></para>
     </section>
     <section>
-      <title>Enter event data for a TEI</title>
-      <para>Tabualr or data form??</para>
-      <para><emphasis role="bold">Data entry</emphasis> - this is for doing data entry using either
-        default or custom forms. Depending on program definition, in particular program stages,
-        events will be displayed in a timely fashion. Clicking on any of them displays the
-        corresponding data entry. If a stage needs new event, a plus icon is displayed for new event
-        creation. To proceed with data entry, it is mandatory to have event date. Once an event date
-        is specified it is not possible to change due date. The assumption is that by specifying
-        event date, the event has already taken place. If the event hasn't occurred yet, it is
-        possible to change due date - this is effectively doing nothing but rescheduling. The
-        buttons at the bottom help to change the status of a selected event.</para>
-      <para> Another key feature from this widget is addition of multiple notes for an event.
-        Normally data recording is through data elements, however there are cases where it is
-        necessary to record additional information or comments. This is where the notes section
-        comes handy. However it is not possible to delete a note. The idea is notes are more like
-        log books. Both skip-logic and validation error/warning messages are supported during data
-        entry.</para>
-      <para><emphasis role="bold">Tabular data entry</emphasis> - this widget that allows for
-        tabular-style data entry. It displays the list of program stages as left-hand side labels.
-        Events will be listed in table for repeatable program stage, and allows for in-line edits of
-        event data values.</para>
-    </section>
-    <section>
       <title>Create an enrollment note</title>
       <para><emphasis role="bold">Notes | Messaging</emphasis> - this is the same as event notes.
         The difference between the two is that, here notes are attached not to events but to
@@ -352,68 +340,118 @@ Add example"?>enrollment<?oxy_comment_end?>
         enrollment. In addition, if the tracked entity has registered a phone number, messaging will
         be available here. With messaging, you can send SMS to the phone number registered.</para>
     </section>
+  </section>
+  <section>
+    <title>Mark a TEI for follow-up</title>
+    <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
+      selected program. If an active enrollment already exists, the widget automatically displays it
+      with some details about it. The widget also helps to do some operations on the selected
+      enrollment - for example terminate/complete or a possibility to mark the enrollment for
+      followup. The later one helps for example to deal with high-risk cases during pregnancy
+      followup. A link to history is also provided if the TEI has historical enrollment.</para>
+  </section>
+  <section>
+    <title>Edit a TEI's profile</title>
+    <para><emphasis role="bold">Profile </emphasis> - this is to edit TEI's profile or attributes.
+      Here, if the TEI has an attribute of value type "Tracker Associate", a small icon next to the
+      input filed is displayed. Clicking the icon opens a pop-up where users are allowed to either
+      search or register new associate.</para>
+  </section>
+  <section>
+    <title><?oxy_comment_start author="cecilia" timestamp="20160907T140045+0200" comment="View or Display?"?>Display<?oxy_comment_end?>
+      a TEI's active programs</title>
+    <para><emphasis role="bold">Active programs</emphasis> - this is an extension of the enrollment
+      widget. While the enrollment widget displays both active and historical enrollment for the
+      selected program,
+      <?oxy_comment_start author="cecilia" timestamp="20160906T163359+0200" comment="Verify with SME: Does this widget still exist? 
+It looks like this information is under the Enrollment widget"?>active
+      programs widget <?oxy_comment_end?>displays all other programs that the selected TEI has
+      active enrollments.</para>
+  </section>
+  <section>
+    <title>Manage a TEI's relationships</title>
+    <para><emphasis role="bold">Relationship </emphasis> - this helps to relate the selected TEI
+      (the one whose dashboard is shown) to another TEI. Adding a relative is possible by either
+      searching from existing or registering a new one. If a program is selected while registering a
+      new one, the new one will be automatically enrolled to the selected program. Another
+      interesting feature in the relationship widget is attribute inheritance. For example take
+      Mother-Child relationship and assume there are two programs Antenatal care for the mother and
+      Immunization for the child. If among others first name, last name and address attributes are
+      required for both programs, it is possible to configure last name and address attributes as
+      inheritable. Then during child registration, there is no need to refill these inheritable
+      attributes - they can be automatically populated based on the mother's value. If for some
+      reason a different value is required for the child, it is possible to override.</para>
+  </section>
+  <section>
+    <title>Share a TEI
+      <?oxy_comment_start author="cecilia" timestamp="20160701T113624+0200" comment="Before release: make sure link works."?>dashboard<?oxy_comment_end?></title>
+    <para>You can share a
+      T<?oxy_comment_start author="cecilia" timestamp="20160906T102347+0200" comment="Replace term"?>racker<?oxy_comment_end?>
+      Capture dashboard via its web address.</para>
+    <orderedlist>
+      <listitem>
+        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Tracker
+            Capture</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Open the dashboard you want to share.</para>
+      </listitem>
+      <listitem>
+        <para>Copy the
+          <?oxy_comment_start author="cecilia" timestamp="20160906T155729+0200" comment="Add example of URL
+Ok?
+
+https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard?tei=HiBv6yFdU2x&amp;program=IpHINAT79UW"?>URL<?oxy_comment_end?>.</para>
+        <para>Make sure that the URL contains "tei", "program" and "ou" (organisation unit)
+          parameters.</para>
+        <example>
+          <para><link
+              xlink:href="https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard%3Ftei=HiBv6yFdU2x%26program=IpHINAT79UW"
+              xmlns:xlink="http://www.w3.org/1999/xlink"><link
+                xlink:href="https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard%3Ftei=HiBv6yFdU2x%26program=IpHINAT79UW"
+              /></link></para>
+        </example>
+      </listitem>
+      <listitem>
+        <para>Paste the URL in the sharing method of your choice, for example an e-mail or a message
+          within DHIS2.</para>
+        <para>If you're not logged in to DHIS2 when you click the link, you'll be asked to do so and
+          then taken to the dashboard.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Configure the TEI dashboard</title>
     <section>
-      <title>Create program
-        <?oxy_comment_start author="cecilia" timestamp="20160906T160929+0200" comment="Verify with SME:
+      <title>Show or hide widgets</title>
+      <para> Show/hide widgets - this helps to control which widgets to display. From the figure
+        above, there are eight widgets on display. The widgets are collapsible, responsive and drag
+        gable - this helps to acquire optimal view area as per user needs. Widget (re)arrangements
+        are saved automatically per user per program. </para>
+    </section>
+    <section>
+      <title>Save the dashboard's layout as default</title>
+      <para>Save dashboard layout as default - widgets arrangement is saved automatically every time
+        a widget's position or state (expand/collapse) is changed. However, for the entire layout to
+        be considered a default layout for the selected program it is required to explicitly save as
+        "Default layout". </para>
+    </section>
+  </section>
+  <section>
+    <title><?oxy_comment_start author="cecilia" timestamp="20160907T140945+0200" comment="Does the GUI item change depending on the program?
+In Child porgram: &quot;Deactivate person&quot;"?>Deactivate<?oxy_comment_end?>
+      a TEI (admin only?)</title>
+    <para/>
+  </section>
+  <section>
+    <title>Create program
+      <?oxy_comment_start author="cecilia" timestamp="20160906T160929+0200" comment="Verify with SME:
 Is report created automatically?
 If so, who sets it up?
-In which way is this report different compared to the reports under &quot;Reports&quot;?"?>report<?oxy_comment_end?></title>
-      <para><emphasis role="bold">Report</emphasis> - this is to provide a "journal" of the TEI per
-        program. A report row is provided for each program the TEI is/was associated.</para>
-    </section>
-    <section>
-      <title>Edit a TEI's profile</title>
-      <para><emphasis role="bold">Profile </emphasis> - this is to edit TEI's profile or attributes.
-        Here, if the TEI has an attribute of value type "Tracker Associate", a small icon next to
-        the input filed is displayed. Clicking the icon opens a pop-up where users are allowed to
-        either search or register new associate.</para>
-    </section>
-    <section>
-      <title>Display a TEI's active programs</title>
-      <para/>
-    </section>
-    <section>
-      <title>Manage a TEI's relationships</title>
-      <para><emphasis role="bold">Relationship </emphasis> - this helps to relate the selected TEI
-        (the one whose dashboard is shown) to another TEI. Adding a relative is possible by either
-        searching from existing or registering a new one. If a program is selected while registering
-        a new one, the new one will be automatically enrolled to the selected program. Another
-        interesting feature in the relationship widget is attribute inheritance. For example take
-        Mother-Child relationship and assume there are two programs Antenatal care for the mother
-        and Immunization for the child. If among others first name, last name and address attributes
-        are required for both programs, it is possible to configure last name and address attributes
-        as inheritable. Then during child registration, there is no need to refill these inheritable
-        attributes - they can be automatically populated based on the mother's value. If for some
-        reason a different value is required for the child, it is possible to override.</para>
-    </section>
-    <section>
-      <title>Share a
-        <?oxy_comment_start author="cecilia" timestamp="20160701T113624+0200" comment="Before release: make sure link works."?>dashboard<?oxy_comment_end?></title>
-      <para>You can share a
-        T<?oxy_comment_start author="cecilia" timestamp="20160906T102347+0200" comment="Replace term"?>racker<?oxy_comment_end?>
-        Capture dashboard via its web address.</para>
-      <orderedlist>
-        <listitem>
-          <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold"
-              >Tracker Capture</emphasis>.</para>
-        </listitem>
-        <listitem>
-          <para>Open the dashboard you want to share.</para>
-        </listitem>
-        <listitem>
-          <para>Copy the
-            <?oxy_comment_start author="cecilia" timestamp="20160906T155729+0200" comment="Add example of URL"?>URL<?oxy_comment_end?>.</para>
-          <para>Make sure that the URL contains "tei", "program" and "ou" (organisation unit)
-            parameters.</para>
-        </listitem>
-        <listitem>
-          <para>Paste the URL in the sharing method of your choice, for example an e-mail or a
-            message within DHIS2.</para>
-          <para>If you're not logged in to DHIS2 when you click the link, you'll be asked to do so
-            and then taken to the dashboard.</para>
-        </listitem>
-      </orderedlist>
-    </section>
+In which way is this report different compared to the reports under &quot;Reports&quot;?"?>report<?oxy_comment_end?>
+      (for a TEI?)</title>
+    <para><emphasis role="bold">Report</emphasis> - this is to provide a "journal" of the TEI per
+      program. A report row is provided for each program the TEI is/was associated.</para>
   </section>
   <section>
     <title>Create reports</title>
@@ -466,9 +504,9 @@ In which way is this report different compared to the reports under &quot;Report
                 <entry>
                   <para>A tabular report showing tracked entity instances and their upcoming events
                     for a selected program and time. You can sort the columns and search the values.
-                    S<?oxy_comment_start author="cecilia" timestamp="20160906T152439+0200" comment="Verify with SME: can you really show or hide colums"?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="29"?>how/hide
+                    S<?oxy_comment_start author="cecilia" timestamp="20160906T152439+0200" comment="Verify with SME: can you really show or hide colums"?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="30"?>how/hide
                     operations are<?oxy_comment_end?> possible on the columns.
-                    <?oxy_custom_end mid="29"?>You can also export the table to
+                    <?oxy_custom_end mid="30"?>You can also export the table to
                     <?oxy_comment_start author="cecilia" timestamp="20160906T153908+0200" comment="Mark trademark" flag="done"?>Microsoft
                     Excel<?oxy_comment_end?>.</para>
                 </entry>
