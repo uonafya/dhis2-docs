@@ -1395,6 +1395,170 @@ http://server/api/24/constants/ID</screen></para>
 -u admin:district https://play.dhis2.org/dev/api/24/dataElements/fbfJHSPpUQD</screen></para>
     </section>
   </section>
+  <section xml:id="webapi_metadata_export">
+    <title>Metadata export</title>
+    <para>This section explains the metatada API which is available at <emphasis role="italic"
+        >/api/23/metadata</emphasis> and <emphasis role="italic"
+      >/api/24/metadata</emphasis>endpoints. XML and JSON resource representations are
+      supported.</para>
+    <para>The most common parameters are described below in the "Export Parameter" table. You can
+      also apply this to all available types by using <emphasis role="italic"
+        >type:fields=&lt;filter></emphasis> and <emphasis role="italic"
+        >type:filter=&lt;filter></emphasis>- You can also enable/disable export of certain types by
+      setting <emphasis role="italic">type=true/false</emphasis>.</para>
+    <table frame="all">
+      <title>Export Parameter</title>
+      <tgroup cols="3">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.27*"/>
+        <colspec colname="c3" colnum="3" colwidth="3.61*"/>
+        <thead>
+          <row>
+            <entry>Name</entry>
+            <entry>Options</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>fields</entry>
+            <entry>Same as metadata field filter</entry>
+            <entry>Default field filter to apply for all types, default is <emphasis role="bold"
+                >:owner</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>filter</entry>
+            <entry>Same as metadata object filter</entry>
+            <entry>Default object filter to apply for all types, default is <emphasis role="bold"
+                >none</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>order</entry>
+            <entry>Same as metadata order</entry>
+            <entry>Default order to apply to all types, default is <emphasis role="bold"
+                >name</emphasis> if available, or <emphasis role="bold">created</emphasis> if
+              not.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <section>
+      <title>Metadata export examples</title>
+      <para>Export all
+        metadata:<screen>curl -u user:pass http://server/api/24/metadata</screen></para>
+      <para>Export all metadata ordered by lastUpdated
+        descending:<screen>curl -u user:pass http://server/api/24/metadata?defaultOrder=lastUpdated:desc</screen></para>
+      <para>Export id and displayName for all data elements, ordered by
+        displayName:<screen>curl -u user:pass http://server/api/24/metadata?dataElements:fields=id,name&amp;dataElements:order=displayName:desc</screen></para>
+      <para>Export data elements and indicators where name starts with
+        "ANC":<screen>curl -u user:pass http://server/api/24/metadata?defaultFilter=name:^like:ANC&amp;dataElements=true&amp;indicators=true</screen></para>
+    </section>
+    <section>
+      <title>Data set and program export with dependencies</title>
+      <para>When you want to move a whole set of data set or program metadata from one server to
+        another (possibly empty) server, we have two special endpoints for just that
+        purpose:<screen>/api/24/dataSets/ID/metadata.json</screen><screen>/api/24/programs/ID/metadata.json</screen></para>
+      <para>These exports can be imported both using the old importer at <emphasis role="italic"
+          >/api/metadata</emphasis> and the new importer at <emphasis role="italic"
+          >/api/23/metadata</emphasis>.</para>
+    </section>
+  </section>
+  <section xml:id="webapi_metadata_import">
+    <title>Metadata import</title>
+    <para>This section explains the metatada API which is available at <emphasis role="italic"
+        >/api/23/metadata</emphasis> and <emphasis role="italic"
+      >/api/24/metadata</emphasis>endpoints. XML and JSON resource representations are
+      supported.</para>
+    <para>The importer allows you to import metadata exported with the new exporter. The various
+      parameters are listed below.</para>
+    <table frame="all">
+      <title>Import Parameter</title>
+      <tgroup cols="3">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.27*"/>
+        <colspec colname="c3" colnum="3" colwidth="3.61*"/>
+        <thead>
+          <row>
+            <entry>Name</entry>
+            <entry>Options (first is default)</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>importMode</entry>
+            <entry>COMMIT, VALIDATE</entry>
+            <entry>Sets overall import mode, decides whether or not to only <emphasis role="bold"
+                >VALIDATE</emphasis> or also <emphasis role="bold">COMMIT</emphasis> the metadata,
+              this have similar functionality as our old dryRun flag.</entry>
+          </row>
+          <row>
+            <entry>identifier</entry>
+            <entry>UID, CODE, AUTO</entry>
+            <entry>Sets the identifier scheme to use for reference matching. <emphasis role="bold"
+                >AUTO</emphasis> means try <emphasis role="bold">UID</emphasis> first, then
+                <emphasis role="bold">CODE</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>preheatMode</entry>
+            <entry>REFERENCE, ALL, NONE</entry>
+            <entry>Sets the preheater mode, used to signal if preheating should be done for
+                <emphasis role="bold">ALL</emphasis> (as it was before with <emphasis role="italic"
+                >preheatCache=true</emphasis>) or do a more intelligent scan of the objects to see
+              what to preheat (now the default), setting this to <emphasis role="bold"
+                >NONE</emphasis> is not recommended.</entry>
+          </row>
+          <row>
+            <entry>importStrategy</entry>
+            <entry>CREATE_AND_UPDATE, CREATE, UPDATE, DELETE</entry>
+            <entry>Sets import strategy, <emphasis role="bold">CREATE_AND_UPDATE</emphasis> will try
+              and match on identifier, if it doesn't exist, it will create the object.</entry>
+          </row>
+          <row>
+            <entry>atomicMode</entry>
+            <entry>ALL, NONE</entry>
+            <entry>Sets atomic mode, in the old importer we always did a <emphasis role="italic"
+                >best effort</emphasis> import, which means that even if some references did not
+              exist, we would still import (i.e. missing data elements on a data element group
+              import). Default for new importer is to not allow this, and similar reject any
+              validation errors. Setting the <emphasis role="bold">NONE</emphasis> mode emulated the
+              old behavior.</entry>
+          </row>
+          <row>
+            <entry>mergeMode</entry>
+            <entry>MERGE, REPLACE</entry>
+            <entry>Sets the merge mode, when doing updates we have two ways of merging the old
+              object with the new one, <emphasis role="bold">MERGE</emphasis> mode will only
+              overwrite the old property if the new one is not-null, for <emphasis role="bold"
+                >REPLACE</emphasis> mode all properties are overwritten regardsless of null or
+              not.</entry>
+          </row>
+          <row>
+            <entry>flushMode</entry>
+            <entry>AUTO, OBJECT</entry>
+            <entry>Sets the flush mode, decides when to flush the internal cache, <emphasis
+                role="italic">strongly</emphasis> reommended to keep this to <emphasis role="bold"
+                >AUTO</emphasis> (which is the default). Only use <emphasis role="bold"
+                >OBJECT</emphasis> for debugging purposes, where you are seeing hibernate exceptions
+              and want to pinpoint the exact place where the stack happens (hibernate will only
+              throw when flushing, so it can be hard to know which object had issues).</entry>
+          </row>
+          <row>
+            <entry>skipSharing</entry>
+            <entry>false, true</entry>
+            <entry>Skip sharing properties, does not merge sharing when doing updates, and does not
+              add user group accessses when creating new objects.</entry>
+          </row>
+          <row>
+            <entry>skipValidation</entry>
+            <entry>false, true</entry>
+            <entry>Skip validation for import. <emphasis role="bold">NOT
+              RECOMMENDED</emphasis>.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
   <section xml:id="webapi_csv_metadata_import">
     <title>CSV metadata import</title>
     <para>DHIS2 supports import of metadata in the CSV format. Columns which are not required can
@@ -2069,171 +2233,6 @@ http://server/api/24/constants/ID</screen></para>
         </itemizedlist>
       </para>
     </section>
-  </section>
-  <section xml:id="webapi_metadata_export">
-    <title>Metadata export</title>
-    <para>This section explains the new metadata exporter available from DHIS2.23, the metatada API
-      is available at <emphasis role="italic">/api/23/metadata</emphasis> and <emphasis
-        role="italic">/api/24/metadata</emphasis>endpoints, both XML and JSON is supported in this
-      exporter.</para>
-    <para>The most common parameters are described below in the "Export Parameter" table, but you
-      can also apply this to all available types by using <emphasis role="italic"
-        >type:fields=&lt;filter></emphasis> and <emphasis role="italic"
-        >type:filter=&lt;filter></emphasis>, you can also enable/disable export of certain types by
-      setting <emphasis role="italic">type=true/false</emphasis>, please see examples of these down
-      below.</para>
-    <table frame="all">
-      <title>Export Parameter</title>
-      <tgroup cols="3">
-        <colspec colname="c1" colnum="1" colwidth="1*"/>
-        <colspec colname="c2" colnum="2" colwidth="1.27*"/>
-        <colspec colname="c3" colnum="3" colwidth="3.61*"/>
-        <thead>
-          <row>
-            <entry>Name</entry>
-            <entry>Options</entry>
-            <entry>Description</entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry>fields</entry>
-            <entry>Same as metadata field filter</entry>
-            <entry>Default field filter to apply for all types, default is <emphasis role="bold"
-                >:owner</emphasis>.</entry>
-          </row>
-          <row>
-            <entry>filter</entry>
-            <entry>Same as metadata object filter</entry>
-            <entry>Default object filter to apply for all types, default is <emphasis role="bold"
-                >none</emphasis>.</entry>
-          </row>
-          <row>
-            <entry>order</entry>
-            <entry>Same as metadata order</entry>
-            <entry>Default order to apply to all types, default is <emphasis role="bold"
-                >name</emphasis> if available, or <emphasis role="bold">created</emphasis> if
-              not.</entry>
-          </row>
-        </tbody>
-      </tgroup>
-    </table>
-    <section>
-      <title>Metadata export examples</title>
-      <para>Export all
-        metadata:<screen>curl -u user:pass http://server/api/24/metadata</screen></para>
-      <para>Export all metadata ordered by lastUpdated
-        descending:<screen>curl -u user:pass http://server/api/24/metadata?defaultOrder=lastUpdated:desc</screen></para>
-      <para>Export id and displayName for all data elements, ordered by
-        displayName:<screen>curl -u user:pass http://server/api/24/metadata?dataElements:fields=id,name&amp;dataElements:order=displayName:desc</screen></para>
-      <para>Export data elements and indicators where name starts with
-        'ANC':<screen>curl -u user:pass http://server/api/24/metadata?defaultFilter=name:^like:ANC&amp;dataElements=true&amp;indicators=true</screen></para>
-    </section>
-    <section>
-      <title>Data set and program export with dependencies</title>
-      <para>When you want to move a whole set of data set or program metadata from one server to
-        another (possibly empty) server, we have two special endpoints for just that
-        purpose:<screen>/api/24/dataSets/ID/metadata.json</screen><screen>/api/24/programs/ID/metadata.json</screen></para>
-      <para>These exports can be imported both using the old importer at <emphasis role="italic"
-          >/api/metadata</emphasis> and the new importer at <emphasis role="italic"
-          >/api/23/metadata</emphasis>.</para>
-    </section>
-  </section>
-  <section xml:id="webapi_metadata_import">
-    <title>Metadata import</title>
-    <para>This section explain the new metadata importer available from DHIS2.23, the metatada API
-      is available at <emphasis role="italic">/api/23/metadata</emphasis> and <emphasis
-        role="italic">/api/24/metadata</emphasis>endpoints, both XML and JSON is supported in this
-      importer.</para>
-    <para>The importer allows you to import metadata exported with the new exporter, the different
-      parameters are listed down below.</para>
-    <table frame="all">
-      <title>Import Parameter</title>
-      <tgroup cols="3">
-        <colspec colname="c1" colnum="1" colwidth="1*"/>
-        <colspec colname="c2" colnum="2" colwidth="1.27*"/>
-        <colspec colname="c3" colnum="3" colwidth="3.61*"/>
-        <thead>
-          <row>
-            <entry>Name</entry>
-            <entry>Options (first is default)</entry>
-            <entry>Description</entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry>importMode</entry>
-            <entry>COMMIT, VALIDATE</entry>
-            <entry>Sets overall import mode, decides whether or not to only <emphasis role="bold"
-                >VALIDATE</emphasis> or also <emphasis role="bold">COMMIT</emphasis> the metadata,
-              this have similar functionality as our old dryRun flag.</entry>
-          </row>
-          <row>
-            <entry>identifier</entry>
-            <entry>UID, CODE, AUTO</entry>
-            <entry>Sets the identifier scheme to use for reference matching. <emphasis role="bold"
-                >AUTO</emphasis> means try <emphasis role="bold">UID</emphasis> first, then
-                <emphasis role="bold">CODE</emphasis>.</entry>
-          </row>
-          <row>
-            <entry>preheatMode</entry>
-            <entry>REFERENCE, ALL, NONE</entry>
-            <entry>Sets the preheater mode, used to signal if preheating should be done for
-                <emphasis role="bold">ALL</emphasis> (as it was before with <emphasis role="italic"
-                >preheatCache=true</emphasis>) or do a more intelligent scan of the objects to see
-              what to preheat (now the default), setting this to <emphasis role="bold"
-                >NONE</emphasis> is not recommended.</entry>
-          </row>
-          <row>
-            <entry>importStrategy</entry>
-            <entry>CREATE_AND_UPDATE, CREATE, UPDATE, DELETE</entry>
-            <entry>Sets import strategy, <emphasis role="bold">CREATE_AND_UPDATE</emphasis> will try
-              and match on identifier, if it doesn't exist, it will create the object.</entry>
-          </row>
-          <row>
-            <entry>atomicMode</entry>
-            <entry>ALL, NONE</entry>
-            <entry>Sets atomic mode, in the old importer we always did a <emphasis role="italic"
-                >best effort</emphasis> import, which means that even if some references did not
-              exist, we would still import (i.e. missing data elements on a data element group
-              import). Default for new importer is to not allow this, and similar reject any
-              validation errors. Setting the <emphasis role="bold">NONE</emphasis> mode emulated the
-              old behavior.</entry>
-          </row>
-          <row>
-            <entry>mergeMode</entry>
-            <entry>MERGE, REPLACE</entry>
-            <entry>Sets the merge mode, when doing updates we have two ways of merging the old
-              object with the new one, <emphasis role="bold">MERGE</emphasis> mode will only
-              overwrite the old property if the new one is not-null, for <emphasis role="bold"
-                >REPLACE</emphasis> mode all properties are overwritten regardsless of null or
-              not.</entry>
-          </row>
-          <row>
-            <entry>flushMode</entry>
-            <entry>AUTO, OBJECT</entry>
-            <entry>Sets the flush mode, decides when to flush the internal cache, <emphasis
-                role="italic">strongly</emphasis> reommended to keep this to <emphasis role="bold"
-                >AUTO</emphasis> (which is the default). Only use <emphasis role="bold"
-                >OBJECT</emphasis> for debugging purposes, where you are seeing hibernate exceptions
-              and want to pinpoint the exact place where the stack happens (hibernate will only
-              throw when flushing, so it can be hard to know which object had issues).</entry>
-          </row>
-          <row>
-            <entry>skipSharing</entry>
-            <entry>false, true</entry>
-            <entry>Skip sharing properties, does not merge sharing when doing updates, and does not
-              add user group accessses when creating new objects.</entry>
-          </row>
-          <row>
-            <entry>skipValidation</entry>
-            <entry>false, true</entry>
-            <entry>Skip validation for import. <emphasis role="bold">NOT
-              RECOMMENDED</emphasis>.</entry>
-          </row>
-        </tbody>
-      </tgroup>
-    </table>
   </section>
   <section xml:id="webapi_metadata_versioning">
     <title>Metadata versioning</title>
@@ -10183,34 +10182,34 @@ interval=WEEK" -u admin:district</screen>
         use the GET HTTP verb for retreiving information. <table frame="all">
           <title>Query program messages API</title>
           <tgroup cols="2">
-            <colspec colname="paramater" colnum="1" colwidth="1.0*"/>
-            <colspec colname="Example" colnum="2" colwidth="3.0*"/>
+            <colspec colname="parameter" colnum="1" colwidth="1.0*"/>
+            <colspec colname="url" colnum="2" colwidth="3.0*"/>
             <thead>
               <row>
                 <entry>Parameter</entry>
-                <entry>Example</entry>
+                <entry>URL</entry>
               </row>
             </thead>
             <tbody>
               <row>
                 <entry>programInstance</entry>
-                <entry>GET /api/24/messages?programInstance=6yWDMa0LP7</entry>
+                <entry>/api/24/messages?programInstance=6yWDMa0LP7</entry>
               </row>
               <row>
                 <entry>programStageInstance</entry>
-                <entry>GET /api/24/messages?programStageInstance=SllsjpfLH2</entry>
+                <entry>/api/24/messages?programStageInstance=SllsjpfLH2</entry>
               </row>
               <row>
                 <entry>trackedEntityInstance</entry>
-                <entry>GET /api/24/messages?trackedEntityInstance=xdfejpfLH2</entry>
+                <entry>/api/24/messages?trackedEntityInstance=xdfejpfLH2</entry>
               </row>
               <row>
                 <entry>organisationUnit</entry>
-                <entry>GET /api/24/messages?ou=Sllsjdhoe3</entry>
+                <entry>/api/24/messages?ou=Sllsjdhoe3</entry>
               </row>
               <row>
                 <entry>processedDate</entry>
-                <entry>GET /api/24/messages?processedDate=2016-02-01</entry>
+                <entry>/api/24/messages?processedDate=2016-02-01</entry>
               </row>
             </tbody>
           </tgroup>
@@ -10231,7 +10230,7 @@ interval=WEEK" -u admin:district</screen>
           <tgroup cols="3">
             <colspec colnum="1" colname="c1" colwidth="1.01*"/>
             <colspec colnum="2" colname="newCol2" colwidth="1*"/>
-            <colspec colnum="3" colname="c2" colwidth="5.52*"/>
+            <colspec colnum="3" colname="c2" colwidth="3.57*"/>
             <thead>
               <row>
                 <entry>Parameter</entry>
