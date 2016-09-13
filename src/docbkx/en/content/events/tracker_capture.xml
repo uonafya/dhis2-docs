@@ -343,29 +343,6 @@ Does it search fin node + children or only children?"?>existing<?oxy_comment_end
     </screenshot>
     <para>There are two ways to find a TEI: simple and advanced search. You can also modify the
       search results list's layout and download the search results list in several formats.</para>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-    <para>Under normal circumstances, advanced search is conducted for the selected organisation
-      unit (from left-hand side tree) and scope (which could be Selected, Immediate children or All
-      children). The left-hand side tree is generated based on the logged in user's assigned
-      organisation units. </para>
-    <para>However, there could be cases to search for a TEI from another organisation unit (which is
-      not necessarily part of the assigned organisation units. To support such use case, advanced
-      search provides another organisation unit tree. The tree displayed here depends on the role
-      that the logged in user has. If the user has role "Search Tracked Entity Instance in All Org
-      Units" or "ALL", a tree with all available organisation units is provided other wise the tree
-      displayed in advanced search is the same as the one on the left-hand side. Whichever tree (or
-      hierarchy of organisation units) is provided, if an organisation unit is selected in advanced
-      search, the searching is conducted against this selected organisation unit and scope.</para>
-    <screenshot>
-      <title>Enrollment status filtering icons</title>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="resources/images/tracker_capture/enrollment_status.png" format="PNG"
-            align="center" width="20%"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <?oxy_custom_end?>
     <section>
       <title>Simple TEI search</title>
       <orderedlist>
@@ -420,6 +397,21 @@ enrollment or enrollments?"?>status<?oxy_comment_end?>: <itemizedlist>
     </section>
     <section>
       <title>Advanced TEI search</title>
+      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
+      <para>Under normal circumstances, advanced search is conducted for the selected organisation
+        unit (from left-hand side tree) and scope (which could be Selected, Immediate children or
+        All children). The left-hand side tree is generated based on the logged in user's assigned
+        organisation units. </para>
+      <para>However, there could be cases to search for a TEI from another organisation unit (which
+        is not necessarily part of the assigned organisation units. To support such use case,
+        advanced search provides another organisation unit tree. The tree displayed here depends on
+        the role that the logged in user has. If the user has role "Search Tracked Entity Instance
+        in All Org Units" or "ALL", a tree with all available organisation units is provided other
+        wise the tree displayed in advanced search is the same as the one on the left-hand side.
+        Whichever tree (or hierarchy of organisation units) is provided, if an organisation unit is
+        selected in advanced search, the searching is conducted against this selected organisation
+        unit and scope.</para>
+      <?oxy_custom_end?>
       <orderedlist>
         <listitem>
           <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold"
@@ -509,13 +501,15 @@ enrollment or enrollments?"?>status<?oxy_comment_end?>: <itemizedlist>
     </section>
     <section>
       <title>Download TEI search results list</title>
-      <para>XML</para>
-      <para>JSON</para>
-      <para>CSV</para>
       <orderedlist>
         <listitem>
-          <para>Click <emphasis role="bold">Download as</emphasis> button and select a
-            format.</para>
+          <para>Create a TEI search results list, see sections <xref/></para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Download as</emphasis> and select a format.</para>
+          <para>XML</para>
+          <para>JSON</para>
+          <para>CSV</para>
         </listitem>
       </orderedlist>
     </section>
