@@ -464,6 +464,12 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       using the <emphasis role="italic">query</emphasis> query variable. In this example we query
       for all data elements with the word &quot;anaemia&quot; in the name:</para>
     <screen>/api/24/dataElements?query=anaemia</screen>
+    <para>You can get specific pages and page sizes of objects like this:</para>
+    <screen>/api/24/dataElements.json?page=2&amp;pageSize=20</screen>
+    <para>You can completely disable paging like this:</para>
+    <screen>/api/24/indicatorGroups.json?paging=false</screen>
+    <para>To order the result based on a specific property:</para>
+    <screen>/api/24/indicators.json?order=shortName:desc</screen>
     <para>You can find an object based on its ID across all object types through the <emphasis
         role="italic">identifiableObjects</emphasis> resource:</para>
     <screen>/api/24/identifiableObjects/&lt;id&gt;</screen>
@@ -2776,11 +2782,11 @@ http://server/api/24/constants/ID</screen></para>
 &quot;eY5ehpbEsB7&quot;,&quot;201401&quot;,&quot;DiszpKrYNg8&quot;,&quot;bRowv6yZOF2&quot;,&quot;bRowv6yZOF2&quot;,&quot;3&quot;</screen></para>
       <para>We test by using cURL to send the data values in XML format:</para>
       <screen>curl -d @datavalueset.xml &quot;https://play.dhis2.org/demo/api/24/dataValueSets&quot; 
--H &quot;Content-Type:application/xml&quot; -u admin:district -v</screen>
+  -H &quot;Content-Type:application/xml&quot; -u admin:district -v</screen>
       <para>Note that when using CSV format you must use the binary data option to preserve the
         line-breaks in the CSV
         file:<screen>curl --data-binary @datavalueset.csv &quot;https://play.dhis2.org/demo/24/api/dataValueSets&quot; 
--H &quot;Content-Type:application/csv&quot; -u admin:district -v</screen></para>
+  -H &quot;Content-Type:application/csv&quot; -u admin:district -v</screen></para>
       <para>The data value set resource provides an XML response which is useful when you want to
         verify the impact your request had. The first time we send the data value set request above
         the server will respond with the following<emphasis role="italic"> import
@@ -3155,14 +3161,14 @@ http://server/api/24/constants/ID</screen></para>
         called &quot;Sending data values&quot; we can now put together our request for a single data
         value set and request it using cURL:</para>
       <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&quot;
--H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
+  -H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
       <para>We can also use the start and end dates query parameters to request a larger bulk of
         data values. I.e. you can also request data values for multiple data sets and org units and
         a time span in order to export larger chunks of data. Note that the period query parameter
         takes presedence over the start and end date parameters. An exampe looks like this:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;dataSet=BfMAe6Itzgt&amp;startDate=2013-01-01
-&amp;endDate=2013-01-31&amp;orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; 
--H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;dataSet=BfMAe6Itzgt
+  &amp;startDate=2013-01-01&amp;endDate=2013-01-31&amp;orgUnit=YuQRtpLP10I&amp;orgUnit=vWbkYPRmKyS&amp;children=true&quot; 
+  -H &quot;Accept:application/xml&quot; -u admin:district -v</screen>
       <para>To retrieve data values which have been created or updated within the last 10 days you
         can make a request like this:</para>
       <screen>https://play.dhis2.org/demo/api/24/dataValueSets?dataSet=pBOMPrpg1QX&amp;orgUnit=DiszpKrYNg8&amp;lastUpdatedDuration=10d</screen>
@@ -3295,19 +3301,22 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
           Conflict</emphasis> status code and descriptive text message. If the operation lead to a
         saved or updated value, <emphasis role="italic">200 OK</emphasis> will be returned. An
         example of a request looks like this:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&amp;value=12&quot;
--X POST -u admin:district -v</screen>
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu
+  &amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&amp;value=12&quot;
+  -X POST -u admin:district -v</screen>
       <para>This resource also allows a special syntax for associating the value to an attribute
         option combination. This can be done by sending the identifier of the attribute combination,
         together with the identifier(s) of the attribute option(s) which the value represents within
         the combination. An example looks like this:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;ou=DiszpKrYNg8&amp;pe=201308&amp;cc=dzjKKQq0cSO&amp;cp=wbrDrL2aYEc;btOyqprQ9e8&amp;value=26&quot;
--X POST -u admin:district -v</screen>
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;ou=DiszpKrYNg8
+  &amp;pe=201308&amp;cc=dzjKKQq0cSO&amp;cp=wbrDrL2aYEc;btOyqprQ9e8&amp;value=26&quot;
+  -X POST -u admin:district -v</screen>
       <para>You can retrieve a data value with a request using the <emphasis role="italic"
           >GET</emphasis> method. The value, comment and followUp params are not applicable in this
         regard:</para>
-      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu&amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&quot;
--X GET -u admin:district -v</screen>
+      <screen>curl &quot;https://play.dhis2.org/demo/api/24/dataValues?de=s46m5MS0hxu
+  &amp;pe=201301&amp;ou=DiszpKrYNg8&amp;co=Prlt0C1RF0s&quot;
+  -X GET -u admin:district -v</screen>
       <para>You can delete a data value with a request using the <emphasis role="italic"
           >DELETE</emphasis> method. </para>
       <section xml:id="datavalue_file">
@@ -3519,7 +3528,8 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         events from the &quot;Inpatient morbidity and mortality&quot; program for the &quot;Ngelehun
         CHC&quot; facility in the demo database can be seen below:</para>
       <screen>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;event program=&quot;eBAyeGv0exc&quot; orgUnit=&quot;DiszpKrYNg8&quot; eventDate=&quot;2013-05-17&quot; status=&quot;COMPLETED&quot; storedBy=&quot;admin&quot;&gt;
+&lt;event program=&quot;eBAyeGv0exc&quot; orgUnit=&quot;DiszpKrYNg8&quot; 
+  eventDate=&quot;2013-05-17&quot; status=&quot;COMPLETED&quot; storedBy=&quot;admin&quot;&gt;
   &lt;coordinate latitude=&quot;59.8&quot; longitude=&quot;10.9&quot; /&gt;
   &lt;dataValues&gt;
     &lt;dataValue dataElement=&quot;qrur9Dvnyt5&quot; value=&quot;22&quot; /&gt;
@@ -3556,14 +3566,16 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         look like this: </para>
       <screen>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;events&gt;
-    &lt;event program=&quot;eBAyeGv0exc&quot; orgUnit=&quot;DiszpKrYNg8&quot; eventDate=&quot;2013-05-17&quot; status=&quot;COMPLETED&quot; storedBy=&quot;admin&quot;&gt;
+    &lt;event program=&quot;eBAyeGv0exc&quot; orgUnit=&quot;DiszpKrYNg8&quot; 
+      eventDate=&quot;2013-05-17&quot; status=&quot;COMPLETED&quot; storedBy=&quot;admin&quot;&gt;
       &lt;coordinate latitude=&quot;59.8&quot; longitude=&quot;10.9&quot; /&gt;
       &lt;dataValues&gt;
         &lt;dataValue dataElement=&quot;qrur9Dvnyt5&quot; value=&quot;22&quot; /&gt;
         &lt;dataValue dataElement=&quot;oZg33kd9taw&quot; value=&quot;Male&quot; /&gt;
       &lt;/dataValues&gt;
     &lt;/event&gt;
-    &lt;event program=&quot;eBAyeGv0exc&quot; orgUnit=&quot;DiszpKrYNg8&quot; eventDate=&quot;2013-05-17&quot; status=&quot;COMPLETED&quot; storedBy=&quot;admin&quot;&gt;
+    &lt;event program=&quot;eBAyeGv0exc&quot; orgUnit=&quot;DiszpKrYNg8&quot; 
+      eventDate=&quot;2013-05-17&quot; status=&quot;COMPLETED&quot; storedBy=&quot;admin&quot;&gt;
       &lt;coordinate latitude=&quot;59.8&quot; longitude=&quot;10.9&quot; /&gt;
       &lt;dataValues&gt;
         &lt;dataValue dataElement=&quot;qrur9Dvnyt5&quot; value=&quot;26&quot; /&gt;
