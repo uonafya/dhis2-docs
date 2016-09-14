@@ -10952,44 +10952,108 @@ interval=WEEK" -u admin:district</screen>
     <title>Organisation units</title>
     <para>The <emphasis>organisationUnits</emphasis> resource follows the standard conventions as
       other metadata resources in DHIS2. This resource supports some additional query
-      parameters.<screen>/api/24/organisationUnits</screen></para>
+      parameters.
+    </para>
+    <section>
+      <title>Get list of organisation units</title>
+      <para>To get a list of organisation units you can use the following resource.
+        <screen>/api/24/organisationUnits</screen></para>
     <table frame="all">
       <title>Organisation units query parameters</title>
-      <tgroup cols="2">
-        <colspec colnum="1" colname="c1" colwidth="1*"/>
-        <colspec colnum="2" colname="c2" colwidth="3.76*"/>
-        <thead>
-          <row>
-            <entry>Query parameter</entry>
-            <entry>Description</entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry>userOnly</entry>
-            <entry>Data capture organisation units associated with current user only.</entry>
-          </row>
-          <row>
-            <entry>userDataViewOnly</entry>
-            <entry>Data view organisation units associated with current user only.</entry>
-          </row>
-          <row>
-            <entry>userDataViewFallback</entry>
-            <entry>Data view organisation units associated with current user only with fallback to
-              data capture organisation units.</entry>
-          </row>
-          <row>
-            <entry>level</entry>
-            <entry>Organisation units at the given level in the hierarchy.</entry>
-          </row>
-          <row>
-            <entry>maxLevel</entry>
-            <entry>Organisation units at the given max level or levels higher up in the
-              hierarchy.</entry>
-          </row>
-        </tbody>
-      </tgroup>
+      <tgroup cols="3">
+          <colspec colnum="1" colname="c1" colwidth="1*"/>
+          <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+          <colspec colnum="3" colname="c2" colwidth="3.76*"/>
+          <thead>
+            <row>
+              <entry>Query parameter</entry>
+              <entry>Options</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>userOnly</entry>
+              <entry>false | true</entry>
+              <entry>Data capture organisation units associated with current user only.</entry>
+            </row>
+            <row>
+              <entry>userDataViewOnly</entry>
+              <entry>false | true</entry>
+              <entry>Data view organisation units associated with current user only.</entry>
+            </row>
+            <row>
+              <entry>userDataViewFallback</entry>
+              <entry>false | true</entry>
+              <entry>Data view organisation units associated with current user only with fallback to
+                data capture organisation units.</entry>
+            </row>
+            <row>
+              <entry>query</entry>
+              <entry>string</entry>
+              <entry>Query against the name, code and ID properties.</entry>
+            </row>
+            <row>
+              <entry>level</entry>
+              <entry>integer</entry>
+              <entry>Organisation units at the given level in the hierarchy.</entry>
+            </row>
+            <row>
+              <entry>maxLevel</entry>
+              <entry>integer</entry>
+              <entry>Organisation units at the given max level or levels higher up in the
+                hierarchy.</entry>
+            </row>
+          </tbody>
+        </tgroup>
     </table>
+    </section>
+    <section>
+      <title>Get organisation unit with relations</title>
+      <para>To get an organisation unit with related organisation units you can use the following
+        resource. <screen>/api/24/organisationUnits/{id} </screen></para>
+      <table frame="all">
+        <title>Organisation unit parameters</title>
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+          <colspec colname="c2" colnum="3" colwidth="2.85*"/>
+          <thead>
+            <row>
+              <entry>Query parameter</entry>
+              <entry>Options</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>includeChildren</entry>
+              <entry>false | true</entry>
+              <entry>Include immediate children of the specified organisation unit, i.e. the units
+                at the immediate level below in the subhierarchy.</entry>
+            </row>
+            <row>
+              <entry>includeDescendants</entry>
+              <entry>false | true</entry>
+              <entry>Include all children of the specified organisation unit, i.e. all units in the
+                subhierarchy.</entry>
+            </row>
+            <row>
+              <entry>includeAncestors</entry>
+              <entry>false | true</entry>
+              <entry>Include all parents of the specified organisation unit.</entry>
+            </row>
+            <row>
+              <entry>level</entry>
+              <entry>integer</entry>
+              <entry>Include children of the specified organisation unit at the given level of the
+                subhierarchy (relative to the organisation unit where the immediate level below is
+                level 1).</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
   </section>
   <section xml:id="webapi_data_sets">
     <title>Data sets</title>
