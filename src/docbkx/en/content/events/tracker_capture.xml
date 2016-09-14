@@ -397,21 +397,10 @@ enrollment or enrollments?"?>status<?oxy_comment_end?>: <itemizedlist>
     </section>
     <section>
       <title>Advanced TEI search</title>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-      <para>Under normal circumstances, advanced search is conducted for the selected organisation
-        unit (from left-hand side tree) and scope (which could be Selected, Immediate children or
-        All children). The left-hand side tree is generated based on the logged in user's assigned
-        organisation units. </para>
-      <para>However, there could be cases to search for a TEI from another organisation unit (which
-        is not necessarily part of the assigned organisation units. To support such use case,
-        advanced search provides another organisation unit tree. The tree displayed here depends on
-        the role that the logged in user has. If the user has role "Search Tracked Entity Instance
-        in All Org Units" or "ALL", a tree with all available organisation units is provided other
-        wise the tree displayed in advanced search is the same as the one on the left-hand side.
-        Whichever tree (or hierarchy of organisation units) is provided, if an organisation unit is
-        selected in advanced search, the searching is conducted against this selected organisation
-        unit and scope.</para>
-      <?oxy_custom_end?>
+      <para>Advanced search is conducted for the organisation units you select in left-hand side
+        <?oxy_comment_start author="cecilia" timestamp="20160913T101533+0200" comment="Verify with SMe if the node itself is part of the search and not only the children."?>organisation<?oxy_comment_end?>
+        tree. The left-hand side organisation tree is generated based on your assigned organisation
+        units.</para>
       <orderedlist>
         <listitem>
           <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold"
@@ -443,6 +432,21 @@ Can you set which attributes that are displayed in the advanced search?" mid="35
           <itemizedlist>
             <listitem>
               <para><emphasis role="bold">Organisation unit</emphasis></para>
+              <para>The tree displayed here depends on your
+                <?oxy_comment_start author="cecilia" timestamp="20160913T102727+0200" comment="Settings of your user role?"?>user<?oxy_comment_end?>
+                role.</para>
+              <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
+              <para>If the user has role "Search Tracked Entity Instance in
+                <?oxy_comment_start author="cecilia" timestamp="20160913T100631+0200" comment="Verify with SME: 
+Who sets this?
+Where do you set it?"?>All<?oxy_comment_end?>
+                Org Units" or "ALL", a tree with all available organisation units is provided other
+                wise the tree displayed in advanced search is the same as the one on the left-hand
+                side. </para>
+              <para>Whichever tree (or hierarchy of organisation units) is provided, if an
+                organisation unit is selected in advanced search, the searching is conducted against
+                this selected organisation unit and scope.</para>
+              <?oxy_custom_end?>
             </listitem>
             <listitem>
               <para><emphasis role="bold">Date or enrollment</emphasis>: appears if you have
@@ -500,23 +504,65 @@ enrollment or enrollments?"?>status<?oxy_comment_end?>: <itemizedlist>
       </orderedlist>
     </section>
     <section>
+      <title>Find/Search/Locate/Open a TEI outside your organisation
+        <?oxy_comment_start author="cecilia" timestamp="20160913T133501+0200" comment="Review if this task should have it&apos;s on section or not."?>unit<?oxy_comment_end?></title>
+      <para>You can search for a TEI from another organisation unit, outside your assigned
+        organisation units. To do this:</para>
+      <itemizedlist>
+        <listitem>
+          <?oxy_comment_start author="cecilia" timestamp="20160913T102033+0200" comment="Reword this para."?>
+          <para>Your user role must have "Search Tracked Entity Instance in
+            <?oxy_comment_start author="cecilia" timestamp="20160913T100631+0200" comment="Verify with SME: 
+Who sets this?
+Where do you set it?"?>All<?oxy_comment_end?>
+            Org Units" or "ALL" assigned to it.</para>
+          <?oxy_comment_end?>
+        </listitem>
+        <listitem>
+          <para>You must select an organisation unit in the organisation unit tree in the <emphasis
+              role="bold">Advanced search</emphasis> form.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
       <title>Download TEI search results list</title>
       <orderedlist>
         <listitem>
-          <para>Create a TEI search results list, see sections <xref/></para>
+          <para>Create a TEI search results list, see <?oxy_comment_start author="cecilia" timestamp="20160913T100650+0200" comment="Add x-ref inside section."?>sections<?oxy_comment_end?>
+            <xref/></para>
         </listitem>
         <listitem>
-          <para>Click <emphasis role="bold">Download as</emphasis> and select a format.</para>
-          <para>XML</para>
-          <para>JSON</para>
-          <para>CSV</para>
+          <para>Click <emphasis role="bold">Download as</emphasis> and select a format:</para>
+          <itemizedlist>
+            <listitem>
+              <para>XML</para>
+            </listitem>
+            <listitem>
+              <para>JSON</para>
+            </listitem>
+            <listitem>
+              <para>CSV</para>
+            </listitem>
+          </itemizedlist>
         </listitem>
       </orderedlist>
     </section>
     <section>
       <title>Modify TEI search results list's
-        <?oxy_comment_start author="cecilia" timestamp="20160912T164009+0200" comment="Revise workding."?>layout<?oxy_comment_end?></title>
-      <para/>
+        <?oxy_comment_start author="cecilia" timestamp="20160912T164009+0200" comment="Revise wording."?>layout<?oxy_comment_end?></title>
+      <orderedlist>
+        <listitem>
+          <para>Create a TEI search results list, see <?oxy_comment_start author="cecilia" timestamp="20160913T100650+0200" comment="Add x-ref inside section."?>sections<?oxy_comment_end?>
+            <xref/></para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Show/hide columns</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Select the columns you want to display and click <emphasis role="bold"
+              >Close</emphasis>.</para>
+        </listitem>
+      </orderedlist>
     </section>
   </section>
   <section>
@@ -544,8 +590,14 @@ enrollment or enrollments?"?>status<?oxy_comment_end?>: <itemizedlist>
     </orderedlist>
   </section>
   <section>
-    <title>Enter event data for a TEI</title>
-    <para>Tabular or data form??</para>
+    <title><?oxy_comment_start author="cecilia" timestamp="20160913T143614+0200" comment="Verify with SME:
+In some programs, for example Child program, you register the TIE, enroll the TEI and enter data in one go. Which are the rules for this?
+How do you set this up?"?>Enter<?oxy_comment_end?>
+      event data for a TEI</title>
+    <para>In a TEI dashboard, you enter event data in the <emphasis role="bold">Data
+        entry</emphasis> or <emphasis role="bold">Tabular data entry</emphasis>
+      <?oxy_comment_start author="cecilia" timestamp="20160913T144337+0200" comment="Verify with SME: 
+Do the data entry widgets look different depending on the program?"?>widgets<?oxy_comment_end?>.</para>
     <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
     <para><emphasis role="bold">Data entry</emphasis> - this is for doing data entry using either
       default or custom forms. Depending on program definition, in particular program stages, events
@@ -582,9 +634,7 @@ enrollment or enrollments?"?>status<?oxy_comment_end?>: <itemizedlist>
         <para>Select an entity type.</para>
       </listitem>
       <listitem>
-        <para>Fill in the required
-          <?oxy_comment_start author="cecilia" timestamp="20160826T141524+0200" comment="Does the fields depend on which program you&apos;ve chosen?
-Is it always &quot;firstname&quot; and &quot;last name&quot;?"?>information<?oxy_comment_end?>.</para>
+        <para>Fill in the required information.</para>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Save and continue</emphasis> or <emphasis role="bold">Save
@@ -596,10 +646,8 @@ Is it always &quot;firstname&quot; and &quot;last name&quot;?"?>information<?oxy
           </listitem>
           <listitem>
             <para><emphasis role="bold">Save and add new</emphasis>: completes the registration but
-              stays on the same page.
-              <?oxy_comment_start author="cecilia" timestamp="20160905T155233+0200" comment="Verify this phrase with SME."?>Use
-              this option when you want to register one TEI after another without enrollment to a
-              program.<?oxy_comment_end?></para>
+              stays on the same page. Use this option when you want to register one TEI after
+              another without enrollment to a program.</para>
           </listitem>
         </itemizedlist>
       </listitem>
@@ -630,6 +678,17 @@ Add ino that you can switch between the different programs."?>TEI<?oxy_comment_e
       <para>or a possibility to mark the enrollment for followup. The later one helps for example to
         deal with high-risk cases during pregnancy followup. A link to history is also provided if
         the TEI has historical enrollment.</para>
+    </section>
+    <section>
+      <title>Mark TEI's enrollment for follow-up</title>
+      <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
+        selected program. If an active enrollment already exists, the widget automatically displays
+        it with some details about it. The widget also helps to do some operations on the selected
+        enrollment - for example terminate/complete or a possibility to
+        m<?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>ark the enrollment for
+        followup<?oxy_custom_end?>. The later one helps for example to deal with high-risk cases
+        during pregnancy followup. A link to history is also provided if the TEI has historical
+        enrollment.</para>
     </section>
     <section>
       <title>Reopen completed enrollment</title>
