@@ -1343,6 +1343,23 @@ http://server/api/24/constants/ID</screen></para>
         request:<screen>DELETE /api/24/dataElementGroups/IDA/dataElements/IDB</screen></para>
       <para>To add a category option with identifier IDB to a category with identifier IDA you can
         do a POST request:<screen>POST /api/24/categories/IDA/categoryOptions/IDB</screen></para>
+      <para>If you want to add or remove multiple items from a collection in one request that is
+        also available using a payload like
+        this:<screen>{
+  "identifiableObjects": [
+    { "id": "IDA" },
+    { "id": "IDB" },
+    { "id": "IDC" },
+    { "id": "IDD" }
+  ]
+}</screen></para>
+      <para>Using this payload, you have 3 options, you can delete, add, or replace.</para>
+      <para><emphasis role="italic">Adding Items:</emphasis></para>
+      <screen>POST /api/24/categories/IDA/categoryOptions</screen>
+      <para><emphasis role="italic">Replacing
+        Items:</emphasis><screen>PUT /api/24/categories/IDA/categoryOptions</screen></para>
+      <para><emphasis role="italic">Delete
+        Items:</emphasis><screen>DELETE /api/24/categories/IDA/categoryOptions</screen></para>
     </section>
     <section xml:id="webapi_validating_payloads">
       <title>Validating payloads</title>
