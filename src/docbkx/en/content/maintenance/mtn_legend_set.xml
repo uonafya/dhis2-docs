@@ -6,160 +6,265 @@
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
     xmlns:db="http://docbook.org/ns/docbook">
-    <title>Manage legend sets</title>
-    <para>You can create your own legend sets to ensure meaningful maps. </para>
-    <note>
-        <para>Continuous legends are supposed to end and start on the same value, for example 0-50
-            and 50-80. The GIS app automatically take care of
-            <?oxy_comment_start author="Home" timestamp="20160413T120439+0200" comment="Of what?"?>this<?oxy_comment_end?>.
-            Do not try to do this yourself by setting legends to for example 0-50 and 51-80. This
-            will cause a usually unwanted gap in your legend set.</para>
-    </note>
+    <title>[Review ongoing] Manage legends</title>
     <section>
-        <title>Create a new legend set</title>
+        <title>About legends</title>
+        <para>You can create your own legend to make sure that maps created in the GIS app are
+            meaningful.</para>
+        <note>
+            <para><?oxy_comment_start author="cecilia" timestamp="20160921T163643+0200" comment="Verify with SME if this information is still necessary."?>Continuous<?oxy_comment_end?>
+                legends are supposed to end and start on the same value, for example 0-50 and 50-80.
+                The GIS app automatically take care of
+                <?oxy_comment_start author="Home" timestamp="20160413T120439+0200" comment="Of what?"?>this<?oxy_comment_end?>.
+                Do not try to do this yourself by setting legends to for example 0-50 and 51-80.
+                This will cause a usually unwanted gap in your legend set.</para>
+        </note>
+        <para>In the <emphasis role="bold">Maintenance</emphasis> app, you manage the following
+            legend objects:</para>
+        <table frame="all">
+            <title>Legend objects in the Maintenance app</title>
+            <tgroup cols="2">
+                <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+                <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+                <thead>
+                    <row>
+                        <entry>
+                            <para>Object type</para>
+                        </entry>
+                        <entry>
+                            <para>Available functions</para>
+                        </entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>
+                            <para>Legend</para>
+                        </entry>
+                        <entry>
+                            <para>Create, edit, clone, delete, show details and translate</para>
+                        </entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+    </section>
+    <section>
+        <title>Create a legend</title>
+        <note>
+            <para>It is not allowed to have gaps in a legend.</para>
+            <para>It is not allowed to have overlapping legend items.</para>
+        </note>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Legends</emphasis>.</para>
-                <para> The <emphasis role="bold">Legend sets</emphasis> dialog box opens.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Other</emphasis> > <emphasis role="bold"
+                    >Legend</emphasis>.</para>
             </listitem>
             <listitem>
-                <para>Click <emphasis role="bold">Add new</emphasis>.</para>
+                <para>Click the add
+                    <?oxy_comment_start author="cecilia" timestamp="20160510T112410+0200" comment="Do not refer to the FAB as an icon, according to MS Manual of Style." flag="done"?>button<?oxy_comment_end?>.</para>
             </listitem>
             <listitem>
-                <para>In the <emphasis role="bold">Legend set name</emphasis> box, type the name you
-                    want to give the legend set.</para>
+                <para>In the <emphasis role="bold">Name</emphasis> field, type the legend
+                    name.</para>
             </listitem>
             <listitem>
-                <para>Create the legends you want to have in your legend set:</para>
+                <para>(Optional) In the <emphasis role="bold">Code</emphasis> field, assign a
+                    code.</para>
+            </listitem>
+            <listitem>
+                <para>Create the legend items you want to have in your legend:</para>
                 <orderedlist>
                     <listitem>
-                        <para>In the <emphasis role="bold">Legend name</emphasis> field, type the
-                            legend name.</para>
+                        <para>Select <emphasis role="bold">Start value</emphasis> and <emphasis
+                                role="bold">End value</emphasis>.</para>
                     </listitem>
                     <listitem>
-                        <para>Select <emphasis role="bold">Start/end value</emphasis>.</para>
+                        <para>Select <emphasis role="bold">Number of
+                                <?oxy_comment_start author="cecilia" timestamp="20160921T163330+0200" comment="Give feedback to SME: call it Number of legend items"?>items<?oxy_comment_end?></emphasis>.</para>
                     </listitem>
                     <listitem>
-                        <para>Select <emphasis role="bold">Symbolizer</emphasis>.</para>
+                        <para>Select a color
+                            <?oxy_comment_start author="cecilia" timestamp="20160921T154150+0200" comment="Verify with SME the correct term for this" flag="done"?>scheme<?oxy_comment_end?>.</para>
                     </listitem>
                     <listitem>
-                        <para>Click <emphasis role="bold">Add legend</emphasis>.</para>
-                        <para>The legend is added to <emphasis role="bold">Current
-                                legends</emphasis>.</para>
-                    </listitem>
-                    <listitem>
-                        <para><?oxy_comment_start author="CPersson" timestamp="20160420T143924+0200" comment="At next release, add x-refs."?>Repeat<?oxy_comment_end?>
-                            until you have created all the legends you need.</para>
+                        <para>Click <emphasis role="bold">Create legend items</emphasis>.</para>
                     </listitem>
                 </orderedlist>
+                <tip>
+                    <para>Click the options menu to edit or delete a legend item.</para>
+                </tip>
                 <example>
                     <title>Vaccination coverage legends</title>
-                    <para>
-                        <table frame="all">
-                            <title>Example of vaccination coverage legends</title>
-                            <tgroup cols="4">
-                                <colspec colname="c1" colnum="1" colwidth="1.0*"/>
-                                <colspec colname="c2" colnum="2" colwidth="1.0*"/>
-                                <colspec colname="c3" colnum="3" colwidth="1.0*"/>
-                                <colspec colname="c4" colnum="4" colwidth="1.0*"/>
-                                <thead>
-                                    <row>
-                                        <entry>Legend name</entry>
-                                        <entry>Start value</entry>
-                                        <entry>End value</entry>
-                                        <entry>Symbolizer</entry>
-                                    </row>
-                                </thead>
-                                <tbody>
-                                    <row>
-                                        <entry>Low bad</entry>
-                                        <entry>0</entry>
-                                        <entry>50</entry>
-                                        <entry>red</entry>
-                                    </row>
-                                    <row>
-                                        <entry>Medium</entry>
-                                        <entry>50</entry>
-                                        <entry>80</entry>
-                                        <entry>yellow</entry>
-                                    </row>
-                                    <row>
-                                        <entry>High good</entry>
-                                        <entry>80</entry>
-                                        <entry>100</entry>
-                                        <entry>green</entry>
-                                    </row>
-                                    <row>
-                                        <entry>Too high</entry>
-                                        <entry>100</entry>
-                                        <entry>1000</entry>
-                                        <entry>grey</entry>
-                                    </row>
-                                </tbody>
-                            </tgroup>
-                        </table>
-                    </para>
+                    <table frame="all">
+                        <?oxy_comment_start author="cecilia" timestamp="20160921T162540+0200" comment="Verify how empty title tag renders, should be enough with the example tag."?>
+                        <title/>
+                        <?oxy_comment_end?>
+                        <tgroup cols="3">
+                            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+                            <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+                            <colspec colname="c3" colnum="3" colwidth="1.0*"/>
+                            <thead>
+                                <row>
+                                    <entry>Legend item</entry>
+                                    <entry>Start value</entry>
+                                    <entry>End value</entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry>Low bad</entry>
+                                    <entry>0</entry>
+                                    <entry>50</entry>
+                                </row>
+                                <row>
+                                    <entry>Medium</entry>
+                                    <entry>50</entry>
+                                    <entry>80</entry>
+                                </row>
+                                <row>
+                                    <entry>High good</entry>
+                                    <entry>80</entry>
+                                    <entry>100</entry>
+                                </row>
+                                <row>
+                                    <entry>Too high</entry>
+                                    <entry>100</entry>
+                                    <entry>1000</entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
                 </example>
             </listitem>
             <listitem>
-                <para>Click <emphasis role="bold">Create</emphasis>.</para>
-                <note>
-                    <para>If your legend set has overlapping legends (for example 0-50 and 40-80)
-                        you will not be allowed to proceed. If your legend set has a gap between the
-                        legends (for example 0-50 and 60-80) you will get a warning, but are allowed
-                        to proceed.</para>
-                </note>
+                <para>(Optional) Add more legend items:</para>
+                <orderedlist>
+                    <listitem>
+                        <para>Click the add button</para>
+                    </listitem>
+                    <listitem>
+                        <para>Enter a name and select a start value, an end value and a
+                            color.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Click <emphasis role="bold">OK</emphasis>.</para>
+                    </listitem>
+                </orderedlist>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Save</emphasis>.</para>
             </listitem>
         </orderedlist>
     </section>
     <section>
-        <title>Change a legend set</title>
-        <para>
-            <orderedlist>
-                <listitem>
-                    <para>Click <emphasis role="bold">Legends</emphasis>. </para>
-                    <para>The <emphasis role="bold">Legend sets</emphasis> dialog box opens.</para>
-                </listitem>
-                <listitem>
-                    <para>Click the edit icon next to the legend set you want to modify.</para>
-                </listitem>
-                <listitem>
-                    <para>In the <emphasis role="bold">Current legends</emphasis> list, click the
-                        edit icon next to the legend you want to modify.</para>
-                    <para>The <emphasis role="bold">Edit legend</emphasis> dialog box opens.</para>
-                </listitem>
-                <listitem>
-                    <para>Modify the parameters and click <emphasis role="bold"
-                        >Update</emphasis>.</para>
-                </listitem>
-                <listitem>
-                    <para>In the <emphasis role="bold">Legend sets</emphasis> dialog box, click
-                            <emphasis role="bold">Update</emphasis>.</para>
-                </listitem>
-            </orderedlist>
-        </para>
+        <title>Edit legends</title>
+        <orderedlist>
+            <listitem>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Other</emphasis> > <emphasis role="bold"
+                    >Legend</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Legend</emphasis>. </para>
+            </listitem>
+            <listitem>
+                <para>In the list, find the legend you want to modify.</para>
+            </listitem>
+            <listitem>
+                <para>Click the options menu and select <emphasis role="bold"
+                    >Edit</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Modify the options you
+                    <?oxy_comment_start author="cecilia" timestamp="20160510T160124+0200" comment="At next revision, add link to previous section
+&quot;For details about each option, refer to section Create a data element.&quot;
+At the moment, I can only do x-refs to section 1 tags.
+" flag="done"?>want<?oxy_comment_end?>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Save</emphasis>.</para>
+            </listitem>
+        </orderedlist>
     </section>
     <section>
-        <title>Delete a legend set</title>
-        <para>
-            <orderedlist>
-                <listitem>
-                    <para>Click <emphasis role="bold">Legends</emphasis>. </para>
-                    <para>The <emphasis role="bold">Legend sets</emphasis> dialog box opens.</para>
-                </listitem>
-                <listitem>
-                    <para>Click the delete icon next to the legend set you want to delete.</para>
-                </listitem>
-                <listitem>
-                    <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to
-                        delete the legend set.</para>
-                </listitem>
-            </orderedlist>
-        </para>
+        <title>Clone legends</title>
+        <orderedlist>
+            <listitem>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Other</emphasis> > <emphasis role="bold"
+                    >Legend</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Legend</emphasis>. </para>
+            </listitem>
+            <listitem>
+                <para>In the list, find the legend you want to clone.</para>
+            </listitem>
+            <listitem>
+                <para>Click the options menu and select <emphasis role="bold"
+                    >Clone</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Modify the options you
+                    <?oxy_comment_start author="cecilia" timestamp="20160510T160124+0200" comment="At next revision, add link to previous section
+&quot;For details about each option, refer to section Create a data element.&quot;
+At the moment, I can only do x-refs to section 1 tags.
+" flag="done"?>want<?oxy_comment_end?>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Save</emphasis>.</para>
+            </listitem>
+        </orderedlist>
     </section>
     <section>
-        <title>Assign a legend set to indicator or data
-            <?oxy_comment_start author="Home" timestamp="20160414T113214+0200" comment="At next revision, add x-ref to relevant topic."?>element<?oxy_comment_end?></title>
+        <title>Delete legends</title>
+        <orderedlist>
+            <listitem>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Other</emphasis> > <emphasis role="bold"
+                    >Legend</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Legend</emphasis>. </para>
+            </listitem>
+            <listitem>
+                <para>In the list, find the legend you want to delete.</para>
+            </listitem>
+            <listitem>
+                <para>Click the options menu and select <emphasis role="bold"
+                    >Delete</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Confirm</emphasis>.</para>
+            </listitem>
+        </orderedlist>
+    </section>
+    <section>
+        <title>Display details of legends</title>
+        <para/>
+        <orderedlist>
+            <listitem>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Other</emphasis> > <emphasis role="bold"
+                    >Legend</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Legend</emphasis>. </para>
+            </listitem>
+            <listitem>
+                <para>In the list, find the legend you want to view.</para>
+            </listitem>
+            <listitem>
+                <para>Click the options menu and select <emphasis role="bold">Show
+                        details</emphasis>.</para>
+            </listitem>
+        </orderedlist>
+    </section>
+    <section>
+        <title><?oxy_comment_start author="cecilia" timestamp="20160921T160951+0200" comment="Verify with SMe: Still relevant for 2.25?"?>Assign<?oxy_comment_end?>
+            a legend to indicator or data<?oxy_comment_start author="Home" timestamp="20160414T113214+0200" comment="At next revision, add x-ref to relevant topic."?>element<?oxy_comment_end?></title>
         <para>You can assign a legend set to an indicator or a data element in the Indicator/Data
             element module. This legend set will then be automatically selected when such an
             indicator/data element is selected in the GIS.</para>
