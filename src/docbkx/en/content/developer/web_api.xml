@@ -5866,16 +5866,16 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
       <para>When writing comments to interpretations you will supply the comment text as the request
         body using a POST request with content type "text/plain". The URL pattern looks like the
         below, where {interpretation-id} refers to the interpretation
-        identifier.<screen>/api/25/interpretations/{interpretation-id}/comment</screen></para>
+        identifier.<screen>/api/25/interpretations/{interpretation-id}/comments</screen></para>
       <para>Second, we will write a comment to the interpretation we wrote in the example above. By
         looking at the interpretation response you will see that a <emphasis role="italic"
           >Location</emphasis> header is returned. This header tells us the URL of the newly created
         interpretation and from that we can read its identifier. This identifier is randomly
         generated so you will have to replace the one in the command below with your own. To write a
-        comment we can interact with the <emphasis>/api/25/interpretations/{id}/comment"</emphasis>
+        comment we can interact with the <emphasis>/api/25/interpretations/{id}/comments"</emphasis>
         resource like this:</para>
       <screen>curl -d &quot;An intervention is needed&quot; -X POST
-  &quot;https://play.dhis2.org/demo/api/25/interpretations/j8sjHLkK8uY/comment&quot;
+  &quot;https://play.dhis2.org/demo/api/25/interpretations/j8sjHLkK8uY/comments&quot;
   -H &quot;Content-Type:text/plain&quot; -u admin:district -v</screen>
     </section>
     <section xml:id="webapi_updating_removing_interpretation_comments">
@@ -5885,7 +5885,7 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         pattern:<screen>/api/25/interpretations/{interpretation-id}/comments/{comment-id}</screen></para>
       <para>Based on this we can use curl to update the
         comment:<screen>curl -d "I agree with that." -X PUT
-  https://play.dhis2.org/demo/api/25/interpretations/j8sjHLkK8uY/comment/idAzzhVWvh2"
+  https://play.dhis2.org/demo/api/25/interpretations/j8sjHLkK8uY/comments/idAzzhVWvh2"
   -H "Content-Type:text/plain" -u admin:district -v</screen></para>
       <para>You can use the same URL pattern as above using a DELETE request to the remove the
         interpretation comment.</para>
