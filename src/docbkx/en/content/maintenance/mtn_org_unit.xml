@@ -219,15 +219,14 @@ Follow-up with SME before release.
         <para>To create a new organisation unit:</para>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis> > <emphasis role="bold">Organisation
-                    unit</emphasis>.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis> > <emphasis role="bold"
+                        >Organisation unit</emphasis>.</para>
             </listitem>
             <listitem>
-                <para>In the organisation unit tree to the left, select the organisation unit you
-                    want to add the new organisation unit to. The selected organisation unit is
-                    marked in yellow.</para>
+                <para>In the left-hand organisation unit tree, select the organisation unit you want
+                    to add the new organisation unit to. The selected organisation unit is marked in
+                    yellow.</para>
                 <para>You can locate an organisation unit in the tree by expanding the branches
                     (click on the arrow symbol), or by searching for it by name or code.</para>
                 <note>
@@ -308,18 +307,15 @@ Follow-up with SME before release.
 https://github.com/dhis2/maintenance-app/issues/162
 - If release on Monday, field included."?>
             <listitem>
-                <para>Enter <emphasis role="bold">Coordinates</emphasis>.</para>
-                <para>This field is used to create the maps in the GIS module. Paste in the
-                    coordinates of the organisation unit in this field, either a polygon (for
-                    organisation units that represent an administrative boundary) or a point (for
-                    health facilities). Without this information the GIS module will not work. It
-                    might be more efficient to import these coordinates later as a batch job for all
-                    organisation units using the import module. See the GIS chapter for more
-                    details.</para>
+                <para>(Optional) Enter
+                    <?oxy_comment_start author="cecilia" timestamp="20160923T102103+0200" comment="For SME: are coordinates always here, or a custom attribute?"?>coordinates<?oxy_comment_end?>.</para>
             </listitem>
             <?oxy_comment_end?>
             <listitem>
-                <para>Click <emphasis role="bold">Save</emphasis>.</para>
+                <para><?oxy_comment_start author="cecilia" timestamp="20160923T101928+0200" comment="Removed step 14 &quot;Enter Coordinates&quot;. See GitHub issue #162. SME confirms this will not be implemented for 2.25. 
+Removed text:
+&quot;This field is used to create the maps in the GIS module. Paste in the coordinates of the organisation unit in this field, either a polygon (for organisation units that represent an administrative boundary) or a point (for health facilities). Without this information the GIS module will not work. It might be more efficient to import these coordinates later as a batch job for all organisation units using the import module. See the GIS chapter for more details.&quot;"?>Click<?oxy_comment_end?>
+                    <emphasis role="bold">Save</emphasis>.</para>
             </listitem>
         </orderedlist>
     </section>
@@ -331,10 +327,9 @@ https://github.com/dhis2/maintenance-app/issues/162
         <para>To create a new organisation unit group:</para>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis> > <emphasis role="bold">Organisation unit
-                    group</emphasis>.</para>
+                <para>Open the  <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis> > <emphasis role="bold"
+                        >Organisation unit group</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Click the add button.</para>
@@ -364,7 +359,8 @@ https://github.com/dhis2/maintenance-app/issues/162
             </listitem>
             <listitem>
                 <para>In the organisation tree, click the organisation units you want to add to the
-                    organisation unit group.</para>
+                    organisation unit
+                    <?oxy_comment_start author="cecilia" timestamp="20160923T102240+0200" comment="There&apos;s some new functionality in the form, you can select an org unit level an org unit gorup too. "?>group<?oxy_comment_end?>.</para>
                 <para>You can locate an organisation unit in the tree by expanding the branches
                     (click on the arrow symbol), or by searching for it by
                     <?oxy_comment_start author="cecilia" timestamp="20160526T100438+0200" comment="Issue submitted on GitHub to make it possible to search by code too, jsut like the Create new org unit form." flag="done"?>name<?oxy_comment_end?>.</para>
@@ -416,16 +412,15 @@ https://github.com/dhis2/maintenance-app/issues/162
         <para>To create an organisation unit group set:</para>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis> > <emphasis role="bold">Organisation unit group
-                        set</emphasis>.</para>
+                <para>Open the  <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis> > <emphasis role="bold"
+                        >Organisation unit group set</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Click the add button.</para>
             </listitem>
             <listitem>
-                <para>Fill in the form:</para>
+                <para>Fill in:</para>
                 <orderedlist>
                     <listitem>
                         <para><emphasis role="bold">Name</emphasis>: Provide a precise name for the
@@ -457,13 +452,17 @@ Yes" flag="done"?>Compulsory<?oxy_comment_end?></emphasis>.</para>
                 <para>In the left-hand list, you find the available organisation unit groups. Use
                     the arrows to move selected groups between the two lists.</para>
                 <?oxy_comment_start author="cecilia" timestamp="20160526T104008+0200" comment="At next revision, ad x-ref." flag="done"?>
-                <para>If there are no groups in the left-hand list, you must go to <emphasis
-                        role="bold">Organisation unit group</emphasis> and create new groups
-                    first.</para>
+                <para>If there are no organisation unit groups in the left-hand list, click
+                        <emphasis role="bold">Add new</emphasis>. In the form that opens, create the
+                    organisation units group you
+                    <?oxy_comment_start author="cecilia" timestamp="20160923T100715+0200" comment="When x-refs work, add link to Create organisation unit group." flag="done"?>need<?oxy_comment_end?>.
+                    When you're done, click <emphasis role="bold">Refresh values</emphasis>.</para>
                 <?oxy_comment_end?>
                 <note>
+                    <?oxy_comment_start author="cecilia" timestamp="20160923T101007+0200" comment="Verify with SME: still correct?"?>
                     <para>An organisation unit can only be a member of a single organisation unit
                         group within an organisation unit group set.</para>
+                    <?oxy_comment_end?>
                 </note>
             </listitem>
             <listitem>
@@ -511,9 +510,8 @@ Single source concept information in implmenter guide and user guide" flag="done
         <title>Edit organisation units and other objects</title>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis>.</para>
+                <para>Open the  <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select the object type you want to edit, for example organisation unit or
@@ -544,9 +542,8 @@ At the moment, I can only do x-refs to section 1 tags.
             units.</para>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis>.</para>
+                <para>Open the  <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select the object type you want to clone, for example organisation unit or
@@ -575,9 +572,8 @@ At the moment, I can only do x-refs to section 1 tags.
         <title>Change sharing settings for organisation unit groups and group sets</title>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis>.</para>
+                <para>Open the  <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select <emphasis role="bold">Organisation unit group</emphasis> or <emphasis
@@ -626,9 +622,8 @@ E-mail send 27th May" flag="done"?>s<?oxy_comment_end?>
         <title>Delete organisation units and other objects</title>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis>.</para>
+                <para>Open the  <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select the object type you want to delete, for example organisation unit or
@@ -650,9 +645,8 @@ E-mail send 27th May" flag="done"?>s<?oxy_comment_end?>
         <title>Display details of organisation units and other objects</title>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis>.</para>
+                <para>Open the  <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select the object type you want to display, for example organisation unit or
@@ -684,9 +678,8 @@ E-mail send 27th May" flag="done"?>s<?oxy_comment_end?>
         </tip>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis>.</para>
+                <para>Open the  <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select the object type you want to translate, for example organisation unit or
@@ -730,10 +723,9 @@ If so, go trough all topics and update." flag="done"?>Province<?oxy_comment_end?
             app. </para>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis> > <emphasis role="bold">Organisation unit
-                    level</emphasis>.</para>
+                <para>Open the  <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis> > <emphasis role="bold"
+                        >Organisation unit level</emphasis>.</para>
                 <para>The loading time of the list depends on the depth of the organisation unit
                     hierarchy tree.</para>
             </listitem>
@@ -767,30 +759,26 @@ Province, national, global adm
 Implementer" flag="done"?>Move
             organisation unit<?oxy_comment_end?>s within a hierarchy</title>
         <para>You can move organisation units within in the hierarchy by changing the parent of a
-            selected organisation unit.</para>
+            selected
+            <?oxy_comment_start author="cecilia" timestamp="20160923T093641+0200" comment="For SME: When you select an org unit with children, do you move the children as well?"?>organisation<?oxy_comment_end?>
+            unit.</para>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Organisation
-                        units</emphasis> > <emphasis role="bold">Hierarchy
-                    operations</emphasis>.</para>
+                <para>Open the  <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Organisation units</emphasis> > <emphasis role="bold">Hierarchy
+                        operations</emphasis>.</para>
             </listitem>
             <listitem>
-                <para>Select the organisation units you want to move:</para>
-                <orderedlist>
-                    <listitem>
-                        <para>In the hierarchy tree to the left, select the organisation unit you
-                            want to move.</para>
-                    </listitem>
-                    <listitem>
-                        <para>In the hierarchy tree to the right, select where you want to move the
-                            organisation unit to.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Repeat selection for all the organisation units you want to
-                            move.</para>
-                    </listitem>
-                </orderedlist>
+                <para>In the left-hand hierarchy tree, select the organisation unit(s) you want to
+                    move.</para>
+                <note>
+                    <para>If the selected organisation unit is has sub-organisation units, all of
+                        them move to the new parent organisation unit.</para>
+                </note>
+            </listitem>
+            <listitem>
+                <para>In the right-hand hierarchy tree, select which organisation unit you want to
+                    move the selected organisation unit(s) to.</para>
             </listitem>
             <listitem>
                 <para>Click <emphasis role="bold">Move x organisation units</emphasis>, where x
