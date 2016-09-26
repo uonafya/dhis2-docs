@@ -349,7 +349,7 @@ LAST_3_MONTHS, LAST_6_BIMONTHS, LAST_4_QUARTERS, LAST_2_SIXMONTHS, THIS_FINANCIA
 LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
   </section>
   <section xml:id="webapi_identifier_schemes">
-    <title>Identifier Schemes</title>
+    <title>Identifier schemes</title>
     <para>Throughout the Web API we refer to different kinds of id schemes, this section will give a
       explanation to how they can be used. Please note that not all schemes works for all web-api
       calls, and not not all schemes can be used for both input and output (this is outlined in the
@@ -608,6 +608,22 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
           >/api/25/dataElements/FTRrcoaog83/translations</emphasis>. Make sure to send all
         translations for the specific object and not just for a single locale (if not you will
         potentially overwrite existing locales for other locales).</para>
+    </section>
+    <section xml:id="webapi_api_versions">
+      <title>Web API versions</title>
+      <para>The Web API is fully versioned starting from DHIS 2.25. The API versioning follows the
+        DHIS 2 major version numbering. As an example, the API version for DHIS 2.25 is
+          <emphasis>25</emphasis>.</para>
+      <para>You can access a specific API version by including the version number after the
+          <emphasis>/api</emphasis> component, as an example like
+        this:<screen>/api/25/dataElements</screen></para>
+      <para>If you omit the version part of the URL, the system will use the current API version. As
+        an example, for DHIS 2.25, when omitting the API part, the system will use API version 25.
+        When developing API clients it is recommended to use explicit API versions (rather than
+        omitting the API version), as this will protect the client from unforeseen API
+        changes.</para>
+      <para>The last three API versions will be supported. As an example, DHIS version 2.27 will
+        support API version 27, 26 and 25.</para>
     </section>
   </section>
   <section xml:id="webapi_working_with_metadata_api">
