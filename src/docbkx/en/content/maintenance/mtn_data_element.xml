@@ -420,7 +420,8 @@ Is this optional? Recommended?" flag="done"?><emphasis
                         <?oxy_comment_start author="cecilia" timestamp="20160510T113850+0200" comment="Ask SME to use all lower case in GUI." flag="done"?>type<?oxy_comment_end?></emphasis>
                     field, select the type of data that the data element will record.</para>
                 <table frame="all">
-                    <title>Value </title>
+                    <title>Value
+                        <?oxy_comment_start author="cecilia" timestamp="20160926T171237+0200" comment="Table also used in tracker entity attributes."?>types<?oxy_comment_end?></title>
                     <tgroup cols="2">
                         <colspec colname="c1" colnum="1" colwidth="1.17*"/>
                         <colspec colname="c2" colnum="2" colwidth="1*"/>
@@ -430,11 +431,55 @@ Is this optional? Recommended?" flag="done"?><emphasis
                                     <para>Value type</para>
                                 </entry>
                                 <entry>
-                                    <para>Description</para>
+                                    <para><?oxy_comment_start author="cecilia" timestamp="20160926T170946+0200" comment="Before release: add missing descriptions"?>Description<?oxy_comment_end?></para>
                                 </entry>
                             </row>
                         </thead>
                         <tbody>
+                            <row>
+                                <entry>
+                                    <para>Coordinate</para>
+                                </entry>
+                                <entry>
+                                    <para>A point coordinate specified as longitude and latitude in
+                                        decimal degrees. All coordinate should be specified in the
+                                        format &quot;-19.23 , 56.42&quot; with a comma separating
+                                        the longitude and latitude.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Date</para>
+                                </entry>
+                                <entry>
+                                    <para>Dates render as calendar widget in data entry.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Date &amp; time</para>
+                                </entry>
+                                <entry>
+                                    <para/>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>E-mail</para>
+                                </entry>
+                                <entry>
+                                    <para/>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>File</para>
+                                </entry>
+                                <entry>
+                                    <para>A file resource where you can store external files, for
+                                        example documents and photos.</para>
+                                </entry>
+                            </row>
                             <row>
                                 <entry>
                                     <para>Integer</para>
@@ -446,73 +491,10 @@ Is this optional? Recommended?" flag="done"?><emphasis
                             </row>
                             <row>
                                 <entry>
-                                    <para>Positive integer</para>
+                                    <para>Letter</para>
                                 </entry>
                                 <entry>
-                                    <para>Any whole number greater than (but not including)
-                                        zero.</para>
-                                </entry>
-                            </row>
-                            <row>
-                                <entry>
-                                    <para>Negative integer</para>
-                                </entry>
-                                <entry>
-                                    <para>Any whole number less than (but not including)
-                                        zero.</para>
-                                </entry>
-                            </row>
-                            <row>
-                                <entry>
-                                    <para>Positive of zero integer</para>
-                                </entry>
-                                <entry>
-                                    <para>Any positive whole number, including zero.</para>
-                                </entry>
-                            </row>
-                            <row>
-                                <entry>
-                                    <para>Number</para>
-                                </entry>
-                                <entry>
-                                    <para>Any real numeric value with a single decimal point.
-                                        Thousands separators and scientific notation is not
-                                        supported.</para>
-                                </entry>
-                            </row>
-                            <row>
-                                <entry>
-                                    <para>Unit interval</para>
-                                </entry>
-                                <entry>
-                                    <para>Any real number greater than or equal to 0 and less than
-                                        or equal to 1.</para>
-                                </entry>
-                            </row>
-                            <row>
-                                <entry>
-                                    <para>Percentage</para>
-                                </entry>
-                                <entry>
-                                    <para>Whole numbers inclusive between 0 and 100.</para>
-                                </entry>
-                            </row>
-                            <row>
-                                <entry>Coordinate</entry>
-                                <entry>
-                                    <para>A point coordinate specified as longitude and latitude in
-                                        decimal degrees. All coordinate should be specified in the
-                                        format &quot;-19.23 , 56.42&quot; with a comma separating
-                                        the longitude and latitude.</para>
-                                </entry>
-                            </row>
-                            <row>
-                                <entry>
-                                    <para>Text</para>
-                                </entry>
-                                <entry>
-                                    <para>Textual value. The maximum number of allowed characters
-                                        per value is 50,000.</para>
+                                    <para/>
                                 </entry>
                             </row>
                             <row>
@@ -528,19 +510,80 @@ Could be a few million or a field that expands." flag="done"?>forms<?oxy_comment
                             </row>
                             <row>
                                 <entry>
-                                    <para>File</para>
+                                    <para>Negative integer</para>
                                 </entry>
                                 <entry>
-                                    <para>A file resource where you can store external files, for
-                                        example documents and photos.</para>
+                                    <para>Any whole number less than (but not including)
+                                        zero.</para>
                                 </entry>
                             </row>
                             <row>
                                 <entry>
-                                    <para>Date</para>
+                                    <para>Number</para>
                                 </entry>
                                 <entry>
-                                    <para>Dates render as calendar widget in data entry.</para>
+                                    <para>Any real numeric value with a single decimal point.
+                                        Thousands separators and scientific notation is not
+                                        supported.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Percentage</para>
+                                </entry>
+                                <entry>
+                                    <para>Whole numbers inclusive between 0 and 100.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Phone number</para>
+                                </entry>
+                                <entry>
+                                    <para/>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Positive integer</para>
+                                </entry>
+                                <entry>
+                                    <para>Any whole number greater than (but not including)
+                                        zero.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Positive of zero integer</para>
+                                </entry>
+                                <entry>
+                                    <para>Any positive whole number, including zero.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Organisation unit</para>
+                                </entry>
+                                <entry>
+                                    <para/>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Unit interval</para>
+                                </entry>
+                                <entry>
+                                    <para>Any real number greater than or equal to 0 and less than
+                                        or equal to 1.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Text</para>
+                                </entry>
+                                <entry>
+                                    <para>Textual value. The maximum number of allowed characters
+                                        per value is 50,000.</para>
                                 </entry>
                             </row>
                             <row>
@@ -551,6 +594,14 @@ Could be a few million or a field that expands." flag="done"?>forms<?oxy_comment
                                     <para>Time is stored in HH:mm format.</para>
                                     <para>HH is a number between 0 and 23</para>
                                     <para>mm is a number between 00 and 59</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Tracker associate</para>
+                                </entry>
+                                <entry>
+                                    <para/>
                                 </entry>
                             </row>
                             <row>
@@ -596,7 +647,10 @@ Verify with Lars." flag="done"?>his
                         role="bold">Average</emphasis> operator, when values along the time
                     dimension should not be added together, but rather averaged.</para>
                 <table frame="all">
-                    <title>Aggregation operators</title>
+                    <title>Aggregation
+                        <?oxy_comment_start author="cecilia" timestamp="20160926T164524+0200" comment="Before release: add description of all aggregation operator.
+Also used for other types of metadata.
+For example: tracked entity attribute"?>operators<?oxy_comment_end?></title>
                     <tgroup cols="2">
                         <colspec colname="c1" colnum="1" colwidth="1.0*"/>
                         <colspec colname="c2" colnum="2" colwidth="1.0*"/>
