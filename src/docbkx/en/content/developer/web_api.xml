@@ -349,7 +349,7 @@ LAST_3_MONTHS, LAST_6_BIMONTHS, LAST_4_QUARTERS, LAST_2_SIXMONTHS, THIS_FINANCIA
 LAST_FINANCIAL_YEAR, LAST_5_FINANCIAL_YEARS</screen>
   </section>
   <section xml:id="webapi_identifier_schemes">
-    <title>Identifier Schemes</title>
+    <title>Identifier schemes</title>
     <para>Throughout the Web API we refer to different kinds of id schemes, this section will give a
       explanation to how they can be used. Please note that not all schemes works for all web-api
       calls, and not not all schemes can be used for both input and output (this is outlined in the
@@ -568,16 +568,6 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       "property": "DESCRIPTION",
       "locale": "en_FK",
       "value": "aa"
-    },
-    {
-      "property": "SHORT_NAME",
-      "locale": "en_FK",
-      "value": "aa"
-    },
-    {
-      "property": "NAME",
-      "locale": "en_GB",
-      "value": "Accute Flaccid Paralysis (Deaths &lt; 5 yrs)"
     }
   ]
 }</screen></para>
@@ -618,6 +608,22 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
           >/api/25/dataElements/FTRrcoaog83/translations</emphasis>. Make sure to send all
         translations for the specific object and not just for a single locale (if not you will
         potentially overwrite existing locales for other locales).</para>
+    </section>
+    <section xml:id="webapi_api_versions">
+      <title>Web API versions</title>
+      <para>The Web API is fully versioned starting from DHIS 2.25. The API versioning follows the
+        DHIS 2 major version numbering. As an example, the API version for DHIS 2.25 is
+          <emphasis>25</emphasis>.</para>
+      <para>You can access a specific API version by including the version number after the
+          <emphasis>/api</emphasis> component, as an example like
+        this:<screen>/api/25/dataElements</screen></para>
+      <para>If you omit the version part of the URL, the system will use the current API version. As
+        an example, for DHIS 2.25, when omitting the API part, the system will use API version 25.
+        When developing API clients it is recommended to use explicit API versions (rather than
+        omitting the API version), as this will protect the client from unforeseen API
+        changes.</para>
+      <para>The last three API versions will be supported. As an example, DHIS version 2.27 will
+        support API version 27, 26 and 25.</para>
     </section>
   </section>
   <section xml:id="webapi_working_with_metadata_api">
@@ -838,7 +844,8 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       <para>This example will just the default <emphasis role="italic">assumeTrue</emphasis>
         setting, along with getting the last updates from February 2014. This means that every
         single type that has been updated will be
-        retrieved.<screen>curl -H &quot;Accept: application/xml&quot; -u admin:district &quot;https://play.dhis2.org/demo/api/metadata?lastUpdated=2014-02&quot;</screen></para>
+        retrieved.<screen>curl -H &quot;Accept: application/xml&quot; -u admin:district 
+  &quot;https://play.dhis2.org/demo/api/metadata?lastUpdated=2014-02&quot;</screen></para>
       <para><emphasis role="bold">Example: Create metadata</emphasis></para>
       <para>The metadata resource can also be used to create or update metadata by using the POST
         HTTP method. The metadata content can be both XML and JSON, using
@@ -846,7 +853,8 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
         request payload content will be accepted in several formats, including plain text, zipped
         and gzipped. POSTing a metadata payload can be done for example like this, where
         metadata.xml is a file in the same directory with the metadata content:</para>
-      <screen>curl -H &quot;Content-Type: application/xml&quot; -u admin:district -d @metadata.xml &quot;https://play.dhis2.org/demo/api/metadata&quot; -X POST -v</screen>
+      <screen>curl -H &quot;Content-Type: application/xml&quot; -u admin:district -d @metadata.xml 
+  &quot;https://play.dhis2.org/demo/api/metadata&quot; -X POST -v</screen>
       <para>The import will happen in a asyncronous process which implies that the response will
         return as soon as the process is started. The response status code to be expected is 204 No
         Content.</para>
@@ -8978,7 +8986,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         parameter describes what type of item was viewed. The favorite parameter indicates the
         identifier of the relevant favorite.</para>
       <para>URL that creates a new event view of
-        charts:<screen>POST /api/dataStatistics?eventType=CHART_VIEW&amp;favorite=LW0O27b7TdD</screen></para>
+        charts:<screen>POST /api/24/dataStatistics?eventType=CHART_VIEW&amp;favorite=LW0O27b7TdD</screen></para>
       <para>A successful save operation returns HTTP status code 201. The table below shows the
         supported types of events.</para>
       <table>
@@ -9070,7 +9078,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         snapshots are saved in the specified period, an empty list is sent back. The parameter
         called interval specifies what type of aggregation will be done.</para>
       <para>API query that creates a query for a yearly
-        aggregation:<screen>GET /api/dataStatistics?startDate=2014-01-02&amp;endDate=2016-01-01&amp;interval=MONTH</screen></para>
+        aggregation:<screen>GET /api/24/dataStatistics?startDate=2014-01-02&amp;endDate=2016-01-01&amp;interval=MONTH</screen></para>
     </section>
     <section>
       <title>Retrieve top favourites</title>
@@ -9120,7 +9128,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </table></para>
       <para>The API query can be used without username, and will then find the top favorites of the
         system. If username is specified, the response will only contain the top favorites of that
-        user.<screen>/api/dataStatistics/favorites?eventType=CHART_VIEW&amp;pageSize=25&amp;sortOrder=ASC</screen><screen>/api/dataStatistics/favorites?eventType=CHART_VIEW&amp;pageSize=25&amp;sortOrder=ASC&amp;username=admin</screen></para>
+        user.<screen>/api/24/dataStatistics/favorites?eventType=CHART_VIEW&amp;pageSize=25&amp;sortOrder=ASC</screen><screen>/api/24/dataStatistics/favorites?eventType=CHART_VIEW&amp;pageSize=25&amp;sortOrder=ASC&amp;username=admin</screen></para>
     </section>
     <section>
       <title>Response format</title>
@@ -9137,7 +9145,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
           </listitem>
         </itemizedlist></para>
       <para>API query that requests an usage analytics response in XML
-        format:<screen>/api/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen></para>
+        format:<screen>/api/24/dataStatistics.xml?startDate=2014-01-01&amp;endDate=2016-01-01&amp;interval=WEEK</screen></para>
       <para>You must retrieve the aggregated usage analytics response with the HTTP GET method. This
         allows you to link directly from Web pages and other HTTP-enabled clients to usage analytics
         responses. To do functional testing use the
@@ -9146,7 +9154,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>Execute this command against the demo database to get an usage analytics response in
         JSON format: </para>
       <para>
-        <screen>curl "play.dhis2.org/demo/api/dataStatistics?startDate=2016-02-01&amp;endDate=2016-02-14&amp;
+        <screen>curl "play.dhis2.org/demo/api/24/dataStatistics?startDate=2016-02-01&amp;endDate=2016-02-14&amp;
 interval=WEEK" -u admin:district</screen>
       </para>
       <para>The JSON response looks like this:
@@ -9206,6 +9214,17 @@ interval=WEEK" -u admin:district</screen>
     "users": 953
   }
 ]</screen></para>
+    </section>
+    <section>
+      <title>Retrieve statistics for a favorite</title>
+      <para>You can retrieve the number of view for a specific favorite by using the
+          <emphasis>favorites</emphasis> resource, where <emphasis>{favorite-id}</emphasis> should
+        be substituted with the identifier of the favorite of
+        interest:<screen>/api/24/dataStatistics/favorites/{favorite-id}.json</screen></para>
+      <para>The response will contain the number of views for the given favorite and look like
+        this:<screen>{
+  "views": 3
+}</screen></para>
     </section>
   </section>
   <section xml:id="webapi_geospatial_features">
@@ -11100,7 +11119,7 @@ interval=WEEK" -u admin:district</screen>
     <section>
       <title>Get organisation unit with relations</title>
       <para>To get an organisation unit with related organisation units you can use the following
-        resource. <screen>/api/25/organisationUnits/{id} </screen></para>
+        resource. <screen>/api/24/organisationUnits/{id} </screen></para>
       <table frame="all">
         <title>Organisation unit parameters</title>
         <tgroup cols="3">
