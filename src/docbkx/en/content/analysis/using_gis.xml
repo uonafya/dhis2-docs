@@ -108,8 +108,12 @@ https://www.google.com/permissions/trademark/trademark-list.html
   <section xml:id="using_gis_event_layer">
     <title>Manage event layer</title>
     <para>The purpose of the event layer is to display the geographical location of events
-      registered in the DHIS2 tracker. This layer lets you drill down from the aggregated data
-      displayed in the thematic layers to the underlying individual events or cases. </para>
+      registered in the DHIS2 tracker. Provided that events have associated GPS coordinates, you can
+      use this layer to drill down from the aggregated data displayed in the thematic layers to the
+      underlying individual events or cases. </para>
+    <para>You can also display aggregated events at the facility or at the boundary level. You do
+      this through a thematic layer using event data items. This is useful when you only have the
+      coordinates for the OrgUnit under which the events are recorded.</para>
     <screenshot>
       <title>Event layer</title>
       <mediaobject>
@@ -141,10 +145,6 @@ https://www.google.com/permissions/trademark/trademark-list.html
                 the single-arrow downward button. The double-arrow button will select all data
                 elements in the list. All selected data elements will get their own row in the
                   <emphasis role="bold">Selected data items</emphasis>. </para>
-            </listitem>
-            <listitem>
-              <para>You can use an element multiple times in your query by clicking <emphasis
-                  role="bold">Duplicate</emphasis>. </para>
             </listitem>
             <listitem>
               <para>For data elements of type text you will get two choices: <emphasis role="bold"
@@ -290,11 +290,15 @@ https://www.google.com/permissions/trademark/trademark-list.html
     </section>
   </section>
   <section xml:id="using_gis_facility_layer">
-    <title>Manage facility layer</title>
-    <para>The facility layer displays icons that represent facilities based on the facility type.
+    <title>Manage a facility layer</title>
+    <para>The facility layer displays icons that represent types of facilities.
       <?oxy_comment_start author="Home" timestamp="20160418T155400+0200" comment="At next revision, explain polygon."?>Polygons
-      <?oxy_comment_end?>will not show up on the map, so make sure to select an organisation unit
-      level that has facilities. </para>
+      <?oxy_comment_end?>do not show up on the map, so make sure that you select an organisation
+      unit level that has facilities. </para>
+    <para><?oxy_comment_start author="rachaelb" timestamp="20160923T141243+0200" comment="Add to glossary, tutorial definitions (to come post 2.25)"?>A
+      polygon is an enclosed area on a map representing a country, a district or a park. In GIS,  a
+      polygon is a shape defined by one or more rings, where a ring is a path that starts and ends
+      at the same point.<?oxy_comment_end?></para>
     <screenshot>
       <title>Facility layer</title>
       <mediaobject>
@@ -305,7 +309,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </mediaobject>
     </screenshot>
     <section>
-      <title>Create or modify facility layer</title>
+      <title>Create or modify a facility layer</title>
       <orderedlist>
         <listitem>
           <para>In the top menu, click the facility layer icon.</para>
@@ -369,9 +373,9 @@ https://www.google.com/permissions/trademark/trademark-list.html
   </section>
   <section xml:id="using_gis_boundary_layer">
     <title>Manage boundary layer</title>
-    <para>The purpose of the boundary layer is to display the boundaries and coordinates in the
-      system. No data will be shown. This layer is useful if you are offline and thus have no
-      background map. </para>
+    <para>The aim of the boundary layer is to display the boundaries and coordinates in the system.
+      No data will be shown. This layer is useful if you are offline and thus have no background
+      map. </para>
     <screenshot>
       <title>Boundary layer</title>
       <mediaobject>
@@ -488,9 +492,12 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </listitem>
         <listitem>
           <?oxy_comment_start author="CPersson" timestamp="20160420T112457+0200" comment="At next revision, this step must be explained in more detail."?>
+          <?oxy_comment_start author="rachaelb" timestamp="20160922T140916+0200" comment="May need some more info here, or at the minimum highlight any differences with the pivot table and visualiser modules (e.g. one can&apos;t aggregate over multiple time periods, can&apos;t use category options as filters)
+" mid="10"?>
           <para>In the <emphasis role="bold">Data and periods</emphasis> section, select the data
             and periods you want to display.</para>
           <?oxy_comment_end?>
+          <?oxy_comment_end mid="10"?>
         </listitem>
         <listitem>
           <para><?oxy_comment_start author="Home" timestamp="20160415T144008+0200" comment="At next revision, explain this task in more detail."?>In
@@ -627,7 +634,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </listitem>
         <listitem>
           <para>Put the cursor in the new location.</para>
-          <para>The new coordinate is stored permanently..</para>
+          <para>The new coordinate is stored permanently. This cannot be undone.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -636,7 +643,9 @@ https://www.google.com/permissions/trademark/trademark-list.html
       <orderedlist>
         <listitem>
           <para>Right-click a facility and click <emphasis role="bold">Swap
-            lob/lat</emphasis>.</para>
+            long/lat</emphasis>.</para>
+          <para> This is useful if a user inverted latitude and longitude coordinates when creating
+            the org unit.</para>
         </listitem>
       </orderedlist>
     </section>
