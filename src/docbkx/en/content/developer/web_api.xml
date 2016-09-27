@@ -1531,6 +1531,17 @@ http://server/api/25/constants/ID</screen></para>
                 <emphasis role="bold">CODE</emphasis>.</entry>
           </row>
           <row>
+            <entry>importReportMode</entry>
+            <entry>ERRORS, FULL, DEBUG</entry>
+            <entry>Sets the <emphasis role="bold">ImportReport</emphasis> mode, controls how much is
+              reported back after the import is done. <emphasis role="bold">ERRORS</emphasis> only
+              includes <emphasis role="italic">ObjectReports</emphasis> for object which has errors.
+                <emphasis role="bold">FULL</emphasis> returns an <emphasis role="italic"
+                >ObjectReport</emphasis> for all objects imported, and <emphasis role="bold"
+                >DEBUG</emphasis> returns the same plus a name for the object (if
+              available).</entry>
+          </row>
+          <row>
             <entry>preheatMode</entry>
             <entry>REFERENCE, ALL, NONE</entry>
             <entry>Sets the preheater mode, used to signal if preheating should be done for
@@ -4434,6 +4445,21 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                           <para><emphasis role="italic">programStage</emphasis> - must be defined,
                             and designates the program stage that the rule shall create an event
                             of.</para>
+                        </listitem>
+                      </itemizedlist>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">SETMANDATORYFIELD</emphasis> - Set a field to be
+                        mandatory.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">dataElement</emphasis> - if defined, this
+                            data element will be set to be mandatory in the data entry form.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">trackedEntityAttribute</emphasis> - if
+                            defined, this tracked entity attribute will be set to mandatory in the
+                            registration form or profile.</para>
                         </listitem>
                       </itemizedlist>
                     </listitem>
