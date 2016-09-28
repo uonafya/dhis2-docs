@@ -1170,50 +1170,57 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     <section xml:id="webapi_field_transformers">
       <title>Field transformers</title>
       <para>In DHIS2.17 we introduced field transformers, the idea is to allow further customization
-        of the properties on the server side. For 2.17 we only supports one transformer called
-          <emphasis role="bold">rename</emphasis>, it can be used like
-        this:<screen>/api/25/dataElements/ID?fields=id|rename(i),name|rename(n)</screen></para>
+        of the properties on the server
+        side.<screen>/api/25/dataElements/ID?fields=id~rename(i),name~rename(n)</screen></para>
       <para>This will rename the <emphasis role="italic">id</emphasis> property to <emphasis
           role="italic">i</emphasis> and <emphasis role="italic">name</emphasis> property to
-          <emphasis role="italic">n</emphasis>. <emphasis role="italic">Please note that the format
-          should be considered beta in 2.17, and the format might be changed in
-        2.18.</emphasis></para>
-    </section>
-    <section xml:id="webapi_field_converters">
-      <title>Field converters</title>
-      <para>In DHIS2.17 alongside transformers we also introduced field converters, while field
-        transformers usually do minor changes to the data stream (name changes etc), field
-        converters can completely change the output of the data. For 2.17 we are including 3 field
-          converters:<table frame="all">
-          <title>Field converters</title>
-          <tgroup cols="2">
-            <colspec colnum="1" colname="c1" colwidth="1*"/>
-            <colspec colnum="2" colname="c2" colwidth="3.76*"/>
+          <emphasis role="italic">n</emphasis>.<table frame="all">
+          <title>Available Transformers</title>
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.52*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="2.03*"/>
             <thead>
               <row>
                 <entry>Name</entry>
+                <entry>Arguments</entry>
                 <entry>Description</entry>
               </row>
             </thead>
             <tbody>
               <row>
                 <entry>size</entry>
-                <entry>Gives sizes of strings (length) and collections, i.e.
-                  /api/dataElements?fields=dataSets::size</entry>
+                <entry/>
+                <entry>Gives sizes of strings (length) and collections</entry>
               </row>
               <row>
                 <entry>isEmpty</entry>
-                <entry>Is string or collection empty, i.e.
-                  /api/dataElements?fields=dataSets::isEmpty</entry>
+                <entry/>
+                <entry>Is string or collection empty</entry>
               </row>
               <row>
                 <entry>isNotEmpty</entry>
-                <entry>Is string or collection not empty, i.e.
-                  /api/dataElements?fields=dataSets::isNotEmpty</entry>
+                <entry/>
+                <entry>Is string or collection not empty</entry>
+              </row>
+              <row>
+                <entry>rename</entry>
+                <entry>Arg1: name</entry>
+                <entry>Renames the property name</entry>
+              </row>
+              <row>
+                <entry>paging</entry>
+                <entry>Arg1: page,Arg2: pageSize</entry>
+                <entry>Pages a collection, default pageSize is 50.</entry>
               </row>
             </tbody>
           </tgroup>
         </table></para>
+      <section>
+        <title>Examples</title>
+        <para>Examples of transformer
+          usage.<screen>/api/25/dataElements?fields=dataSets~size</screen><screen>/api/25/dataElements?fields=dataSets~isEmpty</screen><screen>/api/25/dataElements?fields=dataSets~isNotEmpty</screen><screen>/api/25/dataElements/ID?fields=id~rename(i),name~rename(n)</screen><screen>/api/25/dataElementGroups?fields=id,displayName,dataElements~paging(1, 20)</screen></para>
+      </section>
     </section>
   </section>
   <section xml:id="webapi_metadata_crud">
