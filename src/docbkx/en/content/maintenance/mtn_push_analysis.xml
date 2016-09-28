@@ -16,40 +16,43 @@ All reports are run 04:00 am"?>scheduled
         <title>About scheduled reports</title>
         <itemizedlist>
             <listitem>
-                <para>A scheduled report is based on existing dashboards with charts, maps or
-                    tables. You create the report and the schedule in the <emphasis role="bold"
+                <para>A scheduled report gets its content from existing dashboards.</para>
+            </listitem>
+            <listitem>
+                <para>A scheduled report lists the dashboard items in the same order as on the
+                    dashboard.</para>
+            </listitem>
+            <listitem>
+                <para>A scheduled report can only contain dashboard items with charts, maps or
+                    tables.</para>
+            </listitem>
+            <listitem>
+                <para>You create the report and the schedule in the <emphasis role="bold"
                         >Maintenance</emphasis> app.</para>
+            </listitem>
+            <listitem>
+                <para>The <emphasis role="bold">Title</emphasis> and <emphasis role="bold"
+                        >Message</emphasis> parameters you set up in the <emphasis role="bold"
+                        >Maintenance</emphasis> app, are included in each report. The <emphasis
+                        role="bold">Name</emphasis> you give the report is not included in the
+                    report. Instead, the name is used to identify the push analysis object in the
+                    system. This way a report can be named one thing, and the title of the report
+                    can be another.</para>
             </listitem>
             <listitem>
                 <para>When you run a scheduled report job, the system compiles a list of recipients
                     from the user groups you've selected. The system then generates a report for
                     each member of the selected user groups. Each of the dashboard items are
-                    generated specifically for each user .</para>
-                <para>This means that the data reflects the data the
-                    <?oxy_comment_start author="cecilia" timestamp="20160927T153855+0200" comment="user or user group+"?>user<?oxy_comment_end?>
-                    has access to
-                    (<?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>or if the
-                    "user org unit" and similar options are set in the chart/map/reportTable, the
-                    users org unit is used)<?oxy_custom_end?>. </para>
-                <para>All
-                    <?oxy_comment_start author="cecilia" timestamp="20160927T161745+0200" comment="user groups?
-Members of user groups?"?>users<?oxy_comment_end?>
-                    could therefore get the same report (if all the data is "static") or custom
-                    reports (if all the data is "dynamic"), or a combination of the two.</para>
+                    generated specifically for each user. This means that the data included in the
+                    report reflects the data the user has access to. All users could therefore get
+                    the same report (if all the data is "static") or custom reports (if all the data
+                    is "dynamic"), or a combination of the two.</para>
             </listitem>
             <listitem>
-                <para>The reports are sent by e-mail, not through the internal DHIS2 messaging
-                    system. If a user doesn't have a valid e-mail, or if the job fails, no e-mails
-                    are sent. In this case, the problem is
-                    <?oxy_comment_start author="cecilia" timestamp="20160927T154251+0200" comment="For SME: logged where?"?>also<?oxy_comment_end?>
-                    logged on the server.</para>
-            </listitem>
-            <listitem>
-                <para>The title and message parameters you set up in the <emphasis role="bold"
-                        >Maintenance</emphasis> app, are added to each report. The name you give the
-                    report is not included in the report e-mail. Instead, the name is used to
-                    identify the push analysis object in the system. This way a report can be named
-                    one thing, and the title of the report can be another.</para>
+                <para>The scheduled reports are sent by e-mail to the recipients, not through the
+                    internal DHIS2 messaging system. If a user doesn't have a valid e-mail, or if
+                    the job fails, no e-mails are sent. In this case, the problem is logged on the
+                    server.</para>
             </listitem>
         </itemizedlist>
         <note>
@@ -87,7 +90,7 @@ Members of user groups?"?>users<?oxy_comment_end?>
         </table>
     </section>
     <section>
-        <title>Create an automatic report/ push analysis/a push report</title>
+        <title>Create a scheduled report</title>
         <orderedlist>
             <listitem>
                 <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
@@ -99,8 +102,8 @@ Members of user groups?"?>users<?oxy_comment_end?>
                     <?oxy_comment_start author="cecilia" timestamp="20160510T112410+0200" comment="Do not refer to the FAB as an icon, according to MS Manual of Style." flag="done"?>button<?oxy_comment_end?>.</para>
             </listitem>
             <listitem>
-                <para>In the <emphasis role="bold">Name</emphasis> field, type the name of the push
-                    report.</para>
+                <para>In the <emphasis role="bold">Name</emphasis> field, type the name of the
+                    scheduled report.</para>
                 <para>This name is not included in the report e-mail. Instead, the name is used to
                     identify the push analysis object in the system.</para>
             </listitem>
@@ -131,18 +134,18 @@ Members of user groups?"?>users<?oxy_comment_end?>
                         role="bold">Daily</emphasis>, <emphasis role="bold">Weekly</emphasis> or
                         <emphasis role="bold">Monthly</emphasis>.</para>
                 <note>
-                    <para>If you schedule a push report to "Monthly" and "31", the job will not run
-                        if the month has less than 31 days.</para>
+                    <para>If you schedule a report to "Monthly" and "31", the scheduled report job
+                        will not run if the month has less than 31 days.</para>
                 </note>
             </listitem>
             <listitem>
-                <para>(Optional) Select <emphasis role="bold">Enable</emphasis> to activate the push
-                    report.</para>
-                <para>The push report job won't run until you activate it.</para>
+                <para>(Optional) Select <emphasis role="bold">Enable</emphasis> to activate the
+                    scheduled report job.</para>
+                <para>The job won't run until you activate it.</para>
             </listitem>
             <listitem>
                 <para>(Optional) <?oxy_comment_start author="cecilia" timestamp="20160927T145918+0200" comment="Before release: Verify that this icon has been added to the UI."?>Click<?oxy_comment_end?>
-                    <emphasis role="bold">Run</emphasis> to run the push report job
+                    <emphasis role="bold">Run</emphasis> to run the scheduled report job
                     immediately.</para>
             </listitem>
             <listitem>
