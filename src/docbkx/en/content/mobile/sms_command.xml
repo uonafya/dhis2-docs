@@ -86,6 +86,10 @@ form: reporting data from phones or j2me apps, alerting users, registering patie
       <para>or <emphasis role="bold">
           <emphasis role="bold">report vo.2|vn.5|a.2|b.6|z.3|x.1</emphasis>
         </emphasis></para>
+      
+      <para>Moreover in SMS text input, orgUnit can be specified like this  <emphasis role="bold">org orgUnitCode</emphasis> If no orgUnit is specified in SMS
+        then user is retrieved first from the sending phoneNumber and then orgUnit from that user. As far as PeriodType is concerned it should be specified in this format "ddMM" for example 3108,
+        but in case its not specified then PeriodType will be retrieved from DataSet attached to SMSCommand</para>
       <para>With the J2ME_PARSER, you don&apos;t need to prepare those SMS text, because the J2ME will do this job</para>
       <para><screenshot>
           <mediaobject>
