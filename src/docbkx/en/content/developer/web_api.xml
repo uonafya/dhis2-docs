@@ -1034,8 +1034,8 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       </table></para>
     <para>Operators will be applied as logical <emphasis role="bold">and</emphasis> query, if you
       need a <emphasis role="bold">or</emphasis> query, you can have a look at our <emphasis
-        role="italic">in</emphasis> filter. The filtering mechanism allows for recursion. See below
-      for some examples.</para>
+        role="italic">in</emphasis> filter (also have a look at the section below). The filtering
+      mechanism allows for recursion. See below for some examples.</para>
     <para>Get data elements with id property ID1 or
       ID2:<screen>/api/25/dataElements?filter=id:eq:ID1&amp;filter=id:eq:ID2</screen></para>
     <para>Get all data elements which has the dataSet with id
@@ -1050,6 +1050,20 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       find a data element matching more than one id, for that purpose you can use the <emphasis
         role="italic">in</emphasis>
       operator.<screen>/api/25/dataElements.json?filter=id:in:[fbfJHSPpUQD,cYeuwXTCPkU]</screen></para>
+    <section>
+      <title>Switching from AND to OR</title>
+      <para>As mentioned in the section before, the default logical operator applied to the filters
+        are <emphasis role="bold">AND</emphasis> which means that all object filters must be
+        matched. There are however cases where you want to match on one of several filters (maybe id
+        and code field) and in those cases it is possible to switch the root logical operator from
+          <emphasis role="bold">AND</emphasis> to <emphasis role="bold">OR</emphasis> using the
+          <emphasis>rootJunction</emphasis> parameter.</para>
+      <para>Example: Normal filtering where both id and code must match to have a result
+        returned<screen>/api/dataElements.json?filter=id:in:[id1,id2]&amp;filter=code:eq:code1</screen></para>
+      <para>Example: Filtering where the logical operator has been switched to OR and now only one
+        of the filters must match to have a result returned</para>
+      <screen>/api/dataElements.json?filter=id:in:[id1,id2]&amp;filter=code:eq:code1&amp;rootJunction=OR</screen>      
+    </section>
   </section>
   <section xml:id="webapi_metadata_field_filter">
     <title>Metadata field filter</title>
@@ -1219,7 +1233,7 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       <section>
         <title>Examples</title>
         <para>Examples of transformer
-          usage.<screen>/api/25/dataElements?fields=dataSets~size</screen><screen>/api/25/dataElements?fields=dataSets~isEmpty</screen><screen>/api/25/dataElements?fields=dataSets~isNotEmpty</screen><screen>/api/25/dataElements/ID?fields=id~rename(i),name~rename(n)</screen><screen>/api/25/dataElementGroups?fields=id,displayName,dataElements~paging(1, 20)</screen></para>
+          usage.<screen>/api/25/dataElements?fields=dataSets~size</screen><screen>/api/25/dataElements?fields=dataSets~isEmpty</screen><screen>/api/25/dataElements?fields=dataSets~isNotEmpty</screen><screen>/api/25/dataElements/ID?fields=id~rename(i),name~rename(n)</screen><screen>/api/25/dataElementGroups?fields=id,displayName,dataElements~paging(1;20)</screen></para>
       </section>
     </section>
   </section>
