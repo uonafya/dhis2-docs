@@ -1034,8 +1034,8 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       </table></para>
     <para>Operators will be applied as logical <emphasis role="bold">and</emphasis> query, if you
       need a <emphasis role="bold">or</emphasis> query, you can have a look at our <emphasis
-        role="italic">in</emphasis> filter. The filtering mechanism allows for recursion. See below
-      for some examples.</para>
+        role="italic">in</emphasis> filter (also have a look at the section below). The filtering
+      mechanism allows for recursion. See below for some examples.</para>
     <para>Get data elements with id property ID1 or
       ID2:<screen>/api/25/dataElements?filter=id:eq:ID1&amp;filter=id:eq:ID2</screen></para>
     <para>Get all data elements which has the dataSet with id
@@ -1050,6 +1050,20 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       find a data element matching more than one id, for that purpose you can use the <emphasis
         role="italic">in</emphasis>
       operator.<screen>/api/25/dataElements.json?filter=id:in:[fbfJHSPpUQD,cYeuwXTCPkU]</screen></para>
+    <section>
+      <title>Switching from AND to OR</title>
+      <para>As mentioned in the section before, the default logical operator applied to the filters
+        are <emphasis role="bold">AND</emphasis> which means that all object filters must be
+        matched. There are however cases where you want to match on one of several filters (maybe id
+        and code field) and in those cases it is possible to switch the root logical operator from
+          <emphasis role="bold">AND</emphasis> to <emphasis role="bold">OR</emphasis> using the
+          <emphasis>rootJunction</emphasis> parameter.</para>
+      <para>Example: Normal filtering where both id and code must match to have a result
+        returned<screen>/api/dataElements.json?filter=id:in:[id1,id2]&amp;filter=code:eq:code1</screen></para>
+      <para>Example: Filtering where the logical operator has been switched to OR and now only one
+        of the filters must match to have a result returned</para>
+      <screen>/api/dataElements.json?filter=id:in:[id1,id2]&amp;filter=code:eq:code1&amp;rootJunction=OR</screen>      
+    </section>
   </section>
   <section xml:id="webapi_metadata_field_filter">
     <title>Metadata field filter</title>
@@ -1170,50 +1184,57 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     <section xml:id="webapi_field_transformers">
       <title>Field transformers</title>
       <para>In DHIS2.17 we introduced field transformers, the idea is to allow further customization
-        of the properties on the server side. For 2.17 we only supports one transformer called
-          <emphasis role="bold">rename</emphasis>, it can be used like
-        this:<screen>/api/25/dataElements/ID?fields=id|rename(i),name|rename(n)</screen></para>
+        of the properties on the server
+        side.<screen>/api/25/dataElements/ID?fields=id~rename(i),name~rename(n)</screen></para>
       <para>This will rename the <emphasis role="italic">id</emphasis> property to <emphasis
           role="italic">i</emphasis> and <emphasis role="italic">name</emphasis> property to
-          <emphasis role="italic">n</emphasis>. <emphasis role="italic">Please note that the format
-          should be considered beta in 2.17, and the format might be changed in
-        2.18.</emphasis></para>
-    </section>
-    <section xml:id="webapi_field_converters">
-      <title>Field converters</title>
-      <para>In DHIS2.17 alongside transformers we also introduced field converters, while field
-        transformers usually do minor changes to the data stream (name changes etc), field
-        converters can completely change the output of the data. For 2.17 we are including 3 field
-          converters:<table frame="all">
-          <title>Field converters</title>
-          <tgroup cols="2">
-            <colspec colnum="1" colname="c1" colwidth="1*"/>
-            <colspec colnum="2" colname="c2" colwidth="3.76*"/>
+          <emphasis role="italic">n</emphasis>.<table frame="all">
+          <title>Available Transformers</title>
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.52*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="2.03*"/>
             <thead>
               <row>
                 <entry>Name</entry>
+                <entry>Arguments</entry>
                 <entry>Description</entry>
               </row>
             </thead>
             <tbody>
               <row>
                 <entry>size</entry>
-                <entry>Gives sizes of strings (length) and collections, i.e.
-                  /api/dataElements?fields=dataSets::size</entry>
+                <entry/>
+                <entry>Gives sizes of strings (length) and collections</entry>
               </row>
               <row>
                 <entry>isEmpty</entry>
-                <entry>Is string or collection empty, i.e.
-                  /api/dataElements?fields=dataSets::isEmpty</entry>
+                <entry/>
+                <entry>Is string or collection empty</entry>
               </row>
               <row>
                 <entry>isNotEmpty</entry>
-                <entry>Is string or collection not empty, i.e.
-                  /api/dataElements?fields=dataSets::isNotEmpty</entry>
+                <entry/>
+                <entry>Is string or collection not empty</entry>
+              </row>
+              <row>
+                <entry>rename</entry>
+                <entry>Arg1: name</entry>
+                <entry>Renames the property name</entry>
+              </row>
+              <row>
+                <entry>paging</entry>
+                <entry>Arg1: page,Arg2: pageSize</entry>
+                <entry>Pages a collection, default pageSize is 50.</entry>
               </row>
             </tbody>
           </tgroup>
         </table></para>
+      <section>
+        <title>Examples</title>
+        <para>Examples of transformer
+          usage.<screen>/api/25/dataElements?fields=dataSets~size</screen><screen>/api/25/dataElements?fields=dataSets~isEmpty</screen><screen>/api/25/dataElements?fields=dataSets~isNotEmpty</screen><screen>/api/25/dataElements/ID?fields=id~rename(i),name~rename(n)</screen><screen>/api/25/dataElementGroups?fields=id,displayName,dataElements~paging(1;20)</screen></para>
+      </section>
     </section>
   </section>
   <section xml:id="webapi_metadata_crud">
@@ -1529,6 +1550,17 @@ http://server/api/25/constants/ID</screen></para>
             <entry>Sets the identifier scheme to use for reference matching. <emphasis role="bold"
                 >AUTO</emphasis> means try <emphasis role="bold">UID</emphasis> first, then
                 <emphasis role="bold">CODE</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>importReportMode</entry>
+            <entry>ERRORS, FULL, DEBUG</entry>
+            <entry>Sets the <emphasis role="bold">ImportReport</emphasis> mode, controls how much is
+              reported back after the import is done. <emphasis role="bold">ERRORS</emphasis> only
+              includes <emphasis role="italic">ObjectReports</emphasis> for object which has errors.
+                <emphasis role="bold">FULL</emphasis> returns an <emphasis role="italic"
+                >ObjectReport</emphasis> for all objects imported, and <emphasis role="bold"
+                >DEBUG</emphasis> returns the same plus a name for the object (if
+              available).</entry>
           </row>
           <row>
             <entry>preheatMode</entry>
@@ -3134,6 +3166,10 @@ http://server/api/25/constants/ID</screen></para>
                 units.</entry>
             </row>
             <row>
+              <entry>includeDeleted</entry>
+              <entry>Whether to include deleted data values.</entry>
+            </row>
+            <row>
               <entry>lastUpdated</entry>
               <entry>Include only data values which are updated since the given time stamp.</entry>
             </row>
@@ -3225,6 +3261,11 @@ http://server/api/25/constants/ID</screen></para>
       &quot;orgUnit&quot;: &quot;DiszpKrYNg8&quot;, &quot;value&quot;: &quot;10001&quot; }
   ]
 }</screen></para>
+      <para>Note that data values are softly deleted, i.e. a deleted value has the
+          <emphasis>deleted</emphasis> property set to true instead of being permanently deleted.
+        This is useful when integrating multiple systems in order to communicate deletions. You can
+        include deleted values in the response like
+        this:<screen>/api/25/dataValueSets.json?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8&amp;includeDeleted=true</screen></para>
       <para>You can also request data in CSV format like
         this:<screen>https://play.dhis2.org/demo/api/25/dataValueSets.csv?dataSet=pBOMPrpg1QX&amp;period=201401&amp;orgUnit=DiszpKrYNg8</screen></para>
       <para>The response will look like
@@ -4425,6 +4466,21 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
                           <para><emphasis role="italic">programStage</emphasis> - must be defined,
                             and designates the program stage that the rule shall create an event
                             of.</para>
+                        </listitem>
+                      </itemizedlist>
+                    </listitem>
+                    <listitem>
+                      <para><emphasis role="bold">SETMANDATORYFIELD</emphasis> - Set a field to be
+                        mandatory.</para>
+                      <itemizedlist>
+                        <listitem>
+                          <para><emphasis role="italic">dataElement</emphasis> - if defined, this
+                            data element will be set to be mandatory in the data entry form.</para>
+                        </listitem>
+                        <listitem>
+                          <para><emphasis role="italic">trackedEntityAttribute</emphasis> - if
+                            defined, this tracked entity attribute will be set to mandatory in the
+                            registration form or profile.</para>
                         </listitem>
                       </itemizedlist>
                     </listitem>
@@ -8893,9 +8949,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
       analysis. When deleting or updating a pushanalysis to be disabled, the job will also be
       stopped from running in the future.</para>
     <para>To get a HTML preview of an existing push analysis, you can do a GET request to the
-      following endpoint:<screen>/api/25/pushAnalysis/&lt;push-analysis-uid>/render</screen></para>
-    <para>To manually trigger a push analysis job, you can do a GET request to this
-      endpoint:<screen>/api/25/pushAnalysis/&lt;push-analysis-uid>/run</screen></para>
+      following endpoint:<screen>/api/25/pushAnalysis/&lt;id>/render</screen></para>
+    <para>To manually trigger a push analysis job, you can do a POST request to this
+      endpoint:<screen>/api/25/pushAnalysis/&lt;id>/run</screen></para>
     <para>A push analysis consists of the following properties, where some are required to
       automaticly run push analysis jobs:<table frame="all">
         <title>Push analysis properties</title>
@@ -10103,7 +10159,8 @@ interval=WEEK" -u admin:district</screen>
       <para>The list of commands can be retrieved using GET.</para>
       <screen>GET /api/25/sms/commands</screen>
       <para>One particular command can also be retreived using GET. Where parameter <emphasis
-          role="italic">type</emphasis> can be one of the below mentioned parsers</para>
+        role="italic">type</emphasis> can be one of the below mentioned parsers. In this type of query, command will be retreived with all its parameters attached to it. For example "birth A=1,B=2,G=Male". Birth is the name
+      of SMS command and A,B and G are parameters attached to this SMS command. Query result will also contain information about what these parameters are and which DataElement they belong to. These parameters are given short codes inorder to fit them in 160 characters SMS length.</para>
       <screen>GET /api/25/sms/commands/{commandName}?type=EVENT_REGISTRATION_PARSER</screen>
       <itemizedlist>
         <listitem>

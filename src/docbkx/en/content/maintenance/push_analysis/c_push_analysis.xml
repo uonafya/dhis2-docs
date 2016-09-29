@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<section version="5.0"
+    xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+    xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+    <title>About scheduled reports</title>
+    <itemizedlist>
+        <listitem>
+            <para>A scheduled report gets its content from existing dashboards.</para>
+        </listitem>
+        <listitem>
+            <para>A scheduled report lists the dashboard items in the same order as on the
+                dashboard.</para>
+        </listitem>
+        <listitem>
+            <para>A scheduled report can only contain dashboard items with charts, maps or
+                tables.</para>
+        </listitem>
+        <listitem>
+            <para>You create the report and the schedule in the <emphasis role="bold"
+                    >Maintenance</emphasis> app.</para>
+        </listitem>
+        <listitem>
+            <para>The <emphasis role="bold">Title</emphasis> and <emphasis role="bold"
+                    >Message</emphasis> parameters you set up in the <emphasis role="bold"
+                    >Maintenance</emphasis> app, are included in each report. The <emphasis
+                    role="bold">Name</emphasis> you give the report is not included in the report.
+                Instead, the name is used to identify the push analysis object in the system. This
+                way a report can be named one thing, and the title of the report can be
+                another.</para>
+        </listitem>
+        <listitem>
+            <para>When you run a scheduled report job, the system compiles a list of recipients from
+                the user groups you've selected. The system then generates a report for each member
+                of the selected user groups. Each of the dashboard items are generated specifically
+                for each user. This means that the data included in the report reflects the data the
+                user has access to. All users could therefore get the same report (if all the data
+                is "static") or custom reports (if all the data is "dynamic"), or a combination of
+                the two.</para>
+        </listitem>
+        <listitem>
+            <para>The scheduled reports are sent by e-mail to the recipients, not through the
+                internal DHIS2 messaging system. If a user doesn't have a valid e-mail, or if the
+                job fails, no e-mails are sent. In this case, the problem is logged on the
+                server.</para>
+        </listitem>
+    </itemizedlist>
+    <note>
+        <para>The data generated in the reports is public so verify that you don't include any
+            sensitive data.</para>
+    </note>
+    <para>In the <emphasis role="bold">Maintenance</emphasis> app, you manage the following
+        scheduled reports objects:</para>
+    <table frame="all">
+        <title>Scheduled reports objects in the Maintenance app</title>
+        <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+            <thead>
+                <row>
+                    <entry>
+                        <para>Object type</para>
+                    </entry>
+                    <entry>
+                        <para>Available functions</para>
+                    </entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>
+                        <para>Push analysis</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, clone, delete, show details and
+                            <?oxy_comment_start author="cecilia" timestamp="20160929T132146+0200" comment="Before release: Two more menu items have been added, pending info from SME."?>translate<?oxy_comment_end?></para>
+                    </entry>
+                </row>
+            </tbody>
+        </tgroup>
+    </table>
+</section>
