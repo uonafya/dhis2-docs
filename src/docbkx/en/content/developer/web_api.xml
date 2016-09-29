@@ -8949,9 +8949,9 @@ ORDER BY oul.level, par.name, ou.name</screen>
       analysis. When deleting or updating a pushanalysis to be disabled, the job will also be
       stopped from running in the future.</para>
     <para>To get a HTML preview of an existing push analysis, you can do a GET request to the
-      following endpoint:<screen>/api/25/pushAnalysis/&lt;push-analysis-uid>/render</screen></para>
-    <para>To manually trigger a push analysis job, you can do a GET request to this
-      endpoint:<screen>/api/25/pushAnalysis/&lt;push-analysis-uid>/run</screen></para>
+      following endpoint:<screen>/api/25/pushAnalysis/&lt;id>/render</screen></para>
+    <para>To manually trigger a push analysis job, you can do a POST request to this
+      endpoint:<screen>/api/25/pushAnalysis/&lt;id>/run</screen></para>
     <para>A push analysis consists of the following properties, where some are required to
       automaticly run push analysis jobs:<table frame="all">
         <title>Push analysis properties</title>
