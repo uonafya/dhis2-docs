@@ -6,18 +6,19 @@
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
     xmlns:db="http://docbook.org/ns/docbook">
-    <title>About legends</title>
-    <para>You can create your own legend to make sure that maps created in the <emphasis role="bold"
-            >GIS</emphasis> app are meaningful.</para>
-    <note>
-        <para>Continuous legends must consist of legend items that end and start on the same value,
-            for example 0-50 and 50-80. Do not set legend items to for example 0-50 and 51-80, it
-            causes unwanted gaps in your legend.</para>
-    </note>
-    <para>In the <emphasis role="bold">Maintenance</emphasis> app, you manage the following legend
-        objects:</para>
+    <title>About predictors</title>
+    <?oxy_comment_start author="cecilia" timestamp="20160922T160546+0200" comment="Copied from Launchpad: https://blueprints.launchpad.net/dhis2/+spec/predictors"?>
+    <para>Predictors are data elements automatically generated from samples of current and past
+        data. You use predictors to analyse previous data in order to predict future values, for
+        example for disease surveillance.</para>
+    <para>A predictor specifies an expression and a set of *sample constraints* (identical to the
+        current implementation of validation rules). This includes a period type, organisation unit
+        levels, and parameters specifying past or periodic sample windows.</para>
+    <?oxy_comment_end?>
+    <para>In the <emphasis role="bold">Maintenance</emphasis> app, you manage the following
+        predictor objects:</para>
     <table frame="all">
-        <title>Legend objects in the Maintenance app</title>
+        <title>Predictor objects in the Maintenance app</title>
         <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1.0*"/>
             <colspec colname="c2" colnum="2" colwidth="1.0*"/>
@@ -34,7 +35,7 @@
             <tbody>
                 <row>
                     <entry>
-                        <para>Legend</para>
+                        <para>Predictor</para>
                     </entry>
                     <entry>
                         <para>Create, edit, clone, delete, show details and translate</para>
