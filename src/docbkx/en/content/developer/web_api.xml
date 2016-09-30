@@ -8242,6 +8242,12 @@ ORDER BY oul.level, par.name, ou.name</screen>
                 organisation units in the metadata.</entry>
               <entry>false | true</entry>
             </row>
+            <row>
+              <entry>eventStatus</entry>
+              <entry>No</entry>
+              <entry>Specify status of events to include.</entry>
+              <entry>ACTIVE | COMPLETED | SCHEDULE | OVERDUE | SKIPPED</entry>
+            </row>
           </tbody>
         </tgroup>
       </table>
@@ -8940,7 +8946,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       report for a data set and orgunit for 2015 looks like
       this:<screen>GET /api/dataSetReport?ds=BfMAe6Itzgt&amp;pe=201610&amp;ou=ImspTQPwCqd&amp;selectedUnitOnly=false</screen></para>
   </section>
-  <section>
+  <section xml:id="webapi_push_analysis">
     <title>Push Analysis</title>
     <para>The push analysis api includes endpoints for previewing a push analysis report for the
       logged in user and manualy triggering the system to generate and send push analysis reports,
