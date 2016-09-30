@@ -56,7 +56,7 @@
 									<format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
 								</tstamp>
 								<exec executable="git" outputproperty="revision" failifexecutionfails="true">
-									<arg line="rev-list --short HEAD"/>
+									<arg line="log -1 --pretty=tformat:%h"/>
 								</exec>
 								<exec executable="git" outputproperty="branch" failifexecutionfails="true">
 									<arg line="rev-parse --abbrev-ref HEAD"/>
