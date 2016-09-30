@@ -3,9 +3,6 @@ language: java
 sudo: false
 git:
   submodules: false
-  #https://github.com/travis-ci/travis-ci/issues/3412
-  #Hack to get the revision number correct
-  depth: 9999999
 before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
     - git submodule update --init --recursive
