@@ -106,7 +106,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
     </orderedlist>
   </section>
   <section xml:id="using_gis_event_layer">
-    <title>Manage an event layer</title>
+    <title>Manage event layers</title>
     <para>The purpose of the event layer is to display the geographical location of events
       registered in the DHIS2 tracker. Provided that events have associated GPS coordinates, you can
       use this layer to drill down from the aggregated data displayed in the thematic layers to the
@@ -290,7 +290,7 @@ https://www.google.com/permissions/trademark/trademark-list.html
     </section>
   </section>
   <section xml:id="using_gis_facility_layer">
-    <title>Manage a facility layer</title>
+    <title>Manage facility layers</title>
     <para>The facility layer displays icons that represent types of facilities.
       <?oxy_comment_start author="Home" timestamp="20160418T155400+0200" comment="At next revision, explain polygon."?>Polygons
       <?oxy_comment_end?>do not show up on the map, so make sure that you select an organisation
@@ -371,94 +371,81 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </orderedlist>
     </section>
   </section>
-  <section xml:id="using_gis_boundary_layer">
-    <title>Manage a boundary layer</title>
-    <para>The aim of the boundary layer is to display the boundaries and coordinates in the system.
-      No data will be shown. This layer is useful if you are offline and thus have no background
-      map. </para>
-    <screenshot>
-      <title>Boundary layer</title>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="100%" fileref="resources/images/gis/gis_boundary_layer.png" format="PNG"
-          />
-        </imageobject>
-      </mediaobject>
-    </screenshot>
+  <section>
+    <title>Manage facilities in a layer</title>
+    <para>You can have facilities in <emphasis role="bold">Facility</emphasis>, <emphasis
+        role="bold">Boundary</emphasis> and <emphasis role="bold">Thematic</emphasis> layers. </para>
     <section>
-      <title>Create or modify boundary layer</title>
+      <title>Relocate a facility</title>
       <orderedlist>
         <listitem>
-          <para>In the top menu, click the boundary layer icon.</para>
+          <para>Right-click a facility and click <emphasis role="bold">Relocate</emphasis>. </para>
         </listitem>
         <listitem>
-          <para>Click <emphasis role="bold">Edit layer</emphasis>.</para>
-        </listitem>
-        <listitem>
-          <para><?oxy_comment_start author="Home" timestamp="20160415T144008+0200" comment="At next revision, explain this task in more detail."?>In
-            the <emphasis role="bold">Organisation units</emphasis> section, select one or several
-            organisation units<?oxy_comment_end?>.</para>
-          <para>You can select the organisation units you want to show on the map by selecting a
-            level and a parent. That means &quot;show all organisations units at this level that are
-            children of this parent&quot;. </para>
-        </listitem>
-        <listitem>
-          <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
-            labels and if so, how they look.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Update</emphasis>.</para>
+          <para>Put the cursor in the new location.</para>
+          <para>The new coordinate is stored permanently. This cannot be undone.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Search for an organisation unit </title>
-      <para>To locate an organisation unit in the map:</para>
+      <title>Swap longitude and latitude of a facility</title>
       <orderedlist>
         <listitem>
-          <para>In the top menu, click the boundary layer icon.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Search</emphasis>.</para>
-          <para>The <emphasis role="bold">Organisation unit search</emphasis> dialog box
-            opens.</para>
-        </listitem>
-        <listitem>
-          <para>In the text field, type the name of the organisation unit you are looking for or
-            click a name in the list.</para>
-          <para>The organisation unit is highlighted in the map.</para>
+          <para>Right-click a facility and click <emphasis role="bold">Swap
+            long/lat</emphasis>.</para>
+          <para> This is useful if a user inverted latitude and longitude coordinates when creating
+            the organisation unit.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Navigate between organisation hierarchies</title>
-      <para>When there are visible organisation units on the map, you can easily navigate up and
-        down in the hierarchy without using the level/parent user interface. </para>
-      <orderedlist>
-        <listitem>
-          <para>Right-click one of the organisation units.</para>
-        </listitem>
-        <listitem>
-          <para>Select <emphasis role="bold">Float up</emphasis> or <emphasis role="bold">Drill
-              down</emphasis>.</para>
-          <para>The drill down option is disabled if you are on the lowest level or if there are no
-            coordinates available on the level below. Vice versa goes for
-            <?oxy_comment_start author="Home" timestamp="20160418T160509+0200" comment="At next release, review term float up with devs."?>floating<?oxy_comment_end?>
-            up. </para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title>Clear boundary layer</title>
-      <para>To clear all data in a boundary layer: </para>
-      <orderedlist>
-        <listitem>
-          <para>In the top menu, click the boundary layer icon.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Clear</emphasis>.</para>
-        </listitem>
-      </orderedlist>
+      <title>Display facility
+        <?oxy_comment_start author="CPersson" timestamp="20160420T143611+0200" comment="Windows might be merged next release."?>information<?oxy_comment_end?></title>
+      <para>You can view organisation unit information set by the administrator as follows:</para>
+      <table frame="all">
+        <title>View organisation unit information</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="1.47*"/>
+          <thead>
+            <row>
+              <entry>Function</entry>
+              <entry>Action</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                <para>View information for the current period</para>
+              </entry>
+              <entry>
+                <orderedlist>
+                  <listitem>
+                    <para>Click a facility.</para>
+                  </listitem>
+                </orderedlist>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>View information for a selected period</para>
+              </entry>
+              <entry>
+                <orderedlist>
+                  <listitem>
+                    <para>Right-click a facility and click <emphasis role="bold">Show
+                        information</emphasis>.</para>
+                  </listitem>
+                  <listitem>
+                    <para>In the <emphasis role="bold">Infrastructural data</emphasis> section,
+                      select a period.</para>
+                  </listitem>
+                </orderedlist>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
     </section>
   </section>
   <section xml:id="using_gis_thematic_layer">
@@ -616,82 +603,94 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </orderedlist>
     </section>
   </section>
-  <section xml:id="using_gis_manage_facilities">
-    <title>Manage facilities in a layer</title>
-    <para>You can have facilities in <emphasis role="bold">Facility</emphasis>, <emphasis
-        role="bold">Boundary</emphasis> and <emphasis role="bold">Thematic</emphasis> layers. </para>
+  <section>
+    <title>Manage boundary layers</title>
+    <para>The aim of the boundary layer is to display the boundaries and coordinates in the system.
+      No data will be shown. This layer is useful if you are offline and thus have no background
+      map. </para>
+    <screenshot>
+      <title>Boundary layer</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="100%" fileref="resources/images/gis/gis_boundary_layer.png" format="PNG"
+          />
+        </imageobject>
+      </mediaobject>
+    </screenshot>
     <section>
-      <title>Relocate a facility</title>
+      <title>Create or modify boundary layer</title>
       <orderedlist>
         <listitem>
-          <para>Right-click a facility and click <emphasis role="bold">Relocate</emphasis>. </para>
+          <para>In the top menu, click the boundary layer icon.</para>
         </listitem>
         <listitem>
-          <para>Put the cursor in the new location.</para>
-          <para>The new coordinate is stored permanently. This cannot be undone.</para>
+          <para>Click <emphasis role="bold">Edit layer</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para><?oxy_comment_start author="Home" timestamp="20160415T144008+0200" comment="At next revision, explain this task in more detail."?>In
+            the <emphasis role="bold">Organisation units</emphasis> section, select one or several
+            organisation units<?oxy_comment_end?>.</para>
+          <para>You can select the organisation units you want to show on the map by selecting a
+            level and a parent. That means &quot;show all organisations units at this level that are
+            children of this parent&quot;. </para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
+            labels and if so, how they look.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Update</emphasis>.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Swap longitude and latitude of a facility</title>
+      <title>Search for an organisation unit </title>
+      <para>To locate an organisation unit in the map:</para>
       <orderedlist>
         <listitem>
-          <para>Right-click a facility and click <emphasis role="bold">Swap
-            long/lat</emphasis>.</para>
-          <para> This is useful if a user inverted latitude and longitude coordinates when creating
-            the org unit.</para>
+          <para>In the top menu, click the boundary layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Search</emphasis>.</para>
+          <para>The <emphasis role="bold">Organisation unit search</emphasis> dialog box
+            opens.</para>
+        </listitem>
+        <listitem>
+          <para>In the text field, type the name of the organisation unit you are looking for or
+            click a name in the list.</para>
+          <para>The organisation unit is highlighted in the map.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Display facility
-        <?oxy_comment_start author="CPersson" timestamp="20160420T143611+0200" comment="Windows might be merged next release."?>information<?oxy_comment_end?></title>
-      <para>You can view organisation unit information set by the administrator in two different
-        ways.</para>
-      <table frame="all">
-        <title>View organisation unit information</title>
-        <tgroup cols="2">
-          <colspec colname="c1" colnum="1" colwidth="1*"/>
-          <colspec colname="c2" colnum="2" colwidth="1.47*"/>
-          <thead>
-            <row>
-              <entry>Function</entry>
-              <entry>Action</entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>
-                <para>View information for the current period</para>
-              </entry>
-              <entry>
-                <orderedlist>
-                  <listitem>
-                    <para>Click a facility.</para>
-                  </listitem>
-                </orderedlist>
-              </entry>
-            </row>
-            <row>
-              <entry>
-                <para>View information for a selected period</para>
-              </entry>
-              <entry>
-                <orderedlist>
-                  <listitem>
-                    <para>Right-click a facility and click <emphasis role="bold">Show
-                        information</emphasis>.</para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <emphasis role="bold">Infrastructural data</emphasis> section,
-                      select a period.</para>
-                  </listitem>
-                </orderedlist>
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
+      <title>Navigate between organisation hierarchies</title>
+      <para>When there are visible organisation units on the map, you can easily navigate up and
+        down in the hierarchy without using the level/parent user interface. </para>
+      <orderedlist>
+        <listitem>
+          <para>Right-click one of the organisation units.</para>
+        </listitem>
+        <listitem>
+          <para>Select <emphasis role="bold">Float up</emphasis> or <emphasis role="bold">Drill
+              down</emphasis>.</para>
+          <para>The drill down option is disabled if you are on the lowest level or if there are no
+            coordinates available on the level below. Vice versa goes for
+            <?oxy_comment_start author="Home" timestamp="20160418T160509+0200" comment="At next release, review term float up with devs."?>floating<?oxy_comment_end?>
+            up. </para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Clear boundary layer</title>
+      <para>To clear all data in a boundary layer: </para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the boundary layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Clear</emphasis>.</para>
+        </listitem>
+      </orderedlist>
     </section>
   </section>
   <section xml:id="using_gis_gee">
@@ -723,6 +722,20 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
         <listitem>
           <para>Population density: Population in 100 x 100 m grid cells (from 2010)</para>
         </listitem>
+        <listitem>
+          <para>Temperature, population and land cover at any location.</para>
+          <para>Right-click on the layers to view more information, for example temperature and
+            elevation.</para>
+          <screenshot>
+            <mediaobject>
+              <imageobject>
+                <imagedata width="100%"
+                  fileref="resources/images/gis/gis-temperature-landcover4.png" format="PNG"
+                  align="center"/>
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </listitem>
       </itemizedlist></para>
     <section>
       <title>Create or modify an Earth Engine layer</title>
@@ -751,7 +764,7 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
     </section>
   </section>
         <section xml:id="using_gis_external_map_layers">
-          <title>Add an external map layer to a map</title>
+          <title>Add external map layers to a map</title>
           <orderedlist>
             <listitem><para>In the top menu, click the <emphasis role="bold">External layer</emphasis> icon.</para></listitem>
             <listitem><para>Click <emphasis role="bold">Edit</emphasis> to add a new layer.</para></listitem>
@@ -1052,8 +1065,20 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
       </listitem>
     </orderedlist>
   </section>
+  <section>
+    <title>Get the latitude and longitude at any location</title>
+    <para>Right-click a map and select <emphasis role="bold">Show longitude/latitude</emphasis>. The values display in a pop-up window.</para>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="100%" fileref="resources/images/gis/gis-latitude-longitude.png"
+            format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+  </section>
   <section xml:id="using_gis_integration">
-    <title>Visualize a map as a pivot table or a chart</title>
+    <title>Visualize a map as a pivot table or chart</title>
     <para>When you have made a map you can switch between pivot table, chart and map visualization
       of your data. The function is inactive if the data the map is based on cannot render as a
       chart or table.</para>
