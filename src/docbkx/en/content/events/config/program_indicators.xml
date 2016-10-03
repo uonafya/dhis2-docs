@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<chapter version="5.0"
+<section version="5.0"
          xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
           xmlns="http://docbook.org/ns/docbook"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -10,43 +10,32 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>[Review ongoing]Program Indicators</title>
-  <para>This chapter covers how to configure and use program indicators. Program indicators are expressions based on data elements and attributes of tracked entities, which can be used to calculate values based on a formula.</para>
+  <title>[Review ongoing]Manage program
+    <?oxy_comment_start author="cecilia" timestamp="20160930T095313+0200" comment="Done by whom? Admin? Super user?
+Which are the prereqs?
+Functionality will move into the Maintenance app for 2.26"?>indicators<?oxy_comment_end?></title>
   <section>
-    <title>Overview</title>
+    <title>About program indicators</title>
+    <?oxy_comment_start author="cecilia" timestamp="20160930T095943+0200" comment="Review the two paras"?>
+    <para>Program indicators are expressions based on data elements and attributes of tracked
+      entities which can be used to calculate values based on a formula.</para>
     <para>The purpose of program indicators is to provide a way to produce calculated values based
-      on data elements and attributes. Program indicators have an aggregation type, an expression
-      and a filter, which in combination determines how the indicator will be evaluated.</para>
-  </section>
-  <section>
-    <title>Setup</title>
-    <para>Program indicators can be managed from the &quot;Programs and Attributes&quot; app. Once in the app,
-      navigate to Programs. A program indicator belongs to exactly one program, so click on the
-      program for which you want to create an indicator and from the context menu navigate to &quot;View
-      program indicators&quot;. This will open the list of existing indicators, if any, for this
-      program.</para>
-    <para>To <emphasis role="bold">add</emphasis> an indicator, click the &quot;Add new&quot; button in the
-      top right corner. This will open the new indicator screen. Provide a name, short name, code,
-      description, value type, expression and filter for the indicator.</para>
-    <para>To <emphasis role="bold">edit</emphasis> an indicator, click on the relevant indicator in
-      the list to open the context menu and click &quot;Edit&quot;. This will open the edit indicator screen,
-      where you can modify the relevant values.</para>
-    <para>To <emphasis role="bold">remove</emphasis> an  indicator, click on the relevant indicator
-      in the list to open the context menu and click &quot;Remove&quot;. Click &quot;OK&quot; in the confirmation dialog
-      to remove the indicator.</para>
-    <screenshot>
-      <title>Program indicator list with context menu</title>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="resources/images/program_indicator/program-indicator-list.png" format="PNG" align="center" width="60%"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-  </section>
-  <section>
-    <title>Indicator evaluation</title>
-    <para>Program indicators are evaluated based on the assigned aggregation type, expression and filter. The
-      order of evaluation is as follows:</para>
+      on data elements and attributes.</para>
+    <?oxy_comment_end?>
+    <para>Program indicators consist of:</para>
+    <itemizedlist>
+      <listitem>
+        <para>an aggregation type</para>
+      </listitem>
+      <listitem>
+        <para>an expression</para>
+      </listitem>
+      <listitem>
+        <para>a filter</para>
+      </listitem>
+    </itemizedlist>
+    <para>Program indicators are evaluated based on the assigned aggregation type, expression and
+      filter. The order of evaluation is as follows:</para>
     <orderedlist>
       <listitem>
         <para>The <emphasis role="italic">filter</emphasis> will filter the events which become part
@@ -60,10 +49,39 @@
           according to the aggregation type of the program indicator.</para>
       </listitem>
     </orderedlist>
+    <para>In the <emphasis role="bold">Programs / Attributes</emphasis> app, you manage the
+      following program indicator objects:</para>
+    <table frame="all">
+      <title>Program indicator objects in the Programs / Attributes app</title>
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+        <thead>
+          <row>
+            <entry>
+              <para>Object type</para>
+            </entry>
+            <entry>
+              <para>Available functions</para>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              <para>Constant</para>
+            </entry>
+            <entry>
+              <para>Create, edit, clone, share, delete, show details and translate</para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
     <section>
-      <title>Aggregation type</title>
-      <para>The aggregation type determines how the program indicator
-        will be aggregated. The following aggregation types are available:</para>
+      <title>About aggregation types</title>
+      <para>The aggregation type determines how the program indicator will be aggregated. The
+        following aggregation types are available:</para>
       <itemizedlist>
         <listitem>
           <para>Average</para>
@@ -97,13 +115,14 @@
           expression.</para>
         <para>Using the "custom" aggregation type might lead to an exception of the order of
           evaluation described above where individual parts of the expression can be evaluated and
-          aggregated, as opposed to the entire expressio being evaluated prior to aggregation.</para>
+          aggregated, as opposed to the entire expressio being evaluated prior to
+          aggregation.</para>
         <para>The following aggregation type operators can be used within expressions: sum, count,
           stddev, variance, min, max.</para>
       </section>
     </section>
     <section>
-      <title>Expression</title>
+      <title>About expressions</title>
       <para>The expression defines how the indicator is being calculated. The expression can contain
         references to various entities which will be substituted with a related values when the
         indicator is calculated:<itemizedlist>
@@ -127,31 +146,34 @@
           </listitem>
         </itemizedlist></para>
       <para>The expression is a mathematical expression that can contain operators which include
-      multiply, divide, plus and minus. The expression will be evaluated <emphasis role="italic">per event</emphasis>, then aggregated according to its aggregation type.</para>
+        multiply, divide, plus and minus. The expression will be evaluated <emphasis role="italic"
+          >per event</emphasis>, then aggregated according to its aggregation type.</para>
       <screenshot>
         <title>Program indicator list with context menu</title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="resources/images/program_indicator/program-indicator-expression.png" format="PNG" align="center" width="60%"/>
+            <imagedata fileref="resources/images/program_indicator/program-indicator-expression.png"
+              format="PNG" align="center" width="60%"/>
           </imageobject>
         </mediaobject>
       </screenshot>
-      <para>An example expression that includes both attributes, data elements and constants looks like
-      this:<screen>(A{GPkGfbmArby} + #{mCXR7u4kNBW.NFkjsNiQ9PH}) * C{bCqvfPR02Im}</screen></para>
+      <para>An example expression that includes both attributes, data elements and constants looks
+        like
+        this:<screen>(A{GPkGfbmArby} + #{mCXR7u4kNBW.NFkjsNiQ9PH}) * C{bCqvfPR02Im}</screen></para>
       <para>An example expression which uses the custom aggregation type and hence can use inline
-      aggregation types looks like
-      this:<screen>(sum(#{mCXR7u4kNBW.K0A4BauXJDl} * #{mCXR7u4kNBW.NFkjsNiQ9PH}) / sum(#{mCXR7u4kNBW.NFkjsNiQ9PH})) * 100</screen></para>
+        aggregation types looks like
+        this:<screen>(sum(#{mCXR7u4kNBW.K0A4BauXJDl} * #{mCXR7u4kNBW.NFkjsNiQ9PH}) / sum(#{mCXR7u4kNBW.NFkjsNiQ9PH})) * 100</screen></para>
       <para>Notice how the "sum" aggregation operator is used inside the expression itself.</para>
     </section>
     <section>
-      <title>Filter</title>
-      <para>The filter is applied to events and filters the data
-      source used for the calculation of the indicator. I.e. the filter is applied to the set of
-      events before the indicator expression is being evaluated. The filter must evaluate to either
-      true or false. It filter is applied to each individual event. If the filter evaluates to true
-      then the event is included later in the expression evaluation, if not it is ignored. The
-      filter can, in a similar way as expressions, contain references to data elements, attributes
-      and constants.</para>
+      <title>About filters</title>
+      <para>The filter is applied to events and filters the data source used for the calculation of
+        the indicator. I.e. the filter is applied to the set of events before the indicator
+        expression is being evaluated. The filter must evaluate to either true or false. It filter
+        is applied to each individual event. If the filter evaluates to true then the event is
+        included later in the expression evaluation, if not it is ignored. The filter can, in a
+        similar way as expressions, contain references to data elements, attributes and
+        constants.</para>
       <para>The indicator filter can in addition use logical operators including the
         following:</para>
       <table frame="all">
@@ -201,30 +223,33 @@
           </tbody>
         </tgroup>
       </table>
-      <para>These operators can be used to form logical expressions which ultimately evaluate to either
-        true or false. For example. one can assert that multiple data elements must be a specific value, or
-        that specific attributes must have numerical values less or greater than a constant.</para>
+      <para>These operators can be used to form logical expressions which ultimately evaluate to
+        either true or false. For example. one can assert that multiple data elements must be a
+        specific value, or that specific attributes must have numerical values less or greater than
+        a constant.</para>
       <screenshot>
         <title>Program indicator list with context menu</title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="resources/images/program_indicator/program-indicator-filter.png" format="PNG" align="center" width="60%"/>
+            <imagedata fileref="resources/images/program_indicator/program-indicator-filter.png"
+              format="PNG" align="center" width="60%"/>
           </imageobject>
         </mediaobject>
       </screenshot>
       <para>You can switch between data elements, attributes, variables and constants by using the
-      tabs. You can include such items into expressions and filters by double-clicking in the list.
-      The buttons below the expression area can be used to insert operators.</para>
+        tabs. You can include such items into expressions and filters by double-clicking in the
+        list. The buttons below the expression area can be used to insert operators.</para>
       <para>An example filter that uses both attributes and data elements looks like
-      this:<screen>A{cejWyOfXge6} == &apos;Female&apos; and #{A03MvHHogjR.a3kGcGDCuk6} &lt;= 2</screen></para>
+        this:<screen>A{cejWyOfXge6} == &apos;Female&apos; and #{A03MvHHogjR.a3kGcGDCuk6} &lt;= 2</screen></para>
       <tip>
-        <para>DHIS2 is using the JEXL library
-      for evaluating expressions which supports additional syntax beyond what is covered in this
-      documentation. See the reference at the <link xl:href="http://commons.apache.org/proper/commons-jexl/reference/syntax.html">project home page</link> to learn how you can create more sophisticated expressions</para>
+        <para>DHIS2 is using the JEXL library for evaluating expressions which supports additional
+          syntax beyond what is covered in this documentation. See the reference at the <link
+            xl:href="http://commons.apache.org/proper/commons-jexl/reference/syntax.html">project
+            home page</link> to learn how you can create more sophisticated expressions</para>
       </tip>
     </section>
     <section>
-      <title>Functions</title>
+      <title>About functions</title>
       <para>The indicator expression and filter support a range of functions. The functions can be
         applied to data elements and attributes:</para>
       <table frame="all">
@@ -244,32 +269,38 @@
             <row>
               <entry>d2:daysBetween</entry>
               <entry>(date, date)</entry>
-              <entry>Produces the number of days between two data elements/attributes of type date. The static date format is &apos;yyyy-MM-dd&apos;.</entry>
+              <entry>Produces the number of days between two data elements/attributes of type date.
+                The static date format is &apos;yyyy-MM-dd&apos;.</entry>
             </row>
             <row>
               <entry>d2:condition</entry>
               <entry>(boolean-expr, true-val, false-val)</entry>
-              <entry>Evaluates the conditional expression and if true returns the true value, if false returns the false value. The conditional expression must be quoted.</entry>
+              <entry>Evaluates the conditional expression and if true returns the true value, if
+                false returns the false value. The conditional expression must be quoted.</entry>
             </row>
             <row>
               <entry>d2:zing</entry>
               <entry>(number)</entry>
-              <entry>Evaluates the data element/attribute of type number to zero if the value is negative, otherwise to the value itself.</entry>
+              <entry>Evaluates the data element/attribute of type number to zero if the value is
+                negative, otherwise to the value itself.</entry>
             </row>
             <row>
               <entry>d2:oizp</entry>
               <entry>(number)</entry>
-              <entry>Evaluates the data element/attribute of type number to one if the value is zero or positive, otherwise to zero. </entry>
+              <entry>Evaluates the data element/attribute of type number to one if the value is zero
+                or positive, otherwise to zero. </entry>
             </row>
             <row>
               <entry>d2:zpvc</entry>
               <entry>(object, [,object, object,...])</entry>
-              <entry>Returns the number of numeric zero and positive values among the given object arguments. Can be provided any number of arguments.</entry>
+              <entry>Returns the number of numeric zero and positive values among the given object
+                arguments. Can be provided any number of arguments.</entry>
             </row>
           </tbody>
         </tgroup>
       </table>
-      <para>An example expression that uses the &quot;zing&quot; and &quot;oizp&quot; functions looks like
+      <para>An example expression that uses the &quot;zing&quot; and &quot;oizp&quot; functions
+        looks like
         this:<screen>d2:zing(A{GPkGfbmArby}) + d2:oizp(#{mCXR7u4kNBW.NFkjsNiQ9PH}))</screen></para>
       <para>An example expression that uses the &quot;daysBetween&quot; function looks like
         this:<screen>d2:daysBetween(#{mCXR7u4kNBW.k8ja2Aif1Ae},&apos;2015-06-01&apos;)</screen></para>
@@ -279,7 +310,7 @@
         this:<screen>d2:zpvc(A{GPkGfbmArby}),#{mCXR7u4kNBW.NFkjsNiQ9PH}),4,-1)</screen></para>
     </section>
     <section>
-      <title>Variables</title>
+      <title>About variables</title>
       <para>The indicator expression and filter support a range of variables:</para>
       <table frame="all">
         <title>Variables</title>
@@ -307,7 +338,8 @@
             </row>
             <row>
               <entry>enrollment_date</entry>
-              <entry>The date of when the tracked entity instance was enrolled in the program.</entry>
+              <entry>The date of when the tracked entity instance was enrolled in the
+                program.</entry>
             </row>
             <row>
               <entry>current_date</entry>
@@ -319,7 +351,8 @@
             </row>
             <row>
               <entry>zero_pos_value_count</entry>
-              <entry>The number of numeric positive values in the expression part of the event.</entry>
+              <entry>The number of numeric positive values in the expression part of the
+                event.</entry>
             </row>
             <row>
               <entry>event_count</entry>
@@ -331,7 +364,8 @@
             </row>
             <row>
               <entry>tei_count</entry>
-              <entry>The count of tracked entity instances (useful in combination with filters).</entry>
+              <entry>The count of tracked entity instances (useful in combination with
+                filters).</entry>
             </row>
           </tbody>
         </tgroup>
@@ -343,4 +377,88 @@
       </para>
     </section>
   </section>
-</chapter>
+  <section>
+    <title>Create a program indicator</title>
+    <screenshot>
+      <title>Program indicator list with context
+        <?oxy_comment_start author="cecilia" timestamp="20160930T101151+0200" comment="Before release,, replace graphic."?>menu<?oxy_comment_end?></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/images/program_indicator/program-indicator-list.png"
+            format="PNG" align="center" width="60%"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <para>Once in the app, navigate to Programs. A program indicator belongs to exactly one program,
+      so click on the program for which you want to create an indicator and from the context menu
+      navigate to &quot;View program indicators&quot;. This will open the list of existing
+      indicators, if any, for this program.</para>
+    <para>To <emphasis role="bold">add</emphasis> an indicator, click the &quot;Add new&quot; button in the
+      top right corner. This will open the new indicator screen. Provide a name, short name, code,
+      description, value type, expression and filter for the indicator.</para>
+    <orderedlist>
+      <listitem>
+        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
+            >Maintenance</emphasis> > <emphasis role="bold">Constant</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the add button.</para>
+      </listitem>
+      <listitem>
+        <para>In the
+            <?oxy_comment_start author="cecilia" timestamp="20160624T160524+0200" comment="At next releaase:
+For SME: Must the name be unique?" flag="done"?><emphasis
+            role="bold">Name</emphasis><?oxy_comment_end?> field, type the name of the
+          constant.</para>
+      </listitem>
+      <listitem>
+        <para>(Optional) In the <emphasis role="bold">Short name</emphasis> field, type an
+          abbreviated name of the constant.</para>
+      </listitem>
+      <listitem>
+        <para>(Optional) In the <emphasis role="bold">Code</emphasis> field, assign a code.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Description</emphasis> field, type a brief, informative
+          description of the constant.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Value</emphasis> field, define the constant's
+          value.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+        <para>The constant is now available for use.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Edit program indicators</title>
+    <para>To <emphasis role="bold">edit</emphasis> an indicator, click on the relevant indicator in
+      the list to open the context menu and click &quot;Edit&quot;. This will open the edit
+      indicator screen, where you can modify the relevant values.</para>
+  </section>
+  <section>
+    <title>Clone program indicators</title>
+    <para/>
+  </section>
+  <section>
+    <title>Share program indicators</title>
+    <para/>
+  </section>
+  <section>
+    <title>Delete program indicators</title>
+    <para>To <emphasis role="bold">remove</emphasis> an indicator, click on the relevant indicator
+      in the list to open the context menu and click &quot;Remove&quot;. Click &quot;OK&quot; in the
+      confirmation dialog to remove the indicator.</para>
+  </section>
+  <section>
+    <title>Display program indicators</title>
+    <para/>
+  </section>
+  <section>
+    <title>Translate program indicators</title>
+    <para/>
+  </section>
+</section>
+
