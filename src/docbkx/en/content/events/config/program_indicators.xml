@@ -10,7 +10,7 @@
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
          xmlns:db="http://docbook.org/ns/docbook">
-  <title>[Review ongoing]Manage program
+  <title>Manage program
     <?oxy_comment_start author="cecilia" timestamp="20160930T095313+0200" comment="Done by whom? Admin? Super user?
 Which are the prereqs?
 Functionality will move into the Maintenance app for 2.26"?>indicators<?oxy_comment_end?></title>
@@ -69,17 +69,26 @@ Functionality will move into the Maintenance app for 2.26"?>indicators<?oxy_comm
         <tbody>
           <row>
             <entry>
-              <para>Constant</para>
+              <para>Program indicator</para>
             </entry>
             <entry>
-              <para>Create, edit, clone, share, delete, show details and translate</para>
+              <para>Create, edit, share, delete, show details and translate</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Program indicator group</para>
+            </entry>
+            <entry>
+              <para>Create, edit, delete, show details and translate</para>
             </entry>
           </row>
         </tbody>
       </tgroup>
     </table>
     <section>
-      <title>About aggregation types</title>
+      <title>About aggregation
+        <?oxy_comment_start author="cecilia" timestamp="20161003T154705+0200" comment="Same as the other aggregation types used in DHIS2?"?>types<?oxy_comment_end?></title>
       <para>The aggregation type determines how the program indicator will be aggregated. The
         following aggregation types are available:</para>
       <itemizedlist>
@@ -106,20 +115,16 @@ Functionality will move into the Maintenance app for 2.26"?>indicators<?oxy_comm
         </listitem>
         <listitem>
           <para>Custom</para>
+          <para>The "custom" aggregation type allows you to specify the aggregation type in-line in
+            the expression. All other aggregation types are applied to the entire expression.</para>
+          <para>Using the "custom" aggregation type might lead to an exception of the order of
+            evaluation described above where individual parts of the expression can be evaluated and
+            aggregated, as opposed to the entire expression being evaluated prior to
+            aggregation.</para>
+          <para>The following aggregation type operators can be used within expressions: sum, count,
+            stddev, variance, min, max.</para>
         </listitem>
       </itemizedlist>
-      <section>
-        <title>Custom aggregation type</title>
-        <para>The "custom" aggregation type is special, as it allows you to specify the aggregation
-          type in-line in the expression. All other aggregation types are applied to the entire
-          expression.</para>
-        <para>Using the "custom" aggregation type might lead to an exception of the order of
-          evaluation described above where individual parts of the expression can be evaluated and
-          aggregated, as opposed to the entire expressio being evaluated prior to
-          aggregation.</para>
-        <para>The following aggregation type operators can be used within expressions: sum, count,
-          stddev, variance, min, max.</para>
-      </section>
     </section>
     <section>
       <title>About expressions</title>
@@ -157,13 +162,16 @@ Functionality will move into the Maintenance app for 2.26"?>indicators<?oxy_comm
           </imageobject>
         </mediaobject>
       </screenshot>
-      <para>An example expression that includes both attributes, data elements and constants looks
-        like
-        this:<screen>(A{GPkGfbmArby} + #{mCXR7u4kNBW.NFkjsNiQ9PH}) * C{bCqvfPR02Im}</screen></para>
-      <para>An example expression which uses the custom aggregation type and hence can use inline
-        aggregation types looks like
-        this:<screen>(sum(#{mCXR7u4kNBW.K0A4BauXJDl} * #{mCXR7u4kNBW.NFkjsNiQ9PH}) / sum(#{mCXR7u4kNBW.NFkjsNiQ9PH})) * 100</screen></para>
-      <para>Notice how the "sum" aggregation operator is used inside the expression itself.</para>
+      <example>
+        <para>An expression that includes both attributes, data elements and constants looks like
+          this:<screen>(A{GPkGfbmArby} + #{mCXR7u4kNBW.NFkjsNiQ9PH}) * C{bCqvfPR02Im}</screen></para>
+      </example>
+      <example>
+        <para>An expression which uses the custom aggregation type and hence can use inline
+          aggregation types looks like
+          this:<screen>(sum(#{mCXR7u4kNBW.K0A4BauXJDl} * #{mCXR7u4kNBW.NFkjsNiQ9PH}) / sum(#{mCXR7u4kNBW.NFkjsNiQ9PH})) * 100</screen></para>
+        <para>Note how the "sum" aggregation operator is used inside the expression itself.</para>
+      </example>
     </section>
     <section>
       <title>About filters</title>
@@ -224,7 +232,7 @@ Functionality will move into the Maintenance app for 2.26"?>indicators<?oxy_comm
         </tgroup>
       </table>
       <para>These operators can be used to form logical expressions which ultimately evaluate to
-        either true or false. For example. one can assert that multiple data elements must be a
+        either true or false. For example you can assert that multiple data elements must be a
         specific value, or that specific attributes must have numerical values less or greater than
         a constant.</para>
       <screenshot>
@@ -239,8 +247,10 @@ Functionality will move into the Maintenance app for 2.26"?>indicators<?oxy_comm
       <para>You can switch between data elements, attributes, variables and constants by using the
         tabs. You can include such items into expressions and filters by double-clicking in the
         list. The buttons below the expression area can be used to insert operators.</para>
-      <para>An example filter that uses both attributes and data elements looks like
-        this:<screen>A{cejWyOfXge6} == &apos;Female&apos; and #{A03MvHHogjR.a3kGcGDCuk6} &lt;= 2</screen></para>
+      <example>
+        <para>A filter that uses both attributes and data elements looks like
+          this:<screen>A{cejWyOfXge6} == &apos;Female&apos; and #{A03MvHHogjR.a3kGcGDCuk6} &lt;= 2</screen></para>
+      </example>
       <tip>
         <para>DHIS2 is using the JEXL library for evaluating expressions which supports additional
           syntax beyond what is covered in this documentation. See the reference at the <link
@@ -299,15 +309,22 @@ Functionality will move into the Maintenance app for 2.26"?>indicators<?oxy_comm
           </tbody>
         </tgroup>
       </table>
-      <para>An example expression that uses the &quot;zing&quot; and &quot;oizp&quot; functions
-        looks like
-        this:<screen>d2:zing(A{GPkGfbmArby}) + d2:oizp(#{mCXR7u4kNBW.NFkjsNiQ9PH}))</screen></para>
-      <para>An example expression that uses the &quot;daysBetween&quot; function looks like
-        this:<screen>d2:daysBetween(#{mCXR7u4kNBW.k8ja2Aif1Ae},&apos;2015-06-01&apos;)</screen></para>
-      <para>An example expression that uses the &quot;condition&quot; function looks like
-        this:<screen>d2:condition(&apos;#{mCXR7u4kNBW.NFkjsNiQ9PH} &gt; 100&apos;,150,50)</screen></para>
-      <para>An example expression that uses the &quot;zpvc&quot; function looks like
-        this:<screen>d2:zpvc(A{GPkGfbmArby}),#{mCXR7u4kNBW.NFkjsNiQ9PH}),4,-1)</screen></para>
+      <example>
+        <para>An expression that uses the &quot;zing&quot; and &quot;oizp&quot; functions looks like
+          this:<screen>d2:zing(A{GPkGfbmArby}) + d2:oizp(#{mCXR7u4kNBW.NFkjsNiQ9PH}))</screen></para>
+      </example>
+      <example>
+        <para>An expression that uses the &quot;daysBetween&quot; function looks like
+          this:<screen>d2:daysBetween(#{mCXR7u4kNBW.k8ja2Aif1Ae},&apos;2015-06-01&apos;)</screen></para>
+      </example>
+      <example>
+        <para>An expression that uses the &quot;condition&quot; function looks like
+          this:<screen>d2:condition(&apos;#{mCXR7u4kNBW.NFkjsNiQ9PH} &gt; 100&apos;,150,50)</screen></para>
+      </example>
+      <example>
+        <para>An expression that uses the &quot;zpvc&quot; function looks like
+          this:<screen>d2:zpvc(A{GPkGfbmArby}),#{mCXR7u4kNBW.NFkjsNiQ9PH}),4,-1)</screen></para>
+      </example>
     </section>
     <section>
       <title>About variables</title>
@@ -370,11 +387,15 @@ Functionality will move into the Maintenance app for 2.26"?>indicators<?oxy_comm
           </tbody>
         </tgroup>
       </table>
-      <para>An example expression that uses the &quot;value count&quot; variable looks like
-        this:<screen>(#{A03MvHHogjR.a3kGcGDCuk6} + #{A03MvHHogjR.wQLfBvPrXqq}) / V{value_count}</screen></para>
-      <para>An example expression that uses the "event_date" and "incident_date" variables looks
-        like this:<screen>d2:daysBetween(V{incident_date},V{event_date})</screen>
-      </para>
+      <example>
+        <para>An expression that uses the &quot;value count&quot; variable looks like
+          this:<screen>(#{A03MvHHogjR.a3kGcGDCuk6} + #{A03MvHHogjR.wQLfBvPrXqq}) / V{value_count}</screen></para>
+      </example>
+      <example>
+        <para>An expression that uses the "event_date" and "incident_date" variables looks like
+          this:<screen>d2:daysBetween(V{incident_date},V{event_date})</screen>
+        </para>
+      </example>
     </section>
   </section>
   <section>
@@ -389,76 +410,310 @@ Functionality will move into the Maintenance app for 2.26"?>indicators<?oxy_comm
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>Once in the app, navigate to Programs. A program indicator belongs to exactly one program,
-      so click on the program for which you want to create an indicator and from the context menu
-      navigate to &quot;View program indicators&quot;. This will open the list of existing
-      indicators, if any, for this program.</para>
-    <para>To <emphasis role="bold">add</emphasis> an indicator, click the &quot;Add new&quot; button in the
-      top right corner. This will open the new indicator screen. Provide a name, short name, code,
-      description, value type, expression and filter for the indicator.</para>
+    <note>
+      <para>A program indicator belongs to exactly one program.</para>
+    </note>
     <orderedlist>
       <listitem>
-        <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-            >Maintenance</emphasis> > <emphasis role="bold">Constant</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Click the add button.</para>
+        <para>Click the program you want to add a program indicator to and select  <emphasis
+            role="bold">View program indicators</emphasis>.</para>
+        <para>A list of existing indicators for the selected program opens. If the program doesn't
+          have any program indicators, the list is empty.</para>
       </listitem>
       <listitem>
-        <para>In the
-            <?oxy_comment_start author="cecilia" timestamp="20160624T160524+0200" comment="At next releaase:
-For SME: Must the name be unique?" flag="done"?><emphasis
-            role="bold">Name</emphasis><?oxy_comment_end?> field, type the name of the
-          constant.</para>
+        <para>Click <emphasis role="bold">Add new</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>(Optional) In the <emphasis role="bold">Short name</emphasis> field, type an
-          abbreviated name of the constant.</para>
+        <para>Enter program indicator details:</para>
+        <orderedlist>
+          <listitem>
+            <para><emphasis role="bold">Name</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Short name</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Code</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Description</emphasis></para>
+          </listitem>
+        </orderedlist>
       </listitem>
       <listitem>
-        <para>(Optional) In the <emphasis role="bold">Code</emphasis> field, assign a code.</para>
+        <para>Select number of <emphasis role="bold">Decimals in data output</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>In the <emphasis role="bold">Description</emphasis> field, type a brief, informative
-          description of the constant.</para>
+        <para>Select an <emphasis role="bold">Aggregation type</emphasis>.</para>
       </listitem>
       <listitem>
-        <para>In the <emphasis role="bold">Value</emphasis> field, define the constant's
-          value.</para>
+        <para>Select a <emphasis role="bold">Legend
+            <?oxy_comment_start author="cecilia" timestamp="20161003T153449+0200" comment="Feedback to SME: change UI, new term is &quot;Legend&quot;, no longer &quot;Legend set&quot;:"?>set<?oxy_comment_end?></emphasis>.</para>
       </listitem>
       <listitem>
-        <para>Click <emphasis role="bold">Save</emphasis>.</para>
-        <para>The constant is now available for use.</para>
+        <para>Select a if you want to <emphasis role="bold">Display in form</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Create an <emphasis role="bold">Expression</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Create a <emphasis role="bold">Filter</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Add</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Create a program indicator group</title>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program indicator group</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Add new</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Enter program indicator group details:</para>
+        <orderedlist>
+          <listitem>
+            <para><emphasis role="bold">Name</emphasis></para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Description</emphasis></para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>In the list of <emphasis role="bold">Available program indicators</emphasis>,
+          double-click the program indicators you want to assign to your group.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Add</emphasis>.</para>
       </listitem>
     </orderedlist>
   </section>
   <section>
     <title>Edit program indicators</title>
-    <para>To <emphasis role="bold">edit</emphasis> an indicator, click on the relevant indicator in
-      the list to open the context menu and click &quot;Edit&quot;. This will open the edit
-      indicator screen, where you can modify the relevant values.</para>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the relevant program and select <emphasis role="bold">View program
+            indicators</emphasis>.</para>
+        <para>A list of existing indicators for the selected program opens. If the program doesn't
+          have any program indicators, the list is empty.</para>
+      </listitem>
+      <listitem>
+        <para>Click the program indicator you want to modify and select <emphasis role="bold"
+            >Edit</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Modify the options you
+          <?oxy_comment_start author="cecilia" timestamp="20160510T160124+0200" comment="At next revision, add link to previous section
+&quot;For details about each option, refer to section Create a data element.&quot;
+At the moment, I can only do x-refs to section 1 tags.
+" flag="done"?>want<?oxy_comment_end?>.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
-    <title>Clone program indicators</title>
-    <para/>
-  </section>
-  <section>
-    <title>Share program indicators</title>
-    <para/>
+    <title>Change sharing settings for program indicators</title>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the relevant program and select <emphasis role="bold">View program
+            indicators</emphasis>.</para>
+        <para>A list of existing indicators for the selected program opens. If the program doesn't
+          have any program indicators, the list is empty.</para>
+      </listitem>
+      <listitem>
+        <para>Click the program indicator you want to modify and select <emphasis role="bold"
+            >Sharing settings</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>(Optional) Add a user group:</para>
+        <orderedlist>
+          <listitem>
+            <para>Search for a user group and select it.</para>
+          </listitem>
+          <listitem>
+            <para>Click the plus icon.</para>
+            <para>The user group is added to the list.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Change the settings for the user
+          group<?oxy_comment_start author="cecilia" timestamp="20160510T161804+0200" comment="For SME: More information needed. What does External access mean?
+Marks: something to do with edit rights, verify with Lars." flag="done"?>s<?oxy_comment_end?>
+          you want to modify.</para>
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="bold">Can view</emphasis>: Everyone in the user group can view the
+              program indicator.</para>
+          </listitem>
+          <listitem>
+            <para><emphasis role="bold">Can edit and view</emphasis>: Everyone in the user group can
+              view and edit the program indicator.</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
     <title>Delete program indicators</title>
-    <para>To <emphasis role="bold">remove</emphasis> an indicator, click on the relevant indicator
-      in the list to open the context menu and click &quot;Remove&quot;. Click &quot;OK&quot; in the
-      confirmation dialog to remove the indicator.</para>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the relevant program and select <emphasis role="bold">View program
+            indicators</emphasis>.</para>
+        <para>A list of existing indicators for the selected program opens. If the program doesn't
+          have any program indicators, the list is empty.</para>
+      </listitem>
+      <listitem>
+        <para>Click the program indicator you want to delete and select <emphasis role="bold"
+            >Remove</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">OK</emphasis> to confirm.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
     <title>Display program indicators</title>
-    <para/>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the relevant program and select <emphasis role="bold">View program
+            indicators</emphasis>.</para>
+        <para>A list of existing indicators for the selected program opens. If the program doesn't
+          have any program indicators, the list is empty.</para>
+      </listitem>
+      <listitem>
+        <para>Click the program indicator you want to display and select <emphasis role="bold">Show
+            details</emphasis>.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
     <title>Translate program indicators</title>
-    <para/>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click the relevant program and select <emphasis role="bold">View program
+            indicators</emphasis>.</para>
+        <para>A list of existing indicators for the selected program opens. If the program doesn't
+          have any program indicators, the list is empty.</para>
+      </listitem>
+      <listitem>
+        <para>Click the program indicator you want to modify and select <emphasis role="bold"
+            >Translate</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Select a locale.</para>
+      </listitem>
+      <listitem>
+        <para>Type a <emphasis role="bold">Name</emphasis>, <emphasis role="bold">Short
+            name</emphasis> and <emphasis role="bold">Description</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Edit program indicator groups</title>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program indicator group</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>In the list, click the program indicator group you want to edit and select <emphasis
+            role="bold">Edit</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Modify the options you want.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Update</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Delete program indicator groups</title>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program indicator group</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>In the list, click the program indicator group you want to delete and select <emphasis
+            role="bold"
+            ><?oxy_comment_start author="cecilia" timestamp="20161003T160013+0200" comment="Verify with SME: should there be any confirmaiton here? Warning before you remove?"?>Remove<?oxy_comment_end?></emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Display program indicator groups</title>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program indicator group</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>In the list, click the program indicator group you want to view and select <emphasis
+            role="bold">Show details</emphasis>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Translate program indicator groups</title>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
+            role="bold">Program indicator group</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>In the list, click the program indicator group you want to translate and select
+            <emphasis role="bold">Translate</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Select a locale.</para>
+      </listitem>
+      <listitem>
+        <para>Type a <emphasis role="bold">Name</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
+    </orderedlist>
   </section>
 </section>
 
