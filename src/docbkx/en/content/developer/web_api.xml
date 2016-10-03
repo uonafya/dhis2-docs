@@ -1050,8 +1050,8 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       find a data element matching more than one id, for that purpose you can use the <emphasis
         role="italic">in</emphasis>
       operator.<screen>/api/25/dataElements.json?filter=id:in:[fbfJHSPpUQD,cYeuwXTCPkU]</screen></para>
-    <section>
-      <title>Switching from AND to OR</title>
+    <section xml:id="webapi_metadata_logical_operator">
+      <title>Logical operators</title>
       <para>As mentioned in the section before, the default logical operator applied to the filters
         are <emphasis role="bold">AND</emphasis> which means that all object filters must be
         matched. There are however cases where you want to match on one of several filters (maybe id
@@ -1230,7 +1230,7 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
             </tbody>
           </tgroup>
         </table></para>
-      <section>
+      <section xml:id="webapi_field_transformers_examples">
         <title>Examples</title>
         <para>Examples of transformer
           usage.<screen>/api/25/dataElements?fields=dataSets~size</screen><screen>/api/25/dataElements?fields=dataSets~isEmpty</screen><screen>/api/25/dataElements?fields=dataSets~isNotEmpty</screen><screen>/api/25/dataElements/ID?fields=id~rename(i),name~rename(n)</screen><screen>/api/25/dataElementGroups?fields=id,displayName,dataElements~paging(1;20)</screen></para>
@@ -1243,7 +1243,7 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
       update, delete), from version 2.15 this is now supported on all endpoints. It should work as
       you expect, and the subsections will give more detailed information about create, update, and
       delete (read is already covered elsewhere, and have been supported for a long time).</para>
-    <section>
+    <section xml:id="webapi_metadata_create_update">
       <title>Create / update parameters</title>
       <para>The following query parameters are available for customizing your request.</para>
       <para>
@@ -1505,7 +1505,7 @@ http://server/api/25/constants/ID</screen></para>
         </tbody>
       </tgroup>
     </table>
-    <section>
+    <section xml:id="webapi_metadata_export_examples">
       <title>Metadata export examples</title>
       <para>Export all
         metadata:<screen>curl -u user:pass http://server/api/25/metadata</screen></para>
@@ -1516,7 +1516,7 @@ http://server/api/25/constants/ID</screen></para>
       <para>Export data elements and indicators where name starts with
         "ANC":<screen>curl -u user:pass http://server/api/25/metadata?defaultFilter=name:^like:ANC&amp;dataElements=true&amp;indicators=true</screen></para>
     </section>
-    <section>
+    <section xml:id="webapi_dataset_program_export_dependencies">
       <title>Data set and program export with dependencies</title>
       <para>When you want to move a whole set of data set or program metadata from one server to
         another (possibly empty) server, we have two special endpoints for just that
@@ -1677,7 +1677,7 @@ http://server/api/25/constants/ID</screen></para>
     </itemizedlist>
     <para>The formats for the currently supported object types for CSV import are listed in the
       following sections.</para>
-    <section>
+    <section xml:id="webapi_csv_data_elements">
       <title>Data elements</title>
       <table frame="all">
         <title>Data Element CSV Format</title>
@@ -1797,7 +1797,7 @@ http://server/api/25/constants/ID</screen></para>
 &quot;Women participated in skill development training&quot;,,&quot;D0001&quot;,&quot;Women participated development training&quot;
 &quot;Women participated in community organizations&quot;,,&quot;D0002&quot;,&quot;Women participated community organizations&quot;</screen>
     </section>
-    <section>
+    <section xml:id="webapi_csv_org_units">
       <title>Organisation units</title>
       <table frame="all">
         <title>Organisation Unit CSV Format</title>
@@ -1929,7 +1929,7 @@ http://server/api/25/constants/ID</screen></para>
 &quot;West province&quot;,,&quot;WESTP&quot;,&quot;ImspTQPwCqd&quot;
 &quot;East province&quot;,,&quot;EASTP&quot;,&quot;ImspTQPwCqd&quot;</screen>
     </section>
-    <section>
+    <section xml:id="webapi_csv_validation_rules">
       <title>Validation rules</title>
       <table frame="all">
         <title>Validation Rule CSV Format</title>
@@ -2043,63 +2043,7 @@ http://server/api/25/constants/ID</screen></para>
         </tgroup>
       </table>
     </section>
-    <section>
-      <title>Translations</title>
-      <table frame="all">
-        <title>Translation CSV format</title>
-        <tgroup cols="4">
-          <colspec colname="c1" colnum="1" colwidth="2.33*"/>
-          <colspec colname="c2" colnum="2" colwidth="1*"/>
-          <colspec colname="c3" colnum="3" colwidth="3.61*"/>
-          <colspec colname="c4" colnum="4" colwidth="6.17*"/>
-          <thead>
-            <row>
-              <entry>Column</entry>
-              <entry>Required</entry>
-              <entry>Value</entry>
-              <entry/>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>ObjectId</entry>
-              <entry>Yes</entry>
-              <entry>UID</entry>
-              <entry>UID of object to translate.</entry>
-            </row>
-            <row>
-              <entry>ClassName</entry>
-              <entry>Yes</entry>
-              <entry/>
-              <entry>Name of class to translate, e.g. DataElement, IndicatorGroupSet.</entry>
-            </row>
-            <row>
-              <entry>Locale</entry>
-              <entry>Yes</entry>
-              <entry/>
-              <entry>Locale value, e.g. "es", "fr".</entry>
-            </row>
-            <row>
-              <entry>Property</entry>
-              <entry>Yes</entry>
-              <entry>name | shortName | description</entry>
-              <entry>Property to translate.</entry>
-            </row>
-            <row>
-              <entry>Value</entry>
-              <entry>Yes</entry>
-              <entry/>
-              <entry>Translation.</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
-      <para>An example of the translations CSV format looks like this:</para>
-      <screen>objectid,classname,locale,property,value
-"s46m5MS0hxu","DataElement","fr","name","Doses bcg donnés"
-"UOlfIjgN8X6","DataElement","fr","name","Enfant complètement vacciné"</screen>
-    </section>
-    <section>
+    <section xml:id="webapi_csv_option_sets">
       <title>Option sets</title>
       <table frame="all">
         <title>Option Set CSV Format</title>
@@ -2175,7 +2119,7 @@ http://server/api/25/constants/ID</screen></para>
 &quot;Impact&quot;,&quot;cJ82jd8sd32&quot;,&quot;IMPACT&quot;,&quot;Medium&quot;,,&quot;MEDIUM&quot;
 &quot;Impact&quot;,&quot;cJ82jd8sd32&quot;,&quot;IMPACT&quot;,&quot;Poor&quot;,,&quot;POOR&quot;</screen>
     </section>
-    <section>
+    <section xml:id="webapi_csv_other_objects">
       <title>Other objects</title>
       <table frame="all">
         <title>Data Element Group, Category Option, Category Option Group, Organisation Unit Group
@@ -2286,7 +2230,7 @@ http://server/api/25/constants/ID</screen></para>
       queried.<screen>curl -v https://server/api/25/fileResources/xm4JwRwke0i -H &quot;Accept: application/json&quot;</screen></para>
     <para>This request will return the <emphasis role="italic">FileResource</emphasis> object as
       seen in the response of the above example.</para>
-    <section>
+    <section xml:id="webapi_file_resources_constraints">
       <title>File resource constraints</title>
       <para>
         <itemizedlist>
@@ -2347,8 +2291,8 @@ http://server/api/25/constants/ID</screen></para>
           </tbody>
         </tgroup>
       </table>
-      <section>
-        <title>Get metadata version details</title>
+    <section xml:id="webapi_metadata_versioning_examples">
+        <title>Get metadata version examples</title>
         <para><emphasis role="bold">Example: Get the current metadata version of this system</emphasis></para>
         <para><emphasis role="bold">Sample request:</emphasis>
           <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version"</screen></para>
@@ -2701,7 +2645,7 @@ http://server/api/25/constants/ID</screen></para>
           sync the missing versions using this API only.</para>
       </listitem>
     </itemizedlist>
-      <section>
+      <section xml:id="webapi_metadata_synchronization_version">
         <title>Sync metadata version</title>
         <para><emphasis role="bold">Example: Sync Version_6 from central system to this system</emphasis></para>
         <para><emphasis role="bold">Sample request:</emphasis>
@@ -2712,7 +2656,7 @@ http://server/api/25/constants/ID</screen></para>
     <title>Data values</title>
     <para>This section is about sending and reading data
       values.<screen>/api/25/dataValueSets</screen></para>
-    <section>
+    <section xml:id="webapi_sending_data_values">
       <title>Sending data values</title>
       <para>A common use-case for system integration is the need to send a set of data values from a
         third-party system into DHIS. In this example we will use the DHIS2 demo on <link
@@ -2823,7 +2767,7 @@ http://server/api/25/constants/ID</screen></para>
         returned. If you provide an invalid identifier in the XML content, <emphasis role="italic"
           >409 Conflict</emphasis> is returned together with a descriptive message.</para>
     </section>
-    <section>
+    <section xml:id="webapi_sending_bulks_data_values">
       <title>Sending bulks of data values</title>
       <para>The previous example showed us how to send a set of related data values sharing the same
         period and organisation unit. This example will show us how to send large bulks of data
@@ -2877,7 +2821,7 @@ http://server/api/25/constants/ID</screen></para>
         element will display the date of which the data value set was completed, or false if no data
         element attribute was supplied.</para>
     </section>
-    <section>
+    <section xml:id="webapi_data_values_import_parameters">
       <title>Import parameters</title>
       <para>The import process can be customized using a set of import parameters:</para>
       <table>
@@ -2954,7 +2898,7 @@ http://server/api/25/constants/ID</screen></para>
         performance. For small import files, leaving it to false will be fast. For large import
         files which contain a large number of distint data elements and organisation units, setting
         it to true will be orders of magnitude faster.</para>
-      <section>
+      <section xml:id="webapi_data_values_identifier_schemes">
         <title>Identifier schemes</title>
         <para>Regarding the id schemes, by default the identifiers used in the XML messages uses the
           DHIS2 stable object identifiers referred to as <emphasis role="italic">uid</emphasis>. In
@@ -3004,7 +2948,7 @@ http://server/api/25/constants/ID</screen></para>
           &quot;attributeDnrLSdo4hMl&quot;.</para>
       </section>
     </section>
-    <section>
+    <section xml:id="webapi_data_values_csv">
       <title>CSV data value format</title>
       <para>The following section describes the CSV format used in DHIS2. The first row is assumed
         to be a header row and will be ignored during import.</para>
@@ -3080,7 +3024,7 @@ http://server/api/25/constants/ID</screen></para>
 &quot;DUSpd8Jq3M7&quot;,&quot;201202&quot;,&quot;gP6hn503KUX&quot;,&quot;V6L425pT3A0&quot;,,&quot;10&quot;,&quot;bombali&quot;,&quot;2010-04-17&quot;
 &quot;DUSpd8Jq3M7&quot;,&quot;201202&quot;,&quot;OjTS752GbZE&quot;,&quot;V6L425pT3A0&quot;,,&quot;9&quot;,&quot;bombali&quot;,&quot;2010-04-06&quot;</screen>
     </section>
-    <section>
+    <section xml:id="webapi_data_values_template">
       <title>Generating data value set template</title>
       <para>To generate a data value set template for a certain data set you can use the <emphasis
           role="italic">/api/dataSets/&lt;id&gt;/dataValueSet</emphasis> resource. XML and JSON
@@ -3131,7 +3075,7 @@ http://server/api/25/constants/ID</screen></para>
         </tgroup>
       </table>
     </section>
-    <section>
+    <section xml:id="webapi_reading_data_values">
       <title>Reading data values</title>
       <para>This section explains how to retrieve data values from the Web API by interacting with
         the <emphasis role="italic">dataValueSets</emphasis> resource. Data values can be retrieved
@@ -3310,7 +3254,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
           </listitem>
         </itemizedlist></para>
     </section>
-    <section>
+    <section xml:id="webapi_sending_individual_data_values">
       <title>Sending, reading and deleting individual data values</title>
       <para>This example will show how to send individual data values to be saved in a request. This
         can be achieved by sending a <emphasis role="italic">POST</emphasis> request to the
