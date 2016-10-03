@@ -1491,6 +1491,17 @@ http://server/api/25/constants/ID</screen></para>
                 >name</emphasis> if available, or <emphasis role="bold">created</emphasis> if
               not.</entry>
           </row>
+          <row>
+            <entry>translate</entry>
+            <entry>false/true</entry>
+            <entry>Enable translations. Be aware that this is turned off by default (in other
+              endpoints this is on by default).</entry>
+          </row>
+          <row>
+            <entry>locale</entry>
+            <entry>&lt;locale></entry>
+            <entry>Change from user locale, to your own custom locale.</entry>
+          </row>
         </tbody>
       </tgroup>
     </table>
@@ -1617,6 +1628,12 @@ http://server/api/25/constants/ID</screen></para>
             <entry>false, true</entry>
             <entry>Skip validation for import. <emphasis role="bold">NOT
               RECOMMENDED</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>async</entry>
+            <entry>false, true</entry>
+            <entry>Asynchronous import, returns immediately with a <emphasis>Location</emphasis>
+              header pointing to the location of the <emphasis>importReport</emphasis>.</entry>
           </row>
         </tbody>
       </tgroup>
