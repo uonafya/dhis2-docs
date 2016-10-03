@@ -1491,6 +1491,17 @@ http://server/api/25/constants/ID</screen></para>
                 >name</emphasis> if available, or <emphasis role="bold">created</emphasis> if
               not.</entry>
           </row>
+          <row>
+            <entry>translate</entry>
+            <entry>false/true</entry>
+            <entry>Enable translations. Be aware that this is turned off by default (in other
+              endpoints this is on by default).</entry>
+          </row>
+          <row>
+            <entry>locale</entry>
+            <entry>&lt;locale></entry>
+            <entry>Change from user locale, to your own custom locale.</entry>
+          </row>
         </tbody>
       </tgroup>
     </table>
@@ -1617,6 +1628,12 @@ http://server/api/25/constants/ID</screen></para>
             <entry>false, true</entry>
             <entry>Skip validation for import. <emphasis role="bold">NOT
               RECOMMENDED</emphasis>.</entry>
+          </row>
+          <row>
+            <entry>async</entry>
+            <entry>false, true</entry>
+            <entry>Asynchronous import, returns immediately with a <emphasis>Location</emphasis>
+              header pointing to the location of the <emphasis>importReport</emphasis>.</entry>
           </row>
         </tbody>
       </tgroup>
@@ -8242,6 +8259,12 @@ ORDER BY oul.level, par.name, ou.name</screen>
                 organisation units in the metadata.</entry>
               <entry>false | true</entry>
             </row>
+            <row>
+              <entry>eventStatus</entry>
+              <entry>No</entry>
+              <entry>Specify status of events to include.</entry>
+              <entry>ACTIVE | COMPLETED | SCHEDULE | OVERDUE | SKIPPED</entry>
+            </row>
           </tbody>
         </tgroup>
       </table>
@@ -8940,7 +8963,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       report for a data set and orgunit for 2015 looks like
       this:<screen>GET /api/dataSetReport?ds=BfMAe6Itzgt&amp;pe=201610&amp;ou=ImspTQPwCqd&amp;selectedUnitOnly=false</screen></para>
   </section>
-  <section>
+  <section xml:id="webapi_push_analysis">
     <title>Push Analysis</title>
     <para>The push analysis api includes endpoints for previewing a push analysis report for the
       logged in user and manualy triggering the system to generate and send push analysis reports,
