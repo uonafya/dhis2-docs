@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<section version="5.0"
+    xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+    xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook" xml:id="about_tracker_program">
+    <title>[Work in progress] About tracker programs</title>
+    <para>A tracker program needs several types of metadata that you create in different
+        apps:</para>
+    <?oxy_comment_start author="cecilia" timestamp="20161004T112941+0200" comment="Still applicable?"?>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="1"?>
+    <para>Tracked Entity Form</para>
+    <?oxy_comment_end?>
+    <para>Create custom tracked entity data capture forms with tracked entity attributes.</para>
+    <para>Aggregation Query Builder</para>
+    <para>Set up aggregation rules for the process of aggregating tracked entity data to statistical
+        data.</para>
+    <para>Automated
+        <?oxy_comment_start author="cecilia" timestamp="20161004T113206+0200" comment="In the Schedule app?"?>Aggregation<?oxy_comment_end?></para>
+    <para>Schedule an automated tracked entity aggregation process, e.g. to run all pre-defined
+        aggregation queries every midnight. </para>
+    <?oxy_custom_end mid="1"?>
+    <table frame="all">
+        <title>Program metadata objects in the Program / Attributes app</title>
+        <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+            <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+            <colspec colname="c2" colnum="3" colwidth="1.0*"/>
+            <thead>
+                <row>
+                    <entry>
+                        <para>Object type</para>
+                    </entry>
+                    <entry>Description</entry>
+                    <entry>
+                        <para>Available functions</para>
+                    </entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>
+                        <para>Program</para>
+                    </entry>
+                    <entry>
+                        <para>A program has program stages and defines which actions should be taken
+                            at each stage.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, share, delete, show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program stage</para>
+                    </entry>
+                    <entry/>
+                    <entry/>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program indicator</para>
+                    </entry>
+                    <entry/>
+                    <entry/>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program rule</para>
+                    </entry>
+                    <entry/>
+                    <entry/>
+                </row>
+                <row>
+                    <entry>
+                        <para>Validation rule</para>
+                    </entry>
+                    <entry/>
+                    <entry/>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program notifications ((Reminder message template - old)</para>
+                    </entry>
+                    <entry>
+                        <para>Automated Message Reminder </para>
+                        <para>Set reminders to be automatically sent to enrolled tracked entity
+                            instances before scheduled appointments and after missed visits.</para>
+                    </entry>
+                    <entry/>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program indicator group</para>
+                    </entry>
+                    <entry/>
+                    <entry/>
+                </row>
+                <row>
+                    <entry>
+                        <para>Design custom registration form</para>
+                    </entry>
+                    <entry/>
+                    <entry/>
+                </row>
+            </tbody>
+        </tgroup>
+    </table>
+    <table frame="all">
+        <title>Program metadata objects in the Maintenance app</title>
+        <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+            <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+            <colspec colname="c2" colnum="3" colwidth="1.0*"/>
+            <thead>
+                <row>
+                    <entry>
+                        <para>Object type</para>
+                    </entry>
+                    <entry>Description</entry>
+                    <entry>
+                        <para>Available functions</para>
+                    </entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>
+                        <para>Tracked entity</para>
+                    </entry>
+                    <entry>
+                        <para>Types of entities which can be tracked through the system. Can be
+                            anything from persons to commodities, for example a medicine or a
+                            person.</para>
+                        <para>A program must have one tracked entity. And entity registered must be
+                            specified an tracked entity. To enrol a tracked entity instance into a
+                            program, the tracked entity of an entity and tracked entity of a program
+                            must be the same.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, clone, delete, show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Tracked entity attribute</para>
+                    </entry>
+                    <entry>
+                        <para>Used to register extra information for a tracked entity.</para>
+                        <para>Can be shared between programs.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, clone, share, delete, show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Tracked entity attribute group</para>
+                    </entry>
+                    <entry>
+                        <para>Used to display attributes in default registration form by
+                            groups.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, clone, delete, show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Relationship type</para>
+                    </entry>
+                    <entry>
+                        <para>Defines the relationship between tracked entity A and tracked entity
+                            B, for example mother and child.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, clone, delete, show details and translate</para>
+                    </entry>
+                </row>
+            </tbody>
+        </tgroup>
+    </table>
+</section>
