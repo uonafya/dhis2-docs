@@ -29,6 +29,9 @@
                 code.</para>
         </listitem>
         <listitem>
+            <para>(Optional) Type a <emphasis role="bold">Description</emphasis>.</para>
+        </listitem>
+        <listitem>
             <para>Select an <emphasis role="bold">Option set</emphasis>.</para>
         </listitem>
         <listitem>
@@ -357,13 +360,43 @@ Verify with SME: correct with org units in plural?
             </table>
         </listitem>
         <listitem>
-            <para><?oxy_comment_start author="cecilia" timestamp="20160929T115527+0200" comment="Add missing step."?>Unique<?oxy_comment_end?></para>
+            <para>Select <emphasis role="bold">Unique</emphasis> to specify that the values of the
+                tracked entity attribute is unique.</para>
+            <para>There are two options for the unique setting:</para>
+            <?oxy_comment_start author="cecilia" timestamp="20161004T115710+0200" comment="At next reivsion: rewrite list."?>
+            <itemizedlist>
+                <listitem>
+                    <para><emphasis role="bold">Entire system</emphasis>: The values of the tracked
+                        entity attribute can duplicate with values which belong to other tracked
+                        entity attributes. But the values in this tracked entity attribute must not
+                        duplicate.</para>
+                    <para>Select <emphasis role="bold">Automatically generated</emphasis> to allow
+                        automatic generation of the tracked entity attribute value. When the
+                        generate setting is selected on, an optional field for specifying pattern
+                        also displays. Enter an amount of numbers into this field equal to the
+                        ciphers you want in the generated value. A pattern of 0000 would result in a
+                        generated value above 1000 and below 9999. The number of ciphers should at
+                        least allow 20 % more values than you expect is needed for keeping the ID
+                        unique.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold">Organisation unit</emphasis>: The values of the
+                        tracked entity attribute must not duplicate in the same organisation
+                        unit.</para>
+                </listitem>
+            </itemizedlist>
+            <?oxy_comment_end?>
         </listitem>
         <listitem>
-            <para><?oxy_comment_start author="cecilia" timestamp="20160929T115533+0200" comment="Add missing step"?>Inherit<?oxy_comment_end?></para>
+            <?oxy_comment_start author="cecilia" timestamp="20161004T120103+0200" comment="Review wording."?>
+            <para>Select <emphasis role="bold">Inherit</emphasis> to registry a new entity for
+                relationship with an available entity, all inherit entity attribute values of the
+                entity will be pre-filled in the registration form.</para>
+            <?oxy_comment_end?>
         </listitem>
         <listitem>
-            <para>Select a <emphasis role="bold">Legend set</emphasis>.</para>
+            <para>Select <?oxy_comment_start author="cecilia" timestamp="20161004T120140+0200" comment="Add a note that you can add a legend here, click plus icon"?>a<?oxy_comment_end?>
+                <emphasis role="bold">Legend</emphasis>.</para>
         </listitem>
         <listitem>
             <para>Click <emphasis role="bold">Save</emphasis>.</para>

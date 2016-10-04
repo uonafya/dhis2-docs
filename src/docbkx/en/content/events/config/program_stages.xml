@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<section version="5.0"
+    xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:mth="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+<title>Manage program stages</title>
+    <para></para>
+    <section>
+        <title>Program
+            <?oxy_comment_start author="cecilia" timestamp="20161004T121023+0200" comment="Copied from legacy Tracker topic."?>stage<?oxy_comment_end?></title>
+        <para>To define a program stage, click the row corresponding to the program you would like,
+            then <emphasis role="italic">View program stages</emphasis> link in context menu. In
+                <emphasis role="italic">Program stage management</emphasis> form, click <emphasis
+                role="italic">Add new</emphasis> button.</para>
+        <para>To sort program stages by scheduled days, click <emphasis role="italic">Sort by
+                scheduled</emphasis> days button.</para>
+        <section>
+            <title>Base information</title>
+            <para><emphasis role="italic">Program stage details</emphasis> section - </para>
+            <itemizedlist>
+                <listitem>
+                    <para><emphasis role="italic">Name</emphasis> - Name of the program stage</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Description</emphasis> - The description of the
+                        program stage</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Scheduled days from start</emphasis> - The minimum
+                        number of days to wait for starting the program stage.</para>
+                </listitem>
+            </itemizedlist>
+            <para><emphasis role="italic">Repeatable program stage details</emphasis> section - </para>
+            <itemizedlist>
+                <listitem>
+                    <para><emphasis role="italic">Repeatable</emphasis> - specify the program stage
+                        as repeatable or not.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Display generate event box after
+                            completed</emphasis> - Uncheck on it if you don&apos;t want to display
+                            <emphasis role="italic">Create new event box </emphasis>to create new
+                        event for a repeatable stage after clicking <emphasis role="italic"
+                            >Complete</emphasis> button for an event of the stage in data entry
+                        form. This field is checked as default.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Standard interval days</emphasis> - Specify the
+                        number of days to repeat the repeatable program stage.</para>
+                </listitem>
+            </itemizedlist>
+            <para><emphasis role="italic">Form details</emphasis> section - </para>
+            <itemizedlist>
+                <listitem>
+                    <para><emphasis role="italic">Auto-generate event</emphasis> - Uncheck this to
+                        prevent for creating an event of this program stage automatically when a
+                        entity enroll into the program.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Open data entry form after enrollment</emphasis> -
+                        Automatically open the event of this stage as soon as the entity has
+                        enrolled into the program.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Report Date to use</emphasis> - The date is used
+                        for report date of the event opened automatically. There are two options ,
+                        include <emphasis role="italic">Incident date</emphasis> or <emphasis
+                            role="italic">Enrollment date</emphasis>. </para>
+                    <para>If the Report date to use is selected as one of those two(&apos;incident
+                        date&apos;/&apos;enrollment date&apos;), in Dashboard, the &apos;Report
+                        date&apos; of the event will be set as one of those two. </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Block entry form after completed</emphasis> -
+                        Check on it for blocking entry form after completed the event of this stage.
+                        The data values in the entry form cannot be changed until the status of the
+                        event is reset as incomplete.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Ask user to complete program when stage is
+                            completed</emphasis> - If this property is set, a popup will come up to
+                        ask if user wants to create the event of next stage.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Ask user to create new event when stage is
+                            complete</emphasis> - If this property is set, a popup will come up to
+                        ask if user wants to create a new event of this stage when an event of this
+                        stage completed. This property is active only when Repeatable field is
+                        set.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Generate events by enrollment date</emphasis> -
+                        Check on it for auto-generating due dates of events from program-stages of
+                        this program based on the enrollment date. If it is not checked, the due
+                        dates are generated based on incident date.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Capture coordinates</emphasis> - Many types of
+                        events may be recorded at a facility or be <emphasis role="italic"
+                            >owned-by</emphasis> a health worker at a facility, but actually take
+                        place somewhere in the community. This field is checked to get coordinates
+                        of the place.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Complete allowed only if validation
+                            passes</emphasis> - The event created by this program stage is completed
+                        only when all validation rules are passed.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Description of report date</emphasis> - The
+                        description for report date which is displayed in case entry form.</para>
+                </listitem>
+            </itemizedlist>
+            <para><emphasis role="italic">Data elements <emphasis role="italic"
+                    >section</emphasis></emphasis> - Select entity data elements which belong to the
+                program stage. There are four properties for each data element selected-</para>
+            <orderedlist>
+                <listitem>
+                    <para><emphasis role="italic">Compulsory</emphasis> - The value of this data
+                        element must be filled into data entry form before completing the event.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Allow provided elsewhere</emphasis> - Specify if
+                        the value of this data element comes from other facility, not in the
+                        facility where this data is entered. </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Display in reports </emphasis>- Display the value
+                        of this data element into the SEWoR data entry function. </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Date in future</emphasis> - Allow to select a date
+                        in future for date data elements.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section>
+            <title>Program stage entry form</title>
+            <para>A program stage has three types of data entry form - </para>
+            <orderedlist>
+                <listitem>
+                    <para><emphasis role="italic">Custom data entry form</emphasis> - Define a data
+                        entry form as HTML page. click on the program stage which you would like and
+                        select to define custom data entry form. The system supports to define a
+                        custom entry form with multi stages. So this form can be re-used in other
+                        stages of the same program.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Section data entry form</emphasis> - Group some
+                        data elements which belong to the program stage as sections and display data
+                        elements by each section. Click on the program stage which you would like
+                        and select <emphasis role="italic">Section management</emphasis> link to
+                        define section data entry form.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Default data entry form</emphasis> - List all data
+                        elements which belong to the program stage.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section>
+            <title>Program stage template reminder</title>
+            <para>This module also supports to define template message reminders which are sent to
+                users/entities. To access to this function, click on the program stage which you
+                would like to define template message reminder and select <emphasis role="italic">
+                    View template reminder message</emphasis> link. </para>
+            <itemizedlist>
+                <listitem>
+                    <para><emphasis role="italic">Name</emphasis> - Name of description</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Send base on</emphasis> - There are two options,
+                        include :</para>
+                    <para>1) <emphasis role="italic">Days scheduled</emphasis> - The message is sent
+                        in day. </para>
+                    <para>2) <emphasis role="italic">Complete event </emphasis>- The message is sent
+                        when the event of an entity is completed.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Date to compare</emphasis> - This is the date used
+                        for calculating the date to send the message. There are 2 options,
+                        include:</para>
+                    <para>1) Enrollment Date</para>
+                    <para>2) Incident Date </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Send message X days before/after scheduled date
+                        </emphasis>- The number of days needs to calculate the date for sending the
+                        message by scheduled. Just enter a number for this field in the case
+                            <emphasis role="italic">Send base on</emphasis> with value as Days
+                        schedule.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Recipients</emphasis> - Specify the kind of
+                        persons who will receive the message. There are 5 options, include - </para>
+                    <para>1) Tracked entity instance (SMS only)</para>
+                    <para>2) Attribute users </para>
+                    <para>3) Organisation unit phone number (SMS only)</para>
+                    <para>4) All users in organisation unit</para>
+                    <para>5) User group</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">User group</emphasis> - Select one user group if
+                            <emphasis role="italic">Recipients</emphasis> field is selected as User
+                        group.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Message type</emphasis> - This is the types of
+                        message. There are 3 options, include - </para>
+                    <para>1) Direct SMS - This kind of SMS message is linked to the program of an
+                        entity after sending to recipients.</para>
+                    <para>2) Message</para>
+                    <para>3) Both</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Parameters</emphasis> - Provide parameters which
+                        are used for generating a message for each entity. The parameters include
+                            <emphasis role="italic">entity name</emphasis>,<emphasis role="italic">
+                            program name</emphasis>, <emphasis role="italic">incident date, days
+                            since incident date, enrollment date, days since enrollment date,
+                            organisation unit name</emphasis>. Double-click on an option to insert
+                        it into template message field below. </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Message</emphasis> - Content of template message.
+                        E.g. Dear {patient-name}, please come to your appointment at {due-date}.
+                    </para>
+                </listitem>
+            </itemizedlist>
+            <note>
+                <para>A custom data entry form can have data elements which belong to other stages
+                    of the program. This form can be reused for the stages of program. When the form
+                    is opened to enter data, the data values which belong to other events will be
+                    displayed if any, but user can not modify them. Just only data values with data
+                    elements which belong to the stage selected are editable.</para>
+            </note>
+        </section>
+    </section>
+</section>
