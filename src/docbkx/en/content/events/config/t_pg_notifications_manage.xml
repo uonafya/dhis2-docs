@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<section version="5.0"
+    xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+    xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+    <title>Manage program
+        <?oxy_comment_start author="cecilia" timestamp="20161004T161503+0200" comment="New feature, see notes and refer to talk with SME."?>notifications<?oxy_comment_end?></title>
+    <?oxy_custom_start type="oxy_content_highlight" color="180,215,3"?>
+    <section>
+        <title>Schedule automated message
+            <?oxy_comment_start author="cecilia" timestamp="20161004T121502+0200" comment="Copied from obsolete Tracker topic."?>reminder<?oxy_comment_end?></title>
+        <para>This function is used for scheduling message reminders to be automatically sent to
+            enrolled entities XX days before scheduled appointments and/or XX days after a missed
+            visit. When the schedule is started, messages for each entity are generated based on
+            templates defined in each stage at midnight (Ref.<emphasis role="italic"> Add program
+                stage </emphasis>section for defining a template message). On the time, the
+            scheduled messages are sent.</para>
+        <para>Click <emphasis role="italic">Start</emphasis> button will enable the scheduled job to
+            run the task. Messages are generated based on templates defined in each stages at
+            mid-night and sent at a pre-determined time or can be run immediately by pressing
+                <emphasis role="italic">Execute</emphasis> button.</para>
+        <para>Click <emphasis role="italic">Execute</emphasis> button to generate and send each
+            message for each entity at the time the button clicked.</para>
+        <section>
+            <title>Program template reminder</title>
+            <para>This module also supports to define template message reminders which are sent to
+                users/entities for multi events registration and single event with registration
+                programs. To access to this function, click on the program which you would like to
+                define template message reminder and select <emphasis role="italic"> View template
+                    reminder message</emphasis> link. </para>
+            <itemizedlist>
+                <listitem>
+                    <para><emphasis role="italic">Name</emphasis> - Name of description</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Send base on</emphasis> - There are three options,
+                        include :</para>
+                    <para>1) <emphasis role="italic">Days scheduled</emphasis> - The message is sent
+                        in day. </para>
+                    <para>2) <emphasis role="italic">Complete program</emphasis> - The message is
+                        sent when the program of TEI is completed. </para>
+                    <para>3) <emphasis role="italic">Program enrollment</emphasis> - The message is
+                        sent when TEI enrols into the program. </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Date to compare</emphasis> - This is the date used
+                        for calculating the date to send the message. There are 2 options, include - </para>
+                    <para>1) Enrollment Date</para>
+                    <para>2) Incident Date </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Send message X days before/after scheduled date
+                        </emphasis>- The number of days needs to calculate the date for sending the
+                        message by scheduled. Just enter a number for this field in the case
+                            <emphasis role="italic">Send base on</emphasis> with value as Days
+                        schedule.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Recipients</emphasis> - Specify the kind of
+                        persons who will receive the message. There are 5 options, include - </para>
+                    <para>1) Tracked entity instance (SMS only)</para>
+                    <para>2) Attribute users </para>
+                    <para>3) Organisation unit phone number (SMS only)</para>
+                    <para>4) All users in organisation unit</para>
+                    <para>5) User group</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">User group</emphasis> - Select one user group if
+                            <emphasis role="italic">Recipients</emphasis> field is selected as User
+                        group.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Message type</emphasis> - This is the types of
+                        message. There are 3 options, include - </para>
+                    <para>1) Direct SMS - This kind of SMS message is linked to the program of an
+                        entity after sending to recipients.</para>
+                    <para>2) Message</para>
+                    <para>3) Both</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Parameters</emphasis> - Provide parameters which
+                        are used for generating a message for each entity. The parameters include
+                            <emphasis role="italic">entity name</emphasis>,<emphasis role="italic">
+                            program name</emphasis>, <emphasis role="italic">incident date, days
+                            since incident date, enrollment date, days since enrollment date,
+                            organisation unit name</emphasis>. Double-click on an option to insert
+                        it into template message field below. </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Message</emphasis> - Content of template message.
+                        E.g. Dear {patient-name}, please come to your appointment at {due-date}.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </section>
+    </section>
+    <?oxy_custom_end?>
+</section>
