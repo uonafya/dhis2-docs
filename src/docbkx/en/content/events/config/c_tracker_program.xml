@@ -7,21 +7,29 @@
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
     xmlns:db="http://docbook.org/ns/docbook" xml:id="about_tracker_program">
     <title>[Work in progress] About tracker programs</title>
+    <para>A program must be specified with only one tracked entity. And just entities what/who have
+        the tracked entity as same as the tracked entity of program can enroll into that
+        program.</para>
+    <para>There are three type of programs:</para>
+    <itemizedlist>
+        <listitem>
+            <para>Multi events with registration program (MEWR):</para>
+            <para>Used for programs with many stages, for example Mother Health Program with stages
+                such as ANC Visit (2-4+), Delivery, PNC Visit.</para>
+        </listitem>
+        <listitem>
+            <para>Single event with registration program (SEWR):</para>
+            <para>Used for birth certificate and death certificate. This type of programs have only
+                one stage. An TEI just can enroll into the program one time.</para>
+        </listitem>
+        <listitem>
+            <para>Single event without registration program ( anonymous program or SEWoR):</para>
+            <para>Used for saving health cases without registering any information into the system.
+                This type of programs have only one stage.</para>
+        </listitem>
+    </itemizedlist>
     <para>A tracker program needs several types of metadata that you create in different
         apps:</para>
-    <?oxy_comment_start author="cecilia" timestamp="20161004T112941+0200" comment="Still applicable?"?>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0" mid="1"?>
-    <para>Tracked Entity Form</para>
-    <?oxy_comment_end?>
-    <para>Create custom tracked entity data capture forms with tracked entity attributes.</para>
-    <para>Aggregation Query Builder</para>
-    <para>Set up aggregation rules for the process of aggregating tracked entity data to statistical
-        data.</para>
-    <para>Automated
-        <?oxy_comment_start author="cecilia" timestamp="20161004T113206+0200" comment="In the Schedule app?"?>Aggregation<?oxy_comment_end?></para>
-    <para>Schedule an automated tracked entity aggregation process, e.g. to run all pre-defined
-        aggregation queries every midnight. </para>
-    <?oxy_custom_end mid="1"?>
     <table frame="all">
         <title>Program metadata objects in the Program / Attributes app</title>
         <tgroup cols="3">
@@ -42,7 +50,7 @@
             <tbody>
                 <row>
                     <entry>
-                        <para>Program</para>
+                        <para><?oxy_comment_start author="cecilia" timestamp="20161004T162501+0200" comment="Documented" flag="done"?>Program<?oxy_comment_end?></para>
                     </entry>
                     <entry>
                         <para>A program has program stages and defines which actions should be taken
@@ -61,17 +69,23 @@
                 </row>
                 <row>
                     <entry>
-                        <para>Program indicator</para>
+                        <para>Program
+                            <?oxy_comment_start author="cecilia" timestamp="20161004T162510+0200" comment="Documented" flag="done"?>indicator<?oxy_comment_end?></para>
                     </entry>
                     <entry/>
-                    <entry/>
+                    <entry>
+                        <para>Create, edit, share, delete, show details and translate</para>
+                    </entry>
                 </row>
                 <row>
                     <entry>
-                        <para>Program rule</para>
+                        <para>Program
+                            <?oxy_comment_start author="cecilia" timestamp="20161004T162532+0200" comment="Documented" flag="done"?>rule<?oxy_comment_end?></para>
                     </entry>
                     <entry/>
-                    <entry/>
+                    <entry>
+                        <para>Create, edit, delete, show details and translate</para>
+                    </entry>
                 </row>
                 <row>
                     <entry>
@@ -96,7 +110,9 @@
                         <para>Program indicator group</para>
                     </entry>
                     <entry/>
-                    <entry/>
+                    <entry>
+                        <para>Create, edit, delete, show details and translate</para>
+                    </entry>
                 </row>
                 <row>
                     <entry>
