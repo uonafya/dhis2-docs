@@ -5,169 +5,212 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
-    xmlns:db="http://docbook.org/ns/docbook">
-    <title>Manage program
+    xmlns:db="http://docbook.org/ns/docbook" xml:id="program_notifications">
+    <title>Manage <?oxy_comment_start author="cecilia" timestamp="20161005T123636+0200" comment="At next revision, add doc about how you delete and edit "?>program<?oxy_comment_end?>
         <?oxy_comment_start author="cecilia" timestamp="20161004T161503+0200" comment="New feature, see notes and refer to talk with SME."?>notifications<?oxy_comment_end?></title>
-    <?oxy_custom_start type="oxy_content_highlight" color="180,215,3"?>
     <section>
-        <title>Schedule automated message
-            <?oxy_comment_start author="cecilia" timestamp="20161004T121502+0200" comment="Copied from obsolete Tracker topic."?>reminder<?oxy_comment_end?></title>
-        <para>This function is used for scheduling message reminders to be automatically sent to
-            enrolled entities XX days before scheduled appointments and/or XX days after a missed
-            visit. When the schedule is started, messages for each entity are generated based on
-            templates defined in each stage at midnight (Ref.<emphasis role="italic"> Add program
-                stage </emphasis>section for defining a template message). On the time, the
-            scheduled messages are sent.</para>
-        <para>Click <emphasis role="italic">Start</emphasis> button will enable the scheduled job to
-            run the task. Messages are generated based on templates defined in each stages at
-            mid-night and sent at a pre-determined time or can be run immediately by pressing
-                <emphasis role="italic">Execute</emphasis> button.</para>
-        <para>Click <emphasis role="italic">Execute</emphasis> button to generate and send each
-            message for each entity at the time the button clicked.</para>
-    </section>
-    <section>
-        <title>Program template reminder</title>
-        <para>This module also supports to define template message reminders which are sent to
-            users/entities for multi events registration and single event with registration
-            programs. To access to this function, click on the program which you would like to
-            define template message reminder and select <emphasis role="italic"> View template
-                reminder message</emphasis> link. </para>
-        <itemizedlist>
-            <listitem>
-                <para><emphasis role="italic">Name</emphasis> - Name of description</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Send base on</emphasis> - There are three options,
-                    include :</para>
-                <para>1) <emphasis role="italic">Days scheduled</emphasis> - The message is sent in
-                    day. </para>
-                <para>2) <emphasis role="italic">Complete program</emphasis> - The message is sent
-                    when the program of TEI is completed. </para>
-                <para>3) <emphasis role="italic">Program enrollment</emphasis> - The message is sent
-                    when TEI enrols into the program. </para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Date to compare</emphasis> - This is the date used for
-                    calculating the date to send the message. There are 2 options, include - </para>
-                <para>1) Enrollment Date</para>
-                <para>2) Incident Date </para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Send message X days before/after scheduled date
-                    </emphasis>- The number of days needs to calculate the date for sending the
-                    message by scheduled. Just enter a number for this field in the case <emphasis
-                        role="italic">Send base on</emphasis> with value as Days schedule.</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Recipients</emphasis> - Specify the kind of persons
-                    who will receive the message. There are 5 options, include - </para>
-                <para>1) Tracked entity instance (SMS only)</para>
-                <para>2) Attribute users </para>
-                <para>3) Organisation unit phone number (SMS only)</para>
-                <para>4) All users in organisation unit</para>
-                <para>5) User group</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">User group</emphasis> - Select one user group if
-                        <emphasis role="italic">Recipients</emphasis> field is selected as User
-                    group.</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Message type</emphasis> - This is the types of
-                    message. There are 3 options, include - </para>
-                <para>1) Direct SMS - This kind of SMS message is linked to the program of an entity
-                    after sending to recipients.</para>
-                <para>2) Message</para>
-                <para>3) Both</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Parameters</emphasis> - Provide parameters which are
-                    used for generating a message for each entity. The parameters include <emphasis
-                        role="italic">entity name</emphasis>,<emphasis role="italic"> program
-                        name</emphasis>, <emphasis role="italic">incident date, days since incident
-                        date, enrollment date, days since enrollment date, organisation unit
-                        name</emphasis>. Double-click on an option to insert it into template
-                    message field below. </para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Message</emphasis> - Content of template message. E.g.
-                    Dear {patient-name}, please come to your appointment at {due-date}. </para>
-            </listitem>
-        </itemizedlist>
-    </section>
-    <section>
-        <title>Program stage template reminder</title>
-        <para>This module also supports to define template message reminders which are sent to
-            users/entities. To access to this function, click on the program stage which you would
-            like to define template message reminder and select <emphasis role="italic"> View
-                template reminder message</emphasis> link. </para>
-        <itemizedlist>
-            <listitem>
-                <para><emphasis role="italic">Name</emphasis> - Name of description</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Send base on</emphasis> - There are two options,
-                    include :</para>
-                <para>1) <emphasis role="italic">Days scheduled</emphasis> - The message is sent in
-                    day. </para>
-                <para>2) <emphasis role="italic">Complete event </emphasis>- The message is sent
-                    when the event of an entity is completed.</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Date to compare</emphasis> - This is the date used for
-                    calculating the date to send the message. There are 2 options, include:</para>
-                <para>1) Enrollment Date</para>
-                <para>2) Incident Date </para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Send message X days before/after scheduled date
-                    </emphasis>- The number of days needs to calculate the date for sending the
-                    message by scheduled. Just enter a number for this field in the case <emphasis
-                        role="italic">Send base on</emphasis> with value as Days schedule.</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Recipients</emphasis> - Specify the kind of persons
-                    who will receive the message. There are 5 options, include - </para>
-                <para>1) Tracked entity instance (SMS only)</para>
-                <para>2) Attribute users </para>
-                <para>3) Organisation unit phone number (SMS only)</para>
-                <para>4) All users in organisation unit</para>
-                <para>5) User group</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">User group</emphasis> - Select one user group if
-                        <emphasis role="italic">Recipients</emphasis> field is selected as User
-                    group.</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Message type</emphasis> - This is the types of
-                    message. There are 3 options, include - </para>
-                <para>1) Direct SMS - This kind of SMS message is linked to the program of an entity
-                    after sending to recipients.</para>
-                <para>2) Message</para>
-                <para>3) Both</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Parameters</emphasis> - Provide parameters which are
-                    used for generating a message for each entity. The parameters include <emphasis
-                        role="italic">entity name</emphasis>,<emphasis role="italic"> program
-                        name</emphasis>, <emphasis role="italic">incident date, days since incident
-                        date, enrollment date, days since enrollment date, organisation unit
-                        name</emphasis>. Double-click on an option to insert it into template
-                    message field below. </para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="italic">Message</emphasis> - Content of template message. E.g.
-                    Dear {patient-name}, please come to your appointment at {due-date}. </para>
-            </listitem>
-        </itemizedlist>
+        <title>About program notifications</title>
+        <para>You can create program notifications for programs and program stages. The
+            notifications are send either via the internal DHIS2 messaging system, via e-mail or via
+            text messages (SMS). You can use program notifications to, for example, send an
+            automatic reminder to a tracked entity 10 days before a scheduled appointment.</para>
         <note>
-            <para>A custom data entry form can have data elements which belong to other stages of
-                the program. This form can be reused for the stages of program. When the form is
-                opened to enter data, the data values which belong to other events will be displayed
-                if any, but user can not modify them. Just only data values with data elements which
-                belong to the stage selected are editable.</para>
+            <para>To receive a program notification, the recipient must have an e-mail address or a
+                phone number in his/her user profile.</para>
         </note>
     </section>
-    <?oxy_custom_end?>
+    <section>
+        <title>Create a program notification</title>
+        <orderedlist>
+            <listitem>
+                <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click
+                        <emphasis role="bold">Program</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click the relevant program and select <emphasis role="bold">View program
+                        notifications</emphasis>.</para>
+                <para>A list of existing program notifications for the selected program opens. If
+                    the program doesn't have any program notifications, the list is empty.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Add new</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Enter a <emphasis role="bold"
+                        ><?oxy_comment_start author="cecilia" timestamp="20161003T212441+0200" comment="Verify with SME: No code or short name fields in UI, correct?"?>Name<?oxy_comment_end?></emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>In the <emphasis role="bold">Trigger by</emphasis> field, select what should
+                    trigger the notification. You can select</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Program enrollment: the notification is sent when the TEI enrols in
+                            the program</para>
+                    </listitem>
+                    <listitem>
+                        <para>Program completion: the notification is sent when the program of TEI
+                            is completed</para>
+                    </listitem>
+                    <listitem>
+                        <para>Days scheduled (incident date): the notification is sent XX number of
+                            days before or after the incident date</para>
+                    </listitem>
+                    <listitem>
+                        <para>Days scheduled (enrollment date): the notification is sent XX number
+                            of days before or after the enrollment date</para>
+                    </listitem>
+                </itemizedlist>
+                <note>
+                    <para>If you select "Days scheduled" you also need to enter the number of days
+                        before or after the scheduled date that the notification will be
+                        send.</para>
+                </note>
+            </listitem>
+            <listitem>
+                <para>In the <emphasis role="bold">Recipients</emphasis> field, select who should
+                    receive the notification. You can select:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Tracked entity instance: receives program notification via e-mail or
+                            text message</para>
+                    </listitem>
+                    <listitem>
+                        <para>Organisation unit contact: receives program notification via e-mail or
+                            text message</para>
+                    </listitem>
+                    <listitem>
+                        <para>Users at organisation unit: receives program notification via the
+                            internal DHIS2 messaging system</para>
+                    </listitem>
+                    <listitem>
+                        <para>User group: receives program notification via the internal DHIS2
+                            messaging system</para>
+                    </listitem>
+                </itemizedlist>
+            </listitem>
+            <listitem>
+                <para>Create the <emphasis role="bold">Subject template</emphasis>.</para>
+                <para>Double-click the
+                    <?oxy_comment_start author="cecilia" timestamp="20161005T120230+0200" comment="consist of TEI attributes and??"?>parameter<?oxy_comment_end?>
+                    names in the <emphasis role="bold">Parameters</emphasis> field to add them to
+                    your subject.</para>
+                <note>
+                    <para>The subject is not included in text messages.</para>
+                </note>
+            </listitem>
+            <listitem>
+                <para>Create the <emphasis role="bold">Message template</emphasis>.</para>
+                <para>Double-click the parameter names in the <emphasis role="bold"
+                        >Parameters</emphasis> field to add them to your message.</para>
+                <example>
+                    <para>Dear {patient-name}, please come to your appointment at {due-date}.</para>
+                </example>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Save</emphasis>.</para>
+            </listitem>
+        </orderedlist>
+        <note>
+            <para>You configure when the program notification will run in the <emphasis role="bold"
+                    >Data Administration</emphasis> app > <emphasis role="bold"
+                    >Scheduling</emphasis> > <emphasis role="bold">Program notifications
+                    scheduler</emphasis>. </para>
+            <itemizedlist>
+                <listitem>
+                    <para>Click <emphasis role="bold">Run now</emphasis> to run the program
+                        notifications immediately.</para>
+                </listitem>
+                <listitem>
+                    <para>Select a time and click <emphasis role="bold">Start</emphasis> to schedule
+                        the program notifications to run at a specific time.</para>
+                </listitem>
+            </itemizedlist>
+        </note>
+    </section>
+    <section>
+        <title>Create a program stage notification</title>
+        <orderedlist>
+            <listitem>
+                <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click
+                        <emphasis role="bold">Program</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click the relevant program and select <emphasis role="bold">View program
+                        stages</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click the relevant stage and select <emphasis role="bold">View program stage
+                        notifications</emphasis>.</para>
+                <para>A list of existing program stage notifications for the selected program stage
+                    opens. If the program stage doesn't have any program notifications, the list is
+                    empty.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Add new</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Enter a <emphasis role="bold"
+                        ><?oxy_comment_start author="cecilia" timestamp="20161003T212441+0200" comment="Verify with SME: No code or short name fields in UI, correct?"?>Name<?oxy_comment_end?></emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>In the <emphasis role="bold">Trigger by</emphasis> field, select what should
+                    trigger the notification. You can select</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Program stage completion: the notification is sent when the program
+                            stage is completed</para>
+                    </listitem>
+                    <listitem>
+                        <para>Days scheduled (due date): the notification is sent XX number of days
+                            before or after the due date</para>
+                    </listitem>
+                </itemizedlist>
+                <note>
+                    <para>If you select "Days scheduled" you also need to enter the number of days
+                        before or after the scheduled date that the notification will be
+                        send.</para>
+                </note>
+            </listitem>
+            <listitem>
+                <para>In the <emphasis role="bold">Recipients</emphasis> field, select who should
+                    receive the notification. You can select:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Tracked entity instance: receives program notification via e-mail or
+                            text message</para>
+                    </listitem>
+                    <listitem>
+                        <para>Organisation unit contact: receives program notification via e-mail or
+                            text message</para>
+                    </listitem>
+                    <listitem>
+                        <para>Users at organisation unit: receives program notification via the
+                            internal DHIS2 messaging system</para>
+                    </listitem>
+                    <listitem>
+                        <para>User group: receives program notification via the internal DHIS2
+                            messaging system</para>
+                    </listitem>
+                </itemizedlist>
+            </listitem>
+            <listitem>
+                <para>Create the <emphasis role="bold">Subject template</emphasis>.</para>
+                <para>Double-click the
+                    <?oxy_comment_start author="cecilia" timestamp="20161005T120230+0200" comment="consist of TEI attributes and??"?>parameter<?oxy_comment_end?>
+                    names in the <emphasis role="bold">Parameters</emphasis> field to add them to
+                    your subject.</para>
+                <note>
+                    <para>The subject is not included in text messages.</para>
+                </note>
+            </listitem>
+            <listitem>
+                <para>Create the <emphasis role="bold">Message template</emphasis>.</para>
+                <para>Double-click the parameter names in the <emphasis role="bold"
+                        >Parameters</emphasis> field to add them to your message.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Save</emphasis>.</para>
+            </listitem>
+        </orderedlist>
+    </section>
 </section>
