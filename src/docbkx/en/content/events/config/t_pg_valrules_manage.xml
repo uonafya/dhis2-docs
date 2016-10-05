@@ -6,35 +6,121 @@
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
     xmlns:db="http://docbook.org/ns/docbook">
-    <title>Manage program validation rules</title>
-    <?oxy_custom_start type="oxy_content_highlight" color="180,215,3"?>
+    <title>Manage program validation
+        <?oxy_comment_start author="cecilia" timestamp="20161005T102726+0200" comment="At next revision: perform complete editorial review
+Add information about translate, delete, edit etc..."?>rules<?oxy_comment_end?></title>
     <section>
-        <title>Program validation rule</title>
-        <para>To create validation rules for programs, click on the program which you would like and
-            select <emphasis role="italic">Program validation rule management</emphasis> menu. Then
-            click <emphasis role="italic">Add</emphasis> button and enter values for the fields in
-            form to create a new one. A validation rule is based on an expression which defines a
-            relationship between data element values. The expression has a left side and a right
-            side and an operator which defines whether the former must be less than, equal to or
-            greater than the latter. The expression forms a condition which should assert that
-            certain logical criteria are met. For instance, a validation rule could assert that an
-            admitted date given is before the discharged date. </para>
+        <title>About program validation rules</title>
+        <para>A validation rule is based on an expression which defines a relationship between data
+            element values. The expression forms a condition which should assert that certain
+            logical criteria are met.</para>
+        <para>The expression consist of:</para>
+        <itemizedlist>
+            <listitem>
+                <para>a left side</para>
+            </listitem>
+            <listitem>
+                <para>a right side</para>
+            </listitem>
+            <listitem>
+                <para>an operator </para>
+                <para>The operator defines whether the left side must be less than, equal to or
+                    greater than the right side.</para>
+            </listitem>
+        </itemizedlist>
+        <example>
+            <para>A validation rule could assert that an admitted date given is before the
+                discharged date.</para>
+        </example>
     </section>
-    <?oxy_custom_end?>
-    <?oxy_custom_start type="oxy_content_highlight" color="180,215,3"?>
     <section>
-        <title>Validation criteria</title>
-        <para>Validation criteria section provides a mechanism for defining criteria which validate
-            if an entity can enrol into the program.</para>
-        <para>To access the validation criteria maintenance module, click on the program which you
-            would like and select <emphasis role="italic">View validation criteria</emphasis> link
-            on context menu to open <emphasis role="italic">Validation criteria
-                management</emphasis> form.</para>
-        <para>To create a new validation criterion, click the <emphasis role="italic">Add
-                new</emphasis> button. Fill all fields with read asterisk, and click <emphasis
-                role="italic">Add</emphasis> button.</para>
-        <para>To translate the name of a validate criteria, click on the program stage which you
-            would like and select <emphasis role="italic">Translation</emphasis> link.</para>
+        <title>Create a program validation rule</title>
+        <orderedlist>
+            <listitem>
+                <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click
+                        <emphasis role="bold">Program</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click the program you want to add a  validation rule to and select <emphasis
+                        role="bold">View validation rules</emphasis>.</para>
+                <para>A list of existing program rules for the selected program opens. If the
+                    program doesn't have any program rules, the list is empty.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Add new</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Enter a validation rule <emphasis role="bold"
+                        ><?oxy_comment_start author="cecilia" timestamp="20161003T212441+0200" comment="Verify with SME: No code or short name fields in UI, correct?"?>Name<?oxy_comment_end?></emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Select an <emphasis role="bold"
+                        ><?oxy_comment_start author="cecilia" timestamp="20161005T103908+0200" comment="At next revision: add operator information"?>Operator<?oxy_comment_end?></emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Edit left side</emphasis> and create the
+                    expression’s left
+                    <?oxy_comment_start author="cecilia" timestamp="20161005T104012+0200" comment="At next revision: add more infor here."?>side<?oxy_comment_end?>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Edit right side</emphasis> and create the
+                    expression’s left
+                    <?oxy_comment_start author="cecilia" timestamp="20161005T104012+0200" comment="At next revision: add more infor here."?>side<?oxy_comment_end?>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Save</emphasis>.</para>
+            </listitem>
+        </orderedlist>
     </section>
-    <?oxy_custom_end?>
+    <section>
+        <title>Edit program validation rules</title>
+        <orderedlist>
+            <listitem>
+                <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click
+                        <emphasis role="bold">Program</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click the relevant program and select <emphasis role="bold">View validation
+                        rules</emphasis>.</para>
+                <para>A list of existing validation rules for the selected program opens. If the
+                    program doesn't have any validation rules, the list is empty.</para>
+            </listitem>
+            <listitem>
+                <para>Click the validation rule you want to modify and select <emphasis role="bold"
+                        >Edit</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Modify the options you
+                    <?oxy_comment_start author="cecilia" timestamp="20160510T160124+0200" comment="At next revision, add link to previous section
+&quot;For details about each option, refer to section Create a data element.&quot;
+At the moment, I can only do x-refs to section 1 tags.
+" flag="done"?>want<?oxy_comment_end?>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Update</emphasis>.</para>
+            </listitem>
+        </orderedlist>
+    </section>
+    <section>
+        <title>Delete program validation rules</title>
+        <orderedlist>
+            <listitem>
+                <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click
+                        <emphasis role="bold">Program</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click the relevant program and select <emphasis role="bold">View validation
+                        rules</emphasis>.</para>
+                <para>A list of existing validation rules for the selected program opens. If the
+                    program doesn't have any validation rules, the list is empty.</para>
+            </listitem>
+            <listitem>
+                <para>Click the validation rule you want to delete and select <emphasis role="bold"
+                        >Remove</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">OK</emphasis> to confirm.</para>
+            </listitem>
+        </orderedlist>
+    </section>
 </section>
