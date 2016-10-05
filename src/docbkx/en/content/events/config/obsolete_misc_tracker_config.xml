@@ -1,0 +1,1207 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<section version="5.0"
+    xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+    xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+    <title>Misc obsolete content about tracker
+        <?oxy_comment_start author="cecilia" timestamp="20161004T121716+0200" comment="Copied from old Tracker topic, eeds clarification from SME if this is still valid."?>program<?oxy_comment_end?></title>
+    <?oxy_custom_start type="oxy_content_highlight" color="255,255,0"?>
+    <para>Aggregation Query Builder</para>
+    <para>Set up aggregation rules for the process of aggregating tracked entity data to statistical
+        data.</para>
+    <para>Automated
+        <?oxy_comment_start author="cecilia" timestamp="20161004T113206+0200" comment="In the Schedule app?"?>Aggregation<?oxy_comment_end?></para>
+    <para>Schedule an automated tracked entity aggregation process, e.g. to run all pre-defined
+        aggregation queries every midnight. </para>
+    <?oxy_custom_end?>
+    <para>Program stage >
+        <?oxy_comment_start author="cecilia" timestamp="20161005T102427+0200" comment="What is this? Is it documented?"?>Section
+        management<?oxy_comment_end?></para>
+    <?oxy_custom_start type="oxy_content_highlight" color="235,192,230"?>
+    <section>
+        <title>Aggregation query
+            <?oxy_comment_start author="cecilia" timestamp="20161005T162928+0200" comment="Gone since 2.21 or 2.22 according to SME."?>builder<?oxy_comment_end?></title>
+        <para>This is the core functionality for linking data between tracker module and aggregate
+            management module by defining the linking/aggregating rules. The purpose is to produce
+            aggregated data / statistics based on the low-level case based data. It is based around
+            flexible aggregation query definitions which maps the data elements used for case based
+            data management to data elements used for aggregate data.</para>
+        <para>This provides two functions - </para>
+        <itemizedlist>
+            <listitem>
+                <para><emphasis role="italic">Apps &gt; Programs / Attributes &gt; Aggregation query
+                        builder</emphasis> is a tool for defining formulas, expressions, rules for
+                    aggregation data from tracker to aggregation module. </para>
+            </listitem>
+            <listitem>
+                <para><emphasis role="italic">Apps &gt; Individual Records &gt; Manual
+                        Aggregation</emphasis> is used for generating routine data values from
+                    individual data by period and organization unit.</para>
+            </listitem>
+        </itemizedlist>
+        <section>
+            <title>Basic information </title>
+            <para>To access <emphasis role="italic">Aggregation Query Builder</emphasis> module,
+                from the <emphasis role="italic">Apps</emphasis> menu, go to the <emphasis
+                    role="italic">Programs / Attributes</emphasis> option. Select <emphasis
+                    role="italic">Aggregation Query Builder</emphasis> option on left menu to
+                proceed.</para>
+            <para>To define a formula, click the <emphasis role="italic">Add new</emphasis>
+                button.</para>
+            <screenshot>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata width="70%"
+                            fileref="resources/images/patients_programs/example_query.png"
+                            format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </screenshot>
+            <para>Basic information -</para>
+            <itemizedlist>
+                <listitem>
+                    <para><emphasis role="italic">Name</emphasis> - Provide name of query, this name
+                        is usually same with the name of aggregate data element. For example Number
+                        of mothers got VAT, Number of children got BCG vaccine,...</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Dataset</emphasis> - Select dataset contains data
+                        elements which will be used to link with individual data.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Data element</emphasis> - Select aggregate data
+                        element which will be used to link with individual data.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Operator</emphasis> - There are six
+                        operators</para>
+                    <para>1) Select <emphasis role="italic">Number of tracked entity
+                            instances</emphasis> if aggregate based on entities;</para>
+                    <para>2) Select <emphasis role="italic">Number of visits</emphasis> if aggregate
+                        data based on times that entitys received services.</para>
+                    <para>3) Select <emphasis role="italic">Sum of data element values </emphasis>to
+                        get sum of data values of data element in <emphasis role="italic">Data
+                            element for sum/average</emphasis> field with the criteria in the
+                        condition field.</para>
+                    <para>4) Select <emphasis role="italic">Average of data element values
+                        </emphasis>to get average of data values of data element in <emphasis
+                            role="italic">Data element for sum/average</emphasis> field with the
+                        criteria in the condition field.</para>
+                    <para>5) Select <emphasis role="italic">Minimum of data element values
+                        </emphasis>to get min of data values of data element in <emphasis
+                            role="italic">Data element for sum/average</emphasis> field with the
+                        criteria in the condition field.</para>
+                    <para>6) Select <emphasis role="italic">Maximum of data element values
+                        </emphasis>to get max of data values of data element in <emphasis
+                            role="italic">Data element for sum/average</emphasis> field with the
+                        criteria in the condition field.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Program</emphasis> - Select program needed for
+                        aggregation.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Program Stage</emphasis> - Select program stage
+                        from the selected program above.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic">Data element for sum/average/min/max</emphasis> -
+                        Select an data element for operator as Sum / Average / Min / Max.</para>
+                </listitem>
+            </itemizedlist>
+            <para>Next section included 3 tabs: <emphasis role="italic">Data elements</emphasis>,
+                    <emphasis role="italic">entity attributes</emphasis> and <emphasis role="italic"
+                    >Program</emphasis>. Depend on the requirement of data aggregation, data
+                element, entity attributes, and number of programs are selected. </para>
+            <para><emphasis role="bold">
+                    <emphasis role="underline"><emphasis role="italic">Data elements
+                        tab</emphasis>:</emphasis>
+                </emphasis> List all available data elements from selected program stage. To create
+                a formula related to each data element, double click on the data element. The
+                formula of the data element is filled on the condition field, like [DE:1.2.3], in
+                with: </para>
+            <itemizedlist>
+                <listitem>
+                    <para>1 - id of the selected program.</para>
+                </listitem>
+                <listitem>
+                    <para>2 - id of the selected program stage.</para>
+                </listitem>
+                <listitem>
+                    <para>3 - id of the selected data element.</para>
+                </listitem>
+            </itemizedlist>
+            <note>
+                <para>The formula can be created without any program stage, like [DE:1.*.3]</para>
+            </note>
+            <para><emphasis role="bold">
+                    <emphasis role="underline">
+                        <emphasis role="italic">Attribute tab</emphasis>
+                    </emphasis>
+                </emphasis>- List all available fixed attributes, such as gender, DOB type, Age
+                (days), .. and user-defined attributes. Besides, provide a formula for calculating
+                number of entities who registered in system. However, if a program without
+                registration is selected, entity attributes aren&apos;t displayed.</para>
+            <para><emphasis role="bold">
+                    <emphasis role="underline">
+                        <emphasis role="italic">Program tab</emphasis>
+                    </emphasis>
+                </emphasis> - Provide formulas for calculating data value related to the selected
+                program and program stage - </para>
+            <itemizedlist>
+                <listitem>
+                    <para>The number of entities who enrolled the selected program.</para>
+                </listitem>
+                <listitem>
+                    <para>The number of entities / times that ( Date of enrollment - Date of
+                        incident ) is greater then a certain number.</para>
+                </listitem>
+                <listitem>
+                    <para>The number of entities who visited the selected program stage OR the
+                        number of visits what are registered in the system.</para>
+                </listitem>
+                <listitem>
+                    <para>The number of entities by age at the report-time.</para>
+                </listitem>
+            </itemizedlist>
+            <para><emphasis role="bold">
+                    <emphasis role="italic">
+                        <emphasis role="italic">
+                            <emphasis role="underline">Condition section </emphasis>
+                        </emphasis>
+                    </emphasis>
+                </emphasis>- This section contains comparing operations (&lt;, &lt;=, &gt;, &gt;=,
+                =, != ), calculation operation (+), priority operation ( ( ) ), boolean values (Yes,
+                No), status operations (=NULL, != NULL, DateDiff(xxx, Incident date), DateDiff(xxx,
+                Enrollment date), DateDiff(xxx, Report date) ), relation operations (AND, OR,
+                COMBINE). These operations are used for supporting in setting condition for query. </para>
+            <note>
+                <para>COMBINE operator is used for calculate number of children organidation units
+                    completed all program-stage-instances. E.g For the formula like this
+                    [PSIC:1149293] COMBINE [PSIC:1150010]. The system will calculated the number of
+                    children orgunits of the selected orgunit which have all program-stage-instances
+                    with stage-id as <emphasis role="italic">1149293</emphasis> and <emphasis
+                        role="italic">1150010</emphasis> completed. You can find this special
+                    formula [PSIC:xxx] by clicking on <emphasis role="italic">Completed</emphasis>
+                    option in <emphasis role="italic">Program</emphasis> tab.</para>
+            </note>
+            <para><emphasis role="italic">
+                    <emphasis role="bold">
+                        <emphasis role="underline">Description section</emphasis>
+                    </emphasis>
+                </emphasis> - Show description for the condition above. </para>
+            <para>E.g. To get number of <emphasis role="italic">girls</emphasis> who got <emphasis
+                    role="italic">Vitamin A dose 6</emphasis> enrolled <emphasis role="italic">Child
+                    Health program</emphasis> on <emphasis role="italic">January 2012</emphasis>.
+                Then query is created as in the figure below. Note that January 2012 is period
+                parameter which user will select when generate report. It is not set in the
+                query.</para>
+        </section>
+        <section>
+            <title>Sample of aggregation query builder</title>
+            <para>E.g. Find the number of the children vaccinated BCG by defining a linking rule
+                between the data elements of aggregate dataset named <emphasis role="italic">Number
+                    of children - BCG</emphasis> and the data element of a program stage named
+                    <emphasis role="italic">BCG dose given</emphasis>.</para>
+            <orderedlist>
+                <listitem>
+                    <para>From <emphasis role="italic">Apps</emphasis> menu, go to <emphasis
+                            role="italic">Data Element and Indicators</emphasis> option and click on
+                        it. Select <emphasis role="italic">Data Element</emphasis> option to define
+                        two new data elements -</para>
+                    <para>1) Define a new data element named <emphasis role="italic">Number of
+                            children - BCG</emphasis> with <emphasis role="italic"
+                            >Aggregate</emphasis> option for Domain Type.</para>
+                    <para>2) Define a new data element named <emphasis role="italic">BCG dose give
+                            date</emphasis> with <emphasis role="italic">Patient</emphasis> option
+                        for Domain Type.</para>
+                </listitem>
+                <listitem>
+                    <para>From <emphasis role="italic">Apps</emphasis> menu, go to <emphasis
+                            role="italic">Datasets</emphasis> option and click on it. Select
+                            <emphasis role="italic">Dataset</emphasis> option to create a new
+                        dataset named <emphasis role="italic">BCG Report</emphasis> and add
+                            <emphasis role="italic">Number of children - BCG</emphasis> data element
+                        into the dataset.</para>
+                </listitem>
+                <listitem>
+                    <para>From <emphasis role="italic">Apps</emphasis> menu, go to <emphasis
+                            role="italic">Programs / Attributes</emphasis> option and click on it.
+                        Select <emphasis role="italic">Program</emphasis> option to create a program
+                        named <emphasis role="italic">Child Health Program</emphasis> with a stage
+                        named <emphasis role="italic">Birth Details</emphasis> and add the <emphasis
+                            role="italic">BCG dose given</emphasis> data element into this
+                        stage.</para>
+                </listitem>
+                <listitem>
+                    <para>Create a new aggregation query builder named <emphasis role="italic"
+                            >Number of children - BCG Builder </emphasis>to linking between the data
+                        elements.</para>
+                </listitem>
+                <listitem>
+                    <para>From <emphasis role="italic">Services</emphasis> menu, go to <emphasis
+                            role="italic">Individual Records </emphasis>option and click on it.
+                        Select <emphasis role="italic">entity</emphasis> option below <emphasis
+                            role="italic">Registration</emphasis> header in the left menu to
+                        register three entities named <emphasis role="italic">Micheal</emphasis>,
+                            <emphasis role="italic">Alice</emphasis> and <emphasis role="italic"
+                            >Tom</emphasis> in <emphasis role="italic">Ngelehun CHC</emphasis> and
+                        enroll them into <emphasis role="italic">Child Health
+                        Program</emphasis>.</para>
+                    <para>1) For <emphasis role="italic">Micheal</emphasis>, open the <emphasis
+                            role="italic">Birth Details</emphasis> stage into <emphasis
+                            role="italic">Child Health Program</emphasis>. Enter value for <emphasis
+                            role="italic">BCG dose give date</emphasis> data element as
+                            &quot;<emphasis role="italic">2012-01-18</emphasis>&quot;.</para>
+                    <para>2) For <emphasis role="italic">Alice</emphasis>, open the <emphasis
+                            role="italic">Birth Details</emphasis> stage into Child Health Program.
+                        Enter value for <emphasis role="italic">BCG dose give date</emphasis> data
+                        element as &quot;<emphasis role="italic">2012-01-18</emphasis>&quot;.</para>
+                    <para>3) For <emphasis role="italic">Tom</emphasis>, no enter any data value for
+                            <emphasis role="italic">Birth Details</emphasis> stage.</para>
+                    <warning>
+                        <para>Before entering data value for the stage, choose <emphasis
+                                role="italic">Report Date</emphasis> as &quot;<emphasis
+                                role="italic">2012-01-18</emphasis>&quot;.</para>
+                    </warning>
+                </listitem>
+                <listitem>
+                    <para>From <emphasis role="italic">Services</emphasis> menu, go to <emphasis
+                            role="italic">Individual Records</emphasis> option and click on it.
+                        Select <emphasis role="italic">Manual entity aggregation</emphasis> option
+                        to run<emphasis role="italic"> Number of children - BCG Builder</emphasis>
+                        to get data value and save it into database.</para>
+                    <screenshot>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata width="70%"
+                                    fileref="resources/images/patients_programs/person_aggregation_form.png"
+                                    format="PNG"/>
+                            </imageobject>
+                        </mediaobject>
+                    </screenshot>
+                    <screenshot>
+                        <title>- Result after running the query builder</title>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata width="70%"
+                                    fileref="resources/images/patients_programs/example_person_aggregation_result.png"
+                                    format="PNG"/>
+                            </imageobject>
+                        </mediaobject>
+                    </screenshot>
+                    <note>
+                        <para>You can click <emphasis role="italic">Aggregate and Save</emphasis>
+                            button to save data values aggregated into the database directly.</para>
+                    </note>
+                </listitem>
+            </orderedlist>
+        </section>
+    </section>
+    <section>
+        <title>Schedule automated
+            <?oxy_comment_start author="cecilia" timestamp="20161005T162934+0200" comment="Gone since 2.21 or 2.22 according to SME."?>aggregation<?oxy_comment_end?></title>
+        <para>The aggregation query builder jobs can be automatically scheduled to run on regular
+            intervals. At midnight, this job runs and get all datasets which have data elements
+            defined into Aggregate Query Builder formulas. Based on the period types of datasets,
+            the system runs formulas at the end of end-date of current period. E.g. if today is on
+            1A.M. in 2013-02-01, the system gets a monthly dataset and other period-type datasets
+            with aggregate formulas, then system will only run aggregate formulas of the monthly
+            dataset with period as Jan 2013.</para>
+        <para>Select an option in <emphasis role="italic">Task strategy </emphasis>to set way to get
+            period list for aggregating. There four options - </para>
+        <para>1) <emphasis role="italic">Last month</emphasis> - Get period list by period-types of
+            data sets from last month to current date. E.g. for daily datasets, if current date is
+                <emphasis role="italic">2013-03-09</emphasis>, period list is get from <emphasis
+                role="italic"> 2013-02-09</emphasis> to <emphasis role="italic">
+                2013-03-09</emphasis>. For month datasets, periods list is <emphasis role="italic"
+                >Feb 2013</emphasis> and <emphasis role="italic">Mar 2013.</emphasis></para>
+        <para>2) <emphasis role="italic">Last 3 month</emphasis> - Get periods by from last 3 month
+            to current date.</para>
+        <para>3) <emphasis role="italic">Last 6 month</emphasis> - Get periods by from last 6 month
+            to current date</para>
+        <para>4) <emphasis role="italic">Last 12 month</emphasis> - Get periods by from last 12
+            month to current date</para>
+        <para><emphasis role="italic"><emphasis role="italic">Click</emphasis> Start</emphasis>
+            button to enable the scheduled job to run at mid-night or can be run immediately by
+            pressing <emphasis role="italic">Execute</emphasis> button.</para>
+    </section>
+    <?oxy_custom_end?>
+    <section>
+        <title>Individual
+            <?oxy_comment_start author="cecilia" timestamp="20161005T100713+0200" comment="Event capture content"?>records<?oxy_comment_end?>
+        </title>
+        <?oxy_custom_start type="oxy_content_highlight" color="235,192,230"?>
+        <para>Each of the options for the services will be described in the following section
+            -</para>
+        <itemizedlist>
+            <listitem>
+                <para>Find/Add Instance</para>
+                <para>Register, edit and search private information of entities. Support entity
+                    dashboard for managing relationships, program enrollment, entering case entry
+                    form, .... </para>
+            </listitem>
+            <listitem>
+                <para>Visit Schedule</para>
+                <para>Visit Schedule provides for the user at a facility or in an area a list of
+                    upcoming visits to better plan for daily/weekly activities.</para>
+            </listitem>
+            <listitem>
+                <para>Lost To Follow-Up</para>
+                <para>Support the work practices around tracking entities within a health program
+                    that have not shown up for a scheduled visit (stage), e.g. that are lost to
+                    follow-up. </para>
+            </listitem>
+            <listitem>
+                <para>Single Event With Registration </para>
+                <para>The data to register is defined by a single event with registration
+                    program.</para>
+            </listitem>
+            <listitem>
+                <para>Program summary</para>
+                <para>View the summary report to get an overview of the services provided for a
+                    program. </para>
+            </listitem>
+            <listitem>
+                <para>Program Statistics </para>
+                <para>Program statistics on program performance, e.g. drop-out rates, how many
+                    completed every month/year - counts/percentages etc. </para>
+            </listitem>
+            <listitem>
+                <para>Program stage completeness</para>
+                <para>Monitor the completeness of events and produce completeness reports for each
+                    program </para>
+            </listitem>
+            <listitem>
+                <para>Manual Aggregation</para>
+                <para>Generate routine data values from patient data by month (or other intervals if
+                    desired) and organisation unit. </para>
+            </listitem>
+        </itemizedlist>
+        <section>
+            <title>Find/Add instance</title>
+            <para>The first step in the tracking is the registration of entity/case in the
+                application. In the registration process, the details - which are related to the
+                entityal information, identification, contract and location details &amp; health
+                provider details, are entered in the application. In the registration itself, entity
+                is provided with the unique identification number. This number will be unique and
+                will not match with the identification number of any entity in the state
+                jurisdiction. The issue of identification number will be the responsibility of
+                facility where entity is registered first time.</para>
+            <warning>
+                <para>No matter what program entities need to enroll, they must register into the
+                    system first. Then health providers will enroll the entities into relevant
+                    programs. E.g. every pregnant women and the child need to be registered first as
+                    a entity, then they will be enrolled in Mother Care program or Child Health
+                    program.</para>
+            </warning>
+            <para>To access <emphasis role="italic">Tracked entity instance management
+                </emphasis>function, from the <emphasis>Apps</emphasis> menu, click
+                    <emphasis>Individual Records </emphasis>and click on it. Select
+                    <emphasis>Find/Add Instance</emphasis> option on the left menu to proceed. Then,
+                after to select organisation unit.</para>
+            <para>Click the<emphasis role="italic"> List All instances</emphasis> button to list all
+                entities in the selected organisation unit. If a program in list on the right side
+                is selected, the system will load entities who enrolled into the program.</para>
+            <para>The registration process is below - </para>
+            <orderedlist inheritnum="inherit" continuation="restarts" arch="">
+                <listitem>
+                    <para>To register a entity, go to the <emphasis role="italic">Apps</emphasis>
+                        menu, select <emphasis role="italic">Individual Records</emphasis>.</para>
+                </listitem>
+                <listitem>
+                    <para>Click the <emphasis role="italic">
+                            <emphasis>
+                                <emphasis role="italic">Find/Add Instance</emphasis>
+                            </emphasis>
+                        </emphasis> menu below <emphasis role="italic">Tracked entity
+                            instance</emphasis> header to go to <emphasis>Tracked entity instance
+                            management</emphasis> window.</para>
+                </listitem>
+                <listitem>
+                    <para>Select a facility from the facilities hierarchy displayed on the left side
+                        of the screen. Then click the <emphasis role="italic">Add new</emphasis>
+                        button on the right side.</para>
+                    <note>
+                        <para>To register new entity and enroll him/her into a certain program,
+                            please select a program in list on main page and click <emphasis
+                                role="italic">Add new</emphasis> button. The entity attributes and
+                            entity identifier types which belong to the selected program will be
+                            displayed on the registration form.</para>
+                    </note>
+                </listitem>
+                <listitem>
+                    <para>Fill data into the registration form. Then click the <emphasis
+                            role="italic">Add</emphasis> button to complete to process of
+                        registration. </para>
+                    <para>To continue to register other new entity, click the <emphasis
+                            role="italic">Add &amp;&amp; Register new </emphasis>button.</para>
+                    <screenshot>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata width="70%"
+                                    fileref="resources/images/patients_programs/register_person_page.PNG"
+                                    format="PNG"/>
+                            </imageobject>
+                        </mediaobject>
+                    </screenshot>
+                    <para>For tracked association attribute which is used to register representative
+                        for the registering entity, in registration form, check on the checkbox of
+                        this attribute, the sub-function has two tab -</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="italic">Search existing entity</emphasis> tab is
+                                used for searching available entities and users can select one
+                                entity in the result list to set relationship. The criteria to
+                                search is based on attribute of entities.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="italic">Add new entity</emphasis> tab is used for
+                                registering a new entity for relationship. When adding a entity in
+                                this form, you need to select one user-defined relationship type in
+                                the list. Finally, click <emphasis role="italic">Add</emphasis>
+                                button.</para>
+                        </listitem>
+                    </itemizedlist>
+                    <screenshot>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata width="70%"
+                                    fileref="resources/images/patients_programs/representative.png"
+                                    format="PNG"/>
+                            </imageobject>
+                        </mediaobject>
+                    </screenshot>
+                </listitem>
+            </orderedlist>
+            <section>
+                <?oxy_comment_start author="cecilia" timestamp="20161005T160801+0200" comment="Covered in the tracker Capture app doc."?>
+                <title>Tracked entity instance dashboard</title>
+                <?oxy_comment_end?>
+                <para>The function provides quick access to individual data of an entity. Dashboards
+                    consist of several sections, some of which provide links to activity programs or
+                    relationships of the entity . Other sections of the dashboard allow users to
+                    enter data values into case entry form, reschedule and set status for each
+                    events of activity plan and show messages and report of the program.</para>
+                <para>The dashboard of an entity is opened after register successfully or click the
+                        <emphasis role="italic">first icon</emphasis> under <emphasis role="italic"
+                        >Operations</emphasis>, corresponding to the entity who you would
+                    like.</para>
+                <screenshot>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="80%"
+                                fileref="resources/images/patients_programs/person_dashboard.png"
+                                format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </screenshot>
+                <para>Click on the<emphasis role="italic"> View access log link </emphasis>in the
+                    top-right of the dashboard to open history of access log to this entity.</para>
+                <para>The <emphasis role="italic">Tracked entity instance profile</emphasis> section
+                    provides links for editing profile and changing other location of the entity.
+                    Click on <emphasis role="italic">Edit profile</emphasis> link to update
+                    individual information of entity. Click on <emphasis role="italic">Change
+                        location</emphasis> link to change other location for the entity.</para>
+                <para>Click on a program link in <emphasis role="italic">Active programs</emphasis>
+                    section to open the data entry form for the next visit of the selected program.
+                    A form is opened below with five tab - </para>
+                <orderedlist>
+                    <listitem>
+                        <para><emphasis role="italic">Data entry screen </emphasis>tab - Where data
+                            is manually registered for each entity. Click on a event box in tab.
+                            Then fill a report date to open data entry form of the selected event. </para>
+                        <para>After entering data values into the data entry form, user should click
+                            on <emphasis role="italic">Run validation </emphasis> button before
+                            clicking on <emphasis role="italic">Complete</emphasis> button to check
+                            reality of data. The event is only completed successfully if all
+                            validation is valid.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Attribute</emphasis> tab - Load
+                            identifier-types and entity-attributes which belong to the selected
+                            program for users to enter values for this program.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Reschedule and set status</emphasis> tab -
+                            Provides function for re-scheduling, setting status and sending
+                            messages/comments or deleting for each events.</para>
+                        <para>Click <emphasis role="italic">Update</emphasis> button to update
+                            enrollment date and incident date and re-schedule visit plan by the new
+                            incident date.</para>
+                        <para>Click <emphasis role="italic">Complete</emphasis> button to complete
+                            the active program.</para>
+                        <para>Click <emphasis role="italic">Quit</emphasis> button to quite the
+                            active program. At that time, the status of over-due events are set as
+                            skipped. And events scheduled in the future are removed.</para>
+                        <para>Click <emphasis role="italic">Re-enroll </emphasis>button to re-enroll
+                            a completed program.</para>
+                        <para>If the program enrollment which no stage has data values, you can see
+                            button <emphasis role="italic">Remove</emphasis> next to <emphasis
+                                role="italic">Re-enroll</emphasis> button. Click on it to delete
+                            this program enrollment.</para>
+                        <para>After entering a comment in the Comment field, click <emphasis
+                                role="italic">Save</emphasis> button to save a comment for the
+                            event. For sending a reminder message, click on <emphasis role="italic"
+                                >Send message</emphasis> icon, the <emphasis role="italic">first
+                                icon</emphasis> under <emphasis role="italic">Operations</emphasis>
+                            column.</para>
+                        <note>
+                            <para>Only allow to edit due dates of events with status as overdue or
+                                scheduled in future.</para>
+                        </note>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Messages</emphasis> tab - Displays a
+                            comment/message list of the program.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Program report </emphasis>tab - Summary report
+                            for the program.</para>
+                    </listitem>
+                </orderedlist>
+                <note>
+                    <para>Belong to the authorities of the user logged, some tabs can be
+                        hidden.</para>
+                </note>
+                <para>The <emphasis role="italic">Active programs</emphasis> section in Dashboard
+                    consists of active programs of the entity. Click on a program to show detail
+                    information below. Besides, there are two link in this tab - </para>
+                <orderedlist>
+                    <listitem>
+                        <para>The <emphasis role="italic">Active programs</emphasis> section
+                            provides links for activity program and the next visit of entity for
+                            this program. </para>
+                    </listitem>
+                    <listitem>
+                        <para>The <emphasis role="italic">Completed programs</emphasis> section
+                            provides a completed program list with links to load events flow of the
+                            program.</para>
+                    </listitem>
+                    <listitem>
+                        <para>To enroll the entity into a program, click <emphasis role="italic"
+                                >Enroll</emphasis> link.</para>
+                    </listitem>
+                </orderedlist>
+                <para>The <emphasis role="italic">Relationship</emphasis> section consists of
+                    relationships of the entity. Click on an entity in list to open his/her
+                    dashboard. Besides, there are two link in this tab - </para>
+                <orderedlist>
+                    <listitem>
+                        <para>To open <emphasis role="italic">Relationship management</emphasis>
+                            section, click <emphasis role="italic">Add relative</emphasis>
+                            link.</para>
+                    </listitem>
+                    <listitem>
+                        <para>If the selected program in <emphasis role="italic">Program</emphasis>
+                            section has a related program defined, the link name of this related
+                            program is displayed next to Add relative link. Click on this link to
+                            register a entity who/which has relationship of the entity we are
+                            working on and enrol the new entity into the related program.</para>
+                    </listitem>
+                </orderedlist>
+                <para>Besides, the system audits user&apos;s information who accessed on the
+                    dashboard. Click on the <emphasis role="italic">View access log</emphasis> link
+                    on the top right of Dashboard.</para>
+            </section>
+            <section>
+                <title>Enrollment</title>
+                <para>After the registration, the entity needs to be enrolled in any available
+                    program. To enroll -</para>
+                <orderedlist>
+                    <listitem>
+                        <para>Click on <emphasis role="italic">Enroll</emphasis> link from Dashboard
+                            of the entity to open the Enrollment form.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Select a program from the list.</para>
+                        <screenshot>
+                            <mediaobject>
+                                <imageobject>
+                                    <imagedata width="70%"
+                                        fileref="resources/images/patients_programs/select_program_for_person.PNG"
+                                        format="PNG"/>
+                                </imageobject>
+                            </mediaobject>
+                        </screenshot>
+                    </listitem>
+                    <listitem>
+                        <para>After the selection of program, you need to provide two dates:</para>
+                        <para>1) <emphasis role="italic">Date of enrollment ( the first field
+                                )</emphasis> - The date when entity enrolls into the selected
+                            program.</para>
+                        <para>2) <emphasis role="italic">Date of incident ( the second field
+                                )</emphasis> - The date when the entity got the disease or he/she
+                            has just been committed to an equivalent program for being
+                            followed-up.</para>
+                        <warning>
+                            <para>If the selected program has any attributes, they are displayed
+                                below. Users can enter values for them at this time.</para>
+                            <para>The <emphasis role="italic">date of incident</emphasis> are
+                                important to generate the activity plan for each entity. Health
+                                provider needs to ensure recording and reporting date of incidence
+                                with each case of multi events with registration. However, when to
+                                define a program, if it can be set <emphasis role="italic">Generated
+                                    by enrollment date</emphasis> property as true, the activity
+                                plan is generated based on the enrollment date, not incident date. </para>
+                            <para>However, the <emphasis role="italic">date of incident
+                                </emphasis>is ignored with single event programs. </para>
+                        </warning>
+                    </listitem>
+                    <listitem>
+                        <para>Click the <emphasis role="italic">Enroll</emphasis> button to complete
+                            the enrollment process.</para>
+                        <para>The system will automatically calculate due-date for each event of
+                            program and will show it in the <emphasis role="italic">Re-schedule and
+                                set status</emphasis> tab. In health programme, an entity registered
+                            and enrolled, needs to be checked from time to time by health providers.
+                            The case update is designed in the same manner so that services which
+                            are received by the entities can be updated from time to time when they
+                            visit the facility or whenever the health providers need to <emphasis
+                                role="italic">track</emphasis>.</para>
+                        <para>The system will automatically calculate due-date for each the program
+                            stage and will show same the below enrollment. In health program, an
+                            entity registered and enrolled, needs to be checked from time to time by
+                            health providers. The case update is designed in the same manner so that
+                            services which are received by the entities can be updated from time to
+                            time when they visit the facility or whenever the health providers need
+                            to track.</para>
+                    </listitem>
+                </orderedlist>
+            </section>
+            <section>
+                <title>Editing entity profile</title>
+                <para>After registering an entity to a certain program, you can edit profile for
+                    that entity.</para>
+                <orderedlist>
+                    <listitem>
+                        <para>Click the second icon under <emphasis>Operations</emphasis>,
+                            corresponding to the entity you would like to edit. Or click the
+                                <emphasis>Edit profile</emphasis> link in Dashboard of
+                            entity.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Fill data into the fields.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Click <emphasis role="italic">Update</emphasis> button to update data
+                            and go to the entity&apos;s dashboard.</para>
+                    </listitem>
+                </orderedlist>
+                <note>
+                    <para>If a program in list is selected, the registration form with attributes
+                        belongs to the selected program will be displayed. If no program is
+                        selected, a common form will be displayed with attributes which are
+                        configured in <emphasis role="italic">Attribute management</emphasis> will
+                        be display.</para>
+                </note>
+            </section>
+            <section>
+                <title>Adding
+                    <?oxy_comment_start author="cecilia" timestamp="20161005T161048+0200" comment="Documented in Mtn doc."?>relationship<?oxy_comment_end?></title>
+                <para>To open <emphasis role="italic">relationship management</emphasis> for an
+                    entity, click on the <emphasis>Relationship management</emphasis> icon under
+                        <emphasis>Operations</emphasis> or click on the <emphasis role="italic"
+                        >Management</emphasis> link on <emphasis role="italic"
+                        >Relationships</emphasis> section in Dashboard. The management page
+                    appears...</para>
+                <screenshot>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="70"
+                                fileref="resources/images/patients_programs/management_page.PNG"
+                                format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </screenshot>
+                <para>To add relationship for an entity, you have to click on <emphasis>Search
+                        available entity</emphasis> link to navigate to <emphasis>search
+                        page.</emphasis></para>
+                <para>To register a new entity and create relationship with the selected entity,
+                    click <emphasis role="italic">Register new entity</emphasis> link.</para>
+                <para>To set a relative entity as representative, click on the <emphasis
+                        role="italic">Set as representative</emphasis> icon, the first icon under
+                        <emphasis>Operations</emphasis> according to the entity you would
+                    like.</para>
+            </section>
+            <section>
+                <title>Change entity location and View entity details and history</title>
+                <para>You can change entity location by clicking the <emphasis>Change entity
+                        location</emphasis> icon under <emphasis>Operations</emphasis> or click on
+                        <emphasis role="italic">Change location</emphasis> link on <emphasis
+                        role="italic">Demographics</emphasis> section in Dashboard. </para>
+                <para>In addition, you can view all entity details and history by click on
+                        <emphasis>entity details and history</emphasis> icon under
+                        <emphasis>Operations</emphasis>.</para>
+                <para>Furthermore, you can download all entity details and history in the format of
+                        <emphasis role="italic"> XLS</emphasis> or <emphasis role="italic"
+                        >PDF</emphasis> by clicking <emphasis>Download as Excel</emphasis> or
+                        <emphasis>Download as PDF </emphasis>button.</para>
+                <screenshot>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="70"
+                                fileref="resources/images/patients_programs/change_person_location_and_view_details.PNG"
+                                format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </screenshot>
+            </section>
+            <section>
+                <title>Advanced search entities</title>
+                <para>The <emphasis>Advanced search</emphasis> function is used for searching
+                    available entities based on full-name, identifiers and entity attribute
+                    values.</para>
+                <para>To access <emphasis role="italic">Advanced search</emphasis> function, from
+                    the <emphasis>Services</emphasis> menu, go the <emphasis>Individual Records
+                    </emphasis>option and click on it. Select <emphasis>Find/Add entity</emphasis>
+                    option on the left menu to proceed. Then, after selecting organisation unit,
+                    click on the <emphasis>Search</emphasis> button on the right side.</para>
+                <para> A search form is appeared after clicking. User has to select criteria and
+                    input values into the function.</para>
+                <screenshot>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="70"
+                                fileref="resources/images/patients_programs/search_guide.PNG"
+                                format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </screenshot>
+                <para>After selecting a type for searching, entering keyword and clicking on
+                        <emphasis role="italic">Search</emphasis> button, the search result will
+                    display on the screen, and then user can interact with these entities.</para>
+                <screenshot>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="70%"
+                                fileref="resources/images/patients_programs/search_result.PNG"
+                                format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </screenshot>
+            </section>
+        </section>
+        <section>
+            <title>Visit Schedule</title>
+            <para>This will be used to provide the user at a facility or in an area with a list of
+                upcoming visits to better plan for daily/weekly activities. This can also be used as
+                quick navigation to the data entry screen when using the system as a live/real-time
+                data entry system.</para>
+            <para>To access <emphasis role="italic">Visit Schedule </emphasis>module, from the
+                    <emphasis role="italic">Apps</emphasis> menu, go to the<emphasis role="italic">
+                    Individual Records</emphasis>. Select <emphasis role="italic">Visit
+                    Schedule</emphasis> option on left menu. Visit schedule management form is
+                opened. </para>
+            <para>To get visit schedule for a program, please do as follows - </para>
+            <orderedlist>
+                <listitem>
+                    <para>Select a program - Specify program for getting events.</para>
+                </listitem>
+                <listitem>
+                    <para>Select start-date and end-date - The system gets active events based on
+                        the these dates</para>
+                </listitem>
+                <listitem>
+                    <para>Use data from level(s) - Specify the level which you need to get events.
+                        If the option is Children only, individual data will be get from the
+                        children of the selected organisation unit. If the option is Selected,
+                        individual data will be get from the selected organisation unit. If the
+                        option is All, individual data will be get from both selected organisation
+                        unit and its children.</para>
+                </listitem>
+                <listitem>
+                    <para>Click <emphasis role="italic">Show Event List</emphasis> button to
+                        generate visit schedule. The result is displayed below.</para>
+                </listitem>
+            </orderedlist>
+            <para>Click <emphasis role="italic">Events <emphasis role="italic"
+                    >icon</emphasis>,</emphasis>
+                <emphasis role="italic">first icon</emphasis> under <emphasis role="italic"
+                    >Operations</emphasis>, corresponding to the entity which you would like to open
+                event list according to the search criteria. Then click on a date in event list to
+                open the data entry screen.</para>
+            <para>Click <emphasis role="italic">Dashboard</emphasis> icon, the <emphasis
+                    role="italic">secord icon</emphasis> under <emphasis role="italic"
+                    >Operations</emphasis>, corresponding to the entity which you would like to open
+                dashboard of the entity.</para>
+            <para>Click <emphasis role="italic">Tracked entity instance details and
+                    history</emphasis> icon, the <emphasis role="italic">third icon</emphasis> under
+                    <emphasis role="italic">Operations</emphasis>, corresponding to the entity which
+                you would like to open the entity history.</para>
+        </section>
+        <section>
+            <title>Lost to follow-up</title>
+            <para>This function supports the work practices around tracking entities within a health
+                program that have not shown up for a scheduled visit, e.g. that are lost to
+                follow-up.</para>
+            <para>To access <emphasis role="italic">Lost to follow up </emphasis>module, from the
+                    <emphasis role="italic">Apps</emphasis> menu, go to the<emphasis role="italic">
+                    Individual Records </emphasis>option and select <emphasis role="italic">Lost to
+                    follow up</emphasis> option on left menu. </para>
+            <para>To get tracking for a program, please do as follows - </para>
+            <orderedlist>
+                <listitem>
+                    <para>Select organisation unit on the left panel.</para>
+                </listitem>
+                <listitem>
+                    <para>Select a program in list on the main panel.</para>
+                </listitem>
+                <listitem>
+                    <para>Select a status event you want to get.</para>
+                </listitem>
+                <listitem>
+                    <para>Check on Show only Risk cases if you only want to show risk cases in
+                        result.</para>
+                </listitem>
+                <listitem>
+                    <para>Click <emphasis role="italic">Show Event List </emphasis>button.</para>
+                </listitem>
+            </orderedlist>
+            <screenshot>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata width="70%"
+                            fileref="resources/images/patients_programs/tracking_program.png"
+                            format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </screenshot>
+            <para>Click <emphasis role="italic">Events</emphasis> icon, <emphasis role="italic"
+                    >first icon</emphasis> under <emphasis role="italic">Operations</emphasis>,
+                corresponding to the entity which you would like to open event list according to the
+                search criteria. Then click on a date in event list to open the data entry
+                screen.</para>
+            <para>Click on <emphasis role="italic">Dashboard</emphasis> icon, the<emphasis
+                    role="italic"> second ico</emphasis>n under <emphasis role="italic"
+                    >Operations</emphasis> to open his/her dashboard.</para>
+            <para>Click on Edit icon, the <emphasis role="italic">third icon</emphasis> under
+                    <emphasis role="italic">Operations</emphasis> to edit program tracking
+                information.</para>
+            <para>Click <emphasis role="italic">Tracked entity instance details and
+                    history</emphasis> icon, the <emphasis role="italic">forth icon</emphasis> under
+                    <emphasis role="italic">Operations</emphasis>, corresponding to the event which
+                you would like to open the entity history.</para>
+            <para>To search events by due date, click on <emphasis role="italic">Advanced
+                    Search</emphasis> button. A advanced search criteria is shown. After selecting
+                the organisation unit type and filling the due date range which you would like,
+                click on <emphasis role="italic">Search</emphasis> button on this form to display
+                result.</para>
+            <screenshot>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata width="70%"
+                            fileref="resources/images/patients_programs/program_tracking_search_function.png"
+                            format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </screenshot>
+        </section>
+        <section>
+            <title>Data entry</title>
+            <section>
+                <title>Single event with registration</title>
+                <para>The data to register is defined by a single event with registration program.
+                    The functionality supports health providers to register entity information and
+                    input data values for a program into one form.</para>
+                <para>In order to register an event, from the <emphasis role="italic"
+                        >Apps</emphasis> option, go to the <emphasis role="italic">Individual
+                        Records</emphasis> and click it. Then select <emphasis role="italic">Single
+                        event with registration</emphasis> option on left menu to proceed.</para>
+                <para>To list all entities in the selected facility, click <emphasis role="italic"
+                        >List All entities</emphasis> button.</para>
+                <para>To register new entity, enroll this entity into the program and fill data
+                    values for the event of the entity and the selected program, select a program in
+                    the combo box. And then click <emphasis role="italic">Add new</emphasis>
+                    button.</para>
+                <screenshot>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="70"
+                                fileref="resources/images/patients_programs/create_new_person_single_event_with_registration.PNG"
+                                format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </screenshot>
+                <para>To update event of a registered entity:</para>
+                <orderedlist>
+                    <listitem>
+                        <para>Click <emphasis role="italic">Advanced search</emphasis> button. Then
+                            enter criterion for searching available entities. The search result is
+                            displayed below. User can read the user guide for <emphasis>Advanced
+                                search</emphasis> function in <emphasis>entity
+                                registration</emphasis> section.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Click on <emphasis role="italic">Data entry</emphasis> icon - the
+                            first icon under <emphasis>Operations</emphasis>, corresponding to the
+                            entity you would like to edit, to update data values for the
+                            event.</para>
+                    </listitem>
+                </orderedlist>
+            </section>
+        </section>
+        <section>
+            <title>Reports</title>
+            <para>The sub module provides two functions for individual reports -<itemizedlist>
+                    <listitem>
+                        <para><emphasis role="italic">Program Summary</emphasis> - View the summary
+                            report to get an overview of the services provided for a program.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Statistical Program</emphasis> - Statistical
+                            reports on program performance, e.g. drop-out rates, how many completed
+                            every month/year - counts/percentages etc.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Program stage completeness</emphasis> -
+                            Monitor the completeness of events and produce completeness reports for
+                            each program. </para>
+                    </listitem>
+                </itemizedlist></para>
+            <section>
+                <title>Program summary</title>
+                <para>The function provides a tool for generating summary list of individual
+                    information with color shown on program stages to identify status of receiving
+                    services in each stage.</para>
+                <para>To access the program summary report, choose <emphasis role="italic"
+                        >Apps</emphasis> &gt; <emphasis role="italic">Individual Records</emphasis>
+                    &gt; <emphasis role="italic">Program summary</emphasis>.</para>
+                <para>Select a <emphasis role="italic">organisation unit</emphasis> which provides
+                    services on the left menu. Then on the main page, select <emphasis role="italic"
+                        >Program</emphasis>, <emphasis role="italic">Start date</emphasis>,
+                        <emphasis role="italic">End date </emphasis>to get period. After, select Use
+                    data from level(s). There are three levels <emphasis role="italic"
+                        >Selected</emphasis>, <emphasis role="italic">Children Only</emphasis> and
+                        <emphasis role="italic">All</emphasis>. Finally, click <emphasis
+                        role="italic">Generate</emphasis> button. </para>
+                <para>The result is get based on the date of enrollment of each entity who
+                    registered the selected organisation unit and enrolled in the selected program
+                    in the interval from start-date and end-date what health provider
+                    entered.</para>
+                <screenshot>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="70%"
+                                fileref="resources/images/patients_programs/program_summary_report.png"
+                                format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </screenshot>
+                <para>Click on an event box to display records for this event.</para>
+                <para>Click on the entity box to display the details and history of the selected
+                    entity.</para>
+                <para>The color highlight the status of the stages -</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>PURPLE - Data entered and uncompleted stages.</para>
+                    </listitem>
+                    <listitem>
+                        <para>RED - Stages open but no data entered while the date estimated for
+                            closing/completing is over.</para>
+                    </listitem>
+                    <listitem>
+                        <para>YELLOW - Coming stages.</para>
+                    </listitem>
+                    <listitem>
+                        <para>GREEN- Compete stages.</para>
+                    </listitem>
+                    <listitem>
+                        <para>GREY - Skipped stages.</para>
+                    </listitem>
+                </itemizedlist>
+            </section>
+            <section>
+                <title>Program Statistics </title>
+                <para>The tool provides a tool for generating a statistics report by program.</para>
+                <para>To access <emphasis role="italic">Program Statistics</emphasis> module, from
+                    the <emphasis role="italic">Apps</emphasis> menu, go to the <emphasis
+                        role="italic">Individual Records</emphasis>. Select <emphasis role="italic"
+                        >Program Statistics </emphasis>option on left menu. Program statistics form
+                    is opened. </para>
+                <para>To get statistics report for a program, please do as follows -</para>
+                <orderedlist>
+                    <listitem>
+                        <para><emphasis role="italic">Program </emphasis>- Specify program for
+                            generating report.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Select <emphasis role="italic">start-date</emphasis> and <emphasis
+                                role="italic">end-date</emphasis> - The system will aggregate report
+                            based on start-date and end-date.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Use data from level(s)</emphasis> - Specify
+                            the level which you need to get events. If the option is <emphasis
+                                role="italic">Children only</emphasis>, individual data will be
+                            aggregated from the children of the selected organisation unit. If the
+                            option is <emphasis role="italic">Selected</emphasis>, individual data
+                            will be aggregated from the selected organisation unit. If the option is
+                                <emphasis role="italic">All</emphasis>, individual data will be
+                            aggregated from both selected organisation unit and its children.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Click <emphasis role="italic">Generate</emphasis> button to generate
+                            report. The result is displayed below. And click <emphasis role="italic"
+                                >Export XLS</emphasis> button to export the result to excel
+                            file.</para>
+                    </listitem>
+                </orderedlist>
+                <screenshot>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="80%" align="center"
+                                fileref="resources/images/patients_programs/statistical_program_summary_report.png"
+                                format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </screenshot>
+                <para><emphasis role="italic">In result -</emphasis></para>
+                <orderedlist>
+                    <listitem>
+                        <para><emphasis role="italic">Total new enrollments in this
+                                period</emphasis> - The number of entities who enrolled the selected
+                            program from start-date to end-date.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Total programs completed in this period
+                            </emphasis>- The number of programs completed.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Total programs discontinued
+                                (un-enrollments)</emphasis> - The number of programs
+                            un-enrolled.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Average number of stages for complete
+                                programs</emphasis> - The average number of stages per completed
+                            programs.</para>
+                    </listitem>
+                </orderedlist>
+                <para>From<emphasis role="italic"> Summary by stage</emphasis> section -</para>
+                <orderedlist>
+                    <listitem>
+                        <para><emphasis role="italic">Visits scheduled (All)</emphasis> column is
+                            the number of events of all stages, includes overdue, skipped,
+                            incomplete and complete events.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Visits done (#)</emphasis> column is the
+                            number of events incomplete and complete. </para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Visits done (%)</emphasis> column is percent
+                            of visits done (#) events / the number of all visits scheduled.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Forms completed</emphasis> column are the
+                            number of events completed. </para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Forms completed (%) </emphasis>column is
+                            percent of completed events / the number of all visits scheduled.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Visits overdue (#)</emphasis> column is the
+                            number of overdue visits</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="italic">Visits overdue (%)</emphasis> column is
+                            percent of visits overdue (#) / the number of all visits
+                            scheduled.</para>
+                    </listitem>
+                </orderedlist>
+            </section>
+            <section>
+                <title>Program stage completeness</title>
+                <para>To generate the completeness of events, select an organisation unit on the
+                    left panel. Then select a program which you would like. After to select two
+                    dates for Start date and End date field. Finally, click Generate button. The
+                    result is children organisation units where finished all events of the selected
+                    program by the date range you selected.</para>
+            </section>
+        </section>
+        <section>
+            <title>Manual aggregation</title>
+            <para>The <emphasis role="italic">Manual Aggregation</emphasis> module is used for
+                aggregating individual data and import into aggregated data element. </para>
+            <para>To access <emphasis>Manual aggregation</emphasis> module, from the <emphasis
+                    role="italic">Apps</emphasis> menu, go to the <emphasis role="italic">Individual
+                    Records</emphasis>. Select <emphasis role="italic">Manual Aggregation</emphasis>
+                option on left menu. <emphasis>Manual aggregation form</emphasis> is opened as below
+                -</para>
+            <screenshot>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata width="70%"
+                            fileref="resources/images/patients_programs/person_aggregation_form.png"
+                            format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </screenshot>
+            <para>In the <emphasis>Manual aggregation</emphasis> form above - </para>
+            <orderedlist>
+                <listitem>
+                    <para>Select <emphasis role="italic">dataset</emphasis> from Dataset List to get
+                        aggregate values. Note that only datasets which were assigned to at least
+                        one organisation unit will be shown in this list.</para>
+                </listitem>
+                <listitem>
+                    <para>Select a date range from <emphasis role="italic">From</emphasis> and
+                            <emphasis role="italic">To</emphasis> fields.</para>
+                </listitem>
+                <listitem>
+                    <para>Select <emphasis role="italic">organisation unit level</emphasis> where
+                        entity data will be select to aggregate. There are 3 options - </para>
+                    <para>- <emphasis role="italic">All</emphasis>: Individual data will be
+                        aggregated from both selected organisation unit and its children.</para>
+                    <para>- <emphasis role="italic">Children only</emphasis>: Individual data will
+                        be aggregated from the children of the selected organisation unit .</para>
+                    <para>- <emphasis role="italic"> Selected</emphasis>: Individual data will be
+                        aggregated from the selected organisation unit. </para>
+                </listitem>
+                <listitem>
+                    <para>Click on the <emphasis role="italic">Aggregate and Save</emphasis> button
+                        to execute aggregate function and save data values into database directly.
+                        Besides, click Preview button to preview data values and you can
+                        check/select any data values you want to input them into database. The
+                            <emphasis>entity aggregation result </emphasis>page is shown after
+                        running successfully.</para>
+                </listitem>
+            </orderedlist>
+            <screenshot>
+                <title>Figure - entity aggregation result</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata width="70%"
+                            fileref="resources/images/patients_programs/example_person_aggregation_result.png"
+                            format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </screenshot>
+            <para>In <emphasis>Manual entity aggregation result</emphasis><emphasis role="italic">
+                    preview</emphasis> page -</para>
+            <itemizedlist>
+                <listitem>
+                    <para>Click <emphasis role="italic">Save all values</emphasis> button to save
+                        all aggregated data values .</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="italic"><emphasis role="italic">Click</emphasis> Orange
+                            arrow</emphasis> icon next to period name for showing list of aggregated
+                        data values at this period. Select only necessary data values and click
+                            <emphasis role="italic">Save</emphasis> selected values to save
+                        them</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis><emphasis role="italic">Click </emphasis>Show details</emphasis>
+                        icon to view detail information which aggregated.</para>
+                </listitem>
+            </itemizedlist>
+        </section>
+        <?oxy_custom_end?>
+    </section>
+</section>

@@ -9,8 +9,9 @@
          xmlns:xhtml="http://www.w3.org/1999/xhtml"
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
-         xmlns:db="http://docbook.org/ns/docbook">
-  <title>[Review ongoing]Using the Event Capture
+         xmlns:db="http://docbook.org/ns/docbook"
+         xml:id="event_capture_app">
+  <title>Using the Event Capture
     <?oxy_comment_start author="cecilia" timestamp="20160826T105701+0200" comment="To verify:
 - Is there a certain workflow? If so, add section.
 - Explain the pre-req, you need to create a program
@@ -109,10 +110,10 @@ Is this relevant for the user? Of more implementer information?"?>
       </mediaobject>
     </screenshot>
   </section>
-  <section>
-    <title>Workflow</title>
+  <!--<section>
+    <title><?oxy_comment_start author="cecilia" timestamp="20161005T145658+0200" comment="At next release: add workflow section"?>Workflow<?oxy_comment_end?></title>
     <para/>
-  </section>
+  </section>-->
   <section>
     <title><?oxy_comment_start author="cecilia" timestamp="20160826T111244+0200" comment="Or Create an event?
 Add an event?"?>Register<?oxy_comment_end?>
@@ -120,18 +121,15 @@ Add an event?"?>Register<?oxy_comment_end?>
       <?oxy_comment_start author="cecilia" timestamp="20160826T105820+0200" comment="Or event data?"?>event<?oxy_comment_end?></title>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Event
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Event Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Select an organisation unit.</para>
       </listitem>
       <listitem>
         <para>Select a program.</para>
-        <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
         <para>You'll only see programs associated with the selected organisation unit and programs
           you've access to through your user role.</para>
-        <?oxy_custom_end?>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Register event</emphasis>.</para>
@@ -166,8 +164,7 @@ Add an event?"?>Register<?oxy_comment_end?>
     <title>Edit an event</title>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Event
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Event Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Select an organisation unit.</para>
@@ -194,21 +191,14 @@ Add an event?"?>Register<?oxy_comment_end?>
 Maybe grid format?
 table?
 Maybe multiple events at the same time?"?>grid<?oxy_comment_end?></title>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-    <para>Events are displayed in a
-      <?oxy_comment_start author="cecilia" timestamp="20160829T155904+0200" comment="Event list or Event table?"?>tabular<?oxy_comment_end?>
-      way. Each row corresponds to an event. The columns display information about the events, more
-      specifically they display data for data elements which are part of the program.</para>
-    <?oxy_custom_end?>
-    <para>The <emphasis role="bold">Edit in grid</emphasis> function allows you to edit the selected
+    <para>The <emphasis role="bold">Edit in grid</emphasis> function allows you to edit a selected
       event within the table but only those columns (data elements) visible in the grid. If you need
-      more columns, use <emphasis role="bold">Show/hide columns</emphasis> to speficy which columns
+      more columns, use <emphasis role="bold">Show/hide columns</emphasis> to specify which columns
       should be displayed in the
       <?oxy_comment_start author="cecilia" timestamp="20160829T160635+0200" comment="Event list or Event table?"?>list<?oxy_comment_end?>.</para>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Event
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Event Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Select an organisation unit.</para>
@@ -236,13 +226,42 @@ Verify with SME how it should work, how you close edit mode"?>
     </orderedlist>
   </section>
   <section>
+    <title>Share events in edit
+      <?oxy_comment_start author="cecilia" timestamp="20161005T170648+0200" comment="Verify with SME that descriptions is correct."?>mode<?oxy_comment_end?></title>
+    <para>You can share an event in edit mode via its web address.</para>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Event Capture</emphasis> app.</para>
+      </listitem>
+      <listitem>
+        <para>Open the event you want to share in edit mode.</para>
+      </listitem>
+      <listitem>
+        <para>Copy the URL.</para>
+        <para>Make sure that the URL contains "event" and "ou"
+          (<?oxy_comment_start author="cecilia" timestamp="20161005T171224+0200" comment="Verify that link works and that the example is correct."?>organisation<?oxy_comment_end?>
+          unit) parameters.</para>
+        <example>
+          <para><link
+              xlink:href="https://play.dhis2.org/dev/dhis-web-event-capture/index.html#/%3Fou=DiszpKrYNg8%26event=onXW2DQHRGS"
+              xmlns:xlink="http://www.w3.org/1999/xlink"/></para>
+        </example>
+      </listitem>
+      <listitem>
+        <para>Paste the URL in the sharing method of your choice, for example an e-mail or a message
+          within DHIS2.</para>
+        <para>If you're not logged in to DHIS2 when you click the link, you'll be asked to do so and
+          then taken to the dashboard.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
     <title>View an event
       <?oxy_comment_start author="cecilia" timestamp="20160826T105907+0200" comment="is audit history really necessary? Why not history? or log?"?>audit<?oxy_comment_end?>
       history </title>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Event
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Event Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Select an organisation unit.</para>
@@ -267,8 +286,7 @@ It looks like only changes to an event are logged. Suggest to log also the creat
     <title>Delete an event</title>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Event
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Event Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Select an organisation unit.</para>
@@ -299,10 +317,12 @@ Layout?"?>layout<?oxy_comment_end?>
     </title>
     <para>You can select which columns to show or hide in an event list. This can be useful for
       example when you have a long list of data elements assigned to a program stage.</para>
+    <?oxy_comment_start author="cecilia" timestamp="20161005T171846+0200" comment="Verify with SME."?>
+    <para>Once you've modified the layout, it is saved on your user profile. </para>
+    <?oxy_comment_end?>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Event
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Event Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Select an organisation unit.</para>
@@ -317,8 +337,9 @@ Layout?"?>layout<?oxy_comment_end?>
         <para>Click the <emphasis role="bold">Show/hide columns</emphasis> icon.</para>
       </listitem>
       <listitem>
-        <para>Select the columns you want to display and click <emphasis role="bold"
-            >Close</emphasis>.</para>
+        <para>Select the columns you want to display and <?oxy_comment_start author="cecilia" timestamp="20161005T171710+0200" comment="The layout should be saved per user. Add comment about that.
+Doesn&apos;t seem to work though..."?>click<?oxy_comment_end?>
+          <emphasis role="bold">Close</emphasis>.</para>
       </listitem>
     </orderedlist>
   </section>
@@ -330,8 +351,7 @@ List of events?"?>event<?oxy_comment_end?>
       list</title>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Event
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Event Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Select an organisation unit.</para>
@@ -355,8 +375,7 @@ In old doc:
     <title>Download an event list</title>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Event
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Event Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Select an organisation unit.</para>

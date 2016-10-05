@@ -9,7 +9,8 @@
          xmlns:xhtml="http://www.w3.org/1999/xhtml"
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:mth="http://www.w3.org/1998/Math/MathML"
-         xmlns:db="http://docbook.org/ns/docbook">
+         xmlns:db="http://docbook.org/ns/docbook"
+         xml:id="tracker_capture_app">
   <title>[Review ongoing]Using the <?oxy_comment_start author="cecilia" timestamp="20160905T145828+0200" comment="Before release, replace all screen shots."?>Tracker<?oxy_comment_end?>
     <?oxy_comment_start author="cecilia" timestamp="20160912T110348+0200" comment="Add section about Print form feature
 What does it do?
@@ -26,20 +27,18 @@ Also add info about search results, that you can download the list. What is the 
         </imageobject>
       </mediaobject>
     </screenshot>
+    <para>The <emphasis role="bold">Tracker Capture</emphasis> app is an advanced version of the
+        <emphasis role="bold">Event Capture</emphasis>
+      <?oxy_comment_start author="cecilia" timestamp="20161005T160724+0200" comment="Removed content:
+&quot;If no search criteria is assigned for an attribute, then the attribute has no effect on searching. However to control the appearance or not of an attribute as a column list, one has to go through a menu available under the small gear icon.&quot; No such icon anymore." flag="done"?>app<?oxy_comment_end?>.</para>
     <itemizedlist>
       <listitem>
-        <para>The <emphasis role="bold">Tracker Capture</emphasis> app is an advanced version of the
-            <emphasis role="bold">Event Capture</emphasis> app.</para>
-        <itemizedlist>
-          <listitem>
-            <para><emphasis role="bold">Event Capture</emphasis>: handles single events
-                <emphasis>without</emphasis> registration</para>
-          </listitem>
-          <listitem>
-            <para><emphasis role="bold">Tracker Capture</emphasis>: handles multiple events
-              (including single event) <emphasis>with</emphasis> registration.</para>
-          </listitem>
-        </itemizedlist>
+        <para><emphasis role="bold">Event Capture</emphasis>: handles single events
+            <emphasis>without</emphasis> registration</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Tracker Capture</emphasis>: handles multiple events (including
+          single event) <emphasis>with</emphasis> registration.</para>
       </listitem>
       <listitem>
         <para><?oxy_comment_start author="cecilia" timestamp="20160830T135029+0200" comment="Rewrite."?>You
@@ -58,78 +57,16 @@ Also add info about search results, that you can download the list. What is the 
           lis<?oxy_comment_end?>t.</para>
         <para>If you don't select a program, the system picks default attributes.</para>
       </listitem>
+      <listitem>
+        <?oxy_comment_start author="cecilia" timestamp="20160905T160429+0200" comment="For SME: What does this mean?"?>
+        <para>Both skip-logic and validation error/warning messages are supported during
+          registration.</para>
+        <?oxy_comment_end?>
+      </listitem>
     </itemizedlist>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-    <para>If no search criteria is assigned for an attribute, then the attribute has no effect on
-      searching. However to control the appearance or not of an attribute as a column list, one has
-      to go through a menu available under
-      the<?oxy_comment_start author="cecilia" timestamp="20160912T093002+0200" comment="Verify with SME: No such icon any more. Function removed?"?>
-      small gear icon.<?oxy_comment_end?></para>
-    <?oxy_custom_end?>
-    <?oxy_comment_start author="cecilia" timestamp="20160905T160429+0200" comment="For SME: What does this mean?"?>
-    <para>Both skip-logic and validation error/warning messages are supported during
-      registration.</para>
-    <?oxy_comment_end?>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-    <para>In the <emphasis role="bold">Event Capture</emphasis> app, you manage the following
-      <?oxy_comment_start author="cecilia" timestamp="20160912T164503+0200" comment="Test if it is useful to have a summary table for Tracker Capture or TEI dashboard."?>objects<?oxy_comment_end?>:</para>
-    <?oxy_custom_end?>
-    <table frame="all">
-      <title>Objects in the Event Capture app</title>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-      <tgroup cols="2">
-        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
-        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
-        <thead>
-          <row>
-            <entry>
-              <para>Object type</para>
-            </entry>
-            <entry>
-              <para>Available functions</para>
-            </entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry>
-              <para>Indicator</para>
-            </entry>
-            <entry>
-              <para>Create, edit, clone, share, delete, show details and translate</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>Indicator type</para>
-            </entry>
-            <entry>
-              <para>Create, edit, clone, delete, show details and translate</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>Indicator group</para>
-            </entry>
-            <entry>
-              <para>Create, edit, clone, share, delete, show details and translate</para>
-            </entry>
-          </row>
-          <row>
-            <entry>
-              <para>Indicator group set</para>
-            </entry>
-            <entry>
-              <para>Create, edit, clone, share, delete, show details and translate</para>
-            </entry>
-          </row>
-        </tbody>
-      </tgroup>
-      <?oxy_custom_end?>
-    </table>
   </section>
   <section>
-    <title>About the tracked entity instance (TEI) dashboard</title>
+    <title>About tracked entity instance (TEI) dashboards</title>
     <screenshot>
       <mediaobject>
         <imageobject>
@@ -141,7 +78,9 @@ Also add info about search results, that you can download the list. What is the 
     <para>You manage a TEI from the
       <?oxy_comment_start author="cecilia" timestamp="20160912T101716+0200" comment="TEI dashboard or
 TEI&apos;s dashboard?"?>TEI's
-      dashboard i<?oxy_comment_end?>n the Tracker Capture app.</para>
+      dashboard i<?oxy_comment_end?>n the <emphasis role="bold"
+        ><?oxy_custom_start type="oxy_content_highlight" color="235,192,230"?>Tracker Capture
+        <?oxy_custom_end?></emphasis>app.</para>
     <itemizedlist>
       <listitem>
         <para>The dashboard consist of widgets. Drag and drop the widgets to place them in the order
@@ -243,11 +182,10 @@ What is an individual case?"?>
 Register a TEI?
 
 How do you create a TEI without enrolling it into a program?"?>eate<?oxy_comment_end?>
-      a tracked entity instance (TEI)</title>
+      a TEI</title>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Tracker
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>In the organisation unit tree in the left hand pane, select an organisation
@@ -283,44 +221,22 @@ Is it always &quot;firstname&quot; and &quot;last name&quot;?"?>information<?oxy
       </listitem>
     </orderedlist>
     <note>
-      <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-      <para>For unique tracked entity attributes you can have the system automatically generate and
-        assign numeric IDs. When registering tracked entity instances on web, the tracker capture
-        registration form will then automatically be populated with a number in the given pattern.
-        In tracker on Android, the ID generation is used to reserve a series of IDs for each Android
-        device. This allows offline registration of tracked entity instances without risking
-        duplicate IDs when syncing with the server.</para>
-      <?oxy_custom_end?>
-      <para>You
-        <?oxy_comment_start author="cecilia" timestamp="20160701T122212+0200" comment="Before release: verify path to automatically generated.
-Also make sure this task is in the Create program section.
-
-When olink works, add x-ref to relevant section."?>configure<?oxy_comment_end?>
-        the system-generated identifiers in the <emphasis role="bold">Program/Attributes</emphasis>
-        app:</para>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-              >Program/Attributes</emphasis> > <emphasis role="bold">Tracked entity</emphasis>.
-          </para>
-        </listitem>
-        <listitem>
-          <para>Select an attribute and click <emphasis role="bold">Edit</emphasis>.</para>
-        </listitem>
-        <listitem>
-          <para><?oxy_comment_start author="cecilia" timestamp="20160830T152541+0200" comment="Verify with SME: this option is not in UI. Has the function moved?"?>Select<?oxy_comment_end?>
-            <emphasis role="bold">Automatically generated</emphasis>.</para>
-        </listitem>
-      </orderedlist>
+      <para>For unique tracked entity attributes the system can automatically generate and assign
+        numeric IDs. When registering tracked entity instances on web, the registration form will
+        then automatically be populated with a number in the given pattern. On Android, the ID
+        generation is used to reserve a series of IDs for each Android device. This allows offline
+        registration of tracked entity instances without risking duplicate IDs when syncing with the
+        server.</para>
+      <para>You configure automated IDs in the <emphasis role="bold">Maintenance</emphasis>
+        app.</para>
     </note>
   </section>
   <section>
-    <title>Create a tracked entity instance (TEI) and enroll it in a program</title>
+    <title>Create a TEI and enroll it in a program</title>
     <para>You can create a TEI and enroll that TEI to a program in one operation:</para>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Tracker
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>In the organisation unit tree in the left hand pane, select an organisation
@@ -379,8 +295,7 @@ Does it search fin node + children or only children?"?>existing<?oxy_comment_end
       <title>Simple TEI search</title>
       <orderedlist>
         <listitem>
-          <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold"
-              >Tracker Capture</emphasis>.</para>
+          <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
         </listitem>
         <listitem>
           <para>(Optional) In the organisation unit tree in the left hand pane, select an
@@ -388,13 +303,9 @@ Does it search fin node + children or only children?"?>existing<?oxy_comment_end
         </listitem>
         <listitem>
           <para>In the right hand search field, type your search criteria.</para>
-          <para>The search criteria could for example be a last name.</para>
-          <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-          <para>The simple search works by typing a free text in the search field. What is typed in
-            the input box is applied across all attributes for
-            <?oxy_comment_start author="cecilia" timestamp="20160912T155555+0200" comment="Verify with SME: What does partial match mean? How is it different from the advance search?"?>partial
-            match.<?oxy_comment_end?></para>
-          <?oxy_custom_end?>
+          <para>The search criteria could for example be a last
+            <?oxy_comment_start author="cecilia" timestamp="20161005T164018+0200" comment="Removed text to be validated: 
+&quot;The simple search works by typing a free text in the search field. What is typed in the input box is applied across all attributes for partial match.&quot;"?>name<?oxy_comment_end?>.</para>
         </listitem>
         <listitem>
           <para>Click search.</para>
@@ -435,8 +346,7 @@ enrollment or enrollments?"?>status<?oxy_comment_end?>: <itemizedlist>
         units.</para>
       <orderedlist>
         <listitem>
-          <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold"
-              >Tracker Capture</emphasis>.</para>
+          <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
         </listitem>
         <listitem>
           <para>(Optional) In the organisation unit tree in the left hand pane, select an
@@ -601,8 +511,7 @@ Where do you set it?"?>All<?oxy_comment_end?>
     <title>Enroll an existing TEI in a program</title>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Tracker
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Open an existing
@@ -625,65 +534,67 @@ Where do you set it?"?>All<?oxy_comment_end?>
     <title><?oxy_comment_start author="cecilia" timestamp="20160913T143614+0200" comment="Verify with SME:
 In some programs, for example Child program, you register the TIE, enroll the TEI and enter data in one go. Which are the rules for this?
 How do you set this up?"?>Enter<?oxy_comment_end?>
-      event data for a TEI</title>
+      event data for a
+      <?oxy_comment_start author="cecilia" timestamp="20161005T164705+0200" comment="At next release: Rewrite section"?>TEI<?oxy_comment_end?></title>
     <para>In a TEI dashboard, you enter event data in the <emphasis role="bold">Data
         entry</emphasis> or <emphasis role="bold">Tabular data entry</emphasis>
       <?oxy_comment_start author="cecilia" timestamp="20160913T144337+0200" comment="Verify with SME: 
 Do the data entry widgets look different depending on the program?"?>widgets<?oxy_comment_end?>.</para>
-    <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-    <para><emphasis role="bold">Data entry</emphasis> - this is for doing data entry using either
-      default or custom forms. Depending on program definition, in particular program stages, events
-      will be displayed in a timely fashion. Clicking on any of them displays the corresponding data
-      entry. If a stage needs new event, a plus icon is displayed for new event creation. To proceed
-      with data entry, it is mandatory to have event date. Once an event date is specified it is not
-      possible to change due date. The assumption is that by specifying event date, the event has
-      already taken place. If the event hasn't occurred yet, it is possible to change due date -
-      this is effectively doing nothing but rescheduling. The buttons at the bottom help to change
-      the status of a selected event.</para>
-    <para> Another key feature from this widget is addition of multiple notes for an event. Normally
-      data recording is through data elements, however there are cases where it is necessary to
-      record additional information or comments. This is where the notes section comes handy.
-      However it is not possible to delete a note. The idea is notes are more like log books. Both
-      skip-logic and validation error/warning messages are supported during data entry.</para>
-    <para><emphasis role="bold">Tabular data entry</emphasis> - this widget that allows for
-      tabular-style data entry. It displays the list of program stages as left-hand side labels.
-      Events will be listed in table for repeatable program stage, and allows for in-line edits of
-      event data values.</para>
-    <?oxy_custom_end?>
-    <orderedlist>
-      <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Tracker
-            Capture</emphasis>.</para>
-      </listitem>
-      <listitem>
-        <para>In the organisation unit tree in the left hand pane, select an organisation
-          unit.</para>
-      </listitem>
-      <listitem>
-        <para>Click <emphasis role="bold">Register</emphasis>.</para>
-      </listitem>
-      <listitem>
-        <para>Select an entity type.</para>
-      </listitem>
-      <listitem>
-        <para>Fill in the required information.</para>
-      </listitem>
-      <listitem>
-        <para>Click <emphasis role="bold">Save and continue</emphasis> or <emphasis role="bold">Save
-            and add new</emphasis>.</para>
-        <itemizedlist>
-          <listitem>
-            <para><emphasis role="bold">Save and continue</emphasis>: completes the registration and
-              opens the registered TEI's dashboard</para>
-          </listitem>
-          <listitem>
-            <para><emphasis role="bold">Save and add new</emphasis>: completes the registration but
-              stays on the same page. Use this option when you want to register one TEI after
-              another without enrollment to a program.</para>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </orderedlist>
+    <table frame="all">
+      <title>Data entry widgets in the Tracker Capture app</title>
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="2.13*"/>
+        <thead>
+          <row>
+            <entry>
+              <para>Widget name</para>
+            </entry>
+            <entry>
+              <para>Description</para>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              <para><emphasis role="bold">Data entry</emphasis></para>
+            </entry>
+            <entry>
+              <para>For data entry using either default or custom forms.</para>
+              <para>Depending on program definition, in particular program stages, events will be
+                displayed in a timely fashion. Clicking on any of them displays the corresponding
+                data entry. If a stage needs new event, a plus icon is displayed for new event
+                creation. To proceed with data entry, it is mandatory to have event date. Once an
+                event date is specified it is not possible to change due date. The assumption is
+                that by specifying event date, the event has already taken place. If the event
+                hasn't occurred yet, it is possible to change due date - this is effectively doing
+                nothing but rescheduling. The buttons at the bottom help to change the status of a
+                selected event.</para>
+              <para>Another key feature from this widget is addition of multiple notes for an event.
+                Normally data recording is through data elements, however there are cases where it
+                is necessary to record additional information or comments. This is where the notes
+                section comes handy. However it is not possible to delete a note. The idea is notes
+                are more like log books. Both skip-logic and validation error/warning messages are
+                supported during data entry.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para><emphasis role="bold">Tabular
+                  <?oxy_comment_start author="cecilia" timestamp="20161005T165624+0200" comment="Feature has been redone, verify with SME."?>data<?oxy_comment_end?>
+                  entry</emphasis></para>
+            </entry>
+            <entry>
+              <para>For tabular-style data entry.</para>
+              <para>The widget displays the list of program stages as left-hand side labels. Events
+                will be listed in table for repeatable program stage, and allows for in-line edits
+                of event data values.</para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
   </section>
   <section>
     <title>Manage a
@@ -806,8 +717,7 @@ It looks like this information is under the Enrollment widget"?>active
       dashboard via its web address.</para>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Tracker
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Open the dashboard you want to share.</para>
@@ -821,11 +731,9 @@ https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard?tei=H
         <para>Make sure that the URL contains "tei", "program" and "ou" (organisation unit)
           parameters.</para>
         <example>
-          <para><link
+          <para><?oxy_comment_start author="cecilia" timestamp="20161005T170818+0200" comment="Verify that link works."?><link
               xlink:href="https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard%3Ftei=HiBv6yFdU2x%26program=IpHINAT79UW"
-              xmlns:xlink="http://www.w3.org/1999/xlink"><link
-                xlink:href="https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard%3Ftei=HiBv6yFdU2x%26program=IpHINAT79UW"
-              /></link></para>
+              xmlns:xlink="http://www.w3.org/1999/xlink"><?oxy_comment_end?></link></para>
         </example>
       </listitem>
       <listitem>
@@ -855,26 +763,17 @@ https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard?tei=H
   </section>
   <section>
     <title><?oxy_comment_start author="cecilia" timestamp="20160907T140945+0200" comment="Does the GUI item change depending on the program?
-In Child porgram: &quot;Deactivate person&quot;"?>Deactivate<?oxy_comment_end?>
-      a TEI (admin only?)</title>
+In Child porgram: &quot;Deactivate person&quot;
+
+Admin only?"?>Deactivate<?oxy_comment_end?>
+      a TEI</title>
     <para/>
-  </section>
-  <section>
-    <title>Create program
-      <?oxy_comment_start author="cecilia" timestamp="20160906T160929+0200" comment="Verify with SME:
-Is report created automatically?
-If so, who sets it up?
-In which way is this report different compared to the reports under &quot;Reports&quot;?"?>report<?oxy_comment_end?>
-      (for a TEI?)</title>
-    <para><emphasis role="bold">Report</emphasis> - this is to provide a "journal" of the TEI per
-      program. A report row is provided for each program the TEI is/was associated.</para>
   </section>
   <section>
     <title>Create reports</title>
     <orderedlist>
       <listitem>
-        <para>In the <emphasis role="bold">Apps</emphasis> menu, click <emphasis role="bold">Tracker
-            Capture</emphasis>.</para>
+        <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Reports</emphasis>.</para>
