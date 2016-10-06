@@ -37,25 +37,24 @@
         </listitem>
         <listitem>
             <para>Create a <emphasis role="bold"
-                    ><?oxy_comment_start author="cecilia" timestamp="20160929T100711+0200" comment="At next revision, add more info about the generator"?>Generator<?oxy_comment_end?></emphasis>.</para>
+                    ><?oxy_comment_start author="cecilia" timestamp="20160929T100711+0200" comment="At next revision, add more info about the generator" flag="done"?>Generator<?oxy_comment_end?></emphasis>.</para>
             <para>The generator is the expression that is used to calculate the predicted
                 value.</para>
-            <para>samme som indicator/validation rule. brukes til generere/kalkulere verdien som
-                lagres (predictes)</para>
         </listitem>
         <listitem>
             <para>Click <emphasis role="bold">Sample skip test</emphasis> and create an expression
                 which is used to exclude data from the generation process. The expression should
                 evaluate to true or false.</para>
             <example>
-                <para>Use the sample skip test when you want to calculate the number of malaria
-                    cases average and you want to exclude the "spikes" you get from
+                <para>Use the sample skip test when you want to calculate the average number of
+                    malaria cases and you want to exclude the "spikes" you get from
                     outbreaks.</para>
             </example>
         </listitem>
-        <?oxy_comment_start author="cecilia" timestamp="20160922T142728+0200" comment="Mandatory values?"?>
         <listitem>
-            <para>Enter a <emphasis role="bold">Sequential sample count</emphasis> value.</para>
+            <para>Enter a <emphasis role="bold">Sequential sample
+                    <?oxy_comment_start author="cecilia" timestamp="20161006T103327+0200" comment="Mandatory value"?>count<?oxy_comment_end?></emphasis>
+                value.</para>
             <para>This value decides for how many sequential periods the calculation should go back
                 in time to collect data for the calculations. The sequential sample count depends on
                 the value type.</para>
@@ -65,7 +64,9 @@
             </example>
         </listitem>
         <listitem>
-            <para>Enter an <emphasis role="bold">Annual sample count</emphasis> value.</para>
+            <para>Enter an <emphasis role="bold">Annual sample
+                    <?oxy_comment_start author="cecilia" timestamp="20161006T103339+0200" comment="Mandatory value?"?>count<?oxy_comment_end?></emphasis>
+                value.</para>
             <para>This value decides for how many years the calculation should go back in time to
                 collect data for the calculations. The annual sample count depends on the value type
                 and sequential sample count.</para>
@@ -73,14 +74,18 @@
                 <para>If the period type is "Monthly", the sequential sample count is "3" and the
                     annual sample count is "4", the predictor calculations will include data three
                     months back in time for this year and
-                    f<?oxy_comment_start author="cecilia" timestamp="20161005T221758+0200" comment="Verify with Lars, doesn&apos;t make sense. Shouuld be 3 years back in time."?>or
+                    f<?oxy_comment_start author="cecilia" timestamp="20161005T221758+0200" comment="Pending information form Lars.
+Verify with Lars, doesn&apos;t make sense. Shouuld be 3 years back in time.
+"?>or
                     two (3-1) <?oxy_comment_end?>years back in time:</para>
                 <para>June, July, August 2016; June, July, August, 2015; and June, July, August
                     2014.</para>
             </example>
         </listitem>
         <listitem>
-            <para>Enter a <emphasis role="bold">Sequential skip count</emphasis> value.</para>
+            <para>Enter a <emphasis role="bold">Sequential skip
+                    <?oxy_comment_start author="cecilia" timestamp="20161006T103347+0200" comment="Mandatory value?"?>count<?oxy_comment_end?></emphasis>
+                value.</para>
             <para>This value decides how many periods the calculation should go back in time before
                 the sequential sample count starts. The sequential skip count depends on the value
                 type and sequential sample count.</para>
@@ -93,7 +98,6 @@
                     count is "2")</para>
             </example>
         </listitem>
-        <?oxy_comment_end?>
         <listitem>
             <para>Click <emphasis role="bold">Save</emphasis>.</para>
         </listitem>
