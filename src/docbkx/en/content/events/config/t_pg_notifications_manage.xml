@@ -6,18 +6,168 @@
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
     xmlns:db="http://docbook.org/ns/docbook" xml:id="program_notifications">
-    <title>Manage <?oxy_comment_start author="cecilia" timestamp="20161005T123636+0200" comment="At next revision, add doc about how you delete and edit "?>program<?oxy_comment_end?>
-        <?oxy_comment_start author="cecilia" timestamp="20161004T161503+0200" comment="New feature, see notes and refer to talk with SME."?>notifications<?oxy_comment_end?></title>
+    <title><?oxy_comment_start author="cecilia" timestamp="20161006T141346+0200" comment="At next release: verify the scheduling section if the content is up to date.."?>Manage<?oxy_comment_end?>
+        <?oxy_comment_start author="cecilia" timestamp="20161005T123636+0200" comment="At next revision, add doc about how you delete and edit "?>program<?oxy_comment_end?>
+        notifications</title>
     <section>
         <title>About program notifications</title>
-        <para>You can create program notifications for programs and program stages. The
-            notifications are send either via the internal DHIS2 messaging system, via e-mail or via
-            text messages (SMS). You can use program notifications to, for example, send an
-            automatic reminder to a tracked entity 10 days before a scheduled appointment.</para>
-        <note>
-            <para>To receive a program notification, the recipient must have an e-mail address or a
-                phone number in his/her user profile.</para>
-        </note>
+        <para>You can create program notifications for programs with registration and their program
+            stages. The notifications are sent either via the internal DHIS2 messaging system, via
+            e-mail or via text messages (SMS). You can use program notifications to, for example,
+            send an automatic reminder to a tracked entity 10 days before a scheduled
+            appointment.</para>
+        <para>You use the program’s tracked entity attributes and the variables to create a
+            notification. The following attributes are available in the <emphasis role="bold"
+                >Parameters</emphasis> field:</para>
+        <table frame="all">
+            <title/>
+            <tgroup cols="3">
+                <colspec colname="newCol3" colnum="1" colwidth="1*"/>
+                <colspec colname="c1" colnum="2" colwidth="1.0*"/>
+                <colspec colname="c2" colnum="3" colwidth="1.0*"/>
+                <thead>
+                    <row>
+                        <entry>
+                            <para>Notification type</para>
+                        </entry>
+                        <entry>
+                            <para>Variable name</para>
+                        </entry>
+                        <entry>
+                            <para>Variable code</para>
+                        </entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>
+                            <para>Program</para>
+                        </entry>
+                        <entry>
+                            <para>Program name</para>
+                        </entry>
+                        <entry>
+                            <para>
+                                <screen>V{program_name}</screen>
+                            </para>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <para/>
+                        </entry>
+                        <entry>
+                            <para>Organisation unit name</para>
+                        </entry>
+                        <entry>
+                            <para>
+                                <screen>V{org_unit_name}</screen>
+                            </para>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <para/>
+                        </entry>
+                        <entry>
+                            <para>Current date</para>
+                        </entry>
+                        <entry>
+                            <para>
+                                <screen>V{current_date}</screen>
+                            </para>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <para>Program stage</para>
+                        </entry>
+                        <entry>
+                            <para>Program name</para>
+                        </entry>
+                        <entry>
+                            <para>
+                                <screen>V{program_name}</screen>
+                            </para>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <para/>
+                        </entry>
+                        <entry>
+                            <para>Program stage name</para>
+                        </entry>
+                        <entry>
+                            <para>
+                                <screen>V{program_stage_name}</screen>
+                            </para>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <para/>
+                        </entry>
+                        <entry>
+                            <para>Organisation unit name</para>
+                        </entry>
+                        <entry>
+                            <para>
+                                <screen>V{org_unit_name}</screen>
+                            </para>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry/>
+                        <entry>
+                            <para>Due date (of the event)</para>
+                        </entry>
+                        <entry>
+                            <para>
+                                <screen>V{due_date}</screen>
+                            </para>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <para/>
+                        </entry>
+                        <entry>
+                            <para> (Elapsed) days since due date</para>
+                        </entry>
+                        <entry>
+                            <para>
+                                <screen>V{days_since_due_date}</screen>
+                            </para>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <para/>
+                        </entry>
+                        <entry>
+                            <para>Days until due date</para>
+                        </entry>
+                        <entry>
+                            <screen>V{days_until_due_date}</screen>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <para/>
+                        </entry>
+                        <entry>
+                            <para>Current date</para>
+                        </entry>
+                        <entry>
+                            <para>
+                                <screen>V{current_date}</screen>
+                            </para>
+                        </entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
     </section>
     <section>
         <title>Create a program notification</title>
@@ -41,59 +191,164 @@
             </listitem>
             <listitem>
                 <para>In the <emphasis role="bold">Trigger by</emphasis> field, select what should
-                    trigger the notification. You can select</para>
-                <itemizedlist>
-                    <listitem>
-                        <para>Program enrollment: the notification is sent when the TEI enrols in
-                            the program</para>
-                    </listitem>
-                    <listitem>
-                        <para>Program completion: the notification is sent when the program of TEI
-                            is completed</para>
-                    </listitem>
-                    <listitem>
-                        <para>Days scheduled (incident date): the notification is sent XX number of
-                            days before or after the incident date</para>
-                    </listitem>
-                    <listitem>
-                        <para>Days scheduled (enrollment date): the notification is sent XX number
-                            of days before or after the enrollment date</para>
-                    </listitem>
-                </itemizedlist>
-                <note>
-                    <para>If you select "Days scheduled" you also need to enter the number of days
-                        before or after the scheduled date that the notification will be
-                        send.</para>
-                </note>
+                    trigger the notification.</para>
+                <table frame="all">
+                    <title/>
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+                        <colspec colname="newCol3" colnum="3" colwidth="1*"/>
+                        <thead>
+                            <row>
+                                <entry>
+                                    <para>Trigger</para>
+                                </entry>
+                                <entry>
+                                    <para>Description</para>
+                                </entry>
+                                <entry>
+                                    <para>Note</para>
+                                </entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>
+                                    <para>Program enrollment</para>
+                                </entry>
+                                <entry>
+                                    <para>The program notification is sent when the TEI enrols in
+                                        the program.</para>
+                                </entry>
+                                <entry>
+                                    <para>-</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Program completion</para>
+                                </entry>
+                                <entry>
+                                    <para>The program notification is sent when the program of TEI
+                                        is completed</para>
+                                </entry>
+                                <entry>
+                                    <para>-</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Days scheduled (incident date)</para>
+                                </entry>
+                                <entry>
+                                    <para>The program notification is sent XX number of days before
+                                        or after the incident date</para>
+                                </entry>
+                                <entry>
+                                    <para>You need to enter the number of days before or after the
+                                        scheduled date that the notification will be send.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Days scheduled (enrollment date)</para>
+                                </entry>
+                                <entry>
+                                    <para>The program notification is sent XX number of days before
+                                        or after the enrollment date</para>
+                                </entry>
+                                <entry>
+                                    <para>You need to enter the number of days before or after the
+                                        scheduled date that the notification will be send.</para>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
             </listitem>
             <listitem>
                 <para>In the <emphasis role="bold">Recipients</emphasis> field, select who should
-                    receive the notification. You can select:</para>
-                <itemizedlist>
-                    <listitem>
-                        <para>Tracked entity instance: receives program notification via e-mail or
-                            text message</para>
-                    </listitem>
-                    <listitem>
-                        <para>Organisation unit contact: receives program notification via e-mail or
-                            text message</para>
-                    </listitem>
-                    <listitem>
-                        <para>Users at organisation unit: receives program notification via the
-                            internal DHIS2 messaging system</para>
-                    </listitem>
-                    <listitem>
-                        <para>User group: receives program notification via the internal DHIS2
-                            messaging system</para>
-                    </listitem>
-                </itemizedlist>
+                    receive the program notification.</para>
+                <table frame="all">
+                    <title/>
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+                        <colspec colname="newCol3" colnum="3" colwidth="1*"/>
+                        <thead>
+                            <row>
+                                <entry>
+                                    <para>Recipient type</para>
+                                </entry>
+                                <entry>
+                                    <para>Description</para>
+                                </entry>
+                                <entry>
+                                    <para>Note</para>
+                                </entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>
+                                    <para>Tracked entity instance</para>
+                                </entry>
+                                <entry>
+                                    <para>Receives program notifications via e-mail or text
+                                        message.</para>
+                                </entry>
+                                <entry>
+                                    <para>To receive a program notification, the recipient must have
+                                        an e-mail address or a phone number attribute.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Organisation unit contact</para>
+                                </entry>
+                                <entry>
+                                    <para>Receives program notifications via e-mail or text message.
+                                    </para>
+                                </entry>
+                                <entry>
+                                    <para>To receive a program notification, the receiving
+                                        organisation unit must have a registered contact person with
+                                        e-mail address and phone number. </para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>Users at organisation unit:</entry>
+                                <entry>
+                                    <para>All users registered to the selected organisation unit
+                                        receive program notifications via the internal DHIS2
+                                        messaging system.</para>
+                                </entry>
+                                <entry>
+                                    <para>-</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>User group</para>
+                                </entry>
+                                <entry>
+                                    <para>All members of the selected user group receive the program
+                                        notifications via the internal DHIS2 messaging system</para>
+                                </entry>
+                                <entry>
+                                    <para>-</para>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
             </listitem>
             <listitem>
                 <para>Create the <emphasis role="bold">Subject template</emphasis>.</para>
                 <para>Double-click the
-                    <?oxy_comment_start author="cecilia" timestamp="20161005T120230+0200" comment="consist of TEI attributes and??"?>parameter<?oxy_comment_end?>
-                    names in the <emphasis role="bold">Parameters</emphasis> field to add them to
-                    your subject.</para>
+                    <?oxy_comment_start author="cecilia" timestamp="20161005T120230+0200" comment="consist of TEI attributes and??"?>parameter<?oxy_comment_end?>s
+                    in the <emphasis role="bold">Parameters</emphasis> field to add them to your
+                    subject.</para>
                 <note>
                     <para>The subject is not included in text messages.</para>
                 </note>
@@ -101,9 +356,9 @@
             <listitem>
                 <para>Create the <emphasis role="bold">Message template</emphasis>.</para>
                 <para>Double-click the parameter names in the <emphasis role="bold"
-                        >Parameters</emphasis> field to add them to your message.</para>
+                        >Parameters</emphasis> field to add them to your message. </para>
                 <example>
-                    <para>Dear {patient-name}, please come to your appointment at {due-date}.</para>
+                    <para>Dear A{w75KJ2mc4zz}, You're now enrolled in V{program_name}.</para>
                 </example>
             </listitem>
             <listitem>
@@ -111,18 +366,18 @@
             </listitem>
         </orderedlist>
         <note>
-            <para>You configure when the program notification will run in the <emphasis role="bold"
+            <para>You configure when the program notifications are sent in the <emphasis role="bold"
                     >Data Administration</emphasis> app > <emphasis role="bold"
                     >Scheduling</emphasis> > <emphasis role="bold">Program notifications
                     scheduler</emphasis>. </para>
             <itemizedlist>
                 <listitem>
-                    <para>Click <emphasis role="bold">Run now</emphasis> to run the program
+                    <para>Click <emphasis role="bold">Run now</emphasis> to send the program
                         notifications immediately.</para>
                 </listitem>
                 <listitem>
                     <para>Select a time and click <emphasis role="bold">Start</emphasis> to schedule
-                        the program notifications to run at a specific time.</para>
+                        the program notifications to be send at a specific time.</para>
                 </listitem>
             </itemizedlist>
         </note>
@@ -139,11 +394,11 @@
                         stages</emphasis>.</para>
             </listitem>
             <listitem>
-                <para>Click the relevant stage and select <emphasis role="bold">View program stage
-                        notifications</emphasis>.</para>
+                <para>Click the relevant program stage and select <emphasis role="bold">View program
+                        stage notifications</emphasis>.</para>
                 <para>A list of existing program stage notifications for the selected program stage
-                    opens. If the program stage doesn't have any program notifications, the list is
-                    empty.</para>
+                    opens. If the program stage doesn't have any program stage notifications, the
+                    list is empty.</para>
             </listitem>
             <listitem>
                 <para>Click <emphasis role="bold">Add new</emphasis>.</para>
@@ -154,51 +409,140 @@
             </listitem>
             <listitem>
                 <para>In the <emphasis role="bold">Trigger by</emphasis> field, select what should
-                    trigger the notification. You can select</para>
-                <itemizedlist>
-                    <listitem>
-                        <para>Program stage completion: the notification is sent when the program
-                            stage is completed</para>
-                    </listitem>
-                    <listitem>
-                        <para>Days scheduled (due date): the notification is sent XX number of days
-                            before or after the due date</para>
-                    </listitem>
-                </itemizedlist>
-                <note>
-                    <para>If you select "Days scheduled" you also need to enter the number of days
-                        before or after the scheduled date that the notification will be
-                        send.</para>
-                </note>
+                    trigger the notification.</para>
+                <table frame="all">
+                    <title/>
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+                        <colspec colname="newCol3" colnum="3" colwidth="1*"/>
+                        <thead>
+                            <row>
+                                <entry>
+                                    <para>Trigger</para>
+                                </entry>
+                                <entry>
+                                    <para>Description</para>
+                                </entry>
+                                <entry>
+                                    <para>Note</para>
+                                </entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>
+                                    <para>Program stage completion</para>
+                                </entry>
+                                <entry>
+                                    <para>The program stage notification is sent when the program
+                                        stage is completed</para>
+                                </entry>
+                                <entry>
+                                    <para>-</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Days scheduled (due date)</para>
+                                </entry>
+                                <entry>
+                                    <para>The program stage notification is sent XX number of days
+                                        before or after the due date</para>
+                                </entry>
+                                <entry>
+                                    <para>You need to enter the number of days before or after the
+                                        scheduled date that the notification will be send.</para>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
             </listitem>
             <listitem>
                 <para>In the <emphasis role="bold">Recipients</emphasis> field, select who should
-                    receive the notification. You can select:</para>
-                <itemizedlist>
-                    <listitem>
-                        <para>Tracked entity instance: receives program notification via e-mail or
-                            text message</para>
-                    </listitem>
-                    <listitem>
-                        <para>Organisation unit contact: receives program notification via e-mail or
-                            text message</para>
-                    </listitem>
-                    <listitem>
-                        <para>Users at organisation unit: receives program notification via the
-                            internal DHIS2 messaging system</para>
-                    </listitem>
-                    <listitem>
-                        <para>User group: receives program notification via the internal DHIS2
-                            messaging system</para>
-                    </listitem>
-                </itemizedlist>
+                    receive the program stage notification. You can select:</para>
+                <table frame="all">
+                    <title/>
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+                        <colspec colname="newCol3" colnum="3" colwidth="1*"/>
+                        <thead>
+                            <row>
+                                <entry>
+                                    <para>Recipient type</para>
+                                </entry>
+                                <entry>
+                                    <para>Description</para>
+                                </entry>
+                                <entry>
+                                    <para>Note</para>
+                                </entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>
+                                    <para>Tracked entity instance</para>
+                                </entry>
+                                <entry>
+                                    <para>Receives program notifications via e-mail or text
+                                        message.</para>
+                                </entry>
+                                <entry>
+                                    <para>To receive a program stage notification, the recipient
+                                        must have an e-mail address or a phone number
+                                        attribute.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>Organisation unit contact</para>
+                                </entry>
+                                <entry>
+                                    <para>Receives program notifications via e-mail or text message.
+                                    </para>
+                                </entry>
+                                <entry>
+                                    <para>To receive a program stage notification, the receiving
+                                        organisation unit must have a registered contact person with
+                                        e-mail address and phone number. </para>
+                                    <para>The system selects the same organisation unit as where the
+                                        event took place.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>Users at organisation unit:</entry>
+                                <entry>
+                                    <para>All users registered to the selected organisation unit
+                                        receive program notifications via the internal DHIS2
+                                        messaging system.</para>
+                                </entry>
+                                <entry>
+                                    <para>-</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para>User group</para>
+                                </entry>
+                                <entry>
+                                    <para>All members of the selected user group receive the program
+                                        notifications via the internal DHIS2 messaging system</para>
+                                </entry>
+                                <entry>
+                                    <para>-</para>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
             </listitem>
             <listitem>
                 <para>Create the <emphasis role="bold">Subject template</emphasis>.</para>
-                <para>Double-click the
-                    <?oxy_comment_start author="cecilia" timestamp="20161005T120230+0200" comment="consist of TEI attributes and??"?>parameter<?oxy_comment_end?>
-                    names in the <emphasis role="bold">Parameters</emphasis> field to add them to
-                    your subject.</para>
+                <para>Double-click the parameter names in the <emphasis role="bold"
+                        >Parameters</emphasis> field to add them to your subject.</para>
                 <note>
                     <para>The subject is not included in text messages.</para>
                 </note>
@@ -207,10 +551,30 @@
                 <para>Create the <emphasis role="bold">Message template</emphasis>.</para>
                 <para>Double-click the parameter names in the <emphasis role="bold"
                         >Parameters</emphasis> field to add them to your message.</para>
+                <example>
+                    <para>Dear A{w75KJ2mc4zz}, please come to your appointment the
+                        V{due_date}.</para>
+                </example>
             </listitem>
             <listitem>
                 <para>Click <emphasis role="bold">Save</emphasis>.</para>
             </listitem>
         </orderedlist>
+        <note>
+            <para>You configure when the program stage notifications are sent in the <emphasis
+                    role="bold">Data Administration</emphasis> app > <emphasis role="bold"
+                    >Scheduling</emphasis> > <emphasis role="bold">Program notifications
+                    scheduler</emphasis>. </para>
+            <itemizedlist>
+                <listitem>
+                    <para>Click <emphasis role="bold">Run now</emphasis> to send the program
+                        notifications immediately.</para>
+                </listitem>
+                <listitem>
+                    <para>Select a time and click <emphasis role="bold">Start</emphasis> to schedule
+                        the program notifications to be send at a specific time.</para>
+                </listitem>
+            </itemizedlist>
+        </note>
     </section>
 </section>
