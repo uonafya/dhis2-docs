@@ -1188,7 +1188,10 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
         side.<screen>/api/25/dataElements/ID?fields=id~rename(i),name~rename(n)</screen></para>
       <para>This will rename the <emphasis role="italic">id</emphasis> property to <emphasis
           role="italic">i</emphasis> and <emphasis role="italic">name</emphasis> property to
-          <emphasis role="italic">n</emphasis>.<table frame="all">
+          <emphasis role="italic">n</emphasis>.</para>
+      <para>Multipe transformers can be used by repeating the transformer
+          syntax:<screen>/api/25/dataElementGroups.json?fields=id,displayName,dataElements~isNotEmpty~rename(haveDataElements)</screen><table
+          frame="all">
           <title>Available Transformers</title>
           <tgroup cols="3">
             <colspec colname="c1" colnum="1" colwidth="1.52*"/>
