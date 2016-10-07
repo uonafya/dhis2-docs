@@ -110,14 +110,16 @@ TEI&apos;s dashboard?"?>TEI's
           </listitem>
           <listitem>
             <para><?oxy_comment_start author="cecilia" timestamp="20160912T093929+0200" comment="Verify with SME: Don&apos;t seem to work. Not clickable"?>Previous
-              and next buttons<?oxy_comment_end?>:  takes you to the previous or next TEI
-              <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?><?oxy_comment_start author="cecilia" timestamp="20160912T094001+0200" comment="Dashboard?" mid="15"?>details<?oxy_custom_end?><?oxy_comment_end mid="15"?></para>
+              and next buttons<?oxy_comment_end?>: takes you to the previous or next TEI dashboard
+              in the TEI search results list </para>
           </listitem>
         </itemizedlist>
         <itemizedlist>
           <listitem>
-            <para>Program selection field: changes the program for which you enter data for the
-              selected TEI. When you change program, the content in the widgets change too.</para>
+            <para><emphasis role="bold">Other programs</emphasis> field: if the TEI is enrolled in
+              other programs, they're listed here. Click a program to change the program for which
+              you enter data for the selected TEI. When you change programs, the content in the
+              widgets change too.</para>
           </listitem>
         </itemizedlist>
       </listitem>
@@ -134,9 +136,7 @@ TEI&apos;s dashboard?"?>TEI's
     </screenshot>
   </section>
   <section>
-    <title><?oxy_comment_start author="cecilia" timestamp="20160830T135525+0200" comment="Workflow of what?
-Use Tracker Capture?
-Data entry for a TEI and a program?"?>Workflow<?oxy_comment_end?></title>
+    <title>Workflow</title>
     <example>
       <para>Working process of Mother and child health program</para>
       <screenshot>
@@ -163,13 +163,6 @@ Data entry for a TEI and a program?"?>Workflow<?oxy_comment_end?></title>
         <listitem>
           <para>The TEI is provided with various services depending on the program. All services are
             recorded.</para>
-          <?oxy_comment_start author="cecilia" timestamp="20161004T105657+0200" comment="Verify with SME: Still correct?
-What is an individual case?"?>
-          <para>Each interaction with the TEI related to the case is considered to be an treatment
-            case and these cases are recorded into the individual case. Individual case is updated
-            with the identification of both the health worker and the entity that is receiving the
-            service.</para>
-          <?oxy_comment_end?>
         </listitem>
         <listitem>
           <para>Use information about the individual cases to create reports.</para>
@@ -179,9 +172,7 @@ What is an individual case?"?>
   </section>
   <section>
     <title>Cr<?oxy_comment_start author="cecilia" timestamp="20160830T135151+0200" comment="Create a TEI?
-Register a TEI?
-
-How do you create a TEI without enrolling it into a program?"?>eate<?oxy_comment_end?>
+Register a TEI?"?>eate<?oxy_comment_end?>
       a TEI</title>
     <orderedlist>
       <listitem>
@@ -190,6 +181,9 @@ How do you create a TEI without enrolling it into a program?"?>eate<?oxy_comment
       <listitem>
         <para>In the organisation unit tree in the left hand pane, select an organisation
           unit.</para>
+      </listitem>
+      <listitem>
+        <para>Verify that the <emphasis role="bold">Program</emphasis> field is empty.</para>
       </listitem>
       <listitem>
         <para>Click <emphasis role="bold">Register</emphasis>.</para>
@@ -228,7 +222,9 @@ Is it always &quot;firstname&quot; and &quot;last name&quot;?"?>information<?oxy
         registration of tracked entity instances without risking duplicate IDs when syncing with the
         server.</para>
       <para>You configure automated IDs in the <emphasis role="bold">Maintenance</emphasis>
-        app.</para>
+        <?oxy_comment_start author="cecilia" timestamp="20161007T090423+0200" comment="When olinks work: add x-ref here. " flag="done"?>app<?oxy_comment_end?>:
+          <emphasis role="bold">Tracker</emphasis> > <emphasis role="bold">Tracked entity
+          attribute</emphasis>.</para>
     </note>
   </section>
   <section>
@@ -278,6 +274,8 @@ Is it always &quot;firstname&quot; and &quot;last name&quot;?"?>information<?oxy
 Select of org unit optional?
 Does it search fin node + children or only children?"?>existing<?oxy_comment_end?>
       TEI dashboard</title>
+    <para>There are two ways to find a TEI: simple and advanced search. You can also modify the
+      search results list's layout and download the search results list in several formats.</para>
     <screenshot>
       <?oxy_comment_start author="cecilia" timestamp="20160830T135408+0200" comment="Replace with new screenshot or remove completely."?>
       <title>Example: searching/registration</title>
@@ -289,26 +287,26 @@ Does it search fin node + children or only children?"?>existing<?oxy_comment_end
         </imageobject>
       </mediaobject>
     </screenshot>
-    <para>There are two ways to find a TEI: simple and advanced search. You can also modify the
-      search results list's layout and download the search results list in several formats.</para>
     <section>
-      <title>Simple TEI search</title>
+      <title>Simple TEI
+        <?oxy_comment_start author="cecilia" timestamp="20161007T100209+0200" comment="Searches on TEI attributes"?>search<?oxy_comment_end?></title>
       <orderedlist>
         <listitem>
           <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
         </listitem>
         <listitem>
           <para>(Optional) In the organisation unit tree in the left hand pane, select an
-            organisation unit.</para>
+            organisation unit, then a program.</para>
         </listitem>
         <listitem>
           <para>In the right hand search field, type your search criteria.</para>
           <para>The search criteria could for example be a last
             <?oxy_comment_start author="cecilia" timestamp="20161005T164018+0200" comment="Removed text to be validated: 
-&quot;The simple search works by typing a free text in the search field. What is typed in the input box is applied across all attributes for partial match.&quot;"?>name<?oxy_comment_end?>.</para>
+&quot;The simple search works by typing a free text in the search field. What is typed in the input box is applied across all attributes for partial match.&quot;"?>name<?oxy_comment_end?>.
+            You can search on all TEI attributes.</para>
         </listitem>
         <listitem>
-          <para>Click search.</para>
+          <para>Click the <emphasis role="bold">Search</emphasis> icon.</para>
           <para>A list of  TEIs that match your search criteria
             <?oxy_comment_start author="cecilia" timestamp="20160912T153955+0200" comment="Verify wording."?>displays<?oxy_comment_end?>.</para>
         </listitem>
@@ -340,27 +338,24 @@ enrollment or enrollments?"?>status<?oxy_comment_end?>: <itemizedlist>
     </section>
     <section>
       <title>Advanced TEI search</title>
-      <para>Advanced search is conducted for the organisation units you select in left-hand side
+      <para>Advanced search is conducted for the organisation units you select in the
         <?oxy_comment_start author="cecilia" timestamp="20160913T101533+0200" comment="Verify with SMe if the node itself is part of the search and not only the children."?>organisation<?oxy_comment_end?>
-        tree. The left-hand side organisation tree is generated based on your assigned organisation
-        units.</para>
+        tree inside the <emphasis role="bold">Advanced search</emphasis> window. The left-hand side
+        organisation tree is generated based on your assigned organisation units. So in the
+          <emphasis role="bold">Advanced search</emphasis> window you can select organisation units
+        outside your own organisation unit.</para>
       <orderedlist>
         <listitem>
           <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
         </listitem>
         <listitem>
           <para>(Optional) In the organisation unit tree in the left hand pane, select an
-            organisation unit.</para>
-        </listitem>
-        <listitem>
-          <para>(Optional) Select a program.</para>
-          <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
+            organisation unit, then a program.</para>
           <?oxy_comment_start author="cecilia" timestamp="20160912T160241+0200" comment="Verify if this informaion is still correct.
-Can you set which attributes that are displayed in the advanced search?" mid="35"?>
+Can you set which attributes that are displayed in the advanced search?"?>
           <para>If a program is selected, advanced search allows you to search on the incident date
             if the program has one.</para>
-          <?oxy_custom_end?>
-          <?oxy_comment_end mid="35"?>
+          <?oxy_comment_end?>
         </listitem>
         <listitem>
           <para>In the right hand search field, click the <emphasis role="bold">Advanced
@@ -369,50 +364,35 @@ Can you set which attributes that are displayed in the advanced search?" mid="35
           <para>An expanded search form opens.</para>
         </listitem>
         <listitem>
-          <para>Fill in your search
+          <para>Enter your search
             <?oxy_comment_start author="cecilia" timestamp="20160912T154904+0200" comment="For SME: Does the advanced search work the same for all programs?"?>criteria<?oxy_comment_end?>(s).</para>
           <itemizedlist>
             <listitem>
-              <para><emphasis role="bold">Organisation unit</emphasis></para>
-              <para>The tree displayed here depends on your
+              <para><emphasis role="bold">Organisation unit</emphasis>: The tree displayed here
+                depends on your
                 <?oxy_comment_start author="cecilia" timestamp="20160913T102727+0200" comment="Settings of your user role?"?>user<?oxy_comment_end?>
-                role.</para>
-              <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-              <para>If the user has role "Search Tracked Entity Instance in
+                role. If the you have role "Search Tracked Entity Instance in
                 <?oxy_comment_start author="cecilia" timestamp="20160913T100631+0200" comment="Verify with SME: 
 Who sets this?
 Where do you set it?"?>All<?oxy_comment_end?>
-                Org Units" or "ALL", a tree with all available organisation units is provided other
-                wise the tree displayed in advanced search is the same as the one on the left-hand
-                side. </para>
-              <para>Whichever tree (or hierarchy of organisation units) is provided, if an
-                organisation unit is selected in advanced search, the searching is conducted against
-                this selected organisation unit and scope.</para>
-              <?oxy_custom_end?>
+                Org Units" or "ALL", a tree with all available organisation units is provided.
+                Otherwise the tree displayed in advanced search is the same as the one on the
+                left-hand side.</para>
+            </listitem>
+            <listitem>
+              <para>You can select the scope of the organisation unit search. In the <emphasis
+                  role="bold">Organisation unit
+                  <?oxy_comment_start author="cecilia" timestamp="20161007T135615+0200" comment="At next release: 
+Add more info here and rewrite task." flag="done"?>scope<?oxy_comment_end?></emphasis>
+                section select <emphasis role="bold">Selected</emphasis>, <emphasis role="bold"
+                  >Immediate children</emphasis> or <emphasis role="bold">All
+                children</emphasis>.</para>
             </listitem>
             <listitem>
               <para><emphasis role="bold">Date or enrollment</emphasis>: appears if you have
                 selected a program</para>
             </listitem>
-            <listitem>
-              <para><emphasis role="bold">Date of birth</emphasis>:  appears if you have selected a
-                program</para>
-            </listitem>
-            <listitem>
-              <para><emphasis role="bold">First name</emphasis></para>
-            </listitem>
-            <listitem>
-              <para><emphasis role="bold">Last name</emphasis></para>
-            </listitem>
-            <listitem>
-              <para><emphasis role="bold">Gender</emphasis></para>
-            </listitem>
           </itemizedlist>
-          <?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>
-          <para>Here, the match is
-            <?oxy_comment_start author="cecilia" timestamp="20160912T155459+0200" comment="Verify with SME: what do you mean? Exact match?"?>exact<?oxy_comment_end?>
-            match.</para>
-          <?oxy_custom_end?>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Search</emphasis>.</para>
@@ -446,8 +426,8 @@ enrollment or enrollments?"?>status<?oxy_comment_end?>: <itemizedlist>
       </orderedlist>
     </section>
     <section>
-      <title>Find/Search/Locate/Open a TEI outside your organisation
-        <?oxy_comment_start author="cecilia" timestamp="20160913T133501+0200" comment="Review if this task should have it&apos;s on section or not."?>unit<?oxy_comment_end?></title>
+      <title>Find a TEI outside your organisation
+        <?oxy_comment_start author="cecilia" timestamp="20160913T133501+0200" comment="At next revision: Review if this task should have it&apos;s on section or not." flag="done"?>unit<?oxy_comment_end?></title>
       <para>You can search for a TEI from another organisation unit, outside your assigned
         organisation units. To do this:</para>
       <itemizedlist>
@@ -461,8 +441,8 @@ Where do you set it?"?>All<?oxy_comment_end?>
           <?oxy_comment_end?>
         </listitem>
         <listitem>
-          <para>You must select an organisation unit in the organisation unit tree in the <emphasis
-              role="bold">Advanced search</emphasis> form.</para>
+          <para>You must select another organisation unit than your own in the organisation unit
+            tree in the <emphasis role="bold">Advanced search</emphasis> window.</para>
         </listitem>
       </itemizedlist>
     </section>
@@ -470,8 +450,9 @@ Where do you set it?"?>All<?oxy_comment_end?>
       <title>Download TEI search results list</title>
       <orderedlist>
         <listitem>
-          <para>Create a TEI search results list, see <?oxy_comment_start author="cecilia" timestamp="20160913T100650+0200" comment="Add x-ref inside section."?>sections<?oxy_comment_end?>
-            <xref/></para>
+          <para>Create a TEI search results
+            list,<?oxy_comment_start author="cecilia" timestamp="20160913T100650+0200" comment="At next revision: Add x-ref inside section." flag="done"?>.<?oxy_comment_end?>
+          </para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Download as</emphasis> and select a format:</para>
@@ -492,10 +473,13 @@ Where do you set it?"?>All<?oxy_comment_end?>
     <section>
       <title>Modify TEI search results list's
         <?oxy_comment_start author="cecilia" timestamp="20160912T164009+0200" comment="Revise wording."?>layout<?oxy_comment_end?></title>
+      <para>You can select which columns to show or hide in a TEI search result list. Once you've
+        modified the layout, it's saved on your user profile. You can have different layouts for
+        different programs.</para>
       <orderedlist>
         <listitem>
-          <para>Create a TEI search results list, see <?oxy_comment_start author="cecilia" timestamp="20160913T100650+0200" comment="Add x-ref inside section."?>sections<?oxy_comment_end?>
-            <xref/></para>
+          <para>Create a TEI search results
+            list<?oxy_comment_start author="cecilia" timestamp="20160913T100650+0200" comment="At next revision: Add x-ref inside section." flag="done"?>.<?oxy_comment_end?></para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Show/hide columns</emphasis>.</para>
@@ -514,8 +498,7 @@ Where do you set it?"?>All<?oxy_comment_end?>
         <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
       </listitem>
       <listitem>
-        <para>Open an existing
-          <?oxy_comment_start author="cecilia" timestamp="20160907T175212+0200" comment="TEI dashboard?"?>TEI<?oxy_comment_end?>.</para>
+        <para>Open an existing TEI dashboard.</para>
       </listitem>
       <listitem>
         <para>Select a program.</para>
@@ -531,12 +514,9 @@ Where do you set it?"?>All<?oxy_comment_end?>
     </orderedlist>
   </section>
   <section>
-    <title><?oxy_comment_start author="cecilia" timestamp="20160913T143614+0200" comment="Verify with SME:
-In some programs, for example Child program, you register the TIE, enroll the TEI and enter data in one go. Which are the rules for this?
-How do you set this up?"?>Enter<?oxy_comment_end?>
-      event data for a
-      <?oxy_comment_start author="cecilia" timestamp="20161005T164705+0200" comment="At next release: Rewrite section"?>TEI<?oxy_comment_end?></title>
-    <para>In a TEI dashboard, you enter event data in the <emphasis role="bold">Data
+    <title>Enter event data for a
+      <?oxy_comment_start author="cecilia" timestamp="20161005T164705+0200" comment="At next release: Rewrite section and add more information," flag="done"?>TEI<?oxy_comment_end?></title>
+    <para>In a TEI dashboard, you enter event data in the <emphasis role="bold">Timeline Data
         entry</emphasis> or <emphasis role="bold">Tabular data entry</emphasis>
       <?oxy_comment_start author="cecilia" timestamp="20160913T144337+0200" comment="Verify with SME: 
 Do the data entry widgets look different depending on the program?"?>widgets<?oxy_comment_end?>.</para>
@@ -558,7 +538,7 @@ Do the data entry widgets look different depending on the program?"?>widgets<?ox
         <tbody>
           <row>
             <entry>
-              <para><emphasis role="bold">Data entry</emphasis></para>
+              <para><emphasis role="bold">Timeline Data entry</emphasis></para>
             </entry>
             <entry>
               <para>For data entry using either default or custom forms.</para>
@@ -603,111 +583,225 @@ Do the data entry widgets look different depending on the program?"?>widgets<?ox
 Add ino that you can switch between the different programs."?>TEI<?oxy_comment_end?>'s
       enrollments</title>
     <section>
-      <title>Set/Mark TEI's enrollment to active or inactive</title>
-      <para>Set TEI to active/inactive - this has nothing to do with widgets or the dashboard but it
-        helps to set the status of dashboard owner (the TEI) to either active or inactive. If a TEI
-        is set to inactive, only read operations are allowed - no data entry, no profile editing, no
-        enrollment.</para>
+      <title><?oxy_comment_start author="cecilia" timestamp="20161007T164121+0200" comment="Does the GUI item change depending on the program?
+In Child porgram: &quot;Deactivate person&quot;
+
+Admin only?"?>Deactivate<?oxy_comment_end?>
+        a TEI's enrollment</title>
+      <para>If you deactivate a TEI dashboard, the TEI becomes 'read-only'. You can't enter data,
+        enroll the TEI or edit the TEI's profile.</para>
+      <orderedlist>
+        <listitem>
+          <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+        </listitem>
+        <listitem>
+          <para>Open an existing TEI dashboard.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Enrollment</emphasis> widget, click <emphasis
+              role="bold">Deactivate</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Yes</emphasis> to confirm.</para>
+        </listitem>
+      </orderedlist>
     </section>
     <section>
-      <title>Mark/Set TEI's
+      <title>Activate a TEI's enrollment</title>
+      <orderedlist>
+        <listitem>
+          <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+        </listitem>
+        <listitem>
+          <para>Open an existing TEI dashboard.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Enrollment</emphasis> widget, click <emphasis
+              role="bold">Activate</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Yes</emphasis> to confirm.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Mark TEI's
         <?oxy_comment_start author="cecilia" timestamp="20160906T162346+0200" comment="Verify with SME that title is correct."?>enrollment<?oxy_comment_end?>
         as complete</title>
-      <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
-        selected program. If an active enrollment already exists, the widget automatically displays
-        it with some details about it.</para>
-      <para>The widget also helps to do some operations on the selected enrollment - for example
-        terminate/complete </para>
-      <para>or a possibility to mark the enrollment for followup. The later one helps for example to
-        deal with high-risk cases during pregnancy followup. A link to history is also provided if
-        the TEI has historical enrollment.</para>
-    </section>
-    <section>
-      <title>Mark TEI's enrollment for follow-up</title>
-      <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
-        selected program. If an active enrollment already exists, the widget automatically displays
-        it with some details about it. The widget also helps to do some operations on the selected
-        enrollment - for example terminate/complete or a possibility to
-        m<?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>ark the enrollment for
-        followup<?oxy_custom_end?>. The later one helps for example to deal with high-risk cases
-        during pregnancy followup. A link to history is also provided if the TEI has historical
-        enrollment.</para>
+      <orderedlist>
+        <listitem>
+          <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+        </listitem>
+        <listitem>
+          <para>Open an existing TEI dashboard.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Enrollment</emphasis> widget, click <emphasis
+              role="bold">Complete</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Yes</emphasis> to confirm.</para>
+        </listitem>
+      </orderedlist>
     </section>
     <section>
       <title>Reopen completed enrollment</title>
-      <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
-        selected program. If an active enrollment already exists, the widget automatically displays
-        it with some details about it. The widget also helps to do some operations on the selected
-        enrollment - for example
-        terminate/<?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?>complete<?oxy_custom_end?>
-        or a possibility to mark the enrollment for followup. The later one helps for example to
-        deal with high-risk cases during pregnancy followup. A link to history is also provided if
-        the TEI has historical enrollment.</para>
+      <orderedlist>
+        <listitem>
+          <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+        </listitem>
+        <listitem>
+          <para>Open an existing TEI dashboard.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Enrollment</emphasis> widget, click <emphasis
+              role="bold">Reopen</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Yes</emphasis> to confirm.</para>
+        </listitem>
+      </orderedlist>
     </section>
     <section>
-      <title><?oxy_comment_start author="cecilia" timestamp="20160907T140103+0200" comment="View or Display?"?>Display<?oxy_comment_end?>
-        TEI's
-        <?oxy_comment_start author="cecilia" timestamp="20160906T162632+0200" comment="For SME: Verify that this works.
+      <title>Display TEI's
+        <?oxy_comment_start author="cecilia" timestamp="20160906T162632+0200" comment="For SME: Verify that that you mean Audit history.
 Add example"?>enrollment<?oxy_comment_end?>
         history</title>
-      <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
-        selected program. If an active enrollment already exists, the widget automatically displays
-        it with some details about it. The widget also helps to do some operations on the selected
-        enrollment - for example terminate/complete or a possibility to mark the enrollment for
-        followup. The later one helps for example to deal with high-risk cases during pregnancy
-        followup. A<?oxy_custom_start type="oxy_content_highlight" color="255,198,140"?> link to
-        history is also provided if the TEI has historical enrollment.<?oxy_custom_end?></para>
+      <orderedlist>
+        <listitem>
+          <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+        </listitem>
+        <listitem>
+          <para>Open an existing TEI dashboard.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Profile</emphasis> widget, click the <emphasis
+              role="bold">Audit history</emphasis> icon.</para>
+        </listitem>
+      </orderedlist>
     </section>
     <section>
-      <title>Create an enrollment note</title>
-      <para><emphasis role="bold">Notes | Messaging</emphasis> - this is the same as event notes.
-        The difference between the two is that, here notes are attached not to events but to
-        enrollments. This helps to record some notes based on enrollment - for example why is an
-        enrollment terminated or what is the overall observation of the TEI throughout the
-        enrollment. In addition, if the tracked entity has registered a phone number, messaging will
-        be available here. With messaging, you can send SMS to the phone number registered.</para>
+      <title>Create a TEI enrollment note</title>
+      <para>An enrollment note is useful to record information about for example why an enrollment
+        was cancelled.</para>
+      <orderedlist>
+        <listitem>
+          <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+        </listitem>
+        <listitem>
+          <para>Open an existing TEI dashboard.</para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Notes</emphasis> widget, type your note and click
+              <emphasis role="bold">Add</emphasis>.</para>
+        </listitem>
+      </orderedlist>
     </section>
+  </section>
+  <section>
+    <title>Send a message to a
+      <?oxy_comment_start author="cecilia" timestamp="20161007T164912+0200" comment="At next release: Verify that prereq is documented
+In user app, the user must set up to recieve notifications" flag="done"?>TEI<?oxy_comment_end?></title>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+      </listitem>
+      <listitem>
+        <para>Open an existing TEI dashboard.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Messaging</emphasis> widget and select <emphasis
+            role="bold">SMS</emphasis> or <emphasis role="bold">E-mail</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Enter the required contact information.</para>
+        <para>If the TEI's profile contains an e-mail address or a phone number, these fields are
+          filled in automatically.</para>
+      </listitem>
+      <listitem>
+        <para>Type a message.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Send</emphasis>.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
     <title>Mark a TEI for follow-up</title>
-    <para><emphasis role="bold">Enrollment</emphasis> - this helps to enroll the TEI for the
-      selected program. If an active enrollment already exists, the widget automatically displays it
-      with some details about it. The widget also helps to do some operations on the selected
-      enrollment - for example terminate/complete or a possibility to mark the enrollment for
-      followup. The later one helps for example to deal with high-risk cases during pregnancy
-      followup. A link to history is also provided if the TEI has historical enrollment.</para>
+    <para>You can use mark a TEI's enrollment for follow-up and then use this status as a filter
+      when you create <emphasis role="bold">Upcoming events</emphasis> and <emphasis role="bold"
+        >Overdue events</emphasis> reports. This can be useful for example to monitor high-risk
+      cases during a pregnancy program.</para>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+      </listitem>
+      <listitem>
+        <para>Open an existing TEI dashboard.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Enrollment</emphasis> widget, click the <emphasis
+            role="bold">Mark for follow-up</emphasis> icon.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
     <title>Edit a TEI's profile</title>
-    <para><emphasis role="bold">Profile </emphasis> - this is to edit TEI's profile or attributes.
-      Here, if the TEI has an attribute of value type "Tracker Associate", a small icon next to the
-      input filed is displayed. Clicking the icon opens a pop-up where users are allowed to either
-      search or register new associate.</para>
+    <para>You edit a TEI's profile or tracked entity attributes in the <emphasis role="bold"
+        >Profile</emphasis> widget. </para>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+      </listitem>
+      <listitem>
+        <para>Open an existing TEI dashboard.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Profile</emphasis> widget, click <emphasis role="bold"
+            >Edit</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Modify the profile and click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
-    <title><?oxy_comment_start author="cecilia" timestamp="20160907T140045+0200" comment="View or Display?"?>Display<?oxy_comment_end?>
-      a TEI's active programs</title>
-    <para><emphasis role="bold">Active programs</emphasis> - this is an extension of the enrollment
-      widget. While the enrollment widget displays both active and historical enrollment for the
-      selected program,
-      <?oxy_comment_start author="cecilia" timestamp="20160906T163359+0200" comment="Verify with SME: Does this widget still exist? 
-It looks like this information is under the Enrollment widget"?>active
-      programs widget <?oxy_comment_end?>displays all other programs that the selected TEI has
-      active enrollments.</para>
-  </section>
-  <section>
-    <title>Manage a TEI's relationships</title>
-    <para><emphasis role="bold">Relationship </emphasis> - this helps to relate the selected TEI
-      (the one whose dashboard is shown) to another TEI. Adding a relative is possible by either
-      searching from existing or registering a new one. If a program is selected while registering a
-      new one, the new one will be automatically enrolled to the selected program. Another
-      interesting feature in the relationship widget is attribute inheritance. For example take
-      Mother-Child relationship and assume there are two programs Antenatal care for the mother and
-      Immunization for the child. If among others first name, last name and address attributes are
-      required for both programs, it is possible to configure last name and address attributes as
-      inheritable. Then during child registration, there is no need to refill these inheritable
-      attributes - they can be automatically populated based on the mother's value. If for some
-      reason a different value is required for the child, it is possible to override.</para>
+    <title>Add a
+      <?oxy_comment_start author="cecilia" timestamp="20161007T163127+0200" comment="At next release, add x-ref to Mtn app, relationships" flag="done"?>relationship<?oxy_comment_end?>
+      to a TEI</title>
+    <para>You can create a relationship from one TEI to another, for example linking a mother and a
+      child together or a husband and a wife. Depending on how the relationship type is configured,
+      the relative can inherit attributes.</para>
+    <example>
+      <title>Mother-Child relationship</title>
+      <para>Assume there are two programs: Antenatal care for the mother and Immunization for the
+        child. If  first name, last name and address attributes are required for both programs, it
+        is possible to configure last name and address attributes as inheritable. Then during child
+        registration, there is no need to enter these inheritable attributes. You can add them
+        automatically based on the mother's value. If you want to have a different value for the
+        child, you can override the automatically generated value.</para>
+    </example>
+    <orderedlist>
+      <listitem>
+        <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+      </listitem>
+      <listitem>
+        <para>Open an existing TEI dashboard.</para>
+      </listitem>
+      <listitem>
+        <para>In the <emphasis role="bold">Relationships</emphasis> widget, and click <emphasis
+            role="bold">Add</emphasis>.</para>
+      </listitem>
+      <listitem>
+        <para>Select a relationship type.</para>
+      </listitem>
+      <listitem>
+        <para>Search for the relative and select it.</para>
+      </listitem>
+      <listitem>
+        <para>Click <emphasis role="bold">Save</emphasis>.</para>
+      </listitem>
+    </orderedlist>
   </section>
   <section>
     <title>Share a TEI
@@ -731,9 +825,12 @@ https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard?tei=H
         <para>Make sure that the URL contains "tei", "program" and "ou" (organisation unit)
           parameters.</para>
         <example>
+          <!--<para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dhis2.github.io/dhis2-docs/master/en/user/html/manage_ext_maplayer.html">Maintenance app documentation</link></para>-->
           <para><?oxy_comment_start author="cecilia" timestamp="20161005T170818+0200" comment="Verify that link works."?><link
               xlink:href="https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard%3Ftei=HiBv6yFdU2x%26program=IpHINAT79UW"
-              xmlns:xlink="http://www.w3.org/1999/xlink"><?oxy_comment_end?></link></para>
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:title="https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard%3Ftei=HiBv6yFdU2x%26program=IpHINAT79UW"
+              ><?oxy_comment_end?></link></para>
         </example>
       </listitem>
       <listitem>
@@ -748,29 +845,45 @@ https://play.dhis2.org/demo/dhis-web-tracker-capture/index.html#/dashboard?tei=H
     <title>Configure the TEI dashboard</title>
     <section>
       <title>Show or hide widgets</title>
-      <para> Show/hide widgets - this helps to control which widgets to display. From the figure
-        above, there are eight widgets on display. The widgets are collapsible, responsive and drag
-        gable - this helps to acquire optimal view area as per user needs. Widget (re)arrangements
-        are saved automatically per user per program. </para>
+      <orderedlist>
+        <listitem>
+          <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+        </listitem>
+        <listitem>
+          <para>Open an existing TEI dashboard.</para>
+        </listitem>
+        <listitem>
+          <para>Click the <emphasis role="bold">Settings</emphasis> icon, and select <emphasis
+              role="bold">Show/hide widgets</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para>Select the widgets you want to show or hide.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Close</emphasis>.</para>
+        </listitem>
+      </orderedlist>
     </section>
     <section>
       <title>Save the dashboard's layout as default</title>
-      <para>Save dashboard layout as default - widgets arrangement is saved automatically every time
-        a widget's position or state (expand/collapse) is changed. However, for the entire layout to
-        be considered a default layout for the selected program it is required to explicitly save as
-        "Default layout". </para>
+      <para>You can save the dashboard's layout as default for a program.</para>
+      <orderedlist>
+        <listitem>
+          <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
+        </listitem>
+        <listitem>
+          <para>Open an existing TEI dashboard.</para>
+        </listitem>
+        <listitem>
+          <para>Click the <emphasis role="bold">Settings</emphasis> icon, and select <emphasis
+              role="bold">Save dashboard layout as default</emphasis>.</para>
+        </listitem>
+      </orderedlist>
     </section>
   </section>
   <section>
-    <title><?oxy_comment_start author="cecilia" timestamp="20160907T140945+0200" comment="Does the GUI item change depending on the program?
-In Child porgram: &quot;Deactivate person&quot;
-
-Admin only?"?>Deactivate<?oxy_comment_end?>
-      a TEI</title>
-    <para/>
-  </section>
-  <section>
-    <title>Create reports</title>
+    <title>Create
+      <?oxy_comment_start author="cecilia" timestamp="20161007T155325+0200" comment="At next release: rework section" flag="done"?>reports<?oxy_comment_end?></title>
     <orderedlist>
       <listitem>
         <para>Open the <emphasis role="bold">Tracker Capture</emphasis> app.</para>
@@ -819,9 +932,9 @@ Admin only?"?>Deactivate<?oxy_comment_end?>
                 <entry>
                   <para>A tabular report showing tracked entity instances and their upcoming events
                     for a selected program and time. You can sort the columns and search the values.
-                    S<?oxy_comment_start author="cecilia" timestamp="20160906T152439+0200" comment="Verify with SME: can you really show or hide colums"?><?oxy_custom_start type="oxy_content_highlight" color="255,198,140" mid="31"?>how/hide
-                    operations are<?oxy_comment_end?> possible on the columns.
-                    <?oxy_custom_end mid="31"?>You can also export the table to
+                    S<?oxy_comment_start author="cecilia" timestamp="20160906T152439+0200" comment="Verify with SME: can you really show or hide colums"?>how/hide
+                    operations are<?oxy_comment_end?> possible on the columns. You can also export
+                    the table to
                     <?oxy_comment_start author="cecilia" timestamp="20160906T153908+0200" comment="Mark trademark" flag="done"?>Microsoft
                     Excel<?oxy_comment_end?>.</para>
                 </entry>
