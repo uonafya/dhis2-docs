@@ -1347,7 +1347,10 @@ http://server/api/25/constants/ID</screen></para>
       <para>A successful delete should return HTTP status 204 (no content).</para>
     </section>
     <section xml:id="webapi_adding_removing_objects_collections">
-      <title>Adding and removing objects to/from collections</title>
+      <title>Adding and removing objects in collections</title>
+      <para>The collections resource lets you modify collections of objects.</para>
+      <section>
+        <title>Adding or removing single objects</title>
       <para>In order to add or remove objects to or from a collection of objects you can use the
         following
         pattern:<screen>/api/25/{collection-object}/{collection-object-id}/{collection-name}/{object-id}</screen></para>
@@ -1375,23 +1378,43 @@ http://server/api/25/constants/ID</screen></para>
         request:<screen>DELETE /api/25/dataElementGroups/IDA/dataElements/IDB</screen></para>
       <para>To add a category option with identifier IDB to a category with identifier IDA you can
         do a POST request:<screen>POST /api/25/categories/IDA/categoryOptions/IDB</screen></para>
-      <para>If you want to add or remove multiple items from a collection in one request that is
-        also available using a payload like
-        this:<screen>{
+      </section>
+      <section>
+        <title>Adding or removing multiple objects</title>
+      <para>You can add or remove multiple objects from a collection in one request with a payload
+          like
+          this:<screen>{
   "identifiableObjects": [
     { "id": "IDA" },
     { "id": "IDB" },
-    { "id": "IDC" },
-    { "id": "IDD" }
+    { "id": "IDC" }
   ]
 }</screen></para>
-      <para>Using this payload, you have 3 options, you can delete, add, or replace.</para>
+      <para>Using this payload you can add, replace or delete items:</para>
       <para><emphasis role="italic">Adding Items:</emphasis></para>
       <screen>POST /api/25/categories/IDA/categoryOptions</screen>
       <para><emphasis role="italic">Replacing
         Items:</emphasis><screen>PUT /api/25/categories/IDA/categoryOptions</screen></para>
       <para><emphasis role="italic">Delete
         Items:</emphasis><screen>DELETE /api/25/categories/IDA/categoryOptions</screen></para>
+      </section>
+      <section>
+        <title>Adding and removing objects in a single request</title>
+        <para>You can both add and remove objects from a collection in a single POST request with
+          the following type of
+          payload:<screen>POST /api/25/categories/IDA/categoryOptions</screen><screen>{
+  "additions": [
+    { "id": "IDA" },
+    { "id": "IDB" },
+    { "id": "IDC" }
+  ],
+  "deletions": [
+    { "id": "IDD" },
+    { "id": "IDE" },
+    { "id": "IDF" }
+  ]
+}</screen></para>
+      </section>
     </section>
     <section xml:id="webapi_validating_payloads">
       <title>Validating payloads</title>
