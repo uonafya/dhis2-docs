@@ -5,7 +5,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
-    xmlns:db="http://docbook.org/ns/docbook">
+    xmlns:db="http://docbook.org/ns/docbook"
+    xml:id="manage_data_sets">
     <title>[Review ongoing]
         <?oxy_comment_start author="cecilia" timestamp="20160603T100652+0200" comment="Verify with Lars:
 Do you use data sets somewhere else than in forms? (Custom form and Section form)
@@ -421,7 +422,7 @@ Do you mean in the Data entry app? Or just normal data entry?" flag="done"?>
                         comment on complete</emphasis>.</para>
             </listitem>
             <listitem>
-                <para>(Optional) Select a <emphasis role="bold">Legend set</emphasis>.</para>
+                <para>(Optional) Select a <emphasis role="bold">Legend</emphasis>.</para>
                 <tip>
                     <?oxy_comment_start author="cecilia" timestamp="20160526T104008+0200" comment="At next revision, ad x-ref." flag="done"?>
                     <para>Click <emphasis role="bold">Add new</emphasis> to create legends that
@@ -477,14 +478,6 @@ Before release, verify that this works."?>
                 <?oxy_comment_start author="cecilia" timestamp="20160602T141437+0200" comment="At next release: add explanation." flag="done"?>
                 <para>Select data elements and assign them.</para>
                 <?oxy_comment_end?>
-                <tip>
-                    <?oxy_comment_start author="cecilia" timestamp="20160526T104008+0200" comment="At next revision, ad x-ref." flag="done"?>
-                    <para>Click <emphasis role="bold">Add new</emphasis> to create data elements
-                        that you're missing. In the form that opens, create the data elements you
-                        need. When you're done, click <emphasis role="bold">Refresh
-                            values</emphasis>.</para>
-                    <?oxy_comment_end?>
-                </tip>
             </listitem>
             <listitem>
                 <?oxy_comment_start author="cecilia" timestamp="20160602T141441+0200" comment="At next release: add explanation." flag="done"?>
@@ -722,6 +715,46 @@ Reword, remove passive voice." flag="done"?>
             </listitem>
             <listitem>
                 <para>Click <emphasis role="bold">Close</emphasis>.</para>
+            </listitem>
+        </orderedlist>
+    </section>
+    <section>
+        <title>Override data elements'
+            <?oxy_comment_start author="cecilia" timestamp="20161006T102656+0200" comment="At next relase, reword section." flag="done"?>category<?oxy_comment_end?>
+            combinations in a data set</title>
+        <para>You can override which category combination to use for a data element within the
+            context of a data set. This means that a data element can use different category
+            combinations within different data sets. This is useful when you want to reuse a data
+            element since you don't have to replicate the data element to allow multiple category
+            combinations. </para>
+        <example>
+            <para>If different regions within your organisation unit hierarchy use different
+                disaggregations, or if the disaggregations change over time, you can represent this
+                by creating different data sets with the appropriate category combinations.</para>
+        </example>
+        <orderedlist>
+            <listitem>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Data set</emphasis> > <emphasis role="bold">Data
+                    set</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>In the list, find the data set you want to modify.</para>
+            </listitem>
+            <listitem>
+                <para>Click the options menu and select <emphasis role="bold"
+                    >Edit</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Go to the data elements section and click the <emphasis role="bold"
+                        >Override</emphasis> icon.</para>
+            </listitem>
+            <listitem>
+                <para>Select new category combinations and click <emphasis role="bold"
+                        >Close</emphasis>.</para>
+            </listitem>
+            <listitem>
+                <para>Click <emphasis role="bold">Save</emphasis>.</para>
             </listitem>
         </orderedlist>
     </section>

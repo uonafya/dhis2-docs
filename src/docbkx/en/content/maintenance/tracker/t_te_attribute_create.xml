@@ -10,7 +10,7 @@
     <orderedlist>
         <listitem>
             <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
-                    role="bold">Tracker</emphasis> > <emphasis role="bold">Tracked entity
+                    role="bold">Program</emphasis> > <emphasis role="bold">Tracked entity
                     attribute</emphasis>.</para>
         </listitem>
         <listitem>
@@ -27,6 +27,9 @@
         <listitem>
             <para>(Optional) In the <emphasis role="bold">Code</emphasis> field, assign a
                 code.</para>
+        </listitem>
+        <listitem>
+            <para>(Optional) Type a <emphasis role="bold">Description</emphasis>.</para>
         </listitem>
         <listitem>
             <para>Select an <emphasis role="bold">Option set</emphasis>.</para>
@@ -75,7 +78,7 @@
                                 <para>Date &amp; time</para>
                             </entry>
                             <entry>
-                                <para/>
+                                <para>-</para>
                             </entry>
                         </row>
                         <row>
@@ -83,7 +86,7 @@
                                 <para>E-mail</para>
                             </entry>
                             <entry>
-                                <para/>
+                                <para>-</para>
                             </entry>
                         </row>
                         <row>
@@ -109,7 +112,7 @@
                                 <para>Letter</para>
                             </entry>
                             <entry>
-                                <para/>
+                                <para>-</para>
                             </entry>
                         </row>
                         <row>
@@ -177,7 +180,7 @@ Could be a few million or a field that expands." flag="done"?>forms<?oxy_comment
                                 <para>Organisation unit</para>
                             </entry>
                             <entry>
-                                <para/>
+                                <para>-</para>
                             </entry>
                         </row>
                         <row>
@@ -213,7 +216,7 @@ Could be a few million or a field that expands." flag="done"?>forms<?oxy_comment
                                 <para>Tracker associate</para>
                             </entry>
                             <entry>
-                                <para/>
+                                <para>-</para>
                             </entry>
                         </row>
                         <row>
@@ -253,10 +256,7 @@ Verify with Lars." flag="done"?>his
         <listitem>
             <para>Select an <emphasis role="bold">Aggregation type</emphasis>.</para>
             <table frame="all">
-                <title>Aggregation
-                    <?oxy_comment_start author="cecilia" timestamp="20160926T164524+0200" comment="Before release: add description of all aggregation operator.
-Also used for other types of metadata.
-For examle: Data element"?>operators<?oxy_comment_end?></title>
+                <title>Aggregation operators</title>
                 <tgroup cols="2">
                     <colspec colname="c1" colnum="1" colwidth="1.0*"/>
                     <colspec colname="c2" colnum="2" colwidth="1.0*"/>
@@ -357,13 +357,53 @@ Verify with SME: correct with org units in plural?
             </table>
         </listitem>
         <listitem>
-            <para><?oxy_comment_start author="cecilia" timestamp="20160929T115527+0200" comment="Add missing step."?>Unique<?oxy_comment_end?></para>
+            <para>Select <emphasis role="bold">Unique</emphasis> to specify that the values of the
+                tracked entity attribute is unique.</para>
+            <para>There are two options for the unique setting:</para>
+            <?oxy_comment_start author="cecilia" timestamp="20161004T115710+0200" comment="At next reivsion: rewrite list." flag="done"?>
+            <itemizedlist>
+                <listitem>
+                    <para><emphasis role="bold">Entire system</emphasis>: The values of the tracked
+                        entity attribute can duplicate with values which belong to other tracked
+                        entity attributes. But the values in this tracked entity attribute must not
+                        duplicate.</para>
+                    <para>Select <emphasis role="bold">Automatically generated</emphasis> to allow
+                        automatic generation of the tracked entity attribute value. When the
+                        generate setting is selected on, an optional field for specifying pattern
+                        also displays. Enter an amount of numbers into this field equal to the
+                        ciphers you want in the generated value. A pattern of 0000 would result in a
+                        generated value above 1000 and below 9999. The number of ciphers should at
+                        least allow 20 % more values than you expect is needed for keeping the ID
+                        unique.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold">Organisation unit</emphasis>: The values of the
+                        tracked entity attribute must not duplicate in the same organisation
+                        unit.</para>
+                </listitem>
+            </itemizedlist>
+            <?oxy_comment_end?>
         </listitem>
         <listitem>
-            <para><?oxy_comment_start author="cecilia" timestamp="20160929T115533+0200" comment="Add missing step"?>Inherit<?oxy_comment_end?></para>
+            <?oxy_comment_start author="cecilia" timestamp="20161004T120103+0200" comment="Review wording." flag="done"?>
+            <para>Select <emphasis role="bold">Inherit</emphasis> to registry a new entity for
+                relationship with an available entity, all inherit entity attribute values of the
+                entity will be pre-filled in the registration form.</para>
+            <?oxy_comment_end?>
         </listitem>
         <listitem>
-            <para>Select a <emphasis role="bold">Legend set</emphasis>.</para>
+            <para>(Optional) <?oxy_comment_start author="cecilia" timestamp="20161007T093316+0200" comment="At next reivsion: add more information about why you would select this option." flag="done"?>Select<?oxy_comment_end?>
+                <emphasis role="bold">Confidential</emphasis>. </para>
+            <para>This option is only available if you have configured encryption for the
+                <?oxy_comment_start author="cecilia" timestamp="20161007T093543+0200" comment="Where do you do this?"?>system<?oxy_comment_end?>.</para>
+        </listitem>
+        <listitem>
+            <para>(Optional) <?oxy_comment_start author="cecilia" timestamp="20161007T165735+0200" comment="Why would you choose this setting?"?>Select<?oxy_comment_end?>
+                <emphasis role="bold">Display in list without program</emphasis>.</para>
+        </listitem>
+        <listitem>
+            <para>Select <?oxy_comment_start author="cecilia" timestamp="20161004T120140+0200" comment="Add a note that you can add a legend here, click plus icon"?>a<?oxy_comment_end?>
+                <emphasis role="bold">Legend</emphasis>.</para>
         </listitem>
         <listitem>
             <para>Click <emphasis role="bold">Save</emphasis>.</para>

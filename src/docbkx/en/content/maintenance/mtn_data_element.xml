@@ -5,50 +5,24 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
-    xmlns:db="http://docbook.org/ns/docbook">
+    xmlns:db="http://docbook.org/ns/docbook"
+    xml:id="manage_data_element">
     <title><?oxy_comment_start author="cecilia" timestamp="20160510T091313+0200" comment="Review title, can you replace data elements with something else? A more generic term?
 SInce one of the categories you can edit is called data element..." flag="done"?>Manage<?oxy_comment_end?>
         data
         <?oxy_comment_start author="cecilia" timestamp="20160622T120939+0200" comment="Removed content:
 
 The actual creation and definition of the data elements themselves are beyond the scope of this manual to describe, but it is assumed that an administrator will be provided with a list of standardised data elements for inclusion into the DHIS2 system.
-" flag="done"?>elements<?oxy_comment_end?>
-        and categories</title>
+" flag="done"?>elements<?oxy_comment_end?></title>
     <section>
-        <title>About data elements and categories</title>
+        <title>About data elements</title>
         <para>Data elements are the base of DHIS2. Data elements define what is actually recorded
             in the system, for example number of immunisations or number of cases of malaria.</para>
-        <para>Categories are typically a concept, for example "Gender", "Age" or "Disease Status".
-            Data elements such as &quot;Number of cases of confirmed malaria&quot; are often broken
-            into smaller component parts to determine, for example, the number of confirmed malaria
-            cases of particular age groups.</para>
-        <para>Use categories to disaggregate data elements into individual components. You
-            <?oxy_comment_start author="cecilia" timestamp="20160512T155137+0200" comment="For SME: Is this the task described in Use category combinations as attributes?
-- Yes." flag="done"?>can
-            also use categories to assign metadata attributes to all data recorded in a specific
-            dataset, <?oxy_comment_end?>such as &quot;Implementing partner&quot; or &quot;Funding
-            agency.&quot;</para>
-        <example>
-            <title>Three age categories</title>
-            <para>Create three categories: "Under 1", "1-5" and "Over 5". Assign them as categories
-                to the data element. This creates three separate fields for this data in the data
-                entry forms:</para>
-            <itemizedlist>
-                <listitem>
-                    <para>Number of confirmed malaria cases (Under 1)</para>
-                </listitem>
-                <listitem>
-                    <para>Number of confirmed malaria cases (1-5)</para>
-                </listitem>
-                <listitem>
-                    <para>Number of confirmed malaria cases (Over 5)</para>
-                </listitem>
-            </itemizedlist>
-            <para>Without categories, you would have had to create each of the data elements listed
-                above separately.</para>
-        </example>
+        <para>Data elements such as &quot;Number of cases of confirmed malaria&quot; are often
+            broken into smaller component parts to determine, for example, the number of confirmed
+            malaria cases of particular age groups.</para>
         <para>In the <emphasis role="bold">Maintenance</emphasis> app, you manage the following data
-            elements and category objects:</para>
+            elements objects:</para>
         <table frame="all">
             <title><?oxy_comment_start author="cecilia" timestamp="20160510T092315+0200" comment="Review with SME: 
 What is the generic term for what elements you can edit in this section? Types? Objects?
@@ -71,59 +45,6 @@ Decided with Lars: object" flag="done"?>Data
                     </row>
                 </thead>
                 <tbody>
-                    <row>
-                        <entry>
-                            <para>Category option</para>
-                        </entry>
-                        <entry>
-                            <para>Create, edit, clone, share, delete, show details and
-                                translate</para>
-                        </entry>
-                    </row>
-                    <row>
-                        <entry>
-                            <para>Category</para>
-                        </entry>
-                        <entry>
-                            <para>Create, edit, clone, share, delete, show details and
-                                translate</para>
-                        </entry>
-                    </row>
-                    <row>
-                        <entry>
-                            <para>Category combination</para>
-                        </entry>
-                        <entry>
-                            <para>Create, edit, clone, share, delete, show details and
-                                translate</para>
-                        </entry>
-                    </row>
-                    <row>
-                        <entry>
-                            <para>Category option combination</para>
-                        </entry>
-                        <entry>
-                            <para>Edit and show details</para>
-                        </entry>
-                    </row>
-                    <row>
-                        <entry>
-                            <para>Category option group</para>
-                        </entry>
-                        <entry>
-                            <para>Create, edit, clone, share, delete, show details and
-                                translate</para>
-                        </entry>
-                    </row>
-                    <row>
-                        <entry>
-                            <para>Category option group set</para>
-                        </entry>
-                        <entry>
-                            <para>Create, edit, clone, share, delete, show details and
-                                translate</para>
-                        </entry>
-                    </row>
                     <row>
                         <entry>
                             <para>Data element</para>
@@ -177,185 +98,6 @@ Decided with Lars: object" flag="done"?>Data
         <?oxy_comment_end?>
     </section>
     <section>
-        <title>Create a category option</title>
-        <?oxy_comment_start author="cecilia" timestamp="20160512T160707+0200" comment="At next release:
-For SME: A task for admin? Implementer?" flag="done"?>
-        <para>When possible, recycle category options. For instance, there might be two categories
-            which might share a particular category option (for example &lt;1 year of age). When
-            creating the categories, this category option could be reused. This is important if
-            particular category options (or category option combinations) that need to be analyzed
-            together.</para>
-        <?oxy_comment_end?>
-        <orderedlist>
-            <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data elements</emphasis> >
-                        <emphasis role="bold">Category option</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>Click the add button.</para>
-            </listitem>
-            <listitem>
-                <para>Fill in the form:</para>
-                <orderedlist>
-                    <listitem>
-                        <para><emphasis role="bold">Name</emphasis></para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Code</emphasis></para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Data dimension type</emphasis></para>
-                        <?oxy_comment_start author="cecilia" timestamp="20160622T161804+0200" comment="At next release: rewrite para" flag="done"?>
-                        <para>A category either be of type &quot;Disaggregation&quot; or
-                            &quot;Attribute&quot;. For disaggregation of data elements, you select
-                                <emphasis role="bold">Disaggregation</emphasis>. The data dimension
-                            type &quot;Attribute&quot; allows the category to be used to assign a
-                            combination of categories to data recorded through a data set.</para>
-                        <?oxy_comment_end?>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Data dimension</emphasis></para>
-                        <?oxy_comment_start author="cecilia" timestamp="20160622T161850+0200" comment="At next revision:
-Reword para." flag="done"?>
-                        <para>If you select <emphasis role="bold">Data dimension</emphasis>, the
-                            category will be available in the analytics apps as another dimension,
-                            in addition to the standard dimensions of &quot;Period&quot; and
-                            &quot;Organisation unit&quot;.</para>
-                        <?oxy_comment_end?>
-                    </listitem>
-                </orderedlist>
-            </listitem>
-            <listitem>
-                <para>Select category options and assign them.</para>
-            </listitem>
-            <listitem>
-                <para>Click <emphasis role="bold">Save</emphasis>.</para>
-            </listitem>
-        </orderedlist>
-    </section>
-    <section>
-        <title>
-            <?oxy_comment_start author="cecilia" timestamp="20160512T153755+0200" comment="At next revision:
-For SME: Who does this task? Implementer? Admin?" flag="done"?>Create<?oxy_comment_end?>
-            a category</title>
-        <para>When you have created all category options for a particular category, you can create
-            that category.</para>
-        <para>To create a category: </para>
-        <orderedlist>
-            <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data elements</emphasis> >
-                        <emphasis role="bold">Category</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>Click the add button.</para>
-            </listitem>
-            <listitem>
-                <para>Fill in the form:</para>
-                <orderedlist>
-                    <listitem>
-                        <para><emphasis role="bold">Name</emphasis></para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Code</emphasis></para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Data dimension type</emphasis></para>
-                        <?oxy_comment_start author="cecilia" timestamp="20160622T161804+0200" comment="At next release: rewrite para." flag="done"?>
-                        <para>A category either be of type &quot;Disaggregation&quot; or
-                            &quot;Attribute&quot;. For disaggregation of data elements, you select
-                                <emphasis role="bold">Disaggregation</emphasis>. The data dimension
-                            type &quot;Attribute&quot; allows the category to be used to assign a
-                            combination of categories to data recorded through a data set.</para>
-                        <?oxy_comment_end?>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Data dimension</emphasis></para>
-                        <?oxy_comment_start author="cecilia" timestamp="20160622T161850+0200" comment="At next revision:
-Reword para." flag="done"?>
-                        <para>If you select <emphasis role="bold">Data dimension</emphasis>, the
-                            category will be available to the analytics as another dimension, in
-                            addition to the standard dimensions of &quot;Period&quot; and
-                            &quot;Organisation unit&quot;.</para>
-                        <?oxy_comment_end?>
-                    </listitem>
-                </orderedlist>
-            </listitem>
-            <listitem>
-                <para>Select category options and assign them.</para>
-            </listitem>
-            <listitem>
-                <para>Click <emphasis role="bold">Save</emphasis>.</para>
-            </listitem>
-        </orderedlist>
-    </section>
-    <section>
-        <?oxy_comment_start author="cecilia" timestamp="20160622T143517+0200" comment="At next revision:
-Review concept information and example." flag="done"?>
-        <title>Create a category combination</title>
-        <?oxy_comment_end?>
-        <para>Category combinations lets you combine multiple categories into a related set.</para>
-        <example>
-            <title>Category combination</title>
-            <para>You can disaggregate the data element &quot;Number of new HIV infections&quot;
-                into the following categories:</para>
-            <itemizedlist>
-                <listitem>
-                    <para>HIV Service: &quot;Other&quot;, &quot;PMTCT&quot;, "TB"</para>
-                </listitem>
-                <listitem>
-                    <para>Gender: "Male", "Female"</para>
-                </listitem>
-            </itemizedlist>
-            <para>In this example, there are two levels of disaggregation that consist of two
-                separate data element categories. Each data element category consist of several data
-                element category options.</para>
-        </example>
-        <para>In
-            <?oxy_comment_start author="cecilia" timestamp="20160512T152824+0200" comment="For SME: Changed from &quot;In most HMIS systems&quot; to &quot;In DHIS2...&quot;, correct?" flag="done"?>DHIS<?oxy_comment_end?>
-            2, different data elements are disaggregated according to a common set of categories. By
-            combining these different categories into a category combination and assigning these
-            combinations to data elements, you can apply the appropriate disaggregation levels
-            quickly to a large number of data elements.</para>
-        <orderedlist>
-            <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data elements</emphasis> >
-                        <emphasis role="bold">Category combination</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>Click the add button.</para>
-            </listitem>
-            <listitem>
-                <?oxy_comment_start author="cecilia" timestamp="20160622T143640+0200" comment="At next revision:
-Add explanation about the different options and fields." flag="done"?>
-                <para>Fill in the form:</para>
-                <?oxy_comment_end?>
-                <orderedlist>
-                    <listitem>
-                        <para><emphasis role="bold">Name</emphasis></para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Code</emphasis></para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Data dimension type</emphasis></para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Skip category total in reports</emphasis></para>
-                    </listitem>
-                </orderedlist>
-            </listitem>
-            <listitem>
-                <para>Select categories and assign them.</para>
-            </listitem>
-            <listitem>
-                <para>Click <emphasis role="bold">Save</emphasis>.</para>
-            </listitem>
-        </orderedlist>
-    </section>
-    <section>
         <title>Create a
             d<?oxy_comment_start author="cecilia" timestamp="20160510T101140+0200" comment="At next revision:
 Find out who does this? Admin? Implementer? User? " flag="done"?>ata<?oxy_comment_end?>
@@ -370,9 +112,9 @@ Find out who does this? Admin? Implementer? User? " flag="done"?>ata<?oxy_commen
         </screenshot>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data elements</emphasis> >
-                        <emphasis role="bold">Data element</emphasis>.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Data elements</emphasis> > <emphasis role="bold">Data
+                        element</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Click the add
@@ -876,9 +618,9 @@ Revise para and define where you set this." flag="done"?>
         <para>To create a data element group:</para>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data elements</emphasis> >
-                        <emphasis role="bold">Data element group</emphasis>.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Data elements</emphasis> > <emphasis role="bold">Data element
+                        group</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Click the add
@@ -915,9 +657,9 @@ Revise para and define where you set this." flag="done"?>
         <?oxy_comment_end?>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data elements</emphasis> >
-                        <emphasis role="bold">Data element group set</emphasis>.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Data elements</emphasis> > <emphasis role="bold">Data element
+                        group set</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Click the add
@@ -957,122 +699,11 @@ Revise para and define where you set this." flag="done"?>
         </orderedlist>
     </section>
     <section>
-        <title><?oxy_comment_start author="cecilia" timestamp="20160512T113411+0200" comment="Ask SME: does it make sense to split this section in two?
-" flag="done"?>Create<?oxy_comment_end?>
-            a category option group</title>
-        <para>You can group and classify category options by using category option groups. The main
-            purpose of the category option group set is to add more
-            <?oxy_comment_start author="cecilia" timestamp="20160512T141945+0200" comment="At next revision:
-Verify if dimensionality is a recognized term." flag="done"?>dimensionality<?oxy_comment_end?>
-            to your captured data for analysis in for example the <emphasis role="bold">Pivot
-                table</emphasis> or <emphasis role="bold">Data Visualizer</emphasis> apps.</para>
-        <example>
-            <title>Category options groups and group sets</title>
-            <?oxy_comment_start author="cecilia" timestamp="20160512T142333+0200" comment="At next revision, rewrite section and remove passive voice." flag="done"?>
-            <para>In a system, data is collected by &quot;projects&quot;, where projects is modeled
-                as category options. The system must be able to analyse data based on which donor
-                that supports the project. In this case, create a category option group set called
-                &quot;Donor&quot;. Each donor can be created as a category option group, where each
-                category option / project is put in the appropriate group. In the data analysis
-                applications, the &quot;Donor&quot; group set will appear as a data dimension, while
-                each donor appear as dimension items, ready to be included in reports.</para>
-            <?oxy_comment_end?>
-        </example>
-        <para>To create a category option group:</para>
-        <orderedlist>
-            <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data elements</emphasis> >
-                        <emphasis role="bold">Category option group</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>Click the add
-                    <?oxy_comment_start author="cecilia" timestamp="20160510T112410+0200" comment="Do not refer to the FAB as an icon, according to MS Manual of Style." flag="done"?>button<?oxy_comment_end?>.</para>
-            </listitem>
-            <listitem>
-                <para>Fill in the form:</para>
-                <orderedlist>
-                    <listitem>
-                        <para><?oxy_comment_start author="cecilia" timestamp="20160622T141131+0200" comment="At next revision:
-Verify if the name must be unique." flag="done"?><emphasis
-                                role="bold">Name</emphasis><?oxy_comment_end?></para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Short name</emphasis>: Define a short name for
-                            the data element.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Code</emphasis></para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Data dimension type</emphasis></para>
-                    </listitem>
-                </orderedlist>
-            </listitem>
-            <listitem>
-                <para>Select <emphasis role="bold">Category options</emphasis> and assign
-                    them.</para>
-            </listitem>
-            <listitem>
-                <para>Click <emphasis role="bold">Save</emphasis>.</para>
-            </listitem>
-        </orderedlist>
-    </section>
-    <section>
-        <title>Create a category option group set</title>
-        <para>You can group category option groups in category option group sets. The main purpose
-            of the category option group set is to add more
-            <?oxy_comment_start author="cecilia" timestamp="20160512T141945+0200" comment="At next revision:
-Verify if dimensionality is a recognized term." flag="done"?>dimensionality<?oxy_comment_end?>
-            to your captured data for analysis in for example the <emphasis role="bold">Pivot
-                table</emphasis> or <emphasis role="bold">Data Visualizer</emphasis> apps.</para>
-        <para>To create a category option group set:</para>
-        <orderedlist>
-            <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data elements</emphasis> >
-                        <emphasis role="bold">Category option group set</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>Click the add
-                    <?oxy_comment_start author="cecilia" timestamp="20160510T112410+0200" comment="Do not refer to the FAB as an icon, according to MS Manual of Style." flag="done"?>button<?oxy_comment_end?>.</para>
-            </listitem>
-            <listitem>
-                <para>Fill in the form:</para>
-                <orderedlist>
-                    <listitem>
-                        <para><emphasis role="bold">Name</emphasis></para>
-                    </listitem>
-                    <listitem>
-                        <?oxy_comment_start author="cecilia" timestamp="20160512T143115+0200" comment="At next revision:
-For SME: Name must be unique?" flag="done"?>
-                        <para><emphasis role="bold">Description</emphasis></para>
-                        <?oxy_comment_end?>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Data dimension</emphasis></para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Data dimension type</emphasis></para>
-                    </listitem>
-                </orderedlist>
-            </listitem>
-            <listitem>
-                <para>Select <emphasis role="bold">Category option groups</emphasis> and assign
-                    them.</para>
-            </listitem>
-            <listitem>
-                <para>Click <emphasis role="bold">Save</emphasis>.</para>
-            </listitem>
-        </orderedlist>
-    </section>
-    <section>
         <title>Edit data elements and other objects</title>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data
-                    elements</emphasis>.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Data elements</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select the object type you want to edit, for example data element or
@@ -1103,9 +734,8 @@ At the moment, I can only do x-refs to section 1 tags.
             objects.</para>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data
-                    elements</emphasis>.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Data elements</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select the object type you want to clone, for example data element or
@@ -1134,9 +764,8 @@ At the moment, I can only do x-refs to section 1 tags.
         <title>Change sharing settings for data elements and other objects</title>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data
-                    elements</emphasis>.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Data elements</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select an object type, for example data element or category.</para>
@@ -1186,9 +815,8 @@ For SME: &quot;Associated&quot; as message says in GUI? Instead of attached." fl
             to the data element itself.</para>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data
-                    elements</emphasis>.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Data elements</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select the object type you want to delete, for example data element or
@@ -1210,9 +838,8 @@ For SME: &quot;Associated&quot; as message says in GUI? Instead of attached." fl
         <title>Display details of data elements and other objects</title>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data
-                    elements</emphasis>.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Data elements</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select the object type you want to display, for example data element or
@@ -1242,9 +869,8 @@ For SME: &quot;Associated&quot; as message says in GUI? Instead of attached." fl
         </tip>
         <orderedlist>
             <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data
-                    elements</emphasis>.</para>
+                <para>Open the <emphasis role="bold">Maintenance</emphasis> app and click <emphasis
+                        role="bold">Data elements</emphasis>.</para>
             </listitem>
             <listitem>
                 <para>Select the object type you want to translate, for example data element or
@@ -1268,87 +894,5 @@ For SME: &quot;Associated&quot; as message says in GUI? Instead of attached." fl
                 <para>Click <emphasis role="bold">Close</emphasis>.</para>
             </listitem>
         </orderedlist>
-    </section>
-    <section>
-        <?oxy_comment_start author="cecilia" timestamp="20160622T142658+0200" comment="At next revision: 
-Att further explanation.
-" flag="done"?>
-        <title>Assign a code to a category option
-            <?oxy_comment_start author="cecilia" timestamp="20160512T104653+0200" comment="List created automatically
-The codes can be useful for export or similar.
-The category option combinations are created automtatically from category options for category combinations." flag="done"?>combination<?oxy_comment_end?></title>
-        <?oxy_comment_end?>
-        <para>You can assign a code to category option combinations. This makes data exchange
-            between DHIS2 and external systems easier. The system creates the category option
-            combinations automatically.</para>
-        <orderedlist>
-            <listitem>
-                <para>Click <emphasis role="bold">Apps</emphasis> > <emphasis role="bold"
-                        >Maintenance</emphasis> > <emphasis role="bold">Data elements</emphasis> >
-                        <emphasis role="bold">Category option combination</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>In the list, find the object you want to modify.</para>
-            </listitem>
-            <listitem>
-                <para>Click the options menu and select <emphasis role="bold"
-                    >Edit</emphasis>.</para>
-            </listitem>
-            <listitem>
-                <para>Enter a code.</para>
-            </listitem>
-            <listitem>
-                <para>Click <emphasis role="bold">Save</emphasis>.</para>
-            </listitem>
-        </orderedlist>
-    </section>
-    <section>
-        <title>Use category combinations for data sets</title>
-        <para>When categories and category combinations have the data dimension type
-            &quot;Attribute&quot;, they can apply a common set of attributes to a related set of
-            data values contained in a data set. When category combinations are used as a attribute,
-            they serve as another dimension (similar to &quot;Period&quot; and &quot;Organisation
-            unit&quot;) which you can use in your analysis.</para>
-        <example>
-            <title>Use category combination for a data set</title>
-            <para><?oxy_comment_start author="cecilia" timestamp="20160628T103843+0200" comment="At next revision: review example." flag="done"?>Suppose<?oxy_comment_end?>
-                that a NGO is providing ART services in a given facility. They would need to report
-                each month on the &quot;ART monthly summary&quot;, which would contain a number of
-                data elements. The NGO and project could potentially change over time. In order to
-                attribute data to a given NGO and project at any point in time, you need to record
-                this information with each data value at the time of data entry.</para>
-            <orderedlist>
-                <listitem>
-                    <para>Create two categories with the data dimension type &quot;Attribute":
-                        &quot;Implementing partner&quot; and &quot;Projects".</para>
-                </listitem>
-                <listitem>
-                    <para>Create a category combination with the data dimension type "Attribute":
-                        &quot;Implementing partners and projects&quot;. </para>
-                </listitem>
-                <listitem>
-                    <para>Assign the categories you've created to the category combination.</para>
-                </listitem>
-                <listitem>
-                    <para>Create a data set called &quot;ART monthly summary&quot; and select the
-                        "Implementing partners and projects&quot; category combination.</para>
-                </listitem>
-            </orderedlist>
-            <para>When you enter data in the <emphasis role="bold">Data entry</emphasis> app, you
-                can select an &quot;Implementing partner&quot; and a &quot;Project&quot;. Each
-                recorded data value, is assigned a specific combination of these categories as an
-                attribute. These attributes (when specified as a dimension) can be used in the
-                analysis applications similar to other dimensions, for example the period and
-                organisation unit.</para>
-            <screenshot>
-                <mediaobject>
-                    <imageobject>
-                        <imagedata width="80%" align="center"
-                            fileref="resources/images/maintainence/categories_dataset_attributes.png"
-                            format="PNG"/>
-                    </imageobject>
-                </mediaobject>
-            </screenshot>
-        </example>
     </section>
 </section>

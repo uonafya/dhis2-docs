@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<section version="5.0"
+    xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+    xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook" 
+    xml:id="program_about">
+    <title>About tracker programs</title>
+    <para>There are three type of programs:</para>
+    <itemizedlist>
+        <listitem>
+            <para>Multi events with registration program (MEWR):</para>
+            <para>Used for programs with many stages, for example Mother Health Program with stages
+                such as ANC Visit (2-4+), Delivery, PNC Visit.</para>
+        </listitem>
+        <listitem>
+            <para>Single event with registration program (SEWR):</para>
+            <para>Used for birth certificate and death certificate. This type of programs have only
+                one stage. An TEI just can enroll into the program one time.</para>
+        </listitem>
+        <listitem>
+            <para>Single event without registration program (anonymous program or SEWoR):</para>
+            <para>Used for saving health cases without registering any information into the system.
+                This type of programs have only one stage.</para>
+        </listitem>
+    </itemizedlist>
+    <para>A program must be specified with only one tracked entity. Only tracked entity as same as
+        the tracked entity of program can enroll into that program.</para>
+    <para>A tracker program needs several types of metadata that you create in the <emphasis
+            role="bold">Program / Attributes</emphasis> and <emphasis role="bold"
+            >Maintenance</emphasis> apps.</para>
+    <table frame="all">
+        <title>Program metadata objects in the Program / Attributes app</title>
+        <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+            <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+            <colspec colname="c2" colnum="3" colwidth="1.0*"/>
+            <thead>
+                <row>
+                    <entry>
+                        <para>Object type</para>
+                    </entry>
+                    <entry>Description</entry>
+                    <entry>
+                        <para>Available functions</para>
+                    </entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>
+                        <para><?oxy_comment_start author="cecilia" timestamp="20161004T162501+0200" comment="Documented" flag="done"?>Program<?oxy_comment_end?></para>
+                    </entry>
+                    <entry>
+                        <para>A program consist of program stages.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, share, delete, assign to organisation units, show
+                            details and
+                            <?oxy_comment_start author="cecilia" timestamp="20161004T170542+0200" comment="You can also Design custom registration form.
+Is this documented??
+A separate topic?"?>translate<?oxy_comment_end?></para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program
+                            <?oxy_comment_start author="cecilia" timestamp="20161005T105204+0200" comment="Documented." flag="done"?>stage<?oxy_comment_end?></para>
+                    </entry>
+                    <entry>
+                        <para>A program stage defines which actions should be taken at each
+                            stage.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, change sort order,
+                            <?oxy_comment_start author="cecilia" timestamp="20161004T165628+0200" comment="Verify with SME: how do you delete a program stage?"?>delete<?oxy_comment_end?>,
+                            show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program stage
+                            <?oxy_comment_start author="cecilia" timestamp="20161005T110524+0200" comment="delete, translate, display not documented
+WIll move into Mtn app for 2.26"?>section<?oxy_comment_end?></para>
+                    </entry>
+                    <entry>
+                        <para>N/A</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, change sort order, delete, show details and
+                            translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program
+                            <?oxy_comment_start author="cecilia" timestamp="20161004T162510+0200" comment="Documented" flag="done"?>indicator<?oxy_comment_end?></para>
+                    </entry>
+                    <entry>
+                        <para>An expression based on data elements and attributes of tracked
+                            entities which can be used to calculate values based on a
+                            formula.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, share, delete, show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program indicator
+                            <?oxy_comment_start author="cecilia" timestamp="20161004T165334+0200" comment="Documented." flag="done"?>group<?oxy_comment_end?></para>
+                    </entry>
+                    <entry>
+                        <para>A group of program indicators</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, delete, show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program
+                            <?oxy_comment_start author="cecilia" timestamp="20161004T162532+0200" comment="Documented" flag="done"?>rule<?oxy_comment_end?></para>
+                    </entry>
+                    <entry>
+                        <para>Allows you to create and control dynamic behavior of the user
+                            interface in the <emphasis role="bold">Tracker Capture</emphasis> and
+                                <emphasis role="bold">Event Capture</emphasis> apps.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, delete, show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Validation
+                            <?oxy_comment_start author="cecilia" timestamp="20161005T104818+0200" comment="Documented" flag="done"?>rule<?oxy_comment_end?></para>
+                    </entry>
+                    <entry>
+                        <para>A validation rule is based on an expression which defines a
+                            relationship between data element values.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit and delete</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program notification</para>
+                    </entry>
+                    <entry>
+                        <para>Automated message reminder </para>
+                        <para>Set reminders to be automatically sent to enrolled tracked entity
+                            instances before scheduled appointments and after missed visits.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit and delete</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Program stage
+                            <?oxy_comment_start author="cecilia" timestamp="20161005T144821+0200" comment="Documented" flag="done"?>notification<?oxy_comment_end?></para>
+                    </entry>
+                    <entry>
+                        <para>-</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit and delete</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Design custom registration form</para>
+                    </entry>
+                    <entry>
+                        <para>-</para>
+                    </entry>
+                    <entry>
+                        <para>-</para>
+                    </entry>
+                </row>
+            </tbody>
+        </tgroup>
+    </table>
+    <table frame="all">
+        <title>Program metadata objects in the Maintenance app</title>
+        <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+            <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+            <colspec colname="c2" colnum="3" colwidth="1.0*"/>
+            <thead>
+                <row>
+                    <entry>
+                        <para>Object type</para>
+                    </entry>
+                    <entry>Description</entry>
+                    <entry>
+                        <para>Available functions</para>
+                    </entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>
+                        <para>Tracked entity</para>
+                    </entry>
+                    <entry>
+                        <para>Types of entities which can be tracked through the system. Can be
+                            anything from persons to commodities, for example a medicine or a
+                            person.</para>
+                        <para>A program must have one tracked entity. And entity registered must be
+                            specified an tracked entity. To enrol a tracked entity instance into a
+                            program, the tracked entity of an entity and tracked entity of a program
+                            must be the same.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, clone, delete, show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Tracked entity attribute</para>
+                    </entry>
+                    <entry>
+                        <para>Used to register extra information for a tracked entity.</para>
+                        <para>Can be shared between programs.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, clone, share, delete, show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Tracked entity attribute group</para>
+                    </entry>
+                    <entry>
+                        <para>Used to display attributes in default registration form by
+                            groups.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, clone, delete, show details and translate</para>
+                    </entry>
+                </row>
+                <row>
+                    <entry>
+                        <para>Relationship type</para>
+                    </entry>
+                    <entry>
+                        <para>Defines the relationship between tracked entity A and tracked entity
+                            B, for example mother and child.</para>
+                    </entry>
+                    <entry>
+                        <para>Create, edit, clone, delete, show details and translate</para>
+                    </entry>
+                </row>
+            </tbody>
+        </tgroup>
+    </table>
+    <para>To learn how you create program metadata in the Maintenance app, see <link
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xlink:href="https://dhis2.github.io/dhis2-docs/master/en/user/html/manage_program_metadata.html"
+            >Manage program metadata</link></para>
+</section>

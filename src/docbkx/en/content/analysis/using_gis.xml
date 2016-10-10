@@ -7,66 +7,7 @@
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
   xmlns:db="http://docbook.org/ns/docbook" xml:id="using_gis">
   <title>Using the GIS app</title>
-  <section xml:id="using_gis_about">
-    <title>About the GIS app</title>
-    <screenshot>
-      <?oxy_comment_start author="cecilia" timestamp="20160626T153414+0200" comment="Before release:
-Replace screenshot."?>
-      <title>Main GIS screen</title>
-      <?oxy_comment_end?>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="resources/images/gis/gis_main.png" align="center" width="100%"
-            format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <itemizedlist>
-      <listitem>
-        <para>The icons in the left upper corner represent the vector layers and they are the
-          starting point of the <emphasis role="bold">GIS</emphasis> app.</para>
-      </listitem>
-      <listitem>
-        <para>In the top right corner you get an overview of the layers:</para>
-        <itemizedlist>
-          <listitem>
-            <para>If you are online you will see
-              <?oxy_comment_start author="Home" timestamp="20160412T152838+0200" comment="Use of trademarks in documentaiton and interface must be reviewed.
-https://www.google.com/permissions/trademark/trademark-list.html
-"?>Google
-              Streets and Google Hybrid<?oxy_comment_end?> which can be used as background maps and
-              layers. Switch between the two of them by checking the check box. The default base map
-              is OpenStreetMap. To get a nice background map, select the OSM Light. By clearing a
-              box you can hide the corresponding background completely.</para>
-          </listitem>
-          <listitem>
-            <para>If you want to see the background, but with reduced opacity, you can set the
-              visibility to something lower than 100 % in the box to the right.</para>
-          </listitem>
-          <listitem>
-            <para>The final four layers are the vector layers which you use for thematic mapping
-              (explained in the next section). The panels below hold the map legends when you create
-              a thematic map. A legend explains the link between values and colors on your
-              map.</para>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </itemizedlist>
-    <itemizedlist>
-      <listitem>
-        <para><emphasis role="bold">Zoom to content</emphasis> automatically adjusts the zoom level
-          and map center position to put the data on your map in focus.</para>
-      </listitem>
-      <listitem>
-        <para>To get information for an event you can simply click on it. This opens a pop-up window
-          which displays all available information for that event.</para>
-      </listitem>
-      <listitem>
-        <para>The current longitude and latitude position of the mouse cursor is displayed in the
-          bottom right corner of the map.</para>
-      </listitem>
-    </itemizedlist>
-  </section>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gis/c_gis.xml" encoding="UTF-8"/>
   <section xml:id="using_gis_create_map">
     <title>Create a new thematic
       <?oxy_comment_start author="Home" timestamp="20160414T121319+0200" comment="Review and rewrite section at next revision."?>map<?oxy_comment_end?></title>
@@ -118,7 +59,8 @@ https://www.google.com/permissions/trademark/trademark-list.html
       <title>Event layer</title>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" fileref="resources/images/gis/gis_event_layer.png" format="PNG"/>
+          <imagedata width="80%" fileref="resources/images/gis/gis_event_layer.png" format="PNG"
+            align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -233,7 +175,8 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </para>
     </section>
     <section>
-      <title>Modify information in event pop-up windows</title>
+      <?oxy_comment_start author="rachaelb" timestamp="20161005T154653+0200" comment="Move to maintenance part of doc?"?>
+      <title><?oxy_comment_end?>Modify information in event pop-up windows</title>
       <para>For events in a cluster map, you can modify the information displayed in the event
         pop-up window.</para>
       <screenshot>
@@ -241,15 +184,14 @@ https://www.google.com/permissions/trademark/trademark-list.html
         <mediaobject>
           <imageobject>
             <imagedata fileref="resources/images/gis/gis_eventlayer_eventinfopopup.png" format="PNG"
-              width="55%"/>
+              width="40%" align="center"/>
           </imageobject>
         </mediaobject>
       </screenshot>
       <para>
         <orderedlist>
           <listitem>
-            <para>On the home page, click <emphasis role="bold">Apps</emphasis> > <emphasis
-                role="bold">Programs / Attributes</emphasis>.</para>
+            <para>Open the <emphasis role="bold">Programs / Attributes</emphasis> app.</para>
           </listitem>
           <listitem>
             <para>Click <emphasis role="bold">Program</emphasis>.</para>
@@ -291,20 +233,17 @@ https://www.google.com/permissions/trademark/trademark-list.html
   </section>
   <section xml:id="using_gis_facility_layer">
     <title>Manage facility layers</title>
-    <para>The facility layer displays icons that represent types of facilities.
-      <?oxy_comment_start author="Home" timestamp="20160418T155400+0200" comment="At next revision, explain polygon."?>Polygons
-      <?oxy_comment_end?>do not show up on the map, so make sure that you select an organisation
-      unit level that has facilities. </para>
-    <para><?oxy_comment_start author="rachaelb" timestamp="20160923T141243+0200" comment="Add to glossary, tutorial definitions (to come post 2.25)"?>A
-      polygon is an enclosed area on a map representing a country, a district or a park. In GIS,  a
-      polygon is a shape defined by one or more rings, where a ring is a path that starts and ends
-      at the same point.<?oxy_comment_end?></para>
+    <para>The facility layer displays icons that represent types of facilities. Polygons do not show
+      up on the map, so make sure that you select an organisation unit level that has facilities. </para>
+    <para>A polygon is an enclosed area on a map representing a country, a district or a park. In
+      GIS, a polygon is a shape defined by one or more rings, where a ring is a path that starts and
+      ends at the same point.</para>
     <screenshot>
       <title>Facility layer</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/gis/gis_facility_layer.png" format="PNG"
-          />
+            align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -450,20 +389,20 @@ https://www.google.com/permissions/trademark/trademark-list.html
   </section>
   <section xml:id="using_gis_thematic_layer">
     <title>Manage thematic layers 1- 4</title>
-    <para>The four thematic layer panels let you use your data for thematic mapping. Select your
-      desired combination of indicator/data element, period and map combination, then the
-      organisation unit level and parent to define the boundaries. If your database has coordinates
-      and aggregated data values for these organisation units, they will appear on the map.</para>
+    <para>There are four thematic layers in the GIS app. With these layers panels you can use your
+      data for thematic mapping. Select your desired combination of indicator/data element, and
+      period. then the organisation unit level. If your database has coordinates and aggregated data
+      values for these organisation units, they will appear on the map.</para>
     <note>
       <para>You must refresh the DHIS2 analytics tables to have aggregated data values
         available.</para>
     </note>
     <screenshot>
-      <title>Thematic mapping</title>
+      <title>Example of a thematic map</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/gis/gis_thematic_mapping.png"
-            format="PNG"/>
+            format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -492,9 +431,9 @@ https://www.google.com/permissions/trademark/trademark-list.html
             organisation units<?oxy_comment_end?>.</para>
         </listitem>
         <listitem>
-          <para>In the <emphasis role="bold">Options</emphasis> section, select
-              <guimenuitem>Automatic</guimenuitem> or <guimenuitem>Predefined</guimenuitem> legend
-            type. </para>
+          <para>In the <emphasis role="bold">Options</emphasis> section, go to <emphasis role="bold"
+              >Legend type</emphasis> and select <guimenuitem>Automatic</guimenuitem> or
+              <guimenuitem>Predefined</guimenuitem>. </para>
           <para>
             <itemizedlist>
               <listitem>
@@ -523,6 +462,11 @@ https://www.google.com/permissions/trademark/trademark-list.html
         <listitem>
           <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
             labels and if so, how they look.</para>
+        </listitem>
+        <listitem>
+          <para>In the Options panel, select an aggregation type. See also <link
+            xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dhis2.github.io/dhis2-docs/master/en/user/html/ch10s05.html#d0e8082"
+            >Aggregation operators</link>.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Update</emphasis>.</para>
@@ -581,12 +525,10 @@ https://www.google.com/permissions/trademark/trademark-list.html
           <para>Right-click one of the organisation units.</para>
         </listitem>
         <listitem>
-          <para>Select <emphasis role="bold">Float up</emphasis> or <emphasis role="bold">Drill
+          <para>Select <emphasis role="bold">Drill up</emphasis> or <emphasis role="bold">Drill
               down</emphasis>.</para>
           <para>The drill down option is disabled if you are on the lowest level or if there are no
-            coordinates available on the level below. Vice versa goes for
-            <?oxy_comment_start author="Home" timestamp="20160418T160509+0200" comment="At next release, review term float up with devs."?>floating<?oxy_comment_end?>
-            up. </para>
+            coordinates available on the level below. Vice versa goes for drilling up. </para>
         </listitem>
       </orderedlist>
     </section>
@@ -605,23 +547,23 @@ https://www.google.com/permissions/trademark/trademark-list.html
   </section>
   <section>
     <title>Manage boundary layers</title>
-    <para>The aim of the boundary layer is to display the boundaries and coordinates in the system.
-      No data will be shown. This layer is useful if you are offline and thus have no background
-      map. </para>
+    <para>The boundary layer displays the borders and locations of your organisation units. This
+      layer is useful if you are offline and don't have access to background maps. </para>
     <screenshot>
       <title>Boundary layer</title>
       <mediaobject>
         <imageobject>
-          <imagedata width="100%" fileref="resources/images/gis/gis_boundary_layer.png" format="PNG"
-          />
+          <imagedata width="80%" fileref="resources/images/gis/gis_boundary_layers.png" format="PNG"
+            align="center"/>
+
         </imageobject>
       </mediaobject>
     </screenshot>
     <section>
-      <title>Create or modify boundary layer</title>
+      <title>Create or modify boundary layers</title>
       <orderedlist>
         <listitem>
-          <para>In the top menu, click the boundary layer icon.</para>
+          <para>In the top left menu, click the boundary layer icon.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Edit layer</emphasis>.</para>
@@ -644,8 +586,8 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </orderedlist>
     </section>
     <section>
-      <title>Search for an organisation unit </title>
-      <para>To locate an organisation unit in the map:</para>
+      <title>Search for organisation units </title>
+      <para>To locate an organisation unit on the map:</para>
       <orderedlist>
         <listitem>
           <para>In the top menu, click the boundary layer icon.</para>
@@ -671,12 +613,10 @@ https://www.google.com/permissions/trademark/trademark-list.html
           <para>Right-click one of the organisation units.</para>
         </listitem>
         <listitem>
-          <para>Select <emphasis role="bold">Float up</emphasis> or <emphasis role="bold">Drill
+          <para>Select <emphasis role="bold">Drill up</emphasis> or <emphasis role="bold">Drill
               down</emphasis>.</para>
           <para>The drill down option is disabled if you are on the lowest level or if there are no
-            coordinates available on the level below. Vice versa goes for
-            <?oxy_comment_start author="Home" timestamp="20160418T160509+0200" comment="At next release, review term float up with devs."?>floating<?oxy_comment_end?>
-            up. </para>
+            coordinates available on the level below. The same applies when you are drilling up. </para>
         </listitem>
       </orderedlist>
     </section>
@@ -699,9 +639,9 @@ https://www.google.com/permissions/trademark/trademark-list.html
       <mediaobject>
         <imageobject>
           <?oxy_comment_start author="cecilia" timestamp="20160630T212009+0200" comment="Before release: Update screenshot: Select layer has changed to Select data set" flag="done"?>
-          <imagedata width="100%"
-            fileref="resources/images/gis/gis_earth_engine_layer_population.png" format="PNG"
-            align="center"/>
+
+          <imagedata width="80%" fileref="resources/images/gis/gis_earth_engine_layer.png"
+            format="PNG" align="center"/>
           <?oxy_comment_end?>
         </imageobject>
       </mediaobject>
@@ -729,9 +669,8 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
           <screenshot>
             <mediaobject>
               <imageobject>
-                <imagedata width="100%"
-                  fileref="resources/images/gis/gis-temperature-landcover4.png" format="PNG"
-                  align="center"/>
+                <imagedata width="50%" fileref="resources/images/gis/gis-temperature-landcover4.png"
+                  format="PNG" align="center"/>
               </imageobject>
             </mediaobject>
           </screenshot>
@@ -764,7 +703,7 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
     </section>
   </section>
         <section xml:id="using_gis_external_map_layers">
-          <title>Add external map layers to a map</title>
+          <title>Add external map layers</title>
           <orderedlist>
             <listitem><para>In the top menu, click the <emphasis role="bold">External layer</emphasis> icon.</para></listitem>
             <listitem><para>Click <emphasis role="bold">Edit</emphasis> to add a new layer.</para></listitem>
@@ -772,28 +711,62 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
               <screenshot>
                 <mediaobject>
                   <imageobject>
-                    <imagedata width="100%" fileref="resources/images/gis/gis_external_layers1.png"
+                    <imagedata width="50%" fileref="resources/images/gis/gis_external_layers1.png"
                 format="PNG" align="center"/>
                   </imageobject>
                 </mediaobject>
               </screenshot>
             </listitem>
             <listitem><para>Click <emphasis role="bold">Update</emphasis>.</para>
-              <screenshot>
-                <mediaobject>
-                  <imageobject>
-                    <imagedata width="100%" fileref="resources/images/gis/gis_external_layers2.png"
-                format="PNG" align="center"/>
-                  </imageobject>
-                </mediaobject>
-              </screenshot>
               <para>To remove a layer, click <emphasis role="bold">Clear</emphasis>. </para>
               <para>To hide a layer, go to the <emphasis role="bold">Layer
             stack/opacity</emphasis> menu pane and clear the <emphasis role="bold">External
             layer</emphasis> checkbox. </para>
             </listitem>
           </orderedlist>
-          <note><para>To define external map layers, see the GIS section of the Maintenance app documentation.</para></note>
+          <para>Here are some examples of external layers:</para>
+    <screenshot>
+      <title>Example 1: First-order administrative boundaries</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%" fileref="resources/images/gis/gis_administrative_boundaries.png"
+            format="PNG" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <screenshot>
+      <title>Example 2: Aerial imagery of Dar-es-Salaam</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%" fileref="resources/images/gis/gis_aerial_imagery.png" format="PNG"
+            align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <screenshot>
+      <title>Example 3: Dark basemap with nighttime lights from Google Earth Engine</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%"
+            fileref="resources/images/gis/gis_black_basemap_and_nighttime_lights.png" format="PNG"
+            align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <screenshot>
+      <title>Example 4: World time zones</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%" fileref="resources/images/gis/gis_world_time_zones.png"
+            format="PNG" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+          <note>
+            <para>To define external map layers, see the <link
+              xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dhis2.github.io/dhis2-docs/master/en/user/html/manage_ext_maplayer.html"
+              >Maintenance app documentation</link>.</para>
+    </note>
         </section>
   <section xml:id="using_gis_favorites">
     <title>Manage map favorites</title>
@@ -801,7 +774,8 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
       <title>Favorite maps</title>
       <mediaobject>
         <imageobject>
-          <imagedata width="50%" fileref="resources/images/gis/gis_favorites.png" format="PNG"/>
+          <imagedata width="50%" fileref="resources/images/gis/gis_favorites.png" format="PNG"
+            align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -1065,20 +1039,20 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
       </listitem>
     </orderedlist>
   </section>
-  <section>
+        <section xml:id="using_gis_latitude_longitude">
     <title>Get the latitude and longitude at any location</title>
     <para>Right-click a map and select <emphasis role="bold">Show longitude/latitude</emphasis>. The values display in a pop-up window.</para>
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata width="100%" fileref="resources/images/gis/gis-latitude-longitude.png"
-            format="PNG"/>
+          <imagedata width="50%" fileref="resources/images/gis/gis-latitude-longitude.png"
+            format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
   </section>
   <section xml:id="using_gis_integration">
-    <title>Visualize a map as a pivot table or chart</title>
+    <title>View a map as a pivot table or chart</title>
     <para>When you have made a map you can switch between pivot table, chart and map visualization
       of your data. The function is inactive if the data the map is based on cannot render as a
       chart or table.</para>

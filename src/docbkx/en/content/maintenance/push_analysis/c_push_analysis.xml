@@ -6,21 +6,22 @@
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
     xmlns:db="http://docbook.org/ns/docbook">
-    <title>About scheduled reports</title>
+    <title>About push reports</title>
+    <para>Push reports allows you to increase awareness and usage of data analysis by sending
+        reports with charts, tables and maps directly to users e-mail addresses.</para>
     <itemizedlist>
         <listitem>
-            <para>A scheduled report gets its content from existing dashboards.</para>
+            <para>A push report gets its content from existing dashboards.</para>
         </listitem>
         <listitem>
-            <para>A scheduled report lists the dashboard items in the same order as on the
+            <para>A push report lists the dashboard items in the same order as on the
                 dashboard.</para>
         </listitem>
         <listitem>
-            <para>A scheduled report can only contain dashboard items with charts, maps or
-                tables.</para>
+            <para>A push report can only contain dashboard items with charts, maps or tables.</para>
         </listitem>
         <listitem>
-            <para>You create the report and the schedule in the <emphasis role="bold"
+            <para>You create the push report and its schedule in the <emphasis role="bold"
                     >Maintenance</emphasis> app.</para>
         </listitem>
         <listitem>
@@ -33,29 +34,39 @@
                 another.</para>
         </listitem>
         <listitem>
-            <para>When you run a scheduled report job, the system compiles a list of recipients from
-                the user groups you've selected. The system then generates a report for each member
-                of the selected user groups. Each of the dashboard items are generated specifically
-                for each user. This means that the data included in the report reflects the data the
+            <para>When you run a push report job, the system compiles a list of recipients from the
+                user groups you've selected. The system then generates a report for each member of
+                the selected user groups. Each of the dashboard items are generated specifically for
+                each user. This means that the data included in the report reflects the data the
                 user has access to. All users could therefore get the same report (if all the data
                 is "static") or custom reports (if all the data is "dynamic"), or a combination of
                 the two.</para>
         </listitem>
         <listitem>
-            <para>The scheduled reports are sent by e-mail to the recipients, not through the
-                internal DHIS2 messaging system. If a user doesn't have a valid e-mail, or if the
-                job fails, no e-mails are sent. In this case, the problem is logged on the
-                server.</para>
+            <para>Push reports are sent by e-mail to the recipients, not through the internal DHIS2
+                messaging system. If a user doesn't have a valid e-mail, or if the job fails, no
+                e-mails are sent. In this case, the problem is logged on the server.</para>
         </listitem>
     </itemizedlist>
     <note>
-        <para>The data generated in the reports is public so verify that you don't include any
+        <para>The data generated in the push reports is public so verify that you don't include any
             sensitive data.</para>
     </note>
-    <para>In the <emphasis role="bold">Maintenance</emphasis> app, you manage the following
-        scheduled reports objects:</para>
+    <example>
+        <title>Push report</title>
+        <screenshot>
+            <mediaobject>
+                <imageobject>
+                    <imagedata width="80%" align="center"
+                        fileref="resources/images/maintainence/push_report_ex.png" format="PNG"/>
+                </imageobject>
+            </mediaobject>
+        </screenshot>
+    </example>
+    <para>In the <emphasis role="bold">Maintenance</emphasis> app, you manage the following push
+        reports objects:</para>
     <table frame="all">
-        <title>Scheduled reports objects in the Maintenance app</title>
+        <title>Push reports objects in the Maintenance app</title>
         <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1.0*"/>
             <colspec colname="c2" colnum="2" colwidth="1.0*"/>
@@ -75,8 +86,9 @@
                         <para>Push analysis</para>
                     </entry>
                     <entry>
-                        <para>Create, edit, clone, delete, show details and
-                            <?oxy_comment_start author="cecilia" timestamp="20160929T132146+0200" comment="Before release: Two more menu items have been added, pending info from SME."?>translate<?oxy_comment_end?></para>
+                        <para>Create, edit, clone, delete, show details,
+                            <?oxy_comment_start author="cecilia" timestamp="20160929T132146+0200" comment="Before release: Two more menu items have been added, pending info from SME." flag="done"?>translate<?oxy_comment_end?>,
+                            preview and run</para>
                     </entry>
                 </row>
             </tbody>
