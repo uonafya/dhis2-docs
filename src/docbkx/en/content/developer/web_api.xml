@@ -1349,7 +1349,7 @@ http://server/api/25/constants/ID</screen></para>
     <section xml:id="webapi_adding_removing_objects_collections">
       <title>Adding and removing objects in collections</title>
       <para>The collections resource lets you modify collections of objects.</para>
-      <section>
+      <section xml:id="webapi_collections_adding_removing_single_objects">
         <title>Adding or removing single objects</title>
       <para>In order to add or remove objects to or from a collection of objects you can use the
         following
@@ -1379,7 +1379,7 @@ http://server/api/25/constants/ID</screen></para>
       <para>To add a category option with identifier IDB to a category with identifier IDA you can
         do a POST request:<screen>POST /api/25/categories/IDA/categoryOptions/IDB</screen></para>
       </section>
-      <section>
+      <section xml:id="webapi_collections_adding_removing_multiple_objects">
         <title>Adding or removing multiple objects</title>
       <para>You can add or remove multiple objects from a collection in one request with a payload
           like
@@ -1398,7 +1398,7 @@ http://server/api/25/constants/ID</screen></para>
       <para><emphasis role="italic">Delete
         Items:</emphasis><screen>DELETE /api/25/categories/IDA/categoryOptions</screen></para>
       </section>
-      <section>
+      <section xml:id="webapi_collections_adding_removing_objects_single_request">
         <title>Adding and removing objects in a single request</title>
         <para>You can both add and remove objects from a collection in a single POST request with
           the following type of
@@ -2392,7 +2392,7 @@ http://server/api/25/constants/ID</screen></para>
         </tgroup>
       </table>
         </section>
-        <section>
+        <section xml:id="webapi_get_list_of_metadata_versions">
           <title>Get list of all metadata versions</title>
           <para><emphasis role="bold">Example: Get the list of all versions in this system</emphasis></para>
           <para><emphasis role="bold">Sample request:</emphasis>
@@ -2505,7 +2505,7 @@ http://server/api/25/constants/ID</screen></para>
           validation phase itself. Please see the importer details for better understanding.</para>
       </note>
           </section>
-        <section>
+        <section xml:id="webapi_create_metadata_version">
           <title>Create metadata version</title>
           <para><emphasis role="bold">Example: To create metadata version of type BEST_EFFORT</emphasis></para>
           <para><emphasis role="bold">Sample request:</emphasis>
@@ -2577,8 +2577,8 @@ http://server/api/25/constants/ID</screen></para>
         </tgroup>
       </table>
         </section>
-        <section>
-          <title>Download metadata</title>
+        <section xml:id="webapi_download_version_metadata">
+          <title>Download version metadata</title>
           <para><emphasis role="bold">Example: Get the actual metadata for &quot;Version_5&quot;</emphasis></para>
           <para><emphasis role="bold">Sample request:</emphasis>
             <screen>curl -u admin:district "https://play.dhis2.org/dev/api/metadata/version/Version_5/data"</screen></para>
@@ -3558,7 +3558,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
   <section xml:id="webapi_events">
     <title>Events</title>
     <para>This section is about sending and reading events.<screen>/api/25/events</screen></para>
-    <section>
+    <section xml:id="webapi_sending_events">
       <title>Sending events</title>
       <para>DHIS2 supports three kinds of events: single events with no registration (also referred
         to as anonymous events), single event with registration and multiple events with
@@ -3824,7 +3824,7 @@ FTRrcoaog83,201401,DiszpKrYNg8,bRowv6yZOF2,bRowv6yZOF2,12,system,2014-03-02T21:4
         </table>
       </section>
     </section>
-    <section>
+    <section xml:id="webapi_events_csv_import_export">
       <title>CSV Import / Export</title>
       <para>In addition to XML and JSON for event import/export, in DHIS2.17 we introduced support
         for the CSV format. Support for this format builds on what was described in the last
@@ -3944,7 +3944,7 @@ EJNxP3WreNP,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
 qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2016-01-01,,,&lt;de>,3,,
 qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2016-01-01,,,&lt;de>,4,,</screen>
     </section>
-    <section>
+    <section xml:id="webapi_querying_reading_events">
       <title>Querying and reading events</title>
       <para>This section explains how to read out the events that have been stored in the DHIS2
         instance. For more advanced uses of the event data, please see the section on event
@@ -4165,8 +4165,8 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
     <para>This section is about sending and reading program rules, and explains the program rules
       data model. The program rules gives functionality to configure dynamic behavior in the
       programs in DHIS.</para>
-    <section>
-      <title>Program rules model</title>
+    <section xml:id="webapi_program_rule_model">
+      <title>Program rule model</title>
       <para>The program rules data model consists of programRuleVariables, programRules and
         programRuleActions. The programRule contains an expression - when this expression is true,
         the child programRuleActions is triggered. The programRuleVariables is used to address data
@@ -4618,8 +4618,8 @@ qPEdI1xn7k0,COMPLETED,&lt;pid>,&lt;psid>,&lt;enrollment-id>,&lt;ou>,2016-01-01,2
         </table>
       </section>
     </section>
-    <section>
-      <title>Posting program rules through the API</title>
+    <section xml:id="webapi_creating_program_rules">
+      <title>Creating program rules</title>
       <para>-coming-</para>
     </section>
   </section>
@@ -7182,7 +7182,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
       Typically, a dashboard client could choose to visualize the single-object items directly in a
       user interface, while rendering the multi-object items as clickable
       links.<screen>/api/25/dashboards</screen></para>
-    <section>
+    <section xml:id="webapi_browsing_dashboards">
       <title>Browsing dashboards</title>
       <para>To get a list of your dashboards with basic information including identifier, name and
         link in JSON format you can make a <emphasis role="italic">GET</emphasis> request to the
@@ -7238,7 +7238,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         on a users dashboard.</para>
       <screen>/api/25/dashboards/vQFhmLJU5sK/?fields=:all,dashboardItems[:all]</screen>
     </section>
-    <section>
+    <section xml:id="webapi_searching_dasboards">
       <title>Searching dashboards</title>
       <para>When setting a dashboard it is convenient from a consumer point of view to be able to
         search for various analytical resources using the <emphasis role="italic"
@@ -7290,7 +7290,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
     &quot;resourceCount&quot;: 0
 }</screen>
     </section>
-    <section>
+    <section xml:id="webapi_creating_updating_removing_dashboards">
       <title>Creating, updating and removing dashboards</title>
       <para>Creating, updating and deleting dashboards follow standard REST semantics. In order to
         create a new dashboard you can make a <emphasis role="italic">POST</emphasis> request to the
@@ -7308,7 +7308,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         to the specific dashboard resource similar to this:</para>
       <screen>/api/25/dashboards/vQFhmLJU5sK</screen>
     </section>
-    <section>
+    <section xml:id="webapi_adding_moving_removing_dashboard_items">
       <title>Adding, moving and removing dashboard items and content</title>
       <para>In order to add dashboard items a consumer can use the <emphasis role="italic"
           >/api/dashboards/&lt;dashboard-id&gt;/items/content</emphasis> resource, where
@@ -8100,7 +8100,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         role="italic">events</emphasis> captured in DHIS2. This resource lets you retrieve events
       based on a program and optionally a program stage, and lets you retrieve and filter events on
       any event dimensions.<screen>/api/25/analytics/events</screen></para>
-    <section>
+    <section xml:id="webapi_event_analytics_dimensions_items">
       <title>Dimensions and items</title>
       <para>Event dimensions include data elements, attributes, organisation units and periods. The
         aggregated event analytics resource will return aggregated information such as counts or
@@ -8159,7 +8159,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </tgroup>
       </table>
     </section>
-    <section>
+    <section xml:id="webapi_event_analytics_request_query_parameters">
       <title>Request query parameters</title>
       <para>The analytics event API let you specify a range of query parameters.</para>
       <table frame="all">
@@ -8433,7 +8433,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </tgroup>
       </table>
     </section>
-    <section>
+    <section xml:id="webapi_event_query_analytics">
       <title>Event query analytics</title>
       <para>The <emphasis role="italic">analytics/events/query</emphasis> resource lets you query
         for captured events. This resource does not perform any aggregation, rather it lets you
@@ -9005,7 +9005,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </tgroup>
       </table></para>
   </section>
-  <section xml:id="webapi_data_usage_analytics">
+  <section xml:id="webapi_usage_analytics">
     <title>Data usage analytics</title>
     <para>The usage analytics API lets you access information about how people are using DHIS2 based
       on data analysis. When users access favorites, an event is recorded. The event consists of the
@@ -9017,8 +9017,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
       table has been viewed by a user) and saved analysis favorites (for example favorite charts and
       pivot tables). DHIS2 will capture nightly snapshots which are then aggregated at
       request.</para>
-    <section>
-      <title>Request query parameter</title>
+    <section xml:id="webapi_usage_analytics_request_query_parameters">
+      <title>Request query parameters</title>
       <para>The usage analytics (data statistics) API supports two operations:</para>
       <itemizedlist>
         <listitem>
@@ -9029,7 +9029,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </listitem>
       </itemizedlist>
     </section>
-    <section>
+    <section xml:id="webapi_usage_analytics_create_view_events">
       <title>Create view events (POST)</title>
       <para>The usage analytics API lets you create event views. The dataStatisticsEventType
         parameter describes what type of item was viewed. The favorite parameter indicates the
@@ -9082,7 +9082,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         </tgroup>
       </table>
     </section>
-    <section>
+    <section xml:id="webapi_aggregated_usage_analytics">
       <title>Retrieve aggregated usage analytics report (GET)</title>
       <para>The usage analytics (data statistics) API lets you specify certain query parameters when
         asking for an aggregated report.<table frame="all">
@@ -9129,8 +9129,8 @@ ORDER BY oul.level, par.name, ou.name</screen>
       <para>API query that creates a query for a yearly
         aggregation:<screen>GET /api/24/dataStatistics?startDate=2014-01-02&amp;endDate=2016-01-01&amp;interval=MONTH</screen></para>
     </section>
-    <section>
-      <title>Retrieve top favourites</title>
+    <section xml:id="webapi_usage_analytics_top_favorites">
+      <title>Retrieve top favorites</title>
       <para>The usage analytics API lets you retrieve the top favorites used in DHIS2, and by
           user.<table frame="all">
           <title>Query parameters for top favorites</title>
@@ -9179,7 +9179,7 @@ ORDER BY oul.level, par.name, ou.name</screen>
         system. If username is specified, the response will only contain the top favorites of that
         user.<screen>/api/24/dataStatistics/favorites?eventType=CHART_VIEW&amp;pageSize=25&amp;sortOrder=ASC</screen><screen>/api/24/dataStatistics/favorites?eventType=CHART_VIEW&amp;pageSize=25&amp;sortOrder=ASC&amp;username=admin</screen></para>
     </section>
-    <section>
+    <section xml:id="webapi_usage_analytics_response_format">
       <title>Response format</title>
       <para>You can return the aggregated data in a usage analytics response in several
         representation formats. The default format is JSON. The available formats and content types are:<itemizedlist>
@@ -9264,7 +9264,7 @@ interval=WEEK" -u admin:district</screen>
   }
 ]</screen></para>
     </section>
-    <section>
+    <section xml:id="webapi_usage_analytics_retrieve_favorite_statistics">
       <title>Retrieve statistics for a favorite</title>
       <para>You can retrieve the number of view for a specific favorite by using the
           <emphasis>favorites</emphasis> resource, where <emphasis>{favorite-id}</emphasis> should
