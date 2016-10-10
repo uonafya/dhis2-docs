@@ -6,7 +6,7 @@
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
   xmlns:db="http://docbook.org/ns/docbook" xml:id="data_admin">
-  <title>Data
+  <title><?oxy_comment_start author="cecilia" timestamp="20161010T104310+0200" comment="This seciton needs a full editorial review and restructure."?>Data<?oxy_comment_end?>
     <?oxy_comment_start author="cecilia" timestamp="20161010T094352+0200" comment="Removed data browser section for 2.25, functionality removed from system." flag="done"?>Administration<?oxy_comment_end?></title>
   <para>The data administration module provides a range of functions to ensure that the data stored
     in the DHIS2 database is integral and that the database performance is optimised. These
@@ -182,16 +182,8 @@
         rule. Press &quot;Edit right side&quot; and make the corrections that are required.</para>
     </section>
   </section>
-  <section xml:id="dataAdmin_maintenance">
-    <title><?oxy_comment_start author="cecilia" timestamp="20161010T094210+0200" comment="Removed obsolete info:
-Clear data mart (aggregated indicator and data value values)
-The data mart is where DHIS2 stores aggregated data produced during the export to data mart process. This function empties the database table which contains aggregated indicator and data element values.
-Rebuild data mart index
-Rebuilds the database indexes on the aggregated data generated during a data mart process. 
-Clear zero values
-This function removes zero data values from the database. Values registered for data elements with aggregation operator average is not removed, as such values will be significant when aggregating the data, contrary to values registered for data elements with aggregation operator sum. Reducing the number of data values will improve system performance.
-Clear dataset completeness
-This function empties the aggregated dataset completeness value table. This data is produced and used by report tables."?>Maintenance<?oxy_comment_end?></title>
+  <section xml:id="data_admin_maintenance">
+    <title>Maintenance</title>
     <table frame="all">
       <title>Data maintenance functions in the Data Administration app</title>
       <tgroup cols="2">
@@ -222,7 +214,11 @@ This function empties the aggregated dataset completeness value table. This data
               <para>Remove zero data values</para>
             </entry>
             <entry>
-              <para>-</para>
+              <para>Removes zero data values from the database. Values registered for data elements
+                with aggregation operator average is not removed, as such values will be significant
+                when aggregating the data, contrary to values registered for data elements with
+                aggregation operator sum. </para>
+              <para>Reducing the number of data values will improve system performance.</para>
             </entry>
           </row>
           <row>
@@ -230,7 +226,10 @@ This function empties the aggregated dataset completeness value table. This data
               <para>Permanently remove soft deleted data values</para>
             </entry>
             <entry>
-              <para>-</para>
+              <para>When a data value is deleted in DHIS2, the system will mark the corresponding
+                database row as deleted, and not actually delete the row. </para>
+              <para>Running this maintenance function will physically remove these data value rows
+                from the database.</para>
             </entry>
           </row>
           <row>
@@ -238,8 +237,8 @@ This function empties the aggregated dataset completeness value table. This data
               <para>Prune periods</para>
             </entry>
             <entry>
-              <para>This function removes all periods which have no registered data values. Reducing
-                the number of periods will improve system performance.</para>
+              <para>Removes all periods which have no registered data values. Reducing the number of
+                periods will improve system performance.</para>
             </entry>
           </row>
           <row>
@@ -256,7 +255,11 @@ This function empties the aggregated dataset completeness value table. This data
               <para>Drop SQL views</para>
             </entry>
             <entry>
-              <para>-</para>
+              <para>DHIS2 lets you set up and manage SQL views as system objects with corresponding
+                database SQL views.</para>
+              <para>Running this maintenance function will drop underlying SQL views for all system
+                views. Use the <emphasis role="bold">Create SQL views</emphasis> function to
+                recreate these SQL views.</para>
             </entry>
           </row>
           <row>
@@ -264,7 +267,7 @@ This function empties the aggregated dataset completeness value table. This data
               <para>Create SQL views</para>
             </entry>
             <entry>
-              <para>Will recreate all SQL views in the database.</para>
+              <para>Recreates all SQL views in the database.</para>
             </entry>
           </row>
           <row>
@@ -281,7 +284,13 @@ This function empties the aggregated dataset completeness value table. This data
               <para>Update organisation unit paths</para>
             </entry>
             <entry>
-              <para>-</para>
+              <para>The organisation unit table in the DHIS2 database has a column "path" which
+                contains a concatenated string of all ancestors in the hierarchy for each
+                organisation unit. </para>
+              <para>Running this maintenance function will update and ensure that these values are
+                in sync with the current organisation unit hierarchy. This column is managed by
+                DHIS2, but a manual update might be useful when doing data loading directly in the
+                database.</para>
             </entry>
           </row>
           <row>
@@ -289,7 +298,7 @@ This function empties the aggregated dataset completeness value table. This data
               <para>Clear application cache</para>
             </entry>
             <entry>
-              <para>Clears the system cache</para>
+              <para>Clears the system cache.</para>
             </entry>
           </row>
           <row>
@@ -297,7 +306,9 @@ This function empties the aggregated dataset completeness value table. This data
               <para>Reload apps</para>
             </entry>
             <entry>
-              <para>-</para>
+              <para>Manually reloads and detects installed DHIS2 apps.</para>
+              <para>The installed apps are also detected when the system starts and when installing
+                or uninstall apps.</para>
             </entry>
           </row>
         </tbody>
