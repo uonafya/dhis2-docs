@@ -5,118 +5,13 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
-  xmlns:db="http://docbook.org/ns/docbook" xml:id="dataAdmin">
-  <title>Data Administration</title>
+  xmlns:db="http://docbook.org/ns/docbook" xml:id="data_admin">
+  <title>Data
+    <?oxy_comment_start author="cecilia" timestamp="20161010T094352+0200" comment="Removed data browser section for 2.25, functionality removed from system." flag="done"?>Administration<?oxy_comment_end?></title>
   <para>The data administration module provides a range of functions to ensure that the data stored
     in the DHIS2 database is integral and that the database performance is optimised. These
     functions should be executed on a regular basis by a data administrator to ensure that the
     quality of the data stored is optimal. </para>
-  <section xml:id="dataAdmin_dataBrowser">
-    <title>Data browser</title>
-    <para>The data browser maintenance and analysis module which allows the user to produce a
-      summary of the data contained in the DHIS2 database. The summary view provides a count of data
-      elements which have been entered at the selected organisation unit as well as its descendants.
-      Raw data for all data elements for a range of time periods and a given organisational unit can
-      be browsed and exported to Excel, CSV, or PDF formats. There are four modes of the data
-      browser, which determine how the data is summarized</para>
-    <itemizedlist>
-      <listitem>
-        <para>Data sets</para>
-      </listitem>
-      <listitem>
-        <para>Data element groups</para>
-      </listitem>
-      <listitem>
-        <para>Organisational unit groups</para>
-      </listitem>
-      <listitem>
-        <para>Organisational units</para>
-      </listitem>
-    </itemizedlist>
-    <para>Each of these options can be accessed by selecting the desired option from
-        <guilabel>&quot;Browse by&quot; </guilabel>drop-down menu. </para>
-    <para>In order to produce a summary of submitted data for a given period and grouped by data
-      sets, the user should follow this procedure. Begin by selecting a given periodicity type (e.g.
-      Weekly, monthly, yearly, etc) and then a &quot;From date&quot; and &quot;To date&quot;. (e.g.
-      January 2009 to March 2009). Select the type of summary to be produced (e.g. Dataset) from the
-      &quot;Browse by&quot; drop-down menu. Click the &quot;Browse&quot; button to view the summary. </para>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="100%" fileref="resources/images/maintainence/data_browser1.png"
-            format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para>A summary of the number of data element values that have been submitted over the user
-      selected time period is shown below. </para>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="100%"
-            fileref="resources/images/maintainence/data_browsing_data_sets.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para> By clicking on the name of the individual dataset, a more detailed summary of each data
-      element can be obtained as shown below. A cross-tab table summarising each time period will be
-      shown. </para>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="100%"
-            fileref="resources/images/maintainence/data_browser_dataset_detail.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para>The functionality of the grouping by Datasets, Data element groups, and Organisational
-      groups is essentially the same. </para>
-    <para>The functionality of grouping by organisation units will be discussed below. Begin by
-      selecting &quot;Organisation units&quot; from the &quot;Browse by&quot; drop-down menu. The
-      organisational hierarchy present in the database will now be displayed. Organisational units
-      can be expanded by clicking on the plus symbol in the organisational tree view.</para>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="50%" align="center"
-            fileref="resources/images/maintainence/data_browser_org_unit1.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para> By clicking on an organisational unit, and the clicking the &quot;Browse&quot; button, a
-      summary of submitted data elements present in the database is returned for all immediate
-      children of the selected organisational as shown below:</para>
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="80%" fileref="resources/images/maintainence/data_browser_orgunit2a.png"
-            format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para>By clicking on one of the organisational units, two drill down modes are presented to the
-      user. </para>
-    <itemizedlist>
-      <listitem>
-        <para>Summary drill down- Drill down to the selected organisational units children to see
-          the count of data elements. </para>
-      </listitem>
-      <listitem>
-        <para>View raw data at this level: View the actual raw data at the selected organisational
-          unit. A typical view of the raw data export can be seen below.</para>
-        <screenshot>
-          <mediaobject>
-            <imageobject>
-              <imagedata width="60%" align="center"
-                fileref="resources/images/maintainence/data_browser_org_unit_raw.png"/>
-            </imageobject>
-          </mediaobject>
-        </screenshot>
-        <para>Data can be exported into Excel, CSV and as a PDF report by clicking the appropriate
-          button. Note that only data for the current page is downloaded. </para>
-      </listitem>
-    </itemizedlist>
-  </section>
   <section xml:id="dataAdmin_dataIntegrity">
     <title>Data integrity</title>
     <para>DHIS2 can perform a wide range of data integrity checks on the data contained in the
@@ -288,61 +183,126 @@
     </section>
   </section>
   <section xml:id="dataAdmin_maintenance">
-    <title>Maintenance</title>
-    <para>The data maintenance module has five options, each described below. </para>
-    <itemizedlist>
-      <listitem>
-        <para>Clear analytics tables</para>
-        <para>Completely empties the analytics tables. These tables are used to generate aggregate
-          data for the pivot tables, GIS and reports. </para>
-      </listitem>
-      <listitem>
-        <para>Clear data mart (aggregated indicator and data value values)</para>
-        <para>The data mart is where DHIS2 stores aggregated data produced during the export to data
-          mart process. This function empties the database table which contains aggregated indicator
-          and data element values.</para>
-      </listitem>
-      <listitem>
-        <para>Rebuild data mart index</para>
-        <para>Rebuilds the database indexes on the aggregated data generated during a data mart
-          process. </para>
-      </listitem>
-      <listitem>
-        <para>Clear zero values</para>
-        <para>This function removes zero data values from the database. Values registered for data
-          elements with aggregation operator <emphasis role="italic">average</emphasis> is not
-          removed, as such values will be significant when aggregating the data, contrary to values
-          registered for data elements with aggregation operator <emphasis role="italic"
-            >sum</emphasis>. Reducing the number of data values will improve system
-          performance.</para>
-      </listitem>
-      <listitem>
-        <para>Clear dataset completeness</para>
-        <para>This function empties the aggregated dataset completeness value table. This data is
-          produced and used by report tables.</para>
-      </listitem>
-      <listitem>
-        <para>Prune periods</para>
-        <para>This function removes all periods which have no registered data values. Reducing the
-          number of periods will improve system performance.</para>
-      </listitem>
-      <listitem>
-        <para>Remove expired invitations</para>
-        <para>Will delete users which represent user account invitations that now have gone past
-          their expiry date.</para>
-      </listitem>
-      <listitem>
-        <para>Create SQL views</para>
-      </listitem>
-      <listitem>
-        <para>Will recreate all SQL views in the database.</para>
-      </listitem>
-      <listitem>
-        <para>Update category option combinations</para>
-        <para>Rebuilds the category option combinations. This may be required after altering the
-          category options which belong to a given category. </para>
-      </listitem>
-    </itemizedlist>
+    <title><?oxy_comment_start author="cecilia" timestamp="20161010T094210+0200" comment="Removed obsolete info:
+Clear data mart (aggregated indicator and data value values)
+The data mart is where DHIS2 stores aggregated data produced during the export to data mart process. This function empties the database table which contains aggregated indicator and data element values.
+Rebuild data mart index
+Rebuilds the database indexes on the aggregated data generated during a data mart process. 
+Clear zero values
+This function removes zero data values from the database. Values registered for data elements with aggregation operator average is not removed, as such values will be significant when aggregating the data, contrary to values registered for data elements with aggregation operator sum. Reducing the number of data values will improve system performance.
+Clear dataset completeness
+This function empties the aggregated dataset completeness value table. This data is produced and used by report tables."?>Maintenance<?oxy_comment_end?></title>
+    <table frame="all">
+      <title>Data maintenance functions in the Data Administration app</title>
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+        <thead>
+          <row>
+            <entry>
+              <para>Function</para>
+            </entry>
+            <entry>
+              <para>Description</para>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              <para>Clear analytics tables</para>
+            </entry>
+            <entry>
+              <para>Completely empties the analytics tables. These tables are used to generate
+                aggregate data for the pivot tables, GIS and reports. </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Remove zero data values</para>
+            </entry>
+            <entry>
+              <para>-</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Permanently remove soft deleted data values</para>
+            </entry>
+            <entry>
+              <para>-</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Prune periods</para>
+            </entry>
+            <entry>
+              <para>This function removes all periods which have no registered data values. Reducing
+                the number of periods will improve system performance.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Remove expired invitations</para>
+            </entry>
+            <entry>
+              <para>Will delete users which represent user account invitations that now have gone
+                past their expiry date.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Drop SQL views</para>
+            </entry>
+            <entry>
+              <para>-</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Create SQL views</para>
+            </entry>
+            <entry>
+              <para>Will recreate all SQL views in the database.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Update category option combinations</para>
+            </entry>
+            <entry>
+              <para>Rebuilds the category option combinations. This may be required after altering
+                the category options which belong to a given category. </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Update organisation unit paths</para>
+            </entry>
+            <entry>
+              <para>-</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Clear application cache</para>
+            </entry>
+            <entry>
+              <para>Clears the system cache</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Reload apps</para>
+            </entry>
+            <entry>
+              <para>-</para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
   </section>
   <section xml:id="dataAdmin_resourceTables">
     <title>Resource tables</title>
