@@ -669,6 +669,7 @@ Also standardize which section it belongs in."?>A
       </listitem>
     </orderedlist>
   </section>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../generic/favorites.xml" encoding="UTF-8"/>
  
   <section xml:id="data_vis_save_chart">
     <title>Download a chart as an image or a PDF</title>
@@ -809,105 +810,6 @@ Also standardize which section it belongs in."?>A
       </listitem>
     </orderedlist>
   </section>
-  <section xml:id="data_vis_favorites">
-    <title>Manage chart favorites</title>
-    <!--screenshot>
-      <info>
-        <title>Data visualizer module displaying a column chart.</title>
-      </info>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="50%" fileref="resources/images/visualizer/chart_favorites.png"
-            format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot-->
-    <para>Saving your charts as favorites makes it easy to restore them later. It also gives you the
-      opportunity to share them with other users as an interpretation or display them on the
-      dashboard. </para>
-    <section>
-      <title>Save a chart as a favorite </title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
-          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Add new</emphasis>.</para>
-          <para>The <emphasis role="bold">Create new favorite</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>In the text box, type the name you want to give your chart.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Create</emphasis>.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title>Open a favorite</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
-          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>Find the favorite you want to open. You can either use <emphasis role="bold"
-              >Prev</emphasis> and <emphasis role="bold">Next</emphasis> or the search field to find
-            a saved favorite. The list is filtered on every character that you enter.</para>
-        </listitem>
-        <listitem>
-          <para>Click the name.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title>Rename a favorite</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
-          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>Find the favorite you want to rename.</para>
-          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
-              >Next</emphasis> or the search field to find a saved favorite. </para>
-        </listitem>
-        <listitem>
-          <para>Click the grey rename icon next to the favorite's name.</para>
-          <para>The <emphasis role="bold">Rename favorite</emphasis> dialog box favorite
-            opens.</para>
-        </listitem>
-        <listitem>
-          <para>Type the new name and click <emphasis role="bold">Update</emphasis>.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title><?oxy_comment_start author="Home" timestamp="20160412T140454+0200" comment="Revise title."?>Overwrite<?oxy_comment_end?>
-        a favorite</title>
-      <para>To save the current chart to an existing favorite (overwrite):</para>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
-          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>Find the favorite you want to overwrite.</para>
-          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
-              >Next</emphasis> or the search field to find a saved favorite. </para>
-        </listitem>
-        <listitem>
-          <para><?oxy_comment_start author="rachaelb" timestamp="20161010T230638+0200" comment="Is this still applicable in 2.25?"?>Click
-            the green overwrite icon next to the favorite's name.</para>
-        </listitem>
-        <?oxy_comment_end?>
-        <listitem>
-          <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to overwrite the
-            favorite.</para>
-        </listitem>
-      </orderedlist>
-    </section>
   <section xml:id="data_vis_embedding">
     <title>Embed charts in any web page</title>
     <para>Certain analysis-related resources in DHIS2, like pivot tables, charts and maps, can be
@@ -928,43 +830,13 @@ Also standardize which section it belongs in."?>A
       </orderedlist>
     </para>
   </section>
-  <section xml:id="data_vis_integration">
-    <title>Visualize a chart as a pivot table or a map</title>
-    <para>When you have made a chart you can switch between pivot table, chart and map visualization
-      of your data.</para>
-    <section>
-      <title>Open a chart as a pivot table</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart
-              as table</emphasis>.</para>
-          <para>Your current chart opens as a pivot table.</para>
-        </listitem>
-      </orderedlist>
-      <screenshot>
-        <info>
-          <title>Analysis
-            <?oxy_comment_start author="CPersson" timestamp="20160421T155736+0200" comment="Consider removing screen shot.
-If not, update it with new screenshot."?>integration<?oxy_comment_end?></title>
-        </info>
-        <mediaobject>
-          <imageobject>
-            <imagedata align="center" scale="100"
-              fileref="resources/images/visualizer/chart_integration.png" format="PNG"/>
-          </imageobject>
-        </mediaobject>
-      </screenshot>
-    </section>
-    <section>
-      <title>Open a chart as a map</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart
-              as map</emphasis>.</para>
-          <para>Your current chart opens as a map.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-  </section>
+  <section>
+    <title>Open a chart as a pivot table or as a map</title>
+    <itemizedlist>
+      <listitem>
+        <para>Open a <emphasis role="bold">Chart</emphasis> and click <emphasis role="bold"
+            >Chart</emphasis> or click <emphasis role="bold">Map</emphasis>.</para>
+      </listitem>
+    </itemizedlist>
   </section>
   </chapter>
