@@ -113,8 +113,8 @@ sudo locale-gen nb_NO.UTF-8</screen>
     </section>
     <section xml:id="install_postgresql_installation">
       <title>PostgreSQL installation</title>
-      <para>Install PostgreSQL 9.4 by invoking:</para>
-      <screen>sudo apt-get install postgresql-9.4</screen>
+      <para>Install PostgreSQL by invoking:</para>
+      <screen>sudo apt-get install postgresql-9.5</screen>
       <para><emphasis>Note:</emphasis> Alternatively, you can consult the PostgreSQL documentation to
         install the latest version from the PostgreSQL APT repository:
           <link>http://www.postgresql.org/download/linux/ubuntu/</link>.</para>
@@ -135,7 +135,7 @@ sudo locale-gen nb_NO.UTF-8</screen>
         terms of getting DHIS2 to run. PostgreSQL is configured and tuned through the <emphasis
           role="italic">postgresql.conf</emphasis> file which can be edited like this:</para>
       <para>
-        <screen>sudo nano /etc/postgresql/9.4/main/postgresql.conf</screen>
+        <screen>sudo nano /etc/postgresql/9.5/main/postgresql.conf</screen>
       </para>
       <para>and set the following properties:</para>
       <para>
@@ -199,7 +199,7 @@ sudo locale-gen nb_NO.UTF-8</screen>
         you must install the PostGIS extender on the server. After installing the extender, PostGIS
         will be installed in the database automatically when DHIS2 is started. Install PostGIS on
         the server by invoking:</para>
-      <screen>sudo apt-get install postgresql-9.4 postgresql-9.4-postgis-2.2 postgresql-contrib-9.4</screen>
+      <screen>sudo apt-get install postgresql-9.5 postgresql-9.5-postgis-2.3 postgresql-contrib-9.5</screen>
     </section>
     <section xml:id="install_database_configuration">
       <title>Database configuration</title>
