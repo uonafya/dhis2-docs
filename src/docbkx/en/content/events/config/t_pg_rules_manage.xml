@@ -5,8 +5,9 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
-  xmlns:db="http://docbook.org/ns/docbook">
-  <title>[Review ongoing] Manage program
+  xmlns:db="http://docbook.org/ns/docbook"
+  xml:id= "manage_program_rule">
+  <title>Manage program
     <?oxy_comment_start author="cecilia" timestamp="20161003T204753+0200" comment="Add next revision: add workflow"?>rules<?oxy_comment_end?></title>
   <?oxy_comment_start author="cecilia" timestamp="20161003T210419+0200" comment="Consider adding something like this for every section:
 &quot;This chapter covers how to configure and use program rules.&quot;"?>
@@ -47,15 +48,6 @@
           behaviors you can configure are skip logic and validation rules.<?oxy_comment_end?></para>
       </listitem>
     </itemizedlist>
-    <screenshot>
-      <title>Program rule list with context menu</title>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="80%" fileref="resources/images/program_rules/program-rule-list.png"
-            format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
     <para>In the <emphasis role="bold">Programs / Attributes</emphasis> app, you manage the
       following program rule objects:</para>
     <table frame="all">
@@ -88,19 +80,19 @@
   </section>
   <section>
     <title>Create a program rule</title>
-    <note>
-      <para>A program rule belongs to exactly one program.</para>
-    </note>
     <screenshot>
       <mediaobject>
         <imageobject>
-          <?oxy_comment_start author="cecilia" timestamp="20161003T223145+0200" comment="Update screen shto"?>
+          <?oxy_comment_start author="cecilia" timestamp="20161003T223145+0200" comment="Screen shot ok"?>
           <imagedata width="80%" fileref="resources/images/program_rules/program-rule-edit.png"
             format="PNG"/>
           <?oxy_comment_end?>
         </imageobject>
       </mediaobject>
     </screenshot>
+    <note>
+      <para>A program rule belongs to exactly one program.</para>
+    </note>
     <orderedlist>
       <listitem>
         <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click <emphasis
@@ -173,14 +165,14 @@
       </listitem>
     </orderedlist>
     <section>
-      <title xml:id="program_dules_adding_source_fields"> Add source
+      <title xml:id="program_dules_adding_source_fields"> [Review ongoing] Add source
         <?oxy_comment_start author="cecilia" timestamp="20161005T104203+0200" comment="At next revision: perfrom full editorial review."?>fields<?oxy_comment_end?></title>
       <para> Source fields represent a uniform way to include data values and attribute values in
-        expressions. The source fields is defined as needed when creating expressions . When
-        creating your first expression, you will typically have to define one or more source fields
-        first, as expressions usually contain at least one data element or attribute value to be
-        meaningful. The source fields is shared between all rules in your program, and by creating
-        several rules, these will share the same library of source fields. </para>
+        expressions. The source fields is defined as needed when creating expressions. When creating
+        your first expression, you will typically have to define one or more source fields first, as
+        expressions usually contain at least one data element or attribute value to be meaningful.
+        The source fields is shared between all rules in your program, and by creating several
+        rules, these will share the same library of source fields. </para>
       <para> To add a source field, click the &quot;+ Add source field&quot; button under the source
         fields list. This will open the following dialog: </para>
       <screenshot>
@@ -216,7 +208,7 @@
                   <para>Tracker capture: This source field will be populated with the newest data
                     value collected for the given data element within the enrollment. </para>
                   <para>Event capture: This source field will be populated with the newest data
-                    value found within the 10 newest events in the same orgunit.</para>
+                    value found within the 10 newest events in the same organisation unit.</para>
                   <para>The newest data value is determined with event date. </para>
                 </listitem>
                 <listitem>
@@ -237,7 +229,7 @@
                     should be collected once during an enrollment, and should be hidden in
                     subsequent events. Another use case is making rules for validating input where
                     there is an expected progression from one event to the next - a rule can
-                    evaluate wether the previous value is higher/lower and give a warning if an
+                    evaluate whether the previous value is higher/lower and give a warning if an
                     unexpected value is entered.</para>
                   <para> The source type is slightly differently populated in tracker capture and
                     event capture. </para>
@@ -286,14 +278,14 @@
             <para>
               <emphasis role="bold"> Use code for option sets</emphasis>: Only effective when the
               data element or tracked entity attribute is connected to an option set. If left
-              unchecked, the the source field will be populated with the options name. If checked,
-              the source field will be populated with the code instead.</para>
+              unchecked, the source field will be populated with the options name. If checked, the
+              source field will be populated with the code instead.</para>
           </listitem>
         </itemizedlist>
       </para>
     </section>
     <section xml:id="program_rules_expressions">
-      <title> Define
+      <title> [Review ongoing] Define
         <?oxy_comment_start author="cecilia" timestamp="20161005T104210+0200" comment="At next revision: perfrom full editorial review."?>expressions<?oxy_comment_end?></title>
       <para>Each program rule has a single expression that determines whether rules action should be
         triggered, if the expression evaluates to true. If the expression is true the program rule
@@ -629,7 +621,7 @@ Not same operators as for program indicators? Verify. If yes, why?"?>Operators<?
                   expression, triggering actions if a number is not on the pattern 9999/99/9:
                   <screen>!d2:validatePattern(A{nrc},'\\d{6}\/\\d{2}\/\\d')</screen></para>
                 <para>Example expression, triggering actions that if the address is not consisting
-                  of letters or whitespaces, then a whitespace, then a number:
+                  of letters or white spaces, then a white space, then a number:
                   <screen>!d2:validatePattern(A{registrationAddress},'[\\w ]+ \\d+')</screen></para>
                 <para>Example, triggering actions if a name contains any numbers:
                   <screen>!d2:validatePattern(A{name},'[^\\d]*')</screen></para>
@@ -686,25 +678,26 @@ Not same operators as for program indicators? Verify. If yes, why?"?>Operators<?
           date: </para>
         <screen>d2:floor( d2:daysBetween(#{lastMenstrualDate},V{event_date}) / 7 )</screen>
       </tip>
+      <para/>
       <tip>
         <para>The source type will determine how the d2: function calls will evaluate a
           (sourcefield) parameter.</para>
-        <para>Example, where #{hemoglobinCurrent} is set to source type <emphasis role="bold">Data
-            element current event</emphasis>. The following function call with evaluate wether
+        <para>Example: where #{hemoglobinCurrent} is set to source type <emphasis role="bold">Data
+            element current event</emphasis>. The following function call with evaluate whether
           hemoglobin is entered in the current event.
           <screen>d2:hasValue( 'hemoglobinCurrent' )</screen></para>
-        <para>Example, where #{hemoglobin} is set to source type <emphasis role="bold">Data element
+        <para>Example: where #{hemoglobin} is set to source type <emphasis role="bold">Data element
             in the newest event in program</emphasis>. The following function call with evaluate
-          wether there exists a value for the hemoglobin in any event in the enrollment.
+          whether there exists a value for the hemoglobin in any event in the enrollment.
           <screen>d2:hasValue( 'hemoglobin' )</screen></para>
-        <para>Example, where #{hemoglobinPrevious} is set to source type <emphasis role="bold">Data
-            element from previous event</emphasis>. The following function call with evaluate wether
-          there exists a value for the hemoglobin among the events preceding the current event.
-          <screen>d2:hasValue( 'hemoglobinPrevious' )</screen></para>
+        <para>Example: where #{hemoglobinPrevious} is set to source type <emphasis role="bold">Data
+            element from previous event</emphasis>. The following function call with evaluate
+          whether there exists a value for the hemoglobin among the events preceding the current
+          event. <screen>d2:hasValue( 'hemoglobinPrevious' )</screen></para>
       </tip>
     </section>
     <section>
-      <title xml:id="program_rules_defining_actions"> Define
+      <title xml:id="program_rules_defining_actions">[Review ongoing] Define
         <?oxy_comment_start author="cecilia" timestamp="20161005T104219+0200" comment="At next revision: perfrom full editorial review."?>actions<?oxy_comment_end?></title>
       <para>Each program rule has one or more actions attached. These are the behaviors that is
         triggered in the user interface when the expression(see previous chapter) is true. Actions
