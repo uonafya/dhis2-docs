@@ -9,7 +9,8 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:svg="http://www.w3.org/2000/svg"
     xmlns:mth="http://www.w3.org/1998/Math/MathML"
-    xmlns:db="http://docbook.org/ns/docbook">
+    xmlns:db="http://docbook.org/ns/docbook"
+    xml:id="manage_program_stage">
 <title>Manage program stages</title>
     <section>
         <title>About program
@@ -79,81 +80,157 @@
             </listitem>
             <listitem>
                 <para>Enter form
-                    <?oxy_comment_start author="cecilia" timestamp="20161004T173652+0200" comment="Before release: review this sub-list
-Consider turning it into a table."?>details<?oxy_comment_end?>.</para>
-                <itemizedlist>
-                    <listitem>
-                        <para><emphasis role="bold">Auto-generate event</emphasis></para>
-                        <para>Clear this to prevent for creating an event of this program stage
-                            automatically when a entity enroll into the program.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Open data entry form after
-                            enrollment</emphasis></para>
-                        <para>Automatically open the event of this stage as soon as the entity has
-                            enrolled into the program.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Report date to use</emphasis></para>
-                        <para>The date is used for report date of the event opened automatically.
-                            There are two options , include <emphasis role="italic">Incident
-                                date</emphasis> or <emphasis role="italic">Enrollment
-                                date</emphasis>. </para>
-                        <para>If the Report date to use is selected as one of those
-                            two(&apos;incident date&apos;/&apos;enrollment date&apos;), in
-                            Dashboard, the &apos;Report date&apos; of the event will be set as one
-                            of those two. </para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Block entry form after
-                            completed</emphasis></para>
-                        <para>Check on it for blocking entry form after completed the event of this
-                            stage. The data values in the entry form cannot be changed until the
-                            status of the event is reset as incomplete.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Ask user to complete program when stage is
-                                completed</emphasis></para>
-                        <para>If this property is set, a popup will come up to ask if user wants to
-                            create the event of next stage.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Ask user to create new event when stage is
-                                complete</emphasis></para>
-                        <para>If this property is set, a popup will come up to ask if user wants to
-                            create a new event of this stage when an event of this stage completed.
-                            This property is active only when Repeatable field is set.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Generate events by enrollment
-                            date</emphasis></para>
-                        <para>Check on it for auto-generating due dates of events from
-                            program-stages of this program based on the enrollment date. If it is
-                            not checked, the due dates are generated based on incident date.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Capture coordinates</emphasis></para>
-                        <para>Many types of events may be recorded at a facility or be <emphasis
-                                role="italic">owned-by</emphasis> a health worker at a facility, but
-                            actually take place somewhere in the community. This field is checked to
-                            get coordinates of the place.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">Complete allowed only if validation
-                                passes</emphasis></para>
-                        <para>The event created by this program stage is completed only when all
-                            validation rules are passed.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Select if you want to <emphasis role="bold">Pre-generate event
-                                UID</emphasis>.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="italic">Description of report date</emphasis> - The
-                            description for report date which is displayed in case entry
-                            form.</para>
-                    </listitem>
-                </itemizedlist>
+                    <?oxy_comment_start author="cecilia" timestamp="20161004T173652+0200" comment="At next release:
+rework content,"?>details<?oxy_comment_end?>.</para>
+                <table frame="all">
+                    <title/>
+                    <tgroup cols="2">
+                        <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+                        <thead>
+                            <row>
+                                <entry>
+                                    <para>Option</para>
+                                </entry>
+                                <entry>
+                                    <para>Action</para>
+                                </entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Auto-generate
+                                        event</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Clear check box to prevent creating an event of this
+                                        program stage automatically when a entity enroll in the
+                                        program.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Open data entry form after
+                                            enrollment</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Select check box to automatically open the event of this
+                                        stage as soon as the entity has enrolled into the
+                                        program.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Report date to use</emphasis></para>
+                                </entry>
+                                <entry>If you have selected the <emphasis role="bold">Open data
+                                        entry form after enrollment</emphasis> check box, also
+                                    select a <emphasis role="bold">Report date to use</emphasis>:
+                                        <emphasis role="bold">Date of incident</emphasis> or
+                                        <emphasis role="bold">Date of enrollment</emphasis>.
+                                        <para><?oxy_comment_start author="cecilia" timestamp="20161012T112729+0200" comment="At next revision, review passive" flag="done"?>This<?oxy_comment_end?>
+                                        is the date used as report date for an event that has been
+                                        opened automatically.</para><para>If the <emphasis
+                                            role="bold">Report date to use</emphasis> is selected as
+                                        one of those two (&apos;incident date&apos;/&apos;enrollment
+                                        date&apos;), in Dashboard, the &apos;Report date&apos; of
+                                        the event will be set as one of those two. </para></entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Block entry form after
+                                            completed</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Select check box to block the entry form after completion
+                                        of the event of this stage.</para>
+                                    <para>This means that the data in the entry form can't be
+                                        changed until you reset the status to incomplete.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Ask user to complete program when
+                                            stage is completed</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Select check box to trigger a pop-up which asks the user
+                                        if he/she wants to create the event of next stage.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Ask user to create new event when
+                                            stage is complete</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Select check box to trigger a pop-up which asks the users
+                                        if he/she wants to create a new event of this stage when an
+                                        event of this stage is completed.</para>
+                                    <para>This property is active only if you have selected
+                                            <emphasis role="bold">Repeatable</emphasis>.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Generate events by enrollment
+                                            date</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Check on it for auto-generating due dates of events from
+                                        program-stages of this program based on the enrollment date.
+                                        If it is not checked, the due dates are generated based on
+                                        incident date.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Capture
+                                        coordinates</emphasis></para>
+                                </entry>
+                                <entry>Select check box to capture an event's
+                                        coordinates.<para>Many types of events may be recorded at a
+                                        facility or be <emphasis role="italic">owned-by</emphasis> a
+                                        health worker at a facility, but actually take place
+                                        somewhere in the community.</para></entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Complete allowed only if validation
+                                            passes</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Select check box to enforce that an event created by this
+                                        program stage is only completed when all validation rules
+                                        have passed.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Pre-generate event
+                                        UID</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Select check box to pre-generate unique event id
+                                        numbers.</para>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <para><emphasis role="bold">Description of report
+                                            date</emphasis></para>
+                                </entry>
+                                <entry>
+                                    <para>Type a description of the report date. </para>
+                                    <para>This description is displayed in the
+                                        <?oxy_comment_start author="cecilia" timestamp="20161012T134303+0200" comment="What is an &quot;case entry form&quot;?"?>case
+                                        entry form<?oxy_comment_end?>.</para>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
             </listitem>
             <listitem>
                 <para>Assign data
@@ -167,35 +244,71 @@ Consider turning it into a table."?>details<?oxy_comment_end?>.</para>
                     <listitem>
                         <para>For each assigned data element, review the properties. You can
                             select:</para>
-                        <itemizedlist>
-                            <listitem>
-                                <para><emphasis role="bold">Compulsory</emphasis></para>
-                                <para>The value of this data element must be filled into data entry
-                                    form before completing the event.</para>
-                            </listitem>
-                            <listitem>
-                                <?oxy_comment_start author="cecilia" timestamp="20161004T161324+0200" comment="More info needed."?>
-                                <para><emphasis role="bold">Allow provided
-                                    elsewhere</emphasis></para>
-                                <?oxy_comment_end?>
-                                <para>Specify if the value of this data element comes from other
-                                    facility, not in the facility where this data is entered.</para>
-                            </listitem>
-                            <listitem>
-                                <para><emphasis role="bold">Display in reports</emphasis></para>
-                                <para>Display the value of this data element into the
-                                    <?oxy_comment_start author="cecilia" timestamp="20161004T173000+0200" comment="In Event Capture app?"?>single
-                                    event without registration<?oxy_comment_end?> data entry
-                                    function.</para>
-                            </listitem>
-                            <listitem>
-                                <?oxy_comment_start author="cecilia" timestamp="20161004T161334+0200" comment="More info needed."?>
-                                <para><emphasis role="bold">Date in future</emphasis></para>
-                                <?oxy_comment_end?>
-                                <para>Allow to select a date in future for date data
-                                    elements.</para>
-                            </listitem>
-                        </itemizedlist>
+                        <table frame="all">
+                            <title/>
+                            <tgroup cols="2">
+                                <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+                                <thead>
+                                    <row>
+                                        <entry>
+                                            <para>Option</para>
+                                        </entry>
+                                        <entry>
+                                            <para>Description</para>
+                                        </entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>
+                                            <para><emphasis role="bold">Compulsory</emphasis></para>
+                                        </entry>
+                                        <entry>
+                                            <para>The value of this data element must be filled into
+                                                data entry form before completing the event.</para>
+                                        </entry>
+                                    </row>
+                                    <row>
+                                        <entry>
+                                            <?oxy_comment_start author="cecilia" timestamp="20161004T161324+0200" comment="More info needed."?>
+                                            <para><emphasis role="bold">Allow provided
+                                                  elsewhere</emphasis></para>
+                                            <?oxy_comment_end?>
+                                        </entry>
+                                        <entry>
+                                            <para>Specify if the value of this data element comes
+                                                from other facility, not in the facility where this
+                                                data is entered.</para>
+                                        </entry>
+                                    </row>
+                                    <row>
+                                        <entry>
+                                            <para><emphasis role="bold">Display in
+                                                  reports</emphasis></para>
+                                        </entry>
+                                        <entry>
+                                            <para>Display the value of this data element into the
+                                                <?oxy_comment_start author="cecilia" timestamp="20161004T173000+0200" comment="In Event Capture app?"?>single
+                                                event without registration<?oxy_comment_end?> data
+                                                entry function.</para>
+                                        </entry>
+                                    </row>
+                                    <row>
+                                        <entry>
+                                            <?oxy_comment_start author="cecilia" timestamp="20161004T161334+0200" comment="More info needed."?>
+                                            <para><emphasis role="bold">Date in
+                                                future</emphasis></para>
+                                            <?oxy_comment_end?>
+                                        </entry>
+                                        <entry>
+                                            <para>Allow to select a date in future for date data
+                                                elements.</para>
+                                        </entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
                     </listitem>
                 </orderedlist>
             </listitem>

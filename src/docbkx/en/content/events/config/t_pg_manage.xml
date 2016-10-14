@@ -11,9 +11,9 @@
     xmlns:mth="http://www.w3.org/1998/Math/MathML"
     xmlns:db="http://docbook.org/ns/docbook"
     xml:id="manage_tracker_programs">
-    <title>Manage tracker programs</title>
+    <title>Manage programs</title>
     <section>
-        <title>Create a tracker program</title>
+        <title>Create a program</title>
         <orderedlist>
             <listitem>
                 <para>Open the <emphasis role="bold">Program / Attributes</emphasis> app and click
@@ -60,12 +60,11 @@
                     <listitem>
                         <para>Enter number of <emphasis role="bold">Completed events expiry
                                 days</emphasis>. </para>
-                        <?oxy_comment_start author="cecilia" timestamp="20161007T112522+0200" comment="At next release, reword." flag="done"?>
-                        <para>Defines the number of days since the completion date after which you
-                            can't edit an event anymore.</para>
-                        <?oxy_comment_end?>
+                        <para>Defines the number of days for which you can edit a completed event.
+                            This means that when an event is completed and the specified number of
+                            expiry days has passed, the event is locked.</para>
                         <example>
-                            <para>If  you set "Completed events expiry days" to 10", an event is
+                            <para>If you set "Completed events expiry days" to 10", an event is
                                 locked ten days after the completion date. After this date you can
                                 no longer edit the event.</para>
                         </example>
@@ -78,6 +77,11 @@ expand explaination.
 &quot;You define expiry periods elsewhere. All events you register in the system are associated with an expiry type, for example monthly or yearly.&quot;
 " flag="done"?>number<?oxy_comment_end?>
                             of <emphasis role="bold">Expiry days</emphasis>.</para>
+                        <para>The expiry days defines for how many days after the end of the
+                            previous period, an event can be edited. The period type is defined by
+                            the expiry period type. This means that when the specified number of
+                            expiry days has passed since the end date of the previous period, the
+                            events from that period are locked.</para>
                         <example>
                             <para>If you set the expiry type to "Monthly" and the expiry days to
                                 "10" and the month is October, then you can't add or edit an event
