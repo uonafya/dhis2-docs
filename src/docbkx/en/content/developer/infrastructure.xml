@@ -22,33 +22,31 @@
             version plugin with:</para>
           <screen>mvn versions:set
 mvn versions:commit</screen>
-          <para>This will prompt you to enter the version. Remove the dhis-web dependency. Update
-            application cache manifests in the various apps to new version. Commit the changes to
-            trunk.</para>
+          <para>This will prompt you to enter the version. Include pom-full.xml. Remove the dhis-web
+            dependency. Update application cache manifests in the various apps to new version.
+            Commit and push the changes to master.</para>
         </listitem>
         <listitem>
-          <para>Push a release branch to Launchad, e.g. with:</para>
-          <screen>bzr push lp:~dhis2-devs-core/dhis2/2.19</screen>
+          <para>Create a stable release branch off master, e.g.
+            with:<screen>git branch 2.25</screen></para>
         </listitem>
         <listitem>
-          <para>Tag source code with SNAPSHOT release. Remember to add the temporary dhis-web
-            dependency in the root pom.xml. Commit the changes to trunk.</para>
+          <para>Push a release branch to Github, e.g. with:</para>
+          <screen>git checkout 2.25
+git push --set-upstream origin 2.25</screen>
         </listitem>
         <listitem>
-          <para>Enable email notifications for release branch.</para>
+          <para>Tag source code with SNAPSHOT release. Include pom-full.xml. Remember to add the
+            temporary dhis-web dependency in the root pom.xml. Commit and push the changes to
+            master.</para>
         </listitem>
         <listitem>
-          <para>Create Jenkins build for the release WAR file.</para>
+          <para>Create Jenkins build for the release WAR file. Include automatic copy job to
+            www.dhis2.org. Include automatic WAR update of play.dhis2.org/demo (add release
+            directory on server).</para>
         </listitem>
         <listitem>
           <para>Create Jenkins build for the release Javadocs.</para>
-        </listitem>
-        <listitem>
-          <para>Create automatic copy job for WAR file from Jenkins to dhis2.org.</para>
-        </listitem>
-        <listitem>
-          <para>Create automatic WAR file update of play.dhis2.org/demo and play.dhis2.org/dev
-            systems.</para>
         </listitem>
         <listitem>
           <para>Update the database and WAR file on play.dhis2.org/demo and play.dhis2.org/dev
@@ -56,17 +54,17 @@ mvn versions:commit</screen>
             file:<screen>pg_dump dhis2 -Fd -U dhis -j 4 -f db.pgdump
 tar zcvf db.tar.gz db.pgdump</screen></para>
           <para>To unpack the tar file:<screen>tar zxvf db.tar.gz</screen></para>
-          <para>Run reinit-db-instance to make the changes take effect.</para>
+          <para>Run the reinit-db-instance script to make the database take effect.</para>
         </listitem>
         <listitem>
-          <para>Create a new DHIS2 Live package on dhis2.org and place it in download/live
+          <para>Create a new DHIS2 Live package on www.dhis2.org and place it in download/live
             directory. Only the WAR file must be updated. An uncompressed Live package is located on
             the demo server at:<screen>/home/dhis/dhis-live-package</screen></para>
           <para>Replace the uncompressed WAR file with the new release. Make a compressed Live
             archive and move to /download/live directory.</para>
         </listitem>
         <listitem>
-          <para>Upload sample database to dhis2.org and place it in download/resources
+          <para>Upload sample database to www.dhis2.org and place it in download/resources
             directory.</para>
         </listitem>
         <listitem>
