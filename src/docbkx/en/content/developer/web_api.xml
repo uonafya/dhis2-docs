@@ -1039,7 +1039,7 @@ programIdScheme, programStageIdScheme, trackedEntityIdScheme, trackedEntityAttri
     <para>Get data elements with id property ID1 or
       ID2:<screen>/api/25/dataElements?filter=id:eq:ID1&amp;filter=id:eq:ID2</screen></para>
     <para>Get all data elements which has the dataSet with id
-      ID1:<screen>/api/25/dataElements?filter=dataSets.id:eq:ID1</screen></para>
+      ID1:<screen>/api/25/dataElements?filter=dataSetElements.dataSet.id:eq:ID1</screen></para>
     <para>Get all data elements with aggregation operator &quot;sum&quot; and value type
       &quot;int&quot;:<screen>/api/25/dataElements.json?filter=aggregationOperator:eq:sum&amp;filter=type:eq:int</screen></para>
     <para>You can do filtering within collections, e.g. to get data elements which are members of
