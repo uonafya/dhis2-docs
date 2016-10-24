@@ -69,6 +69,9 @@
       OAuth 2. You can verify and get information about the currently authenticated user by making a
       GET request to the following URL:</para>
     <screen>/api/25/me</screen>
+    <para>And more information about authorities (and if a user have a certain authority) by using
+      the endpoints:<screen>/api/25/me/authorities
+/api/25/me/authorities/ALL</screen></para>
     <section xml:id="webapi_basic_authentication">
       <title>Basic Authentication</title>
       <para>The DHIS2 Web API supports <emphasis role="italic">Basic authentication</emphasis>.
@@ -3151,6 +3154,10 @@ http://server/api/25/constants/ID</screen></para>
               <entry>children</entry>
               <entry>Whether to include the children in the hierarchy of the organisation
                 units.</entry>
+            </row>
+            <row>
+              <entry>orgUnitGroup</entry>
+              <entry>Organisation unit group identifier. Can be repeated any number of times.</entry>
             </row>
             <row>
               <entry>includeDeleted</entry>
