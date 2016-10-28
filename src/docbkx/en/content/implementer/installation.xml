@@ -26,11 +26,10 @@
       be read as a guide for getting up and running and not as an exhaustive documentation for the
       mentioned environment. We refer to the official Ubuntu, PostgreSQL and Tomcat documentation
       for in-depth reading. </para>
-    <para>The <link xmlns:xlink="http://www.w3.org/1999/xlink"
-        xlink:href="https://github.com/dhis2/dhis2-tools">dhis2-tools</link> Ubuntu package
-      automates many of the tasks described in the guide below and is highly reccomended for most
+    <para>The dhis2-tools Ubuntu package
+      automates many of the tasks described in the guide below and is recommended for most
       users, especially those who are not familiar with the command line or administration of
-      servers. It is described in detail in a seperate chapter in this book. </para>
+      servers. It is described in detail in a separate chapter in this guide.</para>
   </section>
   <section xml:id="install_server_specifications">
     <title>Server specifications</title>
@@ -114,7 +113,7 @@ sudo locale-gen nb_NO.UTF-8</screen>
     </section>
     <section xml:id="install_postgresql_installation">
       <title>PostgreSQL installation</title>
-      <para>Install PostgreSQL 9.4 by invoking:</para>
+      <para>Install PostgreSQL by invoking:</para>
       <screen>sudo apt-get install postgresql-9.4</screen>
       <para><emphasis>Note:</emphasis> Alternatively, you can consult the PostgreSQL documentation to
         install the latest version from the PostgreSQL APT repository:
@@ -136,7 +135,7 @@ sudo locale-gen nb_NO.UTF-8</screen>
         terms of getting DHIS2 to run. PostgreSQL is configured and tuned through the <emphasis
           role="italic">postgresql.conf</emphasis> file which can be edited like this:</para>
       <para>
-        <screen>sudo nano /etc/postgresql/9.4/main/postgresql.conf</screen>
+        <screen>sudo nano /etc/postgresql/9.5/main/postgresql.conf</screen>
       </para>
       <para>and set the following properties:</para>
       <para>

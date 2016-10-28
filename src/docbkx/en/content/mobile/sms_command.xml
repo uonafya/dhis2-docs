@@ -64,6 +64,55 @@ form: reporting data from phones or j2me apps, alerting users, registering patie
         </mediaobject>
       </screenshot>
       </para>
+    <para>There are certain parameters which are common to all SMS Command types. These parameters have default values configured in the system, if user does provide any value to these
+    parameters then those default ones will be used. Here is the list of those parameters</para>
+    <table frame="all">
+      <title>Common Parameters</title>
+      <tgroup cols="3">
+        <colspec colnum="1" colname="c1" colwidth="1.01*"/>
+        <colspec colnum="2" colname="newCol2" colwidth="1*"/>
+        <colspec colnum="3" colname="c2" colwidth="5.52*"/>
+        <thead>
+          <row>
+            <entry>Parameter</entry>
+            <entry>Type</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Code and value Separator</entry>
+            <entry>String</entry>
+            <entry>To provide custom code value separator. Default is "="</entry>
+          </row>
+          <row>
+            <entry>Reply message if no codes are sent (only the command)</entry>
+            <entry>String</entry>
+            <entry>To provide message if no code is found in SMS text input. Default is "Parameter missing"</entry>
+          </row>
+          <row>
+            <entry>Wrong format message</entry>
+            <entry>String</entry>
+            <entry>To provide message if command is not formatted correctly. Command should be fomatted as per code value separator. This message will also be sent back if any mandatory parameter is missing.</entry>
+          </row>
+          <row>
+            <entry>No user message</entry>
+            <entry>String</entry>
+            <entry>To provide message if sending phone number is not registered in DHIS 2.</entry>
+          </row>
+          <row>
+            <entry>User belong to more than one OrgUnit message</entry>
+            <entry>String</entry>
+            <entry>Certain SMS command types require user ( retrived from sending phone number ) to be associated with only one organization unit. This message can be configured to be sent back in case that requirement is not fullfilled.</entry>
+          </row>
+          <row>
+            <entry>Success Message</entry>
+            <entry>String</entry>
+            <entry>To provide message that will be sent upon successful completion of the process.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
   </section>
   <section>
     <title>SMS Command Type</title>
@@ -86,6 +135,10 @@ form: reporting data from phones or j2me apps, alerting users, registering patie
       <para>or <emphasis role="bold">
           <emphasis role="bold">report vo.2|vn.5|a.2|b.6|z.3|x.1</emphasis>
         </emphasis></para>
+      
+      <para>Moreover in SMS text input, orgUnit can be specified like this  <emphasis role="bold">org orgUnitCode</emphasis> If no orgUnit is specified in SMS
+        then user is retrieved first from the sending phoneNumber and then orgUnit from that user. As far as PeriodType is concerned it should be specified in this format "ddMM" for example 3108,
+        but in case its not specified then PeriodType will be retrieved from DataSet attached to SMSCommand</para>
       <para>With the J2ME_PARSER, you don&apos;t need to prepare those SMS text, because the J2ME will do this job</para>
       <para><screenshot>
           <mediaobject>
@@ -113,8 +166,8 @@ form: reporting data from phones or j2me apps, alerting users, registering patie
       <para>Commands which has  ALERT_PARSER will be received from users only</para>
     </section> 
     <section>
-      <title>SMS Command for Event Registration Parser</title>
-      <para>Anonymous Event Parser can be used to register anonymous event into the system based on the data collected through SMS. For example Birth events can be tracked using this parser.</para>
+      <title>SMS Command for Event Registration</title>
+      <para>Event Registration can be used to register anonymous event into the system based on the data collected through SMS. This command type is associated with Programs of type WITHOUT_REGISTRATION. For example Birth events can be tracked using this parser.</para>
       <para>
         <screenshot>
           <mediaobject>

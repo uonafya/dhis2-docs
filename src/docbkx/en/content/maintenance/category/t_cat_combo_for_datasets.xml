@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<section version="5.0"
+    xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+    xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+    <title>Use category combinations for data sets</title>
+    <para>When categories and category combinations have the data dimension type
+        &quot;Attribute&quot;, they can apply a common set of attributes to a related set of data
+        values contained in a data set. When category combinations are used as a attribute, they
+        serve as another dimension (similar to &quot;Period&quot; and &quot;Organisation unit&quot;)
+        which you can use in your analysis.</para>
+    <example>
+        <title>Use category combination for a data set</title>
+        <para><?oxy_comment_start author="cecilia" timestamp="20160628T103843+0200" comment="At next revision: review example." flag="done"?>Suppose<?oxy_comment_end?>
+            that a NGO is providing ART services in a given facility. They would need to report each
+            month on the &quot;ART monthly summary&quot;, which would contain a number of data
+            elements. The NGO and project could potentially change over time. In order to attribute
+            data to a given NGO and project at any point in time, you need to record this
+            information with each data value at the time of data entry.</para>
+        <orderedlist>
+            <listitem>
+                <para>Create two categories with the data dimension type &quot;Attribute":
+                    &quot;Implementing partner&quot; and &quot;Projects".</para>
+            </listitem>
+            <listitem>
+                <para>Create a category combination with the data dimension type "Attribute":
+                    &quot;Implementing partners and projects&quot;. </para>
+            </listitem>
+            <listitem>
+                <para>Assign the categories you've created to the category combination.</para>
+            </listitem>
+            <listitem>
+                <para>Create a data set called &quot;ART monthly summary&quot; and select the
+                    "Implementing partners and projects&quot; category combination.</para>
+            </listitem>
+        </orderedlist>
+        <para>When you enter data in the <emphasis role="bold">Data entry</emphasis> app, you can
+            select an &quot;Implementing partner&quot; and a &quot;Project&quot;. Each recorded data
+            value, is assigned a specific combination of these categories as an attribute. These
+            attributes (when specified as a dimension) can be used in the analysis applications
+            similar to other dimensions, for example the period and organisation unit.</para>
+        <screenshot>
+            <mediaobject>
+                <imageobject>
+                    <imagedata width="80%" align="center"
+                        fileref="resources/images/maintainence/categories_dataset_attributes.png"
+                        format="PNG"/>
+                </imageobject>
+            </mediaobject>
+        </screenshot>
+    </example>
+</section>

@@ -5,9 +5,9 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
-  xmlns:db="http://docbook.org/ns/docbook" xml:id="dataVis">
+  xmlns:db="http://docbook.org/ns/docbook" xml:id="data_vis">
   <title>Using the Data Visualizer app</title>
-  <section xml:id="dataVis_Intro">
+  <section xml:id="data_vis_intro">
     <title>Data Visualizer
       <?oxy_comment_start author="CPersson" timestamp="20160422T124514+0200" comment="Same concept information as in Pivot table app doc?"?>overview<?oxy_comment_end?></title>
     <screenshot>
@@ -25,7 +25,7 @@
       D<?oxy_comment_start author="CPersson" timestamp="20160421T133120+0200" comment="Which type of data? What&apos;s the difference to the Event Visualizer?"?>ata<?oxy_comment_end?>
       Visualizer app, you can select content, for example indicators, data elements, periods and
       organisation units, for an analysis. The app works well over poor Internet connections and
-      generates charts in the web browser. Little data is transferred over the Internet.</para>
+      generates charts in the web browser.</para>
     <itemizedlist>
       <listitem>
         <para>You can hide and show individual data series in the chart by clicking directly on the
@@ -39,7 +39,7 @@
       </listitem>
     </itemizedlist>
   </section>
-  <section xml:id="dataVis_create_chart">
+  <section xml:id="datavis_create_chart">
     <title>Create a chart</title>
     <orderedlist>
       <listitem>
@@ -50,10 +50,17 @@
         <para>Select a chart type.</para>
       </listitem>
       <listitem>
-        <para>In the menu to the left, select the meta data you want to analyse. You must select one
+        <para>In the menu to the left, select the metadata you want to analyse. You must select one
           or more elements from all of the three dimensions - data (indicators, data elements,
           reporting rates), periods (relative, fixed) and organisation units (units or
           groups).</para>
+        <para>
+          <note>
+            <para>If you've access to the system settings, you can change the default period type
+              under <emphasis role="bold">General settings > Default relative period for
+                analysis.</emphasis></para>
+          </note>
+        </para>
         <para><emphasis role="bold">Last 12 Months</emphasis> from the period dimension and the root
           organisation unit are selected by default.</para>
       </listitem>
@@ -66,7 +73,7 @@
       </listitem>
     </orderedlist>
   </section>
-  <section xml:id="dataVis_chartTypes">
+  <section xml:id="datavis_chart_types">
     <title>Select a chart type</title>
     <para>The <emphasis role="bold">Data Visualizer</emphasis> app has nine different chart types,
       each with different characteristics. To select a chart type:</para>
@@ -186,7 +193,7 @@
       </listitem>
     </orderedlist>
   </section>
-  <section xml:id="dataVis_select_dim_items">
+  <section xml:id="data_vis_select_dim_items">
     <title>Select dimension items</title>
     <para><?oxy_comment_start author="CPersson" timestamp="20160426T110718+0200" comment="At next revision:
 Review content and make it similar to the other analysis app.
@@ -224,10 +231,8 @@ Also standardize which section it belongs in."?>A
           <para>To select all dimension items in a list, click the double-arrow.</para>
         </listitem>
         <listitem>
-          <para>To
-            <?oxy_comment_start author="CPersson" timestamp="20160426T113043+0200" comment="Reveiw wording."?>deselect<?oxy_comment_end?>
-            dimension items, use the arrows or double-click the names in the <emphasis role="bold"
-              >Selected</emphasis> list.</para>
+          <para>To clear dimension items, use the arrows or double-click the names in the <emphasis
+              role="bold">Selected</emphasis> list.</para>
         </listitem>
       </itemizedlist>
     </note>
@@ -418,7 +423,7 @@ Also standardize which section it belongs in."?>A
           layout</emphasis> as dimensions.</para>
     </section>
   </section>
-  <section xml:id="dataVis_series_category_filter">
+  <section xml:id="data_vis_series_category_filter">
     <title>Select series, category and
       <?oxy_comment_start author="CPersson" timestamp="20160427T102646+0200" comment="At next revision, revise title."?>filter<?oxy_comment_end?></title>
     <para>
@@ -473,13 +478,15 @@ Also standardize which section it belongs in."?>A
         </listitem>
         <listitem>
           <para><?oxy_comment_start author="CPersson" timestamp="20160426T111211+0200" comment="Which filter is used in the example?"?>Filter<?oxy_comment_end?>:
-            Since most charts are two-dimensional, a filter must be used on the third dimension in
-            order to use only a single element for the chart to become meaningful.</para>
+            The filter selection will filter the data displayed in the chart. Note that if you use
+            the data dimension as filter, you can only specify a single indicator or data set as
+            filter item, whereas with other dimension types you can select any number of
+            items.</para>
         </listitem>
       </itemizedlist>
     </example>
   </section>
-  <section xml:id="dataVis_change_display">
+  <section xml:id="datavis_change_display">
     <title>Change the display of your chart</title>
     <screenshot>
       <mediaobject>
@@ -662,7 +669,9 @@ Also standardize which section it belongs in."?>A
       </listitem>
     </orderedlist>
   </section>
-  <section xml:id="dataVis_save_chart">
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../generic/favorites.xml" encoding="UTF-8"/>
+ 
+  <section xml:id="data_vis_save_chart">
     <title>Download a chart as an image or a PDF</title>
     <para>After you have created a chart you can download it to your local computer as an image or
       PDF file.</para>
@@ -678,7 +687,7 @@ Also standardize which section it belongs in."?>A
       </listitem>
     </orderedlist>
   </section>
-  <section xml:id="dataVis_download_chart_data">
+  <section xml:id="data_vis_download_chart_data">
     <title>Download chart data source</title>
     <para>You can download the data source behind a chart in JSON, XML, Excel, CSV, JXRML or Raw
       data SQL formats with different identification schemes (ID, Code, and Name). The data document
@@ -801,202 +810,7 @@ Also standardize which section it belongs in."?>A
       </listitem>
     </orderedlist>
   </section>
-  <section xml:id="dataVis_favorites">
-    <title>Manage chart favorites</title>
-    <screenshot>
-      <info>
-        <title>Data visualizer module displaying a column chart.</title>
-      </info>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="50%" fileref="resources/images/visualizer/chart_favorites.png"
-            format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <para>Saving your charts as favorites makes it easy to restore them later. It also gives you the
-      opportunity to share them with other users as an interpretation or display them on the
-      dashboard. </para>
-    <section>
-      <title>Save a chart as a favorite </title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
-          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Add new</emphasis>.</para>
-          <para>The <emphasis role="bold">Create new favorite</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>In the text box, type the name you want to give your chart.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Create</emphasis>.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title>Open a favorite</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
-          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>Find the favorite you want to open. You can either use <emphasis role="bold"
-              >Prev</emphasis> and <emphasis role="bold">Next</emphasis> or the search field to find
-            a saved favorite. The list is filtered on every character that you enter.</para>
-        </listitem>
-        <listitem>
-          <para>Click the name.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title>Rename a favorite</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
-          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>Find the favorite you want to rename.</para>
-          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
-              >Next</emphasis> or the search field to find a saved favorite. </para>
-        </listitem>
-        <listitem>
-          <para>Click the grey rename icon next to the favorite's name.</para>
-          <para>The <emphasis role="bold">Rename favorite</emphasis> dialog box favorite
-            opens.</para>
-        </listitem>
-        <listitem>
-          <para>Type the new name and click <emphasis role="bold">Update</emphasis>.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title><?oxy_comment_start author="Home" timestamp="20160412T140454+0200" comment="Revise title."?>Overwrite<?oxy_comment_end?>
-        a favorite</title>
-      <para>To save the current chart to an existing favorite (overwrite):</para>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
-          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>Find the favorite you want to overwrite.</para>
-          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
-              >Next</emphasis> or the search field to find a saved favorite. </para>
-        </listitem>
-        <listitem>
-          <para>Click the green overwrite icon next to the favorite's name.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to overwrite the
-            favorite.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section xml:id="dvInterpretations">
-      <title>Share a chart interpretation</title>
-      <para role="">For
-        <?oxy_comment_start author="Home" timestamp="20160407T151353+0200" comment="Which ones?"?>certain<?oxy_comment_end?>
-        analysis-related resources in DHIS2, you can share a data interpretation. An interpretation
-        is a link to the relevant resource together with a text expressing some insight about the
-        data. </para>
-      <para role="">To create an interpretation of a chart and share it with all users of the
-        system:</para>
-      <orderedlist>
-        <listitem>
-          <para>Open or create a favorite chart.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Share</emphasis> > <emphasis role="bold">Write
-              interpretation</emphasis>.</para>
-          <para>The <emphasis role="bold">Write interpretation</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>In the text field, type a comment, question or interpretation.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Share</emphasis>.</para>
-          <para>The dialog box closes automatically. You can see the interpretation on the <emphasis
-              role="bold">Dashboard</emphasis>.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title>Modify sharing settings for a favorite</title>
-      <para>After you have created a chart and saved it as a favorite, you can share the favorite
-        with everyone or a user group. To modify the sharing settings:</para>
-      <para>
-        <orderedlist>
-          <listitem>
-            <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
-          </listitem>
-          <listitem>
-            <para>Find the favorite you want to share.</para>
-            <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
-                >Next</emphasis> or the search field to find a saved favorite.</para>
-          </listitem>
-          <listitem>
-            <para> Click the blue share icon next to the favorite's name.</para>
-          </listitem>
-          <listitem>
-            <para>In the text box, enter the name of the user group you want to share your favorite
-              with and click the <emphasis role="bold">+</emphasis> icon.</para>
-            <para>The chosen user group is added to the list of recipients. </para>
-            <para>Repeat the step to add more user groups.</para>
-          </listitem>
-          <listitem>
-            <para>If you want to allow external access, select the corresponding box.</para>
-          </listitem>
-          <listitem>
-            <para>For each user group, choose an
-              <?oxy_comment_start author="Home" timestamp="20160407T150433+0200" comment="Correct term?"?>access
-              setting<?oxy_comment_end?>. The options are:</para>
-            <itemizedlist>
-              <listitem>
-                <para><?oxy_comment_start author="Home" timestamp="20160407T150510+0200" comment="Why is this option only available for Public access?"?>None<?oxy_comment_end?></para>
-              </listitem>
-              <listitem>
-                <para>Can view</para>
-              </listitem>
-              <listitem>
-                <para>Can edit and view</para>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-          <listitem>
-            <para>Click <emphasis role="bold">Save</emphasis>.</para>
-          </listitem>
-        </orderedlist>
-      </para>
-    </section>
-    <section>
-      <title>Delete a favorite</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Favorites</emphasis>.</para>
-          <para>The <emphasis role="bold">Favorites</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>Find the favorite you want to delete.</para>
-          <para>You can either use <emphasis role="bold">Prev</emphasis> and <emphasis role="bold"
-              >Next</emphasis> or the search field to find a saved favorite. </para>
-        </listitem>
-        <listitem>
-          <para>Click the red delete icon next to the favorite's name.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to delete the
-            favorite.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-  </section>
-  <section xml:id="dataVis_embedding">
+  <section xml:id="data_vis_embedding">
     <title>Embed charts in any web page</title>
     <para>Certain analysis-related resources in DHIS2, like pivot tables, charts and maps, can be
       embedded in any web page by using a plug-in. You will find more information about the plug-ins
@@ -1016,42 +830,13 @@ Also standardize which section it belongs in."?>A
       </orderedlist>
     </para>
   </section>
-  <section xml:id="dataVis_integration">
-    <title>Visualize a chart as a pivot table or a map</title>
-    <para>When you have made a chart you can switch between pivot table, chart and map visualization
-      of your data.</para>
-    <section>
-      <title>Open a chart as a pivot table</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart
-              as table</emphasis>.</para>
-          <para>Your current chart opens as a pivot table.</para>
-        </listitem>
-      </orderedlist>
-      <screenshot>
-        <info>
-          <title>Analysis
-            <?oxy_comment_start author="CPersson" timestamp="20160421T155736+0200" comment="Consider removing screen shot.
-If not, update it with new screenshot."?>integration<?oxy_comment_end?></title>
-        </info>
-        <mediaobject>
-          <imageobject>
-            <imagedata align="center" scale="100"
-              fileref="resources/images/visualizer/chart_integration.png" format="PNG"/>
-          </imageobject>
-        </mediaobject>
-      </screenshot>
-    </section>
-    <section>
-      <title>Open a chart as a map</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Chart</emphasis> > <emphasis role="bold">Open this chart
-              as map</emphasis>.</para>
-          <para>Your current chart opens as a map.</para>
-        </listitem>
-      </orderedlist>
-    </section>
+  <section>
+    <title>Open a chart as a pivot table or as a map</title>
+    <itemizedlist>
+      <listitem>
+        <para>Open a <emphasis role="bold">Chart</emphasis> and click <emphasis role="bold"
+            >Chart</emphasis> or click <emphasis role="bold">Map</emphasis>.</para>
+      </listitem>
+    </itemizedlist>
   </section>
-</chapter>
+  </chapter>

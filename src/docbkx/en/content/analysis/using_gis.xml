@@ -7,66 +7,7 @@
   xmlns:svg="http://www.w3.org/2000/svg" xmlns:mth="http://www.w3.org/1998/Math/MathML"
   xmlns:db="http://docbook.org/ns/docbook" xml:id="using_gis">
   <title>Using the GIS app</title>
-  <section xml:id="using_gis_about">
-    <title>About the GIS app</title>
-    <screenshot>
-      <?oxy_comment_start author="cecilia" timestamp="20160626T153414+0200" comment="Before release:
-Replace screenshot."?>
-      <title>Main GIS screen</title>
-      <?oxy_comment_end?>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="resources/images/gis/gis_main.png" align="center" width="100%"
-            format="PNG"/>
-        </imageobject>
-      </mediaobject>
-    </screenshot>
-    <itemizedlist>
-      <listitem>
-        <para>The icons in the left upper corner represent the vector layers and they are the
-          starting point of the <emphasis role="bold">GIS</emphasis> app.</para>
-      </listitem>
-      <listitem>
-        <para>In the top right corner you get an overview of the layers:</para>
-        <itemizedlist>
-          <listitem>
-            <para>If you are online you will see
-              <?oxy_comment_start author="Home" timestamp="20160412T152838+0200" comment="Use of trademarks in documentaiton and interface must be reviewed.
-https://www.google.com/permissions/trademark/trademark-list.html
-"?>Google
-              Streets and Google Hybrid<?oxy_comment_end?> which can be used as background maps and
-              layers. Switch between the two of them by checking the check box. The default base map
-              is OpenStreetMap. To get a nice background map, select the OSM Light. By clearing a
-              box you can hide the corresponding background completely.</para>
-          </listitem>
-          <listitem>
-            <para>If you want to see the background, but with reduced opacity, you can set the
-              visibility to something lower than 100 % in the box to the right.</para>
-          </listitem>
-          <listitem>
-            <para>The final four layers are the vector layers which you use for thematic mapping
-              (explained in the next section). The panels below hold the map legends when you create
-              a thematic map. A legend explains the link between values and colors on your
-              map.</para>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </itemizedlist>
-    <itemizedlist>
-      <listitem>
-        <para><emphasis role="bold">Zoom to content</emphasis> automatically adjusts the zoom level
-          and map center position to put the data on your map in focus.</para>
-      </listitem>
-      <listitem>
-        <para>To get information for an event you can simply click on it. This opens a pop-up window
-          which displays all available information for that event.</para>
-      </listitem>
-      <listitem>
-        <para>The current longitude and latitude position of the mouse cursor is displayed in the
-          bottom right corner of the map.</para>
-      </listitem>
-    </itemizedlist>
-  </section>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gis/c_gis.xml" encoding="UTF-8"/>
   <section xml:id="using_gis_create_map">
     <title>Create a new thematic
       <?oxy_comment_start author="Home" timestamp="20160414T121319+0200" comment="Review and rewrite section at next revision."?>map<?oxy_comment_end?></title>
@@ -106,15 +47,20 @@ https://www.google.com/permissions/trademark/trademark-list.html
     </orderedlist>
   </section>
   <section xml:id="using_gis_event_layer">
-    <title>Manage event layer</title>
+    <title>Manage event layers</title>
     <para>The purpose of the event layer is to display the geographical location of events
-      registered in the DHIS2 tracker. This layer lets you drill down from the aggregated data
-      displayed in the thematic layers to the underlying individual events or cases. </para>
+      registered in the DHIS2 tracker. Provided that events have associated GPS coordinates, you can
+      use this layer to drill down from the aggregated data displayed in the thematic layers to the
+      underlying individual events or cases. </para>
+    <para>You can also display aggregated events at the facility or at the boundary level. You do
+      this through a thematic layer using event data items. This is useful when you only have the
+      coordinates for the OrgUnit under which the events are recorded.</para>
     <screenshot>
       <title>Event layer</title>
       <mediaobject>
         <imageobject>
-          <imagedata width="80%" fileref="resources/images/gis/gis_event_layer.png" format="PNG"/>
+          <imagedata width="80%" fileref="resources/images/gis/gis_event_layer.png" format="PNG"
+            align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -141,10 +87,6 @@ https://www.google.com/permissions/trademark/trademark-list.html
                 the single-arrow downward button. The double-arrow button will select all data
                 elements in the list. All selected data elements will get their own row in the
                   <emphasis role="bold">Selected data items</emphasis>. </para>
-            </listitem>
-            <listitem>
-              <para>You can use an element multiple times in your query by clicking <emphasis
-                  role="bold">Duplicate</emphasis>. </para>
             </listitem>
             <listitem>
               <para>For data elements of type text you will get two choices: <emphasis role="bold"
@@ -233,7 +175,8 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </para>
     </section>
     <section>
-      <title>Modify information in event pop-up windows</title>
+      <?oxy_comment_start author="rachaelb" timestamp="20161005T154653+0200" comment="Move to maintenance part of doc?"?>
+      <title><?oxy_comment_end?>Modify information in event pop-up windows</title>
       <para>For events in a cluster map, you can modify the information displayed in the event
         pop-up window.</para>
       <screenshot>
@@ -241,15 +184,14 @@ https://www.google.com/permissions/trademark/trademark-list.html
         <mediaobject>
           <imageobject>
             <imagedata fileref="resources/images/gis/gis_eventlayer_eventinfopopup.png" format="PNG"
-              width="55%"/>
+              width="40%" align="center"/>
           </imageobject>
         </mediaobject>
       </screenshot>
       <para>
         <orderedlist>
           <listitem>
-            <para>On the home page, click <emphasis role="bold">Apps</emphasis> > <emphasis
-                role="bold">Programs / Attributes</emphasis>.</para>
+            <para>Open the <emphasis role="bold">Programs / Attributes</emphasis> app.</para>
           </listitem>
           <listitem>
             <para>Click <emphasis role="bold">Program</emphasis>.</para>
@@ -290,22 +232,23 @@ https://www.google.com/permissions/trademark/trademark-list.html
     </section>
   </section>
   <section xml:id="using_gis_facility_layer">
-    <title>Manage facility layer</title>
-    <para>The facility layer displays icons that represent facilities based on the facility type.
-      <?oxy_comment_start author="Home" timestamp="20160418T155400+0200" comment="At next revision, explain polygon."?>Polygons
-      <?oxy_comment_end?>will not show up on the map, so make sure to select an organisation unit
-      level that has facilities. </para>
+    <title>Manage facility layers</title>
+    <para>The facility layer displays icons that represent types of facilities. Polygons do not show
+      up on the map, so make sure that you select an organisation unit level that has facilities. </para>
+    <para>A polygon is an enclosed area on a map representing a country, a district or a park. In
+      GIS, a polygon is a shape defined by one or more rings, where a ring is a path that starts and
+      ends at the same point.</para>
     <screenshot>
       <title>Facility layer</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/gis/gis_facility_layer.png" format="PNG"
-          />
+            align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
     <section>
-      <title>Create or modify facility layer</title>
+      <title>Create or modify a facility layer</title>
       <orderedlist>
         <listitem>
           <para>In the top menu, click the facility layer icon.</para>
@@ -367,112 +310,99 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </orderedlist>
     </section>
   </section>
-  <section xml:id="using_gis_boundary_layer">
-    <title>Manage boundary layer</title>
-    <para>The purpose of the boundary layer is to display the boundaries and coordinates in the
-      system. No data will be shown. This layer is useful if you are offline and thus have no
-      background map. </para>
-    <screenshot>
-      <title>Boundary layer</title>
-      <mediaobject>
-        <imageobject>
-          <imagedata width="100%" fileref="resources/images/gis/gis_boundary_layer.png" format="PNG"
-          />
-        </imageobject>
-      </mediaobject>
-    </screenshot>
+  <section>
+    <title>Manage facilities in a layer</title>
+    <para>You can have facilities in <emphasis role="bold">Facility</emphasis>, <emphasis
+        role="bold">Boundary</emphasis> and <emphasis role="bold">Thematic</emphasis> layers. </para>
     <section>
-      <title>Create or modify boundary layer</title>
+      <title>Relocate a facility</title>
       <orderedlist>
         <listitem>
-          <para>In the top menu, click the boundary layer icon.</para>
+          <para>Right-click a facility and click <emphasis role="bold">Relocate</emphasis>. </para>
         </listitem>
         <listitem>
-          <para>Click <emphasis role="bold">Edit layer</emphasis>.</para>
-        </listitem>
-        <listitem>
-          <para><?oxy_comment_start author="Home" timestamp="20160415T144008+0200" comment="At next revision, explain this task in more detail."?>In
-            the <emphasis role="bold">Organisation units</emphasis> section, select one or several
-            organisation units<?oxy_comment_end?>.</para>
-          <para>You can select the organisation units you want to show on the map by selecting a
-            level and a parent. That means &quot;show all organisations units at this level that are
-            children of this parent&quot;. </para>
-        </listitem>
-        <listitem>
-          <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
-            labels and if so, how they look.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Update</emphasis>.</para>
+          <para>Put the cursor in the new location.</para>
+          <para>The new coordinate is stored permanently. This cannot be undone.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Search for an organisation unit </title>
-      <para>To locate an organisation unit in the map:</para>
+      <title>Swap longitude and latitude of a facility</title>
       <orderedlist>
         <listitem>
-          <para>In the top menu, click the boundary layer icon.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Search</emphasis>.</para>
-          <para>The <emphasis role="bold">Organisation unit search</emphasis> dialog box
-            opens.</para>
-        </listitem>
-        <listitem>
-          <para>In the text field, type the name of the organisation unit you are looking for or
-            click a name in the list.</para>
-          <para>The organisation unit is highlighted in the map.</para>
+          <para>Right-click a facility and click <emphasis role="bold">Swap
+            long/lat</emphasis>.</para>
+          <para> This is useful if a user inverted latitude and longitude coordinates when creating
+            the organisation unit.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Navigate between organisation hierarchies</title>
-      <para>When there are visible organisation units on the map, you can easily navigate up and
-        down in the hierarchy without using the level/parent user interface. </para>
-      <orderedlist>
-        <listitem>
-          <para>Right-click one of the organisation units.</para>
-        </listitem>
-        <listitem>
-          <para>Select <emphasis role="bold">Float up</emphasis> or <emphasis role="bold">Drill
-              down</emphasis>.</para>
-          <para>The drill down option is disabled if you are on the lowest level or if there are no
-            coordinates available on the level below. Vice versa goes for
-            <?oxy_comment_start author="Home" timestamp="20160418T160509+0200" comment="At next release, review term float up with devs."?>floating<?oxy_comment_end?>
-            up. </para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title>Clear boundary layer</title>
-      <para>To clear all data in a boundary layer: </para>
-      <orderedlist>
-        <listitem>
-          <para>In the top menu, click the boundary layer icon.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Clear</emphasis>.</para>
-        </listitem>
-      </orderedlist>
+      <title>Display facility
+        <?oxy_comment_start author="CPersson" timestamp="20160420T143611+0200" comment="Windows might be merged next release."?>information<?oxy_comment_end?></title>
+      <para>You can view organisation unit information set by the administrator as follows:</para>
+      <table frame="all">
+        <title>View organisation unit information</title>
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="1.47*"/>
+          <thead>
+            <row>
+              <entry>Function</entry>
+              <entry>Action</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                <para>View information for the current period</para>
+              </entry>
+              <entry>
+                <orderedlist>
+                  <listitem>
+                    <para>Click a facility.</para>
+                  </listitem>
+                </orderedlist>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>View information for a selected period</para>
+              </entry>
+              <entry>
+                <orderedlist>
+                  <listitem>
+                    <para>Right-click a facility and click <emphasis role="bold">Show
+                        information</emphasis>.</para>
+                  </listitem>
+                  <listitem>
+                    <para>In the <emphasis role="bold">Infrastructural data</emphasis> section,
+                      select a period.</para>
+                  </listitem>
+                </orderedlist>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
     </section>
   </section>
   <section xml:id="using_gis_thematic_layer">
-    <title>Manage thematic layer 1- 4</title>
-    <para>The four thematic layer panels let you use your data for thematic mapping. Select your
-      desired combination of indicator/data element, period and map combination, then the
-      organisation unit level and parent to define the boundaries. If your database has coordinates
-      and aggregated data values for these organisation units, they will appear on the map.</para>
+    <title>Manage thematic layers 1- 4</title>
+    <para>There are four thematic layers in the GIS app. With these layers panels you can use your
+      data for thematic mapping. Select your desired combination of indicator/data element, and
+      period. then the organisation unit level. If your database has coordinates and aggregated data
+      values for these organisation units, they will appear on the map.</para>
     <note>
       <para>You must refresh the DHIS2 analytics tables to have aggregated data values
         available.</para>
     </note>
     <screenshot>
-      <title>Thematic mapping</title>
+      <title>Example of a thematic map</title>
       <mediaobject>
         <imageobject>
           <imagedata width="100%" fileref="resources/images/gis/gis_thematic_mapping.png"
-            format="PNG"/>
+            format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -488,9 +418,12 @@ https://www.google.com/permissions/trademark/trademark-list.html
         </listitem>
         <listitem>
           <?oxy_comment_start author="CPersson" timestamp="20160420T112457+0200" comment="At next revision, this step must be explained in more detail."?>
+          <?oxy_comment_start author="rachaelb" timestamp="20160922T140916+0200" comment="May need some more info here, or at the minimum highlight any differences with the pivot table and visualiser modules (e.g. one can&apos;t aggregate over multiple time periods, can&apos;t use category options as filters)
+" mid="10"?>
           <para>In the <emphasis role="bold">Data and periods</emphasis> section, select the data
             and periods you want to display.</para>
           <?oxy_comment_end?>
+          <?oxy_comment_end mid="10"?>
         </listitem>
         <listitem>
           <para><?oxy_comment_start author="Home" timestamp="20160415T144008+0200" comment="At next revision, explain this task in more detail."?>In
@@ -498,9 +431,9 @@ https://www.google.com/permissions/trademark/trademark-list.html
             organisation units<?oxy_comment_end?>.</para>
         </listitem>
         <listitem>
-          <para>In the <emphasis role="bold">Options</emphasis> section, select
-              <guimenuitem>Automatic</guimenuitem> or <guimenuitem>Predefined</guimenuitem> legend
-            type. </para>
+          <para>In the <emphasis role="bold">Options</emphasis> section, go to <emphasis role="bold"
+              >Legend type</emphasis> and select <guimenuitem>Automatic</guimenuitem> or
+              <guimenuitem>Predefined</guimenuitem>. </para>
           <para>
             <itemizedlist>
               <listitem>
@@ -523,16 +456,17 @@ https://www.google.com/permissions/trademark/trademark-list.html
                     color / size</emphasis> and <emphasis role="bold">High color size</emphasis>
                   boxes.</para>
               </listitem>
-              <listitem>
-                <para>For information about <emphasis role="bold">Predefined</emphasis> legend sets,
-                  see <xref linkend="gisLegendSet"/> .</para>
-              </listitem>
             </itemizedlist>
           </para>
         </listitem>
         <listitem>
           <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
             labels and if so, how they look.</para>
+        </listitem>
+        <listitem>
+          <para>In the Options panel, select an aggregation type. See also <link
+            xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dhis2.github.io/dhis2-docs/master/en/user/html/ch10s05.html#d0e8082"
+            >Aggregation operators</link>.</para>
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Update</emphasis>.</para>
@@ -591,12 +525,10 @@ https://www.google.com/permissions/trademark/trademark-list.html
           <para>Right-click one of the organisation units.</para>
         </listitem>
         <listitem>
-          <para>Select <emphasis role="bold">Float up</emphasis> or <emphasis role="bold">Drill
+          <para>Select <emphasis role="bold">Drill up</emphasis> or <emphasis role="bold">Drill
               down</emphasis>.</para>
           <para>The drill down option is disabled if you are on the lowest level or if there are no
-            coordinates available on the level below. Vice versa goes for
-            <?oxy_comment_start author="Home" timestamp="20160418T160509+0200" comment="At next release, review term float up with devs."?>floating<?oxy_comment_end?>
-            up. </para>
+            coordinates available on the level below. Vice versa goes for drilling up. </para>
         </listitem>
       </orderedlist>
     </section>
@@ -613,80 +545,92 @@ https://www.google.com/permissions/trademark/trademark-list.html
       </orderedlist>
     </section>
   </section>
-  <section xml:id="using_gis_manage_facilities">
-    <title>Manage facilities in a layer</title>
-    <para>You can have facilities in <emphasis role="bold">Facility</emphasis>, <emphasis
-        role="bold">Boundary</emphasis> and <emphasis role="bold">Thematic</emphasis> layers. </para>
+  <section>
+    <title>Manage boundary layers</title>
+    <para>The boundary layer displays the borders and locations of your organisation units. This
+      layer is useful if you are offline and don't have access to background maps. </para>
+    <screenshot>
+      <title>Boundary layer</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="80%" fileref="resources/images/gis/gis_boundary_layers.png" format="PNG"
+            align="center"/>
+
+        </imageobject>
+      </mediaobject>
+    </screenshot>
     <section>
-      <title>Relocate a facility</title>
+      <title>Create or modify boundary layers</title>
       <orderedlist>
         <listitem>
-          <para>Right-click a facility and click <emphasis role="bold">Relocate</emphasis>. </para>
+          <para>In the top left menu, click the boundary layer icon.</para>
         </listitem>
         <listitem>
-          <para>Put the cursor in the new location.</para>
-          <para>The new coordinate is stored permanently..</para>
+          <para>Click <emphasis role="bold">Edit layer</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para><?oxy_comment_start author="Home" timestamp="20160415T144008+0200" comment="At next revision, explain this task in more detail."?>In
+            the <emphasis role="bold">Organisation units</emphasis> section, select one or several
+            organisation units<?oxy_comment_end?>.</para>
+          <para>You can select the organisation units you want to show on the map by selecting a
+            level and a parent. That means &quot;show all organisations units at this level that are
+            children of this parent&quot;. </para>
+        </listitem>
+        <listitem>
+          <para>In the <emphasis role="bold">Options</emphasis> section, select if you want to show
+            labels and if so, how they look.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Update</emphasis>.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Swap longitude and latitude of a facility</title>
+      <title>Search for organisation units </title>
+      <para>To locate an organisation unit on the map:</para>
       <orderedlist>
         <listitem>
-          <para>Right-click a facility and click <emphasis role="bold">Swap
-            lob/lat</emphasis>.</para>
+          <para>In the top menu, click the boundary layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Search</emphasis>.</para>
+          <para>The <emphasis role="bold">Organisation unit search</emphasis> dialog box
+            opens.</para>
+        </listitem>
+        <listitem>
+          <para>In the text field, type the name of the organisation unit you are looking for or
+            click a name in the list.</para>
+          <para>The organisation unit is highlighted in the map.</para>
         </listitem>
       </orderedlist>
     </section>
     <section>
-      <title>Display facility
-        <?oxy_comment_start author="CPersson" timestamp="20160420T143611+0200" comment="Windows might be merged next release."?>information<?oxy_comment_end?></title>
-      <para>You can view organisation unit information set by the administrator in two different
-        ways.</para>
-      <table frame="all">
-        <title>View organisation unit information</title>
-        <tgroup cols="2">
-          <colspec colname="c1" colnum="1" colwidth="1*"/>
-          <colspec colname="c2" colnum="2" colwidth="1.47*"/>
-          <thead>
-            <row>
-              <entry>Function</entry>
-              <entry>Action</entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>
-                <para>View information for the current period</para>
-              </entry>
-              <entry>
-                <orderedlist>
-                  <listitem>
-                    <para>Click a facility.</para>
-                  </listitem>
-                </orderedlist>
-              </entry>
-            </row>
-            <row>
-              <entry>
-                <para>View information for a selected period</para>
-              </entry>
-              <entry>
-                <orderedlist>
-                  <listitem>
-                    <para>Right-click a facility and click <emphasis role="bold">Show
-                        information</emphasis>.</para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <emphasis role="bold">Infrastructural data</emphasis> section,
-                      select a period.</para>
-                  </listitem>
-                </orderedlist>
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
+      <title>Navigate between organisation hierarchies</title>
+      <para>When there are visible organisation units on the map, you can easily navigate up and
+        down in the hierarchy without using the level/parent user interface. </para>
+      <orderedlist>
+        <listitem>
+          <para>Right-click one of the organisation units.</para>
+        </listitem>
+        <listitem>
+          <para>Select <emphasis role="bold">Drill up</emphasis> or <emphasis role="bold">Drill
+              down</emphasis>.</para>
+          <para>The drill down option is disabled if you are on the lowest level or if there are no
+            coordinates available on the level below. The same applies when you are drilling up. </para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section>
+      <title>Clear boundary layer</title>
+      <para>To clear all data in a boundary layer: </para>
+      <orderedlist>
+        <listitem>
+          <para>In the top menu, click the boundary layer icon.</para>
+        </listitem>
+        <listitem>
+          <para>Click <emphasis role="bold">Clear</emphasis>.</para>
+        </listitem>
+      </orderedlist>
     </section>
   </section>
   <section xml:id="using_gis_gee">
@@ -695,9 +639,9 @@ https://www.google.com/permissions/trademark/trademark-list.html
       <mediaobject>
         <imageobject>
           <?oxy_comment_start author="cecilia" timestamp="20160630T212009+0200" comment="Before release: Update screenshot: Select layer has changed to Select data set" flag="done"?>
-          <imagedata width="100%"
-            fileref="resources/images/gis/gis_earth_engine_layer_population.png" format="PNG"
-            align="center"/>
+
+          <imagedata width="80%" fileref="resources/images/gis/gis_earth_engine_layer.png"
+            format="PNG" align="center"/>
           <?oxy_comment_end?>
         </imageobject>
       </mediaobject>
@@ -718,12 +662,25 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
         <listitem>
           <para>Population density: Population in 100 x 100 m grid cells (from 2010)</para>
         </listitem>
+        <listitem>
+          <para>Temperature, population and land cover at any location.</para>
+          <para>Right-click on the layers to view more information, for example temperature and
+            elevation.</para>
+          <screenshot>
+            <mediaobject>
+              <imageobject>
+                <imagedata width="50%" fileref="resources/images/gis/gis-temperature-landcover4.png"
+                  format="PNG" align="center"/>
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </listitem>
       </itemizedlist></para>
     <section>
       <title>Create or modify an Earth Engine layer</title>
       <orderedlist>
         <listitem>
-          <para>In the top menu, click the Google Earth Engine layer icon.</para>
+          <para>In the top menu, click the <emphasis role="bold">Google Earth Engine</emphasis> layer icon.</para>
         </listitem>
         <listitem>
           <para>Select a data set, for example "Elevation".</para>
@@ -745,13 +702,80 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
       </orderedlist>
     </section>
   </section>
+        <section xml:id="using_gis_external_map_layers">
+          <title>Add external map layers</title>
+          <orderedlist>
+            <listitem><para>In the top menu, click the <emphasis role="bold">External layer</emphasis> icon.</para></listitem>
+            <listitem><para>Click <emphasis role="bold">Edit</emphasis> to add a new layer.</para></listitem>
+            <listitem><para>Select a layer from the list.</para>
+              <screenshot>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata width="50%" fileref="resources/images/gis/gis_external_layers1.png"
+                format="PNG" align="center"/>
+                  </imageobject>
+                </mediaobject>
+              </screenshot>
+            </listitem>
+            <listitem><para>Click <emphasis role="bold">Update</emphasis>.</para>
+              <para>To remove a layer, click <emphasis role="bold">Clear</emphasis>. </para>
+              <para>To hide a layer, go to the <emphasis role="bold">Layer
+            stack/opacity</emphasis> menu pane and clear the <emphasis role="bold">External
+            layer</emphasis> checkbox. </para>
+            </listitem>
+          </orderedlist>
+          <para>Here are some examples of external layers:</para>
+    <screenshot>
+      <title>Example 1: First-order administrative boundaries</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%" fileref="resources/images/gis/gis_administrative_boundaries.png"
+            format="PNG" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <screenshot>
+      <title>Example 2: Aerial imagery of Dar-es-Salaam</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%" fileref="resources/images/gis/gis_aerial_imagery.png" format="PNG"
+            align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <screenshot>
+      <title>Example 3: Dark basemap with nighttime lights from Google Earth Engine</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%"
+            fileref="resources/images/gis/gis_black_basemap_and_nighttime_lights.png" format="PNG"
+            align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+    <screenshot>
+      <title>Example 4: World time zones</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%" fileref="resources/images/gis/gis_world_time_zones.png"
+            format="PNG" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+          <note>
+            <para>To define external map layers, see the <link
+              xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://dhis2.github.io/dhis2-docs/master/en/user/html/manage_ext_maplayer.html"
+              >Maintenance app documentation</link>.</para>
+    </note>
+        </section>
   <section xml:id="using_gis_favorites">
     <title>Manage map favorites</title>
     <screenshot>
       <title>Favorite maps</title>
       <mediaobject>
         <imageobject>
-          <imagedata width="50%" fileref="resources/images/gis/gis_favorites.png" format="PNG"/>
+          <imagedata width="50%" fileref="resources/images/gis/gis_favorites.png" format="PNG"
+            align="center"/>
         </imageobject>
       </mediaobject>
     </screenshot>
@@ -776,9 +800,7 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
         </listitem>
         <listitem>
           <para>Click <emphasis role="bold">Create</emphasis>.</para>
-          <para>Your favorite
-            <?oxy_comment_start author="Home" timestamp="20160412T163409+0200" comment="Rewrite into active voice."?>is
-            added<?oxy_comment_end?> to the list.</para>
+          <para>Your favorite is added to the list.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -944,165 +966,8 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
       </orderedlist>
     </section>
   </section>
-  <section xml:id="using_gis_legend_sets">
-    <title>Manage map legend sets</title>
-    <para>You can create your own legend sets to ensure meaningful maps. </para>
-    <note>
-      <para>Continuous legends are supposed to end and start on the same value, for example 0-50 and
-        50-80. The GIS app automatically take care of
-        <?oxy_comment_start author="Home" timestamp="20160413T120439+0200" comment="Of what?"?>this<?oxy_comment_end?>.
-        Do not try to do this yourself by setting legends to for example 0-50 and 51-80. This will
-        cause a usually unwanted gap in your legend set.</para>
-    </note>
-    <section>
-      <title>Create a new legend set</title>
-      <orderedlist>
-        <listitem>
-          <para>Click <emphasis role="bold">Legends</emphasis>.</para>
-          <para> The <emphasis role="bold">Legend sets</emphasis> dialog box opens.</para>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Add new</emphasis>.</para>
-        </listitem>
-        <listitem>
-          <para>In the <emphasis role="bold">Legend set name</emphasis> box, type the name you want
-            to give the legend set.</para>
-        </listitem>
-        <listitem>
-          <para>Create the legends you want to have in your legend set:</para>
-          <orderedlist>
-            <listitem>
-              <para>In the <emphasis role="bold">Legend name</emphasis> field, type the legend
-                name.</para>
-            </listitem>
-            <listitem>
-              <para>Select <emphasis role="bold">Start/end value</emphasis>.</para>
-            </listitem>
-            <listitem>
-              <para>Select <emphasis role="bold">Symbolizer</emphasis>.</para>
-            </listitem>
-            <listitem>
-              <para>Click <emphasis role="bold">Add legend</emphasis>.</para>
-              <para>The legend is added to <emphasis role="bold">Current legends</emphasis>.</para>
-            </listitem>
-            <listitem>
-              <para><?oxy_comment_start author="CPersson" timestamp="20160420T143924+0200" comment="At next release, add x-refs."?>Repeat<?oxy_comment_end?>
-                until you have created all the legends you need.</para>
-            </listitem>
-          </orderedlist>
-          <example>
-            <title>Vaccination coverage legends</title>
-            <para>
-              <table frame="all">
-                <title>Example of vaccination coverage legends</title>
-                <tgroup cols="4">
-                  <colspec colname="c1" colnum="1" colwidth="1.0*"/>
-                  <colspec colname="c2" colnum="2" colwidth="1.0*"/>
-                  <colspec colname="c3" colnum="3" colwidth="1.0*"/>
-                  <colspec colname="c4" colnum="4" colwidth="1.0*"/>
-                  <thead>
-                    <row>
-                      <entry>Legend name</entry>
-                      <entry>Start value</entry>
-                      <entry>End value</entry>
-                      <entry>Symbolizer</entry>
-                    </row>
-                  </thead>
-                  <tbody>
-                    <row>
-                      <entry>Low bad</entry>
-                      <entry>0</entry>
-                      <entry>50</entry>
-                      <entry>red</entry>
-                    </row>
-                    <row>
-                      <entry>Medium</entry>
-                      <entry>50</entry>
-                      <entry>80</entry>
-                      <entry>yellow</entry>
-                    </row>
-                    <row>
-                      <entry>High good</entry>
-                      <entry>80</entry>
-                      <entry>100</entry>
-                      <entry>green</entry>
-                    </row>
-                    <row>
-                      <entry>Too high</entry>
-                      <entry>100</entry>
-                      <entry>1000</entry>
-                      <entry>grey</entry>
-                    </row>
-                  </tbody>
-                </tgroup>
-              </table>
-            </para>
-          </example>
-        </listitem>
-        <listitem>
-          <para>Click <emphasis role="bold">Create</emphasis>.</para>
-          <note>
-            <para>If your legend set has overlapping legends (for example 0-50 and 40-80) you will
-              not be allowed to proceed. If your legend set has a gap between the legends (for
-              example 0-50 and 60-80) you will get a warning, but are allowed to proceed.</para>
-          </note>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title>Change a legend set</title>
-      <para>
-        <orderedlist>
-          <listitem>
-            <para>Click <emphasis role="bold">Legends</emphasis>. </para>
-            <para>The <emphasis role="bold">Legend sets</emphasis> dialog box opens.</para>
-          </listitem>
-          <listitem>
-            <para>Click the edit icon next to the legend set you want to modify.</para>
-          </listitem>
-          <listitem>
-            <para>In the <emphasis role="bold">Current legends</emphasis> list, click the edit icon
-              next to the legend you want to modify.</para>
-            <para>The <emphasis role="bold">Edit legend</emphasis> dialog box opens.</para>
-          </listitem>
-          <listitem>
-            <para>Modify the parameters and click <emphasis role="bold">Update</emphasis>.</para>
-          </listitem>
-          <listitem>
-            <para>In the <emphasis role="bold">Legend sets</emphasis> dialog box, click <emphasis
-                role="bold">Update</emphasis>.</para>
-          </listitem>
-        </orderedlist>
-      </para>
-    </section>
-    <section>
-      <title>Delete a legend set</title>
-      <para>
-        <orderedlist>
-          <listitem>
-            <para>Click <emphasis role="bold">Legends</emphasis>. </para>
-            <para>The <emphasis role="bold">Legend sets</emphasis> dialog box opens.</para>
-          </listitem>
-          <listitem>
-            <para>Click the delete icon next to the legend set you want to delete.</para>
-          </listitem>
-          <listitem>
-            <para>Click <emphasis role="bold">OK</emphasis> to confirm that you want to delete the
-              legend set.</para>
-          </listitem>
-        </orderedlist>
-      </para>
-    </section>
-    <section>
-      <title>Assign a legend set to indicator or data
-        <?oxy_comment_start author="Home" timestamp="20160414T113214+0200" comment="At next revision, add x-ref to relevant topic."?>element<?oxy_comment_end?></title>
-      <para>You can assign a legend set to an indicator or a data element in the Indicator/Data
-        element module. This legend set will then be automatically selected when such an
-        indicator/data element is selected in the GIS.</para>
-    </section>
-  </section>
   <section xml:id="using_gis_image_export">
-    <title>Save a map as image</title>
+    <title>Save a map as an image</title>
     <orderedlist>
       <listitem>
         <para>Take a screenshot of the map with the tool of your choice.</para>
@@ -1159,7 +1024,7 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
     </orderedlist>
   </section>
   <section xml:id="using_gis_measure_distance">
-    <title>Measure distance and area in a map</title>
+    <title>Measure distances and areas in a map</title>
     <orderedlist>
       <listitem>
         <para>In the upper left part of the map, put the cursor on the <emphasis role="bold">Measure
@@ -1174,8 +1039,20 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
       </listitem>
     </orderedlist>
   </section>
+        <section xml:id="using_gis_latitude_longitude">
+    <title>Get the latitude and longitude at any location</title>
+    <para>Right-click a map and select <emphasis role="bold">Show longitude/latitude</emphasis>. The values display in a pop-up window.</para>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata width="50%" fileref="resources/images/gis/gis-latitude-longitude.png"
+            format="PNG" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+  </section>
   <section xml:id="using_gis_integration">
-    <title>Visualize a map as a pivot table or a chart</title>
+    <title>View a map as a pivot table or chart</title>
     <para>When you have made a map you can switch between pivot table, chart and map visualization
       of your data. The function is inactive if the data the map is based on cannot render as a
       chart or table.</para>
@@ -1200,4 +1077,5 @@ Also, data set not written correctly. Ticket submitted."?>layer<?oxy_comment_end
       </orderedlist>
     </section>
   </section>
+        
 </chapter>
